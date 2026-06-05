@@ -260,12 +260,21 @@ class _NotificationCard extends ConsumerWidget {
                   onTap: notif.enabled
                       ? () => _pickTime(context, ref, notif.hour, notif.minute)
                       : null,
-                  child: Text(
-                    notif.enabled ? 'Todo dia às $timeLabel' : 'Desativado',
-                    style: GoogleFonts.instrumentSans(
-                      fontSize: 12,
-                      color: notif.enabled ? accent : muted,
-                    ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        notif.enabled ? 'Todo dia às $timeLabel' : 'Desativado',
+                        style: GoogleFonts.instrumentSans(
+                          fontSize: 12,
+                          color: notif.enabled ? accent : muted,
+                        ),
+                      ),
+                      if (notif.enabled) ...[
+                        const SizedBox(width: 4),
+                        Icon(Icons.edit_outlined, size: 12, color: accent),
+                      ],
+                    ],
                   ),
                 ),
               ],
