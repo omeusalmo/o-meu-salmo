@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -368,57 +369,107 @@ class _ApoieSheet extends StatelessWidget {
             ),
           ),
           const SizedBox(height: AppTheme.sp6),
+          // Chave Pix
           Container(
             padding: const EdgeInsets.all(AppTheme.sp4),
             decoration: BoxDecoration(
+              color: isDark ? AppColors.nightBase : AppColors.dayBase,
               border: Border.all(color: border, width: 0.5),
               borderRadius: BorderRadius.circular(AppTheme.radiusMd),
             ),
             child: Row(
               children: [
-                Text(
-                  'Contribuição única',
-                  style: GoogleFonts.instrumentSans(fontSize: 15, color: text),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'CHAVE PIX',
+                        style: GoogleFonts.instrumentSans(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w400,
+                          letterSpacing: 3.0,
+                          color: accent,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        'omeusalmo@gmail.com',
+                        style: GoogleFonts.instrumentSans(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: titleClr,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                const Spacer(),
-                Text(
-                  'Em breve',
-                  style: GoogleFonts.instrumentSans(fontSize: 13, color: muted),
-                ),
+                _CopyPixButton(isDark: isDark),
               ],
             ),
           ),
-          const SizedBox(height: AppTheme.sp4),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: null, // TODO: in_app_purchase — sprint futura
-              style: ElevatedButton.styleFrom(
-                backgroundColor: accent.withAlpha(77),
-                foregroundColor: AppColors.nightCream,
-                disabledForegroundColor: AppColors.nightCream.withAlpha(153),
-                disabledBackgroundColor: accent.withAlpha(51),
-                padding: const EdgeInsets.symmetric(vertical: AppTheme.sp3),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(AppTheme.radiusMd),
-                ),
-                elevation: 0,
-                textStyle: GoogleFonts.instrumentSans(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              child: const Text('Apoiar o app'),
-            ),
-          ),
-          const SizedBox(height: AppTheme.sp2),
-          Center(
-            child: Text(
-              'Disponível em breve.',
-              style: GoogleFonts.instrumentSans(fontSize: 12, color: muted),
+          const SizedBox(height: AppTheme.sp3),
+          Text(
+            'Abra seu banco → Pix → Pagar → Cole a chave.',
+            style: GoogleFonts.instrumentSans(
+              fontSize: 12,
+              color: muted,
+              height: 1.5,
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Botão copiar chave Pix
+// ─────────────────────────────────────────────────────────────────────────────
+
+class _CopyPixButton extends StatefulWidget {
+  final bool isDark;
+  const _CopyPixButton({super.key, required this.isDark});
+
+  @override
+  State<_CopyPixButton> createState() => _CopyPixButtonState();
+}
+
+class _CopyPixButtonState extends State<_CopyPixButton> {
+  bool _copied = false;
+
+  Future<void> _copy() async {
+    await Clipboard.setData(const ClipboardData(text: 'omeusalmo@gmail.com'));
+    setState(() => _copied = true);
+    await Future.delayed(const Duration(seconds: 2));
+    if (mounted) setState(() => _copied = false);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final accent = widget.isDark ? AppColors.cobalt400 : AppColors.cobalt500;
+    return GestureDetector(
+      onTap: _copied ? null : _copy,
+      child: AnimatedContainer(
+        duration: AppTheme.durFast,
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppTheme.sp3,
+          vertical: AppTheme.sp2,
+        ),
+        decoration: BoxDecoration(
+          color: _copied
+              ? AppColors.emoPazDot.withAlpha(30)
+              : accent.withAlpha(20),
+          borderRadius: BorderRadius.circular(AppTheme.radiusPill),
+        ),
+        child: Text(
+          _copied ? 'Copiado ✓' : 'Copiar',
+          style: GoogleFonts.instrumentSans(
+            fontSize: 13,
+            fontWeight: FontWeight.w500,
+            color: _copied ? AppColors.emoPazDot : accent,
+          ),
+        ),
       ),
     );
   }
