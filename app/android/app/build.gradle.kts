@@ -7,6 +7,12 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
+import java.util.Properties
+
+val keyProps = Properties()
+val keyPropsFile = rootProject.file("key.properties")
+if (keyPropsFile.exists()) keyPropsFile.reader().use { keyProps.load(it) }
+
 android {
     namespace = "com.omeusalmo.salmos"
     compileSdk = flutter.compileSdkVersion

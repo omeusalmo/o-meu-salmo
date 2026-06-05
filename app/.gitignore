@@ -52,3 +52,8 @@ assets/audios/*.mp3
 
 # PDF de relatório interno
 ../relatorio-visual-ui-ux.pdf
+
+# Keystore — nunca commitar
+android/key.properties
+*.jks
+*.keystore
