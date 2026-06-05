@@ -1,4 +1,4 @@
-package com.jeffsilva.salmos_app
+package com.omeusalmo.salmos
 
 import io.flutter.embedding.android.FlutterActivity
 
