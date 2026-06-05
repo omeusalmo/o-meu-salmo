@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../core/analytics/analytics_service.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/salmo.dart';
 import '../../data/providers/salmos_providers.dart';
@@ -40,6 +41,10 @@ class DetalheColecaoScreen extends ConsumerWidget {
     }
 
     final colecao = colecaoAsync.value;
+    if (colecao != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) =>
+          AnalyticsService.instance.logCollectionOpened(colecao.id, colecao.titulo));
+    }
     if (colecao == null) {
       return _NotFoundView(isDark: isDark);
     }

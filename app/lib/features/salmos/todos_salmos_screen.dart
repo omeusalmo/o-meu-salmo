@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../core/analytics/analytics_service.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/salmo.dart';
 import '../../data/providers/salmos_providers.dart';
@@ -30,11 +31,13 @@ class _TodosSalmosScreenState extends ConsumerState<TodosSalmosScreen> {
   List<Salmo> _filter(List<Salmo> salmos) {
     if (_query.isEmpty) return salmos;
     final q = _query.toLowerCase().trim();
-    return salmos.where((s) {
+    final result = salmos.where((s) {
       if (s.numero.toString() == q) return true;
       if (s.titulo.toLowerCase().contains(q)) return true;
       return s.versiculos.any((v) => v.toLowerCase().contains(q));
     }).toList();
+    AnalyticsService.instance.logSearch(q, result.isNotEmpty);
+    return result;
   }
 
   @override

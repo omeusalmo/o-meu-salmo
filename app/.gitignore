@@ -57,3 +57,5 @@ assets/audios/*.mp3
 android/key.properties
 *.jks
 *.keystore
+
+android/build/

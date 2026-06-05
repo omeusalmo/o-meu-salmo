@@ -1,6 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
 
+import '../../core/analytics/analytics_service.dart';
+
 /// Estado imutável do player.
 class AudioState {
   final bool isPlaying;
@@ -99,6 +101,13 @@ class AudioPlayerNotifier extends Notifier<AudioState> {
         await _player.seek(Duration.zero);
       }
       await _player.play();
+      // Extrai número do salmo do path (ex: audios/salmo_023.mp3 → 23)
+      if (_currentPath != null) {
+        final match = RegExp(r'salmo_(\d+)').firstMatch(_currentPath!);
+        if (match != null) {
+          AnalyticsService.instance.logAudioPlayed(int.parse(match.group(1)!));
+        }
+      }
     }
   }
 
