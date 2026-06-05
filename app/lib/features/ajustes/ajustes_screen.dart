@@ -18,7 +18,7 @@ class AjustesScreen extends ConsumerWidget {
     final bg        = isDark ? AppColors.nightBase  : AppColors.dayBase;
     final titleClr  = isDark ? AppColors.nightCream : AppColors.dayTitle;
     final border    = isDark ? AppColors.nightLine  : AppColors.dayLine;
-    final muted     = isDark ? AppColors.nightMuted : AppColors.dayMuted;
+    final muted     = isDark ? AppColors.nightText  : AppColors.dayText;
 
     return Scaffold(
       backgroundColor: bg,
@@ -79,7 +79,7 @@ class AjustesScreen extends ConsumerWidget {
                     selectedForegroundColor:
                         isDark ? AppColors.cobalt400 : AppColors.cobalt500,
                     foregroundColor:
-                        isDark ? AppColors.nightMuted : AppColors.dayMuted,
+                        isDark ? AppColors.nightText  : AppColors.dayText,
                     side: BorderSide(color: border, width: 0.5),
                     textStyle: GoogleFonts.instrumentSans(
                       fontSize: 13,
@@ -203,7 +203,7 @@ class AjustesScreen extends ConsumerWidget {
                   'Uma pausa que devolve a você mesmo.',
                   style: GoogleFonts.instrumentSans(
                     fontSize: 12,
-                    color: isDark ? AppColors.nightMuted : AppColors.dayMuted,
+                    color: isDark ? AppColors.nightText  : AppColors.dayText,
                     height: 1.5,
                   ),
                 ),
@@ -241,7 +241,7 @@ class _NotificationCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final notif  = ref.watch(notificationSettingsProvider);
     final accent = isDark ? AppColors.cobalt400 : AppColors.cobalt500;
-    final muted  = isDark ? AppColors.nightMuted : AppColors.dayMuted;
+    final muted  = isDark ? AppColors.nightText  : AppColors.dayText;
 
     final timeLabel = '${notif.hour.toString().padLeft(2, '0')}:'
         '${notif.minute.toString().padLeft(2, '0')}';
@@ -336,7 +336,7 @@ class _ApoieSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
     final text     = isDark ? AppColors.nightText  : AppColors.dayText;
-    final muted    = isDark ? AppColors.nightMuted : AppColors.dayMuted;
+    final muted    = isDark ? AppColors.nightText  : AppColors.dayText;
     final accent   = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
     final border   = isDark ? AppColors.nightLine  : AppColors.dayLine;
 
@@ -422,7 +422,7 @@ class _ApoieSheet extends StatelessWidget {
             'Abra seu banco → Pix → Pagar → Cole a chave.',
             style: GoogleFonts.instrumentSans(
               fontSize: 12,
-              color: muted,
+              color: isDark ? AppColors.nightText : AppColors.dayText,
               height: 1.5,
             ),
           ),
@@ -501,7 +501,7 @@ class _SectionHeader extends StatelessWidget {
           style: GoogleFonts.instrumentSans(
             fontSize: 11,
             fontWeight: FontWeight.w400,
-            color: isDark ? AppColors.nightMuted : AppColors.dayMuted,
+            color: isDark ? AppColors.nightText  : AppColors.dayText,
             letterSpacing: 3.74,
           ),
         ),
@@ -561,7 +561,7 @@ class _InfoRow extends StatelessWidget {
               label,
               style: GoogleFonts.instrumentSans(
                 fontSize: 13,
-                color: isDark ? AppColors.nightMuted : AppColors.dayMuted,
+                color: isDark ? AppColors.nightText  : AppColors.dayText,
               ),
             ),
           ),

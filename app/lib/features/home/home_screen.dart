@@ -61,7 +61,7 @@ class _HomeContent extends StatelessWidget {
     final isDark  = Theme.of(context).brightness == Brightness.dark;
     final accent  = isDark ? AppColors.cobalt400 : AppColors.cobalt500;
     final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
-    final muted   = isDark ? AppColors.nightMuted : AppColors.dayMuted;
+    final muted   = isDark ? AppColors.nightText  : AppColors.dayText;
     final border  = isDark ? AppColors.nightLine  : AppColors.dayLine;
 
     return CustomScrollView(
@@ -91,7 +91,7 @@ class _HomeContent extends StatelessWidget {
                 style: GoogleFonts.instrumentSans(
                   fontSize: 12,
                   fontWeight: FontWeight.w400,
-                  color: muted,
+                  color: isDark ? AppColors.nightText : AppColors.dayText,
                   letterSpacing: 0.5,
                 ),
               ),
@@ -140,7 +140,7 @@ class _HomeContent extends StatelessWidget {
                   style: GoogleFonts.instrumentSans(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
-                    color: muted,
+                    color: isDark ? AppColors.nightText : AppColors.dayText,
                     letterSpacing: 0.2,
                   ),
                 ),
@@ -211,7 +211,7 @@ class _CollectionsShortcut extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark  = Theme.of(context).brightness == Brightness.dark;
-    final muted   = isDark ? AppColors.nightMuted : AppColors.dayMuted;
+    final muted   = isDark ? AppColors.nightText  : AppColors.dayText;
     final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
     final accent  = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
 
@@ -237,7 +237,7 @@ class _CollectionsShortcut extends StatelessWidget {
             fontSize: 16,
             fontStyle: FontStyle.italic,
             fontWeight: FontWeight.w400,
-            color: muted,
+            color: isDark ? AppColors.nightText : AppColors.dayText,
             height: 1.5,
           ),
         ),

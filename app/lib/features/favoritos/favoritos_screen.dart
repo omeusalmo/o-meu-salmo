@@ -20,7 +20,7 @@ class FavoritosScreen extends ConsumerWidget {
     final bg       = isDark ? AppColors.nightBase  : AppColors.dayBase;
     final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
     final border   = isDark ? AppColors.nightLine  : AppColors.dayLine;
-    final muted    = isDark ? AppColors.nightMuted : AppColors.dayMuted;
+    final muted    = isDark ? AppColors.nightText  : AppColors.dayText;
 
     Widget body;
 
@@ -123,7 +123,7 @@ class _EmptyState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final text  = isDark ? AppColors.nightText  : AppColors.dayText;
-    final muted = isDark ? AppColors.nightMuted : AppColors.dayMuted;
+    final muted = isDark ? AppColors.nightText  : AppColors.dayText;
 
     return Center(
       child: Padding(
@@ -134,7 +134,7 @@ class _EmptyState extends StatelessWidget {
             Icon(
               Icons.favorite_border_rounded,
               size: 40,
-              color: muted,
+              color: isDark ? AppColors.nightText : AppColors.dayText,
             ),
             const SizedBox(height: AppTheme.sp4),
             Text(
@@ -152,7 +152,7 @@ class _EmptyState extends StatelessWidget {
               style: GoogleFonts.cormorant(
                 fontSize: 16,
                 fontStyle: FontStyle.italic,
-                color: muted,
+                color: isDark ? AppColors.nightText : AppColors.dayText,
                 height: 1.5,
               ),
             ),

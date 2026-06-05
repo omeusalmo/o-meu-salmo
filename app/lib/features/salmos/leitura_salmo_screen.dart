@@ -127,7 +127,7 @@ class _Header extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final border = isDark ? AppColors.nightLine  : AppColors.dayLine;
-    final muted  = isDark ? AppColors.nightMuted : AppColors.dayMuted;
+    final muted  = isDark ? AppColors.nightText  : AppColors.dayText;
     final accent = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
 
     return Container(
@@ -222,7 +222,7 @@ class _Body extends StatelessWidget {
               style: GoogleFonts.instrumentSans(
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
-                color: isDark ? AppColors.nightMuted : AppColors.dayMuted,
+                color: isDark ? AppColors.nightText  : AppColors.dayText,
                 letterSpacing: 0.2,
               ),
             ),
@@ -406,7 +406,7 @@ class _BackBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final muted  = isDark ? AppColors.nightMuted : AppColors.dayMuted;
+    final muted  = isDark ? AppColors.nightText  : AppColors.dayText;
     final border = isDark ? AppColors.nightLine  : AppColors.dayLine;
 
     return Container(

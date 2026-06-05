@@ -51,7 +51,7 @@ class _AudioPlayerBarState extends ConsumerState<AudioPlayerBar> {
     final border = isDark ? AppColors.nightLine : AppColors.dayLine;
     final text   = isDark ? AppColors.nightText : AppColors.dayText;
     final accent = isDark ? AppColors.cobalt400 : AppColors.cobalt500;
-    final muted  = isDark ? AppColors.nightMuted : AppColors.dayMuted;
+    final muted  = isDark ? AppColors.nightText  : AppColors.dayText;
 
     final available = audio.isAvailable;
     final btnColor  = available ? accent : muted;
@@ -201,7 +201,7 @@ class _AudioPlayerBarState extends ConsumerState<AudioPlayerBar> {
             available ? _fmt(audio.duration) : '--:--',
             style: GoogleFonts.instrumentSans(
               fontSize: 10,
-              color: muted,
+              color: isDark ? AppColors.nightText : AppColors.dayText,
               fontFeatures: const [FontFeature.tabularFigures()],
             ),
           ),

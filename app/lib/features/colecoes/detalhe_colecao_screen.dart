@@ -95,7 +95,7 @@ class DetalheColecaoScreen extends ConsumerWidget {
                       fontSize: 17,
                       fontStyle: FontStyle.italic,
                       fontWeight: FontWeight.w400,
-                      color: isDark ? AppColors.nightMuted : AppColors.dayMuted,
+                      color: isDark ? AppColors.nightText  : AppColors.dayText,
                       height: 1.5,
                     ),
                   ),
@@ -141,7 +141,7 @@ class _Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final border = isDark ? AppColors.nightLine  : AppColors.dayLine;
-    final muted  = isDark ? AppColors.nightMuted : AppColors.dayMuted;
+    final muted  = isDark ? AppColors.nightText  : AppColors.dayText;
     final accent = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
 
     return Container(
@@ -167,7 +167,7 @@ class _Header extends StatelessWidget {
                 child: Icon(
                   Icons.arrow_back_ios_new_rounded,
                   size: 18,
-                  color: muted,
+                  color: isDark ? AppColors.nightText : AppColors.dayText,
                 ),
               ),
             ),

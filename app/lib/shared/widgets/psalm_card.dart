@@ -24,7 +24,7 @@ class PsalmCard extends StatelessWidget {
     final border   = isDark ? AppColors.nightLine  : AppColors.dayLine;
     final accent   = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
     final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
-    final muted    = isDark ? AppColors.nightMuted : AppColors.dayMuted;
+    final muted    = isDark ? AppColors.nightText  : AppColors.dayText;
 
     return Material(
       color: surface,
@@ -83,7 +83,7 @@ class PsalmCard extends StatelessWidget {
                           fontSize: 14,
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.w400,
-                          color: muted,
+                          color: isDark ? AppColors.nightText : AppColors.dayText,
                           height: 1.4,
                         ),
                         maxLines: 1,

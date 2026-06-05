@@ -47,7 +47,7 @@ class _TodosSalmosScreenState extends ConsumerState<TodosSalmosScreen> {
     final bg = isDark ? AppColors.nightBase : AppColors.dayBase;
     final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
     final border = isDark ? AppColors.nightLine : AppColors.dayLine;
-    final muted  = isDark ? AppColors.nightMuted : AppColors.dayMuted;
+    final muted  = isDark ? AppColors.nightText  : AppColors.dayText;
 
     return Scaffold(
       backgroundColor: bg,
@@ -126,7 +126,7 @@ class _SearchBar extends StatelessWidget {
     final surface = isDark ? AppColors.nightPlus  : AppColors.dayPlus;
     final border  = isDark ? AppColors.nightLine  : AppColors.dayLine;
     final textClr = isDark ? AppColors.nightText  : AppColors.dayText;
-    final muted   = isDark ? AppColors.nightMuted : AppColors.dayMuted;
+    final muted   = isDark ? AppColors.nightText  : AppColors.dayText;
     final accent  = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
 
     return Padding(
@@ -160,7 +160,7 @@ class _SearchBar extends StatelessWidget {
                   hintText: 'Buscar um salmo…',
                   hintStyle: GoogleFonts.instrumentSans(
                     fontSize: 15,
-                    color: muted,
+                    color: isDark ? AppColors.nightText : AppColors.dayText,
                   ),
                   border: InputBorder.none,
                   isDense: true,
@@ -273,7 +273,7 @@ class _EmptyState extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final text  = isDark ? AppColors.nightText  : AppColors.dayText;
-    final muted = isDark ? AppColors.nightMuted : AppColors.dayMuted;
+    final muted = isDark ? AppColors.nightText  : AppColors.dayText;
 
     return Center(
       child: Padding(
@@ -296,7 +296,7 @@ class _EmptyState extends StatelessWidget {
               style: GoogleFonts.cormorant(
                 fontSize: 17,
                 fontStyle: FontStyle.italic,
-                color: muted,
+                color: isDark ? AppColors.nightText : AppColors.dayText,
               ),
             ),
           ],
