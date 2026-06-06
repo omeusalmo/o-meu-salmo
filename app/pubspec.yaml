@@ -1,0 +1,82 @@
+name: salmos_app
+description: "Salmos — Experiência moderna de leitura com áudio e curadoria por emoção."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Estado — Riverpod v2 com escopo de provider em toda a árvore
+  flutter_riverpod: ^2.5.1
+
+  # Navegação — go_router é o padrão recomendado pelo Flutter team
+  go_router: ^13.2.5
+
+  # Tipografia — Playfair Display, Cormorant, Instrument Sans
+  google_fonts: ^6.2.1
+
+  # Persistência local para favoritos e preferências
+  shared_preferences: ^2.3.2
+
+  # Notificações locais — Salmo diário
+  flutter_local_notifications: ^17.2.2
+  timezone: ^0.9.4
+
+  # Player de áudio — MP3 local do bundle e streaming
+  just_audio: ^0.9.40
+
+  # Compartilhamento nativo — abre share sheet do sistema (WhatsApp, Stories etc.)
+  share_plus: ^13.1.0
+
+  # Firebase — Analytics de engajamento
+  firebase_core: ^3.6.0
+  firebase_analytics: ^11.3.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+  # Gerador de splash nativa (Android/iOS) — roda uma vez: dart run flutter_native_splash:create
+  flutter_native_splash: ^2.4.1
+
+  # Gerador de launcher icons — roda uma vez: dart run flutter_launcher_icons
+  flutter_launcher_icons: ^0.14.1
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Launcher Icon
+# Após editar, regenere: dart run flutter_launcher_icons
+# ─────────────────────────────────────────────────────────────────────────────
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: false
+  min_sdk_android: 21
+  image_path: "assets/images/app-icon-512.png"
+  # Adaptive icon (Android 8+): fundo cobalto + ícone como foreground
+  adaptive_icon_background: "#2A47DD"
+  adaptive_icon_foreground: "assets/images/app-icon-512.png"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Configuração da Splash Screen nativa
+# Fundo noturno da marca + ícone do app centralizado
+# Após editar, regenere: dart run flutter_native_splash:create
+# ─────────────────────────────────────────────────────────────────────────────
+flutter_native_splash:
+  color: "#2A47DD"
+  android: true
+  ios: false
+  web: false
+  android_12:
+    color: "#2A47DD"
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/salmos.json
+    - assets/audios/
+    - assets/images/
