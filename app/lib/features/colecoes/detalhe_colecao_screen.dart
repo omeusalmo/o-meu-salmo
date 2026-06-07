@@ -63,7 +63,7 @@ class DetalheColecaoScreen extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _Header(
-              titulo: colecao.titulo,
+              subtitulo: colecao.subtitulo,
               isDark: isDark,
             ),
             Expanded(
@@ -133,10 +133,10 @@ class DetalheColecaoScreen extends ConsumerWidget {
 // ─────────────────────────────────────────────────────────────────────────────
 
 class _Header extends StatelessWidget {
-  final String titulo;
+  final String subtitulo;
   final bool isDark;
 
-  const _Header({super.key, required this.titulo, required this.isDark});
+  const _Header({super.key, required this.subtitulo, required this.isDark});
 
   @override
   Widget build(BuildContext context) {
@@ -177,7 +177,7 @@ class _Header extends StatelessWidget {
             ),
           ),
           const SizedBox(width: AppTheme.sp3),
-          EyebrowLabel(titulo, color: accent),
+          EyebrowLabel(subtitulo, color: accent),
         ],
       ),
     );

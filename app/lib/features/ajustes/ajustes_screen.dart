@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:share_plus/share_plus.dart';
 
 import '../../core/theme/app_theme.dart';
 import '../../core/notifications/notification_service.dart';
@@ -130,7 +129,7 @@ class AjustesScreen extends ConsumerWidget {
                 ),
                 const SizedBox(height: AppTheme.sp1 + 2),
                 Text(
-                  'Nada de anúncios, nada de assinatura. Se o app te faz bem, um apoio mantém isso assim.',
+                  'Gratuito e sem anúncios. Se o app faz parte do seu dia, considere apoiar com uma contribuição única.',
                   style: GoogleFonts.instrumentSans(
                     fontSize: 14,
                     color: isDark ? AppColors.nightText : AppColors.dayText,
@@ -161,74 +160,6 @@ class AjustesScreen extends ConsumerWidget {
                           fontSize: 15,
                           fontWeight: FontWeight.w500,
                           color: AppColors.nightCream,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-          const SizedBox(height: AppTheme.sp5),
-
-          // ── Sugestões ─────────────────────────────────────────────────
-          _SectionHeader('Sugestões', isDark: isDark),
-          _Card(
-            isDark: isDark,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Tem uma ideia ou encontrou algo estranho?',
-                  style: GoogleFonts.playfairDisplay(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                    color: isDark ? AppColors.nightCream : AppColors.dayTitle,
-                    height: 1.3,
-                  ),
-                ),
-                const SizedBox(height: AppTheme.sp1 + 2),
-                Text(
-                  'Toda sugestão chega diretamente ao desenvolvedor e é lida com atenção.',
-                  style: GoogleFonts.instrumentSans(
-                    fontSize: 14,
-                    color: isDark ? AppColors.nightText : AppColors.dayText,
-                    height: 1.55,
-                  ),
-                ),
-                const SizedBox(height: AppTheme.sp4),
-                GestureDetector(
-                  onTap: () => SharePlus.instance.share(ShareParams(
-                    subject: 'Sugestão — O meu Salmo',
-                    text:
-                        'Olá! Tenho uma sugestão para o app O meu Salmo:\n\n'
-                        '[Escreva aqui]\n\n'
-                        'Enviar para: omeusalmo@gmail.com',
-                  )),
-                  child: Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.symmetric(
-                        vertical: AppTheme.sp3),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: isDark
-                            ? AppColors.cobalt400
-                            : AppColors.cobalt500,
-                        width: 1.0,
-                      ),
-                      borderRadius:
-                          BorderRadius.circular(AppTheme.radiusMd),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Enviar sugestão',
-                        style: GoogleFonts.instrumentSans(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w500,
-                          color: isDark
-                              ? AppColors.cobalt400
-                              : AppColors.cobalt500,
                         ),
                       ),
                     ),
@@ -273,7 +204,7 @@ class AjustesScreen extends ConsumerWidget {
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  'Uma pausa que te devolve a si mesmo.',
+                  'Uma pausa que devolve a você mesmo.',
                   style: GoogleFonts.instrumentSans(
                     fontSize: 12,
                     color: isDark ? AppColors.nightText  : AppColors.dayText,
@@ -433,7 +364,7 @@ class _ApoieSheet extends StatelessWidget {
           ),
           const SizedBox(height: AppTheme.sp6),
           Text(
-            'Um gesto de apoio',
+            'Apoie o app',
             style: GoogleFonts.playfairDisplay(
               fontSize: 28,
               fontWeight: FontWeight.w400,
@@ -443,7 +374,7 @@ class _ApoieSheet extends StatelessWidget {
           ),
           const SizedBox(height: AppTheme.sp3),
           Text(
-            'Qualquer valor é bem-vindo. Cada contribuição ajuda a manter o app gratuito e no ar.',
+            'O meu Salmo é gratuito e sem anúncios. Se ele faz parte do seu dia, considere apoiar com uma contribuição única.',
             style: GoogleFonts.instrumentSans(
               fontSize: 15,
               color: text,

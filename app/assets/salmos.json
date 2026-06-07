@@ -25,10 +25,9 @@
         "sabedoria",
         "caminho"
       ],
-      "reflexao": "As escolhas cotidianas constroem o ambiente mental em que vivemos. A psicologia comportamental mostra que o contexto que habitamos, as conversas que mantemos e o que consumimos moldam quem nos tornamos ao longo do tempo. Pequenas escolhas repetidas criam a pessoa que somos.",
+      "reflexao": "",
       "audio": "audios/salmo_001.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Que ambientes e companhias têm alimentado o que você quer cultivar em si mesmo?"
+      "favorito": false
     },
     {
       "numero": 2,
@@ -52,10 +51,9 @@
         "confianca",
         "reinado"
       ],
-      "reflexao": "Diante do caos e da incerteza, a mente humana busca um ponto fixo de ancoragem. A Teoria do Apego (Bowlby) mostra que ter um \"porto seguro\" interno é o que nos permite agir com coragem no mundo. Não é a ausência do medo que liberta; é saber onde retornar.",
+      "reflexao": "",
       "audio": "audios/salmo_002.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que serve como âncora para você quando o mundo ao redor parece instável?"
+      "favorito": false
     },
     {
       "numero": 3,
@@ -75,10 +73,9 @@
         "protecao",
         "confianca"
       ],
-      "reflexao": "Sentir-se cercado de adversários, reais ou imaginados, ativa o sistema de ameaça do cérebro, que não distingue perigo físico de ameaça social. A psicologia compassiva (Paul Gilbert) ensina que reconhecer esse estado sem julgamento é o primeiro passo para sair dele. O medo pede atenção, não fuga.",
+      "reflexao": "",
       "audio": "audios/salmo_003.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Quando você se sente cercado, qual é o primeiro movimento que costuma fazer: se fechar ou buscar apoio?"
+      "favorito": false
     },
     {
       "numero": 4,
@@ -98,10 +95,9 @@
         "paz",
         "descanso"
       ],
-      "reflexao": "O ato de parar antes de dormir e nomear o que pesou no dia é uma prática validada pela pesquisa em regulação emocional. James Gross mostrou que processar conscientemente as emoções do dia reduz a ruminação noturna e melhora a qualidade do sono. O silêncio da noite não é ausência; é espaço para integrar.",
+      "reflexao": "",
       "audio": "audios/salmo_004.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que precisa ser nomeado antes de você conseguir descansar esta noite?"
+      "favorito": false
     },
     {
       "numero": 5,
@@ -125,10 +121,9 @@
         "oracao",
         "manha"
       ],
-      "reflexao": "Começar o dia com intenção deliberada é um dos hábitos mais estudados em psicologia do bem-estar. Orientar a atenção antes de as demandas chegarem cria um estado de agência: a sensação de que você conduz sua vida, e não o contrário. Manhãs não são obrigações; são convites.",
+      "reflexao": "",
       "audio": "audios/salmo_005.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Como você gostaria de começar este dia, se pudesse escolher o tom?"
+      "favorito": false
     },
     {
       "numero": 6,
@@ -151,10 +146,9 @@
         "arrependimento",
         "cura"
       ],
-      "reflexao": "A angústia que não encontra expressão tende a se instalar no corpo. A pesquisa de James Pennebaker mostrou que colocar em palavras o que dói, mesmo que só para si mesmo, ativa processos de cura psicológica mensuráveis. Chorar não é fraqueza: é o sistema nervoso fazendo o que precisa.",
+      "reflexao": "",
       "audio": "audios/salmo_006.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Há alguma dor que você tem guardado sem dar a ela palavras ou espaço?"
+      "favorito": false
     },
     {
       "numero": 7,
@@ -183,10 +177,9 @@
         "justica",
         "protecao"
       ],
-      "reflexao": "A sensação de injustiça ativa regiões cerebrais ligadas à dor física; ser tratado injustamente dói de verdade. Jonathan Haidt mostrou que o senso moral humano é profundo e instintivo. Entregar o julgamento final libera da armadilha de ruminar infinitamente sobre o que não podemos controlar.",
+      "reflexao": "",
       "audio": "audios/salmo_007.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Existe alguma injustiça que você ainda carrega, esperando uma resolução que só depende de você soltar?"
+      "favorito": false
     },
     {
       "numero": 8,
@@ -207,10 +200,9 @@
         "criacao",
         "louvor"
       ],
-      "reflexao": "Pesquisas sobre o estado de admiração (awe), conduzidas por Dacher Keltner e Jonathan Haidt, mostram que contemplar algo grandioso reduz a autocentralidade e aumenta a conexão com o todo. O sentimento de ser pequeno diante de algo imenso, curiosamente, nos faz sentir mais inteiros.",
+      "reflexao": "",
       "audio": "audios/salmo_008.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Quando foi a última vez que você se sentiu pequeno de um jeito bom, tomado por algo maior do que você?"
+      "favorito": false
     },
     {
       "numero": 9,
@@ -242,10 +234,9 @@
         "louvor",
         "justica"
       ],
-      "reflexao": "Olhar para o passado e reconhecer o que foi superado é uma prática com efeitos comprovados sobre o bem-estar (Emmons & McCullough, 2003). Contar o que foi vencido não apaga as dificuldades futuras; calibra a perspectiva sobre a própria capacidade de atravessá-las.",
+      "reflexao": "",
       "audio": "audios/salmo_009.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que você atravessou nos últimos anos que merece mais reconhecimento do que você tem dado?"
+      "favorito": false
     },
     {
       "numero": 10,
@@ -275,10 +266,9 @@
         "clamor",
         "justica"
       ],
-      "reflexao": "A psicologia existencial reconhece a angústia legítima diante do silêncio quando esperávamos resposta. Rollo May chamou de \"coragem de ser\" a capacidade de continuar existindo e questionando mesmo sem certezas. Perguntar \"por quê?\" é um ato de integridade, não de falta de fé.",
+      "reflexao": "",
       "audio": "audios/salmo_010.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Há uma pergunta que você tem evitado fazer porque teme a ausência de resposta?"
+      "favorito": false
     },
     {
       "numero": 11,
@@ -297,10 +287,9 @@
         "confianca",
         "protecao"
       ],
-      "reflexao": "Diante de ameaças, a resposta instintiva é fugir. A TCC mostra, porém, que avaliar racionalmente a base de onde nos encontramos antes de agir produz decisões mais alinhadas com nossos valores. Fuga nem sempre é segurança; às vezes é abandono do que mais importa.",
+      "reflexao": "",
       "audio": "audios/salmo_011.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Em que situação de hoje você está fugindo quando poderia estar se firmando?"
+      "favorito": false
     },
     {
       "numero": 12,
@@ -320,10 +309,9 @@
         "clamor",
         "protecao"
       ],
-      "reflexao": "A sensação de que \"não sobrou mais ninguém de confiança\" é um estado psicológico que a pesquisa sobre solidão (Cacioppo & Patrick) identificou como tão prejudicial à saúde quanto fumar. Verbalizar o que falta é o primeiro movimento contrário ao isolamento silencioso.",
+      "reflexao": "",
       "audio": "audios/salmo_012.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Quem em sua vida você tem tratado como dispensável quando, na verdade, precisaria mais?"
+      "favorito": false
     },
     {
       "numero": 13,
@@ -342,10 +330,9 @@
         "esperanca",
         "clamor"
       ],
-      "reflexao": "\"Até quando?\" é a pergunta de quem ainda espera, e isso já diz muito. A psicologia da esperança (Snyder) distingue pessoas esperançosas não pela ausência de sofrimento, mas pela crença de que caminhos existem, mesmo que ainda não visíveis. O desespero que grita ainda não desistiu.",
+      "reflexao": "",
       "audio": "audios/salmo_013.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que a persistência da sua dor diz sobre o quanto você ainda se importa?"
+      "favorito": false
     },
     {
       "numero": 14,
@@ -363,10 +350,9 @@
       "temas": [
         "sabedoria"
       ],
-      "reflexao": "A psicologia moral (Haidt) mostra que agir como se nossas escolhas não importassem, para nós ou para os outros, não é neutralidade, mas um tipo de ilusão cognitiva. Toda ação molda o mundo e a nós mesmos. Ignorar isso não nos protege das consequências; apenas as adia.",
+      "reflexao": "",
       "audio": "audios/salmo_014.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Que área da sua vida você tem tratado como se suas escolhas não importassem, quando no fundo sabe que importam?"
+      "favorito": false
     },
     {
       "numero": 15,
@@ -383,10 +369,9 @@
         "santidade",
         "sabedoria"
       ],
-      "reflexao": "Agir conforme o que se declara acreditar é um dos preditores mais robustos de bem-estar psicológico (Peterson & Seligman). Não se trata de perfeição, mas de coerência: que a pessoa que você é em particular seja reconhecível em público.",
+      "reflexao": "",
       "audio": "audios/salmo_015.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Existe alguma distância entre quem você diz ser e quem você realmente age sendo?"
+      "favorito": false
     },
     {
       "numero": 16,
@@ -410,10 +395,9 @@
         "alegria",
         "paz"
       ],
-      "reflexao": "A satisfação com a vida, segundo pesquisas em psicologia positiva (Seligman), não depende tanto do que acontece, mas de onde colocamos nosso senso de identidade e pertencimento. Ancorar-se em algo além das circunstâncias cria uma estabilidade emocional que as variações da vida não destroem.",
+      "reflexao": "",
       "audio": "audios/salmo_016.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que permanece firme em você quando tudo ao redor muda?"
+      "favorito": false
     },
     {
       "numero": 17,
@@ -440,10 +424,9 @@
         "protecao",
         "oracao"
       ],
-      "reflexao": "Pedir ajuda é, neurologicamente, um ato de regulação emocional: ativa o sistema de cuidado (ocitocina) e inibe o de ameaça. A pesquisa de Kristin Neff sobre auto-compaixão mostra que buscar amparo não é fraqueza; é o comportamento mais adaptativo diante da vulnerabilidade real.",
+      "reflexao": "",
       "audio": "audios/salmo_017.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Quando foi a última vez que você pediu ajuda com honestidade, sem minimizar o que estava sentindo?"
+      "favorito": false
     },
     {
       "numero": 18,
@@ -506,10 +489,9 @@
         "vitoria",
         "gratidao"
       ],
-      "reflexao": "Celebrar o que foi superado não é vaidade; é consolidação de aprendizagem. A neurociência mostra que recordar ativamente momentos de superação fortalece redes neurais ligadas à resiliência, tornando mais provável que o cérebro recorra a essas memórias em crises futuras. Comemorar é treinar.",
+      "reflexao": "",
       "audio": "audios/salmo_018.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Que vitória recente você não se permitiu celebrar como deveria?"
+      "favorito": false
     },
     {
       "numero": 19,
@@ -536,10 +518,9 @@
         "sabedoria",
         "louvor"
       ],
-      "reflexao": "A pesquisa sobre atenção plena mostra que parar para observar o mundo com curiosidade, sem agenda, restaura a capacidade de admiração que a rotina embota. O céu que não olhamos não deixa de proclamar algo; somos nós que paramos de ouvir.",
+      "reflexao": "",
       "audio": "audios/salmo_019.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Quando você parou pela última vez para contemplar algo sem querer nada em troca?"
+      "favorito": false
     },
     {
       "numero": 20,
@@ -560,10 +541,9 @@
         "oracao",
         "esperanca"
       ],
-      "reflexao": "Torcer genuinamente pelo bem do outro, sem inveja nem competição, é um exercício de expansão do eu que a psicologia positiva chama de amor benevolente (loving-kindness). A Teoria da Autodeterminação (Deci & Ryan) mostra que conexão genuína com os outros é uma necessidade psicológica básica.",
+      "reflexao": "",
       "audio": "audios/salmo_020.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Por quem você está torcendo de verdade hoje, sem reservas?"
+      "favorito": false
     },
     {
       "numero": 21,
@@ -588,10 +568,9 @@
         "gratidao",
         "louvor"
       ],
-      "reflexao": "A alegria que se volta para agradecer, em vez de apenas usufruir, tem um efeito duradouro diferente do prazer que se esgota no próprio consumo. Barbara Fredrickson mostrou que a gratidão amplia o repertório de pensamentos e ações disponíveis: literalmente abre a mente.",
+      "reflexao": "",
       "audio": "audios/salmo_021.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que está bem em sua vida agora que você tem consumido sem parar para agradecer?"
+      "favorito": false
     },
     {
       "numero": 22,
@@ -635,10 +614,9 @@
         "abandono",
         "esperanca"
       ],
-      "reflexao": "O grito \"por que me desamparaste?\" é talvez a expressão mais honesta de sofrimento que existe. A psicologia do trauma reconhece que o abandono, real ou percebido, deixa marcas profundas, e que nomeá-lo é parte essencial da cura. A dor nomeada já não nos governa da mesma forma.",
+      "reflexao": "",
       "audio": "audios/salmo_022.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Existe um abandono que você ainda não nomeou, que você fingiu que não doeu o quanto doeu?"
+      "favorito": false
     },
     {
       "numero": 23,
@@ -658,10 +636,9 @@
         "confianca",
         "pastor"
       ],
-      "reflexao": "A imagem do pastor que conduz, e não que empurra, corresponde ao que a Teoria do Apego chama de \"base segura\": a presença que permite explorar o mundo sem medo do que encontraremos ao retornar. A segurança não elimina o vale da sombra; muda como o atravessamos.",
+      "reflexao": "",
       "audio": "audios/salmo_023.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que mudaria na sua forma de atravessar os momentos difíceis se você tivesse certeza de que não está sozinho?"
+      "favorito": false
     },
     {
       "numero": 24,
@@ -683,10 +660,9 @@
         "louvor",
         "santidade"
       ],
-      "reflexao": "Certas experiências nos reposicionam dentro de algo maior, e esse reposicionamento tem efeitos mensuráveis de redução do ego e aumento de comportamentos pró-sociais (Keltner). Reconhecer que há algo maior não diminui; expande.",
+      "reflexao": "",
       "audio": "audios/salmo_024.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que você reverencia, o que, quando você pensa nele, faz você se sentir parte de algo além de si mesmo?"
+      "favorito": false
     },
     {
       "numero": 25,
@@ -721,10 +697,9 @@
         "perdao",
         "sabedoria"
       ],
-      "reflexao": "Pedir orientação pressupõe humildade epistêmica: o reconhecimento de que não sabemos tudo o que precisamos saber. A pesquisa sobre tomada de decisão (Kahneman) mostra que os maiores erros vêm justamente da certeza excessiva. Quem pede caminho já fez metade do percurso.",
+      "reflexao": "",
       "audio": "audios/salmo_025.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Em que decisão de hoje você está fingindo ter mais certeza do que realmente tem?"
+      "favorito": false
     },
     {
       "numero": 26,
@@ -748,10 +723,9 @@
         "integridade",
         "confianca"
       ],
-      "reflexao": "Viver com integridade não significa nunca errar; significa que a direção que você escolhe para sua vida é coerente com quem você diz ser. Viktor Frankl ensinou que a liberdade humana está sempre na resposta que damos às circunstâncias, e não nas circunstâncias em si.",
+      "reflexao": "",
       "audio": "audios/salmo_026.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Suas ações desta semana estão alinhadas com o tipo de pessoa que você quer ser?"
+      "favorito": false
     },
     {
       "numero": 27,
@@ -778,10 +752,9 @@
         "esperanca",
         "protecao"
       ],
-      "reflexao": "\"A quem temerei?\" pressupõe que o medo é real, mas não definitivo. A TCC mostra que o medo não precisa desaparecer para que a ação seja possível; precisa apenas ser avaliado com mais precisão. Coragem não é ausência de medo: é decidir que outra coisa importa mais.",
+      "reflexao": "",
       "audio": "audios/salmo_027.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que você está deixando de fazer porque o medo chegou antes da coragem?"
+      "favorito": false
     },
     {
       "numero": 28,
@@ -802,10 +775,9 @@
         "protecao",
         "clamor"
       ],
-      "reflexao": "O silêncio de quem esperávamos que respondesse pode ser a experiência mais desorientadora que existe. A pesquisa sobre isolamento emocional mostra que o pior não é a ausência do outro, mas a incerteza sobre se fomos ouvidos. Verbalizar o que sentimos é romper o silêncio de dentro.",
+      "reflexao": "",
       "audio": "audios/salmo_028.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Há algo que você tem segurado dentro de si porque não tem certeza de que será ouvido?"
+      "favorito": false
     },
     {
       "numero": 29,
@@ -828,10 +800,9 @@
         "louvor",
         "criacao"
       ],
-      "reflexao": "Tempestades, mares e montanhas produzem o estado de admiração que Dacher Keltner associa à expansão do senso de tempo, redução da ansiedade e aumento do sentido de vida. A natureza fala uma linguagem que o corpo entende antes da mente.",
+      "reflexao": "",
       "audio": "audios/salmo_029.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Quando foi a última vez que algo no mundo natural parou você completamente?"
+      "favorito": false
     },
     {
       "numero": 30,
@@ -856,10 +827,9 @@
         "gratidao",
         "louvor"
       ],
-      "reflexao": "A recuperação de uma crise, física ou emocional, raramente é reconhecida com a solenidade que merece. A pesquisa de Pennebaker mostra que revisitar e narrar o que foi superado tem efeito terapêutico real: reorganiza a memória, reduz o impacto do trauma e fortalece a identidade de sobrevivente.",
+      "reflexao": "",
       "audio": "audios/salmo_030.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que você atravessou que ainda não recebeu de você o reconhecimento de que foi real e custou caro?"
+      "favorito": false
     },
     {
       "numero": 31,
@@ -896,10 +866,9 @@
         "protecao",
         "ansiedade"
       ],
-      "reflexao": "\"Em ti me refugio\" é uma declaração de entrega, e a pesquisa sobre regulação emocional mostra que a entrega consciente ativa o sistema parassimpático e reduz o cortisol. Soltar o controle que nunca tivemos não é derrota; é o primeiro movimento de recuperação.",
+      "reflexao": "",
       "audio": "audios/salmo_031.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que você está tentando controlar agora que, se você soltasse, te aliviaria?"
+      "favorito": false
     },
     {
       "numero": 32,
@@ -923,10 +892,9 @@
         "alegria",
         "gratidao"
       ],
-      "reflexao": "Carregar culpa não resolvida consome recursos cognitivos significativos: a mente revive o erro em loops. A psicologia do perdão (Worthington) mostra que perdoar a si mesmo não é negar o que aconteceu, mas recusar deixar que o passado defina o presente. A leveza que se segue é fisiológica, não apenas simbólica.",
+      "reflexao": "",
       "audio": "audios/salmo_032.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Existe algo que você fez, ou deixou de fazer, que ainda não se permitiu perdoar?"
+      "favorito": false
     },
     {
       "numero": 33,
@@ -961,10 +929,9 @@
         "criacao",
         "confianca"
       ],
-      "reflexao": "Confiar no que não controlamos é contraintuitivo para uma mente treinada em planejamento e previsão. E ainda assim, pesquisas sobre bem-estar (Langer, Frankl) mostram que a capacidade de se render ao que não pode ser controlado é um dos preditores mais fortes de saúde mental duradoura.",
+      "reflexao": "",
       "audio": "audios/salmo_033.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Em que área da vida você ainda está lutando por controle quando o que precisaria era de confiança?"
+      "favorito": false
     },
     {
       "numero": 34,
@@ -999,10 +966,9 @@
         "protecao",
         "louvor"
       ],
-      "reflexao": "\"Bendirei o Senhor em todo o tempo\" não é ingenuidade emocional; é uma decisão sobre onde pousar a atenção. A psicologia da gratidão (Emmons) mostra que praticar gratidão mesmo em períodos difíceis não nega o sofrimento: cria um contrapeso que impede que ele consuma toda a perspectiva.",
+      "reflexao": "",
       "audio": "audios/salmo_034.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que está bem em sua vida hoje, mesmo que ao lado de coisas que ainda doem?"
+      "favorito": false
     },
     {
       "numero": 35,
@@ -1042,10 +1008,9 @@
         "protecao",
         "clamor"
       ],
-      "reflexao": "A sensação de ser perseguido ou injustiçado pode isolar, pois a narrativa de \"eu contra o mundo\" estreita a perspectiva. A TCC propõe examinar a evidência real por trás da percepção de ameaça. Nem toda oposição é perseguição; mas a dor da injustiça é real e merece ser ouvida.",
+      "reflexao": "",
       "audio": "audios/salmo_035.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Existe alguém ou algo que você está tratando como inimigo quando talvez fosse mais útil tratá-lo como obstáculo a ser superado?"
+      "favorito": false
     },
     {
       "numero": 36,
@@ -1069,10 +1034,9 @@
         "sabedoria",
         "bondade"
       ],
-      "reflexao": "A psicologia moral (Haidt, Baumeister) mostra que o mal raramente se apresenta como tal: quase sempre vem justificado, racionalizado, embrulhado em boas intenções. Reconhecer esse mecanismo em nós mesmos, antes de apontá-lo nos outros, é o exercício moral mais exigente.",
+      "reflexao": "",
       "audio": "audios/salmo_036.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Em que situação recente você usou boas intenções para justificar algo que, no fundo, sabe que não deveria ter feito?"
+      "favorito": false
     },
     {
       "numero": 37,
@@ -1125,10 +1089,9 @@
         "paz",
         "sabedoria"
       ],
-      "reflexao": "Agitar-se por causa do sucesso alheio é um dos estados emocionais que mais drenam recursos psicológicos sem produzir nenhum benefício real. A psicologia positiva sugere substituir a comparação social por uma bússola interna: o quanto estou alinhado com meus próprios valores?",
+      "reflexao": "",
       "audio": "audios/salmo_037.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Você está medindo seu progresso pela régua da própria vida ou pela comparação com o que outros alcançaram?"
+      "favorito": false
     },
     {
       "numero": 38,
@@ -1163,10 +1126,9 @@
         "arrependimento",
         "clamor"
       ],
-      "reflexao": "A doença, física ou emocional, muitas vezes vem acompanhada de culpa, como se o sofrimento fosse sempre merecido. A psicologia da auto-compaixão (Neff) distingue responsabilidade de autopunição: reconhecer o que poderia ser diferente, sem usar isso como justificativa para se machucar mais.",
+      "reflexao": "",
       "audio": "audios/salmo_038.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Você está se culpando por algo que merecia compreensão, não punição?"
+      "favorito": false
     },
     {
       "numero": 39,
@@ -1191,10 +1153,9 @@
         "meditacao",
         "brevidade"
       ],
-      "reflexao": "A contemplação da finitude é, paradoxalmente, uma das vias mais eficazes para clarificar o que realmente importa. Pesquisas de Terror Management Theory (Greenberg) mostram que pensar na morte, quando bem processado, aumenta o comprometimento com valores genuínos.",
+      "reflexao": "",
       "audio": "audios/salmo_039.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Se o tempo é curto, o que você está guardando para depois que poderia ser agora?"
+      "favorito": false
     },
     {
       "numero": 40,
@@ -1224,10 +1185,9 @@
         "gratidao",
         "esperanca"
       ],
-      "reflexao": "\"Esperei com paciência\" descreve a espera ativa, distinta da resignação passiva. A pesquisa sobre esperança (Snyder) mostra que pessoas esperançosas não esperam apenas: planejam, buscam alternativas, mantêm a ação. Esperar com expectativa é muito diferente de esperar com paralisia.",
+      "reflexao": "",
       "audio": "audios/salmo_040.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Enquanto você espera pelo que ainda não chegou, o que você pode fazer hoje?"
+      "favorito": false
     },
     {
       "numero": 41,
@@ -1252,10 +1212,9 @@
         "cura",
         "protecao"
       ],
-      "reflexao": "Cuidar do fraco enquanto se está vulnerável é um ato de paradoxo produtivo: a pesquisa sobre altruísmo (Post) mostra que ajudar os outros ativa sistemas de recompensa no cérebro e reduz a percepção da própria dor. A atenção que damos ao outro, às vezes, é o que nos tira do buraco.",
+      "reflexao": "",
       "audio": "audios/salmo_041.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Existe alguém em sua vida que precisaria de atenção, e que focar nela poderia também fazer bem a você?"
+      "favorito": false
     },
     {
       "numero": 42,
@@ -1280,10 +1239,9 @@
         "esperanca",
         "luto"
       ],
-      "reflexao": "A nostalgia, o anseio pelo que foi bom e passou, é uma emoção complexa que pesquisadores como Constantine Sedikides identificaram como benéfica quando não paralisa: reativa o senso de que houve conexão, sentido e amor no passado, e que esses podem existir de novo.",
+      "reflexao": "",
       "audio": "audios/salmo_042.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que você anseia que já não tem, e o que isso diz sobre o que você precisa buscar agora?"
+      "favorito": false
     },
     {
       "numero": 43,
@@ -1300,10 +1258,9 @@
         "esperanca",
         "oracao"
       ],
-      "reflexao": "Não saber para onde ir é um dos estados mais angustiantes para a mente humana, que busca continuamente coerência e direção. A Logoterapia (Frankl) propõe que mesmo em situações sem saída clara há sempre uma resposta possível: a atitude que escolhemos diante do impasse.",
+      "reflexao": "",
       "audio": "audios/salmo_043.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "No impasse em que você se encontra, qual atitude ainda está em suas mãos?"
+      "favorito": false
     },
     {
       "numero": 44,
@@ -1341,10 +1298,9 @@
         "clamor",
         "esperanca"
       ],
-      "reflexao": "Existem momentos em que a desolação é coletiva, quando não é apenas eu que sofro, mas todos ao meu redor. A psicologia social reconhece que lamentos compartilhados criam coesão: nomear juntos o que dói transforma a tragédia em narrativa comum, e narrativa comum em identidade.",
+      "reflexao": "",
       "audio": "audios/salmo_044.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Que dor você está carregando sozinho que, se compartilhada, seria mais leve?"
+      "favorito": false
     },
     {
       "numero": 45,
@@ -1372,10 +1328,9 @@
       "temas": [
         "louvor"
       ],
-      "reflexao": "O belo, seja na música, na palavra ou na presença de alguém, tem efeitos psicofisiológicos mensuráveis: reduz cortisol, ativa o sistema de recompensa e aumenta o senso de conexão. Cultivar o belo não é superficialidade; é uma necessidade psicológica básica frequentemente negligenciada.",
+      "reflexao": "",
       "audio": "audios/salmo_045.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que de belo você tem deixado de notar, ou de criar, na rotina?"
+      "favorito": false
     },
     {
       "numero": 46,
@@ -1400,10 +1355,9 @@
         "protecao",
         "paz"
       ],
-      "reflexao": "A metáfora do refúgio é estudada em psicologia como \"base segura\": um ponto de retorno que nos permite aventurar sem medo do abandono. Quando sabemos que há onde voltar, ousamos mais. A segurança não vem da ausência de perigo.",
+      "reflexao": "",
       "audio": "audios/salmo_046.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que seria possível em sua vida se você tivesse a certeza profunda de que há onde voltar quando errar?"
+      "favorito": false
     },
     {
       "numero": 47,
@@ -1424,10 +1378,9 @@
         "louvor",
         "alegria"
       ],
-      "reflexao": "A alegria coletiva tem um poder que a alegria solitária não tem. A pesquisa sobre emoções compartilhadas (Rimé) mostra que partilhar alegria amplifica o prazer e fortalece vínculos sociais. Alegria guardada para si perde metade de seu peso.",
+      "reflexao": "",
       "audio": "audios/salmo_047.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Com quem você está compartilhando suas alegrias, ou as está guardando em silêncio?"
+      "favorito": false
     },
     {
       "numero": 48,
@@ -1453,10 +1406,9 @@
         "louvor",
         "confianca"
       ],
-      "reflexao": "Pertencer a algo maior que si mesmo, uma comunidade, uma tradição, um propósito, é uma das necessidades mais estudadas em psicologia (Baumeister & Leary, 1995). O sentido de pertencimento não é luxo emocional; é uma necessidade tão básica quanto comida e sono.",
+      "reflexao": "",
       "audio": "audios/salmo_048.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "A que você sente que pertence de verdade, e o que seria necessário para aprofundar esse pertencimento?"
+      "favorito": false
     },
     {
       "numero": 49,
@@ -1488,10 +1440,9 @@
         "sabedoria",
         "riquezas"
       ],
-      "reflexao": "A pesquisa clássica de Kahneman sobre felicidade e renda mostra que acima de um limiar básico, mais dinheiro não produz mais bem-estar subjetivo. O que produz felicidade duradoura são relações, propósito e engajamento, exatamente o que o acúmulo excessivo frequentemente sacrifica.",
+      "reflexao": "",
       "audio": "audios/salmo_049.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que você tem perseguido com a energia que deveria investir no que de fato importa?"
+      "favorito": false
     },
     {
       "numero": 50,
@@ -1526,10 +1477,9 @@
         "adoracao",
         "sabedoria"
       ],
-      "reflexao": "Há uma diferença entre o gesto externo e a intenção interna. A psicologia da motivação (Deci & Ryan) distingue motivação extrínseca, fazer para parecer, de motivação intrínseca, fazer porque é real e importante. O ritual sem coração não é neutro: empurra para mais longe o contato com o que é genuíno.",
+      "reflexao": "",
       "audio": "audios/salmo_050.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Há algo que você faz por aparência que já não tem correspondência com o que você realmente sente?"
+      "favorito": false
     },
     {
       "numero": 51,
@@ -1561,10 +1511,9 @@
         "arrependimento",
         "restauracao"
       ],
-      "reflexao": "O arrependimento autêntico, distinto da autopunição improdutiva, envolve três movimentos: reconhecer o erro, reparar o que for possível e ajustar o curso. Kristin Neff mostra que tratar a si mesmo como trataria um amigo que errou é o que torna a mudança possível, não a punição.",
+      "reflexao": "",
       "audio": "audios/salmo_051.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Você tem se arrependido de um jeito que produz mudança, ou de um jeito que apenas te machuca mais?"
+      "favorito": false
     },
     {
       "numero": 52,
@@ -1585,10 +1534,9 @@
         "sabedoria",
         "confianca"
       ],
-      "reflexao": "Confiar excessivamente na própria força é um viés cognitivo bem documentado (efeito Dunning-Kruger). A humildade genuína não é se diminuir: é ter uma avaliação precisa de si mesmo, incluindo limitações. Quem se conhece bem precisa menos se defender.",
+      "reflexao": "",
       "audio": "audios/salmo_052.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Existe alguma área em que você está confiando excessivamente na sua própria capacidade sem considerar o que não sabe?"
+      "favorito": false
     },
     {
       "numero": 53,
@@ -1605,10 +1553,9 @@
       "temas": [
         "sabedoria"
       ],
-      "reflexao": "Agir como se nossas escolhas acontecessem no vácuo, sem consequências para nós e para os outros, é uma ilusão que a psicologia social chama de \"distância moral\". Quanto mais distante percebemos o impacto das nossas ações, mais facilmente as justificamos. Aproximar-se é o primeiro passo para agir melhor.",
+      "reflexao": "",
       "audio": "audios/salmo_053.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Que consequência das suas escolhas você tem mantido propositalmente à distância para não ter que lidar com ela?"
+      "favorito": false
     },
     {
       "numero": 54,
@@ -1627,10 +1574,9 @@
         "protecao",
         "clamor"
       ],
-      "reflexao": "Pedir ajuda por necessidade real, e não por vaidade, é um dos atos de vulnerabilidade mais honestos. A pesquisa de Brené Brown mostra que é justamente esse ato que cria conexão genuína, não a performance de força que nunca precisa de ninguém.",
+      "reflexao": "",
       "audio": "audios/salmo_054.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que você precisaria pedir hoje, e o que está impedindo você de pedir?"
+      "favorito": false
     },
     {
       "numero": 55,
@@ -1666,10 +1612,9 @@
         "traicao",
         "clamor"
       ],
-      "reflexao": "A traição de alguém próximo é, psicologicamente, um dos eventos mais disruptivos que existem: viola as suposições básicas sobre como o mundo funciona (Janoff-Bulman). Recompor a confiança em outros e em si mesmo depois de uma traição é um processo, não uma decisão.",
+      "reflexao": "",
       "audio": "audios/salmo_055.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Existe uma traição que ainda governa suas relações atuais, mesmo que a situação já tenha passado?"
+      "favorito": false
     },
     {
       "numero": 56,
@@ -1695,10 +1640,9 @@
         "medo",
         "ansiedade"
       ],
-      "reflexao": "\"Quando temo, confio em ti\": a sequência importa. O medo não é eliminado antes da confiança; a confiança é exercida dentro do medo. A neurociência da coragem (Damasio) mostra que agir apesar do medo, repetidamente, é o que gradualmente recalibra a resposta ao perigo.",
+      "reflexao": "",
       "audio": "audios/salmo_056.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Que medo você está esperando sumir antes de agir, quando na verdade ele só some depois que você age?"
+      "favorito": false
     },
     {
       "numero": 57,
@@ -1721,10 +1665,9 @@
         "confianca",
         "protecao"
       ],
-      "reflexao": "Encontrar abrigo mesmo dentro de circunstâncias que não mudam é a base da resiliência psicológica. Viktor Frankl descobriu nos campos de concentração que a última liberdade humana é escolher a atitude diante do que não podemos controlar. O abrigo que buscamos às vezes já está dentro.",
+      "reflexao": "",
       "audio": "audios/salmo_057.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Em que circunstância você está esperando que o ambiente mude para se sentir seguro, quando a segurança poderia vir de dentro?"
+      "favorito": false
     },
     {
       "numero": 58,
@@ -1747,10 +1690,9 @@
         "justica",
         "clamor"
       ],
-      "reflexao": "A indignação moral diante da injustiça é, segundo Jonathan Haidt, uma das emoções sociais mais universais e adaptativas: ela move pessoas a agir pelo bem coletivo. A questão não é eliminar a indignação, mas canalizá-la para ação construtiva em vez de ruminação que exaure.",
+      "reflexao": "",
       "audio": "audios/salmo_058.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Sua indignação por algo injusto está te movendo para alguma ação, ou está te consumindo sem produzir nada?"
+      "favorito": false
     },
     {
       "numero": 59,
@@ -1779,10 +1721,9 @@
         "protecao",
         "clamor"
       ],
-      "reflexao": "Sentir-se rodeado de hostilidade ativa o sistema de ameaça com mais intensidade do que perigos objetivos costumam justificar. A TCC propõe observar a evidência real: quem de fato representa perigo, e quem apenas parece, por causa do estado interno em que nos encontramos?",
+      "reflexao": "",
       "audio": "audios/salmo_059.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Você está respondendo a uma ameaça real agora, ou a uma interpretação de ameaça que merece ser revisada?"
+      "favorito": false
     },
     {
       "numero": 60,
@@ -1806,10 +1747,9 @@
         "esperanca",
         "restauracao"
       ],
-      "reflexao": "A experiência de ser rejeitado, por pessoa, comunidade ou circunstância, testa a capacidade de manter identidade e esperança. A pesquisa sobre resiliência (Southwick & Charney) mostra que um dos fatores mais protetores é a crença de que a recuperação é possível, mesmo quando as evidências ainda não a confirmam.",
+      "reflexao": "",
       "audio": "audios/salmo_060.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que seria necessário para você acreditar que a restauração é possível, mesmo sem vê-la ainda?"
+      "favorito": false
     },
     {
       "numero": 61,
@@ -1829,10 +1769,9 @@
         "protecao",
         "oracao"
       ],
-      "reflexao": "\"Ouve o meu clamor\": a simplicidade do pedido contrasta com a complexidade do que sentimos. A pesquisa em psicologia da linguagem mostra que simplificar o que precisamos, colocar em poucas palavras, clarifica não só a comunicação, mas o próprio entendimento interno da necessidade.",
+      "reflexao": "",
       "audio": "audios/salmo_061.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Se você tivesse que resumir em uma frase o que mais precisa agora, o que diria?"
+      "favorito": false
     },
     {
       "numero": 62,
@@ -1857,10 +1796,9 @@
         "confianca",
         "descanso"
       ],
-      "reflexao": "\"Somente em Deus espera silenciosa a minha alma\": o silêncio como prática é contraintuitivo numa cultura que equipara atividade com valor. A pesquisa sobre mindfulness mostra que intervalos de quietude não são ausência; são momentos em que o sistema nervoso se regula e o que realmente importa se revela.",
+      "reflexao": "",
       "audio": "audios/salmo_062.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Quando você criou espaço de silêncio real na sua vida pela última vez, não ausência de ruído, mas presença verdadeira consigo mesmo?"
+      "favorito": false
     },
     {
       "numero": 63,
@@ -1884,10 +1822,9 @@
         "louvor",
         "adoracao"
       ],
-      "reflexao": "A sede, fisiológica e psicológica, é o sinal mais honesto de que algo necessário está faltando. A psicologia das necessidades (Deci & Ryan) mostra que ignorar necessidades genuínas não as elimina; as converte em comportamentos substitutos que raramente satisfazem.",
+      "reflexao": "",
       "audio": "audios/salmo_063.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Qual necessidade genuína você tem tentado preencher com substitutos, e o que seria ir direto à fonte?"
+      "favorito": false
     },
     {
       "numero": 64,
@@ -1909,10 +1846,9 @@
         "protecao",
         "clamor"
       ],
-      "reflexao": "A ruminação sobre o que os outros pensam e tramam é uma das formas mais comuns de sofrimento mental desnecessário. A pesquisa de mind-wandering (Killingsworth & Gilbert) mostra que a mente errante, sobretudo em direção a conteúdos negativos, é a principal fonte de infelicidade cotidiana.",
+      "reflexao": "",
       "audio": "audios/salmo_064.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Quanto tempo mental você está gastando hoje com o que os outros pensam de você?"
+      "favorito": false
     },
     {
       "numero": 65,
@@ -1938,10 +1874,9 @@
         "criacao",
         "louvor"
       ],
-      "reflexao": "A gratidão pelo que sustenta a vida sem que o mereçamos é uma das formas mais antigas e eficazes de reduzir o narcisismo implícito que nos faz sentir que o mundo gira em torno de nós. Reconhecer o que foi dado sem ser pedido calibra o senso de proporção.",
+      "reflexao": "",
       "audio": "audios/salmo_065.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que sustenta sua vida que você nunca pediu, nunca conquistou e raramente agradece?"
+      "favorito": false
     },
     {
       "numero": 66,
@@ -1973,10 +1908,9 @@
         "louvor",
         "gratidao"
       ],
-      "reflexao": "Narrar a própria vida, contar o que aconteceu e o que foi superado, é uma das práticas terapêuticas mais antigas. James Pennebaker mostrou que narrar experiências difíceis com distância suficiente para integrá-las produz saúde física e emocional mensuráveis.",
+      "reflexao": "",
       "audio": "audios/salmo_066.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Qual parte da sua história você ainda não conseguiu contar com um mínimo de distância e integração?"
+      "favorito": false
     },
     {
       "numero": 67,
@@ -1995,10 +1929,9 @@
         "bencao",
         "missao"
       ],
-      "reflexao": "A bênção que transborda para além de mim é o modelo de propósito que Viktor Frankl chamou de \"autotranscendência\": a vida ganha sentido não quando é vivida para si mesma, mas quando serve a algo além. O bem que recebemos encontra seu cumprimento no bem que fazemos.",
+      "reflexao": "",
       "audio": "audios/salmo_067.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que de bom você tem recebido que poderia, e ainda não está, passando adiante?"
+      "favorito": false
     },
     {
       "numero": 68,
@@ -2045,10 +1978,9 @@
         "louvor",
         "vitoria"
       ],
-      "reflexao": "Celebrar o que foi superado é um ato de memória ativa que fortalece a identidade resiliente. A pesquisa sobre narrativa (McAdams) mostra que pessoas que integram suas conquistas passadas na própria história têm mais recursos psicológicos para enfrentar desafios futuros.",
+      "reflexao": "",
       "audio": "audios/salmo_068.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Que conquista do passado você poderia usar como evidência de que é capaz de atravessar o que enfrenta hoje?"
+      "favorito": false
     },
     {
       "numero": 69,
@@ -2097,10 +2029,9 @@
         "clamor",
         "esperanca"
       ],
-      "reflexao": "\"As águas me sobem até o pescoço\": a imagem da angústia que sobe é reconhecida em psicologia como inundação emocional, quando a emoção ultrapassa a janela de tolerância e a capacidade de pensar fica comprometida. O que o Salmo faz, clamar e nomear, é exatamente o que a terapia propõe.",
+      "reflexao": "",
       "audio": "audios/salmo_069.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Quando você está submerso, você consegue nomear o que está sentindo, ou o sentimento te engole antes?"
+      "favorito": false
     },
     {
       "numero": 70,
@@ -2117,10 +2048,9 @@
         "clamor",
         "urgencia"
       ],
-      "reflexao": "Há momentos em que não temos tempo para elaborar: a necessidade é urgente e crua. A psicologia de crise mostra que em momentos de urgência emocional a única intervenção necessária é a conexão; ser ouvido, não explicado. O socorro que o coração pede raramente é uma solução; é presença.",
+      "reflexao": "",
       "audio": "audios/salmo_070.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Neste momento, o que você mais precisa: solução ou alguém que simplesmente esteja presente?"
+      "favorito": false
     },
     {
       "numero": 71,
@@ -2157,10 +2087,9 @@
         "esperanca",
         "velhice"
       ],
-      "reflexao": "A pesquisa sobre envelhecimento saudável (Carstensen) mostra que à medida que percebemos o tempo como finito, tendemos a priorizar o que tem significado sobre o que tem novidade. A maturidade não é perda; é curadoria.",
+      "reflexao": "",
       "audio": "audios/salmo_071.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que, com o tempo, ficou mais claro sobre o que realmente importa para você?"
+      "favorito": false
     },
     {
       "numero": 72,
@@ -2192,10 +2121,9 @@
         "justica",
         "esperanca"
       ],
-      "reflexao": "A esperança em um mundo mais justo não é ingenuidade: é um dos motores psicológicos mais poderosos de ação sustentada. A pesquisa sobre motivação moral mostra que agir por valores transcendentes produz engajamento mais duradouro e resiliência maior diante dos obstáculos.",
+      "reflexao": "",
       "audio": "audios/salmo_072.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que um mundo mais justo precisaria de você especificamente?"
+      "favorito": false
     },
     {
       "numero": 73,
@@ -2236,10 +2164,9 @@
         "confusao",
         "fe"
       ],
-      "reflexao": "A crise de fé, o momento em que a realidade que vemos contradiz o que acreditamos, é uma das experiências de crescimento mais dolorosas e necessárias. James Fowler mostra que a dúvida autêntica não destrói a fé madura: é o que a produz.",
+      "reflexao": "",
       "audio": "audios/salmo_073.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Existe uma contradição entre o que você acredita e o que você observa que ainda não foi dita em voz alta?"
+      "favorito": false
     },
     {
       "numero": 74,
@@ -2274,10 +2201,9 @@
         "clamor",
         "restauracao"
       ],
-      "reflexao": "O que é destruído não é necessariamente perdido para sempre, mas a restauração raramente acontece de forma automática. A psicologia do luto ensina que depois da destruição há um trabalho: reconhecer o que foi perdido, processar, e então perguntar o que pode ser reconstruído.",
+      "reflexao": "",
       "audio": "audios/salmo_074.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que foi destruído em sua vida que você ainda não se permitiu lamentar adequadamente antes de tentar reconstruir?"
+      "favorito": false
     },
     {
       "numero": 75,
@@ -2299,10 +2225,9 @@
         "justica",
         "louvor"
       ],
-      "reflexao": "A gratidão que antecede a resolução, que agradece antes de ver o resultado, pressupõe uma confiança que vai além da lógica imediata. A pesquisa sobre mentalidade de gratidão (Emmons) mostra que pessoas que cultivam essa postura têm maior tolerância à incerteza e menor reatividade emocional.",
+      "reflexao": "",
       "audio": "audios/salmo_075.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Você consegue ser grato agora, antes de saber como as coisas vão terminar?"
+      "favorito": false
     },
     {
       "numero": 76,
@@ -2326,10 +2251,9 @@
         "louvor",
         "vitoria"
       ],
-      "reflexao": "Reconhecer a fonte de uma vitória, em vez de atribuí-la exclusivamente à própria capacidade, é um exercício de humildade que, paradoxalmente, reduz a ansiedade de desempenho. Quando não precisamos ter sido os únicos responsáveis, o peso do fracasso futuro também diminui.",
+      "reflexao": "",
       "audio": "audios/salmo_076.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Existe alguma vitória recente que você atribuiu inteiramente a si mesmo quando havia mais do que isso envolvido?"
+      "favorito": false
     },
     {
       "numero": 77,
@@ -2362,10 +2286,9 @@
         "meditacao",
         "memoria"
       ],
-      "reflexao": "\"Lembro-me e me perturbo\": a memória pode ser fonte de angústia tanto quanto de consolo. A psicologia cognitiva mostra que o que escolhemos recordar ativamente molda o humor de longo prazo mais do que os eventos atuais.",
+      "reflexao": "",
       "audio": "audios/salmo_077.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que você recorda com mais frequência: o que te fortaleceu ou o que te falhou?"
+      "favorito": false
     },
     {
       "numero": 78,
@@ -2450,10 +2373,9 @@
         "fe",
         "gratidao"
       ],
-      "reflexao": "Conhecer a história, de uma família, de um povo ou de si mesmo, é um ato de ancoragem psicológica. A pesquisa sobre narrativa familiar (Duke & Fivush) mostra que pessoas que conhecem sua história, incluindo as dificuldades, têm maior resiliência e senso de identidade.",
+      "reflexao": "",
       "audio": "audios/salmo_078.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Que parte da sua história, incluindo os momentos difíceis, você ainda não integrou à sua narrativa de quem você é?"
+      "favorito": false
     },
     {
       "numero": 79,
@@ -2478,10 +2400,9 @@
         "clamor",
         "restauracao"
       ],
-      "reflexao": "O lamento coletivo, quando uma comunidade nomeia juntos o que foi perdido, tem uma função psicossocial que o lamento individual não tem: cria solidariedade na dor e permite que o sofrimento compartilhado se torne ponto de partida para reconstrução comum.",
+      "reflexao": "",
       "audio": "audios/salmo_079.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Existe uma dor que você e as pessoas ao seu redor estão carregando separadamente quando poderiam estar carregando juntos?"
+      "favorito": false
     },
     {
       "numero": 80,
@@ -2512,10 +2433,9 @@
         "restauracao",
         "clamor"
       ],
-      "reflexao": "A imagem da vinha que precisa ser restaurada, não destruída, mas cuidada novamente, é a metáfora da recuperação que não começa do zero. A pesquisa sobre crescimento pós-traumático (Tedeschi & Calhoun) mostra que o que permanece após a crise é material para reconstrução, não apenas ruína.",
+      "reflexao": "",
       "audio": "audios/salmo_080.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que permaneceu em você depois de suas maiores crises, que você poderia tratar como ponto de partida, não de abandono?"
+      "favorito": false
     },
     {
       "numero": 81,
@@ -2543,10 +2463,9 @@
         "adoracao",
         "arrependimento"
       ],
-      "reflexao": "Ouvir no sentido profundo de estar disposto a mudar é diferente de escutar. A psicologia da mudança (Prochaska & DiClemente) mostra que a contemplação, o estágio em que realmente consideramos mudar, é o passo mais crítico e frequentemente saltado. Ouvir de verdade custa algo.",
+      "reflexao": "",
       "audio": "audios/salmo_081.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Há algo que você tem ouvido repetidamente, de pessoas, de eventos, de si mesmo, que ainda não se converteu em mudança?"
+      "favorito": false
     },
     {
       "numero": 82,
@@ -2565,10 +2484,9 @@
       "temas": [
         "justica"
       ],
-      "reflexao": "A responsabilidade de agir com justiça, especialmente diante de quem não tem poder de se defender, é uma obrigação moral que a psicologia social chama de responsabilidade proativa. A indiferença não é neutralidade; é escolha.",
+      "reflexao": "",
       "audio": "audios/salmo_082.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Onde você tem a capacidade de agir com justiça e ainda não agiu?"
+      "favorito": false
     },
     {
       "numero": 83,
@@ -2598,10 +2516,9 @@
         "protecao",
         "clamor"
       ],
-      "reflexao": "A percepção de que forças se unem contra nós pode ser tanto uma leitura acurada quanto uma distorção cognitiva. Distinguir os dois exige a disposição de examinar as evidências com honestidade, sem deixar o medo decidir.",
+      "reflexao": "",
       "audio": "audios/salmo_083.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que de ameaçador em sua vida é real e o que pode ser amplificação do medo?"
+      "favorito": false
     },
     {
       "numero": 84,
@@ -2626,10 +2543,9 @@
         "saudade",
         "amor"
       ],
-      "reflexao": "O anseio por um lugar que nos acolhe, onde podemos ser inteiros, é uma das necessidades mais fundamentais da experiência humana. A psicologia do pertencimento (Baumeister & Leary) mostra que esse anseio, quando cronicamente não atendido, é uma das fontes mais profundas de sofrimento.",
+      "reflexao": "",
       "audio": "audios/salmo_084.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Você tem um lugar, físico, relacional ou interno, onde pode ser inteiramente você mesmo?"
+      "favorito": false
     },
     {
       "numero": 85,
@@ -2655,10 +2571,9 @@
         "esperanca",
         "paz"
       ],
-      "reflexao": "Paz e justiça se encontram: a psicologia social chama isso de \"paz positiva\", não apenas ausência de conflito, mas presença de condições que permitem que cada pessoa floresça. A reconciliação sem justiça é frágil; a justiça sem reconciliação é fria.",
+      "reflexao": "",
       "audio": "audios/salmo_085.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Em que relação você está buscando paz sem lidar com o que ainda precisa ser resolvido?"
+      "favorito": false
     },
     {
       "numero": 86,
@@ -2688,10 +2603,9 @@
         "perdao",
         "gratidao"
       ],
-      "reflexao": "\"Sou pobre e necessitado\": a declaração de necessidade sem disfarce é, psicologicamente, um ato de coragem. Pesquisa de Brené Brown mostra que a vulnerabilidade, mostrar a necessidade real e não a versão curada, é a base de toda conexão genuína.",
+      "reflexao": "",
       "audio": "audios/salmo_086.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Qual necessidade você está mascarando porque acha que não deveria tê-la?"
+      "favorito": false
     },
     {
       "numero": 87,
@@ -2709,10 +2623,9 @@
       "temas": [
         "louvor"
       ],
-      "reflexao": "Sentir-se herdeiro de algo que vem de antes e vai além cria um senso de continuidade psicológica que a pesquisa sobre identidade narrativa (McAdams) associa ao bem-estar e à saúde mental. Somos mais do que nossa história individual.",
+      "reflexao": "",
       "audio": "audios/salmo_087.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Você se sente parte de algo que precede e sobrevive a você, e o que esse pertencimento muda na forma como vive?"
+      "favorito": false
     },
     {
       "numero": 88,
@@ -2744,10 +2657,9 @@
         "solidao",
         "abandono"
       ],
-      "reflexao": "Este é o único Salmo que não termina em resolução, e isso é psicologicamente honesto. Nem todo sofrimento encontra consolo imediato. A psicologia do luto ensina que apressar a resolução é uma forma de violência simbólica: o que a dor profunda pede, às vezes, é simplesmente ser testemunhada.",
+      "reflexao": "",
       "audio": "audios/salmo_088.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Você tem se apressado para sair do sofrimento antes de ter vivido o tempo que ele necessitava?"
+      "favorito": false
     },
     {
       "numero": 89,
@@ -2812,10 +2724,9 @@
         "promessas",
         "historia"
       ],
-      "reflexao": "Fidelidade não é a ausência de crises; é a persistência do compromisso através delas. A pesquisa sobre relacionamentos duradouros (Gottman) mostra que o que distingue vínculos sólidos não é a ausência de conflito, mas a confiança de que a relação sobreviverá ao conflito.",
+      "reflexao": "",
       "audio": "audios/salmo_089.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Em que compromisso você está sendo fiel, mesmo sem ver os frutos imediatos?"
+      "favorito": false
     },
     {
       "numero": 90,
@@ -2845,10 +2756,9 @@
         "brevidade",
         "oracao"
       ],
-      "reflexao": "\"Ensina-nos a contar os nossos dias\": a consciência da finitude como prática intencional, não como morbidez. A pesquisa sobre administração do tempo mostra que quem tem maior consciência da finitude tende a tomar decisões mais alinhadas com valores genuínos e menos com urgências fabricadas.",
+      "reflexao": "",
       "audio": "audios/salmo_090.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Se você soubesse exatamente quanto tempo tem, o que faria diferente amanhã?"
+      "favorito": false
     },
     {
       "numero": 91,
@@ -2878,10 +2788,9 @@
         "ansiedade",
         "sono"
       ],
-      "reflexao": "A ansiedade noturna, quando o pensamento acelera e o dia para, é o estado em que o cérebro tenta resolver o que é insolúvel no escuro. A neurociência do sono (Walker) mostra que criar um ritual de entrega antes de dormir regula o sistema nervoso e melhora a qualidade do descanso.",
+      "reflexao": "",
       "audio": "audios/salmo_091.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que você levaria para a cama esta noite que seria melhor deixar do lado de fora?"
+      "favorito": false
     },
     {
       "numero": 92,
@@ -2908,10 +2817,9 @@
         "louvor",
         "gratidao"
       ],
-      "reflexao": "Cantar o que é bom é uma prática de atenção seletiva intencional. O cérebro humano tem viés de negatividade (Baumeister): eventos ruins pesam mais do que bons da mesma magnitude. Cultivar o louvor é, literalmente, trabalhar contra esse viés.",
+      "reflexao": "",
       "audio": "audios/salmo_092.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que foi bom hoje que, sem esforço de atenção, você não teria notado?"
+      "favorito": false
     },
     {
       "numero": 93,
@@ -2928,10 +2836,9 @@
         "louvor",
         "reinado"
       ],
-      "reflexao": "Diante da instabilidade, a proclamação de estabilidade é um ato de reorientação cognitiva. A TCC chama isso de \"ancorar no que é estável\" quando a ansiedade catastrofiza o que é temporário. Nem tudo que se move vai se romper.",
+      "reflexao": "",
       "audio": "audios/salmo_093.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que é sólido e estável na sua vida agora, mesmo que ao redor tudo pareça incerto?"
+      "favorito": false
     },
     {
       "numero": 94,
@@ -2967,10 +2874,9 @@
         "justica",
         "confianca"
       ],
-      "reflexao": "Distinguir o que podemos mudar do que precisamos soltar é, para a TCC, a habilidade central da saúde mental. Clamar por justiça é o reconhecimento de que nem todo julgamento está em nossas mãos, e que isso não é fraqueza, mas sabedoria.",
+      "reflexao": "",
       "audio": "audios/salmo_094.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Que injustiça você está tentando resolver que está além do que você pode controlar, e que precisaria ser entregue?"
+      "favorito": false
     },
     {
       "numero": 95,
@@ -2993,10 +2899,9 @@
         "adoracao",
         "louvor"
       ],
-      "reflexao": "\"Hoje, se ouvirdes a sua voz, não endurecereis o coração\": o endurecimento do coração é, psicologicamente, a construção gradual de mecanismos de defesa contra o que nos afeta demais. A questão não é eliminar as defesas, mas reconhecer quando elas nos protegem do que precisaríamos sentir.",
+      "reflexao": "",
       "audio": "audios/salmo_095.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Há algo que você tem se recusado a deixar te afetar, e que talvez precisasse deixar?"
+      "favorito": false
     },
     {
       "numero": 96,
@@ -3021,10 +2926,9 @@
         "louvor",
         "missao"
       ],
-      "reflexao": "\"Cântico novo\": não a repetição mecânica, mas o encontro fresco com o que é real. A psicologia da criatividade (Csikszentmihalyi) mostra que novidade e significado são necessidades humanas genuínas. A rotina sem renovação entorpece; a renovação sem ancoragem desorienta. Precisamos dos dois.",
+      "reflexao": "",
       "audio": "audios/salmo_096.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Que área da sua vida precisa de uma abordagem fresca, ao invés da repetição do que já não funciona?"
+      "favorito": false
     },
     {
       "numero": 97,
@@ -3048,10 +2952,9 @@
         "louvor",
         "reinado"
       ],
-      "reflexao": "A alegria que emerge da convicção, não do sentimento do momento, mas do que se sabe ser verdadeiro, é mais estável do que a euforia situacional. A psicologia do bem-estar (Seligman) distingue prazer hedônico de bem-estar eudaimônico: um é termômetro, o outro é bússola.",
+      "reflexao": "",
       "audio": "audios/salmo_097.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Sua alegria hoje depende mais de como você se sente ou de quem você sabe que é?"
+      "favorito": false
     },
     {
       "numero": 98,
@@ -3072,10 +2975,9 @@
         "louvor",
         "alegria"
       ],
-      "reflexao": "A expressão criativa, cantar, tocar, criar, é um dos canais mais eficazes de processamento emocional. Arteterapia e musicoterapia têm base empírica sólida: o corpo e a voz fazem o que as palavras às vezes não conseguem.",
+      "reflexao": "",
       "audio": "audios/salmo_098.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Que forma de expressão criativa você tem negligenciado que poderia ser um canal para o que você está sentindo?"
+      "favorito": false
     },
     {
       "numero": 99,
@@ -3096,10 +2998,9 @@
         "adoracao",
         "santidade"
       ],
-      "reflexao": "O tremor diante do sagrado é uma experiência que redimensiona a autocentragem sem diminuir a dignidade. A pesquisa sobre humildade intelectual (Leary) mostra que reconhecer algo maior que si mesmo não encolhe; expande a perspectiva.",
+      "reflexao": "",
       "audio": "audios/salmo_099.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Existe algo que você reverencia o suficiente para que mude como você se comporta?"
+      "favorito": false
     },
     {
       "numero": 100,
@@ -3117,10 +3018,9 @@
         "alegria",
         "gratidao"
       ],
-      "reflexao": "\"Celebrai com júbilo\": a alegria que se expressa, e não apenas se sente, tem efeito amplificador. A pesquisa sobre expressão emocional mostra que externalizar emoções positivas, pelo corpo, pela voz e pelo movimento, as torna mais duradouras e mais compartilháveis.",
+      "reflexao": "",
       "audio": "audios/salmo_100.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Você expressa a sua alegria, ou a guarda em silêncio como se celebrar fosse inadequado?"
+      "favorito": false
     },
     {
       "numero": 101,
@@ -3140,10 +3040,9 @@
         "integridade",
         "sabedoria"
       ],
-      "reflexao": "\"Andarei com coração íntegro\" é uma declaração de valores que a pesquisa sobre motivação mostra ser mais eficaz quando feita explicitamente. Articular o tipo de pessoa que queremos ser, em vez de apenas tentar, aumenta a probabilidade de agirmos de acordo.",
+      "reflexao": "",
       "audio": "audios/salmo_101.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Que compromisso com quem você quer ser você poderia articular com mais clareza hoje?"
+      "favorito": false
     },
     {
       "numero": 102,
@@ -3184,10 +3083,9 @@
         "clamor",
         "esperanca"
       ],
-      "reflexao": "Dias contados, solidão, sensação de abandono: a aflição que este Salmo descreve é visceral. A psicologia reconhece que a dor intensa tende a estreitar o senso de tempo, fazendo tudo parecer permanente. A memória de que estados mudam, que já mudaram antes, é um recurso terapêutico real.",
+      "reflexao": "",
       "audio": "audios/salmo_102.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Quando você está no fundo, você consegue lembrar de outras vezes em que também estava no fundo e saiu?"
+      "favorito": false
     },
     {
       "numero": 103,
@@ -3223,10 +3121,9 @@
         "louvor",
         "misericordia"
       ],
-      "reflexao": "\"Benze, ó minha alma, ao Senhor\": a instrução dada a si mesmo. A pesquisa sobre auto-instrução cognitiva (Meichenbaum) mostra que a forma como nos falamos internamente tem impacto direto na regulação emocional. Instruir a própria alma a louvar não é ingenuidade; é regulação intencional.",
+      "reflexao": "",
       "audio": "audios/salmo_103.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Como você se fala internamente quando está no limite, e o que mudaria se você falasse de outro jeito?"
+      "favorito": false
     },
     {
       "numero": 104,
@@ -3273,10 +3170,9 @@
         "louvor",
         "criacao"
       ],
-      "reflexao": "A maravilha diante da criação é um dos indutores mais eficazes de estados de admiração (Keltner & Haidt), que reduzem a autocentralidade e aumentam o senso de conexão com o todo. Admirar cura o narcisismo.",
+      "reflexao": "",
       "audio": "audios/salmo_104.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que no mundo natural ainda te faz parar, e quando foi a última vez que você parou de verdade?"
+      "favorito": false
     },
     {
       "numero": 105,
@@ -3333,10 +3229,9 @@
         "historia",
         "gratidao"
       ],
-      "reflexao": "Contar a história, especialmente os momentos em que a saída parecia impossível e veio, é uma prática de memória terapêutica. A pesquisa sobre narrativa e resiliência (Bonanno) mostra que pessoas que conseguem construir uma narrativa coerente de suas adversidades têm melhor recuperação.",
+      "reflexao": "",
       "audio": "audios/salmo_105.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Você tem uma narrativa coerente da sua história, incluindo as partes difíceis, ou ainda existem capítulos que você não sabe como encaixar?"
+      "favorito": false
     },
     {
       "numero": 106,
@@ -3396,10 +3291,9 @@
         "historia",
         "arrependimento"
       ],
-      "reflexao": "Reconhecer padrões de erro repetidos, na história de um povo ou na própria vida, não é autopunição; é o início da aprendizagem. A psicologia da mudança mostra que o autoconhecimento honesto, sem defesa excessiva, é o que torna possível agir diferente.",
+      "reflexao": "",
       "audio": "audios/salmo_106.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Que padrão você reconhece em si mesmo que se repete, e que você ainda não decidiu de fato mudar?"
+      "favorito": false
     },
     {
       "numero": 107,
@@ -3454,10 +3348,9 @@
         "gratidao",
         "louvor"
       ],
-      "reflexao": "Revisar a jornada, e não apenas o destino, é uma das práticas mais eficazes de bem-estar porque ancora o presente no que foi superado (Emmons). Passamos pelo deserto, pelo mar, pela prisão e pela doença, e chegamos até aqui.",
+      "reflexao": "",
       "audio": "audios/salmo_107.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que você atravessou que, quando revisita, te lembra de que é mais capaz do que costuma acreditar?"
+      "favorito": false
     },
     {
       "numero": 108,
@@ -3482,10 +3375,9 @@
         "confianca",
         "louvor"
       ],
-      "reflexao": "Louvar antes da vitória, antes do problema se resolver, é uma postura que a psicologia chama de orientação para o crescimento: agir a partir do que se quer se tornar, não apenas do que se é agora. Não é negação da realidade; é recusa em deixar que a realidade atual defina o limite do possível.",
+      "reflexao": "",
       "audio": "audios/salmo_108.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Em que situação você poderia agir a partir de confiança, em vez de esperar que as circunstâncias primeiro te dessem razão para confiar?"
+      "favorito": false
     },
     {
       "numero": 109,
@@ -3528,10 +3420,9 @@
         "clamor",
         "justica"
       ],
-      "reflexao": "O desejo de que o mal que nos fizeram seja revertido é uma resposta humana natural; suprimi-lo produz repressão emocional, que tem custo psicológico real. A questão não é proibir o sentimento, mas não deixar que ele governe ações que nos prejudicariam mais. Sentir não é agir.",
+      "reflexao": "",
       "audio": "audios/salmo_109.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Existe um sentimento que você julgou errado ter, quando na verdade o problema não é senti-lo, mas o que faz com ele?"
+      "favorito": false
     },
     {
       "numero": 110,
@@ -3550,10 +3441,9 @@
         "louvor",
         "esperanca"
       ],
-      "reflexao": "A esperança escatológica, a crença de que a história tem um sentido e uma direção, é, em linguagem psicológica, o que Snyder chamou de pensamento esperançoso: a convicção de que caminhos existem, mesmo quando ainda não são visíveis. Esperança não é otimismo ingênuo; é orientação.",
+      "reflexao": "",
       "audio": "audios/salmo_110.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que você ainda espera, e o que essa esperança diz sobre o que você acredita ser possível?"
+      "favorito": false
     },
     {
       "numero": 111,
@@ -3575,10 +3465,9 @@
         "louvor",
         "gratidao"
       ],
-      "reflexao": "Dar atenção deliberada ao que é bom e verdadeiro é um antídoto contra a superficialidade que a aceleração da vida produz. A pesquisa sobre atenção (Kabat-Zinn) mostra que a qualidade da presença, e não a quantidade de experiências, é o que determina a qualidade da vida.",
+      "reflexao": "",
       "audio": "audios/salmo_111.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que merece mais da sua atenção do que tem recebido?"
+      "favorito": false
     },
     {
       "numero": 112,
@@ -3600,10 +3489,9 @@
         "sabedoria",
         "bencao"
       ],
-      "reflexao": "A pesquisa sobre forças de caráter (Peterson & Seligman) mostra que conhecer e usar as próprias forças, e não apenas corrigir fraquezas, é o caminho mais direto para o florescimento. A felicidade do justo não é recompensa futura; é consequência natural de viver alinhado com o que é genuíno.",
+      "reflexao": "",
       "audio": "audios/salmo_112.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Você conhece suas forças, o que de melhor há em você, e está as usando no que faz?"
+      "favorito": false
     },
     {
       "numero": 113,
@@ -3624,10 +3512,9 @@
         "louvor",
         "misericordia"
       ],
-      "reflexao": "O paradoxo de quem se abaixa para levantar o humilde é, psicologicamente, o modelo de todo cuidado genuíno: quem verdadeiramente cuida não condescende; se aproxima. A misericórdia que de fato transforma não olha de cima para baixo; encontra no mesmo nível.",
+      "reflexao": "",
       "audio": "audios/salmo_113.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Em que relação você está em posição de cuidar, e está fazendo isso de cima para baixo ou de igual para igual?"
+      "favorito": false
     },
     {
       "numero": 114,
@@ -3647,10 +3534,9 @@
         "historia",
         "louvor"
       ],
-      "reflexao": "A memória do êxodo é o recurso psicológico mais usado pelos hebreus em tempos de crise: o mesmo que abriu o mar pode abrir o que está fechado agora. Rememorar o que pareceu impossível e aconteceu fortalece a crença no que ainda parece impossível.",
+      "reflexao": "",
       "audio": "audios/salmo_114.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Qual êxodo da sua própria vida você pode lembrar hoje, que te dá evidência de que saídas existem?"
+      "favorito": false
     },
     {
       "numero": 115,
@@ -3680,10 +3566,9 @@
         "fe",
         "confianca"
       ],
-      "reflexao": "Deslocar o centro de gravidade de si mesmo, reconhecer que nem tudo gira em torno da própria glória, é um exercício que a psicologia associa à redução da ansiedade de desempenho. Quando o resultado não depende só de mim, o peso do fracasso possível também não é só meu.",
+      "reflexao": "",
       "audio": "audios/salmo_115.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Em que área da vida você está carregando um peso que poderia ser compartilhado ou entregue?"
+      "favorito": false
     },
     {
       "numero": 116,
@@ -3715,10 +3600,9 @@
         "cura",
         "louvor"
       ],
-      "reflexao": "Sobreviver a algo que quase nos destruiu muda a relação com a própria vida. A pesquisa sobre crescimento pós-traumático (Tedeschi & Calhoun) mostra que muitas pessoas, depois de crises sérias, desenvolvem maior apreciação pela vida, relações mais profundas e clareza sobre o que realmente importa.",
+      "reflexao": "",
       "audio": "audios/salmo_116.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que quase te destruiu, e o que essa experiência te ensinou sobre o que você valoriza?"
+      "favorito": false
     },
     {
       "numero": 117,
@@ -3732,10 +3616,9 @@
         "louvor",
         "missao"
       ],
-      "reflexao": "O louvor universal pressupõe que o que é mais fundamentalmente verdadeiro sobre nós é compartilhado, não dividido. A psicologia cultural (Triandis) mostra que sob as diferenças de superfície, as necessidades humanas básicas são surpreendentemente universais.",
+      "reflexao": "",
       "audio": "audios/salmo_117.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que você tem em comum com pessoas muito diferentes de você, que poderia ser ponto de conexão em vez de divisão?"
+      "favorito": false
     },
     {
       "numero": 118,
@@ -3778,10 +3661,9 @@
         "vitoria",
         "esperanca"
       ],
-      "reflexao": "\"A pedra que os construtores rejeitaram tornou-se a pedra angular\": o que foi descartado como inútil revelou-se essencial. A psicologia da resiliência mostra que traços e experiências que pareciam fraquezas frequentemente se tornam, quando integrados, a base da força mais particular de uma pessoa.",
+      "reflexao": "",
       "audio": "audios/salmo_118.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que em você foi rejeitado, por outros ou por você mesmo, que poderia ser a sua pedra angular?"
+      "favorito": false
     },
     {
       "numero": 119,
@@ -3970,10 +3852,9 @@
         "lei",
         "meditacao"
       ],
-      "reflexao": "O comprometimento com valores que guiam as escolhas, independentemente de como nos sentimos no momento, é o que a ACT chama de \"ação comprometida\": agir de acordo com o que importa, não de acordo com o que é confortável. Valores são bússola, não termômetro.",
+      "reflexao": "",
       "audio": "audios/salmo_119.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Suas decisões cotidianas estão sendo guiadas pelo que você valoriza ou pelo que sente no momento?"
+      "favorito": false
     },
     {
       "numero": 120,
@@ -3992,10 +3873,9 @@
         "clamor",
         "paz"
       ],
-      "reflexao": "Viver entre pessoas cuja linguagem é o conflito e a manipulação exaure de um jeito que é difícil de nomear. A pesquisa sobre ambientes tóxicos (Holt-Lunstad) mostra que relações crônicas de baixa qualidade têm impacto na saúde tão significativo quanto o tabagismo. O lugar que habitamos molda quem nos tornamos.",
+      "reflexao": "",
       "audio": "audios/salmo_120.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Os ambientes que você frequenta estão te formando ou te deformando?"
+      "favorito": false
     },
     {
       "numero": 121,
@@ -4017,10 +3897,9 @@
         "sono",
         "ansiedade"
       ],
-      "reflexao": "\"O teu guardador não dormirá\": a imagem do cuidado que não descansa é o antídoto para a hipervigilância, a sensação de que precisamos estar sempre de guarda porque ninguém mais está. A pesquisa sobre ansiedade generalizada mostra que aprender a \"soltar o turno\" é central para a recuperação.",
+      "reflexao": "",
       "audio": "audios/salmo_121.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Você consegue descansar de verdade, ou sempre há uma parte de você que fica de guarda mesmo quando não precisa?"
+      "favorito": false
     },
     {
       "numero": 122,
@@ -4042,10 +3921,9 @@
         "alegria",
         "paz"
       ],
-      "reflexao": "A antecipação prazerosa, a alegria que começa antes da experiência, é um estado que a neurociência associa à dopamina: o prazer de esperar algo bom pode ser tão significativo quanto a experiência em si. Cultivar expectativa genuína é cultivar alegria.",
+      "reflexao": "",
       "audio": "audios/salmo_122.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que em sua vida próxima você pode antecipar com prazer genuíno?"
+      "favorito": false
     },
     {
       "numero": 123,
@@ -4061,10 +3939,9 @@
         "clamor",
         "humildade"
       ],
-      "reflexao": "Olhar para o alto é um gesto estudado em psicologia corporificada (embodied cognition): a postura do corpo influencia o estado mental. Levantar a cabeça não muda o problema; muda a perspectiva de onde o problema é visto.",
+      "reflexao": "",
       "audio": "audios/salmo_123.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "De qual perspectiva você está olhando para o seu problema agora, e o que mudaria se você erguesse os olhos?"
+      "favorito": false
     },
     {
       "numero": 124,
@@ -4084,10 +3961,9 @@
         "gratidao",
         "protecao"
       ],
-      "reflexao": "\"Se não fora o Senhor\": o exercício mental de imaginar o pior que poderia ter acontecido e não aconteceu é uma forma de gratidão subtrativa (Koo et al.) que pesquisas mostram ser mais eficaz para aumentar o bem-estar. Apreciar o que não perdemos.",
+      "reflexao": "",
       "audio": "audios/salmo_124.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que poderia ter dado muito mais errado do que deu, e você esqueceu de ser grato por isso?"
+      "favorito": false
     },
     {
       "numero": 125,
@@ -4104,10 +3980,9 @@
         "confianca",
         "paz"
       ],
-      "reflexao": "\"Os que confiam no Senhor são como o monte Sião, que não pode ser abalado\": a estabilidade não como rigidez, mas como enraizamento profundo. A pesquisa sobre regulação emocional mostra que pessoas com maior estabilidade de identidade não são aquelas que nunca são afetadas, mas as que voltam ao centro mais rapidamente.",
+      "reflexao": "",
       "audio": "audios/salmo_125.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que te ancora, o que, quando tudo treme, te lembra de quem você é?"
+      "favorito": false
     },
     {
       "numero": 126,
@@ -4126,10 +4001,9 @@
         "alegria",
         "restauracao"
       ],
-      "reflexao": "\"Éramos como os que sonham\": a restauração tão completa que parece irreal. A pesquisa sobre estados de maravilha mostra que a surpresa positiva tem efeito de \"reset\" emocional, abrindo perspectivas que o estado habitual não permitia ver.",
+      "reflexao": "",
       "audio": "audios/salmo_126.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Há alguma área da sua vida em que você parou de acreditar em restauração, e onde essa esperança precisaria ser reacesa?"
+      "favorito": false
     },
     {
       "numero": 127,
@@ -4147,10 +4021,9 @@
         "familia",
         "descanso"
       ],
-      "reflexao": "\"Em vão trabalham os que a edificam\": a ilusão de que podemos, pelo esforço puro, garantir todos os resultados. A pesquisa sobre esgotamento (Maslach) mostra que o burnout raramente é excesso de trabalho; é trabalho sem sentido ou sem descanso. Ambos exaurem.",
+      "reflexao": "",
       "audio": "audios/salmo_127.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que você está construindo com tanto esforço que, na verdade, não depende só de você?"
+      "favorito": false
     },
     {
       "numero": 128,
@@ -4168,10 +4041,9 @@
         "bencao",
         "familia"
       ],
-      "reflexao": "A pesquisa de Gottman sobre relacionamentos saudáveis mostra que o contentamento, a capacidade de apreciar o que se tem em vez de comparar com o que falta, é um dos preditores mais robustos de felicidade familiar. O lar que se busca muitas vezes já existe; o olhar é que precisa mudar.",
+      "reflexao": "",
       "audio": "audios/salmo_128.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Você está vivendo dentro do que tem com presença, ou sempre com um olho no que ainda não chegou?"
+      "favorito": false
     },
     {
       "numero": 129,
@@ -4191,10 +4063,9 @@
         "confianca",
         "perseveranca"
       ],
-      "reflexao": "\"Gravemente me angustiaram desde a minha mocidade, mas não prevaleceram\": a identidade do sobrevivente que não nega o sofrimento, mas recusa ser definido por ele. A pesquisa sobre resiliência mostra que a narrativa que construímos sobre nossas adversidades tem impacto direto na recuperação.",
+      "reflexao": "",
       "audio": "audios/salmo_129.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Como você se descreve em relação às dificuldades que viveu: como alguém que foi destruído por elas ou como alguém que as atravessou?"
+      "favorito": false
     },
     {
       "numero": 130,
@@ -4216,10 +4087,9 @@
         "luto",
         "arrependimento"
       ],
-      "reflexao": "\"Das profundezas clamo\": o ponto mais baixo que existe. A psicologia reconhece que tocar o fundo pode ser, paradoxalmente, um momento de clareza. Quando não há mais como cair, o que realmente importa emerge com uma precisão que a vida confortável raramente produz.",
+      "reflexao": "",
       "audio": "audios/salmo_130.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que seu momento mais difícil, quando você estava no fundo, te mostrou sobre o que é essencial?"
+      "favorito": false
     },
     {
       "numero": 131,
@@ -4235,10 +4105,9 @@
         "paz",
         "descanso"
       ],
-      "reflexao": "\"Como a criança desmamada\": não mais exigindo, mas simplesmente presente. A psicologia do mindfulness chama isso de mente de principiante, a capacidade de estar sem agenda, sem necessidade de resolver ou conquistar. O descanso mais profundo não é físico; é a ausência de exigência.",
+      "reflexao": "",
       "audio": "audios/salmo_131.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Quando foi a última vez que você estava em algum lugar apenas para estar, sem produzir, resolver ou melhorar nada?"
+      "favorito": false
     },
     {
       "numero": 132,
@@ -4268,10 +4137,9 @@
         "adoracao",
         "promessas"
       ],
-      "reflexao": "Comprometer-se com algo maior que a própria vida é o que Viktor Frankl chamou de movimento essencial do ser humano: transcender a si mesmo em direção a um significado que persiste além das circunstâncias.",
+      "reflexao": "",
       "audio": "audios/salmo_132.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "A que promessa você está comprometido que vale mais do que o seu próprio conforto?"
+      "favorito": false
     },
     {
       "numero": 133,
@@ -4286,10 +4154,9 @@
         "unidade",
         "bencao"
       ],
-      "reflexao": "\"Quão bom e quão suave é que os irmãos vivam em união\": a harmonia comunitária como algo raro e precioso, não automático. A pesquisa sobre capital social (Putnam) mostra que a qualidade das conexões numa comunidade é um dos maiores preditores de saúde, felicidade e expectativa de vida.",
+      "reflexao": "",
       "audio": "audios/salmo_133.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Você está contribuindo para a harmonia das comunidades a que pertence, ou tem sido fonte de divisão?"
+      "favorito": false
     },
     {
       "numero": 134,
@@ -4304,10 +4171,9 @@
         "adoracao",
         "noite"
       ],
-      "reflexao": "O ritual de encerramento, um gesto deliberado que marca o fim do dia, tem respaldo em pesquisa sobre regulação circadiana e bem-estar psicológico. Encerrar conscientemente, em vez de deixar o dia simplesmente acabar, cria a transição que o sistema nervoso precisa para descansar de verdade.",
+      "reflexao": "",
       "audio": "audios/salmo_134.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Qual seria o gesto ou a prática que você poderia usar para encerrar conscientemente o seu dia?"
+      "favorito": false
     },
     {
       "numero": 135,
@@ -4340,10 +4206,9 @@
         "louvor",
         "historia"
       ],
-      "reflexao": "Louvar não por dever, mas por reconhecimento genuíno do que é verdadeiro: essa distinção é central na psicologia da motivação intrínseca. Fazer algo porque queremos, não porque precisamos, é o que torna a prática sustentável e restauradora, não esgotante.",
+      "reflexao": "",
       "audio": "audios/salmo_135.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que você faz por obrigação que poderia começar a fazer por escolha genuína?"
+      "favorito": false
     },
     {
       "numero": 136,
@@ -4382,10 +4247,9 @@
         "louvor",
         "misericordia"
       ],
-      "reflexao": "A repetição, \"porque a sua benignidade dura para sempre\", é um dispositivo que a neurociência confirma: repetir afirmações verdadeiras consolida redes neurais associadas a elas. Não é superstição; é aprendizagem.",
+      "reflexao": "",
       "audio": "audios/salmo_136.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Que verdade sobre sua vida você poderia repetir com mais frequência, não como mantra vazio, mas como reconhecimento real?"
+      "favorito": false
     },
     {
       "numero": 137,
@@ -4407,10 +4271,9 @@
         "saudade",
         "exilio"
       ],
-      "reflexao": "\"Como cantaríamos as canções do Senhor em terra estranha?\" é a pergunta legítima de quem perdeu o contexto em que o que é sagrado fazia sentido. A pesquisa sobre diáspora e identidade mostra que manter conexão com a cultura de origem, mesmo em contextos adversos, é fator de proteção psicológica.",
+      "reflexao": "",
       "audio": "audios/salmo_137.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Existe algo que você perdeu, lugar, relação ou fase da vida, que você ainda não sabe como honrar onde está agora?"
+      "favorito": false
     },
     {
       "numero": 138,
@@ -4430,10 +4293,9 @@
         "gratidao",
         "confianca"
       ],
-      "reflexao": "\"Quando clamei, me respondeste\": o registro de que houve resposta. A pesquisa sobre memória autobiográfica mostra que as memórias que selecionamos para contar a nós mesmos formam a narrativa de quem somos. Escolher lembrar do que funcionou, sem negar o que falhou, é higiene narrativa.",
+      "reflexao": "",
       "audio": "audios/salmo_138.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Você tem registrado as vezes em que pediu e veio ajuda, ou só as vezes em que pediu e nada aconteceu?"
+      "favorito": false
     },
     {
       "numero": 139,
@@ -4470,10 +4332,9 @@
         "identidade",
         "meditacao"
       ],
-      "reflexao": "\"Tu me sondas e me conheces\": ser completamente conhecido sem ser rejeitado é, para a psicologia do apego, o fundamento de toda saúde relacional. John Bowlby mostrou que a necessidade de ser visto inteiramente e ainda assim amado é a necessidade mais fundamental que existe.",
+      "reflexao": "",
       "audio": "audios/salmo_139.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Existe alguém que te conhece de verdade, e o que aconteceria se você se permitisse ser mais conhecido?"
+      "favorito": false
     },
     {
       "numero": 140,
@@ -4498,10 +4359,9 @@
         "protecao",
         "clamor"
       ],
-      "reflexao": "A manipulação encoberta, a agressão que se disfarça de razão, é difícil de nomear justamente porque vem embrulhada em justificativas (George Simon). Reconhecer o padrão antes que cause dano começa pela honestidade sobre o que se observa.",
+      "reflexao": "",
       "audio": "audios/salmo_140.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Existe uma situação em sua vida em que você está sendo manipulado, e ainda não nomeou isso claramente para si mesmo?"
+      "favorito": false
     },
     {
       "numero": 141,
@@ -4523,10 +4383,9 @@
         "oracao",
         "integridade"
       ],
-      "reflexao": "\"Põe, Senhor, guarda à minha boca\": a consciência de que as palavras têm consequências que o impulso do momento não prevê. A pesquisa sobre comunicação e relacionamentos (Gottman) mostra que a qualidade das interações cotidianas, especialmente nos momentos de tensão, é o que determina a saúde de qualquer vínculo.",
+      "reflexao": "",
       "audio": "audios/salmo_141.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Que palavra ou resposta impulsiva você tem dado que, se você parasse antes, mudaria?"
+      "favorito": false
     },
     {
       "numero": 142,
@@ -4546,10 +4405,9 @@
         "solidao",
         "luto"
       ],
-      "reflexao": "\"Ninguém se preocupa comigo\": a solidão que não é ausência de pessoas, mas ausência de conexão real. A pesquisa de Cacioppo mostra que a solidão percebida, a sensação de estar desconectado independentemente de quantas pessoas estão ao redor, é tão prejudicial à saúde quanto condições médicas graves.",
+      "reflexao": "",
       "audio": "audios/salmo_142.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Você se sente realmente visto pelas pessoas que estão ao seu redor, ou apenas presente?"
+      "favorito": false
     },
     {
       "numero": 143,
@@ -4574,10 +4432,9 @@
         "restauracao",
         "ansiedade"
       ],
-      "reflexao": "\"O meu espírito desfallece dentro de mim\": o esgotamento que não é preguiça, mas exaustão genuína. A pesquisa sobre recuperação psicológica mostra que o erro mais comum é tentar sair do esgotamento com mais esforço, quando o que o sistema precisa é de descanso e de significado.",
+      "reflexao": "",
       "audio": "audios/salmo_143.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que você está tentando resolver com mais esforço quando o que precisava era de algo completamente diferente?"
+      "favorito": false
     },
     {
       "numero": 144,
@@ -4604,10 +4461,9 @@
         "gratidao",
         "protecao"
       ],
-      "reflexao": "\"Bendito seja o Senhor, minha rocha\": a gratidão antes do resultado, não depois. A pesquisa sobre mentalidade de abundância (Dweck) mostra que a postura com a qual entramos numa situação difícil influencia os recursos que conseguimos mobilizar dentro dela.",
+      "reflexao": "",
       "audio": "audios/salmo_144.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Com que postura interna você está entrando nos desafios que enfrenta agora: gratidão antecipada ou ansiedade preventiva?"
+      "favorito": false
     },
     {
       "numero": 145,
@@ -4641,10 +4497,9 @@
         "misericordia",
         "gratidao"
       ],
-      "reflexao": "\"Geração após geração louvará as tuas obras\": o louvor como prática transgeracional, que une passado, presente e futuro numa narrativa contínua. A pesquisa sobre identidade narrativa (McAdams) mostra que sentir-se parte de uma história maior do que a própria vida é fator de proteção psicológica e fonte de significado.",
+      "reflexao": "",
       "audio": "audios/salmo_145.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "De que narrativa maior do que a sua própria você se sente parte, e o que isso muda em como você vive o dia a dia?"
+      "favorito": false
     },
     {
       "numero": 146,
@@ -4667,10 +4522,9 @@
         "esperanca",
         "louvor"
       ],
-      "reflexao": "\"Não ponhas a tua confiança nos príncipes\": o alerta contra a dependência excessiva de estruturas e pessoas que são, inevitavelmente, falíveis. A pesquisa sobre locus de controle (Rotter) mostra que bem-estar psicológico está associado a encontrar um equilíbrio entre confiar no que podemos influenciar e aceitar o que não podemos.",
+      "reflexao": "",
       "audio": "audios/salmo_146.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Em quem ou no quê você está depositando uma confiança que essa pessoa ou estrutura não tem condições de sustentar?"
+      "favorito": false
     },
     {
       "numero": 147,
@@ -4702,10 +4556,9 @@
         "louvor",
         "cura"
       ],
-      "reflexao": "\"Cura os quebrantados de coração e cuida das suas feridas\": a cura como processo de atenção às feridas, não de negação delas. A pesquisa sobre cuidado compassivo (Gilbert) mostra que o primeiro movimento de cura não é força, mas gentileza: olhar para a ferida sem apartar os olhos.",
+      "reflexao": "",
       "audio": "audios/salmo_147.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Que ferida em você está esperando ser olhada com mais gentileza, antes de ser exigida a fortalecer?"
+      "favorito": false
     },
     {
       "numero": 148,
@@ -4731,10 +4584,9 @@
         "louvor",
         "criacao"
       ],
-      "reflexao": "Sol, lua, estrelas, profundezas, fogo, granizo, montanhas e animais: toda a criação louvando. A pesquisa sobre transcendência (Keltner) mostra que essa visão de pertencer a um todo vivo reduz o isolamento existencial e aumenta o bem-estar. Somos parte de algo muito maior.",
+      "reflexao": "",
       "audio": "audios/salmo_148.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que você observa no mundo natural que te lembra de que faz parte de algo muito maior do que você?"
+      "favorito": false
     },
     {
       "numero": 149,
@@ -4755,10 +4607,9 @@
         "louvor",
         "alegria"
       ],
-      "reflexao": "Cantar um cântico novo pressupõe que a alegria pode ser cultivada deliberadamente, não apenas esperada. A pesquisa sobre intervenções positivas (Lyubomirsky) mostra que a alegria sustentada é sempre parcialmente uma escolha de atenção e prática.",
+      "reflexao": "",
       "audio": "audios/salmo_149.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "O que precisaria acontecer em você, não nas circunstâncias, para que você cantasse um cântico novo hoje?"
+      "favorito": false
     },
     {
       "numero": 150,
@@ -4777,10 +4628,9 @@
         "alegria",
         "adoracao"
       ],
-      "reflexao": "Tudo que respira, cada instrumento, cada som, convocado para o louvor. A última palavra dos Salmos não é lamento, nem pedido, nem doutrina: é celebração total. A psicologia da experiência de pico (Maslow) descreve momentos assim como aqueles em que o eu e o mundo, por um instante, coincidem.",
+      "reflexao": "",
       "audio": "audios/salmo_150.mp3",
-      "favorito": false,
-      "reflexao_pergunta": "Qual seria o som, o gesto, a palavra, a expressão do louvor mais honesto que você poderia oferecer hoje?"
+      "favorito": false
     }
   ],
   "colecoes": [

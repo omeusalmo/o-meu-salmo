@@ -9,11 +9,10 @@ import '../../features/salmos/leitura_salmo_screen.dart';
 import '../../features/favoritos/favoritos_screen.dart';
 import '../../features/compositor/compositor_screen.dart';
 import '../../features/ajustes/ajustes_screen.dart';
-import '../../features/splash/splash_screen.dart';
 import '../../shared/widgets/main_shell.dart';
 
 final GoRouter appRouter = GoRouter(
-  initialLocation: '/splash',
+  initialLocation: '/home',
   debugLogDiagnostics: false,
   routes: [
     StatefulShellRoute.indexedStack(
@@ -67,12 +66,6 @@ final GoRouter appRouter = GoRouter(
           ),
         ]),
       ],
-    ),
-
-    // Splash — fullscreen, sem shell de navegação
-    GoRoute(
-      path: '/splash',
-      builder: (_, __) => const SplashScreen(),
     ),
 
     // Rotas modais — deslizam de baixo para cima

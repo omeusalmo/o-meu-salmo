@@ -291,7 +291,7 @@ class _EmptyState extends StatelessWidget {
             ),
             const SizedBox(height: AppTheme.sp2),
             Text(
-              'Tente um sentimento?',
+              'Tente uma emoção?',
               textAlign: TextAlign.center,
               style: GoogleFonts.cormorant(
                 fontSize: 17,

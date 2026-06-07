@@ -66,12 +66,12 @@ flutter_launcher_icons:
 # Após editar, regenere: dart run flutter_native_splash:create
 # ─────────────────────────────────────────────────────────────────────────────
 flutter_native_splash:
-  color: "#2A47DD"
+  color: "#080B1C"
+  image: assets/images/app-icon-512.png
   android: true
   ios: false
   web: false
-  android_12:
-    color: "#2A47DD"
+  android_gravity: center
 
 flutter:
   uses-material-design: true
