@@ -74,37 +74,41 @@ class _AudioPlayerBarState extends ConsumerState<AudioPlayerBar> {
       child: Row(
         children: [
           // Botão play/pause
-          GestureDetector(
-            onTap: available
-                ? () => ref.read(audioPlayerProvider.notifier).playPause()
-                : null,
-            child: Container(
-              width: 44,
-              height: 44,
-              decoration: BoxDecoration(
-                color: btnColor,
-                shape: BoxShape.circle,
-                boxShadow: available
-                    ? [
-                        BoxShadow(
-                          color: AppColors.cobalt600.withAlpha(77),
-                          blurRadius: 30,
-                          offset: const Offset(0, 12),
-                        ),
-                      ]
-                    : null,
-              ),
-              child: Center(
-                child: audio.isLoading
-                    ? SizedBox(
-                        width: 16,
-                        height: 16,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 1.5,
-                          color: AppColors.nightCream,
-                        ),
-                      )
-                    : _PlayerIcon(isPlaying: audio.isPlaying),
+          Semantics(
+            label: audio.isPlaying ? 'Pausar áudio' : 'Ouvir o Salmo',
+            button: true,
+            child: GestureDetector(
+              onTap: available
+                  ? () => ref.read(audioPlayerProvider.notifier).playPause()
+                  : null,
+              child: Container(
+                width: 44,
+                height: 44,
+                decoration: BoxDecoration(
+                  color: btnColor,
+                  shape: BoxShape.circle,
+                  boxShadow: available
+                      ? [
+                          BoxShadow(
+                            color: AppColors.cobalt600.withAlpha(77),
+                            blurRadius: 30,
+                            offset: const Offset(0, 12),
+                          ),
+                        ]
+                      : null,
+                ),
+                child: Center(
+                  child: audio.isLoading
+                      ? SizedBox(
+                          width: 16,
+                          height: 16,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 1.5,
+                            color: AppColors.nightCream,
+                          ),
+                        )
+                      : _PlayerIcon(isPlaying: audio.isPlaying),
+                ),
               ),
             ),
           ),

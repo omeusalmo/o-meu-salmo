@@ -112,9 +112,13 @@ class _HomeContent extends StatelessWidget {
                     ),
                   ),
                   const Spacer(),
-                  GestureDetector(
-                    onTap: () => context.push('/ajustes'),
-                    child: Icon(Icons.settings_outlined, size: 20, color: muted),
+                  Semantics(
+                    label: 'Configurações',
+                    button: true,
+                    child: GestureDetector(
+                      onTap: () => context.push('/ajustes'),
+                      child: Icon(Icons.settings_outlined, size: 20, color: muted),
+                    ),
                   ),
                 ],
               ),
@@ -207,27 +211,34 @@ class _HomeContent extends StatelessWidget {
 
               if (salmo.reflexao?.isNotEmpty == true) ...[
                 const SizedBox(height: AppTheme.sp3),
-                GestureDetector(
-                  onTap: () => context.push('/salmos/${salmo.numero}'),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(
-                        Icons.auto_stories_outlined,
-                        size: 13,
-                        color: accent,
+                Semantics(
+                  label: 'Este Salmo tem uma reflexão. Abrir o Salmo.',
+                  button: true,
+                  child: GestureDetector(
+                    onTap: () => context.push('/salmos/${salmo.numero}'),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 6),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.auto_stories_outlined,
+                            size: 13,
+                            color: accent,
+                          ),
+                          const SizedBox(width: 5),
+                          Text(
+                            'Este Salmo tem uma reflexão',
+                            style: GoogleFonts.instrumentSans(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                              color: accent,
+                              letterSpacing: 0.2,
+                            ),
+                          ),
+                        ],
                       ),
-                      const SizedBox(width: 5),
-                      Text(
-                        'Este Salmo tem uma reflexão',
-                        style: GoogleFonts.instrumentSans(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          color: accent,
-                          letterSpacing: 0.2,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ],
@@ -303,22 +314,29 @@ class _CollectionsShortcut extends StatelessWidget {
           ),
         ),
         const SizedBox(height: AppTheme.sp4),
-        GestureDetector(
-          onTap: () => context.go('/colecoes'),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                'Ver coleções',
-                style: GoogleFonts.instrumentSans(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  color: accent,
-                ),
+        Semantics(
+          label: 'Ver coleções',
+          button: true,
+          child: GestureDetector(
+            onTap: () => context.go('/colecoes'),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 6),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'Ver coleções',
+                    style: GoogleFonts.instrumentSans(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: accent,
+                    ),
+                  ),
+                  const SizedBox(width: AppTheme.sp1),
+                  Icon(Icons.arrow_forward_rounded, size: 14, color: accent),
+                ],
               ),
-              const SizedBox(width: AppTheme.sp1),
-              Icon(Icons.arrow_forward_rounded, size: 14, color: accent),
-            ],
+            ),
           ),
         ),
       ],

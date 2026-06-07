@@ -28,11 +28,15 @@ class ColecoesScreen extends ConsumerWidget {
         centerTitle: false,
         automaticallyImplyLeading: false,
         actions: [
-          GestureDetector(
-            onTap: () => context.push('/ajustes'),
-            child: Padding(
-              padding: const EdgeInsets.only(right: AppTheme.sp4),
-              child: Icon(Icons.settings_outlined, size: 20, color: muted),
+          Semantics(
+            label: 'Configurações',
+            button: true,
+            child: GestureDetector(
+              onTap: () => context.push('/ajustes'),
+              child: Padding(
+                padding: const EdgeInsets.only(right: AppTheme.sp4),
+                child: Icon(Icons.settings_outlined, size: 20, color: muted),
+              ),
             ),
           ),
         ],

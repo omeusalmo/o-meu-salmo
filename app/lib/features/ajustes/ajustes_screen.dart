@@ -27,18 +27,22 @@ class AjustesScreen extends ConsumerWidget {
         backgroundColor: bg,
         elevation: 0,
         scrolledUnderElevation: 0,
-        leading: GestureDetector(
-          onTap: () => context.canPop() ? context.pop() : context.go('/'),
-          child: Center(
-            child: Container(
-              width: 36,
-              height: 36,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(color: border, width: 0.5),
-              ),
-              child: Center(
-                child: Icon(Icons.arrow_back_ios_new_rounded, size: 16, color: muted),
+        leading: Semantics(
+          label: 'Voltar',
+          button: true,
+          child: GestureDetector(
+            onTap: () => context.canPop() ? context.pop() : context.go('/'),
+            child: Center(
+              child: Container(
+                width: 36,
+                height: 36,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(color: border, width: 0.5),
+                ),
+                child: Center(
+                  child: Icon(Icons.arrow_back_ios_new_rounded, size: 16, color: muted),
+                ),
               ),
             ),
           ),

@@ -66,6 +66,7 @@ class CollectionCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Eyebrow: dot emocional + count
+              // dotColor fica apenas no ponto decorativo; texto usa bodyClr (AA 6.9:1 / 9.5:1)
               Row(
                 children: [
                   Container(
@@ -83,7 +84,7 @@ class CollectionCard extends StatelessWidget {
                       fontSize: 11,
                       fontWeight: FontWeight.w400,
                       letterSpacing: 3.74,
-                      color: dotColor,
+                      color: bodyClr,
                     ),
                   ),
                 ],

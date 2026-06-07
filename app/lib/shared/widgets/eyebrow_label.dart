@@ -15,15 +15,21 @@ class EyebrowLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final defaultColor = isDark ? AppColors.nightMuted : AppColors.dayMuted;
+    // nightMuted (1.90:1) e dayMuted (2.62:1) reprovam WCAG AA para texto normal.
+    // nightText (6.9:1) e dayText (9.5:1) garantem AA.
+    final defaultColor = isDark ? AppColors.nightText : AppColors.dayText;
 
-    return Text(
-      text.toUpperCase(),
-      style: GoogleFonts.instrumentSans(
-        fontSize: 11,
-        fontWeight: FontWeight.w400,
-        letterSpacing: 3.74, // 0.34em × 11px — tracking do "O MEU" no DS
-        color: color ?? defaultColor,
+    return Semantics(
+      label: text,
+      excludeSemantics: true,
+      child: Text(
+        text.toUpperCase(),
+        style: GoogleFonts.instrumentSans(
+          fontSize: 11,
+          fontWeight: FontWeight.w400,
+          letterSpacing: 3.74,
+          color: color ?? defaultColor,
+        ),
       ),
     );
   }

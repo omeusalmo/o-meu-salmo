@@ -63,7 +63,7 @@ class DetalheColecaoScreen extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _Header(
-              subtitulo: colecao.subtitulo,
+              titulo: colecao.titulo,
               isDark: isDark,
             ),
             Expanded(
@@ -133,10 +133,10 @@ class DetalheColecaoScreen extends ConsumerWidget {
 // ─────────────────────────────────────────────────────────────────────────────
 
 class _Header extends StatelessWidget {
-  final String subtitulo;
+  final String titulo;
   final bool isDark;
 
-  const _Header({super.key, required this.subtitulo, required this.isDark});
+  const _Header({super.key, required this.titulo, required this.isDark});
 
   @override
   Widget build(BuildContext context) {
@@ -154,26 +154,30 @@ class _Header extends StatelessWidget {
       child: Row(
         children: [
           // Botão voltar
-          GestureDetector(
-            onTap: () => context.canPop() ? context.pop() : context.go('/colecoes'),
-            child: Container(
-              width: 44,
-              height: 44,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(color: border, width: 0.5),
-              ),
-              child: Center(
-                child: Icon(
-                  Icons.arrow_back_ios_new_rounded,
-                  size: 18,
-                  color: isDark ? AppColors.nightText : AppColors.dayText,
+          Semantics(
+            label: 'Voltar',
+            button: true,
+            child: GestureDetector(
+              onTap: () => context.canPop() ? context.pop() : context.go('/colecoes'),
+              child: Container(
+                width: 44,
+                height: 44,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(color: border, width: 0.5),
+                ),
+                child: Center(
+                  child: Icon(
+                    Icons.arrow_back_ios_new_rounded,
+                    size: 18,
+                    color: isDark ? AppColors.nightText : AppColors.dayText,
+                  ),
                 ),
               ),
             ),
           ),
           const SizedBox(width: AppTheme.sp3),
-          EyebrowLabel(subtitulo, color: accent),
+          EyebrowLabel(titulo, color: accent),
         ],
       ),
     );

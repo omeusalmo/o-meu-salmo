@@ -213,7 +213,7 @@ class AppTheme {
     ),
     bodySmall: GoogleFonts.instrumentSans(
       fontSize: 13, fontWeight: FontWeight.w400,
-      color: body.withAlpha(166), // ~65%
+      color: body,
     ),
 
     // ── Labels — Instrument Sans uppercase com tracking ───────────────────
@@ -226,8 +226,8 @@ class AppTheme {
     ),
     labelSmall: GoogleFonts.instrumentSans(
       fontSize: 11, fontWeight: FontWeight.w400,
-      color: body.withAlpha(166),
-      letterSpacing: 1.76, // 0.16em × 11
+      color: body,
+      letterSpacing: 1.76,
     ),
   );
 }

@@ -140,16 +140,19 @@ class _Header extends StatelessWidget {
         children: [
           _IconBtn(
             onTap: () => context.canPop() ? context.pop() : context.go('/salmos'),
+            semanticsLabel: 'Voltar',
             child: Icon(Icons.arrow_back_ios_new_rounded, size: 18, color: muted),
           ),
           const Spacer(),
           _IconBtn(
             onTap: () => context.push('/compositor?numero=${salmo.numero}'),
+            semanticsLabel: 'Compartilhar Salmo',
             child: Icon(Icons.ios_share_rounded, size: 18, color: muted),
           ),
           const SizedBox(width: AppTheme.sp2),
           _IconBtn(
             onTap: onFavoritoTap,
+            semanticsLabel: isFavorito ? 'Remover dos favoritos' : 'Guardar nos favoritos',
             child: AnimatedSwitcher(
               duration: AppTheme.durFast,
               child: Icon(
@@ -214,7 +217,11 @@ class _BodyState extends ConsumerState<_Body> with SingleTickerProviderStateMixi
   void _reveal() {
     HapticFeedback.mediumImpact();
     setState(() => _revealed = true);
-    _revealCtrl.forward();
+    if (MediaQuery.of(context).disableAnimations) {
+      _revealCtrl.value = 1.0;
+    } else {
+      _revealCtrl.forward();
+    }
   }
 
   @override
@@ -331,7 +338,7 @@ class _LockedReflexao extends StatelessWidget {
             Icon(
               Icons.lock_outline_rounded,
               size: 15,
-              color: muted.withAlpha(120),
+              color: muted,
             ),
             const SizedBox(width: AppTheme.sp2),
             Expanded(
@@ -340,7 +347,7 @@ class _LockedReflexao extends StatelessWidget {
                 style: GoogleFonts.instrumentSans(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
-                  color: muted.withAlpha(160),
+                  color: muted,
                   height: 1.6,
                 ),
               ),
@@ -427,32 +434,36 @@ class _RevealButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.symmetric(vertical: AppTheme.sp3 + 4),
-        decoration: BoxDecoration(
-          color: accent.withAlpha(22),
-          borderRadius: BorderRadius.circular(AppTheme.radiusMd),
-          border: Border.all(color: accent.withAlpha(160), width: 1.0),
-        ),
-        child: Center(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(Icons.auto_stories_outlined, size: 16, color: accent),
-              const SizedBox(width: AppTheme.sp2),
-              Text(
-                'Ler a reflexão',
-                style: GoogleFonts.instrumentSans(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                  color: accent,
-                  letterSpacing: 0.2,
+    return Semantics(
+      label: 'Ler a reflexão deste Salmo',
+      button: true,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(vertical: AppTheme.sp3 + 4),
+          decoration: BoxDecoration(
+            color: accent.withAlpha(22),
+            borderRadius: BorderRadius.circular(AppTheme.radiusMd),
+            border: Border.all(color: accent.withAlpha(160), width: 1.0),
+          ),
+          child: Center(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.auto_stories_outlined, size: 16, color: accent),
+                const SizedBox(width: AppTheme.sp2),
+                Text(
+                  'Ler a reflexão',
+                  style: GoogleFonts.instrumentSans(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
+                    color: accent,
+                    letterSpacing: 0.2,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -510,24 +521,33 @@ class _ReflexaoContent extends StatelessWidget {
 class _IconBtn extends StatelessWidget {
   final VoidCallback? onTap;
   final Widget child;
+  final String semanticsLabel;
 
-  const _IconBtn({required this.onTap, required this.child});
+  const _IconBtn({
+    required this.onTap,
+    required this.child,
+    required this.semanticsLabel,
+  });
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final border = isDark ? AppColors.nightLine : AppColors.dayLine;
 
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 44,
-        height: 44,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          border: Border.all(color: border, width: 0.5),
+    return Semantics(
+      label: semanticsLabel,
+      button: true,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          width: 44,
+          height: 44,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(color: border, width: 0.5),
+          ),
+          child: Center(child: child),
         ),
-        child: Center(child: child),
       ),
     );
   }
@@ -655,6 +675,7 @@ class _BackBar extends StatelessWidget {
               final router = GoRouter.of(context);
               router.canPop() ? router.pop() : router.go('/salmos');
             },
+            semanticsLabel: 'Voltar',
             child: Icon(Icons.arrow_back_ios_new_rounded, size: 18, color: muted),
           ),
         ],
