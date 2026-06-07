@@ -13,16 +13,22 @@ App Android de Salmos com curadoria por emoção. Solo founder: Jeff Silva (CEO)
 ## Mapa de arquivos
 
 ```
-o-meu-salmo/
+o-meu-salmo/                      ← raiz do git (github.com/omeusalmo/o-meu-salmo)
 ├── app/                          ← Flutter app (Dart)
+│   ├── lib/                      ← código Dart (features, core, data, shared)
+│   ├── android/                  ← config Android + signing
+│   ├── assets/                   ← salmos.json, imagens, áudios
+│   ├── docs/                     ← (legado — não é o GH Pages ativo)
+│   └── test/                     ← testes + testadores-meu-salmo.md
 ├── Landing Page/
 │   ├── index.html                ← landing page (HTML/CSS/JS inline)
 │   ├── robots.txt
-│   ├── llms.txt
-│   └── privacy_policy.html
+│   ├── sitemap.xml
+│   └── llms.txt
 ├── o-meu-salmo-design/
 │   ├── design-system.html        ← FONTE DA VERDADE visual ★
 │   ├── SKILL.md                  ← skill de design do projeto
+│   ├── brand/                    ← identidade visual, ícone, acessibilidade
 │   ├── docs/
 │   │   ├── ux-writing-voice-and-tone.md
 │   │   └── arquitetura-informacao.md
@@ -30,9 +36,23 @@ o-meu-salmo/
 ├── assets/
 │   ├── plano-de-negocios-app-salmos.md
 │   ├── meu-salmo-brand-briefing.md
-│   └── roadmap-app-salmos.md
+│   ├── roadmap-app-salmos.md
+│   ├── roadmap-gerente.md        ← roadmap pós-lançamento para agente gerente
+│   └── reflexoes-salmos.md       ← fonte das reflexões dos 150 salmos
+├── audio_testes/                 ← testes de vozes TTS (salmo 23, 30 vozes)
+├── docs/                         ← GitHub Pages (main /docs)
+│   └── privacy_policy.html       ← omeusalmo.github.io/o-meu-salmo/privacy_policy.html
+├── privacy_policy.html           ← cópia root (canônico em docs/)
+├── gerar_audios.py               ← script geração de áudios TTS
 └── ds-vs-lp.md                   ← auditoria DS × LP (tokens, divergências)
 ```
+
+## Git e deploy
+
+- **Repo:** `github.com/omeusalmo/o-meu-salmo` (raiz = `o-meu-salmo/`)
+- **GH Pages:** `main /docs` → `https://omeusalmo.github.io/o-meu-salmo/`
+- **Signing:** `app/android/key.properties` (gitignored) + keystore em `~/keystores/omeusalmo.jks`
+- **Workflow:** qualquer mudança → push para `main`. Todos os tech leads seguem esta regra.
 
 ## Design System — regras essenciais
 

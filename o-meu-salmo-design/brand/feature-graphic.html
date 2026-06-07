@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1024">
+  <title>Feature Graphic — O meu Salmo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1024px;
+      height: 500px;
+      overflow: hidden;
+      background: #080B1C;
+      font-family: 'Instrument Sans', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .canvas {
+      width: 1024px;
+      height: 500px;
+      background: #080B1C;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 80px;
+    }
+
+    /* Background glow */
+    .glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(42,71,221,0.18) 0%, transparent 70%);
+      top: 50%;
+      left: 30%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    /* Left: wordmark + tagline */
+    .left {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 420px;
+    }
+
+    .wordmark {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .eyebrow {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #7080C8;
+    }
+
+    .wordmark-main {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      font-weight: 600;
+      font-style: italic;
+      color: #EEF0FC;
+      line-height: 1;
+    }
+
+    .tagline {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: #8C97D4;
+      line-height: 1.5;
+      padding-top: 4px;
+    }
+
+    .collections {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 8px;
+    }
+
+    .chip {
+      background: rgba(42,71,221,0.15);
+      border: 1px solid rgba(42,71,221,0.35);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #8C97D4;
+      letter-spacing: 0.03em;
+    }
+
+    /* Right: verse card */
+    .right {
+      position: relative;
+      z-index: 2;
+      width: 340px;
+    }
+
+    .verse-card {
+      background: #10142C;
+      border: 1px solid #1E2348;
+      border-radius: 22px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .verse-label {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #7080C8;
+    }
+
+    .verse-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 600;
+      color: #EEF0FC;
+      line-height: 1;
+    }
+
+    .verse-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-style: italic;
+      color: #C4A86A;
+      line-height: 1.65;
+    }
+
+    .verse-divider {
+      width: 32px;
+      height: 1px;
+      background: rgba(196,168,106,0.3);
+    }
+
+    .verse-ref {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: #7080C8;
+    }
+
+    /* Accent dot */
+    .accent-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #2A47DD;
+      display: inline-block;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="glow"></div>
+
+    <div class="left">
+      <div class="wordmark">
+        <span class="eyebrow">O MEU</span>
+        <span class="wordmark-main">Salmo</span>
+      </div>
+      <p class="tagline">Salmos para cada momento da vida.<br>Uma pausa que devolve a você mesmo.</p>
+      <div class="collections">
+        <span class="chip">Ansiedade</span>
+        <span class="chip">Sono</span>
+        <span class="chip">Gratidão</span>
+        <span class="chip">Luto</span>
+        <span class="chip">Esperança</span>
+        <span class="chip">Perdão</span>
+        <span class="chip">Louvor</span>
+        <span class="chip">Proteção</span>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="verse-card">
+        <span class="verse-label"><span class="accent-dot"></span>Salmo do dia</span>
+        <span class="verse-number">23</span>
+        <p class="verse-text">O Senhor é o meu pastor;<br>nada me faltará.</p>
+        <div class="verse-divider"></div>
+        <span class="verse-ref">Salmo 23:1</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
