@@ -182,46 +182,12 @@ class _Body extends ConsumerStatefulWidget {
   ConsumerState<_Body> createState() => _BodyState();
 }
 
-class _BodyState extends ConsumerState<_Body> with SingleTickerProviderStateMixin {
+class _BodyState extends ConsumerState<_Body> {
   bool _revealed = false;
-  late final AnimationController _revealCtrl;
-  late final Animation<double> _revealFade;
-  late final Animation<Offset> _revealSlide;
-
-  @override
-  void initState() {
-    super.initState();
-    _revealCtrl = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 620),
-    );
-    _revealFade = CurvedAnimation(
-      parent: _revealCtrl,
-      curve: const Interval(0.12, 0.90, curve: Curves.easeOut),
-    );
-    _revealSlide = Tween<Offset>(
-      begin: const Offset(0.0, 0.10),
-      end: Offset.zero,
-    ).animate(CurvedAnimation(
-      parent: _revealCtrl,
-      curve: const Interval(0.08, 0.80, curve: Curves.easeOutCubic),
-    ));
-  }
-
-  @override
-  void dispose() {
-    _revealCtrl.dispose();
-    super.dispose();
-  }
 
   void _reveal() {
     HapticFeedback.mediumImpact();
     setState(() => _revealed = true);
-    if (MediaQuery.of(context).disableAnimations) {
-      _revealCtrl.value = 1.0;
-    } else {
-      _revealCtrl.forward();
-    }
   }
 
   @override
@@ -304,8 +270,6 @@ class _BodyState extends ConsumerState<_Body> with SingleTickerProviderStateMixi
                   ? _UnlockedReflexao(
                       salmo: salmo,
                       revealed: _revealed,
-                      revealFade: _revealFade,
-                      revealSlide: _revealSlide,
                       onReveal: _reveal,
                     )
                   : _LockedReflexao(),
@@ -366,15 +330,11 @@ class _LockedReflexao extends StatelessWidget {
 class _UnlockedReflexao extends StatelessWidget {
   final Salmo salmo;
   final bool revealed;
-  final Animation<double> revealFade;
-  final Animation<Offset> revealSlide;
   final VoidCallback onReveal;
 
   const _UnlockedReflexao({
     required this.salmo,
     required this.revealed,
-    required this.revealFade,
-    required this.revealSlide,
     required this.onReveal,
   });
 
@@ -390,33 +350,16 @@ class _UnlockedReflexao extends StatelessWidget {
         const EyebrowLabel('Reflexão'),
         const SizedBox(height: AppTheme.sp4),
 
-        // Botão de revelar — some quando conteúdo aparece
-        AnimatedSize(
-          duration: const Duration(milliseconds: 250),
-          curve: Curves.easeOut,
-          child: revealed
-              ? const SizedBox.shrink()
-              : _RevealButton(
-                  onTap: onReveal,
-                  accent: accent,
-                ),
-        ),
-
-        // Conteúdo da reflexão — expande + sobe + aparece
-        AnimatedSize(
-          duration: const Duration(milliseconds: 620),
-          curve: Curves.easeOutCubic,
-          child: revealed
-              ? ClipRect(
-                  child: FadeTransition(
-                    opacity: revealFade,
-                    child: SlideTransition(
-                      position: revealSlide,
-                      child: _ReflexaoContent(salmo: salmo, text: text, accent: accent),
-                    ),
-                  ),
-                )
-              : const SizedBox.shrink(),
+        AnimatedCrossFade(
+          duration: const Duration(milliseconds: 480),
+          crossFadeState: revealed
+              ? CrossFadeState.showSecond
+              : CrossFadeState.showFirst,
+          firstCurve: Curves.easeOut,
+          secondCurve: Curves.easeOut,
+          sizeCurve: Curves.easeOutCubic,
+          firstChild: _RevealButton(onTap: onReveal, accent: accent),
+          secondChild: _ReflexaoContent(salmo: salmo, text: text, accent: accent),
         ),
       ],
     );

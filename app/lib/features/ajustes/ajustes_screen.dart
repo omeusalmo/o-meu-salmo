@@ -118,6 +118,8 @@ class AjustesScreen extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const Text('🙏', style: TextStyle(fontSize: 28)),
+                const SizedBox(height: AppTheme.sp2),
                 Text(
                   'Você usa. Gosta.',
                   style: GoogleFonts.playfairDisplay(

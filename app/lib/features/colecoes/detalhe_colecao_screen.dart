@@ -63,7 +63,7 @@ class DetalheColecaoScreen extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _Header(
-              subtitulo: colecao.subtitulo,
+              titulo: colecao.titulo,
               isDark: isDark,
             ),
             Expanded(
@@ -133,15 +133,14 @@ class DetalheColecaoScreen extends ConsumerWidget {
 // ─────────────────────────────────────────────────────────────────────────────
 
 class _Header extends StatelessWidget {
-  final String subtitulo;
+  final String titulo;
   final bool isDark;
 
-  const _Header({super.key, required this.subtitulo, required this.isDark});
+  const _Header({super.key, required this.titulo, required this.isDark});
 
   @override
   Widget build(BuildContext context) {
     final border = isDark ? AppColors.nightLine  : AppColors.dayLine;
-    final muted  = isDark ? AppColors.nightText  : AppColors.dayText;
     final accent = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
 
     return Container(
@@ -153,7 +152,6 @@ class _Header extends StatelessWidget {
       ),
       child: Row(
         children: [
-          // Botão voltar
           Semantics(
             label: 'Voltar',
             button: true,
@@ -177,7 +175,7 @@ class _Header extends StatelessWidget {
             ),
           ),
           const SizedBox(width: AppTheme.sp3),
-          EyebrowLabel(subtitulo, color: accent),
+          EyebrowLabel(titulo, color: accent),
         ],
       ),
     );

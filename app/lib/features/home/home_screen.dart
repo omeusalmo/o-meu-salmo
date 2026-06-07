@@ -216,24 +216,25 @@ class _HomeContent extends StatelessWidget {
                   button: true,
                   child: GestureDetector(
                     onTap: () => context.push('/salmos/${salmo.numero}'),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 6),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                      decoration: BoxDecoration(
+                        color: accent.withAlpha(18),
+                        borderRadius: BorderRadius.circular(AppTheme.radiusPill),
+                        border: Border.all(color: accent.withAlpha(60), width: 0.5),
+                      ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(
-                            Icons.auto_stories_outlined,
-                            size: 13,
-                            color: accent,
-                          ),
+                          Icon(Icons.auto_stories_outlined, size: 12, color: accent),
                           const SizedBox(width: 5),
                           Text(
-                            'Este Salmo tem uma reflexão',
+                            'tem reflexão',
                             style: GoogleFonts.instrumentSans(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
+                              fontSize: 11,
+                              fontWeight: FontWeight.w500,
                               color: accent,
-                              letterSpacing: 0.2,
+                              letterSpacing: 0.3,
                             ),
                           ),
                         ],
