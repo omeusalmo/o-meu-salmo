@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salmos — Dark vs Light</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Instrument+Sans:wght@300;400;500&family=Cormorant:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Pêssego / damasco — paleta completa */
+  --peach-100: #fff1ea;
+  --peach-200: #ffdece;
+  --peach-300: #f9c4a4;
+  --peach-400: #efa882;
+  --peach-500: #e08860;   /* acento principal */
+  --peach-600: #c46e48;
+}
+
+body {
+  background: #f5f0eb;
+  font-family: 'Instrument Sans', sans-serif;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.header {
+  text-align: center;
+  padding: 52px 24px 40px;
+}
+.header-eyebrow {
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #a09080;
+  margin-bottom: 12px;
+}
+.header-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 400;
+  color: #1a1410;
+  letter-spacing: -.01em;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.header-title em { font-style: italic; color: var(--peach-500); }
+.header-sub {
+  font-size: 13px;
+  color: #9a8878;
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* ── SCENE ── */
+.scene {
+  display: flex;
+  gap: 0;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 32px 48px;
+  flex-wrap: wrap;
+  gap: 48px;
+}
+
+.variant {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.variant-label {
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #9a8878;
+}
+
+/* ── PHONE ── */
+.phone {
+  width: 220px;
+  border-radius: 38px;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.phone-dark {
+  background: #12100d;
+  border: 1.5px solid #2a2420;
+  box-shadow: 0 32px 80px rgba(0,0,0,.45), 0 8px 24px rgba(0,0,0,.3);
+}
+
+.phone-light {
+  background: #fffaf6;
+  border: 1.5px solid #e8ddd4;
+  box-shadow: 0 32px 80px rgba(180,140,110,.18), 0 8px 24px rgba(180,140,110,.1);
+}
+
+.notch {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.notch-pill-d { width: 50px; height: 5px; border-radius: 3px; background: #2a2420; }
+.notch-pill-l { width: 50px; height: 5px; border-radius: 3px; background: #e0d5ca; }
+
+/* ── TELA HOME DARK ── */
+.home-d {
+  background: #12100d;
+  padding: 12px 0 0;
+  min-height: 430px;
+  display: flex;
+  flex-direction: column;
+}
+.hd-ey { font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: #4a4038; padding: 0 22px; margin-bottom: 10px; }
+.hd-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 100px;
+  line-height: .84;
+  color: #f5ede4;
+  padding: 0 18px;
+  letter-spacing: -.03em;
+  font-weight: 400;
+}
+.hd-num em {
+  display: block;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--peach-400);
+  letter-spacing: .01em;
+  margin-top: 6px;
+}
+.hd-rule { width: 24px; height: 1px; background: #2a2420; margin: 18px 22px; }
+.hd-verse {
+  font-family: 'Cormorant', serif;
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #a89880;
+  padding: 0 22px;
+  flex: 1;
+}
+.hd-ref { font-size: 9px; letter-spacing: .1em; color: #4a4038; padding: 10px 22px 0; text-transform: uppercase; }
+.hd-bot {
+  padding: 16px 22px 24px;
+  border-top: .5px solid #1e1c18;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+}
+.play-d {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--peach-500);
+  display: flex; align-items: center; justify-content: center;
+}
+.play-d:hover { background: var(--peach-400); }
+.tri { width:0; height:0; border-top:5px solid transparent; border-bottom:5px solid transparent; border-left:9px solid #12100d; margin-left:2px; }
+.tri-sm { border-top:3px solid transparent; border-bottom:3px solid transparent; border-left:6px solid #12100d; margin-left:1px; }
+.tri-l { border-left-color: #fffaf6; }
+.play-label-d { font-size: 10px; color: #a89880; }
+.play-row { display: flex; align-items: center; gap: 10px; }
+.dots { display: flex; gap: 5px; }
+.dot-d { width:5px; height:5px; border-radius:50%; background:#2a2420; }
+.dot-d.on { background: var(--peach-400); }
+
+/* ── TELA HOME LIGHT ── */
+.home-l {
+  background: #fffaf6;
+  padding: 12px 0 0;
+  min-height: 430px;
+  display: flex;
+  flex-direction: column;
+}
+.hl-ey { font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: #c0b0a0; padding: 0 22px; margin-bottom: 10px; }
+.hl-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 100px;
+  line-height: .84;
+  color: #1a1410;
+  padding: 0 18px;
+  letter-spacing: -.03em;
+  font-weight: 400;
+}
+.hl-num em {
+  display: block;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--peach-500);
+  letter-spacing: .01em;
+  margin-top: 6px;
+}
+.hl-rule { width: 24px; height: 1px; background: #e8ddd4; margin: 18px 22px; }
+.hl-verse {
+  font-family: 'Cormorant', serif;
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #7a6858;
+  padding: 0 22px;
+  flex: 1;
+}
+.hl-ref { font-size: 9px; letter-spacing: .1em; color: #c0b0a0; padding: 10px 22px 0; text-transform: uppercase; }
+.hl-bot {
+  padding: 16px 22px 24px;
+  border-top: .5px solid #eee5dc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+}
+.play-l {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--peach-500);
+  display: flex; align-items: center; justify-content: center;
+}
+.play-label-l { font-size: 10px; color: #9a8878; }
+.dot-l { width:5px; height:5px; border-radius:50%; background:#e8ddd4; }
+.dot-l.on { background: var(--peach-500); }
+
+/* ── TELA LEITURA ── */
+.read-d {
+  background: #12100d;
+  padding: 10px 0 0;
+  min-height: 430px;
+  display: flex;
+  flex-direction: column;
+}
+.read-l {
+  background: #fffaf6;
+  padding: 10px 0 0;
+  min-height: 430px;
+  display: flex;
+  flex-direction: column;
+}
+
+.rhd-d {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 22px 14px;
+  border-bottom: .5px solid #1e1c18;
+}
+.rhd-l {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 22px 14px;
+  border-bottom: .5px solid #eee5dc;
+}
+.back-d { font-size: 10px; color: #4a4038; }
+.back-l { font-size: 10px; color: #c0b0a0; }
+.icons { display: flex; gap: 10px; }
+.icon-d {
+  width:22px; height:22px; border:.5px solid #2a2420;
+  border-radius:50%; display:flex; align-items:center; justify-content:center;
+}
+.icon-l {
+  width:22px; height:22px; border:.5px solid #e8ddd4;
+  border-radius:50%; display:flex; align-items:center; justify-content:center;
+}
+
+.rcoll-d { font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--peach-400); padding: 14px 22px 0; }
+.rcoll-l { font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--peach-500); padding: 14px 22px 0; }
+
+.rtitle-d {
+  font-family: 'Playfair Display', serif;
+  font-size: 58px; line-height: .88; letter-spacing: -.025em;
+  color: #f5ede4; padding: 6px 22px 0; font-weight: 400;
+}
+.rtitle-d em { color: var(--peach-400); font-style: italic; }
+
+.rtitle-l {
+  font-family: 'Playfair Display', serif;
+  font-size: 58px; line-height: .88; letter-spacing: -.025em;
+  color: #1a1410; padding: 6px 22px 0; font-weight: 400;
+}
+.rtitle-l em { color: var(--peach-500); font-style: italic; }
+
+.verses { flex:1; padding: 18px 22px 0; display:flex; flex-direction:column; gap:12px; overflow:hidden; }
+.verse { display:flex; gap:10px; }
+.vn-d { font-size:9px; color: var(--peach-400); margin-top:4px; letter-spacing:.04em; width:12px; flex-shrink:0; }
+.vn-l { font-size:9px; color: var(--peach-500); margin-top:4px; letter-spacing:.04em; width:12px; flex-shrink:0; }
+.vt-d { font-family:'Cormorant',serif; font-style:italic; font-size:14.5px; line-height:1.65; color:#7a6858; }
+.vt-d.on { color:#f5ede4; }
+.vt-l { font-family:'Cormorant',serif; font-style:italic; font-size:14.5px; line-height:1.65; color:#c0b0a0; }
+.vt-l.on { color:#1a1410; }
+
+.player-d { padding:14px 22px 22px; border-top:.5px solid #1e1c18; display:flex; align-items:center; gap:10px; }
+.player-l { padding:14px 22px 22px; border-top:.5px solid #eee5dc; display:flex; align-items:center; gap:10px; }
+.psm-d { width:28px; height:28px; border-radius:50%; background: var(--peach-500); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.psm-l { width:28px; height:28px; border-radius:50%; background: var(--peach-500); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.prog-d { flex:1; height:2px; background:#2a2420; border-radius:1px; position:relative; }
+.prog-l { flex:1; height:2px; background:#e8ddd4; border-radius:1px; position:relative; }
+.prog-fill { position:absolute; left:0; top:0; height:100%; width:33%; background: var(--peach-500); border-radius:1px; }
+.time-d { font-size:9px; color:#4a4038; letter-spacing:.06em; }
+.time-l { font-size:9px; color:#c0b0a0; letter-spacing:.06em; }
+
+/* ── DIVISOR CENTRAL ── */
+.divider-section {
+  text-align: center;
+  padding: 0 24px 56px;
+}
+.vs-label {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #c0b0a0;
+  padding: 6px 16px;
+  border: .5px solid #e0d5ca;
+  border-radius: 20px;
+  background: #fffaf6;
+}
+
+/* ── PALETAS LADO A LADO ── */
+.palettes {
+  display: flex;
+  gap: 24px;
+  padding: 0 32px 56px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pal-block { flex: 1; min-width: 280px; }
+.pal-title { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #9a8878; margin-bottom: 12px; }
+.pal-row { display: flex; height: 44px; border-radius: 8px; overflow: hidden; }
+.sw { flex:1; display:flex; align-items:flex-end; padding:0 8px 5px; }
+.sw-lbl { font-size: 9px; letter-spacing:.06em; }
+
+/* ── TIPOGRAFIA ── */
+.typo-section {
+  padding: 0 32px 56px;
+  border-top: .5px solid #e0d5ca;
+  margin: 0 32px;
+  padding-top: 48px;
+}
+.typo-label { font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#9a8878; margin-bottom:24px; }
+.typo-rows { display:flex; flex-direction:column; gap:0; }
+.typo-row { display:flex; align-items:baseline; gap:20px; border-bottom:.5px solid #f0e8e0; padding-bottom:20px; margin-bottom:20px; }
+.typo-row:last-child { border-bottom:none; margin-bottom:0; }
+.tmeta { width:100px; flex-shrink:0; }
+.tmeta-role { font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:#b0a090; margin-bottom:3px; }
+.tmeta-spec { font-size:10px; color:#c8bab0; line-height:1.5; }
+.t-xl { font-family:'Playfair Display',serif; font-size:68px; line-height:.88; color:#1a1410; letter-spacing:-.025em; font-weight:400; }
+.t-xl em { color: var(--peach-500); font-style:italic; }
+.t-lg { font-family:'Playfair Display',serif; font-size:38px; line-height:.95; color:#1a1410; letter-spacing:-.015em; font-weight:400; }
+.t-body { font-family:'Cormorant',serif; font-style:italic; font-size:22px; line-height:1.65; color:#7a6858; max-width:420px; }
+.t-ui { font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#b0a090; }
+
+/* ── NOTAS DE DECISÃO ── */
+.notes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: #e8ddd4;
+  margin: 0 32px 56px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.note { background: #fffaf6; padding: 28px 28px; }
+.note-tag { font-size: 9px; letter-spacing:.14em; text-transform:uppercase; color: var(--peach-500); margin-bottom:8px; }
+.note-title { font-family:'Playfair Display',serif; font-size:18px; color:#1a1410; margin-bottom:8px; font-weight:400; }
+.note-desc { font-size:12px; color:#9a8878; line-height:1.65; }
+
+/* ── ANIMAÇÕES ── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(10px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.hd-num, .hl-num { animation: fadeUp .7s ease forwards; }
+.hd-verse, .hl-verse { animation: fadeUp .7s .1s ease both; }
+.rtitle-d, .rtitle-l { animation: fadeUp .6s ease forwards; }
+.verse { opacity:0; animation: fadeUp .45s ease forwards; }
+.verse:nth-child(1) { animation-delay:.05s; }
+.verse:nth-child(2) { animation-delay:.13s; }
+.verse:nth-child(3) { animation-delay:.21s; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-eyebrow">Comparativo de tema</div>
+  <div class="header-title">Dark <em>vs</em> Light</div>
+  <div class="header-sub">Pêssego / damasco como acento — Playfair Display + Cormorant — mesma estrutura, duas atmosferas</div>
+</div>
+
+<!-- CENAS -->
+<div class="scene">
+
+  <!-- DARK -->
+  <div class="variant">
+    <div class="variant-label">◐ Modo noturno</div>
+    <div style="display:flex; gap:16px;">
+
+      <!-- Home dark -->
+      <div class="phone phone-dark">
+        <div class="notch"><div class="notch-pill-d"></div></div>
+        <div class="home-d">
+          <div class="hd-ey">Salmo do dia</div>
+          <div class="hd-num">46<em>Para a ansiedade</em></div>
+          <div class="hd-rule"></div>
+          <div class="hd-verse">"Aquietai-vos e sabei que eu sou Deus."</div>
+          <div class="hd-ref">46 · 10</div>
+          <div class="hd-bot">
+            <div class="play-row">
+              <div class="play-d"><div class="tri"></div></div>
+              <div class="play-label-d">Ouvir narração</div>
+            </div>
+            <div class="dots">
+              <div class="dot-d on"></div>
+              <div class="dot-d"></div>
+              <div class="dot-d"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Leitura dark -->
+      <div class="phone phone-dark">
+        <div class="notch"><div class="notch-pill-d"></div></div>
+        <div class="read-d">
+          <div class="rhd-d">
+            <div class="back-d">← voltar</div>
+            <div class="icons">
+              <div class="icon-d">
+                <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
+                  <path d="M4.5 7.5L1.5 4.5C1 4 1 2.5 2.5 2.5C3.2 2.5 3.8 3 4.5 3.8C5.2 3 5.8 2.5 6.5 2.5C8 2.5 8 4 7.5 4.5Z" stroke="#4a4038" stroke-width=".7" fill="none"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="rcoll-d">Para a ansiedade</div>
+          <div class="rtitle-d">Salmo<br><em>23</em></div>
+          <div class="verses">
+            <div class="verse">
+              <div class="vn-d">1</div>
+              <div class="vt-d on">O Senhor é o meu pastor; nada me faltará.</div>
+            </div>
+            <div class="verse">
+              <div class="vn-d">2</div>
+              <div class="vt-d">Ele me faz repousar em pastos verdejantes...</div>
+            </div>
+            <div class="verse">
+              <div class="vn-d">3</div>
+              <div class="vt-d">Refrigera a minha alma; guia-me pelas veredas...</div>
+            </div>
+          </div>
+          <div class="player-d">
+            <div class="psm-d"><div class="tri tri-sm"></div></div>
+            <div class="prog-d"><div class="prog-fill"></div></div>
+            <div class="time-d">1:24</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div style="font-size:11px; color:#9a8878; max-width:290px; text-align:center; line-height:1.6;">
+      Intimidade. Para abrir às 2h com ansiedade ou antes de dormir. O escuro reduz o estímulo visual ao mínimo.
+    </div>
+  </div>
+
+  <!-- LIGHT -->
+  <div class="variant">
+    <div class="variant-label">○ Modo diurno</div>
+    <div style="display:flex; gap:16px;">
+
+      <!-- Home light -->
+      <div class="phone phone-light">
+        <div class="notch"><div class="notch-pill-l"></div></div>
+        <div class="home-l">
+          <div class="hl-ey">Salmo do dia</div>
+          <div class="hl-num">46<em>Para a ansiedade</em></div>
+          <div class="hl-rule"></div>
+          <div class="hl-verse">"Aquietai-vos e sabei que eu sou Deus."</div>
+          <div class="hl-ref">46 · 10</div>
+          <div class="hl-bot">
+            <div class="play-row">
+              <div class="play-l"><div class="tri tri-l"></div></div>
+              <div class="play-label-l">Ouvir narração</div>
+            </div>
+            <div class="dots">
+              <div class="dot-l on"></div>
+              <div class="dot-l"></div>
+              <div class="dot-l"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Leitura light -->
+      <div class="phone phone-light">
+        <div class="notch"><div class="notch-pill-l"></div></div>
+        <div class="read-l">
+          <div class="rhd-l">
+            <div class="back-l">← voltar</div>
+            <div class="icons">
+              <div class="icon-l">
+                <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
+                  <path d="M4.5 7.5L1.5 4.5C1 4 1 2.5 2.5 2.5C3.2 2.5 3.8 3 4.5 3.8C5.2 3 5.8 2.5 6.5 2.5C8 2.5 8 4 7.5 4.5Z" stroke="#c0b0a0" stroke-width=".7" fill="none"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="rcoll-l">Para a ansiedade</div>
+          <div class="rtitle-l">Salmo<br><em>23</em></div>
+          <div class="verses">
+            <div class="verse">
+              <div class="vn-l">1</div>
+              <div class="vt-l on">O Senhor é o meu pastor; nada me faltará.</div>
+            </div>
+            <div class="verse">
+              <div class="vn-l">2</div>
+              <div class="vt-l">Ele me faz repousar em pastos verdejantes...</div>
+            </div>
+            <div class="verse">
+              <div class="vn-l">3</div>
+              <div class="vt-l">Refrigera a minha alma; guia-me pelas veredas...</div>
+            </div>
+          </div>
+          <div class="player-l">
+            <div class="psm-l"><div class="tri tri-sm tri-l"></div></div>
+            <div class="prog-l"><div class="prog-fill"></div></div>
+            <div class="time-l">1:24</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div style="font-size:11px; color:#9a8878; max-width:290px; text-align:center; line-height:1.6;">
+      Abertura. Para a devoção da manhã, gratidão, dia a dia. O creme aquecido é convidativo sem ser frio ou clínico.
+    </div>
+  </div>
+
+</div>
+
+<!-- PALETAS -->
+<div class="palettes">
+  <div class="pal-block">
+    <div class="pal-title">◐ Paleta dark</div>
+    <div class="pal-row">
+      <div class="sw" style="background:#12100d;"><span class="sw-lbl" style="color:#2a2420">Base</span></div>
+      <div class="sw" style="background:#1e1c18;"><span class="sw-lbl" style="color:#3a3428">Fundo+</span></div>
+      <div class="sw" style="background:#2a2420;"><span class="sw-lbl" style="color:#4a4038">Linha</span></div>
+      <div class="sw" style="background:#4a4038;"><span class="sw-lbl" style="color:#12100d">Mudo</span></div>
+      <div class="sw" style="background:#a89880;"><span class="sw-lbl" style="color:#12100d">Texto</span></div>
+      <div class="sw" style="background:#f5ede4;"><span class="sw-lbl" style="color:#12100d">Cream</span></div>
+      <div class="sw" style="background:#e08860;"><span class="sw-lbl" style="color:#12100d">Pêssego</span></div>
+    </div>
+  </div>
+  <div class="pal-block">
+    <div class="pal-title">○ Paleta light</div>
+    <div class="pal-row">
+      <div class="sw" style="background:#fffaf6; border:.5px solid #f0e8e0;"><span class="sw-lbl" style="color:#e0d5ca">Base</span></div>
+      <div class="sw" style="background:#f5ede4;"><span class="sw-lbl" style="color:#e0d5ca">Fundo+</span></div>
+      <div class="sw" style="background:#e8ddd4;"><span class="sw-lbl" style="color:#c0b0a0">Linha</span></div>
+      <div class="sw" style="background:#c0b0a0;"><span class="sw-lbl" style="color:#fffaf6">Mudo</span></div>
+      <div class="sw" style="background:#7a6858;"><span class="sw-lbl" style="color:#fffaf6">Texto</span></div>
+      <div class="sw" style="background:#1a1410;"><span class="sw-lbl" style="color:#fffaf6">Título</span></div>
+      <div class="sw" style="background:#e08860;"><span class="sw-lbl" style="color:#fffaf6">Pêssego</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- TIPOGRAFIA -->
+<div class="typo-section">
+  <div class="typo-label">Sistema tipográfico — igual nos dois modos</div>
+  <div class="typo-rows">
+    <div class="typo-row">
+      <div class="tmeta">
+        <div class="tmeta-role">Display</div>
+        <div class="tmeta-spec">Playfair Display<br>68–100px · −0.025em<br>weight 400</div>
+      </div>
+      <div class="t-xl">Salmo <em>23</em></div>
+    </div>
+    <div class="typo-row">
+      <div class="tmeta">
+        <div class="tmeta-role">Coleção</div>
+        <div class="tmeta-spec">Playfair Display<br>38–52px · −0.015em</div>
+      </div>
+      <div class="t-lg">Para a ansiedade</div>
+    </div>
+    <div class="typo-row">
+      <div class="tmeta">
+        <div class="tmeta-role">Corpo do Salmo</div>
+        <div class="tmeta-spec">Cormorant Italic<br>17–22px · 1.65 height</div>
+      </div>
+      <div class="t-body">"O Senhor é o meu pastor; nada me faltará."</div>
+    </div>
+    <div class="typo-row">
+      <div class="tmeta">
+        <div class="tmeta-role">UI / Labels</div>
+        <div class="tmeta-spec">Instrument Sans 300<br>9–11px · 0.16em caps</div>
+      </div>
+      <div class="t-ui">Salmo do dia · Para a ansiedade · 46 · 10</div>
+    </div>
+  </div>
+</div>
+
+<!-- NOTAS -->
+<div class="notes" style="margin-top: 56px;">
+  <div class="note">
+    <div class="note-tag">Modo noturno</div>
+    <div class="note-title">Quando usar o dark</div>
+    <div class="note-desc">Ideal para ansiedade, insônia, luto — momentos em que o usuário precisa de menos estímulo. O pêssego sobre preto tem contraste suficiente sem agredir. Transmite acolhimento íntimo, como uma vela acesa.</div>
+  </div>
+  <div class="note">
+    <div class="note-tag">Modo diurno</div>
+    <div class="note-title">Quando usar o light</div>
+    <div class="note-desc">Ideal para devoção matinal, gratidão, leitura diária. O creme aquecido (#fffaf6) é muito mais suave que branco puro — evita o frio clínico. O pêssego sobre creme é delicado e amigável.</div>
+  </div>
+  <div class="note">
+    <div class="note-tag">Recomendação</div>
+    <div class="note-title">Oferecer os dois</div>
+    <div class="note-desc">Seguir o sistema do dispositivo automaticamente (light de dia, dark à noite), com opção manual nos Ajustes. O pêssego funciona igualmente bem nos dois — o acento nunca precisa mudar.</div>
+  </div>
+  <div class="note">
+    <div class="note-tag">Por que pêssego</div>
+    <div class="note-title">A lógica da cor</div>
+    <div class="note-desc">Quente sem ser intenso. Associado a cuidado, amanhecer, pele, calor humano. Diferente de tudo no mercado de apps religiosos (azul institucional, verde YouVersion, dourado Hallow). É inesperado — e por isso memorável.</div>
+  </div>
+</div>
+
+</body>
+</html>

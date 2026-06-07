@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O meu Salmo — UI Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant:ital,wght@1,300;1,400&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  *,*::before,*::after{box-sizing:border-box;}
+  body{margin:0;background:#cfd3e6;min-height:100vh;display:flex;flex-direction:column;align-items:center;gap:20px;padding:36px 16px;font-family:var(--font-ui);}
+  .toolbar{display:flex;gap:10px;align-items:center;}
+  .toolbar button{font-family:var(--font-ui);font-size:12px;letter-spacing:.05em;border:.5px solid #9aa0c0;background:#fff;color:#2E3A86;border-radius:999px;padding:8px 16px;cursor:pointer;}
+  .toolbar button.on{background:#2A47DD;color:#fff;border-color:#2A47DD;}
+  .phones{display:flex;gap:26px;flex-wrap:wrap;justify-content:center;align-items:flex-start;}
+  .device{width:320px;height:660px;border-radius:38px;overflow:hidden;position:relative;background:var(--bg);box-shadow:0 30px 70px rgba(40,40,80,.35);border:1.5px solid var(--border);}
+  .device::after{content:"";position:absolute;left:50%;top:10px;transform:translateX(-50%);width:90px;height:6px;border-radius:3px;background:var(--border);z-index:50;}
+  .screen{position:absolute;inset:0;padding-top:26px;display:flex;flex-direction:column;}
+  .cap{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#5560a0;text-align:center;margin-top:10px;}
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="components.jsx"></script>
+<script type="text/babel" src="screens.jsx"></script>
+</head>
+<body>
+<div class="toolbar" id="toolbar"></div>
+<div class="phones" id="phones"></div>
+
+<script type="text/babel">
+const { useState } = React;
+
+function Device({ theme, children, caption }) {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div className="device" data-theme={theme === 'day' ? 'day' : undefined}>
+        <div className="screen">
+          <StatusBar theme={theme} />
+          {children}
+        </div>
+      </div>
+      <div className="cap">{caption}</div>
+    </div>
+  );
+}
+
+/* A self-contained interactive flow inside one device */
+function Flow({ theme }) {
+  const [screen, setScreen] = useState('emotions');
+  const [emotion, setEmotion] = useState(EMOTIONS[0]);
+  const [psalm, setPsalm] = useState(PSALMS[0]);
+  const [playing, setPlaying] = useState(false);
+
+  return (
+    <Device theme={theme} caption="Fluxo clicável">
+      {screen === 'emotions' && <EmotionsScreen theme={theme} onPick={(e) => { setEmotion(e); setScreen('collection'); }} />}
+      {screen === 'collection' && <CollectionScreen theme={theme} emotion={emotion} onBack={() => setScreen('emotions')} onOpen={(p) => { setPsalm(p); setScreen('reading'); }} />}
+      {screen === 'reading' && <ReadingScreen psalm={psalm} emotion={emotion} playing={playing} onToggle={() => setPlaying(p => !p)} onBack={() => setScreen('collection')} />}
+    </Device>
+  );
+}
+
+function App() {
+  const [theme, setTheme] = useState('night');
+  return (
+    <>
+      {ReactDOM.createPortal(
+        <>
+          <button className={theme === 'night' ? 'on' : ''} onClick={() => setTheme('night')}>◐ Noturno</button>
+          <button className={theme === 'day' ? 'on' : ''} onClick={() => setTheme('day')}>○ Diurno</button>
+        </>, document.getElementById('toolbar'))}
+      <Flow theme={theme} />
+      <Device theme={theme} caption="Leitura — referência">
+        <ReadingScreen psalm={PSALMS[0]} emotion={EMOTIONS[0]} playing={true} onToggle={() => {}} onBack={() => {}} />
+      </Device>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('phones')).render(<App />);
+</script>
+</body>
+</html>

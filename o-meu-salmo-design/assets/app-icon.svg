@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="O meu Salmo">
+  <defs>
+    <linearGradient id="cover" x1="0.13" y1="0" x2="0.87" y2="1">
+      <stop offset="0" stop-color="#3150E8"></stop>
+      <stop offset="0.46" stop-color="#2A47DD"></stop>
+      <stop offset="1" stop-color="#1B33B4"></stop>
+    </linearGradient>
+    <clipPath id="tile"><rect width="512" height="512" rx="115"></rect></clipPath>
+  </defs>
+
+  <g clip-path="url(#tile)">
+    
+    <rect width="512" height="512" fill="url(#cover)"></rect>
+    
+    <path d="M389 0 H441 V158 L415 130 L389 158 Z" fill="#FFFFFF"></path>
+    
+    <text x="262" y="247" text-anchor="middle" font-family="&#39;Instrument Sans&#39;, sans-serif" font-size="29" font-weight="400" letter-spacing="13.3" fill="#FFFFFF" fill-opacity="0.92">O MEU</text>
+    <text x="256" y="358" text-anchor="middle" font-family="&#39;Playfair Display&#39;, Georgia, serif" font-style="italic" font-weight="500" font-size="116" letter-spacing="-1.7" fill="#FFFFFF">Salmo</text>
+  </g>
+</svg>

@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8">
+<style>
+  body{margin:0;background:#fff;font-family:'Instrument Sans',system-ui,sans-serif;}
+  .wrap{padding:18px 20px;display:flex;gap:22px;align-items:center;}
+  .grp{display:flex;flex-direction:column;gap:8px;align-items:center;}
+  .glabel{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#8C97D4;}
+  .radii{display:flex;gap:8px;align-items:flex-end;}
+  .box{background:#2A47DD;width:44px;height:44px;}
+  .cap{font-size:8px;font-family:monospace;color:#8C97D4;text-align:center;margin-top:3px;}
+  .shadows{display:flex;gap:14px;}
+  .sh{width:54px;height:54px;border-radius:14px;background:#fff;}
+</style></head>
+<body><div class="wrap">
+  <div class="grp">
+    <div class="radii">
+      <div><div class="box" style="border-radius:8px"></div><div class="cap">8 sm</div></div>
+      <div><div class="box" style="border-radius:14px"></div><div class="cap">14 md</div></div>
+      <div><div class="box" style="border-radius:22px"></div><div class="cap">22 lg</div></div>
+      <div><div class="box" style="border-radius:999px"></div><div class="cap">pill</div></div>
+    </div>
+    <div class="glabel">Raios</div>
+  </div>
+  <div class="grp">
+    <div class="shadows">
+      <div><div class="sh" style="box-shadow:0 1px 3px rgba(8,11,28,.18)"></div><div class="cap">sm</div></div>
+      <div><div class="sh" style="box-shadow:0 8px 22px rgba(8,11,28,.28)"></div><div class="cap">md</div></div>
+      <div><div class="sh" style="box-shadow:0 12px 30px rgba(27,51,180,.3)"></div><div class="cap">cobalto</div></div>
+    </div>
+    <div class="glabel">Sombras</div>
+  </div>
+</div></body></html>

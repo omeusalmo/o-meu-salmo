@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O meu Salmo — Acessibilidade & Contraste</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant:ital,wght@1,300;1,400&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root{
+  --cobalt:#2A47DD; --lum:#5567EA; --gold:#C4A86A; --gold-ink:#8A6A28;
+  --night:#080B1C; --plus:#10142C; --cream:#EEF0FC; --dtext:#8C97D4;
+  --lbase:#F5F7FE; --lplus:#E9EDFD; --lline:#D5DCF3; --ltext:#2E3A86; --ltitle:#0C1230; --lmuted:#8C97D4;
+  --pass:#2E7D5B; --large:#9A7320; --fail:#B23A48;
+}
+body{ font-family:'Instrument Sans',sans-serif; background:#ECEDF0; color:var(--ltitle); padding:56px 32px; }
+.page{ max-width:980px; margin:0 auto; display:flex; flex-direction:column; gap:56px; }
+.head{ display:flex; flex-direction:column; gap:14px; padding-bottom:36px; border-bottom:.5px solid var(--lline); }
+.head .eyebrow{ font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--lmuted); }
+.head h1{ font-family:'Playfair Display',serif; font-weight:400; font-size:40px; letter-spacing:-.015em; }
+.head h1 em{ font-style:italic; color:var(--cobalt); }
+.head p{ font-family:'Cormorant',serif; font-style:italic; font-size:19px; color:var(--ltext); max-width:560px; }
+
+.sec{ display:flex; flex-direction:column; gap:18px; }
+.sec-title{ font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--lmuted); }
+.grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:760px){ .grid{ grid-template-columns:1fr 1fr; } }
+
+.card{ border:.5px solid var(--lline); border-radius:14px; overflow:hidden; background:var(--lbase); display:flex; flex-direction:column; }
+.swatch{ height:88px; display:flex; align-items:center; justify-content:center; gap:10px; position:relative; }
+.swatch .aa{ font-family:'Playfair Display',serif; font-size:30px; line-height:1; }
+.swatch .vs{ font-family:'Cormorant',serif; font-style:italic; font-size:15px; }
+.meta{ padding:13px 15px 15px; display:flex; flex-direction:column; gap:7px; }
+.role{ font-size:8px; letter-spacing:.14em; text-transform:uppercase; color:var(--cobalt); }
+.pair{ font-size:12px; font-weight:500; color:var(--ltitle); }
+.hexes{ font-family:'Courier New',monospace; font-size:10px; color:var(--lmuted); }
+.row{ display:flex; align-items:center; justify-content:space-between; margin-top:3px; }
+.ratio{ font-family:'Playfair Display',serif; font-size:22px; color:var(--ltitle); }
+.badge{ font-size:8px; letter-spacing:.1em; text-transform:uppercase; padding:4px 8px; border-radius:20px; font-weight:500; color:#fff; }
+.note{ font-size:10px; line-height:1.5; color:var(--ltext); }
+
+.rules{ background:var(--lbase); border:.5px solid var(--lline); border-radius:16px; padding:30px 34px; display:flex; flex-direction:column; gap:16px; }
+.rules h3{ font-family:'Playfair Display',serif; font-weight:400; font-size:22px; }
+.rule{ display:flex; gap:12px; align-items:flex-start; }
+.rule .k{ width:7px; height:7px; border-radius:50%; margin-top:6px; flex-shrink:0; }
+.rule .t{ font-size:13px; line-height:1.6; color:var(--ltext); }
+.rule .t b{ color:var(--ltitle); font-weight:500; }
+.rule .t code{ font-family:'Courier New',monospace; font-size:12px; background:var(--lplus); padding:1px 5px; border-radius:4px; color:var(--gold-ink); }
+.foot{ border-top:.5px solid var(--lline); padding-top:28px; display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:10px; }
+.foot .fn{ display:flex; align-items:baseline; gap:9px; }
+.foot .fn .e{ font-size:9px; letter-spacing:.28em; text-transform:uppercase; color:var(--ltext); }
+.foot .fn em{ font-family:'Playfair Display',serif; font-style:italic; font-weight:500; font-size:18px; color:var(--cobalt); }
+.foot .m{ font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--lmuted); }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="head">
+    <div class="eyebrow">O meu Salmo · Sistema de cor</div>
+    <h1>Acessibilidade &amp; <em>contraste</em></h1>
+    <p>Cada par de cor foi medido pelo padrão WCAG 2.1. AA exige 4.5:1 para texto normal (3:1 para texto grande); AAA exige 7:1. Os índices abaixo são calculados ao vivo.</p>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title">◐ Modo noturno — texto sobre fundo escuro</div>
+    <div class="grid" id="grid-dark"></div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title">○ Modo diurno — texto sobre fundo claro</div>
+    <div class="grid" id="grid-light"></div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title">Âmbar — o segundo acento, usado com parcimônia</div>
+    <div class="rules">
+      <h3>Regras de uso do âmbar</h3>
+      <div class="rule"><div class="k" style="background:var(--pass)"></div><div class="t"><b>Pontual, não onipresente.</b> O âmbar marca só o <b>versículo em destaque</b> (Salmo do dia) e o card de compartilhamento — nunca o corpo de leitura inteiro. É o brilho do sagrado, não a cor de interface.</div></div>
+      <div class="rule"><div class="k" style="background:var(--pass)"></div><div class="t"><b>No escuro:</b> <code>#C4A86A</code> sobre a noite rende 8.5:1 (AAA). Pode ser texto à vontade.</div></div>
+      <div class="rule"><div class="k" style="background:var(--fail)"></div><div class="t"><b>No claro, como texto:</b> o <code>#C4A86A</code> some (2.1:1 — reprova). Para texto no claro use o âmbar profundo <code>#8A6A28</code> (4.7:1, AA).</div></div>
+      <div class="rule"><div class="k" style="background:var(--large)"></div><div class="t"><b>No claro, decorativo:</b> o <code>#C4A86A</code> só vale como fio, ponto ou preenchimento — jamais como texto essencial.</div></div>
+      <div class="rule"><div class="k" style="background:var(--pass)"></div><div class="t"><b>Cobalto &amp; play:</b> no escuro, o acento de texto é o tom claro <code>#5567EA</code>; o triângulo do play vai em creme sobre o botão cobalto (creme/cobalto = 6.2:1), nunca no tom da noite.</div></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="fn"><span class="e">O meu</span><em>Salmo</em></div>
+    <div class="m">Acessibilidade · WCAG 2.1 AA</div>
+  </div>
+</div>
+
+<script>
+function lum(hex){const c=hex.replace('#','');const r=parseInt(c.substr(0,2),16)/255,g=parseInt(c.substr(2,2),16)/255,b=parseInt(c.substr(4,2),16)/255;const f=v=>v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4);return 0.2126*f(r)+0.7152*f(g)+0.0722*f(b);}
+function ratio(a,b){const L1=lum(a),L2=lum(b),hi=Math.max(L1,L2),lo=Math.min(L1,L2);return (hi+0.05)/(lo+0.05);}
+function badge(r,large){const aa=large?3:4.5,aaa=large?4.5:7;if(r>=aaa)return['AAA','var(--pass)'];if(r>=aa)return['AA','var(--pass)'];if(r>=3)return['AA grande','var(--large)'];return['Reprova','var(--fail)'];}
+
+const DARK = [
+  {role:'Título / número', pair:'Creme / Noite', fg:'#EEF0FC', bg:'#080B1C', sample:'Aa', large:false},
+  {role:'Corpo de texto', pair:'Texto / Noite', fg:'#8C97D4', bg:'#080B1C', sample:'Aa', large:false},
+  {role:'Acento (ícone/label grande)', pair:'Cobalto 400 / Noite', fg:'#5567EA', bg:'#080B1C', sample:'Aa', large:true},
+  {role:'Por que não usar p/ texto', pair:'Cobalto 500 / Noite', fg:'#2A47DD', bg:'#080B1C', sample:'Aa', large:false, note:'No escuro o 500 é escuro demais — use o 400 (#5567EA) ou creme.'},
+  {role:'Versículo em destaque', pair:'Âmbar / Noite', fg:'#C4A86A', bg:'#080B1C', sample:'salmo', vs:true, large:false},
+  {role:'Triângulo do play', pair:'Creme / Cobalto', fg:'#EEF0FC', bg:'#2A47DD', sample:'▶', large:true},
+];
+const LIGHT = [
+  {role:'Título / número', pair:'Título / Claro', fg:'#0C1230', bg:'#F5F7FE', sample:'Aa', large:false},
+  {role:'Corpo de texto', pair:'Texto / Claro', fg:'#2E3A86', bg:'#F5F7FE', sample:'Aa', large:false},
+  {role:'Acento de texto', pair:'Cobalto 500 / Claro', fg:'#2A47DD', bg:'#F5F7FE', sample:'Aa', large:false},
+  {role:'Âmbar como texto — reprova', pair:'Âmbar #C4A86A / Claro', fg:'#C4A86A', bg:'#F5F7FE', sample:'salmo', vs:true, large:false},
+  {role:'Âmbar p/ texto no claro ✓', pair:'Âmbar-ink #8A6A28 / Claro', fg:'#8A6A28', bg:'#F5F7FE', sample:'salmo', vs:true, large:false},
+  {role:'Texto sobre botão', pair:'Branco / Cobalto', fg:'#F5F7FE', bg:'#2A47DD', sample:'Ouvir', large:false},
+];
+
+function render(list, el){
+  document.getElementById(el).innerHTML = list.map(d=>{
+    const r = ratio(d.fg, d.bg);
+    const [bl, bc] = badge(r, d.large);
+    return `<div class="card">
+      <div class="swatch" style="background:${d.bg}">
+        <span class="${d.vs?'vs':'aa'}" style="color:${d.fg}">${d.sample}</span>
+      </div>
+      <div class="meta">
+        <div class="role">${d.role}</div>
+        <div class="pair">${d.pair}</div>
+        <div class="hexes">${d.fg.toUpperCase()} · ${d.bg.toUpperCase()}</div>
+        <div class="row"><span class="ratio">${r.toFixed(2)}:1</span><span class="badge" style="background:${bc}">${bl}</span></div>
+        ${d.note?`<div class="note">${d.note}</div>`:''}
+      </div>
+    </div>`;
+  }).join('');
+}
+render(DARK, 'grid-dark');
+render(LIGHT, 'grid-light');
+</script>
+</body>
+</html>

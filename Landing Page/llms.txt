@@ -1,0 +1,41 @@
+# O meu Salmo
+
+> App Android gratuito com os 150 Salmos da Bíblia organizados em 8 coleções temáticas por emoção.
+
+## O que é
+
+O meu Salmo é um aplicativo Android gratuito que organiza os 150 Salmos da Bíblia em 8 coleções temáticas baseadas em emoções: ansiedade, sono, gratidão, luto, esperança, perdão, louvor e proteção. O usuário escolhe como está se sentindo e o app sugere os Salmos mais indicados para aquele momento. Cada Salmo inclui texto completo em português, narração em áudio sem pressa e uma reflexão curta. Favoritos ficam salvos offline.
+
+## Coleções de Salmos
+
+- **Ansiedade** — Salmos para momentos de medo, preocupação e angústia (ex: Salmo 94)
+- **Sono** — Salmos para descanso, paz e noites difíceis (ex: Salmo 4)
+- **Gratidão** — Salmos de celebração e reconhecimento (ex: Salmo 100)
+- **Luto** — Salmos para momentos de perda e dor profunda (ex: Salmo 46)
+- **Esperança** — Salmos para renovar a fé em momentos de crise (ex: Salmo 62)
+- **Perdão** — Salmos de arrependimento, graça e recomeço (ex: Salmo 32)
+- **Louvor** — Salmos de alegria e adoração (ex: Salmo 150)
+- **Proteção** — Salmos de confiança e fortaleza (ex: Salmo 91)
+
+## Funcionalidades
+
+- 150 Salmos completos em português
+- 8 coleções temáticas por emoção
+- Áudio narrado para cada Salmo
+- Reflexão por Salmo
+- Favoritos salvos localmente
+- Acesso offline
+- Gratuito, sem pagamentos
+
+## Informações Técnicas
+
+- Plataforma: Android
+- Preço: Gratuito
+- Idioma: Português (Brasil)
+- Download: Google Play Store
+- Suporte: jefsilvanh@gmail.com
+
+## Links
+
+- [Landing page](https://omeusalmo.com.br/)
+- [Política de privacidade](https://omeusalmo.com.br/privacy_policy.html)

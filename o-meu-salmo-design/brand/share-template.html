@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O meu Salmo — Cards de Compartilhamento</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant:ital,wght@1,300;1,400&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --peach-400: #5567EA;
+  --peach-500: #2A47DD;
+  --accent-gold: #C4A86A;
+  --gold-ink: #8A6A28;
+  --dark-base: #080B1C;
+  --dark-line: #1E2348;
+  --dark-text: #8C97D4;
+  --dark-cream: #E9EDFD;
+  --light-base: #F5F7FE;
+  --light-line: #D5DCF3;
+  --light-muted: #8C97D4;
+  --light-text: #2E3A86;
+  --light-title: #0C1230;
+  --bg-page: #ECEDF0;
+}
+
+body {
+  font-family: 'Instrument Sans', sans-serif;
+  background: var(--bg-page);
+  color: var(--light-title);
+  padding: 48px 32px 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.head { text-align: center; display: flex; flex-direction: column; gap: 10px; max-width: 560px; }
+.head .kicker { font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--light-muted); }
+.head h1 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: 30px; letter-spacing: -.015em; }
+.head h1 em { color: var(--peach-500); font-style: italic; }
+.head p { font-family: 'Cormorant', serif; font-style: italic; font-size: 17px; color: var(--light-text); }
+
+.cards-row { display: flex; gap: 44px; flex-wrap: wrap; justify-content: center; align-items: flex-start; }
+.card-col { display: flex; flex-direction: column; gap: 14px; align-items: center; }
+.card-col-label { font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: var(--light-muted); }
+
+/* scaled viewport for the true-1080 card */
+.card-frame {
+  width: 432px; height: 432px;      /* 1080 * .4 */
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 30px 70px rgba(34,44,104,.22), 0 8px 22px rgba(34,44,104,.12);
+}
+.card {
+  width: 1080px; height: 1080px;
+  transform: scale(.4);
+  transform-origin: top left;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 130px;
+  text-align: center;
+}
+
+/* ── dark card ── */
+.card-dark {
+  background:
+    radial-gradient(120% 120% at 50% 38%, #10142C 0%, #080B1C 55%, #05071A 100%);
+  color: var(--dark-cream);
+}
+.card-dark .verse { color: var(--accent-gold); }
+.card-dark .ref { color: var(--peach-400); }
+.card-dark .rule { background: var(--dark-line); }
+.card-dark .wordmark { color: var(--dark-cream); }
+.card-dark .wordmark em { color: var(--peach-400); }
+.card-dark .quote-mark { color: rgba(54,78,224,.22); }
+
+/* ── light card ── */
+.card-light {
+  background:
+    radial-gradient(120% 120% at 50% 38%, #FAFBFF 0%, #F5F7FE 55%, #E6EAFA 100%);
+  color: var(--light-title);
+}
+.card-light .verse { color: var(--gold-ink); }
+.card-light .ref { color: var(--peach-600, #1B33B4); }
+.card-light .rule { background: var(--light-line); }
+.card-light .wordmark { color: var(--light-title); }
+.card-light .wordmark em { color: var(--peach-500); }
+.card-light .quote-mark { color: rgba(54,78,224,.28); }
+
+/* shared inner */
+.mark { margin-bottom: 50px; }
+.quote-mark {
+  font-family: 'Playfair Display', serif;
+  font-size: 140px;
+  line-height: .4;
+  height: 60px;
+  margin-bottom: 26px;
+}
+.verse {
+  font-family: 'Cormorant', serif;
+  font-style: italic;
+  font-weight: 400;
+  align-self: stretch;
+  font-size: 56px;
+  line-height: 1.42;
+  letter-spacing: -.005em;
+  max-width: 840px;
+}
+.rule { width: 56px; height: 1px; margin: 56px 0 28px; }
+.ref {
+  font-size: 22px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  font-weight: 400;
+  white-space: nowrap;
+}
+.foot {
+  position: absolute;
+  bottom: 92px; left: 0; right: 0;
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+}
+.wordmark { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.wordmark .wm-eyebrow { font-family: 'Instrument Sans', sans-serif; font-size: 15px; font-weight: 400; letter-spacing: .34em; text-transform: uppercase; padding-left: .34em; }
+.wordmark em { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; font-size: 38px; letter-spacing: -.01em; }
+
+@media (max-width: 560px) {
+  .card-frame { width: 324px; height: 324px; }
+  .card { transform: scale(.3); }
+}
+</style>
+</head>
+<body>
+
+<div class="head">
+  <div class="kicker">Entregável 3 — formato stories / status WhatsApp</div>
+  <h1>Card de versículo <em>1080×1080</em></h1>
+  <p>"Uma pausa que devolve a você mesmo."</p>
+</div>
+
+<div class="cards-row">
+
+  <div class="card-col">
+    <div class="card-col-label">◐ Versão noturna</div>
+    <div class="card-frame">
+      <div class="card card-dark" id="card-dark">
+        <div class="mark">
+          <svg width="62" height="62" viewBox="0 0 48 48" fill="none">
+            <path d="M12 19 C12 13, 16 10, 24 10 C32 10, 36 14, 36 20 C36 26, 29 29, 24 30 C19 31, 12 34, 12 40 C12 46, 16 42, 24 42 C32 42, 36 38, 36 32"
+                  stroke="#2A47DD" stroke-width="3" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <div class="quote-mark">“</div>
+        <div class="verse">Aquietai-vos e sabei<br>que eu sou Deus.</div>
+        <div class="rule"></div>
+        <div class="ref">Salmo 46 · 10</div>
+        <div class="foot">
+          <div class="wordmark"><span class="wm-eyebrow">O meu</span><em>Salmo</em></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-col">
+    <div class="card-col-label">○ Versão diurna</div>
+    <div class="card-frame">
+      <div class="card card-light" id="card-light">
+        <div class="mark">
+          <svg width="62" height="62" viewBox="0 0 48 48" fill="none">
+            <path d="M12 19 C12 13, 16 10, 24 10 C32 10, 36 14, 36 20 C36 26, 29 29, 24 30 C19 31, 12 34, 12 40 C12 46, 16 42, 24 42 C32 42, 36 38, 36 32"
+                  stroke="#2A47DD" stroke-width="3" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <div class="quote-mark">“</div>
+        <div class="verse">Aquietai-vos e sabei<br>que eu sou Deus.</div>
+        <div class="rule"></div>
+        <div class="ref">Salmo 46 · 10</div>
+        <div class="foot">
+          <div class="wordmark"><span class="wm-eyebrow">O meu</span><em>Salmo</em></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

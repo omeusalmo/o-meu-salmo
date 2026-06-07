@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;background:#080B1C;font-family:'Instrument Sans',sans-serif;}
+  .wrap{padding:18px 20px;}
+  .label{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#353C73;margin-bottom:12px;}
+  .bar{display:flex;align-items:center;gap:10px;}
+  .play{width:38px;height:38px;border-radius:50%;background:#2A47DD;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .tri{width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:8px solid #EEF0FC;margin-left:2px;}
+  .prog{flex:1;height:3px;background:#1E2348;border-radius:2px;position:relative;}
+  .fill{position:absolute;left:0;top:0;height:100%;width:38%;background:#2A47DD;border-radius:2px;}
+  .fill::after{content:"";position:absolute;right:-4px;top:50%;transform:translateY(-50%);width:9px;height:9px;border-radius:50%;background:#5567EA;}
+  .time{font-size:10px;color:#8C97D4;font-variant-numeric:tabular-nums;}
+</style></head>
+<body><div class="wrap">
+  <div class="label">Player de áudio</div>
+  <div class="bar">
+    <div class="play"><span class="tri"></span></div>
+    <span class="time">1:24</span>
+    <div class="prog"><div class="fill"></div></div>
+    <span class="time">3:40</span>
+  </div>
+</div></body></html>

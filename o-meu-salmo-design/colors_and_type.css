@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant:ital,wght@1,300;1,400&family=Instrument+Sans:wght@300;400;500&display=swap');
+
+/* ============================================================
+   O MEU SALMO — Design Tokens
+   Cores + Tipografia · v1.0
+   App de Salmos com curadoria por emoção · pt-BR
+   ============================================================
+   • Fontes da marca já carregadas no @import acima (Google Fonts).
+     Importe SÓ este arquivo e tem fontes + tokens prontos.
+   ============================================================
+   Cor principal: Cobalto (Luminous Blue, WGSN 2027)
+   Cor secundária: Âmbar (uso parcimonioso, texto sagrado)
+   Dois modos: Noturno (padrão emocional) + Diurno
+   ============================================================ */
+
+:root {
+  /* ---------------------------------------------------------
+     1. ACENTO PRINCIPAL — Cobalto / escala
+     --------------------------------------------------------- */
+  --cobalt-100: #EEEDF8;
+  --cobalt-200: #C9C7EE;
+  --cobalt-300: #A29FE0;
+  --cobalt-400: #5567EA;   /* tom claro — texto/ícone sobre escuro */
+  --cobalt-500: #2A47DD;   /* ★ PRIMÁRIA da marca */
+  --cobalt-600: #1B33B4;   /* pressionado / degradê profundo */
+  --cobalt-700: #142A8C;
+
+  /* ---------------------------------------------------------
+     2. ACENTO SECUNDÁRIO — Âmbar (uso pontual)
+        Marca SÓ o versículo em destaque e peças sociais.
+        Nunca é cor de interface.
+     --------------------------------------------------------- */
+  --gold:      #C4A86A;    /* sobre escuro — AAA (8.5:1 na noite) */
+  --gold-ink:  #8A6A28;    /* sobre claro — AA  (4.7:1) p/ TEXTO  */
+
+  /* ---------------------------------------------------------
+     3. MODO NOTURNO (padrão) — cobalto-noite
+     --------------------------------------------------------- */
+  --night-base:  #080B1C;  /* fundo da aplicação */
+  --night-plus:  #10142C;  /* superfícies elevadas / cards */
+  --night-line:  #1E2348;  /* divisórias, bordas sutis */
+  --night-muted: #353C73;  /* DECORATIVO APENAS — 1.9:1, reprova AA como texto. Usar night-text. */
+  --night-text:  #8C97D4;  /* corpo de texto (AA 6.9:1) */
+  --night-cream: #EEF0FC;  /* títulos, números (AAA 17:1) */
+
+  /* ---------------------------------------------------------
+     4. MODO DIURNO — off-white frio-mineral
+     --------------------------------------------------------- */
+  --day-base:  #F5F7FE;    /* fundo da aplicação */
+  --day-plus:  #E9EDFD;    /* superfícies elevadas / cards */
+  --day-line:  #D5DCF3;    /* divisórias, bordas sutis */
+  --day-muted: #8C97D4;    /* DECORATIVO APENAS — 2.6:1, reprova AA como texto. Usar day-text. */
+  --day-text:  #2E3A86;    /* corpo de texto (AA) */
+  --day-title: #0C1230;    /* títulos, números (AAA) */
+
+  /* ---------------------------------------------------------
+     5. CORES DE EMOÇÃO — sistema de curadoria
+        Cada emoção tem: fundo (chip), tinta (texto) e ponto.
+        Estável entre as duas paletas.
+     --------------------------------------------------------- */
+  --emo-ansiedade-bg:  #EEEDF8;  --emo-ansiedade-fg:  #3D3889;  --emo-ansiedade-dot: #5567EA;
+  --emo-paz-bg:        #EAF1E6;  --emo-paz-fg:        #4E7A52;  --emo-paz-dot:       #6A9A62;
+  --emo-gratidao-bg:   #FAF2E0;  --emo-gratidao-fg:   #9A7320;  --emo-gratidao-dot:  #C99A38;
+  --emo-luto-bg:       #F1EBEF;  --emo-luto-fg:       #7A4A66;  --emo-luto-dot:      #9A6A86;
+  --emo-duvida-bg:     #ECECF2;  --emo-duvida-fg:     #5E5A82;  --emo-duvida-dot:    #8480AA;
+
+  /* ---------------------------------------------------------
+     6. SEMÂNTICOS (modo noturno = padrão)
+        Reatribua estes em [data-theme="day"] abaixo.
+     --------------------------------------------------------- */
+  --bg:           var(--night-base);
+  --surface:      var(--night-plus);
+  --border:       var(--night-line);
+  --text:         var(--night-text);
+  --text-strong:  var(--night-cream);
+  --text-muted:   var(--night-muted);
+  --accent:       var(--cobalt-500);
+  --accent-on:    var(--night-cream);   /* tinta SOBRE o cobalto (ex.: ▶ no botão) */
+  --scripture:    var(--gold);          /* versículo em destaque */
+
+  /* ---------------------------------------------------------
+     7. TIPOGRAFIA — famílias
+        Playfair Display  → títulos, números, "Salmo" do logo
+        Cormorant         → corpo do salmo (versículos), itálico
+        Instrument Sans   → UI, labels, versalete "O MEU"
+        (todas no Google Fonts)
+     --------------------------------------------------------- */
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-verse:   'Cormorant', Georgia, serif;
+  --font-ui:      'Instrument Sans', system-ui, -apple-system, sans-serif;
+
+  /* escala tipográfica (mobile-first; px) */
+  --fs-display:   80px;  /* número do salmo, hero */
+  --fs-h1:        48px;  /* título de leitura */
+  --fs-h2:        40px;  /* título de coleção */
+  --fs-h3:        28px;
+  --fs-verse:     20px;  /* corpo do salmo */
+  --fs-body:      16px;
+  --fs-label:     13px;  /* labels de UI */
+  --fs-eyebrow:   11px;  /* versalete / sobrelinha */
+  --fs-caption:   9px;
+
+  --lh-display: 0.88;
+  --lh-title:   0.95;
+  --lh-verse:   1.65;
+  --lh-body:    1.55;
+
+  --ls-display: -0.025em;
+  --ls-title:   -0.015em;
+  --ls-eyebrow: 0.34em;   /* tracking do "O MEU" */
+  --ls-label:   0.16em;
+
+  /* ---------------------------------------------------------
+     8. FORMA — raios, sombras, espaçamento
+     --------------------------------------------------------- */
+  --radius-sm:   8px;
+  --radius-md:   14px;
+  --radius-lg:   22px;
+  --radius-pill: 999px;
+  --radius-icon: 22.7%;   /* squircle do ícone do app (proporção) */
+
+  /* espaçamento base 4px */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px;
+  --space-12: 48px; --space-16: 64px;
+
+  /* sombras — frias, suaves (nunca pretas duras) */
+  --shadow-sm:  0 1px 3px rgba(8,11,28,.18);
+  --shadow-md:  0 8px 22px rgba(8,11,28,.28);
+  --shadow-lg:  0 24px 60px rgba(8,11,28,.40);
+  --shadow-cobalt: 0 12px 30px rgba(27,51,180,.30);  /* realce do ícone/botão */
+
+  /* movimento — calmo, sem bounce */
+  --ease: cubic-bezier(.22,.61,.36,1);
+  --dur-fast: .18s;
+  --dur:      .35s;
+  --dur-slow: .7s;
+}
+
+/* ============================================================
+   MODO DIURNO — aplique data-theme="day" no <html> ou container
+   ============================================================ */
+[data-theme="day"] {
+  --bg:          var(--day-base);
+  --surface:     var(--day-plus);
+  --border:      var(--day-line);
+  --text:        var(--day-text);
+  --text-strong: var(--day-title);
+  --text-muted:  var(--day-muted);
+  --accent:      var(--cobalt-500);
+  --accent-on:   #FFFFFF;          /* branco sobre cobalto */
+  --scripture:   var(--gold-ink);  /* âmbar acessível no claro */
+}
+
+/* ============================================================
+   ESTILOS SEMÂNTICOS BASE — opcional, prontos para usar
+   ============================================================ */
+.ds-display {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: var(--fs-display); line-height: var(--lh-display);
+  letter-spacing: var(--ls-display); color: var(--text-strong);
+}
+.ds-h1 {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: var(--fs-h1); line-height: var(--lh-title);
+  letter-spacing: var(--ls-title); color: var(--text-strong);
+}
+.ds-h2 {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: var(--fs-h2); line-height: var(--lh-title);
+  letter-spacing: var(--ls-title); color: var(--text-strong);
+}
+.ds-verse {
+  font-family: var(--font-verse); font-style: italic; font-weight: 400;
+  font-size: var(--fs-verse); line-height: var(--lh-verse); color: var(--text);
+}
+.ds-verse--scripture { color: var(--scripture); }
+.ds-body {
+  font-family: var(--font-ui); font-weight: 400;
+  font-size: var(--fs-body); line-height: var(--lh-body); color: var(--text);
+}
+.ds-label {
+  font-family: var(--font-ui); font-weight: 400;
+  font-size: var(--fs-label); letter-spacing: var(--ls-label);
+  text-transform: uppercase; color: var(--text-muted);
+}
+.ds-eyebrow {
+  font-family: var(--font-ui); font-weight: 400;
+  font-size: var(--fs-eyebrow); letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase; color: var(--text);
+  padding-left: var(--ls-eyebrow); /* compensa o tracking p/ alinhar à esquerda */
+}
+
+/* ============================================================
+   LOGOTIPO — composição de referência
+   "O MEU" (versalete, esquerda) sobre "Salmo" (Playfair itálico)
+   ============================================================ */
+.ds-logotype { display: inline-flex; flex-direction: column; align-items: flex-start; line-height: 1; }
+.ds-logotype .o-meu {
+  font-family: var(--font-ui); font-weight: 400;
+  font-size: .26em; letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase; padding-left: var(--ls-eyebrow);
+  margin-bottom: .14em; color: var(--text);
+}
+.ds-logotype .salmo {
+  font-family: var(--font-display); font-style: italic; font-weight: 500;
+  font-size: 1em; letter-spacing: var(--ls-title); line-height: .86;
+  color: var(--accent);
+}

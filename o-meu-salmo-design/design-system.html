@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O meu Salmo — Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant:ital,wght@1,300;1,400&family=Instrument+Sans:wght@300;400;500&display=swap">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      fontFamily: {
+        display: ['Playfair Display', 'Georgia', 'serif'],
+        verse:   ['Cormorant', 'Georgia', 'serif'],
+        ui:      ['Instrument Sans', 'system-ui', 'sans-serif'],
+      },
+      colors: {
+        cobalt: {
+          100: '#EEEDF8', 200: '#C9C7EE', 300: '#A29FE0',
+          400: '#5567EA', 500: '#2A47DD', 600: '#1B33B4', 700: '#142A8C',
+        },
+        gold: { DEFAULT: '#C4A86A', ink: '#8A6A28' },
+        night: {
+          base: '#080B1C', plus: '#10142C', line: '#1E2348',
+          muted: '#353C73', text: '#8C97D4', cream: '#EEF0FC',
+        },
+        day: {
+          base: '#F5F7FE', plus: '#E9EDFD', line: '#D5DCF3',
+          muted: '#8C97D4', text: '#2E3A86', title: '#0C1230',
+        },
+      },
+      borderRadius: { sm: '8px', md: '14px', lg: '22px', pill: '999px' },
+    }
+  }
+}
+</script>
+<style>
+  /* ── Base ─────────────────────────────────────────────────── */
+  body { font-family: 'Instrument Sans', system-ui, sans-serif; }
+
+  /* ── Section divider ──────────────────────────────────────── */
+  .ds-section { display:flex; flex-direction:column; gap:1.5rem; }
+  .ds-section-title {
+    font-size:9px; letter-spacing:.22em; text-transform:uppercase;
+    font-family:'Instrument Sans',sans-serif;
+  }
+
+  /* ── Swatch grid ──────────────────────────────────────────── */
+  .swatch {
+    height:80px; border-radius:10px;
+    display:flex; align-items:flex-end; padding:8px 10px;
+    font-size:9px; letter-spacing:.08em; font-family:'Instrument Sans',sans-serif;
+    border:.5px solid rgba(255,255,255,.08);
+  }
+  .swatch-label { display:flex; flex-direction:column; gap:2px; }
+  .swatch-name { font-weight:500; }
+  .swatch-hex  { opacity:.65; }
+
+  /* ── Type specimens ───────────────────────────────────────── */
+  .specimen-row {
+    display:flex; align-items:baseline; gap:20px;
+    padding:12px 0; border-bottom:.5px solid var(--ds-line);
+  }
+  .specimen-meta { min-width:120px; font-size:10px; opacity:.5; letter-spacing:.06em; text-transform:uppercase; }
+
+  /* ── Component card ───────────────────────────────────────── */
+  .comp-card {
+    border-radius:14px; padding:24px; border:.5px solid var(--ds-line);
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .comp-label { font-size:9px; letter-spacing:.16em; text-transform:uppercase; opacity:.45; }
+
+  /* ── Semantic CSS vars (mode-aware) ───────────────────────── */
+  :root {
+    --ds-bg:     #080B1C; --ds-surface: #10142C; --ds-line: #1E2348;
+    --ds-text:   #8C97D4; --ds-title:  #EEF0FC;
+    --ds-accent: #5567EA;
+  }
+  html:not(.dark) {
+    --ds-bg:     #F5F7FE; --ds-surface: #E9EDFD; --ds-line: #D5DCF3;
+    --ds-text:   #2E3A86; --ds-title:  #0C1230;
+    --ds-accent: #2A47DD;
+  }
+
+  /* ── Contrast badge ───────────────────────────────────────── */
+  .cbadge {
+    display:inline-block; font-size:8px; letter-spacing:.1em;
+    text-transform:uppercase; padding:3px 8px; border-radius:20px;
+    font-weight:500; color:#fff; vertical-align:middle;
+  }
+
+  /* ── PsalmCard demo ───────────────────────────────────────── */
+  .psalm-card {
+    border-radius:14px; padding:16px 18px;
+    display:flex; align-items:center; gap:12px;
+    border:.5px solid var(--ds-line); background:var(--ds-surface);
+  }
+  .psalm-num {
+    min-width:56px; font-family:'Playfair Display',serif;
+    font-size:32px; line-height:1; color:var(--ds-accent);
+  }
+  .psalm-info { display:flex; flex-direction:column; gap:3px; flex:1; overflow:hidden; }
+  .psalm-title { font-family:'Playfair Display',serif; font-size:18px; line-height:1.2; color:var(--ds-title); }
+  .psalm-snippet { font-family:'Cormorant',serif; font-style:italic; font-size:14px; color:var(--ds-text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
+  /* ── CollectionCard demo ──────────────────────────────────── */
+  .coll-card {
+    border-radius:14px; padding:20px;
+    border:.5px solid var(--ds-line); background:var(--ds-surface);
+  }
+  .coll-eyebrow { display:flex; align-items:center; gap:6px; margin-bottom:8px; }
+  .emo-dot { width:6px; height:6px; border-radius:50%; }
+
+  /* ── Verse line demo ──────────────────────────────────────── */
+  .verse-line { display:flex; gap:12px; padding-bottom:16px; }
+  .verse-num { width:20px; padding-top:5px; font-size:10px; color:var(--ds-accent); font-family:'Instrument Sans',sans-serif; }
+  .verse-text { font-family:'Cormorant',serif; font-style:italic; font-size:19px; line-height:1.6; color:var(--ds-text); flex:1; }
+  .verse-text.highlight { color:#C4A86A; }
+  html:not(.dark) .verse-text.highlight { color:#8A6A28; }
+
+  /* ── Audio player demo ────────────────────────────────────── */
+  .player-bar {
+    display:flex; align-items:center; gap:12px;
+    padding:14px 20px; border-top:.5px solid var(--ds-line);
+    background:var(--ds-bg);
+  }
+  .play-btn {
+    width:44px; height:44px; border-radius:50%;
+    background:var(--ds-accent); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 12px 30px rgba(27,51,180,.30);
+  }
+  .track-container { flex:1; position:relative; height:3px; border-radius:2px; background:var(--ds-line); }
+  .track-fill { position:absolute; left:0; top:0; height:100%; width:40%; border-radius:2px; background:var(--ds-accent); }
+  .track-thumb { position:absolute; top:50%; left:40%; transform:translate(-50%,-50%); width:10px; height:10px; border-radius:50%; background:var(--ds-accent); }
+  .timecode { font-size:10px; color:var(--ds-text); font-variant-numeric:tabular-nums; font-family:'Instrument Sans',sans-serif; }
+
+  /* ── Spacing grid ─────────────────────────────────────────── */
+  .sp-row { display:flex; align-items:center; gap:16px; padding:6px 0; }
+  .sp-bar { background:var(--ds-accent); height:12px; border-radius:3px; opacity:.7; }
+  .sp-label { font-size:11px; color:var(--ds-text); min-width:80px; font-family:'Instrument Sans',sans-serif; }
+
+  /* ── Radius demo ──────────────────────────────────────────── */
+  .radius-box {
+    width:56px; height:56px; background:var(--ds-accent);
+    opacity:.85; display:inline-block;
+  }
+
+  /* ── Easing demo ──────────────────────────────────────────── */
+  .ease-demo {
+    height:4px; border-radius:2px; background:var(--ds-accent);
+    animation:slide-ease 2s cubic-bezier(.22,.61,.36,1) infinite alternate;
+    opacity:.8;
+  }
+  @keyframes slide-ease {
+    from { width:20%; }
+    to   { width:100%; }
+  }
+
+  /* ── Scrollbar ────────────────────────────────────────────── */
+  ::-webkit-scrollbar { width:4px; }
+  ::-webkit-scrollbar-track { background:transparent; }
+  ::-webkit-scrollbar-thumb { background:var(--ds-line); border-radius:2px; }
+</style>
+</head>
+<body class="bg-night-base dark:bg-night-base min-h-screen transition-colors duration-300"
+      style="background:var(--ds-bg); color:var(--ds-text);">
+
+<!-- ════════════════════════════════════════════════════════════
+     HEADER
+════════════════════════════════════════════════════════════ -->
+<header class="sticky top-0 z-50 border-b" style="background:var(--ds-bg); border-color:var(--ds-line);">
+  <div class="max-w-6xl mx-auto px-8 py-4 flex items-center justify-between">
+    <!-- Logotype -->
+    <div style="line-height:1;">
+      <div style="font-family:'Instrument Sans',sans-serif; font-size:9px; letter-spacing:.34em; text-transform:uppercase; color:var(--ds-text); margin-bottom:2px;">O MEU</div>
+      <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:22px; line-height:.9; color:var(--ds-accent);">Salmo</div>
+    </div>
+    <div class="flex items-center gap-6">
+      <span style="font-size:11px; letter-spacing:.2em; text-transform:uppercase; opacity:.4;">Design System v1.1</span>
+      <!-- Toggle -->
+      <button id="toggle" onclick="toggleMode()" style="
+        font-family:'Instrument Sans',sans-serif; font-size:11px; letter-spacing:.1em;
+        text-transform:uppercase; padding:6px 14px; border-radius:999px;
+        border:.5px solid var(--ds-line); color:var(--ds-text);
+        background:transparent; cursor:pointer; transition:all .2s;
+      ">◐ Modo</button>
+    </div>
+  </div>
+</header>
+
+<div class="max-w-6xl mx-auto px-8 py-16 flex flex-col gap-24">
+
+<!-- ════════════════════════════════════════════════════════════
+     1. TOKENS: CORES
+════════════════════════════════════════════════════════════ -->
+<section class="ds-section">
+  <div class="ds-section-title" style="color:var(--ds-accent);">1 — Tokens · Cores</div>
+
+  <!-- Cobalto scale -->
+  <div>
+    <p style="font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.4; margin-bottom:12px;">Cobalto — acento único de interface</p>
+    <div class="grid grid-cols-7 gap-2">
+      <div class="swatch" style="background:#EEEDF8; color:#2A47DD;"><div class="swatch-label"><div class="swatch-name">100</div><div class="swatch-hex">#EEEDF8</div></div></div>
+      <div class="swatch" style="background:#C9C7EE; color:#1B33B4;"><div class="swatch-label"><div class="swatch-name">200</div><div class="swatch-hex">#C9C7EE</div></div></div>
+      <div class="swatch" style="background:#A29FE0; color:#080B1C;"><div class="swatch-label"><div class="swatch-name">300</div><div class="swatch-hex">#A29FE0</div></div></div>
+      <div class="swatch" style="background:#5567EA; color:#EEF0FC;"><div class="swatch-label"><div class="swatch-name">400 ◐</div><div class="swatch-hex">#5567EA</div></div></div>
+      <div class="swatch" style="background:#2A47DD; color:#EEF0FC;"><div class="swatch-label"><div class="swatch-name">★ 500</div><div class="swatch-hex">#2A47DD</div></div></div>
+      <div class="swatch" style="background:#1B33B4; color:#EEF0FC;"><div class="swatch-label"><div class="swatch-name">600</div><div class="swatch-hex">#1B33B4</div></div></div>
+      <div class="swatch" style="background:#142A8C; color:#EEF0FC;"><div class="swatch-label"><div class="swatch-name">700</div><div class="swatch-hex">#142A8C</div></div></div>
+    </div>
+    <p style="font-size:11px; opacity:.45; margin-top:8px;">400 = texto/ícone sobre escuro · 500 = primária da marca + texto sobre claro</p>
+  </div>
+
+  <!-- Modos -->
+  <div class="grid grid-cols-2 gap-8">
+    <!-- Noturno -->
+    <div>
+      <p style="font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.4; margin-bottom:12px;">◐ Noturno (padrão)</p>
+      <div class="flex flex-col gap-1">
+        <div class="swatch" style="background:#080B1C; color:#8C97D4; border-color:rgba(255,255,255,.12);"><div class="swatch-label"><div class="swatch-name">night-base</div><div class="swatch-hex">#080B1C — fundo</div></div></div>
+        <div class="swatch" style="background:#10142C; color:#8C97D4;"><div class="swatch-label"><div class="swatch-name">night-plus</div><div class="swatch-hex">#10142C — superfícies</div></div></div>
+        <div class="swatch" style="background:#1E2348; color:#8C97D4;"><div class="swatch-label"><div class="swatch-name">night-line</div><div class="swatch-hex">#1E2348 — bordas</div></div></div>
+        <div class="swatch" style="background:#7080C8; color:#EEF0FC;"><div class="swatch-label"><div class="swatch-name">night-muted · 5.2:1 <span class="cbadge" style="background:#2E7D5B;">AA</span></div><div class="swatch-hex">#7080C8 — dots, separadores, labels metadata ≥10px</div></div></div>
+        <div class="swatch" style="background:#080B1C; color:#8C97D4; border-color:#1E2348;"><div class="swatch-label"><div class="swatch-name">night-text ·&nbsp;<span id="r-ntext">6.9:1</span>&nbsp;<span class="cbadge" style="background:#2E7D5B;">AA</span></div><div class="swatch-hex">#8C97D4 — corpo de texto</div></div></div>
+        <div class="swatch" style="background:#080B1C; color:#EEF0FC; border-color:#1E2348;"><div class="swatch-label"><div class="swatch-name">night-cream ·&nbsp;<span>17:1</span>&nbsp;<span class="cbadge" style="background:#2E7D5B;">AAA</span></div><div class="swatch-hex">#EEF0FC — títulos</div></div></div>
+      </div>
+    </div>
+    <!-- Diurno -->
+    <div>
+      <p style="font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.4; margin-bottom:12px;">○ Diurno</p>
+      <div class="flex flex-col gap-1">
+        <div class="swatch" style="background:#F5F7FE; color:#2E3A86;"><div class="swatch-label"><div class="swatch-name">day-base</div><div class="swatch-hex">#F5F7FE — fundo</div></div></div>
+        <div class="swatch" style="background:#E9EDFD; color:#2E3A86;"><div class="swatch-label"><div class="swatch-name">day-plus</div><div class="swatch-hex">#E9EDFD — superfícies</div></div></div>
+        <div class="swatch" style="background:#D5DCF3; color:#0C1230;"><div class="swatch-label"><div class="swatch-name">day-line</div><div class="swatch-hex">#D5DCF3 — bordas</div></div></div>
+        <div class="swatch" style="background:#F5F7FE; color:#4E5899;"><div class="swatch-label"><div class="swatch-name">day-muted (texto) · 6.2:1 <span class="cbadge" style="background:#2E7D5B;">AA</span></div><div class="swatch-hex">#4E5899 — labels metadata · dot decorativo: #8C97D4</div></div></div>
+        <div class="swatch" style="background:#F5F7FE; color:#2E3A86; border-color:#D5DCF3;"><div class="swatch-label"><div class="swatch-name">day-text ·&nbsp;<span>9.5:1</span>&nbsp;<span class="cbadge" style="background:#2E7D5B;">AAA</span></div><div class="swatch-hex">#2E3A86 — corpo de texto</div></div></div>
+        <div class="swatch" style="background:#F5F7FE; color:#0C1230; border-color:#D5DCF3;"><div class="swatch-label"><div class="swatch-name">day-title ·&nbsp;<span>16.5:1</span>&nbsp;<span class="cbadge" style="background:#2E7D5B;">AAA</span></div><div class="swatch-hex">#0C1230 — títulos</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Âmbar -->
+  <div style="border:.5px solid var(--ds-line); border-radius:14px; padding:24px;">
+    <p style="font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.4; margin-bottom:16px;">Âmbar — versículo em destaque · uso pontual</p>
+    <div class="grid grid-cols-2 gap-4 mb-4">
+      <div class="swatch" style="background:#080B1C; color:#C4A86A; border-color:#1E2348; height:64px;"><div class="swatch-label"><div class="swatch-name">#C4A86A no escuro · 8.5:1 <span class="cbadge" style="background:#2E7D5B;">AAA</span></div><div class="swatch-hex">Versículo em destaque ✓</div></div></div>
+      <div class="swatch" style="background:#F5F7FE; color:#8A6A28; border-color:#D5DCF3; height:64px;"><div class="swatch-label"><div class="swatch-name">#8A6A28 no claro · 4.7:1 <span class="cbadge" style="background:#2E7D5B;">AA</span></div><div class="swatch-hex">gold-ink para texto no claro ✓</div></div></div>
+    </div>
+    <p style="font-size:12px; opacity:.55; line-height:1.6;">
+      <strong style="opacity:.85;">#C4A86A no claro = 2.1:1 ✗</strong> — nunca usar como texto sobre claro.
+      Âmbar é reservado ao versículo em destaque e peças sociais; nunca como cor de UI.
+    </p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     2. EMOÇÕES
+════════════════════════════════════════════════════════════ -->
+<section class="ds-section">
+  <div class="ds-section-title" style="color:var(--ds-accent);">2 — Tokens · Emoções</div>
+  <p style="font-size:13px; opacity:.55;">Sistema de curadoria — cada emoção tem bg, fg (texto) e dot (acento). Estável entre os modos.</p>
+  <div class="grid grid-cols-1 gap-3" style="max-width:560px;">
+
+    <!-- Ansiedade -->
+    <div style="background:#EEEDF8; border-radius:999px; padding:8px 16px; display:flex; align-items:center; gap:10px;">
+      <div style="width:8px; height:8px; border-radius:50%; background:#5567EA; flex-shrink:0;"></div>
+      <span style="font-family:'Instrument Sans',sans-serif; font-size:13px; font-weight:500; color:#3D3889;">Ansiedade</span>
+      <span style="font-family:'Cormorant',serif; font-style:italic; font-size:12px; color:#3D3889; margin-left:auto;">bg #EEEDF8 · fg #3D3889 · dot #5567EA</span>
+    </div>
+
+    <!-- Sono -->
+    <div style="background:#EAF1E6; border-radius:999px; padding:8px 16px; display:flex; align-items:center; gap:10px;">
+      <div style="width:8px; height:8px; border-radius:50%; background:#6A9A62; flex-shrink:0;"></div>
+      <span style="font-family:'Instrument Sans',sans-serif; font-size:13px; font-weight:500; color:#446650;">Sono</span>
+      <span style="font-family:'Cormorant',serif; font-style:italic; font-size:12px; color:#446650; margin-left:auto;">bg #EAF1E6 · fg #446650 · dot #6A9A62</span>
+    </div>
+
+    <!-- Gratidão -->
+    <div style="background:#FAF2E0; border-radius:999px; padding:8px 16px; display:flex; align-items:center; gap:10px;">
+      <div style="width:8px; height:8px; border-radius:50%; background:#C99A38; flex-shrink:0;"></div>
+      <span style="font-family:'Instrument Sans',sans-serif; font-size:13px; font-weight:500; color:#7A5A18;">Gratidão</span>
+      <span style="font-family:'Cormorant',serif; font-style:italic; font-size:12px; color:#7A5A18; margin-left:auto;">bg #FAF2E0 · fg #7A5A18 · dot #C99A38</span>
+    </div>
+
+    <!-- Luto -->
+    <div style="background:#F1EBEF; border-radius:999px; padding:8px 16px; display:flex; align-items:center; gap:10px;">
+      <div style="width:8px; height:8px; border-radius:50%; background:#9A6A86; flex-shrink:0;"></div>
+      <span style="font-family:'Instrument Sans',sans-serif; font-size:13px; font-weight:500; color:#7A4A66;">Luto</span>
+      <span style="font-family:'Cormorant',serif; font-style:italic; font-size:12px; color:#7A4A66; margin-left:auto;">bg #F1EBEF · fg #7A4A66 · dot #9A6A86</span>
+    </div>
+
+    <!-- Esperança -->
+    <div style="background:#E6EAFD; border-radius:999px; padding:8px 16px; display:flex; align-items:center; gap:10px;">
+      <div style="width:8px; height:8px; border-radius:50%; background:#2A47DD; flex-shrink:0;"></div>
+      <span style="font-family:'Instrument Sans',sans-serif; font-size:13px; font-weight:500; color:#1B33B4;">Esperança</span>
+      <span style="font-family:'Cormorant',serif; font-style:italic; font-size:12px; color:#1B33B4; margin-left:auto;">bg #E6EAFD · fg #1B33B4 · dot #2A47DD</span>
+    </div>
+
+    <!-- Perdão -->
+    <div style="background:#ECECF2; border-radius:999px; padding:8px 16px; display:flex; align-items:center; gap:10px;">
+      <div style="width:8px; height:8px; border-radius:50%; background:#8480AA; flex-shrink:0;"></div>
+      <span style="font-family:'Instrument Sans',sans-serif; font-size:13px; font-weight:500; color:#5E5A82;">Perdão</span>
+      <span style="font-family:'Cormorant',serif; font-style:italic; font-size:12px; color:#5E5A82; margin-left:auto;">bg #ECECF2 · fg #5E5A82 · dot #8480AA</span>
+    </div>
+
+    <!-- Louvor (compartilha Gratidão) -->
+    <div style="background:#FAF2E0; border-radius:999px; padding:8px 16px; display:flex; align-items:center; gap:10px;">
+      <div style="width:8px; height:8px; border-radius:50%; background:#C99A38; flex-shrink:0;"></div>
+      <span style="font-family:'Instrument Sans',sans-serif; font-size:13px; font-weight:500; color:#7A5A18;">Louvor</span>
+      <span style="font-family:'Cormorant',serif; font-style:italic; font-size:12px; color:#7A5A18; margin-left:auto;">compartilha tokens Gratidão</span>
+    </div>
+
+    <!-- Proteção (compartilha Sono) -->
+    <div style="background:#EAF1E6; border-radius:999px; padding:8px 16px; display:flex; align-items:center; gap:10px;">
+      <div style="width:8px; height:8px; border-radius:50%; background:#6A9A62; flex-shrink:0;"></div>
+      <span style="font-family:'Instrument Sans',sans-serif; font-size:13px; font-weight:500; color:#446650;">Proteção</span>
+      <span style="font-family:'Cormorant',serif; font-style:italic; font-size:12px; color:#446650; margin-left:auto;">compartilha tokens Sono</span>
+    </div>
+  </div>
+  <p style="font-size:11px; opacity:.4;">Nos cards de coleção: dot apenas no círculo decorativo; texto usa night-text / day-text para garantir AA. fg dos chips passou por ajuste de contraste (AA ≥4.5:1) em relação ao bg.</p>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     3. TIPOGRAFIA
+════════════════════════════════════════════════════════════ -->
+<section class="ds-section">
+  <div class="ds-section-title" style="color:var(--ds-accent);">3 — Tokens · Tipografia</div>
+
+  <!-- Playfair Display -->
+  <div>
+    <p style="font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.4; margin-bottom:16px;">Playfair Display — display, títulos, números de Salmo</p>
+    <div style="border-top:.5px solid var(--ds-line);">
+      <div class="specimen-row">
+        <div class="specimen-meta">80px · lh .88</div>
+        <div style="font-family:'Playfair Display',serif; font-size:80px; line-height:.88; letter-spacing:-2px; color:var(--ds-title);">Salmo <em style="color:var(--ds-accent);">46</em></div>
+      </div>
+      <div class="specimen-row">
+        <div class="specimen-meta">52px · lh .88</div>
+        <div style="font-family:'Playfair Display',serif; font-size:52px; line-height:.88; letter-spacing:-1.3px; color:var(--ds-title);">Salmo <em style="color:var(--ds-accent);">23</em></div>
+      </div>
+      <div class="specimen-row">
+        <div class="specimen-meta">40px · lh .95</div>
+        <div style="font-family:'Playfair Display',serif; font-size:40px; line-height:.95; letter-spacing:-.8px; color:var(--ds-title);">Para a ansiedade</div>
+      </div>
+      <div class="specimen-row">
+        <div class="specimen-meta">28px · lh 1.0</div>
+        <div style="font-family:'Playfair Display',serif; font-size:28px; line-height:1; letter-spacing:-.42px; color:var(--ds-title);">Como você está hoje?</div>
+      </div>
+      <div class="specimen-row">
+        <div class="specimen-meta">22px · lh 1.1</div>
+        <div style="font-family:'Playfair Display',serif; font-size:22px; line-height:1.1; color:var(--ds-title);">Título de coleção</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cormorant -->
+  <div>
+    <p style="font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.4; margin-bottom:16px;">Cormorant — corpo do Salmo (versículos)</p>
+    <div style="border-top:.5px solid var(--ds-line);">
+      <div class="specimen-row">
+        <div class="specimen-meta">19–20px · lh 1.65</div>
+        <div style="font-family:'Cormorant',serif; font-style:italic; font-size:19px; line-height:1.65; color:var(--ds-text); max-width:560px;">
+          O Senhor é o meu pastor; nada me faltará.<br>
+          Ele me faz repousar em pastos verdejantes,<br>
+          leva-me a águas de descanso.
+        </div>
+      </div>
+      <div class="specimen-row">
+        <div class="specimen-meta">19px âmbar</div>
+        <div style="font-family:'Cormorant',serif; font-style:italic; font-size:19px; line-height:1.65; color:#C4A86A;">Sede quietos e sabei que eu sou Deus.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Instrument Sans -->
+  <div>
+    <p style="font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.4; margin-bottom:16px;">Instrument Sans — UI, labels, botões</p>
+    <div style="border-top:.5px solid var(--ds-line);">
+      <div class="specimen-row">
+        <div class="specimen-meta">16px w400</div>
+        <div style="font-family:'Instrument Sans',sans-serif; font-size:16px; color:var(--ds-text);">Corpo genérico de UI</div>
+      </div>
+      <div class="specimen-row">
+        <div class="specimen-meta">15px w500</div>
+        <div style="font-family:'Instrument Sans',sans-serif; font-size:15px; font-weight:500; color:var(--ds-title);">Botão · Label de ação</div>
+      </div>
+      <div class="specimen-row">
+        <div class="specimen-meta">14px w400</div>
+        <div style="font-family:'Instrument Sans',sans-serif; font-size:14px; color:var(--ds-text);">Subtítulo · Descrição secundária</div>
+      </div>
+      <div class="specimen-row">
+        <div class="specimen-meta">13px w400</div>
+        <div style="font-family:'Instrument Sans',sans-serif; font-size:13px; color:var(--ds-text);">Label de UI · "Ver salmos"</div>
+      </div>
+      <div class="specimen-row">
+        <div class="specimen-meta">12px w400</div>
+        <div style="font-family:'Instrument Sans',sans-serif; font-size:12px; color:var(--ds-text);">Tag informativa · Timecode</div>
+      </div>
+      <div class="specimen-row">
+        <div class="specimen-meta">11px · ls 3.74 · UPPER</div>
+        <div style="font-family:'Instrument Sans',sans-serif; font-size:11px; font-weight:400; letter-spacing:3.74px; text-transform:uppercase; color:var(--ds-text);">Eyebrow label · Reflexão</div>
+      </div>
+    </div>
+    <p style="font-size:11px; opacity:.4; margin-top:8px;">
+      Proibidas: Inter, Roboto, Arial, caligrafia de banner de culto.
+    </p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     4. FORMA, ESPAÇAMENTO E MOVIMENTO
+════════════════════════════════════════════════════════════ -->
+<section class="ds-section">
+  <div class="ds-section-title" style="color:var(--ds-accent);">4 — Tokens · Forma, Espaço, Movimento</div>
+  <div class="grid grid-cols-3 gap-8">
+
+    <!-- Raios -->
+    <div>
+      <p style="font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.4; margin-bottom:16px;">Raios</p>
+      <div class="flex flex-col gap-4">
+        <div class="flex items-center gap-4">
+          <div class="radius-box" style="border-radius:8px;"></div>
+          <div><div style="font-size:12px; color:var(--ds-title);">sm · 8px</div><div style="font-size:11px; opacity:.4;">inputs menores</div></div>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="radius-box" style="border-radius:14px;"></div>
+          <div><div style="font-size:12px; color:var(--ds-title);">md · 14px</div><div style="font-size:11px; opacity:.4;">cards, botões</div></div>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="radius-box" style="border-radius:22px;"></div>
+          <div><div style="font-size:12px; color:var(--ds-title);">lg · 22px</div><div style="font-size:11px; opacity:.4;">modais, sheets</div></div>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="radius-box" style="border-radius:999px; width:80px; height:32px;"></div>
+          <div><div style="font-size:12px; color:var(--ds-title);">pill · 999px</div><div style="font-size:11px; opacity:.4;">chips, badges</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Espaçamento -->
+    <div>
+      <p style="font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.4; margin-bottom:16px;">Espaçamento (base 4px)</p>
+      <div class="flex flex-col gap-1">
+        <div class="sp-row"><div class="sp-label">sp1 · 4px</div><div class="sp-bar" style="width:4px;"></div></div>
+        <div class="sp-row"><div class="sp-label">sp2 · 8px</div><div class="sp-bar" style="width:8px;"></div></div>
+        <div class="sp-row"><div class="sp-label">sp3 · 12px</div><div class="sp-bar" style="width:12px;"></div></div>
+        <div class="sp-row"><div class="sp-label">sp4 · 16px</div><div class="sp-bar" style="width:16px;"></div></div>
+        <div class="sp-row"><div class="sp-label">sp5 · 20px</div><div class="sp-bar" style="width:20px;"></div></div>
+        <div class="sp-row"><div class="sp-label">sp6 · 24px</div><div class="sp-bar" style="width:24px;"></div></div>
+        <div class="sp-row"><div class="sp-label">sp8 · 32px</div><div class="sp-bar" style="width:32px;"></div></div>
+        <div class="sp-row"><div class="sp-label">sp10 · 40px</div><div class="sp-bar" style="width:40px;"></div></div>
+        <div class="sp-row"><div class="sp-label">sp12 · 48px</div><div class="sp-bar" style="width:48px;"></div></div>
+      </div>
+    </div>
+
+    <!-- Movimento -->
+    <div>
+      <p style="font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.4; margin-bottom:16px;">Movimento</p>
+      <div class="flex flex-col gap-5">
+        <div>
+          <div style="font-size:12px; color:var(--ds-title); margin-bottom:6px;">Easing padrão — easeOutCubic</div>
+          <div style="height:20px; overflow:hidden;">
+            <div class="ease-demo"></div>
+          </div>
+          <div style="font-size:10px; opacity:.4; margin-top:4px;">cubic-bezier(.22,.61,.36,1) — transições de tela, fade-in</div>
+        </div>
+        <div>
+          <div style="font-size:12px; color:var(--ds-title); margin-bottom:4px;">Easing spring — hover, reveal</div>
+          <div style="font-size:10px; opacity:.4;">cubic-bezier(.34,1.56,.64,1) — hovers com bounce leve, animações de entrada reveal</div>
+        </div>
+        <div>
+          <div style="font-size:12px; color:var(--ds-title); margin-bottom:8px;">Durações</div>
+          <div class="flex flex-col gap-2" style="font-size:12px; color:var(--ds-text);">
+            <div>fast · 180ms — micro-interações</div>
+            <div>dur  · 350ms — transições de tela</div>
+            <div>slow · 700ms — revelações, expansões</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:12px; color:var(--ds-title); margin-bottom:4px;">Movimento reduzido</div>
+          <div style="font-size:11px; opacity:.5; line-height:1.6;">Verificar <code style="font-size:10px; background:var(--ds-surface); padding:2px 5px; border-radius:4px;">MediaQuery.disableAnimations</code> antes de iniciar qualquer animação não-essencial.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     5. COMPONENTES
+════════════════════════════════════════════════════════════ -->
+<section class="ds-section">
+  <div class="ds-section-title" style="color:var(--ds-accent);">5 — Componentes</div>
+  <div class="grid grid-cols-2 gap-6">
+
+    <!-- Botão primário -->
+    <div class="comp-card" style="background:var(--ds-surface);">
+      <div class="comp-label">Botão primário</div>
+      <div style="background:var(--ds-accent); border-radius:14px; padding:14px; text-align:center; box-shadow:0 12px 30px rgba(27,51,180,.30); cursor:pointer;">
+        <span style="font-family:'Instrument Sans',sans-serif; font-size:15px; font-weight:500; color:#EEF0FC; letter-spacing:.01em;">Ler o salmo</span>
+      </div>
+      <div style="font-size:11px; opacity:.4;">
+        bg: cobalt-400 (dark) / cobalt-500 (light) · text: night-cream · shadow: cobalt 30%
+      </div>
+    </div>
+
+    <!-- Botão revelar reflexão -->
+    <div class="comp-card" style="background:var(--ds-surface);">
+      <div class="comp-label">Botão revelar reflexão</div>
+      <div style="background:rgba(85,103,234,.09); border:1px solid rgba(85,103,234,.63); border-radius:14px; padding:14px; text-align:center; cursor:pointer;">
+        <span style="font-family:'Instrument Sans',sans-serif; font-size:15px; font-weight:500; color:var(--ds-accent); letter-spacing:.01em;">Ler a reflexão</span>
+      </div>
+      <div style="font-size:11px; opacity:.4;">
+        bg: accent 9% · border: accent 63% · text: accent — entre ghost e primário
+      </div>
+    </div>
+
+    <!-- EyebrowLabel -->
+    <div class="comp-card" style="background:var(--ds-surface);">
+      <div class="comp-label">EyebrowLabel</div>
+      <div style="font-family:'Instrument Sans',sans-serif; font-size:11px; font-weight:400; letter-spacing:3.74px; text-transform:uppercase; color:var(--ds-text);">Reflexão</div>
+      <div style="font-size:11px; opacity:.4; line-height:1.6;">
+        Cor padrão: night-text 6.9:1 / day-text 9.5:1 ✓ AA<br>
+        Semantics: label = texto original (não uppercase) para TalkBack
+      </div>
+    </div>
+
+    <!-- Ícone de configurações -->
+    <div class="comp-card" style="background:var(--ds-surface);">
+      <div class="comp-label">Botão ícone circular · 44dp</div>
+      <div style="display:flex; gap:12px; align-items:center;">
+        <div style="width:44px; height:44px; border-radius:50%; border:.5px solid var(--ds-line); display:flex; align-items:center; justify-content:center; cursor:pointer;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ds-text);"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </div>
+        <div style="width:44px; height:44px; border-radius:50%; border:.5px solid var(--ds-line); display:flex; align-items:center; justify-content:center; cursor:pointer;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ds-text);"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div style="width:44px; height:44px; border-radius:50%; border:.5px solid var(--ds-line); display:flex; align-items:center; justify-content:center; cursor:pointer;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ds-text);"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </div>
+      </div>
+      <div style="font-size:11px; opacity:.4;">Todos com Semantics(label, button:true) · ícones sempre outline</div>
+    </div>
+
+    <!-- VerseLine -->
+    <div class="comp-card" style="background:var(--ds-surface); grid-column: span 2;">
+      <div class="comp-label">Linha de versículo (VerseLine)</div>
+      <div>
+        <div class="verse-line">
+          <div class="verse-num">1</div>
+          <div class="verse-text highlight">O Senhor é o meu pastor; nada me faltará.</div>
+        </div>
+        <div class="verse-line">
+          <div class="verse-num">2</div>
+          <div class="verse-text">Ele me faz repousar em pastos verdejantes, leva-me a águas de descanso.</div>
+        </div>
+        <div class="verse-line">
+          <div class="verse-num">3</div>
+          <div class="verse-text">Refrigera a minha alma; guia-me pelas veredas da justiça por amor do seu nome.</div>
+        </div>
+      </div>
+      <div style="font-size:11px; opacity:.4;">v1 = âmbar (destaque) · v2+ = night-text/day-text · número = cobalt (decorativo)</div>
+    </div>
+
+    <!-- PsalmCard -->
+    <div class="comp-card" style="background:var(--ds-surface);">
+      <div class="comp-label">PsalmCard</div>
+      <div class="psalm-card">
+        <div class="psalm-num">23</div>
+        <div class="psalm-info">
+          <div class="psalm-title">O Senhor é meu pastor</div>
+          <div class="psalm-snippet">O Senhor é o meu pastor; nada me faltará...</div>
+        </div>
+      </div>
+      <div style="font-size:11px; opacity:.4;">InkWell com splashColor accent 12% · texto título Playfair 18px · snippet Cormorant italic 14px</div>
+    </div>
+
+    <!-- CollectionCard -->
+    <div class="comp-card" style="background:var(--ds-surface);">
+      <div class="comp-label">CollectionCard</div>
+      <div class="coll-card">
+        <div class="coll-eyebrow">
+          <div class="emo-dot" style="background:#5567EA;"></div>
+          <span style="font-family:'Instrument Sans',sans-serif; font-size:11px; letter-spacing:3.74px; text-transform:uppercase; color:var(--ds-text);">8 SALMOS</span>
+        </div>
+        <div style="font-family:'Playfair Display',serif; font-size:22px; letter-spacing:-.33px; color:var(--ds-title); margin-bottom:6px;">Ansiedade</div>
+        <div style="font-family:'Cormorant',serif; font-style:italic; font-size:15px; color:var(--ds-text); line-height:1.5; margin-bottom:16px;">Quando a mente não para e o coração aperta.</div>
+        <div style="display:flex; align-items:center; gap:6px; color:var(--ds-accent);">
+          <span style="font-family:'Instrument Sans',sans-serif; font-size:13px; font-weight:500;">Ver salmos</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+      <div style="font-size:11px; opacity:.4;">dot: emotion dotColor · "X SALMOS" text: night-text/day-text (corrigido v1.1)</div>
+    </div>
+
+    <!-- Audio Player -->
+    <div class="comp-card" style="background:var(--ds-surface); grid-column: span 2;">
+      <div class="comp-label">AudioPlayerBar</div>
+      <div style="border:.5px solid var(--ds-line); border-radius:14px; overflow:hidden; background:var(--ds-bg);">
+        <div class="player-bar">
+          <div class="play-btn" style="cursor:pointer;">
+            <!-- Play triangle — cream on cobalt = 6.2:1 AAA -->
+            <svg width="10" height="12" viewBox="0 0 10 12"><polygon points="10,6 0,0 0,12" fill="#EEF0FC"/></svg>
+          </div>
+          <span class="timecode">02:14</span>
+          <div class="track-container">
+            <div class="track-fill"></div>
+            <div class="track-thumb"></div>
+          </div>
+          <span class="timecode">05:32</span>
+        </div>
+      </div>
+      <div style="font-size:11px; opacity:.4;">Triângulo: creme #EEF0FC sobre cobalt = 6.2:1 AAA · Semantics: "Ouvir o Salmo" / "Pausar áudio"</div>
+    </div>
+
+    <!-- Reflexão bloqueada -->
+    <div class="comp-card" style="background:var(--ds-surface);">
+      <div class="comp-label">Reflexão bloqueada</div>
+      <div>
+        <div style="font-family:'Instrument Sans',sans-serif; font-size:11px; letter-spacing:3.74px; text-transform:uppercase; color:var(--ds-text); margin-bottom:16px;">Reflexão</div>
+        <div style="display:flex; gap:8px; align-items:flex-start;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ds-text); flex-shrink:0; margin-top:2px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <p style="font-family:'Instrument Sans',sans-serif; font-size:14px; color:var(--ds-text); line-height:1.6;">
+            Esta reflexão se revela quando este Salmo aparecer como o seu Salmo do Dia.
+          </p>
+        </div>
+      </div>
+      <div style="font-size:11px; opacity:.4;">Cor plena night-text/day-text — sem withAlpha() (corrigido v1.1)</div>
+    </div>
+
+    <!-- Reflexão desbloqueada -->
+    <div class="comp-card" style="background:var(--ds-surface);">
+      <div class="comp-label">Reflexão desbloqueada</div>
+      <div>
+        <div style="font-family:'Instrument Sans',sans-serif; font-size:11px; letter-spacing:3.74px; text-transform:uppercase; color:var(--ds-text); margin-bottom:16px;">Reflexão</div>
+        <p style="font-family:'Instrument Sans',sans-serif; font-size:15px; color:var(--ds-text); line-height:1.65; margin-bottom:16px;">
+          O Salmo 23 fala de uma confiança que não nega a dificuldade — o vale da sombra existe — mas permanece ancorada. É a fé que não precisa de certezas para avançar.
+        </p>
+        <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:17px; color:var(--ds-accent); line-height:1.5;">
+          Onde você ainda consegue confiar, mesmo sem ver o caminho inteiro?
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     6. ACESSIBILIDADE
+════════════════════════════════════════════════════════════ -->
+<section class="ds-section">
+  <div class="ds-section-title" style="color:var(--ds-accent);">6 — Acessibilidade · WCAG 2.1</div>
+  <p style="font-size:13px; opacity:.55;">AA exige 4.5:1 (texto normal) · 3:1 (texto grande ≥18pt ou ≥14pt bold) · AAA exige 7:1. Ícones/grafismos: 3:1 mínimo.</p>
+
+  <!-- Matriz de contraste -->
+  <div class="grid grid-cols-3 gap-3" id="contrast-grid"></div>
+
+  <!-- Regras semânticas -->
+  <div style="border:.5px solid var(--ds-line); border-radius:14px; padding:24px; display:flex; flex-direction:column; gap:14px;">
+    <div style="font-family:'Playfair Display',serif; font-size:20px; color:var(--ds-title);">Regras semânticas</div>
+
+    <div style="display:flex; gap:10px;"><div style="width:7px; height:7px; border-radius:50%; background:#2E7D5B; flex-shrink:0; margin-top:5px;"></div><div style="font-size:13px; line-height:1.6; color:var(--ds-text);"><strong style="color:var(--ds-title);">Semantics(label, button:true)</strong> — todo GestureDetector interativo deve ter label. Botões: Voltar, Compartilhar, Favoritar, Configurações, Ler a reflexão, Ouvir/Pausar áudio.</div></div>
+
+    <div style="display:flex; gap:10px;"><div style="width:7px; height:7px; border-radius:50%; background:#2E7D5B; flex-shrink:0; margin-top:5px;"></div><div style="font-size:13px; line-height:1.6; color:var(--ds-text);"><strong style="color:var(--ds-title);">EyebrowLabel uppercase</strong> — TalkBack leria letra-por-letra. Usar <code style="font-size:11px; background:var(--ds-surface); padding:2px 5px; border-radius:4px;">Semantics(label: texto, excludeSemantics: true)</code> com o texto em case original.</div></div>
+
+    <div style="display:flex; gap:10px;"><div style="width:7px; height:7px; border-radius:50%; background:#2E7D5B; flex-shrink:0; margin-top:5px;"></div><div style="font-size:13px; line-height:1.6; color:var(--ds-text);"><strong style="color:var(--ds-title);">Movimento reduzido</strong> — verificar <code style="font-size:11px; background:var(--ds-surface); padding:2px 5px; border-radius:4px;">MediaQuery.disableAnimations</code> antes de iniciar animações não-essenciais; usar <code style="font-size:11px; background:var(--ds-surface); padding:2px 5px; border-radius:4px;">ctrl.value = 1.0</code> em vez de forward().</div></div>
+
+    <div style="display:flex; gap:10px;"><div style="width:7px; height:7px; border-radius:50%; background:#2E7D5B; flex-shrink:0; margin-top:5px;"></div><div style="font-size:13px; line-height:1.6; color:var(--ds-text);"><strong style="color:var(--ds-title);">Opacidade em texto</strong> — withAlpha() em texto reduz contraste efetivo. Usar cor plena (night-text ou day-text). Opacidade é permitida apenas em elementos puramente decorativos.</div></div>
+
+    <div style="display:flex; gap:10px;"><div style="width:7px; height:7px; border-radius:50%; background:#9A7320; flex-shrink:0; margin-top:5px;"></div><div style="font-size:13px; line-height:1.6; color:var(--ds-text);"><strong style="color:var(--ds-title);">Número de versículo</strong> — cobalt-400 a 10px no escuro = ~4.2:1 (abaixo de AA). Funciona como marcador decorativo; conteúdo essencial é o texto do versículo. Documentado como exceção controlada.</div></div>
+
+    <div style="display:flex; gap:10px;"><div style="width:7px; height:7px; border-radius:50%; background:#2E7D5B; flex-shrink:0; margin-top:5px;"></div><div style="font-size:13px; line-height:1.6; color:var(--ds-text);"><strong style="color:var(--ds-title);">nightMuted e dayMuted</strong> — valores atualizados para AA: nightMuted <code style="font-size:11px; background:var(--ds-surface); padding:2px 5px; border-radius:4px;">#7080C8</code> 5.2:1, dayMuted <code style="font-size:11px; background:var(--ds-surface); padding:2px 5px; border-radius:4px;">#4E5899</code> 6.2:1. Aceitos para labels metadata ≥10px, dots e separadores. Nunca para corpo de texto — usar night-text / day-text.</div></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     7. ICONOGRAFIA
+════════════════════════════════════════════════════════════ -->
+<section class="ds-section">
+  <div class="ds-section-title" style="color:var(--ds-accent);">7 — Iconografia</div>
+  <p style="font-size:13px; opacity:.55;">Estilo outline · traço 1.5–2px · arredondado · set recomendado: Material Icons (app) e Lucide (web/LP).</p>
+  <div class="flex gap-8 items-center flex-wrap">
+    <!-- SVG icons outline -->
+    <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ds-accent);"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      <span style="font-size:10px; opacity:.4;">salmos</span>
+    </div>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ds-accent);"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <span style="font-size:10px; opacity:.4;">favoritos</span>
+    </div>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ds-accent);"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span style="font-size:10px; opacity:.4;">bloqueado</span>
+    </div>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ds-accent);"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      <span style="font-size:10px; opacity:.4;">compartilhar</span>
+    </div>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ds-accent);"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      <span style="font-size:10px; opacity:.4;">ajustes</span>
+    </div>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ds-accent);"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+      <span style="font-size:10px; opacity:.4;">áudio</span>
+    </div>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ds-accent);"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span style="font-size:10px; opacity:.4;">info</span>
+    </div>
+  </div>
+  <p style="font-size:11px; opacity:.4;">Sem emoji · Sem ícones religiosos explícitos (cruzes, pombas, halos) · Preferir metáforas neutras (livro, marcador, onda sonora)</p>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     8. LOGOTIPO & MARCA
+════════════════════════════════════════════════════════════ -->
+<section class="ds-section">
+  <div class="ds-section-title" style="color:var(--ds-accent);">8 — Logotipo & Marca</div>
+
+  <div class="grid grid-cols-2 gap-8">
+
+    <!-- Logotipo -->
+    <div class="comp-card" style="background:var(--ds-surface);">
+      <div class="comp-label">Logotipo — web, LP, materiais impressos</div>
+      <div style="padding:32px 0; display:flex; justify-content:center;">
+        <div style="display:inline-flex; flex-direction:column; align-items:flex-start; line-height:1;">
+          <div style="font-family:'Instrument Sans',sans-serif; font-size:9px; letter-spacing:.34em; text-transform:uppercase; color:var(--ds-text); margin-bottom:.14em; padding-left:.34em;">O MEU</div>
+          <div style="font-family:'Playfair Display',serif; font-style:italic; font-weight:500; font-size:40px; line-height:.86; letter-spacing:-.015em; color:var(--ds-accent);">Salmo</div>
+        </div>
+      </div>
+      <div style="font-size:11px; opacity:.4; line-height:1.7;">
+        "O MEU" em versalete Instrument Sans (tracking .34em) alinhado à esquerda sobre "Salmo" em Playfair Display itálico 500. "Salmo" recebe o cobalto. 100% CSS.
+      </div>
+    </div>
+
+    <!-- Ícone do app -->
+    <div class="comp-card" style="background:var(--ds-surface);">
+      <div class="comp-label">Ícone do app — App Store, perfis, squircle</div>
+      <div style="padding:24px 0; display:flex; justify-content:center; gap:24px; align-items:center;">
+        <!-- Simulated app icon -->
+        <div style="width:96px; height:96px; border-radius:22.7%; background:#2A47DD; display:flex; flex-direction:column; align-items:center; justify-content:space-between; padding:14px 10px; position:relative; box-shadow:0 12px 30px rgba(27,51,180,.40);">
+          <div style="font-family:'Instrument Sans',sans-serif; font-size:6.5px; letter-spacing:.24em; text-transform:uppercase; color:#EEF0FC; opacity:.85;">O MEU</div>
+          <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:17px; color:#EEF0FC; line-height:1;">Salmo</div>
+          <!-- Ribbon marker -->
+          <div style="position:absolute; top:0; right:20px; width:8px; height:28px; background:#EEF0FC; border-radius:0 0 3px 3px;"></div>
+        </div>
+        <!-- Small sizes -->
+        <div style="display:flex; flex-direction:column; gap:12px; align-items:center;">
+          <div style="width:60px; height:60px; border-radius:14%; background:#2A47DD; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; box-shadow:0 6px 16px rgba(27,51,180,.35);">
+            <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:11px; color:#EEF0FC;">Salmo</div>
+          </div>
+          <div style="width:40px; height:40px; border-radius:12%; background:#2A47DD; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 10px rgba(27,51,180,.35);">
+            <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:8px; color:#EEF0FC;">S</div>
+          </div>
+        </div>
+      </div>
+      <div style="font-size:11px; opacity:.4; line-height:1.7;">
+        Squircle ~22.7% · fundo cobalto cheio · fita branca (marcador) da borda superior direita · nome "O meu Salmo" em branco. Ver <code style="font-size:10px; background:var(--ds-bg); padding:2px 5px; border-radius:4px;">assets/app-icon-512.png</code>.
+      </div>
+    </div>
+
+    <!-- Anti-padrões -->
+    <div class="comp-card" style="background:var(--ds-surface); grid-column:span 2;">
+      <div class="comp-label">O que nunca fazer — anti-padrões da marca</div>
+      <div class="grid grid-cols-3 gap-6">
+        <div style="font-size:12px; color:var(--ds-text); line-height:1.7;">
+          <div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#B23A48; margin-bottom:8px;">Visual</div>
+          Gradiente roxo-azul com dourado brilhante<br>
+          Branco puro ou preto puro como fundo<br>
+          Fontes proibidas (Inter, Roboto, Arial)<br>
+          Cruzes, pombas, halos, raios celestiais<br>
+          Ícones preenchidos pesados<br>
+          Layouts densos e multi-coluna no mobile
+        </div>
+        <div style="font-size:12px; color:var(--ds-text); line-height:1.7;">
+          <div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#B23A48; margin-bottom:8px;">Tom</div>
+          Linguagem de marketing dentro do app<br>
+          Culpar o usuário pelo erro<br>
+          Exclamações em contextos sérios<br>
+          "Por favor" em excesso no fluxo normal<br>
+          Prometer features não implementadas<br>
+          Misturar "salmo" minúsculo em títulos
+        </div>
+        <div style="font-size:12px; color:var(--ds-text); line-height:1.7;">
+          <div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#B23A48; margin-bottom:8px;">Cor</div>
+          nightMuted ou dayMuted como cor de texto<br>
+          Âmbar #C4A86A como texto no claro<br>
+          cobalt-500 como texto no modo escuro<br>
+          withAlpha() em texto essencial<br>
+          GestureDetector sem Semantics label<br>
+          Animações ignorando disableAnimations
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     9. TOM & VOZ
+════════════════════════════════════════════════════════════ -->
+<section class="ds-section">
+  <div class="ds-section-title" style="color:var(--ds-accent);">9 — Tom & Voz</div>
+  <p style="font-size:13px; opacity:.55;">Guia completo em <code style="font-size:11px; background:var(--ds-surface); padding:2px 6px; border-radius:4px;">docs/ux-writing-voice-and-tone.md</code>. Referência rápida abaixo.</p>
+
+  <div class="grid grid-cols-2 gap-8">
+
+    <!-- Personalidade -->
+    <div style="border:.5px solid var(--ds-line); border-radius:14px; padding:24px; display:flex; flex-direction:column; gap:16px;">
+      <div style="font-family:'Playfair Display',serif; font-size:20px; color:var(--ds-title);">Personalidade</div>
+      <div style="font-size:12px; color:var(--ds-text); line-height:1.7;">
+        <div class="grid grid-cols-2 gap-x-6" style="border-bottom:.5px solid var(--ds-line); padding-bottom:10px; margin-bottom:10px;">
+          <div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ds-accent);">Somos</div>
+          <div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; opacity:.35;">Não somos</div>
+        </div>
+        <div class="grid grid-cols-2 gap-x-6 gap-y-2">
+          <div><strong style="color:var(--ds-title);">Serenos</strong> — presença quieta</div><div style="opacity:.4;">Frios, corporativos</div>
+          <div><strong style="color:var(--ds-title);">Íntimos</strong> — como amigo próximo</div><div style="opacity:.4;">Informais demais, gírias</div>
+          <div><strong style="color:var(--ds-title);">Poéticos</strong> — linguagem com textura</div><div style="opacity:.4;">Rebuscados, difíceis</div>
+          <div><strong style="color:var(--ds-title);">Humildes</strong> — admitem erros com leveza</div><div style="opacity:.4;">Servil, excessivo</div>
+          <div><strong style="color:var(--ds-title);">Contemplativos</strong> — convidam à pausa</div><div style="opacity:.4;">Lentos, que travam o fluxo</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Termos canônicos -->
+    <div style="border:.5px solid var(--ds-line); border-radius:14px; padding:24px; display:flex; flex-direction:column; gap:14px;">
+      <div style="font-family:'Playfair Display',serif; font-size:20px; color:var(--ds-title);">Termos canônicos</div>
+      <div style="font-size:11px; color:var(--ds-text); display:flex; flex-direction:column; gap:8px;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; border-bottom:.5px solid var(--ds-line); padding-bottom:8px;">
+          <div style="font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:var(--ds-accent);">Correto</div>
+          <div style="font-size:9px; letter-spacing:.12em; text-transform:uppercase; opacity:.35;">Evitar</div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;"><strong style="color:var(--ds-title);">Salmo</strong> (maiúsculo)<div style="opacity:.4;">salmo, psalm</div></div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;"><strong style="color:var(--ds-title);">coleção</strong><div style="opacity:.4;">categoria, pasta, lista</div></div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;"><strong style="color:var(--ds-title);">sentimento</strong><div style="opacity:.4;">emoção, mood, humor</div></div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;"><strong style="color:var(--ds-title);">favoritos</strong><div style="opacity:.4;">salvos, bookmarks, curtidos</div></div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;"><strong style="color:var(--ds-title);">Ler o salmo</strong><div style="opacity:.4;">Ver detalhes, Abrir</div></div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;"><strong style="color:var(--ds-title);">Ouvir o salmo</strong><div style="opacity:.4;">Play, Reproduzir</div></div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;"><strong style="color:var(--ds-title);">Apoiar</strong><div style="opacity:.4;">Comprar, Assinar, Pagar</div></div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;"><strong style="color:var(--ds-title);">tradução</strong><div style="opacity:.4;">versão, edição</div></div>
+      </div>
+    </div>
+
+    <!-- Tom por contexto -->
+    <div style="border:.5px solid var(--ds-line); border-radius:14px; padding:24px; display:flex; flex-direction:column; gap:14px;">
+      <div style="font-family:'Playfair Display',serif; font-size:20px; color:var(--ds-title);">Tom por contexto</div>
+      <div style="display:flex; flex-direction:column; gap:10px; font-size:12px; color:var(--ds-text); line-height:1.7;">
+        <div><div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ds-accent); margin-bottom:3px;">Uso diário (sereno)</div><em style="font-family:'Cormorant',serif; font-size:14px;">"Para hoje," + data + salmo</em></div>
+        <div><div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ds-accent); margin-bottom:3px;">Descoberta (encorajador)</div><em style="font-family:'Cormorant',serif; font-size:14px;">"Como você está chegando hoje?"</em></div>
+        <div><div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ds-accent); margin-bottom:3px;">Erro (honesto, direto)</div><em style="font-family:'Cormorant',serif; font-size:14px;">"Não consegui carregar este Salmo. Tente novamente."</em></div>
+        <div><div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ds-accent); margin-bottom:3px;">Estado vazio (orientador)</div><em style="font-family:'Cormorant',serif; font-size:14px;">"Nenhum Salmo guardado ainda. Toque no coração ao ler um Salmo."</em></div>
+        <div><div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ds-accent); margin-bottom:3px;">Apoio (humilde)</div><em style="font-family:'Cormorant',serif; font-size:14px;">"Se ele faz parte do seu dia, considere apoiar com uma contribuição única."</em></div>
+      </div>
+    </div>
+
+    <!-- Do/Don't -->
+    <div style="border:.5px solid var(--ds-line); border-radius:14px; padding:24px; display:flex; flex-direction:column; gap:14px;">
+      <div style="font-family:'Playfair Display',serif; font-size:20px; color:var(--ds-title);">Botões & CTAs</div>
+      <p style="font-size:11px; opacity:.4; margin-top:-6px;">Regra: verbo + objeto. O usuário sabe o que acontece, não "o que clicar".</p>
+      <div style="display:flex; flex-direction:column; gap:6px; font-size:12px;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; border-bottom:.5px solid var(--ds-line); padding-bottom:8px;">
+          <div style="font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:#2E7D5B;">✓ Correto</div>
+          <div style="font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:#B23A48;">✗ Evitar</div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; color:var(--ds-text);">
+          <div>"Ler o salmo"</div><div style="opacity:.4;">"Abrir", "Ver mais", "OK"</div>
+          <div>"Ouvir o salmo"</div><div style="opacity:.4;">"Play", "Reproduzir"</div>
+          <div>"Ver coleções"</div><div style="opacity:.4;">"Coleções →", "Clique aqui"</div>
+          <div>"Tentar novamente"</div><div style="opacity:.4;">"Retry", "Atualizar"</div>
+          <div>"Apoiar o app"</div><div style="opacity:.4;">"Contribuir", "Comprar"</div>
+          <div>"Ler a reflexão"</div><div style="opacity:.4;">"Ver reflexão", "Desbloquear"</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     10. ARQUITETURA DE INFORMAÇÃO
+════════════════════════════════════════════════════════════ -->
+<section class="ds-section">
+  <div class="ds-section-title" style="color:var(--ds-accent);">10 — Arquitetura de Informação</div>
+  <p style="font-size:13px; opacity:.55;">Fonte da verdade estrutural. Guia completo em <code style="font-size:11px; background:var(--ds-surface); padding:2px 6px; border-radius:4px;">docs/arquitetura-informacao.md</code>.</p>
+
+  <!-- Mapa de telas visual -->
+  <div style="border:.5px solid var(--ds-line); border-radius:14px; padding:32px; display:flex; flex-direction:column; gap:24px;">
+
+    <!-- Nav bar -->
+    <div>
+      <div style="font-size:10px; letter-spacing:.16em; text-transform:uppercase; opacity:.4; margin-bottom:16px;">Barra de navegação inferior (4 abas)</div>
+      <div style="display:flex; gap:2px; border:.5px solid var(--ds-line); border-radius:12px; overflow:hidden;">
+        <div style="flex:1; padding:16px 8px; text-align:center; background:var(--ds-surface); border-right:.5px solid var(--ds-line);">
+          <div style="font-size:18px; margin-bottom:4px; color:var(--ds-accent);">☀</div>
+          <div style="font-size:10px; font-weight:500; color:var(--ds-accent);">Início</div>
+          <div style="font-size:9px; opacity:.35; margin-top:2px;">Salmo do dia</div>
+        </div>
+        <div style="flex:1; padding:16px 8px; text-align:center; border-right:.5px solid var(--ds-line);">
+          <div style="font-size:18px; margin-bottom:4px; opacity:.5;">⊞</div>
+          <div style="font-size:10px; color:var(--ds-text);">Coleções</div>
+          <div style="font-size:9px; opacity:.35; margin-top:2px;">Por emoção</div>
+        </div>
+        <div style="flex:1; padding:16px 8px; text-align:center; border-right:.5px solid var(--ds-line);">
+          <div style="font-size:18px; margin-bottom:4px; opacity:.5;">📖</div>
+          <div style="font-size:10px; color:var(--ds-text);">Salmos</div>
+          <div style="font-size:9px; opacity:.35; margin-top:2px;">150 + busca</div>
+        </div>
+        <div style="flex:1; padding:16px 8px; text-align:center;">
+          <div style="font-size:18px; margin-bottom:4px; opacity:.5;">♡</div>
+          <div style="font-size:10px; color:var(--ds-text);">Favoritos</div>
+          <div style="font-size:9px; opacity:.35; margin-top:2px;">Salvos</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hierarquia de telas -->
+    <div class="grid grid-cols-2 gap-8">
+      <div>
+        <div style="font-size:10px; letter-spacing:.16em; text-transform:uppercase; opacity:.4; margin-bottom:16px;">Hierarquia — push stack</div>
+        <div style="font-family:'Courier New',monospace; font-size:12px; color:var(--ds-text); line-height:2; background:var(--ds-bg); padding:20px; border-radius:10px; border:.5px solid var(--ds-line);">
+          <span style="color:var(--ds-accent);">Início</span> → Leitura<br>
+          <span style="color:var(--ds-accent);">Coleções</span> → Coleção → Leitura<br>
+          <span style="color:var(--ds-accent);">Salmos</span> → Leitura<br>
+          <span style="color:var(--ds-accent);">Favoritos</span> → Leitura<br>
+          <br>
+          Leitura → <span style="color:#C4A86A;">Compositor</span> → Share<br>
+          <span style="opacity:.4;">Barra superior → Ajustes</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:10px; letter-spacing:.16em; text-transform:uppercase; opacity:.4; margin-bottom:16px;">Fluxos principais</div>
+        <div style="display:flex; flex-direction:column; gap:14px; font-size:12px; color:var(--ds-text); line-height:1.6;">
+          <div>
+            <div style="font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--ds-accent); margin-bottom:4px;">1. Hábito (retenção)</div>
+            Notificação → Início → Leitura → Ouvir
+          </div>
+          <div>
+            <div style="font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--ds-accent); margin-bottom:4px;">2. Emocional (proposta central)</div>
+            Coleções → Coleção → Leitura
+          </div>
+          <div>
+            <div style="font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--ds-accent); margin-bottom:4px;">3. Crescimento (compartilhar)</div>
+            Leitura → Compositor → Share nativo
+          </div>
+          <div>
+            <div style="font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--ds-accent); margin-bottom:4px;">4. Monetização</div>
+            Ajustes → Apoie o app
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Estados universais -->
+    <div>
+      <div style="font-size:10px; letter-spacing:.16em; text-transform:uppercase; opacity:.4; margin-bottom:14px;">Estados obrigatórios por tela</div>
+      <div class="grid grid-cols-4 gap-3">
+        <div style="padding:14px; border:.5px solid var(--ds-line); border-radius:10px; background:var(--ds-bg); text-align:center;">
+          <div style="font-size:20px; margin-bottom:6px; opacity:.6;">◌</div>
+          <div style="font-size:11px; color:var(--ds-title); font-weight:500;">Carregando</div>
+          <div style="font-size:10px; opacity:.4; margin-top:4px;">Spinner silencioso<br>strokeWidth 1.5</div>
+        </div>
+        <div style="padding:14px; border:.5px solid var(--ds-line); border-radius:10px; background:var(--ds-bg); text-align:center;">
+          <div style="font-size:20px; margin-bottom:6px; opacity:.6;">□</div>
+          <div style="font-size:11px; color:var(--ds-title); font-weight:500;">Vazio</div>
+          <div style="font-size:10px; opacity:.4; margin-top:4px;">O que é · por que · o que fazer</div>
+        </div>
+        <div style="padding:14px; border:.5px solid var(--ds-line); border-radius:10px; background:var(--ds-bg); text-align:center;">
+          <div style="font-size:20px; margin-bottom:6px; opacity:.6;">⚡</div>
+          <div style="font-size:11px; color:var(--ds-title); font-weight:500;">Offline</div>
+          <div style="font-size:10px; opacity:.4; margin-top:4px;">Conteúdo local sempre<br>funciona offline</div>
+        </div>
+        <div style="padding:14px; border:.5px solid var(--ds-line); border-radius:10px; background:var(--ds-bg); text-align:center;">
+          <div style="font-size:20px; margin-bottom:6px; opacity:.6;">⊘</div>
+          <div style="font-size:11px; color:var(--ds-title); font-weight:500;">Erro</div>
+          <div style="font-size:10px; opacity:.4; margin-top:4px;">App assume responsabilidade<br>"Não consegui..."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="border-top:.5px solid var(--ds-line); padding-top:28px; display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:10px;">
+  <div style="display:flex; align-items:baseline; gap:8px;">
+    <span style="font-size:9px; letter-spacing:.28em; text-transform:uppercase; color:var(--ds-text);">O meu</span>
+    <span style="font-family:'Playfair Display',serif; font-style:italic; font-weight:500; font-size:18px; color:var(--ds-accent);">Salmo</span>
+  </div>
+  <div style="font-size:9px; letter-spacing:.14em; text-transform:uppercase; opacity:.35;">
+    Design System v1.1 · Acessibilidade WCAG 2.1 AA · Junho 2026
+  </div>
+</footer>
+
+</div><!-- /max-w-6xl -->
+
+<script>
+/* ── Modo toggle ──────────────────────────────────────────── */
+function toggleMode() {
+  const html = document.documentElement;
+  const isDark = html.classList.toggle('dark');
+  document.getElementById('toggle').textContent = isDark ? '◐ Modo' : '○ Modo';
+}
+
+/* ── Contraste WCAG ───────────────────────────────────────── */
+function lum(hex) {
+  const c = hex.replace('#','');
+  const r = parseInt(c.substr(0,2),16)/255;
+  const g = parseInt(c.substr(2,2),16)/255;
+  const b = parseInt(c.substr(4,2),16)/255;
+  const f = v => v <= 0.03928 ? v/12.92 : Math.pow((v+0.055)/1.055, 2.4);
+  return 0.2126*f(r) + 0.7152*f(g) + 0.0722*f(b);
+}
+function ratio(a, b) {
+  const L1=lum(a), L2=lum(b), hi=Math.max(L1,L2), lo=Math.min(L1,L2);
+  return (hi+0.05)/(lo+0.05);
+}
+function badge(r, large) {
+  const aa=large?3:4.5, aaa=large?4.5:7;
+  if(r>=aaa) return ['AAA','#2E7D5B'];
+  if(r>=aa)  return ['AA','#2E7D5B'];
+  if(r>=3)   return ['AA grande','#9A7320'];
+  return ['Reprova','#B23A48'];
+}
+
+const pairs = [
+  {role:'Título/número (noturno)',  fg:'#EEF0FC', bg:'#080B1C', large:false, note:'night-cream / night-base'},
+  {role:'Corpo texto (noturno)',    fg:'#8C97D4', bg:'#080B1C', large:false, note:'night-text / night-base — corrigido v1.1'},
+  {role:'Acento cobalt-400 (noturno)', fg:'#5567EA', bg:'#080B1C', large:true,  note:'labels grandes, ícones ✓'},
+  {role:'Título/número (diurno)',   fg:'#0C1230', bg:'#F5F7FE', large:false, note:'day-title / day-base'},
+  {role:'Corpo texto (diurno)',     fg:'#2E3A86', bg:'#F5F7FE', large:false, note:'day-text / day-base — corrigido v1.1'},
+  {role:'Acento cobalt-500 (diurno)',  fg:'#2A47DD', bg:'#F5F7FE', large:false, note:'texto de ação ✓'},
+  {role:'Play: creme sobre cobalto', fg:'#EEF0FC', bg:'#2A47DD', large:true,  note:'triângulo do player'},
+  {role:'EyebrowLabel dark (v1.1)',  fg:'#8C97D4', bg:'#080B1C', large:false, note:'antes nightMuted 1.9:1 → corrigido'},
+  {role:'EyebrowLabel light (v1.1)', fg:'#2E3A86', bg:'#F5F7FE', large:false, note:'antes dayMuted 2.6:1 → corrigido'},
+];
+
+const grid = document.getElementById('contrast-grid');
+grid.innerHTML = pairs.map(d => {
+  const r = ratio(d.fg, d.bg);
+  const [bl, bc] = badge(r, d.large);
+  return `<div style="border:.5px solid var(--ds-line);border-radius:12px;overflow:hidden;background:var(--ds-surface);">
+    <div style="height:72px;background:${d.bg};display:flex;align-items:center;justify-content:center;">
+      <span style="font-family:'Playfair Display',serif;font-size:28px;line-height:1;color:${d.fg};">Aa</span>
+    </div>
+    <div style="padding:11px 13px;display:flex;flex-direction:column;gap:5px;">
+      <div style="font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--ds-accent);">${d.role}</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-family:'Playfair Display',serif;font-size:20px;color:var(--ds-title);">${r.toFixed(2)}:1</span>
+        <span class="cbadge" style="background:${bc};">${bl}</span>
+      </div>
+      <div style="font-size:9px;opacity:.45;line-height:1.5;">${d.note}</div>
+    </div>
+  </div>`;
+}).join('');
+</script>
+</body>
+</html>

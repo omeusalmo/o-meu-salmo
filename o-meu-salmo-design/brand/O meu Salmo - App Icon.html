@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O meu Salmo — App Icon</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root{
+    --cobalt:#2A47DD; --cobalt-deep:#1B33B4; --night:#080B1C;
+    --white:#FFFFFF; --ink:#0C1230; --muted:#8C97D4; --line:#D5DCF3;
+    --page:#ECEDF0;
+  }
+  body{ font-family:'Instrument Sans',sans-serif; background:var(--page); color:var(--ink); padding:56px 32px 80px; }
+  .page{ max-width:1000px; margin:0 auto; display:flex; flex-direction:column; gap:60px; }
+
+  .head{ display:flex; flex-direction:column; gap:14px; padding-bottom:36px; border-bottom:.5px solid var(--line); }
+  .head .eyebrow{ font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+  .head h1{ font-family:'Playfair Display',serif; font-weight:400; font-size:40px; letter-spacing:-.015em; }
+  .head h1 em{ font-style:italic; color:var(--cobalt); }
+  .head p{ font-family:'Playfair Display',serif; font-style:italic; font-size:18px; color:#2E3A86; max-width:560px; font-weight:400; }
+
+  .sec-title{ font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-bottom:20px; }
+
+  /* ── THE ICON ──
+     The whole tile is the book cover (cobalt). A white ribbon/bookmark
+     descends from the top edge, set right of the wordmark. */
+  .icon{
+    position:relative;
+    background:linear-gradient(157deg, #3150E8 0%, var(--cobalt) 46%, var(--cobalt-deep) 100%);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    overflow:hidden; flex-shrink:0;
+    isolation:isolate;
+  }
+  .icon .ribbon{
+    position:absolute; top:0; left:80%; transform:translateX(-50%);
+    background:var(--white);
+    box-shadow:0 0 0 .5px rgba(8,11,28,.04);
+  }
+  .icon .ribbon::after{ /* swallowtail notch at the bottom */
+    content:""; position:absolute; left:0; right:0; bottom:0;
+    height:22%;
+    background:var(--cobalt-deep);
+    clip-path:polygon(0 100%, 50% 38%, 100% 100%);
+  }
+  .icon .wm{ display:flex; flex-direction:column; align-items:center; z-index:1; }
+  .icon .wm .eye{
+    font-family:'Instrument Sans',sans-serif; font-weight:400; color:var(--white);
+    text-transform:uppercase; line-height:1; opacity:.92;
+  }
+  .icon .wm .word{
+    font-family:'Playfair Display',serif; font-style:italic; font-weight:500; color:var(--white);
+    line-height:.9; letter-spacing:-.015em;
+  }
+
+  /* hero icon — 320 */
+  .icon.s320{ width:320px; height:320px; border-radius:72px; box-shadow:0 30px 70px rgba(27,51,180,.34), 0 8px 22px rgba(8,11,28,.18); }
+  .icon.s320 .ribbon{ width:34px; height:150px; }
+  .icon.s320 .wm{ gap:11px; margin-top:8px; }
+  .icon.s320 .wm .eye{ font-size:20px; letter-spacing:.46em; padding-left:.46em; }
+  .icon.s320 .wm .word{ font-size:79px; }
+
+  .hero-row{ display:flex; gap:48px; align-items:center; flex-wrap:wrap; }
+  .hero-note{ flex:1; min-width:260px; display:flex; flex-direction:column; gap:18px; }
+  .pnote{ display:flex; flex-direction:column; gap:6px; }
+  .pnote .t{ font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--cobalt); }
+  .pnote .h{ font-family:'Playfair Display',serif; font-size:17px; color:var(--ink); }
+  .pnote .d{ font-size:12.5px; line-height:1.65; color:#4E5A86; }
+
+  /* size scale */
+  .scale{ display:flex; align-items:flex-end; gap:32px; flex-wrap:wrap; }
+  .scale .item{ display:flex; flex-direction:column; align-items:center; gap:12px; }
+  .scale .lbl{ font-size:10px; letter-spacing:.1em; color:var(--muted); font-family:'Courier New',monospace; }
+
+  .icon.s120{ width:120px; height:120px; border-radius:27px; box-shadow:0 12px 30px rgba(27,51,180,.26); }
+  .icon.s120 .ribbon{ width:13px; height:56px; }
+  .icon.s120 .wm{ gap:4px; margin-top:7px; }
+  .icon.s120 .wm .eye{ font-size:7.5px; letter-spacing:.42em; padding-left:.42em; }
+  .icon.s120 .wm .word{ font-size:29.5px; }
+
+  .icon.s76{ width:76px; height:76px; border-radius:18px; box-shadow:0 8px 18px rgba(27,51,180,.24); }
+  .icon.s76 .ribbon{ width:9px; height:36px; }
+  .icon.s76 .wm{ gap:2px; margin-top:4px; }
+  .icon.s76 .wm .eye{ font-size:5px; letter-spacing:.36em; padding-left:.36em; }
+  .icon.s76 .wm .word{ font-size:18.5px; }
+
+  .icon.s48{ width:48px; height:48px; border-radius:11px; box-shadow:0 5px 12px rgba(27,51,180,.22); }
+  .icon.s48 .ribbon{ width:6px; height:23px; }
+  .icon.s48 .wm{ gap:1px; margin-top:3px; }
+  .icon.s48 .wm .eye{ font-size:3.1px; letter-spacing:.3em; padding-left:.3em; }
+  .icon.s48 .wm .word{ font-size:12px; }
+
+  /* safe zones / system masks */
+  .icon.s150{ width:150px; height:150px; border-radius:34px; box-shadow:0 14px 32px rgba(27,51,180,.28); }
+  .icon.s150 .ribbon{ width:16px; height:70px; }
+  .icon.s150 .wm{ gap:5px; margin-top:4px; }
+  .icon.s150 .wm .eye{ font-size:9.4px; letter-spacing:.42em; padding-left:.42em; }
+  .icon.s150 .wm .word{ font-size:37px; }
+  .icon.mask-circle{ border-radius:50%; }
+  .icon.mask-square{ border-radius:0; }
+  .masks{ display:flex; gap:30px; flex-wrap:wrap; }
+  .mask-item{ display:flex; flex-direction:column; align-items:center; gap:12px; }
+  .mask-lbl{ font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+  .keys{ position:absolute; inset:0; z-index:3; pointer-events:none; }
+  .masks-note{ font-size:12px; line-height:1.65; color:#4E5A86; max-width:560px; margin-top:18px; }
+  .masks-note b{ color:var(--ink); font-weight:500; }
+
+  /* contexts: home screens */
+  .contexts{ display:flex; gap:28px; flex-wrap:wrap; }
+  .home{ width:230px; border-radius:30px; overflow:hidden; padding:22px 20px 26px; display:flex; flex-direction:column; }
+  .home.dark{ background:linear-gradient(180deg,#11163a,#080B1C); box-shadow:0 24px 60px rgba(8,11,28,.4); }
+  .home.light{ background:linear-gradient(180deg,#E6EAFB,#F5F7FE); box-shadow:0 24px 60px rgba(120,116,170,.2); }
+  .home .time{ font-size:11px; font-weight:500; letter-spacing:.02em; margin-bottom:24px; }
+  .home.dark .time{ color:#C9D2F2; }
+  .home.light .time{ color:#2E3A86; }
+  .home .grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px 16px; }
+  .home .app{ display:flex; flex-direction:column; align-items:center; gap:6px; }
+  .home .ph{ width:100%; aspect-ratio:1; border-radius:14px; }
+  .home.dark .ph{ background:rgba(255,255,255,.08); }
+  .home.light .ph{ background:rgba(12,18,48,.06); }
+  .home .nm{ font-size:8px; }
+  .home.dark .nm{ color:#9AA4D0; }
+  .home.light .nm{ color:#5560A0; }
+  .home .ours .nm{ font-weight:500; }
+  .home.dark .ours .nm{ color:#EEF0FC; }
+  .home.light .ours .nm{ color:#0C1230; }
+  /* small home-screen icon */
+  .icon.sHome{ width:100%; aspect-ratio:1; height:auto; border-radius:24%; box-shadow:0 6px 14px rgba(8,11,28,.3); }
+  .icon.sHome .ribbon{ width:11%; height:48%; }
+  .icon.sHome .wm{ gap:3px; margin-top:6%; }
+  .icon.sHome .wm .eye{ font-size:6.5px; letter-spacing:.34em; padding-left:.34em; }
+  .icon.sHome .wm .word{ font-size:24px; }
+
+  .foot{ border-top:.5px solid var(--line); padding-top:28px; display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:10px; }
+  .foot .fn{ display:flex; flex-direction:column; align-items:flex-start; }
+  .foot .fn .e{ font-size:9px; letter-spacing:.34em; text-transform:uppercase; color:#2E3A86; padding-left:.34em; }
+  .foot .fn em{ font-family:'Playfair Display',serif; font-style:italic; font-weight:500; font-size:20px; color:var(--cobalt); line-height:1.1; }
+  .foot .m{ font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="head">
+    <div class="eyebrow">O meu Salmo · App Icon</div>
+    <h1>O ícone é o <em>livro</em></h1>
+    <p>O tile inteiro é a capa — cobalto cheio. O nome centralizado em branco, e a fita do marcador descendo da borda superior.</p>
+  </div>
+
+  <div>
+    <div class="sec-title">Ícone principal</div>
+    <div class="hero-row">
+      <div class="icon s320">
+        <div class="ribbon"></div>
+        <div class="wm">
+          <div class="eye">O meu</div>
+          <div class="word">Salmo</div>
+        </div>
+      </div>
+      <div class="hero-note">
+        <div class="pnote">
+          <div class="t">A capa</div>
+          <div class="h">Cobalto cheio</div>
+          <div class="d">O fundo é a primária da marca (#2A47DD), com um leve degradê de luz — a capa lisa de um livro encadernado.</div>
+        </div>
+        <div class="pnote">
+          <div class="t">A fita</div>
+          <div class="h">Marcador branco do topo</div>
+          <div class="d">A fita desce da margem superior com a ponta em rabo-de-andorinha — o gesto de “guardar onde parou”, em branco puro.</div>
+        </div>
+        <div class="pnote">
+          <div class="t">O nome</div>
+          <div class="h">Branco, centralizado</div>
+          <div class="d">“O MEU” em versalete espaçado sobre “Salmo” em Playfair itálico — o mesmo logotipo da identidade, vazado em branco.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="sec-title">Escala — de 320 a 48px</div>
+    <div class="scale">
+      <div class="item">
+        <div class="icon s120"><div class="ribbon"></div><div class="wm"><div class="eye">O meu</div><div class="word">Salmo</div></div></div>
+        <div class="lbl">120</div>
+      </div>
+      <div class="item">
+        <div class="icon s76"><div class="ribbon"></div><div class="wm"><div class="eye">O meu</div><div class="word">Salmo</div></div></div>
+        <div class="lbl">76</div>
+      </div>
+      <div class="item">
+        <div class="icon s48"><div class="ribbon"></div><div class="wm"><div class="eye">O meu</div><div class="word">Salmo</div></div></div>
+        <div class="lbl">48</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="sec-title">Zonas de segurança &amp; máscaras do sistema</div>
+    <div class="masks">
+      <div class="mask-item">
+        <div class="icon s150">
+          <div class="ribbon"></div>
+          <div class="wm"><div class="eye">O meu</div><div class="word">Salmo</div></div>
+          <svg class="keys" viewBox="0 0 100 100" fill="none">
+            <circle cx="50" cy="50" r="33.3" stroke="#fff" stroke-opacity=".55" stroke-width=".6" stroke-dasharray="2 2"/>
+            <rect x="16.7" y="16.7" width="66.6" height="66.6" rx="6" stroke="#fff" stroke-opacity=".4" stroke-width=".6" stroke-dasharray="2 2"/>
+          </svg>
+        </div>
+        <div class="mask-lbl">Keylines · área segura 66%</div>
+      </div>
+      <div class="mask-item">
+        <div class="icon s150">
+          <div class="ribbon"></div>
+          <div class="wm"><div class="eye">O meu</div><div class="word">Salmo</div></div>
+        </div>
+        <div class="mask-lbl">iOS · squircle</div>
+      </div>
+      <div class="mask-item">
+        <div class="icon s150 mask-circle">
+          <div class="ribbon"></div>
+          <div class="wm"><div class="eye">O meu</div><div class="word">Salmo</div></div>
+        </div>
+        <div class="mask-lbl">Android · círculo</div>
+      </div>
+      <div class="mask-item">
+        <div class="icon s150 mask-square">
+          <div class="ribbon"></div>
+          <div class="wm"><div class="eye">O meu</div><div class="word">Salmo</div></div>
+        </div>
+        <div class="mask-lbl">Android · quadrado</div>
+      </div>
+    </div>
+    <div class="masks-note">O logotipo fica dentro da <b>área segura de 66%</b> (Android adaptativo) e sobrevive a qualquer máscara — círculo, squircle ou quadrado. A <b>fita</b> é decorativa e sangra de propósito da borda superior: as máscaras arredondadas aparam só a pontinha do topo, como se ela saísse de dentro da lombada.</div>
+  </div>
+
+  <div>
+    <div class="sec-title">Na tela inicial</div>
+    <div class="contexts">
+      <div class="home dark">
+        <div class="time">9:41</div>
+        <div class="grid">
+          <div class="app"><div class="ph"></div><div class="nm">Notas</div></div>
+          <div class="app"><div class="ph"></div><div class="nm">Tempo</div></div>
+          <div class="app ours">
+            <div class="icon sHome"><div class="ribbon"></div><div class="wm"><div class="eye">O meu</div><div class="word">Salmo</div></div></div>
+            <div class="nm">O meu Salmo</div>
+          </div>
+          <div class="app"><div class="ph"></div><div class="nm">Saúde</div></div>
+          <div class="app"><div class="ph"></div><div class="nm">Música</div></div>
+          <div class="app"><div class="ph"></div><div class="nm">Fotos</div></div>
+          <div class="app"><div class="ph"></div><div class="nm">Ajustes</div></div>
+          <div class="app"><div class="ph"></div><div class="nm">Mapas</div></div>
+        </div>
+      </div>
+      <div class="home light">
+        <div class="time">9:41</div>
+        <div class="grid">
+          <div class="app"><div class="ph"></div><div class="nm">Notas</div></div>
+          <div class="app"><div class="ph"></div><div class="nm">Tempo</div></div>
+          <div class="app ours">
+            <div class="icon sHome"><div class="ribbon"></div><div class="wm"><div class="eye">O meu</div><div class="word">Salmo</div></div></div>
+            <div class="nm">O meu Salmo</div>
+          </div>
+          <div class="app"><div class="ph"></div><div class="nm">Saúde</div></div>
+          <div class="app"><div class="ph"></div><div class="nm">Música</div></div>
+          <div class="app"><div class="ph"></div><div class="nm">Fotos</div></div>
+          <div class="app"><div class="ph"></div><div class="nm">Ajustes</div></div>
+          <div class="app"><div class="ph"></div><div class="nm">Mapas</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="fn"><span class="e">O meu</span><em>Salmo</em></div>
+    <div class="m">App Icon · v2 · cobalto cheio</div>
+  </div>
+
+</div>
+</body>
+</html>

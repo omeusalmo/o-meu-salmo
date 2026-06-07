@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O meu Salmo — Brand Identity</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant:ital,wght@1,300;1,400&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --peach-100: #fff1ea;
+  --peach-200: #ffdece;
+  --peach-300: #f9c4a4;
+  --peach-400: #efa882;
+  --peach-500: #e08860;
+  --peach-600: #c46e48;
+
+  --dark-base:    #12100d;
+  --dark-plus:    #1e1c18;
+  --dark-line:    #2a2420;
+  --dark-muted:   #4a4038;
+  --dark-text:    #a89880;
+  --dark-cream:   #f5ede4;
+
+  --light-base:   #fffaf6;
+  --light-plus:   #f5ede4;
+  --light-line:   #e8ddd4;
+  --light-muted:  #c0b0a0;
+  --light-text:   #7a6858;
+  --light-title:  #1a1410;
+
+  --bg-page: #f0ebe4;
+}
+
+body {
+  font-family: 'Instrument Sans', sans-serif;
+  background: var(--bg-page);
+  color: var(--light-title);
+  padding: 56px 32px;
+}
+
+.page { max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; gap: 64px; }
+
+/* ── eyebrow util ── */
+.eyebrow {
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--light-muted);
+  margin-bottom: 20px;
+}
+
+/* ────────────────────────────────────────────
+   HEADER
+──────────────────────────────────────────── */
+.brand-header {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding-bottom: 48px;
+  border-bottom: .5px solid var(--light-line);
+}
+
+.logo-lockup { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
+
+.logo-icon {
+  width: 64px; height: 64px;
+  background: var(--dark-base);
+  border-radius: 18px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.brand-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 400;
+  letter-spacing: -.01em;
+  color: var(--light-title);
+  line-height: 1;
+}
+.brand-name em { color: var(--peach-500); font-style: italic; }
+
+.brand-tagline {
+  flex: 1;
+  font-family: 'Cormorant', serif;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--light-text);
+  line-height: 1.5;
+  padding-left: 40px;
+  border-left: .5px solid var(--light-line);
+}
+
+/* ────────────────────────────────────────────
+   PALETA
+──────────────────────────────────────────── */
+.palette-grid { display: flex; flex-direction: column; gap: 32px; }
+
+.palette-section { display: flex; flex-direction: column; gap: 10px; }
+.pal-title {
+  font-size: 9px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--light-muted);
+}
+
+.pal-strip { display: flex; height: 52px; border-radius: 10px; overflow: hidden; }
+.sw {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 10px 7px;
+}
+.sw-lbl { font-size: 9px; letter-spacing: .05em; font-weight: 400; }
+
+.pal-accents { display: flex; gap: 12px; }
+.acc-chip {
+  flex: 1;
+  border-radius: 10px;
+  padding: 16px 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.acc-name { font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
+.acc-hex  { font-size: 11px; font-family: 'Courier New', monospace; opacity: .65; }
+
+/* ────────────────────────────────────────────
+   TIPOGRAFIA
+──────────────────────────────────────────── */
+.typo-block {
+  background: var(--light-base);
+  border: .5px solid var(--light-line);
+  border-radius: 16px;
+  padding: 44px 48px;
+}
+.typo-row {
+  display: flex;
+  align-items: baseline;
+  gap: 32px;
+  padding-bottom: 28px;
+  margin-bottom: 28px;
+  border-bottom: .5px solid var(--light-line);
+}
+.typo-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.tmeta { width: 130px; flex-shrink: 0; }
+.tmeta-role { font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--peach-500); margin-bottom: 5px; }
+.tmeta-spec { font-size: 10px; color: var(--light-muted); line-height: 1.6; }
+
+.t-display {
+  font-family: 'Playfair Display', serif;
+  font-size: 80px; line-height: .88;
+  color: var(--light-title);
+  letter-spacing: -.025em;
+  font-weight: 400;
+}
+.t-display em { color: var(--peach-500); font-style: italic; }
+
+.t-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px; line-height: .95;
+  color: var(--light-title);
+  letter-spacing: -.015em;
+  font-weight: 400;
+}
+
+.t-verse {
+  font-family: 'Cormorant', serif;
+  font-style: italic;
+  font-size: 22px; line-height: 1.65;
+  color: var(--light-text);
+  max-width: 480px;
+}
+
+.t-ui { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--light-muted); }
+
+/* ────────────────────────────────────────────
+   LOGO CONCEPT
+──────────────────────────────────────────── */
+.logo-section { display: flex; gap: 24px; flex-wrap: wrap; }
+
+.logo-variant {
+  background: var(--light-base);
+  border: .5px solid var(--light-line);
+  border-radius: 16px;
+  padding: 36px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 180px;
+}
+.logo-variant-dark {
+  background: var(--dark-base);
+  border-color: var(--dark-line);
+}
+.logo-variant-label {
+  font-size: 9px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--light-muted);
+}
+.logo-variant-dark .logo-variant-label { color: var(--dark-muted); }
+
+/* ────────────────────────────────────────────
+   EMOÇÕES
+──────────────────────────────────────────── */
+.emotions-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+.emotion-card {
+  border-radius: 12px;
+  padding: 20px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.emotion-dot { width: 10px; height: 10px; border-radius: 50%; }
+.emotion-name { font-size: 13px; font-weight: 500; }
+.emotion-desc { font-size: 10px; line-height: 1.5; opacity: .7; }
+
+/* ────────────────────────────────────────────
+   PHONES
+──────────────────────────────────────────── */
+.phones-section { display: flex; gap: 48px; align-items: flex-start; flex-wrap: wrap; }
+
+.phone-col { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+.phone-col-label { font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: var(--light-muted); }
+
+.phones-row { display: flex; gap: 16px; }
+
+.phone {
+  width: 180px;
+  border-radius: 32px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.phone-dark {
+  background: var(--dark-base);
+  border: 1.5px solid var(--dark-line);
+  box-shadow: 0 28px 70px rgba(0,0,0,.4), 0 8px 20px rgba(0,0,0,.25);
+}
+.phone-light {
+  background: var(--light-base);
+  border: 1.5px solid var(--light-line);
+  box-shadow: 0 28px 70px rgba(180,140,110,.16), 0 8px 20px rgba(180,140,110,.1);
+}
+
+.notch { height: 24px; display: flex; align-items: center; justify-content: center; }
+.pill-d { width: 44px; height: 5px; border-radius: 3px; background: var(--dark-line); }
+.pill-l { width: 44px; height: 5px; border-radius: 3px; background: var(--light-line); }
+
+/* home dark */
+.scr-hd { background: var(--dark-base); padding: 10px 0 0; min-height: 360px; display: flex; flex-direction: column; }
+.hd-ey  { font-size: 8px; letter-spacing: .18em; text-transform: uppercase; color: var(--dark-muted); padding: 0 18px; margin-bottom: 8px; }
+.hd-num { font-family: 'Playfair Display',serif; font-size: 84px; line-height: .84; color: var(--dark-cream); padding: 0 14px; letter-spacing: -.03em; font-weight: 400; }
+.hd-num em { display: block; font-style: italic; font-size: 16px; line-height: 1.6; color: var(--peach-400); margin-top: 4px; letter-spacing: .01em; }
+.hd-rule { width: 20px; height: 1px; background: var(--dark-line); margin: 14px 18px; }
+.hd-verse { font-family: 'Cormorant',serif; font-style: italic; font-size: 14px; line-height: 1.7; color: var(--dark-text); padding: 0 18px; flex: 1; }
+.hd-ref { font-size: 8px; letter-spacing: .1em; color: var(--dark-muted); padding: 8px 18px 0; text-transform: uppercase; }
+.hd-bot { padding: 12px 18px 20px; border-top: .5px solid var(--dark-plus); display: flex; justify-content: space-between; align-items: center; margin-top: 12px; }
+.play-d { width: 30px; height: 30px; border-radius: 50%; background: var(--peach-500); display: flex; align-items: center; justify-content: center; }
+.play-lbl-d { font-size: 9px; color: var(--dark-text); }
+.play-row { display: flex; align-items: center; gap: 8px; }
+.dots { display: flex; gap: 4px; }
+.dot-d { width: 4px; height: 4px; border-radius: 50%; background: var(--dark-line); }
+.dot-d.on { background: var(--peach-400); }
+.tri { width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 7px solid var(--dark-base); margin-left: 2px; }
+.tri-sm { border-top: 3px solid transparent; border-bottom: 3px solid transparent; border-left: 5px solid var(--dark-base); margin-left: 1px; }
+
+/* home light */
+.scr-hl { background: var(--light-base); padding: 10px 0 0; min-height: 360px; display: flex; flex-direction: column; }
+.hl-ey  { font-size: 8px; letter-spacing: .18em; text-transform: uppercase; color: var(--light-muted); padding: 0 18px; margin-bottom: 8px; }
+.hl-num { font-family: 'Playfair Display',serif; font-size: 84px; line-height: .84; color: var(--light-title); padding: 0 14px; letter-spacing: -.03em; font-weight: 400; }
+.hl-num em { display: block; font-style: italic; font-size: 16px; line-height: 1.6; color: var(--peach-500); margin-top: 4px; letter-spacing: .01em; }
+.hl-rule { width: 20px; height: 1px; background: var(--light-line); margin: 14px 18px; }
+.hl-verse { font-family: 'Cormorant',serif; font-style: italic; font-size: 14px; line-height: 1.7; color: var(--light-text); padding: 0 18px; flex: 1; }
+.hl-ref { font-size: 8px; letter-spacing: .1em; color: var(--light-muted); padding: 8px 18px 0; text-transform: uppercase; }
+.hl-bot { padding: 12px 18px 20px; border-top: .5px solid var(--light-line); display: flex; justify-content: space-between; align-items: center; margin-top: 12px; }
+.play-l { width: 30px; height: 30px; border-radius: 50%; background: var(--peach-500); display: flex; align-items: center; justify-content: center; }
+.play-lbl-l { font-size: 9px; color: var(--light-text); }
+.dot-l { width: 4px; height: 4px; border-radius: 50%; background: var(--light-line); }
+.dot-l.on { background: var(--peach-500); }
+.tri-l { border-left-color: var(--light-base); }
+
+/* phone: read dark */
+.scr-rd { background: var(--dark-base); padding: 8px 0 0; min-height: 360px; display: flex; flex-direction: column; }
+.rhd-d { display: flex; justify-content: space-between; align-items: center; padding: 0 18px 12px; border-bottom: .5px solid var(--dark-plus); }
+.back-d { font-size: 9px; color: var(--dark-muted); }
+.icn-d { width: 20px; height: 20px; border: .5px solid var(--dark-line); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.rcoll-d { font-size: 8px; letter-spacing: .14em; text-transform: uppercase; color: var(--peach-400); padding: 12px 18px 0; }
+.rtitle-d { font-family: 'Playfair Display',serif; font-size: 48px; line-height: .88; letter-spacing: -.025em; color: var(--dark-cream); padding: 4px 18px 0; font-weight: 400; }
+.rtitle-d em { color: var(--peach-400); font-style: italic; }
+.verses { flex: 1; padding: 14px 18px 0; display: flex; flex-direction: column; gap: 10px; overflow: hidden; }
+.vrs { display: flex; gap: 8px; }
+.vn-d { font-size: 8px; color: var(--peach-400); margin-top: 3px; width: 10px; flex-shrink: 0; }
+.vt-d { font-family: 'Cormorant',serif; font-style: italic; font-size: 12px; line-height: 1.65; color: var(--dark-muted); }
+.vt-d.on { color: var(--dark-cream); }
+.player-d { padding: 10px 18px 18px; border-top: .5px solid var(--dark-plus); display: flex; align-items: center; gap: 8px; }
+.psm-d { width: 24px; height: 24px; border-radius: 50%; background: var(--peach-500); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.prog-d { flex: 1; height: 2px; background: var(--dark-line); border-radius: 1px; position: relative; }
+.prog-fill { position: absolute; left: 0; top: 0; height: 100%; width: 33%; background: var(--peach-500); border-radius: 1px; }
+.time-d { font-size: 8px; color: var(--dark-muted); letter-spacing: .06em; }
+
+/* phone: read light */
+.scr-rl { background: var(--light-base); padding: 8px 0 0; min-height: 360px; display: flex; flex-direction: column; }
+.rhd-l { display: flex; justify-content: space-between; align-items: center; padding: 0 18px 12px; border-bottom: .5px solid var(--light-line); }
+.back-l { font-size: 9px; color: var(--light-muted); }
+.icn-l { width: 20px; height: 20px; border: .5px solid var(--light-line); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.rcoll-l { font-size: 8px; letter-spacing: .14em; text-transform: uppercase; color: var(--peach-500); padding: 12px 18px 0; }
+.rtitle-l { font-family: 'Playfair Display',serif; font-size: 48px; line-height: .88; letter-spacing: -.025em; color: var(--light-title); padding: 4px 18px 0; font-weight: 400; }
+.rtitle-l em { color: var(--peach-500); font-style: italic; }
+.vn-l { font-size: 8px; color: var(--peach-500); margin-top: 3px; width: 10px; flex-shrink: 0; }
+.vt-l { font-family: 'Cormorant',serif; font-style: italic; font-size: 12px; line-height: 1.65; color: var(--light-muted); }
+.vt-l.on { color: var(--light-title); }
+.player-l { padding: 10px 18px 18px; border-top: .5px solid var(--light-line); display: flex; align-items: center; gap: 8px; }
+.psm-l { width: 24px; height: 24px; border-radius: 50%; background: var(--peach-500); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.prog-l { flex: 1; height: 2px; background: var(--light-line); border-radius: 1px; position: relative; }
+.time-l { font-size: 8px; color: var(--light-muted); letter-spacing: .06em; }
+
+.phones-notes {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  min-width: 220px;
+}
+.pnote { display: flex; flex-direction: column; gap: 6px; }
+.pnote-tag { font-size: 8px; letter-spacing: .14em; text-transform: uppercase; color: var(--peach-500); }
+.pnote-title { font-family: 'Playfair Display',serif; font-size: 17px; color: var(--light-title); font-weight: 400; }
+.pnote-desc { font-size: 12px; color: var(--light-text); line-height: 1.65; }
+
+/* ────────────────────────────────────────────
+   MICROCOPY
+──────────────────────────────────────────── */
+.copy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--light-line);
+  border-radius: 16px;
+  overflow: hidden;
+  border: .5px solid var(--light-line);
+}
+.copy-cell {
+  background: var(--light-base);
+  padding: 24px 28px;
+}
+.copy-ctx { font-size: 8px; letter-spacing: .14em; text-transform: uppercase; color: var(--peach-500); margin-bottom: 8px; }
+.copy-text { font-family: 'Cormorant',serif; font-style: italic; font-size: 18px; color: var(--light-title); line-height: 1.5; }
+
+/* ────────────────────────────────────────────
+   ANIMAÇÕES
+──────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hd-num, .hl-num { animation: fadeUp .7s ease forwards; }
+.hd-verse, .hl-verse { animation: fadeUp .7s .1s ease both; }
+.rtitle-d, .rtitle-l { animation: fadeUp .6s ease forwards; }
+.vrs { opacity: 0; animation: fadeUp .45s ease forwards; }
+.vrs:nth-child(1) { animation-delay: .05s; }
+.vrs:nth-child(2) { animation-delay: .13s; }
+.vrs:nth-child(3) { animation-delay: .21s; }
+
+@media (max-width: 700px) {
+  .brand-header { flex-direction: column; gap: 24px; }
+  .brand-tagline { padding-left: 0; border-left: none; border-top: .5px solid var(--light-line); padding-top: 24px; }
+  .emotions-grid { grid-template-columns: repeat(3, 1fr); }
+  .copy-grid { grid-template-columns: 1fr; }
+  .phones-section { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ── HEADER ── -->
+<div class="brand-header">
+  <div class="logo-lockup">
+    <div class="logo-icon">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <!-- S como onda fluida -->
+        <path d="M9 14 C9 10, 12 8, 18 8 C24 8, 27 11, 27 15 C27 19, 22 21, 18 22 C14 23, 9 25, 9 29 C9 33, 12 30, 18 30 C24 30, 27 27, 27 24"
+              stroke="#e08860" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+      </svg>
+    </div>
+    <div class="brand-name">O meu <em>Salmo</em></div>
+  </div>
+  <div class="brand-tagline">
+    "Encontre as palavras certas<br>para o que você sente."
+  </div>
+</div>
+
+<!-- ── PALETA ── -->
+<div>
+  <div class="eyebrow">01 — Paleta de cores</div>
+  <div class="palette-grid">
+
+    <div class="palette-section">
+      <div class="pal-title">◐ Modo noturno</div>
+      <div class="pal-strip">
+        <div class="sw" style="background:#12100d; flex:1.2;"><span class="sw-lbl" style="color:#2a2420">Base</span></div>
+        <div class="sw" style="background:#1e1c18;"><span class="sw-lbl" style="color:#3a3428">Fundo+</span></div>
+        <div class="sw" style="background:#2a2420;"><span class="sw-lbl" style="color:#4a4038">Linha</span></div>
+        <div class="sw" style="background:#4a4038;"><span class="sw-lbl" style="color:#6a5a48">Mudo</span></div>
+        <div class="sw" style="background:#a89880;"><span class="sw-lbl" style="color:#12100d">Texto</span></div>
+        <div class="sw" style="background:#f5ede4;"><span class="sw-lbl" style="color:#1a1410">Cream</span></div>
+        <div class="sw" style="background:#e08860; flex:1.2;"><span class="sw-lbl" style="color:#12100d">Pêssego</span></div>
+      </div>
+    </div>
+
+    <div class="palette-section">
+      <div class="pal-title">○ Modo diurno</div>
+      <div class="pal-strip">
+        <div class="sw" style="background:#fffaf6; border:.5px solid #f0e8e0; flex:1.2;"><span class="sw-lbl" style="color:#e0d5ca">Base</span></div>
+        <div class="sw" style="background:#f5ede4;"><span class="sw-lbl" style="color:#e0d5ca">Fundo+</span></div>
+        <div class="sw" style="background:#e8ddd4;"><span class="sw-lbl" style="color:#c0b0a0">Linha</span></div>
+        <div class="sw" style="background:#c0b0a0;"><span class="sw-lbl" style="color:#fffaf6">Mudo</span></div>
+        <div class="sw" style="background:#7a6858;"><span class="sw-lbl" style="color:#fffaf6">Texto</span></div>
+        <div class="sw" style="background:#1a1410;"><span class="sw-lbl" style="color:#fffaf6">Título</span></div>
+        <div class="sw" style="background:#e08860; flex:1.2;"><span class="sw-lbl" style="color:#fffaf6">Pêssego</span></div>
+      </div>
+    </div>
+
+    <div class="palette-section">
+      <div class="pal-title">Escala pêssego / acento</div>
+      <div class="pal-accents">
+        <div class="acc-chip" style="background:#fff1ea;"><div class="acc-name" style="color:#c46e48">100</div><div class="acc-hex" style="color:#c46e48">#fff1ea</div></div>
+        <div class="acc-chip" style="background:#ffdece;"><div class="acc-name" style="color:#c46e48">200</div><div class="acc-hex" style="color:#c46e48">#ffdece</div></div>
+        <div class="acc-chip" style="background:#f9c4a4;"><div class="acc-name" style="color:#1a1410">300</div><div class="acc-hex" style="color:#1a1410">#f9c4a4</div></div>
+        <div class="acc-chip" style="background:#efa882;"><div class="acc-name" style="color:#1a1410">400</div><div class="acc-hex" style="color:#1a1410">#efa882</div></div>
+        <div class="acc-chip" style="background:#e08860;"><div class="acc-name" style="color:#fff1ea">500 ★</div><div class="acc-hex" style="color:#fff1ea">#e08860</div></div>
+        <div class="acc-chip" style="background:#c46e48;"><div class="acc-name" style="color:#fff1ea">600</div><div class="acc-hex" style="color:#fff1ea">#c46e48</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── LOGO ── -->
+<div>
+  <div class="eyebrow">02 — Logo</div>
+  <div class="logo-section">
+    <div class="logo-variant">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+        <rect width="48" height="48" rx="14" fill="#12100d"/>
+        <path d="M12 19 C12 13, 16 10, 24 10 C32 10, 36 14, 36 20 C36 26, 29 29, 24 30 C19 31, 12 34, 12 40 C12 46, 16 42, 24 42 C32 42, 36 38, 36 32"
+              stroke="#e08860" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="logo-variant-label">Ícone — fundo escuro</div>
+    </div>
+    <div class="logo-variant logo-variant-dark">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+        <path d="M12 19 C12 13, 16 10, 24 10 C32 10, 36 14, 36 20 C36 26, 29 29, 24 30 C19 31, 12 34, 12 40 C12 46, 16 42, 24 42 C32 42, 36 38, 36 32"
+              stroke="#e08860" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="logo-variant-label" style="color:#4a4038">Ícone — standalone</div>
+    </div>
+    <div class="logo-variant" style="flex: 2; flex-direction: row; align-items: center; gap: 16px;">
+      <svg width="44" height="44" viewBox="0 0 48 48" fill="none">
+        <rect width="48" height="48" rx="14" fill="#12100d"/>
+        <path d="M12 19 C12 13, 16 10, 24 10 C32 10, 36 14, 36 20 C36 26, 29 29, 24 30 C19 31, 12 34, 12 40 C12 46, 16 42, 24 42 C32 42, 36 38, 36 32"
+              stroke="#e08860" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div>
+        <div style="font-family:'Playfair Display',serif; font-size:28px; font-weight:400; color:#1a1410; letter-spacing:-.01em; line-height:1">
+          O meu <em style="color:#e08860; font-style:italic">Salmo</em>
+        </div>
+        <div style="font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:#c0b0a0; margin-top:3px">App de Salmos</div>
+      </div>
+      <div class="logo-variant-label" style="position:absolute; bottom:14px; left:0; right:0; text-align:center">Lockup horizontal</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TIPOGRAFIA ── -->
+<div>
+  <div class="eyebrow">03 — Sistema tipográfico</div>
+  <div class="typo-block">
+    <div class="typo-row">
+      <div class="tmeta">
+        <div class="tmeta-role">Display</div>
+        <div class="tmeta-spec">Playfair Display<br>80–100px · −0.025em<br>weight 400</div>
+      </div>
+      <div class="t-display">Salmo <em>23</em></div>
+    </div>
+    <div class="typo-row">
+      <div class="tmeta">
+        <div class="tmeta-role">Título de coleção</div>
+        <div class="tmeta-spec">Playfair Display<br>36–44px · −0.015em</div>
+      </div>
+      <div class="t-heading">Para a ansiedade</div>
+    </div>
+    <div class="typo-row">
+      <div class="tmeta">
+        <div class="tmeta-role">Corpo do Salmo</div>
+        <div class="tmeta-spec">Cormorant Italic<br>17–22px · 1.65 lh</div>
+      </div>
+      <div class="t-verse">"O Senhor é o meu pastor; nada me faltará. Ele me faz repousar em pastos verdejantes."</div>
+    </div>
+    <div class="typo-row">
+      <div class="tmeta">
+        <div class="tmeta-role">UI / Labels</div>
+        <div class="tmeta-spec">Instrument Sans 300<br>9–11px · 0.16em caps</div>
+      </div>
+      <div class="t-ui">Salmo do dia · Para a ansiedade · 46 · 10</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── EMOÇÕES ── -->
+<div>
+  <div class="eyebrow">04 — Tags de emoção</div>
+  <div class="emotions-grid">
+    <div class="emotion-card" style="background:#fdf3ee; color:#c46e48;">
+      <div class="emotion-dot" style="background:#e08860;"></div>
+      <div class="emotion-name">Ansiedade</div>
+      <div class="emotion-desc">Agitação, medo, angústia, insônia</div>
+    </div>
+    <div class="emotion-card" style="background:#f0f5ee; color:#4a7a5a;">
+      <div class="emotion-dot" style="background:#5a8a6a;"></div>
+      <div class="emotion-name">Paz</div>
+      <div class="emotion-desc">Calma, quietude, descanso</div>
+    </div>
+    <div class="emotion-card" style="background:#fdf7ee; color:#9a6a2a;">
+      <div class="emotion-dot" style="background:#c49840;"></div>
+      <div class="emotion-name">Gratidão</div>
+      <div class="emotion-desc">Louvor, alegria, reconhecimento</div>
+    </div>
+    <div class="emotion-card" style="background:#f5eeed; color:#8a4a3a;">
+      <div class="emotion-dot" style="background:#9a5a48;"></div>
+      <div class="emotion-name">Luto</div>
+      <div class="emotion-desc">Perda, tristeza, arrependimento</div>
+    </div>
+    <div class="emotion-card" style="background:#f0eeef; color:#7a6878;">
+      <div class="emotion-dot" style="background:#9a8898;"></div>
+      <div class="emotion-name">Dúvida</div>
+      <div class="emotion-desc">Questionar, silêncio, espera</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PHONES ── -->
+<div>
+  <div class="eyebrow">05 — Telas — Dark &amp; Light</div>
+  <div class="phones-section">
+
+    <div class="phone-col">
+      <div class="phone-col-label">◐ Modo noturno</div>
+      <div class="phones-row">
+        <!-- Home dark -->
+        <div class="phone phone-dark">
+          <div class="notch"><div class="pill-d"></div></div>
+          <div class="scr-hd">
+            <div class="hd-ey">Salmo do dia</div>
+            <div class="hd-num">46<em>Para a ansiedade</em></div>
+            <div class="hd-rule"></div>
+            <div class="hd-verse">"Aquietai-vos e sabei que eu sou Deus."</div>
+            <div class="hd-ref">46 · 10</div>
+            <div class="hd-bot">
+              <div class="play-row">
+                <div class="play-d"><div class="tri"></div></div>
+                <div class="play-lbl-d">Ouvir</div>
+              </div>
+              <div class="dots">
+                <div class="dot-d on"></div>
+                <div class="dot-d"></div>
+                <div class="dot-d"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Leitura dark -->
+        <div class="phone phone-dark">
+          <div class="notch"><div class="pill-d"></div></div>
+          <div class="scr-rd">
+            <div class="rhd-d">
+              <div class="back-d">← voltar</div>
+              <div class="icn-d">
+                <svg width="8" height="8" viewBox="0 0 9 9" fill="none">
+                  <path d="M4.5 7.5L1.5 4.5C1 4 1 2.5 2.5 2.5C3.2 2.5 3.8 3 4.5 3.8C5.2 3 5.8 2.5 6.5 2.5C8 2.5 8 4 7.5 4.5Z" stroke="#4a4038" stroke-width=".7" fill="none"/>
+                </svg>
+              </div>
+            </div>
+            <div class="rcoll-d">Para a ansiedade</div>
+            <div class="rtitle-d">Salmo<br><em>23</em></div>
+            <div class="verses">
+              <div class="vrs"><div class="vn-d">1</div><div class="vt-d on">O Senhor é o meu pastor; nada me faltará.</div></div>
+              <div class="vrs"><div class="vn-d">2</div><div class="vt-d">Ele me faz repousar em pastos verdejantes...</div></div>
+              <div class="vrs"><div class="vn-d">3</div><div class="vt-d">Refrigera a minha alma; guia-me pelas veredas...</div></div>
+            </div>
+            <div class="player-d">
+              <div class="psm-d"><div class="tri tri-sm"></div></div>
+              <div class="prog-d"><div class="prog-fill"></div></div>
+              <div class="time-d">1:24</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phone-col">
+      <div class="phone-col-label">○ Modo diurno</div>
+      <div class="phones-row">
+        <!-- Home light -->
+        <div class="phone phone-light">
+          <div class="notch"><div class="pill-l"></div></div>
+          <div class="scr-hl">
+            <div class="hl-ey">Salmo do dia</div>
+            <div class="hl-num">46<em>Para a ansiedade</em></div>
+            <div class="hl-rule"></div>
+            <div class="hl-verse">"Aquietai-vos e sabei que eu sou Deus."</div>
+            <div class="hl-ref">46 · 10</div>
+            <div class="hl-bot">
+              <div class="play-row">
+                <div class="play-l"><div class="tri tri-l"></div></div>
+                <div class="play-lbl-l">Ouvir</div>
+              </div>
+              <div class="dots">
+                <div class="dot-l on"></div>
+                <div class="dot-l"></div>
+                <div class="dot-l"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Leitura light -->
+        <div class="phone phone-light">
+          <div class="notch"><div class="pill-l"></div></div>
+          <div class="scr-rl">
+            <div class="rhd-l">
+              <div class="back-l">← voltar</div>
+              <div class="icn-l">
+                <svg width="8" height="8" viewBox="0 0 9 9" fill="none">
+                  <path d="M4.5 7.5L1.5 4.5C1 4 1 2.5 2.5 2.5C3.2 2.5 3.8 3 4.5 3.8C5.2 3 5.8 2.5 6.5 2.5C8 2.5 8 4 7.5 4.5Z" stroke="#c0b0a0" stroke-width=".7" fill="none"/>
+                </svg>
+              </div>
+            </div>
+            <div class="rcoll-l">Para a ansiedade</div>
+            <div class="rtitle-l">Salmo<br><em>23</em></div>
+            <div class="verses">
+              <div class="vrs"><div class="vn-l">1</div><div class="vt-l on">O Senhor é o meu pastor; nada me faltará.</div></div>
+              <div class="vrs"><div class="vn-l">2</div><div class="vt-l">Ele me faz repousar em pastos verdejantes...</div></div>
+              <div class="vrs"><div class="vn-l">3</div><div class="vt-l">Refrigera a minha alma; guia-me pelas veredas...</div></div>
+            </div>
+            <div class="player-l">
+              <div class="psm-l"><div class="tri tri-sm tri-l"></div></div>
+              <div class="prog-l"><div class="prog-fill"></div></div>
+              <div class="time-l">1:24</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phones-notes">
+      <div class="pnote">
+        <div class="pnote-tag">Modo noturno</div>
+        <div class="pnote-title">Intimidade às 2h</div>
+        <div class="pnote-desc">Para ansiedade, insônia, luto. O fundo #12100d quase apaga o ecrã — o pêssego sobre escuro tem calor sem agredir.</div>
+      </div>
+      <div class="pnote">
+        <div class="pnote-tag">Modo diurno</div>
+        <div class="pnote-title">Devoção da manhã</div>
+        <div class="pnote-desc">O creme #fffaf6 é mais suave que branco puro — evita o frio clínico. Convida sem urgência.</div>
+      </div>
+      <div class="pnote">
+        <div class="pnote-tag">Consistência</div>
+        <div class="pnote-title">Um só acento</div>
+        <div class="pnote-desc">O pêssego #e08860 funciona igualmente nos dois modos. O app segue o sistema do dispositivo, com opção manual nos Ajustes.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── MICROCOPY ── -->
+<div>
+  <div class="eyebrow">06 — Voz &amp; Tom — Microcopy</div>
+  <div class="copy-grid">
+    <div class="copy-cell">
+      <div class="copy-ctx">Onboarding</div>
+      <div class="copy-text">"Como você está chegando hoje?"</div>
+    </div>
+    <div class="copy-cell">
+      <div class="copy-ctx">Salmo do dia</div>
+      <div class="copy-text">"Para hoje: um lembrete de que você não está sozinho."</div>
+    </div>
+    <div class="copy-cell">
+      <div class="copy-ctx">Favorito salvo</div>
+      <div class="copy-text">"Guardado no seu coração."</div>
+    </div>
+    <div class="copy-cell">
+      <div class="copy-ctx">Offline</div>
+      <div class="copy-text">"Você está offline — seus Salmos continuam aqui."</div>
+    </div>
+    <div class="copy-cell">
+      <div class="copy-ctx">Busca vazia</div>
+      <div class="copy-text">"Não encontrei nada assim. Tente uma emoção?"</div>
+    </div>
+    <div class="copy-cell" style="background:#12100d;">
+      <div class="copy-ctx" style="color:#efa882;">Notificação noturna</div>
+      <div class="copy-text" style="color:#f5ede4;">"Há um Salmo esperando por você."</div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

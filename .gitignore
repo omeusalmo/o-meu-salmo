@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+**/.DS_Store
+.dropboxignore
+
+# Flutter / Android (dentro de app/)
+app/build/
+app/.dart_tool/
+app/android/.gradle/
+app/android/local.properties
+app/android/build/
+app/android/key.properties
+app/ios/Pods/
+app/ios/.symlinks/
+app/.flutter-plugins-dependencies
+app/.metadata
+
+# Sensíveis
+app/google-credentials.json
+*.jks
+*.keystore
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
