@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/theme/app_theme.dart';
 import '../../core/notifications/notification_service.dart';
@@ -217,10 +218,67 @@ class AjustesScreen extends ConsumerWidget {
             ),
           ),
 
+          const SizedBox(height: AppTheme.sp5),
+
+          // ── Sugestões ─────────────────────────────────────────────────
+          _SectionHeader('Sugestões', isDark: isDark),
+          _Card(
+            isDark: isDark,
+            child: GestureDetector(
+              onTap: () => _enviarSugestao(),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Enviar sugestão',
+                          style: GoogleFonts.instrumentSans(
+                            fontSize: 14,
+                            color: isDark ? AppColors.nightText : AppColors.dayText,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          'Abre o seu e-mail',
+                          style: GoogleFonts.instrumentSans(
+                            fontSize: 12,
+                            color: isDark ? AppColors.nightText : AppColors.dayText,
+                            height: 1.4,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    size: 14,
+                    color: isDark ? AppColors.nightText : AppColors.dayText,
+                  ),
+                ],
+              ),
+            ),
+          ),
+
           const SizedBox(height: AppTheme.sp10),
         ],
       ),
     );
+  }
+
+  Future<void> _enviarSugestao() async {
+    final uri = Uri(
+      scheme: 'mailto',
+      path: 'omeusalmo@gmail.com',
+      queryParameters: {
+        'subject': 'Sugestão — O meu Salmo',
+        'body': 'Olá,\n\nMinha sugestão:\n\n',
+      },
+    );
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    }
   }
 
   void _showApoieSheet(BuildContext context, bool isDark) {
