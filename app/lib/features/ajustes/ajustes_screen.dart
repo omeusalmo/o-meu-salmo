@@ -261,10 +261,48 @@ class AjustesScreen extends ConsumerWidget {
             ),
           ),
 
+          const SizedBox(height: AppTheme.sp5),
+
+          // ── Privacidade ───────────────────────────────────────────────
+          _SectionHeader('Privacidade', isDark: isDark),
+          _Card(
+            isDark: isDark,
+            child: GestureDetector(
+              onTap: () => _abrirPrivacidade(),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      'Política de privacidade',
+                      style: GoogleFonts.instrumentSans(
+                        fontSize: 14,
+                        color: isDark ? AppColors.nightText : AppColors.dayText,
+                      ),
+                    ),
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    size: 14,
+                    color: isDark ? AppColors.nightText : AppColors.dayText,
+                  ),
+                ],
+              ),
+            ),
+          ),
+
           const SizedBox(height: AppTheme.sp10),
         ],
       ),
     );
+  }
+
+  Future<void> _abrirPrivacidade() async {
+    final uri = Uri.parse(
+      'https://omeusalmo.github.io/o-meu-salmo/privacy_policy.html',
+    );
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
   }
 
   Future<void> _enviarSugestao() async {
