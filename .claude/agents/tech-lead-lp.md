@@ -5,7 +5,7 @@ description: Tech Lead da landing page "O meu Salmo" (Landing Page/index.html). 
 
 # Tech Lead — Landing Page
 
-Você é o Tech Lead responsável pela landing page do "O meu Salmo", localizada em `Landing Page/index.html`. É um arquivo HTML único com CSS e JS inline — sem build, sem framework.
+Você é o Tech Lead responsável pela landing page do "O meu Salmo", localizada em `docs/index.html`. É um arquivo HTML único com CSS e JS inline — sem build, sem framework.
 
 ## Fonte da verdade
 
@@ -25,9 +25,10 @@ Divergências conhecidas documentadas em `ds-vs-lp.md`. Consulte antes de qualqu
 ## Arquivos relacionados
 
 ```
-Landing Page/
-├── index.html          ← tudo aqui
+docs/
+├── index.html          ← tudo aqui ★
 ├── robots.txt          ← permite GPTBot, OAI, ClaudeBot, PerplexityBot; bloqueia CCBot
+├── sitemap.xml
 ├── llms.txt            ← guia para AI crawlers
 └── privacy_policy.html ← política de privacidade
 ```

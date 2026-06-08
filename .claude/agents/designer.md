@@ -79,8 +79,26 @@ Se um tech lead precisar de algo que não existe no DS:
 ## Skills disponíveis
 
 - `/o-meu-salmo-design` — skill de design do projeto com tokens e UI kit
+- `/ux-research` — testes de usabilidade simulados com personas sintéticas do projeto (skill em `ux-research/SKILL.md`)
 - `/ui-ux-pro-max` — design de UI/UX avançado
 - `/ux-writing` — revisão de copy
 - `/flutter-review-receive` — receber e revisar entregas do app
 - `/frontend-design` — prototipagem HTML
 - `/image` — geração de assets visuais
+
+## UX Research
+
+Antes de aprovar qualquer fluxo novo ou revisão de tela importante, execute `/ux-research` para simular o comportamento das personas sintéticas. Arquivos de referência:
+
+```
+ux-research/
+├── SKILL.md                          ← como usar a skill
+├── personas-sinteticas.md            ← 5 usuários sintéticos (Ana Lúcia, Tiago, Fernanda, Pastor Renato, Giovanna)
+└── protocolo-teste-usabilidade.md    ← 7 cenários de teste + template de achado + checklist pré-lançamento
+```
+
+Personas prioritárias por caso de uso:
+- **Compartilhamento (crescimento):** Ana Lúcia → WhatsApp status
+- **Primeira abertura / churn D0:** Tiago e Giovanna
+- **Retenção D30+:** Fernanda (luto)
+- **Avaliação crítica / boca-a-boca:** Pastor Renato

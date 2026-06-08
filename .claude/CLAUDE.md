@@ -20,11 +20,7 @@ o-meu-salmo/                      ← raiz do git (github.com/omeusalmo/o-meu-sa
 │   ├── assets/                   ← salmos.json, imagens, áudios
 │   ├── docs/                     ← (legado — não é o GH Pages ativo)
 │   └── test/                     ← testes + testadores-meu-salmo.md
-├── Landing Page/
-│   ├── index.html                ← landing page (HTML/CSS/JS inline)
-│   ├── robots.txt
-│   ├── sitemap.xml
-│   └── llms.txt
+├── Landing Page/                 ← pasta legada (arquivos movidos para docs/)
 ├── o-meu-salmo-design/
 │   ├── design-system.html        ← FONTE DA VERDADE visual ★
 │   ├── SKILL.md                  ← skill de design do projeto
@@ -40,8 +36,12 @@ o-meu-salmo/                      ← raiz do git (github.com/omeusalmo/o-meu-sa
 │   ├── roadmap-gerente.md        ← roadmap pós-lançamento para agente gerente
 │   └── reflexoes-salmos.md       ← fonte das reflexões dos 150 salmos
 ├── audio_testes/                 ← testes de vozes TTS (salmo 23, 30 vozes)
-├── docs/                         ← GitHub Pages (main /docs)
-│   └── privacy_policy.html       ← omeusalmo.github.io/o-meu-salmo/privacy_policy.html
+├── docs/                         ← GitHub Pages (main /docs) → omeusalmo.com.br
+│   ├── index.html                ← landing page (HTML/CSS/JS inline) ★
+│   ├── robots.txt
+│   ├── sitemap.xml
+│   ├── llms.txt
+│   └── privacy_policy.html
 ├── privacy_policy.html           ← cópia root (canônico em docs/)
 ├── gerar_audios.py               ← script geração de áudios TTS
 └── ds-vs-lp.md                   ← auditoria DS × LP (tokens, divergências)
@@ -82,6 +82,9 @@ Easing: `cubic-bezier(.22,.61,.36,1)` padrão, `cubic-bezier(.34,1.56,.64,1)` sp
 | `tech-lead-app` | Flutter app, código, DS no app | gerente |
 | `tech-lead-lp` | Landing page, SEO/GEO/CRO | gerente |
 | `tech-lead-loja` | Google Play listing, ASO | gerente |
+| `marketing` | Copy LP, validação ASO, conteúdo orgânico | gerente |
+| `analista-dados` | Firebase Analytics, Play Console, OKRs/KPIs | gerente |
+| `designer` | Design system, identidade visual | gerente |
 
 Qualquer mudança no DS deve ser propagada pelos 3 tech leads nos seus domínios.
 

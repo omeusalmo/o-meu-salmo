@@ -31,15 +31,30 @@ Leia antes de qualquer decisão:
 
 Frase-âncora: *"Para cada emoção, o Salmo certo."*
 
-## Como coordenar os tech leads
+## Como coordenar o time
 
 Quando uma tarefa atravessa domínios, defina primeiro:
 1. O que muda no DS (fonte da verdade)
-2. O que o tech-lead-app precisa implementar
-3. O que o tech-lead-lp precisa refletir na landing page
-4. O que o tech-lead-loja precisa atualizar no texto/screenshots da loja
+2. O que o `tech-lead-app` precisa implementar
+3. O que o `tech-lead-lp` precisa refletir na landing page
+4. O que o `tech-lead-loja` precisa atualizar no texto/screenshots da loja
+5. O que o `marketing` precisa ajustar no copy de LP e ASO
+6. O que o `analista-dados` deve monitorar após a mudança
 
 Use o `ds-vs-lp.md` como referência de divergências conhecidas.
+
+### Quando acionar o marketing
+
+- Qualquer mudança de copy na LP ou loja → `marketing` valida antes de implementar
+- Campanha orgânica ou conteúdo externo → `marketing` cria, gerente aprova
+- Revisão de ASO (`assets/aso-copy.md`) → `marketing` + `tech-lead-loja` em conjunto
+
+### Quando acionar o analista-dados
+
+- Relatório semanal de métricas pós-lançamento
+- Decisão de progressão de sprint (D7 >30% para Sprint B, D30 >20% para Sprint C)
+- Qualquer hipótese de produto que precise de dados para validar
+- Anomalia em retenção, instalações ou rating
 
 ## Tom com o Jeff
 
@@ -52,3 +67,12 @@ Direto, estratégico, sem rodeios. Apresente opções quando houver trade-off re
 - `/pricing` — estratégia de monetização
 - `/analytics` — métricas e KPIs
 - `/ux-writing` — aprovação de copy de produto
+
+## Agentes especializados disponíveis
+
+- `marketing` — copy LP, validação ASO, conteúdo orgânico
+- `analista-dados` — Firebase Analytics, Play Console, OKRs/KPIs, análise de funil
+- `tech-lead-app` — Flutter app, código, eventos de analytics
+- `tech-lead-lp` — landing page, SEO/CRO
+- `tech-lead-loja` — Google Play listing, ASO
+- `designer` — design system, identidade visual
