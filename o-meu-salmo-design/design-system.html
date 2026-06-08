@@ -722,45 +722,122 @@ tailwind.config = {
 <section class="ds-section">
   <div class="ds-section-title" style="color:var(--ds-accent);">8 — Logotipo & Marca</div>
 
+  <style>
+    /* ── App Icon (DS section 8) ── */
+    .ds-icon {
+      position:relative;
+      background:linear-gradient(157deg,#3150E8 0%,#2A47DD 46%,#1B33B4 100%);
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      overflow:hidden; flex-shrink:0; isolation:isolate;
+    }
+    .ds-icon .ds-ribbon {
+      position:absolute; top:0; left:80%; transform:translateX(-50%);
+      background:#fff; box-shadow:0 0 0 .5px rgba(8,11,28,.04);
+    }
+    .ds-icon .ds-ribbon::after {
+      content:""; position:absolute; left:0; right:0; bottom:0; height:22%;
+      background:#1B33B4;
+      clip-path:polygon(0 100%,50% 38%,100% 100%);
+    }
+    .ds-icon .ds-wm { display:flex; flex-direction:column; align-items:center; z-index:1; }
+    .ds-icon .ds-eye {
+      font-family:'Instrument Sans',sans-serif; font-weight:400; color:#fff;
+      text-transform:uppercase; line-height:1; opacity:.92;
+    }
+    .ds-icon .ds-word {
+      font-family:'Playfair Display',serif; font-style:italic; font-weight:500;
+      color:#fff; line-height:.9; letter-spacing:-.015em;
+    }
+    /* sizes */
+    .ds-icon.ic96  { width:96px;  height:96px;  border-radius:22px; box-shadow:0 12px 30px rgba(27,51,180,.40); }
+    .ds-icon.ic96  .ds-ribbon { width:10px; height:45px; }
+    .ds-icon.ic96  .ds-wm { gap:4px; margin-top:6px; }
+    .ds-icon.ic96  .ds-eye  { font-size:6.5px; letter-spacing:.42em; padding-left:.42em; }
+    .ds-icon.ic96  .ds-word { font-size:24px; }
+    .ds-icon.ic60  { width:60px;  height:60px;  border-radius:14px; box-shadow:0 6px 16px rgba(27,51,180,.35); }
+    .ds-icon.ic60  .ds-ribbon { width:7px;  height:28px; }
+    .ds-icon.ic60  .ds-wm { gap:2px; margin-top:4px; }
+    .ds-icon.ic60  .ds-eye  { font-size:4px;   letter-spacing:.36em; padding-left:.36em; }
+    .ds-icon.ic60  .ds-word { font-size:15px; }
+    .ds-icon.ic40  { width:40px;  height:40px;  border-radius:9px;  box-shadow:0 4px 10px rgba(27,51,180,.32); }
+    .ds-icon.ic40  .ds-ribbon { width:5px;  height:18px; }
+    .ds-icon.ic40  .ds-wm { gap:1px; margin-top:3px; }
+    .ds-icon.ic40  .ds-eye  { font-size:2.8px; letter-spacing:.28em; padding-left:.28em; }
+    .ds-icon.ic40  .ds-word { font-size:10px; }
+    .ds-icon.mask-circle { border-radius:50%; }
+  </style>
+
   <div class="grid grid-cols-2 gap-8">
 
-    <!-- Logotipo -->
+    <!-- Logotipo — versões horizontal (app) e vertical (LP/print) -->
     <div class="comp-card" style="background:var(--ds-surface);">
-      <div class="comp-label">Logotipo — web, LP, materiais impressos</div>
-      <div style="padding:32px 0; display:flex; justify-content:center;">
-        <div style="display:inline-flex; flex-direction:column; align-items:flex-start; line-height:1;">
-          <div style="font-family:'Instrument Sans',sans-serif; font-size:9px; letter-spacing:.34em; text-transform:uppercase; color:var(--ds-text); margin-bottom:.14em; padding-left:.34em;">O MEU</div>
-          <div style="font-family:'Playfair Display',serif; font-style:italic; font-weight:500; font-size:40px; line-height:.86; letter-spacing:-.015em; color:var(--ds-accent);">Salmo</div>
+      <div class="comp-label">Logotipo — duas variantes</div>
+
+      <!-- Horizontal: app UI (home, ajustes header) -->
+      <div style="margin-bottom:20px;">
+        <div style="font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--ds-muted); margin-bottom:12px;">Horizontal — app UI</div>
+        <div style="padding:20px 24px; background:var(--ds-bg); border-radius:10px; display:inline-flex; align-items:baseline; gap:0;">
+          <span style="font-family:'Instrument Sans',sans-serif; font-size:10px; font-weight:400; letter-spacing:2.8px; text-transform:uppercase; color:var(--ds-muted);">O MEU&nbsp;</span><span style="font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:19px; line-height:1; color:var(--ds-accent);">Salmo</span>
+        </div>
+        <div style="font-size:11px; opacity:.4; margin-top:8px; line-height:1.6;">
+          RichText inline · "O MEU " Instrument Sans 10px w400 ls=2.8 · "Salmo" Playfair italic 19px w400 cobalt.
         </div>
       </div>
-      <div style="font-size:11px; opacity:.4; line-height:1.7;">
-        "O MEU" em versalete Instrument Sans (tracking .34em) alinhado à esquerda sobre "Salmo" em Playfair Display itálico 500. "Salmo" recebe o cobalto. 100% CSS.
+
+      <!-- Vertical: LP, materiais impressos -->
+      <div>
+        <div style="font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--ds-muted); margin-bottom:12px;">Vertical — LP, impressos</div>
+        <div style="padding:20px 24px; background:var(--ds-bg); border-radius:10px; display:inline-flex;">
+          <div style="display:inline-flex; flex-direction:column; align-items:flex-start; line-height:1;">
+            <div style="font-family:'Instrument Sans',sans-serif; font-size:9px; letter-spacing:.34em; text-transform:uppercase; color:var(--ds-text); margin-bottom:.14em; padding-left:.34em;">O MEU</div>
+            <div style="font-family:'Playfair Display',serif; font-style:italic; font-weight:500; font-size:40px; line-height:.86; letter-spacing:-.015em; color:var(--ds-accent);">Salmo</div>
+          </div>
+        </div>
+        <div style="font-size:11px; opacity:.4; margin-top:8px; line-height:1.6;">
+          "O MEU" versalete ls=.34em alinhado esquerda sobre "Salmo" Playfair italic 500. 100% CSS.
+        </div>
       </div>
     </div>
 
-    <!-- Ícone do app -->
+    <!-- Ícone do app — versão correta com gradiente + rabo-de-andorinha -->
     <div class="comp-card" style="background:var(--ds-surface);">
       <div class="comp-label">Ícone do app — App Store, perfis, squircle</div>
-      <div style="padding:24px 0; display:flex; justify-content:center; gap:24px; align-items:center;">
-        <!-- Simulated app icon -->
-        <div style="width:96px; height:96px; border-radius:22.7%; background:#2A47DD; display:flex; flex-direction:column; align-items:center; justify-content:space-between; padding:14px 10px; position:relative; box-shadow:0 12px 30px rgba(27,51,180,.40);">
-          <div style="font-family:'Instrument Sans',sans-serif; font-size:6.5px; letter-spacing:.24em; text-transform:uppercase; color:#EEF0FC; opacity:.85;">O MEU</div>
-          <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:17px; color:#EEF0FC; line-height:1;">Salmo</div>
-          <!-- Ribbon marker -->
-          <div style="position:absolute; top:0; right:20px; width:8px; height:28px; background:#EEF0FC; border-radius:0 0 3px 3px;"></div>
+      <div style="padding:24px 0; display:flex; justify-content:center; gap:28px; align-items:flex-end;">
+        <!-- 96px -->
+        <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+          <div class="ds-icon ic96">
+            <div class="ds-ribbon"></div>
+            <div class="ds-wm"><div class="ds-eye">O meu</div><div class="ds-word">Salmo</div></div>
+          </div>
+          <div style="font-size:10px; opacity:.4; font-family:monospace;">96</div>
         </div>
-        <!-- Small sizes -->
-        <div style="display:flex; flex-direction:column; gap:12px; align-items:center;">
-          <div style="width:60px; height:60px; border-radius:14%; background:#2A47DD; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; box-shadow:0 6px 16px rgba(27,51,180,.35);">
-            <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:11px; color:#EEF0FC;">Salmo</div>
+        <!-- 60px -->
+        <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+          <div class="ds-icon ic60">
+            <div class="ds-ribbon"></div>
+            <div class="ds-wm"><div class="ds-eye">O meu</div><div class="ds-word">Salmo</div></div>
           </div>
-          <div style="width:40px; height:40px; border-radius:12%; background:#2A47DD; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 10px rgba(27,51,180,.35);">
-            <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:8px; color:#EEF0FC;">S</div>
+          <div style="font-size:10px; opacity:.4; font-family:monospace;">60</div>
+        </div>
+        <!-- 40px -->
+        <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+          <div class="ds-icon ic40">
+            <div class="ds-ribbon"></div>
+            <div class="ds-wm"><div class="ds-eye">O meu</div><div class="ds-word">Salmo</div></div>
           </div>
+          <div style="font-size:10px; opacity:.4; font-family:monospace;">40</div>
+        </div>
+        <!-- circle mask -->
+        <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+          <div class="ds-icon ic60 mask-circle">
+            <div class="ds-ribbon"></div>
+            <div class="ds-wm"><div class="ds-eye">O meu</div><div class="ds-word">Salmo</div></div>
+          </div>
+          <div style="font-size:10px; opacity:.4; font-family:monospace;">círculo</div>
         </div>
       </div>
       <div style="font-size:11px; opacity:.4; line-height:1.7;">
-        Squircle ~22.7% · fundo cobalto cheio · fita branca (marcador) da borda superior direita · nome "O meu Salmo" em branco. Ver <code style="font-size:10px; background:var(--ds-bg); padding:2px 5px; border-radius:4px;">assets/app-icon-512.png</code>.
+        Squircle ~22.7% · gradiente cobalto (157°: #3150E8→#2A47DD→#1B33B4) · fita branca com rabo-de-andorinha (clip-path) · "O MEU" + "Salmo" brancos centralizados. Fonte: <code style="font-size:10px; background:var(--ds-bg); padding:2px 5px; border-radius:4px;">brand/O meu Salmo - App Icon.html</code>.
       </div>
     </div>
 
