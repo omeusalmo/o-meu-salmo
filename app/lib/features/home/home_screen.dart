@@ -212,7 +212,7 @@ class _HomeContent extends StatelessWidget {
               if (salmo.reflexao?.isNotEmpty == true) ...[
                 const SizedBox(height: AppTheme.sp3),
                 Semantics(
-                  label: 'Este Salmo tem uma reflexão. Abrir o Salmo.',
+                  label: 'Reflexão liberada. Abrir o Salmo.',
                   button: true,
                   child: GestureDetector(
                     onTap: () => context.push('/salmos/${salmo.numero}'),
@@ -226,10 +226,10 @@ class _HomeContent extends StatelessWidget {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(Icons.auto_stories_outlined, size: 12, color: accent),
+                          Icon(Icons.lock_open_outlined, size: 12, color: accent),
                           const SizedBox(width: 5),
                           Text(
-                            'tem reflexão',
+                            'reflexão liberada',
                             style: GoogleFonts.instrumentSans(
                               fontSize: 11,
                               fontWeight: FontWeight.w500,
