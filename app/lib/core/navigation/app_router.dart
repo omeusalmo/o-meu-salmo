@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/splash/splash_screen.dart';
 import '../../features/home/home_screen.dart';
 import '../../features/colecoes/colecoes_screen.dart';
 import '../../features/colecoes/detalhe_colecao_screen.dart';
@@ -12,9 +13,13 @@ import '../../features/ajustes/ajustes_screen.dart';
 import '../../shared/widgets/main_shell.dart';
 
 final GoRouter appRouter = GoRouter(
-  initialLocation: '/home',
+  initialLocation: '/splash',
   debugLogDiagnostics: false,
   routes: [
+    GoRoute(
+      path: '/splash',
+      builder: (_, __) => const SplashScreen(),
+    ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) =>
           MainShell(navigationShell: navigationShell),
