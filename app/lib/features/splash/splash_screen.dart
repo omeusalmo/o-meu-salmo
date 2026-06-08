@@ -35,6 +35,9 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
   void initState() {
     super.initState();
 
+    // Aquece o provider em T+0 para que _load() complete antes do delay de 3s
+    ref.read(onboardingProvider);
+
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.light,
