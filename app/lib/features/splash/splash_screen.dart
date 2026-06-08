@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1200),
+      duration: const Duration(milliseconds: 1800),
     );
 
     // Bookmark: fade 0–35%, slide 0–50%, scale easeOutBack 0–45%
@@ -94,7 +94,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     _controller.forward();
 
-    Future.delayed(const Duration(milliseconds: 2400), () {
+    Future.delayed(const Duration(milliseconds: 3600), () {
       if (mounted) context.go('/home');
     });
   }
