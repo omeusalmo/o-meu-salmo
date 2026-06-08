@@ -69,11 +69,15 @@ flutter_launcher_icons:
 # ─────────────────────────────────────────────────────────────────────────────
 flutter_native_splash:
   color: "#080B1C"
-  image: assets/images/app-icon-512.png
+  image: assets/images/splash.png
   android: true
   ios: false
   web: false
-  android_gravity: center
+  android_gravity: fill
+  android_12:
+    color: "#080B1C"
+    image: assets/images/app-icon-512.png
+    icon_background_color: "#2A47DD"
 
 flutter:
   uses-material-design: true
