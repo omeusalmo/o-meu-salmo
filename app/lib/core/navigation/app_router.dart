@@ -10,6 +10,7 @@ import '../../features/salmos/leitura_salmo_screen.dart';
 import '../../features/favoritos/favoritos_screen.dart';
 import '../../features/compositor/compositor_screen.dart';
 import '../../features/ajustes/ajustes_screen.dart';
+import '../../features/onboarding/onboarding_screen.dart';
 import '../../shared/widgets/main_shell.dart';
 
 final GoRouter appRouter = GoRouter(
@@ -19,6 +20,10 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/splash',
       builder: (_, __) => const SplashScreen(),
+    ),
+    GoRoute(
+      path: '/onboarding',
+      builder: (_, __) => const OnboardingScreen(),
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) =>
