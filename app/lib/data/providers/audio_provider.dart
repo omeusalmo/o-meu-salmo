@@ -1,6 +1,6 @@
+import 'package:audio_session/audio_session.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:just_audio_background/just_audio_background.dart';
 
 import '../../core/analytics/analytics_service.dart';
 
@@ -48,6 +48,19 @@ class AudioPlayerNotifier extends Notifier<AudioState> {
   AudioState build() {
     _player = AudioPlayer();
 
+    // Foco de áudio: permite continuar em background e pausa em chamadas
+    AudioSession.instance.then((session) => session.configure(
+          const AudioSessionConfiguration(
+            avAudioSessionCategory: AVAudioSessionCategory.playback,
+            androidAudioAttributes: AndroidAudioAttributes(
+              contentType: AndroidAudioContentType.music,
+              usage: AndroidAudioUsage.media,
+            ),
+            androidAudioFocusGainType: AndroidAudioFocusGainType.gain,
+            androidWillPauseWhenDucked: true,
+          ),
+        ));
+
     // Sincroniza posição em tempo real
     _player.positionStream.listen((pos) {
       if (state.isAvailable) {
@@ -80,19 +93,8 @@ class AudioPlayerNotifier extends Notifier<AudioState> {
 
     state = const AudioState(isLoading: true);
     try {
-      // Extrai número do salmo para o MediaItem (ex: audios/salmo_023.mp3 → 23)
-      final match = RegExp(r'salmo_(\d+)').firstMatch(audioPath);
-      final numero = match != null ? int.parse(match.group(1)!) : 0;
-
       final dur = await _player.setAudioSource(
-        AudioSource.uri(
-          Uri.parse('asset:///assets/$audioPath'),
-          tag: MediaItem(
-            id: 'salmo-$numero',
-            title: 'Salmo $numero',
-            artist: 'O meu Salmo',
-          ),
-        ),
+        AudioSource.uri(Uri.parse('asset:///assets/$audioPath')),
       );
       state = AudioState(
         isAvailable: true,
