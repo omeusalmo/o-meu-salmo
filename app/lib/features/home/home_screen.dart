@@ -72,7 +72,6 @@ class _HomeContent extends StatelessWidget {
     final accent  = isDark ? AppColors.cobalt400 : AppColors.cobalt500;
     final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
     final muted   = isDark ? AppColors.nightText  : AppColors.dayText;
-    final border  = isDark ? AppColors.nightLine  : AppColors.dayLine;
 
     return CustomScrollView(
       slivers: [
@@ -246,8 +245,6 @@ class _HomeContent extends StatelessWidget {
               ],
 
               const SizedBox(height: AppTheme.sp12),
-              Divider(height: 0.5, thickness: 0.5, color: border),
-              const SizedBox(height: AppTheme.sp6),
 
               // ── Atalho coleções ───────────────────────────────────────
               _CollectionsShortcut(),
