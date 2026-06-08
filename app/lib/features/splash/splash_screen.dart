@@ -94,7 +94,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     _controller.forward();
 
-    Future.delayed(const Duration(milliseconds: 3600), () {
+    Future.delayed(const Duration(milliseconds: 3000), () {
       if (mounted) context.go('/home');
     });
   }
