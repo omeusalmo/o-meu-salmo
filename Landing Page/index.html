@@ -638,6 +638,14 @@ footer{padding:40px 0;border-top:.5px solid var(--border);}
 a:focus-visible,button:focus-visible{border-radius:8px;}
 .chip:focus-visible,.btn:focus-visible,.badge:focus-visible{border-radius:999px;}
 </style>
+<!-- Google Analytics 4 — G-FHW3F9M24T -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHW3F9M24T"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-FHW3F9M24T');
+</script>
 </head>
 <body>
 
@@ -995,7 +1003,7 @@ a:focus-visible,button:focus-visible{border-radius:8px;}
         <a href="https://omeusalmo.github.io/o-meu-salmo/privacy_policy.html">Privacidade</a>
         <a href="mailto:omeusalmo@gmail.com">Suporte</a>
       </div>
-      <span class="ft-copy">© 2026</span>
+      <span class="ft-copy">© 2026 · <span style="opacity:.6;font-size:10px;">Este site usa cookies analíticos anônimos.</span></span>
     </div>
   </div>
 </footer>
@@ -1194,7 +1202,31 @@ window.addEventListener('scroll',()=>{
   const saved = localStorage.getItem('theme');
   const sys = window.matchMedia('(prefers-color-scheme:light)').matches ? 'light' : 'dark';
   setTheme(saved || sys);
-  btn.addEventListener('click',()=> setTheme(html.dataset.theme==='dark' ? 'light' : 'dark'));
+  btn.addEventListener('click',()=>{
+    const next = html.dataset.theme==='dark' ? 'light' : 'dark';
+    setTheme(next);
+    gtag('event','theme_toggle',{theme:next});
+  });
+})();
+
+/* ── GA4 EVENTS ──────────────────────────────────── */
+(function(){
+  // CTA / download intent
+  document.querySelectorAll('.badge,.btn.mag').forEach(function(el){
+    el.addEventListener('click',function(){
+      gtag('event','cta_click',{
+        event_category:'conversion',
+        event_label:el.getAttribute('aria-label')||el.textContent.trim(),
+        value:1
+      });
+    });
+  });
+  // Chips de emoção
+  document.querySelectorAll('.chip[data-emo]').forEach(function(el){
+    el.addEventListener('click',function(){
+      gtag('event','chip_click',{collection:el.dataset.emo});
+    });
+  });
 })();
 </script>
 </body>
