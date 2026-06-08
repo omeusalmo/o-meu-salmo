@@ -28,6 +28,7 @@ dependencies:
 
   # Player de áudio — MP3 local do bundle e streaming
   just_audio: ^0.9.40
+  just_audio_background: ^0.0.1-beta.12
 
   # Compartilhamento nativo — abre share sheet do sistema (WhatsApp, Stories etc.)
   share_plus: ^13.1.0

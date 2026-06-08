@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:just_audio_background/just_audio_background.dart';
 import 'core/analytics/analytics_service.dart';
 import 'core/notifications/notification_service.dart';
 import 'data/providers/settings_provider.dart' as settings_init;
@@ -12,6 +13,14 @@ import 'data/providers/settings_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Áudio em background — inicializa antes de qualquer runApp
+  await JustAudioBackground.init(
+    androidNotificationChannelId: 'br.com.omeusalmo.audio',
+    androidNotificationChannelName: 'O meu Salmo — Áudio',
+    androidNotificationOngoing: true,
+    androidStopForegroundOnPause: false,
+  );
 
   // Edge-to-edge: app desenha atrás da status bar e nav bar do sistema.
   // SafeArea nos Scaffolds cuidam dos insets — sem sobreposição de conteúdo.

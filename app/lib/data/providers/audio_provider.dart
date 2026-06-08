@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:just_audio_background/just_audio_background.dart';
 
 import '../../core/analytics/analytics_service.dart';
 
@@ -79,7 +80,20 @@ class AudioPlayerNotifier extends Notifier<AudioState> {
 
     state = const AudioState(isLoading: true);
     try {
-      final dur = await _player.setAsset('assets/$audioPath');
+      // Extrai número do salmo para o MediaItem (ex: audios/salmo_023.mp3 → 23)
+      final match = RegExp(r'salmo_(\d+)').firstMatch(audioPath);
+      final numero = match != null ? int.parse(match.group(1)!) : 0;
+
+      final dur = await _player.setAudioSource(
+        AudioSource.uri(
+          Uri.parse('asset:///assets/$audioPath'),
+          tag: MediaItem(
+            id: 'salmo-$numero',
+            title: 'Salmo $numero',
+            artist: 'O meu Salmo',
+          ),
+        ),
+      );
       state = AudioState(
         isAvailable: true,
         duration: dur ?? Duration.zero,

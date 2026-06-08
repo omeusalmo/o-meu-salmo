@@ -290,6 +290,7 @@ class _LockedReflexao extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final muted  = isDark ? AppColors.nightText : AppColors.dayText;
+    final accent = isDark ? AppColors.cobalt400 : AppColors.cobalt500;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -307,7 +308,7 @@ class _LockedReflexao extends StatelessWidget {
             const SizedBox(width: AppTheme.sp2),
             Expanded(
               child: Text(
-                'Esta reflexão se revela quando este Salmo aparecer como o seu Salmo do Dia.',
+                'Esta reflexão se revela quando este Salmo for o seu Salmo do Dia.\nAbra o app amanhã — pode ser ele.',
                 style: GoogleFonts.instrumentSans(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
@@ -317,6 +318,27 @@ class _LockedReflexao extends StatelessWidget {
               ),
             ),
           ],
+        ),
+        const SizedBox(height: AppTheme.sp4),
+        TextButton(
+          onPressed: () {
+            HapticFeedback.lightImpact();
+            context.pop();
+          },
+          style: TextButton.styleFrom(
+            foregroundColor: accent,
+            padding: EdgeInsets.zero,
+            minimumSize: Size.zero,
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          ),
+          child: Text(
+            'Explorar outros Salmos desta coleção',
+            style: GoogleFonts.instrumentSans(
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              color: accent,
+            ),
+          ),
         ),
       ],
     );

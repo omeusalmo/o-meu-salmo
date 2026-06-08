@@ -29,11 +29,13 @@ class _CompositorScreenState extends ConsumerState<CompositorScreen> {
   bool _sharing = false;
 
   static const _fundos = [
-    Color(0xFF080B1C), // Noite — nightBase
-    Color(0xFF10142C), // Profundo — nightPlus
-    Color(0xFF2A47DD), // Cobalto — accent
+    AppColors.nightBase,  // Noite
+    AppColors.nightPlus,  // Profundo
+    AppColors.cobalt500,  // Cobalto
+    AppColors.dayBase,    // Névoa (day-base)
+    AppColors.dayPlus,    // Bruma (day-plus)
   ];
-  static const _fundoLabels = ['Noite', 'Profundo', 'Cobalto'];
+  static const _fundoLabels = ['Noite', 'Profundo', 'Cobalto', 'Névoa', 'Bruma'];
 
   Future<void> _share(Salmo salmo) async {
     if (_sharing) return;
@@ -235,6 +237,14 @@ class _ShareCard extends StatelessWidget {
         ? salmo.versiculos[versicoloIdx.clamp(0, salmo.versiculos.length - 1)]
         : '';
 
+    final isLightBg = fundo.computeLuminance() > 0.5;
+    final verseColor   = isLightBg ? AppColors.goldInk   : AppColors.gold;
+    final eyebrowColor = isLightBg ? AppColors.dayMuted   : AppColors.cobalt400;
+    final logoWordColor = isLightBg
+        ? AppColors.dayTitle.withAlpha(153)
+        : AppColors.nightCream.withAlpha(153);
+    final logoSalmoColor = isLightBg ? AppColors.cobalt500 : AppColors.cobalt400;
+
     return Container(
       width: double.infinity,
       height: double.infinity,
@@ -249,20 +259,20 @@ class _ShareCard extends StatelessWidget {
             style: GoogleFonts.instrumentSans(
               fontSize: 11,
               fontWeight: FontWeight.w400,
-              color: AppColors.cobalt400,
+              color: eyebrowColor,
               letterSpacing: 3.74,
             ),
           ),
           const Spacer(),
 
-          // Versículo em âmbar
+          // Versículo
           Text(
             '"$verse"',
             style: GoogleFonts.cormorant(
               fontSize: 22,
               fontStyle: FontStyle.italic,
               fontWeight: FontWeight.w400,
-              color: AppColors.gold,
+              color: verseColor,
               height: 1.6,
             ),
           ),
@@ -274,7 +284,7 @@ class _ShareCard extends StatelessWidget {
             style: GoogleFonts.instrumentSans(
               fontSize: 11,
               fontWeight: FontWeight.w400,
-              color: AppColors.cobalt400,
+              color: eyebrowColor,
               letterSpacing: 1.5,
             ),
           ),
@@ -289,7 +299,7 @@ class _ShareCard extends StatelessWidget {
                 style: GoogleFonts.instrumentSans(
                   fontSize: 8,
                   fontWeight: FontWeight.w400,
-                  color: AppColors.nightCream.withAlpha(153),
+                  color: logoWordColor,
                   letterSpacing: 8 * 0.34,
                 ),
               ),
@@ -299,7 +309,7 @@ class _ShareCard extends StatelessWidget {
                   fontSize: 20,
                   fontStyle: FontStyle.italic,
                   fontWeight: FontWeight.w500,
-                  color: AppColors.cobalt400,
+                  color: logoSalmoColor,
                   height: 0.9,
                   letterSpacing: -0.3,
                 ),

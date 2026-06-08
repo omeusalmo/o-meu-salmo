@@ -343,7 +343,6 @@ class _NotificationCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final notif  = ref.watch(notificationSettingsProvider);
     final accent = isDark ? AppColors.cobalt400 : AppColors.cobalt500;
-    final muted  = isDark ? AppColors.nightText  : AppColors.dayText;
 
     final timeLabel = '${notif.hour.toString().padLeft(2, '0')}:'
         '${notif.minute.toString().padLeft(2, '0')}';
@@ -357,35 +356,65 @@ class _NotificationCard extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _Label('Salmo diário', isDark: isDark),
-                const SizedBox(height: 2),
-                GestureDetector(
-                  onTap: notif.enabled
-                      ? () => _pickTime(context, ref, notif.hour, notif.minute)
-                      : null,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        notif.enabled ? 'Todo dia às $timeLabel' : 'Desativado',
-                        style: GoogleFonts.instrumentSans(
-                          fontSize: 12,
-                          color: notif.enabled ? accent : muted,
+                if (notif.enabled) ...[
+                  const SizedBox(height: AppTheme.sp2),
+                  GestureDetector(
+                    onTap: () => _pickTime(context, ref, notif.hour, notif.minute),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'TODO DIA ÀS',
+                              style: GoogleFonts.instrumentSans(
+                                fontSize: 10,
+                                fontWeight: FontWeight.w400,
+                                color: isDark
+                                    ? AppColors.nightText
+                                    : AppColors.dayText,
+                                letterSpacing: 10 * 0.034,
+                              ),
+                            ),
+                            Text(
+                              timeLabel,
+                              style: GoogleFonts.playfairDisplay(
+                                fontSize: 22,
+                                fontWeight: FontWeight.w400,
+                                fontStyle: FontStyle.italic,
+                                color: isDark
+                                    ? AppColors.nightCream
+                                    : AppColors.dayTitle,
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                      if (notif.enabled) ...[
-                        const SizedBox(width: 4),
-                        Icon(Icons.edit_outlined, size: 12, color: accent),
+                        const SizedBox(width: AppTheme.sp2),
+                        Icon(Icons.edit_outlined, size: 14, color: accent),
                       ],
-                    ],
+                    ),
                   ),
-                ),
+                ],
               ],
             ),
           ),
           Switch(
             value: notif.enabled,
-            onChanged: (v) => _toggleNotification(context, ref, v, notif.hour, notif.minute),
-            activeColor: accent,
+            onChanged: (v) async {
+              await _toggleNotification(context, ref, v, notif.hour, notif.minute);
+              if (!context.mounted) return;
+              if (v && ref.read(notificationSettingsProvider).enabled) {
+                await _pickTime(
+                  context,
+                  ref,
+                  ref.read(notificationSettingsProvider).hour,
+                  ref.read(notificationSettingsProvider).minute,
+                );
+              }
+            },
+            activeThumbColor: accent,
           ),
         ],
       ),
