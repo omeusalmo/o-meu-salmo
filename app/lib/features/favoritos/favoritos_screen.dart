@@ -9,25 +9,36 @@ import '../../data/providers/favoritos_provider.dart';
 import '../../data/providers/salmos_providers.dart';
 import '../../shared/widgets/psalm_card.dart';
 
-class FavoritosScreen extends ConsumerWidget {
+enum _FavSortOrder { byNumber, byRecent }
+
+class FavoritosScreen extends ConsumerStatefulWidget {
   const FavoritosScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final favoritosAsync = ref.watch(favoritosProvider);
-    final salmosAsync    = ref.watch(salmosProvider);
-    final isDark   = Theme.of(context).brightness == Brightness.dark;
-    final bg       = isDark ? AppColors.nightBase  : AppColors.dayBase;
-    final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
-    final border   = isDark ? AppColors.nightLine  : AppColors.dayLine;
-    final muted    = isDark ? AppColors.nightText  : AppColors.dayText;
+  ConsumerState<FavoritosScreen> createState() => _FavoritosScreenState();
+}
+
+class _FavoritosScreenState extends ConsumerState<FavoritosScreen> {
+  _FavSortOrder _sortOrder = _FavSortOrder.byNumber;
+
+  @override
+  Widget build(BuildContext context) {
+    final favoritosAsync  = ref.watch(favoritosProvider);
+    final salmosAsync     = ref.watch(salmosProvider);
+    final timestampsAsync = ref.watch(favTimestampsProvider);
+    final isDark    = Theme.of(context).brightness == Brightness.dark;
+    final bg        = isDark ? AppColors.nightBase  : AppColors.dayBase;
+    final titleClr  = isDark ? AppColors.nightCream : AppColors.dayTitle;
+    final border    = isDark ? AppColors.nightLine  : AppColors.dayLine;
+    final muted     = isDark ? AppColors.nightText  : AppColors.dayText;
+    final accent    = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
 
     Widget body;
 
     if (favoritosAsync.isLoading || salmosAsync.isLoading) {
       body = Center(
         child: CircularProgressIndicator(
-          color: isDark ? AppColors.cobalt400 : AppColors.cobalt500,
+          color: accent,
           strokeWidth: 1.5,
         ),
       );
@@ -37,19 +48,28 @@ class FavoritosScreen extends ConsumerWidget {
           'Não consegui carregar seus favoritos.',
           style: GoogleFonts.instrumentSans(
             fontSize: 15,
-            color: isDark ? AppColors.nightText : AppColors.dayText,
+            color: muted,
           ),
         ),
       );
     } else {
-      final numeros = favoritosAsync.value ?? {};
-      final todos   = salmosAsync.value ?? [];
+      final numeros    = favoritosAsync.value ?? {};
+      final todos      = salmosAsync.value ?? [];
+      final timestamps = timestampsAsync.value ?? {};
 
       if (numeros.isEmpty) {
         body = _EmptyState(isDark: isDark);
       } else {
-        final favoritos = todos.where((s) => numeros.contains(s.numero)).toList()
-          ..sort((a, b) => a.numero.compareTo(b.numero));
+        final favoritos = todos.where((s) => numeros.contains(s.numero)).toList();
+        if (_sortOrder == _FavSortOrder.byRecent) {
+          favoritos.sort((a, b) {
+            final ta = timestamps[a.numero] ?? 0;
+            final tb = timestamps[b.numero] ?? 0;
+            return tb.compareTo(ta); // mais recente primeiro
+          });
+        } else {
+          favoritos.sort((a, b) => a.numero.compareTo(b.numero));
+        }
         body = _FavoritosList(salmos: favoritos);
       }
     }
@@ -63,6 +83,46 @@ class FavoritosScreen extends ConsumerWidget {
         centerTitle: false,
         automaticallyImplyLeading: false,
         actions: [
+          PopupMenuButton<_FavSortOrder>(
+            icon: Icon(Icons.sort_rounded, size: 20, color: muted),
+            color: isDark ? AppColors.nightBase : AppColors.dayBase,
+            elevation: 4,
+            onSelected: (v) => setState(() => _sortOrder = v),
+            itemBuilder: (_) => [
+              PopupMenuItem(
+                value: _FavSortOrder.byNumber,
+                child: Row(
+                  children: [
+                    if (_sortOrder == _FavSortOrder.byNumber)
+                      Icon(Icons.check, size: 14, color: accent)
+                    else
+                      const SizedBox(width: 14),
+                    const SizedBox(width: 8),
+                    Text(
+                      'Por número',
+                      style: GoogleFonts.instrumentSans(fontSize: 14, color: titleClr),
+                    ),
+                  ],
+                ),
+              ),
+              PopupMenuItem(
+                value: _FavSortOrder.byRecent,
+                child: Row(
+                  children: [
+                    if (_sortOrder == _FavSortOrder.byRecent)
+                      Icon(Icons.check, size: 14, color: accent)
+                    else
+                      const SizedBox(width: 14),
+                    const SizedBox(width: 8),
+                    Text(
+                      'Mais recentes',
+                      style: GoogleFonts.instrumentSans(fontSize: 14, color: titleClr),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
           Semantics(
             label: 'Configurações',
             button: true,
@@ -96,7 +156,7 @@ class FavoritosScreen extends ConsumerWidget {
 
 class _FavoritosList extends StatelessWidget {
   final List<Salmo> salmos;
-  const _FavoritosList({super.key, required this.salmos});
+  const _FavoritosList({required this.salmos});
 
   @override
   Widget build(BuildContext context) {
@@ -122,12 +182,11 @@ class _FavoritosList extends StatelessWidget {
 
 class _EmptyState extends StatelessWidget {
   final bool isDark;
-  const _EmptyState({super.key, required this.isDark});
+  const _EmptyState({required this.isDark});
 
   @override
   Widget build(BuildContext context) {
-    final text  = isDark ? AppColors.nightText  : AppColors.dayText;
-    final muted = isDark ? AppColors.nightText  : AppColors.dayText;
+    final text = isDark ? AppColors.nightText : AppColors.dayText;
 
     return Center(
       child: Padding(
@@ -138,7 +197,7 @@ class _EmptyState extends StatelessWidget {
             Icon(
               Icons.favorite_border_rounded,
               size: 40,
-              color: isDark ? AppColors.nightText : AppColors.dayText,
+              color: text,
             ),
             const SizedBox(height: AppTheme.sp4),
             Text(
@@ -156,7 +215,7 @@ class _EmptyState extends StatelessWidget {
               style: GoogleFonts.cormorant(
                 fontSize: 16,
                 fontStyle: FontStyle.italic,
-                color: isDark ? AppColors.nightText : AppColors.dayText,
+                color: text,
                 height: 1.5,
               ),
             ),

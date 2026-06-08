@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -283,64 +284,77 @@ class _CollectionsShortcut extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark  = Theme.of(context).brightness == Brightness.dark;
-    final muted   = isDark ? AppColors.nightText  : AppColors.dayText;
+    final isDark   = Theme.of(context).brightness == Brightness.dark;
     final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
-    final accent  = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
+    final accent   = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
+    final cardBg   = isDark
+        ? AppColors.cobalt600.withAlpha(18)
+        : AppColors.cobalt400.withAlpha(14);
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        EyebrowLabel('Encontre pelo que sente'),
-        const SizedBox(height: AppTheme.sp2),
-        Text(
-          'Como você está\nse sentindo hoje?',
-          style: GoogleFonts.playfairDisplay(
-            fontSize: 24,
-            fontWeight: FontWeight.w400,
-            color: titleClr,
-            height: 1.1,
-            letterSpacing: -0.36,
+    return Container(
+      padding: const EdgeInsets.all(AppTheme.sp5),
+      decoration: BoxDecoration(
+        color: cardBg,
+        borderRadius: BorderRadius.circular(AppTheme.radiusLg),
+        border: Border.all(color: accent.withAlpha(50), width: 0.5),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          EyebrowLabel('Encontre pelo que sente'),
+          const SizedBox(height: AppTheme.sp2),
+          Text(
+            'Como você está\nse sentindo hoje?',
+            style: GoogleFonts.playfairDisplay(
+              fontSize: 24,
+              fontWeight: FontWeight.w400,
+              color: titleClr,
+              height: 1.1,
+              letterSpacing: -0.36,
+            ),
           ),
-        ),
-        const SizedBox(height: AppTheme.sp1 + 2),
-        Text(
-          'Escolha um sentimento — eu encontro as palavras.',
-          style: GoogleFonts.cormorant(
-            fontSize: 16,
-            fontStyle: FontStyle.italic,
-            fontWeight: FontWeight.w400,
-            color: isDark ? AppColors.nightText : AppColors.dayText,
-            height: 1.5,
+          const SizedBox(height: AppTheme.sp1 + 2),
+          Text(
+            'Escolha um sentimento — eu encontro as palavras.',
+            style: GoogleFonts.cormorant(
+              fontSize: 16,
+              fontStyle: FontStyle.italic,
+              fontWeight: FontWeight.w400,
+              color: isDark ? AppColors.nightText : AppColors.dayText,
+              height: 1.5,
+            ),
           ),
-        ),
-        const SizedBox(height: AppTheme.sp4),
-        Semantics(
-          label: 'Ver coleções',
-          button: true,
-          child: GestureDetector(
-            onTap: () => context.go('/colecoes'),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 6),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    'Ver coleções',
-                    style: GoogleFonts.instrumentSans(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: accent,
+          const SizedBox(height: AppTheme.sp4),
+          Semantics(
+            label: 'Ver coleções',
+            button: true,
+            child: GestureDetector(
+              onTap: () {
+                HapticFeedback.selectionClick();
+                context.go('/colecoes');
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 6),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      'Ver coleções',
+                      style: GoogleFonts.instrumentSans(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: accent,
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: AppTheme.sp1),
-                  Icon(Icons.arrow_forward_rounded, size: 14, color: accent),
-                ],
+                    const SizedBox(width: AppTheme.sp1),
+                    Icon(Icons.arrow_forward_rounded, size: 14, color: accent),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

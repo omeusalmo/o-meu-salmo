@@ -54,6 +54,34 @@ class _AudioPlayerBarState extends ConsumerState<AudioPlayerBar> {
     final muted  = isDark ? AppColors.nightText  : AppColors.dayText;
 
     final available = audio.isAvailable;
+
+    if (!available && !audio.isLoading) {
+      return Container(
+        decoration: BoxDecoration(
+          color: bg,
+          border: Border(top: BorderSide(color: border, width: 0.5)),
+        ),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppTheme.sp5,
+          vertical: AppTheme.sp3 + 2,
+        ),
+        child: Row(
+          children: [
+            Icon(Icons.headphones_outlined, size: 18, color: muted.withAlpha(100)),
+            const SizedBox(width: AppTheme.sp3),
+            Text(
+              'Narração em breve',
+              style: GoogleFonts.instrumentSans(
+                fontSize: 13,
+                fontStyle: FontStyle.italic,
+                color: muted.withAlpha(100),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
     final btnColor  = available ? accent : muted;
 
     // Progresso 0.0–1.0
