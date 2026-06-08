@@ -285,8 +285,8 @@ class _CollectionsShortcut extends StatelessWidget {
     final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
     final accent   = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
     final cardBg   = isDark
-        ? AppColors.cobalt600.withAlpha(18)
-        : AppColors.cobalt400.withAlpha(14);
+        ? AppColors.cobalt600.withAlpha(45)
+        : AppColors.cobalt400.withAlpha(25);
 
     return Container(
       padding: const EdgeInsets.all(AppTheme.sp5),
