@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>S1 — Coleções</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #080B1C;
+      font-family: 'Instrument Sans', sans-serif;
+    }
+
+    /* ── Top 40% — grade emocional ── */
+    .top-zone {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 768px;
+      background: #080B1C;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 72px 64px;
+      z-index: 3;
+    }
+
+    .eyebrow {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: #7080C8;
+      margin-bottom: 36px;
+    }
+
+    /* Asymmetric word grid */
+    .word-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .word-row {
+      display: flex;
+      align-items: baseline;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .word {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      line-height: 1.1;
+      transition: opacity 0.3s;
+    }
+
+    /* Featured word */
+    .w-ansiedade { font-size: 108px; font-weight: 600; color: #5567EA; }
+    .w-sono      { font-size: 56px;  font-weight: 400; color: #6A9A62; }
+    .w-gratidao  { font-size: 68px;  font-weight: 400; color: #C99A38; }
+    .w-luto      { font-size: 50px;  font-weight: 400; color: #9A6A86; }
+    .w-esperanca { font-size: 62px;  font-weight: 400; color: #2A47DD; }
+    .w-perdao    { font-size: 46px;  font-weight: 400; color: #8480AA; }
+    .w-louvor    { font-size: 72px;  font-weight: 400; color: #C99A38; }
+    .w-protecao  { font-size: 52px;  font-weight: 400; color: #6A9A62; }
+
+    /* Glow behind word grid */
+    .glow {
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(85,103,234,0.12) 0%, transparent 65%);
+      top: 300px;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Fade edge from top zone into app */
+    .fade-bridge {
+      position: absolute;
+      top: 700px;
+      left: 0; right: 0;
+      height: 120px;
+      background: linear-gradient(to bottom, #080B1C, transparent);
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    /* ── Bottom 60% — app screenshot ── */
+    .app-zone {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1200px;
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    .app-zone img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    /* Subtle side vignette on app */
+    .app-zone::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(8,11,28,0.3) 0%, transparent 10%),
+        linear-gradient(to left,  rgba(8,11,28,0.3) 0%, transparent 10%);
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow"></div>
+
+  <!-- App screenshot — bottom 60% -->
+  <div class="app-zone">
+    <img src="../raw/02-colecoes.png" alt="Coleções">
+  </div>
+
+  <!-- Fade bridge -->
+  <div class="fade-bridge"></div>
+
+  <!-- Emotional word grid — top 40% -->
+  <div class="top-zone">
+    <p class="eyebrow">Para o que você sente agora</p>
+    <div class="word-grid">
+      <div class="word-row">
+        <span class="word w-ansiedade">Ansiedade</span>
+        <span class="word w-sono">Sono</span>
+      </div>
+      <div class="word-row" style="padding-left: 48px;">
+        <span class="word w-gratidao">Gratidão</span>
+        <span class="word w-luto">Luto</span>
+        <span class="word w-esperanca">Esperança</span>
+      </div>
+      <div class="word-row" style="padding-left: 16px; margin-top: -4px;">
+        <span class="word w-louvor">Louvor</span>
+        <span class="word w-perdao">Perdão</span>
+        <span class="word w-protecao">Proteção</span>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>S3 — Leitura</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #080B1C;
+      font-family: 'Instrument Sans', sans-serif;
+      position: relative;
+    }
+
+    /* Left column — 35% — text panel */
+    .left-panel {
+      position: absolute;
+      top: 0; left: 0;
+      width: 378px;
+      height: 100%;
+      background: #080B1C;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 52px 0 60px;
+    }
+
+    /* Giant psalm number — decorative background */
+    .psalm-bg-number {
+      position: absolute;
+      bottom: 180px;
+      left: -30px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 360px;
+      line-height: 1;
+      color: rgba(42, 71, 221, 0.18);
+      letter-spacing: -0.04em;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* Text content */
+    .text-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: #7080C8;
+      margin-bottom: 32px;
+    }
+
+    .headline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 72px;
+      line-height: 1.08;
+      color: #EEF0FC;
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
+    }
+
+    .divider {
+      width: 80px;
+      height: 1.5px;
+      background: #2A47DD;
+      margin-bottom: 28px;
+    }
+
+    .sub {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #7080C8;
+      line-height: 1.5;
+    }
+
+    /* Right — app screenshot — 65% width, full bleed right */
+    .right-app {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 702px;
+      height: 100%;
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    .right-app img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: left top;
+      display: block;
+    }
+
+    /* Fade the left edge of app into panel */
+    .right-app::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 0;
+      width: 120px;
+      background: linear-gradient(to right, #080B1C, transparent);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Subtle shadow on app — right side clean, left fades */
+    .right-app::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 60px 0 80px rgba(8,11,28,0.5);
+      pointer-events: none;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Left text panel -->
+  <div class="left-panel">
+    <div class="psalm-bg-number">46</div>
+    <div class="text-content">
+      <p class="eyebrow">Leitura</p>
+      <h1 class="headline">As palavras<br>certas<br>existem</h1>
+      <div class="divider"></div>
+      <p class="sub">Texto integral<br>para leitura<br>contemplativa</p>
+    </div>
+  </div>
+
+  <!-- Right app screenshot -->
+  <div class="right-app">
+    <img src="../raw/04-leitura-salmo.png" alt="Leitura do Salmo">
+  </div>
+
+</body>
+</html>

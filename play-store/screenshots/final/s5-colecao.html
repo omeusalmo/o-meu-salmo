@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>S5 — Coleção Detalhe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #080B1C;
+      font-family: 'Instrument Sans', sans-serif;
+      position: relative;
+    }
+
+    /* Subtle cobalt accent glow — top right */
+    .glow-accent {
+      position: absolute;
+      top: -120px;
+      right: -80px;
+      width: 560px;
+      height: 560px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(85,103,234,0.14) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Thin vertical accent stripe — left edge */
+    .accent-stripe {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom,
+        transparent 0%,
+        #5567EA 20%,
+        #5567EA 80%,
+        transparent 100%
+      );
+      z-index: 5;
+    }
+
+    /* Top text block */
+    .top-block {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 340px;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 72px 40px;
+    }
+
+    .eyebrow-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #5567EA;
+      flex-shrink: 0;
+    }
+
+    .eyebrow {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: #5567EA;
+    }
+
+    .headline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 84px;
+      line-height: 1.06;
+      color: #EEF0FC;
+      letter-spacing: -0.01em;
+    }
+
+    /* App screenshot — centered, 55% height */
+    .app-frame {
+      position: absolute;
+      top: 340px;
+      left: 40px;
+      right: 40px;
+      height: 1300px;
+      z-index: 2;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow:
+        0 32px 100px rgba(0,0,0,0.50),
+        0 6px 24px rgba(0,0,0,0.25),
+        0 0 0 0.5px rgba(85,103,234,0.15);
+    }
+
+    .app-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    /* Footer text */
+    .footer-block {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 220px;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 72px;
+      background: linear-gradient(to bottom, transparent, #080B1C 50%);
+    }
+
+    .footer-sub {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 24px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #7080C8;
+      text-align: center;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-accent"></div>
+  <div class="accent-stripe"></div>
+
+  <!-- Top text -->
+  <div class="top-block">
+    <div class="eyebrow-row">
+      <div class="dot"></div>
+      <span class="eyebrow">Coleção Ansiedade</span>
+    </div>
+    <h1 class="headline">Curadoria,<br>não acaso</h1>
+  </div>
+
+  <!-- App screenshot -->
+  <div class="app-frame">
+    <img src="../raw/03-colecao-detalhe.png" alt="Detalhe da Coleção">
+  </div>
+
+  <!-- Footer -->
+  <div class="footer-block">
+    <p class="footer-sub">Cada Salmo foi escolhido<br>para aquele sentimento</p>
+  </div>
+
+</body>
+</html>

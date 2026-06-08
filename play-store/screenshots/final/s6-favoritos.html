@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>S6 — Favoritos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #080B1C;
+      font-family: 'Instrument Sans', sans-serif;
+      position: relative;
+    }
+
+    /* Warm deep glow — lower center */
+    .glow-warm {
+      position: absolute;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse,
+        rgba(42,71,221,0.20) 0%,
+        rgba(85,103,234,0.08) 40%,
+        transparent 70%
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* App screenshot — top, with margin */
+    .app-frame {
+      position: absolute;
+      top: 80px;
+      left: 0; right: 0;
+      height: 1250px;
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    .app-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    /* Bottom fade over app bottom edge */
+    .app-frame::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 280px;
+      background: linear-gradient(to bottom, transparent, #10142C 85%, #10142C);
+      pointer-events: none;
+    }
+
+    /* Footer panel — 320px, slightly lighter surface */
+    .footer-panel {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 590px;
+      background: #10142C;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 0 72px 48px;
+      gap: 0;
+    }
+
+    /* Top edge fade into app */
+    .footer-panel::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 0; right: 0;
+      height: 80px;
+      background: linear-gradient(to bottom, transparent, #10142C);
+      pointer-events: none;
+    }
+
+    .headline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 96px;
+      line-height: 1.04;
+      color: #EEF0FC;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .sub {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #7080C8;
+      margin-bottom: 48px;
+    }
+
+    /* Collection chips row */
+    .chips {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #8C97D4;
+      background: rgba(27, 51, 180, 0.40);
+      border: 0.5px solid rgba(85,103,234,0.30);
+      border-radius: 999px;
+      padding: 10px 28px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-warm"></div>
+
+  <!-- App screenshot -->
+  <div class="app-frame">
+    <img src="../raw/07-favoritos.png" alt="Favoritos">
+  </div>
+
+  <!-- Footer panel -->
+  <div class="footer-panel">
+    <h1 class="headline">Os seus,<br>para sempre</h1>
+    <p class="sub">Offline, sem conta</p>
+    <div class="chips">
+      <span class="chip">Ansiedade</span>
+      <span class="chip">Sono</span>
+      <span class="chip">Gratidão</span>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>S4 — Reflexão</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #080B1C;
+      font-family: 'Instrument Sans', sans-serif;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Top text — above app */
+    .top-text {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 240px;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding-bottom: 32px;
+    }
+
+    .headline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 80px;
+      line-height: 1.06;
+      color: #EEF0FC;
+      text-align: center;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+
+    .sub {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #7080C8;
+      text-align: center;
+    }
+
+    /* Subtle top glow */
+    .glow-top {
+      position: absolute;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(42,71,221,0.10) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* App screenshot — centered, with breathing room */
+    .app-frame {
+      position: absolute;
+      top: 240px;
+      left: 60px;
+      right: 60px;
+      height: 1380px;
+      z-index: 2;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow:
+        0 40px 120px rgba(0,0,0,0.55),
+        0 8px 32px rgba(0,0,0,0.30),
+        0 0 0 0.5px rgba(255,255,255,0.06);
+    }
+
+    .app-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    /* Footer — wordmark */
+    .footer {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 230px;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .footer-line {
+      width: 96px;
+      height: 1px;
+      background: #2A47DD;
+    }
+
+    .wordmark {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #7080C8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-top"></div>
+
+  <!-- Headline above app -->
+  <div class="top-text">
+    <h1 class="headline">Mais que ler —<br>pausar</h1>
+    <p class="sub">Uma reflexão por Salmo</p>
+  </div>
+
+  <!-- App screenshot — framed, breathing room all around -->
+  <div class="app-frame">
+    <img src="../raw/05-reflexao.png" alt="Reflexão">
+  </div>
+
+  <!-- Footer wordmark -->
+  <div class="footer">
+    <div class="footer-line"></div>
+    <p class="wordmark">O meu Salmo</p>
+  </div>
+
+</body>
+</html>

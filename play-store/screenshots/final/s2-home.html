@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>S2 — Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #080B1C;
+      font-family: 'Instrument Sans', sans-serif;
+      position: relative;
+    }
+
+    /* Full-bleed app screenshot */
+    .app-full {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    .app-full img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    /* Minimal footer overlay — 180px, gradient into night-base */
+    .footer-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 360px;
+      background: linear-gradient(to bottom,
+        transparent 0%,
+        rgba(8,11,28,0.72) 30%,
+        rgba(8,11,28,0.95) 60%,
+        #080B1C 100%
+      );
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 72px 88px;
+    }
+
+    .headline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 88px;
+      line-height: 1.05;
+      color: #EEF0FC;
+      margin-bottom: 24px;
+      letter-spacing: -0.01em;
+    }
+
+    .sub {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: #7080C8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Full-bleed app -->
+  <div class="app-full">
+    <img src="../raw/01-home.png" alt="Home — Salmo do dia">
+  </div>
+
+  <!-- Minimal footer overlay -->
+  <div class="footer-overlay">
+    <h1 class="headline">Um salmo<br>para cada dia</h1>
+    <p class="sub">Chegue, leia, volte amanhã</p>
+  </div>
+
+</body>
+</html>
