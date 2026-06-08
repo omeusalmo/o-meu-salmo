@@ -1,5 +1,5 @@
 # Roadmap Gerente — O meu Salmo
-_Atualizado: 2026-06-07. Versão pós-construção do MVP, pré-lançamento._
+_Atualizado: 2026-06-08. Versão pós-construção do MVP, pré-lançamento._
 
 ---
 
@@ -18,6 +18,7 @@ _Atualizado: 2026-06-07. Versão pós-construção do MVP, pré-lançamento._
 | Firebase Analytics (6 eventos) | ✅ |
 | Seção Apoie (Pix + bottom sheet) | ✅ |
 | Sugestões via mailto | ✅ |
+| Onboarding 3 telas + picker emocional | ✅ |
 | WCAG 2.1 AA (contraste acessível) | ✅ |
 | Release signing configurado (key.properties) | ✅ |
 | Política de privacidade (HTML local) | ✅ |
@@ -87,7 +88,7 @@ _Meta: primeiros 100 usuários, retenção D7 > 30%._
 - Posts no Instagram com versículos usando visual do app
 
 ### B3 · Quick wins de UX
-- Onboarding de 1 slide (mostrar as coleções na primeira abertura)
+- ~~Onboarding de 1 slide~~ → entregue: onboarding 3 telas + picker emocional ✅
 - Rating prompt na sessão 3 (após salmo lido)
 - Deep link para salmo específico (para campanhas de divulgação)
 
@@ -115,6 +116,109 @@ _Só iniciar com sinal de retenção D30 > 20%._
 ### C4 · Expansão de plataforma
 - Widget Android (salmo do dia na home screen)
 - iOS: só após Android estável e com receita
+
+---
+
+---
+
+## Benchmarking Competitivo — Insights (2026-06-08)
+
+_Realizado por Designer + Gerente. Apps analisados: YouVersion, Glorify, Calm, Hallow, Bible.is, Lectio 365._
+
+### Posicionamento — onde ganhar vs. onde perder
+
+**Perde sempre contra apps com $10M de budget:**
+- Biblioteca de conteúdo (planos, devocionais, vídeos)
+- Comunidade/social features, áudio em escala
+- Marketing pago
+
+**Moat inimitável com budget zero:**
+- **Curadoria emocional precisa de salmos** — nenhum app resolve "estou ansioso, qual salmo?" com cuidado editorial. YouVersion joga numa lista.
+- **Zero fricção, zero cadastro** — cristão brasileiro 40 anos abre e já está no salmo. Não quebre com login cedo demais.
+- **Identidade brasileira** — Glorify é americano, YouVersion é americano. Dores, contexto, fé popular BR = diferenciação inimitável.
+
+### Alertas de risco (não repetir)
+- **Streak nunca chamado de "streak" na UI** — usar "jornada", "presença", "caminhada". Gamificação religiosa visível = público BR rejeita.
+- **Modo sono só com áudio humano de qualidade** — expectativa criada é alta; áudio robótico + relaxamento = reputação destruída.
+- **Liturgia católica requer pesquisa profunda** — numeração LXX vs TM, erro de salmo no domingo = perde usuário católico para sempre.
+- **Card de compartilhamento só com design forte** — card mediano não é compartilhado, esforço desperdiçado.
+
+### Monetização futura — fundação freemium
+
+| Tier | Features |
+|------|----------|
+| **Free always** | Salmo do Dia, 150 salmos leitura, favoritos, notificação diária genérica, plano 7 dias (1 emoção) |
+| **Premium forte** | Modo sono, áudio offline completo, notificação contextual por emoção, planos ilimitados, velocidade narração |
+| **Premium médio** | Widget personalizado (temas/salmo escolhido), reflexão guiada |
+| **Nunca monetizar** | Diário espiritual (dados pessoais espirituais = sensível), conquistas/selos (gamificação religiosa cobra = toxic combo) |
+
+---
+
+## Sprint D — Retenção & Aquisição Orgânica (4-5 semanas)
+
+_Pré-requisito: app publicado na Play Store. Meta: retenção D7 ≥ 35%, shares ≥ 5% DAU._
+
+### D1 · Streak Devocional ("Jornada")
+- Contador de dias consecutivos de acesso ao Salmo do Dia
+- Linguagem: "jornada", "presença", "caminhada" — NUNCA "streak" ou "🔥" na UI
+- Visual: sutil, tipográfico, não gamificado. Ex: "7 dias com os Salmos"
+- KPI: retenção D7 ≥ 35%
+
+### D2 · Card de Compartilhamento
+- Card visual por verso/salmo com identidade forte do app (cobalt + Playfair)
+- Gerado direto da tela de leitura — 1 tap → share sheet nativo
+- Design não pode ser mediano: card bonito = motor de crescimento real
+- KPI: shares ≥ 5% dos DAU semanais
+
+---
+
+## Sprint E — Engajamento Profundo (5-6 semanas)
+
+_Pré-requisito: D7 ≥ 35% validado. Meta: D14 de quem faz plano ≥ 20pp acima de quem não faz._
+
+### E1 · Plano de 7 Dias por Emoção
+- Aproveita picker emocional do onboarding — transforma escolha em jornada estruturada
+- 1 salmo curado por dia × 7 dias, por emoção (8 planos = 8 coleções)
+- Progress indicator simples: "Dia 3 de 7"
+- V1 free: 1 plano (emoção escolhida no onboarding). V2 premium: todos os planos.
+- KPI: ≥ 40% dos que iniciam completam o plano completo
+
+### E2 · Áudio Offline Completo (pré-requisito do Modo Sono)
+- Completar narração dos 150 salmos (hoje parcial)
+- Modo sono **só entra depois** deste item concluído — sem narração humana boa, não lançar
+- KPI: % salmos com áudio = 100%
+
+---
+
+## Sprint F — Distribuição Passiva (5-6 semanas)
+
+_Pré-requisito: E1 validado. Meta: ≥ 15% sessões via widget em 30 dias._
+
+### F1 · Widget Homescreen Android
+- Salmo do Dia visível sem abrir app = recall passivo diário
+- Widget básico = free. Widget com salmo escolhido/tema customizado = premium
+- Referência: YouVersion (35% das sessões diárias via widget)
+- KPI: ≥ 15% sessões originadas via widget após 30 dias
+
+### F2 · Notificação Contextual por Emoção
+- Push usa emoção salva do picker do onboarding
+- Ex: "Sentindo ansiedade? O Salmo 91 foi escrito pra esse momento." vs. push genérico
+- Opt-out 4x menor que push genérico (padrão Calm)
+- KPI: opt-out notificação contextual ≤ 50% do opt-out da notificação genérica
+
+---
+
+## Backlog — Features Cortadas (revisitar com dados)
+
+| Feature | Motivo do corte | Quando revisar |
+|---------|----------------|----------------|
+| Modo Sono | Depende de áudio offline completo (Sprint E2) | Após E2 |
+| Reflexão Guiada (3 perguntas) | Esforço editorial + precisar audiência para validar | Após D validado |
+| Diário Espiritual | Escopo grande, risco de privacidade, monetização incerta | v3+ |
+| Conquistas / Selos | Risco de gamificação religiosa, sem fundação para premium | Nunca (risco alto) |
+| Liturgia Católica | Requer pesquisa profunda (numeração LXX vs TM) | Só com consultor litúrgico |
+| Velocidade de Narração | Feature de QoL — fazer junto com áudio offline, não sprint dedicado | Sprint E2 |
+| Planos Compartilhados | Requer backend/auth — fora do escopo offline-first | v3+ |
 
 ---
 
