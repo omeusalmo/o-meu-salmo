@@ -121,7 +121,7 @@ body{
   background:var(--bg);color:var(--text);
   font-family:var(--font-u);font-weight:300;
   line-height:1.55;overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
 }
 body::after{
   content:'';position:fixed;inset:0;pointer-events:none;z-index:9000;
@@ -168,7 +168,7 @@ button{border:none;background:none;font-family:var(--font-u);cursor:pointer;}
   font-family:var(--font-u);font-size:12px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;
   color:var(--tx);background:var(--accent);padding:11px 22px;border-radius:999px;
   box-shadow:0 8px 24px rgba(27,51,180,.35);
-  transition:background var(--dur-f),box-shadow var(--dur-f);will-change:transform;
+  transition:background var(--dur-f),box-shadow var(--dur-f);
 }
 .btn:hover{background:var(--cobalt-400);box-shadow:0 12px 36px rgba(27,51,180,.5);}
 .badge{
@@ -1042,7 +1042,7 @@ const D = {
 function render(emo){
   const d = D[emo], out = document.getElementById('psalm-out');
   out.style.cssText = 'opacity:0;transform:translateY(10px);transition:opacity .28s ease,transform .28s ease;';
-  setTimeout(()=>{
+  requestAnimationFrame(()=>{
     out.innerHTML = `
       <div class="psalm-card" data-n="${d.num}">
         <div class="pc-emo">
@@ -1056,7 +1056,7 @@ function render(emo){
         </div>
       </div>`;
     requestAnimationFrame(()=>{ out.style.opacity='1'; out.style.transform='none'; });
-  }, 80);
+  });
 }
 document.querySelectorAll('#picker-chips .chip').forEach(c=>{
   c.addEventListener('click',()=>{
@@ -1120,10 +1120,14 @@ function togglePlay(){
 }
 
 /* ── SCROLL REVEAL ───────────────────────────────── */
-const obs = new IntersectionObserver(es=>{
-  es.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('on'); });
-},{threshold:.1});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+if('IntersectionObserver' in window){
+  const obs = new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('on'); });
+  },{threshold:.1});
+  document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+} else {
+  document.querySelectorAll('.rv').forEach(el=>el.classList.add('on'));
+}
 
 /* ── CUSTOM CURSOR ───────────────────────────────── */
 (function(){

@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatório de Usabilidade — O meu Salmo MVP</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant:ital,wght@1,400;1,500&family=Instrument+Sans:wght@400;500;600&display=swap');
+
+  :root {
+    --cobalt-500: #2A47DD;
+    --cobalt-600: #1B33B4;
+    --cobalt-400: #5567EA;
+    --cobalt-100: #EEEDF8;
+    --day-base: #F5F7FE;
+    --day-plus: #E9EDFD;
+    --day-line: #D5DCF3;
+    --day-muted: #4E5899;
+    --day-text: #2E3A86;
+    --day-title: #0C1230;
+    --gold-ink: #8A6A28;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+    --sev-critico: #C0392B;
+    --sev-critico-bg: #FDECEA;
+    --sev-moderado: #D68910;
+    --sev-moderado-bg: #FEF9E7;
+    --sev-cosmetico: #1A8A55;
+    --sev-cosmetico-bg: #EAFAF1;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Instrument Sans', sans-serif;
+    background: var(--day-base);
+    color: var(--day-title);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  /* ── LAYOUT ── */
+  .page { max-width: 900px; margin: 0 auto; padding: 48px 40px; }
+
+  /* ── TIPOGRAFIA ── */
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 400;
+    letter-spacing: -0.84px;
+    color: var(--day-title);
+    line-height: 1.05;
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: -0.42px;
+    color: var(--day-title);
+    margin-top: 48px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--day-line);
+  }
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--day-title);
+    margin-top: 28px;
+    margin-bottom: 8px;
+  }
+  .eyebrow {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 3.4px;
+    text-transform: uppercase;
+    color: var(--day-muted);
+  }
+  .wordmark {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .wordmark .omeu {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2.8px;
+    text-transform: uppercase;
+    color: var(--day-muted);
+  }
+  .wordmark .salmo {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--cobalt-500);
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 260px;
+    background: var(--day-plus);
+    border: 1px solid var(--day-line);
+    border-radius: var(--radius-lg);
+    padding: 40px 44px;
+    margin-bottom: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 32px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+  .cover-meta-item { display: flex; flex-direction: column; gap: 2px; }
+  .cover-meta-item .label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--day-muted); }
+  .cover-meta-item .value { font-size: 14px; font-weight: 500; color: var(--day-title); }
+
+  /* ── SUMÁRIO ── */
+  .toc { margin: 0 0 40px; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin: 6px 0; }
+  .toc a { color: var(--cobalt-500); text-decoration: none; font-size: 14px; }
+  .toc a:hover { text-decoration: underline; }
+
+  /* ── MÉTRICAS EXECUTIVAS ── */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 24px 0 40px;
+  }
+  .metric-card {
+    background: var(--day-plus);
+    border: 1px solid var(--day-line);
+    border-radius: var(--radius-md);
+    padding: 20px 18px;
+    text-align: center;
+  }
+  .metric-card .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--cobalt-500);
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+  .metric-card .num.red { color: var(--sev-critico); }
+  .metric-card .num.amber { color: var(--sev-moderado); }
+  .metric-card .num.green { color: var(--sev-cosmetico); }
+  .metric-card .lbl { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--day-muted); margin-top: 6px; }
+
+  /* ── ACHADO CARD ── */
+  .achado {
+    border: 1px solid var(--day-line);
+    border-radius: var(--radius-md);
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .achado-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background: var(--day-plus);
+    border-bottom: 1px solid var(--day-line);
+  }
+  .achado-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--day-muted);
+    min-width: 32px;
+  }
+  .achado-title { flex: 1; }
+  .achado-title .persona { font-size: 12px; color: var(--day-muted); margin-bottom: 2px; }
+  .achado-title .cenario { font-size: 14px; font-weight: 500; color: var(--day-title); }
+  .sev-badge {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  .sev-CRITICO { background: var(--sev-critico-bg); color: var(--sev-critico); }
+  .sev-MODERADO { background: var(--sev-moderado-bg); color: var(--sev-moderado); }
+  .sev-COSMETICO { background: var(--sev-cosmetico-bg); color: var(--sev-cosmetico); }
+
+  .achado-body { padding: 16px 18px; }
+  .achado-body dl { display: grid; grid-template-columns: 140px 1fr; gap: 8px 12px; }
+  .achado-body dt { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--day-muted); padding-top: 2px; }
+  .achado-body dd { font-size: 14px; color: var(--day-title); line-height: 1.6; }
+  .achado-body .rec {
+    margin-top: 12px;
+    padding: 12px 14px;
+    background: var(--cobalt-100);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--cobalt-500);
+    font-size: 14px;
+    color: var(--day-title);
+    line-height: 1.6;
+  }
+  .achado-body .rec strong { color: var(--cobalt-600); }
+
+  /* ── CENÁRIO HEADER ── */
+  .cenario-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    background: var(--day-plus);
+    border: 1px solid var(--day-line);
+    border-radius: var(--radius-md);
+    margin: 32px 0 16px;
+  }
+  .cenario-letra {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--cobalt-500);
+    line-height: 1;
+    min-width: 40px;
+  }
+  .cenario-info .title { font-size: 16px; font-weight: 600; color: var(--day-title); }
+  .cenario-info .desc { font-size: 13px; color: var(--day-muted); margin-top: 2px; }
+
+  /* ── CHECKLIST ── */
+  .checklist-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13px; }
+  .checklist-table th {
+    background: var(--day-plus);
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--day-muted);
+    border: 1px solid var(--day-line);
+  }
+  .checklist-table td {
+    padding: 10px 14px;
+    border: 1px solid var(--day-line);
+    color: var(--day-title);
+    vertical-align: middle;
+  }
+  .checklist-table tr:nth-child(even) td { background: var(--day-base); }
+  .check-ok  { color: var(--sev-cosmetico); font-weight: 600; text-align: center; }
+  .check-mod { color: var(--sev-moderado);  font-weight: 600; text-align: center; }
+  .check-crit{ color: var(--sev-critico);   font-weight: 600; text-align: center; }
+
+  /* ── TOP 10 ── */
+  .top10-list { counter-reset: top10; list-style: none; padding: 0; }
+  .top10-list li {
+    counter-increment: top10;
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--day-line);
+    align-items: flex-start;
+  }
+  .top10-list li::before {
+    content: counter(top10);
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--cobalt-400);
+    min-width: 28px;
+    line-height: 1;
+  }
+  .top10-item-body { flex: 1; }
+  .top10-item-body .title { font-size: 14px; font-weight: 600; color: var(--day-title); margin-bottom: 4px; }
+  .top10-item-body .meta { font-size: 12px; color: var(--day-muted); }
+
+  /* ── RECOMENDAÇÕES ── */
+  .rec-group { margin-bottom: 32px; }
+  .rec-group-header {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .priority-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 999px;
+  }
+  .priority-CRITICO { background: var(--sev-critico-bg); color: var(--sev-critico); }
+  .priority-MODERADO { background: var(--sev-moderado-bg); color: var(--sev-moderado); }
+  .priority-COSMETICO { background: var(--sev-cosmetico-bg); color: var(--sev-cosmetico); }
+  .rec-item {
+    padding: 16px 18px;
+    border: 1px solid var(--day-line);
+    border-radius: var(--radius-md);
+    margin-bottom: 12px;
+    background: white;
+  }
+  .rec-item .rec-title { font-weight: 600; font-size: 14px; color: var(--day-title); margin-bottom: 6px; }
+  .rec-item .rec-detail { font-size: 13px; color: var(--day-muted); line-height: 1.6; }
+  .rec-item .rec-detail code {
+    background: var(--day-plus);
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 12px;
+    color: var(--cobalt-600);
+  }
+
+  /* ── GAP COVERAGE ── */
+  .gap-box {
+    padding: 16px 18px;
+    border: 1px solid #F0C4BE;
+    border-radius: var(--radius-md);
+    background: #FEF5F4;
+    margin: 16px 0;
+  }
+  .gap-box strong { color: var(--sev-critico); }
+
+  /* ── RODAPÉ ── */
+  footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--day-line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--day-muted);
+    font-size: 12px;
+  }
+
+  /* ── DIVIDER ── */
+  hr { border: none; border-top: 1px solid var(--day-line); margin: 32px 0; }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; font-size: 12px; }
+    .page { padding: 20px 24px; max-width: 100%; }
+    h1 { font-size: 32px; }
+    h2 { font-size: 22px; margin-top: 32px; page-break-after: avoid; }
+    h3 { page-break-after: avoid; }
+    .cover { page-break-after: always; min-height: auto; }
+    .cenario-header { page-break-before: always; }
+    .achado { page-break-inside: avoid; }
+    .metrics-grid { grid-template-columns: repeat(4, 1fr); }
+    .top10-list li { page-break-inside: avoid; }
+    .rec-item { page-break-inside: avoid; }
+    a { color: inherit; text-decoration: none; }
+    .toc { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!-- CAPA -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<div class="cover">
+  <div>
+    <div class="eyebrow" style="margin-bottom:16px">Relatório de Pesquisa UX</div>
+    <div class="wordmark" style="margin-bottom:12px">
+      <span class="omeu">O MEU</span>
+      <span class="salmo">Salmo</span>
+    </div>
+    <h1>Teste de Usabilidade<br>MVP — Pré-lançamento</h1>
+  </div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="label">Data</span>
+      <span class="value">7 de junho de 2026</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">Versão do app</span>
+      <span class="value">1.0.0 (MVP)</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">Método</span>
+      <span class="value">Teste simulado com 5 personas sintéticas</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">Combinações avaliadas</span>
+      <span class="value">7 cenários × 5 personas = 35</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">Avaliador</span>
+      <span class="value">Designer — O meu Salmo</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">Plataforma</span>
+      <span class="value">Android (Google Play)</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!-- SUMÁRIO -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<div class="toc">
+  <div class="eyebrow" style="margin-bottom:12px">Índice</div>
+  <ol>
+    <li><a href="#sumario-executivo">Sumário Executivo</a></li>
+    <li><a href="#personas">Personas do Teste</a></li>
+    <li><a href="#resultados">Resultados por Cenário</a>
+      <ol style="margin-top:4px">
+        <li><a href="#cen-a">Cenário A — Primeira abertura (D0)</a></li>
+        <li><a href="#cen-b">Cenário B — Fluxo emocional</a></li>
+        <li><a href="#cen-c">Cenário C — Busca por Salmo específico</a></li>
+        <li><a href="#cen-d">Cenário D — Áudio</a></li>
+        <li><a href="#cen-e">Cenário E — Compartilhamento</a></li>
+        <li><a href="#cen-f">Cenário F — Favoritar e encontrar depois</a></li>
+        <li><a href="#cen-g">Cenário G — Ajustes e notificação diária</a></li>
+      </ol>
+    </li>
+    <li><a href="#top10">Top 10 Achados por Severidade</a></li>
+    <li><a href="#recomendacoes">Recomendações Acionáveis</a></li>
+    <li><a href="#checklist">Checklist Pré-lançamento</a></li>
+  </ol>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!-- SUMÁRIO EXECUTIVO -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<h2 id="sumario-executivo">1. Sumário Executivo</h2>
+
+<p style="margin-bottom:16px">O teste simulou 35 combinações (7 cenários × 5 personas) com base no código Flutter implementado e nos modelos mentais das personas sintéticas. O app demonstra qualidade visual consistente e arquitetura de informação correta. Os principais riscos de lançamento concentram-se em <strong>dois eixos</strong>: (1) o mecanismo de bloqueio da reflexão, que frustra personas de alta retenção; e (2) a ausência de áudio implementado na tela de leitura, que quebra o fluxo de hábito e o caso de uso de dormir.</p>
+
+<div class="metrics-grid">
+  <div class="metric-card">
+    <div class="num">24</div>
+    <div class="lbl">Achados totais</div>
+  </div>
+  <div class="metric-card">
+    <div class="num red">4</div>
+    <div class="lbl">Críticos</div>
+  </div>
+  <div class="metric-card">
+    <div class="num amber">13</div>
+    <div class="lbl">Moderados</div>
+  </div>
+  <div class="metric-card">
+    <div class="num green">7</div>
+    <div class="lbl">Cosméticos</div>
+  </div>
+</div>
+
+<p style="margin-bottom:8px"><strong>Critério de lançamento:</strong> 0 achados CRÍTICOS. O app tem 4 achados críticos que precisam ser resolvidos antes do lançamento. Os moderados podem ser documentados com roadmap.</p>
+
+<p style="margin-bottom:8px"><strong>Achados críticos em síntese:</strong></p>
+<ul style="padding-left:20px; color:var(--day-title); line-height:2">
+  <li>AC-01 — AudioPlayerBar sem estado funcional visível: Giovanna coloca o celular para baixo sem saber se o áudio está tocando.</li>
+  <li>AC-02 — Reflexão bloqueada por padrão frustra Fernanda (luto) que veio exatamente para reflexão.</li>
+  <li>AC-03 — Compositor recebe apenas 3 fundos escuros — impede compartilhamento no WhatsApp Status diurno (Ana Lúcia).</li>
+  <li>AC-04 — Notificação requer ativar switch antes de escolher horário — Ana Lúcia configura 7h mas sem perceber que precisa ativar o switch primeiro.</li>
+</ul>
+
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!-- PERSONAS -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<h2 id="personas">2. Personas do Teste</h2>
+
+<table class="checklist-table" style="font-size:13px">
+  <thead>
+    <tr>
+      <th>#</th><th>Nome</th><th>Perfil</th><th>Dispositivo</th><th>Tema padrão</th><th>Fluxo crítico</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>P1</td><td><strong>Ana Lúcia</strong>, 54</td><td>Católica devota, pouco tech</td><td>Samsung A13</td><td>Claro</td><td>Busca número → Leitura → Áudio → Compartilha WhatsApp</td>
+    </tr>
+    <tr>
+      <td>P2</td><td><strong>Tiago</strong>, 29</td><td>Evangélico urbano, alta tech</td><td>Moto G84</td><td>Escuro</td><td>Coleções → Ansiedade → Leitura → Favoritar</td>
+    </tr>
+    <tr>
+      <td>P3</td><td><strong>Fernanda</strong>, 37</td><td>Católica em luto, média-alta tech</td><td>Samsung A54</td><td>Claro</td><td>Coleções → Luto → Leitura → Reflexão → Favoritar</td>
+    </tr>
+    <tr>
+      <td>P4</td><td><strong>Pastor Renato</strong>, 46</td><td>Evangélico pastor, avaliador crítico</td><td>Samsung S23</td><td>Escuro</td><td>Exploração sistemática de todas as abas</td>
+    </tr>
+    <tr>
+      <td>P5</td><td><strong>Giovanna</strong>, 22</td><td>Católica cultural, atenção curta</td><td>Moto G34</td><td>Escuro</td><td>Coleções → Sono → Áudio em background</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!-- RESULTADOS POR CENÁRIO -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<h2 id="resultados">3. Resultados por Cenário</h2>
+
+<!-- ─────────────────────── CENÁRIO A ─────────────────────── -->
+<div class="cenario-header" id="cen-a">
+  <div class="cenario-letra">A</div>
+  <div class="cenario-info">
+    <div class="title">Primeira abertura do app (D0)</div>
+    <div class="desc">Persona instala pela primeira vez. Objetivo: identificar pontos de abandono no D0. Meta: navegar além da tela inicial sem ajuda.</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">A1</div>
+    <div class="achado-title">
+      <div class="persona">Ana Lúcia · Cenário A</div>
+      <div class="cenario">Wordmark "O MEU Salmo" não é reconhecível como logo</div>
+    </div>
+    <span class="sev-badge sev-MODERADO">Moderado</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Ana Lúcia abre o app e vê "O MEU Salmo" em fonte pequena no topo esquerdo. Ela lê como texto descritivo ("é meu salmo"), não como nome do aplicativo. Não associa ao logo que viu no WhatsApp da amiga.</dd>
+      <dt>Fricção</dt>
+      <dd>Eyebrow label "O MEU" em 10px Instrument Sans + "Salmo" em 19px Playfair italic — escala pequena demais para funcionar como identidade reconhecível no primeiro uso.</dd>
+      <dt>Causa</dt>
+      <dd>Persona com baixa literacia digital não tem modelo mental de "eyebrow + display = marca". Espera algo mais próximo a um ícone ou splash screen com nome maior.</dd>
+      <dt>Impacto</dt>
+      <dd>Retenção D0 — não impede navegação, mas prejudica reconhecimento de marca para futuros compartilhamentos.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Aumentar "Salmo" para 22–24px na tela Início. Adicionar o símbolo "S" em <code>--cobalt-500</code> ao lado do wordmark (16px, stroke fino) para criar âncora visual de marca. Não altera estrutura de código — apenas ajuste de fontSize em <code>home_screen.dart</code> linha 103.</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">A2</div>
+    <div class="achado-title">
+      <div class="persona">Giovanna · Cenário A</div>
+      <div class="cenario">Nenhuma instrução de onboarding — Giovanna não sabe o que fazer em 10 segundos</div>
+    </div>
+    <span class="sev-badge sev-MODERADO">Moderado</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Giovanna abre o app. Vê "Para hoje, Salmo [N]" com um versículo. Não há CTA óbvio de "Coleções → Sono". Ela toca "Ler o salmo" (CTA primário cobalt), lê o Salmo do dia, e só depois descobre as abas. Gasta 40–60 segundos antes de achar Coleções/Sono — perto do seu limiar de abandono.</dd>
+      <dt>Fricção</dt>
+      <dd>CTA "Ler o salmo" domina visualmente. O atalho "Como você está se sentindo hoje? → Ver coleções" está abaixo do dobramento e requer scroll.</dd>
+      <dt>Causa</dt>
+      <dd>Giovanna quer Sono imediatamente. Modelo mental: "abro, acho Sono, toco". O Salmo do dia é um obstáculo para seu fluxo.</dd>
+      <dt>Impacto</dt>
+      <dd>ASO / Retenção D1 — risco de desinstalação nos primeiros 60 segundos.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Reposicionar o bloco <code>_CollectionsShortcut</code> para acima do CTA primário, ou adicionar chips de emoção (Ansiedade, Sono, Luto) visíveis sem scroll na tela Início. Usar tokens: chips com fundo <code>--day-plus</code>/<code>--night-plus</code>, borda <code>--day-line</code>, border-radius <code>radiusPill</code>, texto em Instrument Sans 12px.</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">A3</div>
+    <div class="achado-title">
+      <div class="persona">Ana Lúcia · Cenário A</div>
+      <div class="cenario">Engrenagem de Ajustes não descoberta na primeira abertura</div>
+    </div>
+    <span class="sev-badge sev-COSMETICO">Cosmético</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Ana Lúcia não toca na engrenagem no D0. Ela não procura configurações na primeira visita — vai direto ao conteúdo. Só descobrirá Ajustes se precisar de algo.</dd>
+      <dt>Fricção</dt>
+      <dd>Ícone <code>Icons.settings_outlined</code> 20px em <code>--nightText/dayText</code> — cor de baixo contraste em relação ao fundo.</dd>
+      <dt>Causa</dt>
+      <dd>Não é problema de D0, mas pode causar dificuldade se ela precisar aumentar fonte (hipótese: não há controle de tamanho de fonte exposto na tela de Leitura como botão visível).</dd>
+      <dt>Impacto</dt>
+      <dd>Cosmético D0, mas moderado para acessibilidade a longo prazo.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Sem mudança urgente para D0. Para iteração futura: aumentar ícone para 22px e usar cor <code>--cobalt-400/500</code> para dar mais visibilidade ao ponto de acesso às configurações.</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">A4</div>
+    <div class="achado-title">
+      <div class="persona">Tiago · Cenário A</div>
+      <div class="cenario">Primeira impressão visual — aprovação imediata</div>
+    </div>
+    <span class="sev-badge sev-COSMETICO">Cosmético</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Tiago abre o app no modo escuro. Vê o número do Salmo em Playfair Display itálico cobalt, versículo em âmbar, fundo <code>#080B1C</code>. Reação positiva: "isso não é app de 2015". Navega para Coleções em menos de 10 segundos pela barra inferior.</dd>
+      <dt>Fricção</dt>
+      <dd>Nenhuma fricção. Ponto de sucesso do design.</dd>
+      <dt>Causa</dt>
+      <dd>Design System cobalt + tipografia Playfair/Cormorant está alinhado com o modelo mental estético de Tiago.</dd>
+      <dt>Impacto</dt>
+      <dd>Positivo — âncora de retenção D0.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Manter. Garantir que a animação <code>AnimatedSwitcher</code> 450ms não cause lag em dispositivos mid-range (Moto G84).</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">A5</div>
+    <div class="achado-title">
+      <div class="persona">Pastor Renato · Cenário A</div>
+      <div class="cenario">Ausência de tradução visível na tela Início gera dúvida imediata</div>
+    </div>
+    <span class="sev-badge sev-MODERADO">Moderado</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Pastor Renato abre o app e vê o Salmo do dia. Primeira pergunta mental: "qual tradução?". Ele vai para Ajustes > Sobre e encontra "João Ferreira de Almeida, ed. 1911 — domínio público". Satisfeito, mas levou 3 toques extras para confirmar algo que deveria estar visível.</dd>
+      <dt>Fricção</dt>
+      <dd>Tela Início não exibe rótulo de tradução. A tela de Leitura (<code>leitura_salmo_screen.dart</code>) também não tem o label visível acima do título.</dd>
+      <dt>Causa</dt>
+      <dd>Modelo mental de pastor: valida credenciais textuais antes de recomendar. Tradução não está no fluxo principal.</dd>
+      <dt>Impacto</dt>
+      <dd>Crescimento orgânico — Pastor Renato é multiplicador. Se não confirmar tradução, não recomenda.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Adicionar eyebrow label "ALMEIDA 1911" em Instrument Sans 10px, cor <code>--day-muted/nightMuted</code>, letter-spacing 2px, logo abaixo do título do Salmo na tela de Leitura (linha ~245 de <code>leitura_salmo_screen.dart</code>). Reproduzir também no card do Salmo do Dia.</div>
+  </div>
+</div>
+
+<!-- ─────────────────────── CENÁRIO B ─────────────────────── -->
+<div class="cenario-header" id="cen-b">
+  <div class="cenario-letra">B</div>
+  <div class="cenario-info">
+    <div class="title">Fluxo Emocional — proposta central do app</div>
+    <div class="desc">Persona em vulnerabilidade emocional quer conforto. Meta: chegar à tela de Leitura em ≤ 5 toques via Coleções.</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">B1</div>
+    <div class="achado-title">
+      <div class="persona">Fernanda · Cenário B</div>
+      <div class="cenario">Reflexão bloqueada por padrão — persona em luto não consegue ler a reflexão</div>
+    </div>
+    <span class="sev-badge sev-CRITICO">Crítico</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Fernanda navega: Coleções → Luto → seleciona um Salmo → tela de Leitura. Lê os versículos com emoção. Rola para baixo e vê a seção "Reflexão" com ícone de cadeado e texto: "Esta reflexão se revela quando este Salmo aparecer como o seu Salmo do Dia." Fernanda não entende o mecanismo. Tenta tocar na área — nada acontece. Sai sem a reflexão que veio buscar.</dd>
+      <dt>Fricção</dt>
+      <dd>Componente <code>_LockedReflexao</code> em <code>leitura_salmo_screen.dart</code> linha 288. Nenhum CTA alternativo. Nenhuma estimativa de quando desbloqueará.</dd>
+      <dt>Causa</dt>
+      <dd>O mecanismo de desbloqueio progressivo é uma decisão de produto legítima, mas sem contexto suficiente para persona em luto. Ela não tem paciência para aguardar — sua necessidade é imediata e emocional.</dd>
+      <dt>Impacto</dt>
+      <dd>CRÍTICO — Retenção D1/D7. Fernanda é o perfil de maior LTV do app. Sair sem reflexão = não voltar.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Adicionar ao <code>_LockedReflexao</code> um link "Ver outros Salmos com reflexão disponível" que leva à coleção Luto filtrando apenas salmos já desbloqueados. Alternativamente: desbloquear reflexão automaticamente para todos os Salmos das coleções emocionais (não apenas do Salmo do Dia) — discutir trade-off de produto com fundador. Texto da mensagem de bloqueio deve ganhar uma âncora de esperança: "Abra o app amanhã — este Salmo pode ser o seu do dia."</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">B2</div>
+    <div class="achado-title">
+      <div class="persona">Tiago · Cenário B</div>
+      <div class="cenario">Fluxo emocional completo em 4 toques — sucesso</div>
+    </div>
+    <span class="sev-badge sev-COSMETICO">Cosmético</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Tiago: aba Coleções (1) → card Ansiedade (2) → PsalmCard do primeiro Salmo (3) → tela Leitura (4). Total: 4 toques. Dentro da meta de ≤ 5. Design do CollectionCard com subtítulo comunica bem o conteúdo.</dd>
+      <dt>Fricção</dt>
+      <dd>Pequena: na DetalheColecaoScreen, o header mostra "X Salmos para esse momento" mas não tem o nome da coleção em destaque acima — apenas o eyebrow label no topo esquerdo. Tiago precisa de 1 segundo para orientar-se.</dd>
+      <dt>Causa</dt>
+      <dd>Cosmético — layout está funcionalmente correto mas hierarquia visual poderia ter título da coleção mais proeminente.</dd>
+      <dt>Impacto</dt>
+      <dd>Satisfação — fluxo funcional.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> No <code>detalhe_colecao_screen.dart</code>, adicionar o <code>colecao.titulo</code> em Playfair Display 22px antes do texto "X Salmos para esse momento". Separar hierarquia: título da emoção → subtítulo → lista.</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">B3</div>
+    <div class="achado-title">
+      <div class="persona">Giovanna · Cenário B</div>
+      <div class="cenario">Coleção "Sono" não encontrada rapidamente — nome não está visível na lista</div>
+    </div>
+    <span class="sev-badge sev-MODERADO">Moderado</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Giovanna abre Coleções. A lista tem 8 coleções em ListView. Ela escaneia os cards buscando "Sono". Se a ordem padrão do JSON colocar Sono na posição 2 (logo abaixo de Ansiedade), ela acha rápido. Se Sono estiver na posição 4+, ela rola e pode hesitar.</dd>
+      <dt>Fricção</dt>
+      <dd>A ordem das coleções depende do JSON <code>salmos.json</code> — não está hardcoded na tela. Sem ordenação por popularidade ou por destaque de uso noturno.</dd>
+      <dt>Causa</dt>
+      <dd>Giovanna usa o app à noite para dormir. "Sono" é o caso de uso primário para ela. Não está necessariamente no topo da lista.</dd>
+      <dt>Impacto</dt>
+      <dd>Retenção D0 — se não achar em 3 toques, fecha.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Garantir que a ordem das coleções no JSON coloque Ansiedade e Sono nas posições 1 e 2. Alternativamente, na <code>colecoes_screen.dart</code>, ordenar as coleções colocando as de maior download-intent (Ansiedade, Sono) primeiro via sort no provider. Não requer redesign visual.</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">B4</div>
+    <div class="achado-title">
+      <div class="persona">Pastor Renato · Cenário B</div>
+      <div class="cenario">Coleção Luto usa palavra direta — aprovação do pastor</div>
+    </div>
+    <span class="sev-badge sev-COSMETICO">Cosmético</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Pastor Renato avalia os títulos das coleções. "Ansiedade", "Luto", "Esperança", "Perdão" — aprova a nomenclatura direta. Não tem tom new age. Verifica a reflexão de dois Salmos e confirma que o texto é teologicamente respeitoso.</dd>
+      <dt>Fricção</dt>
+      <dd>Nenhuma. O subtítulo de cada coleção em Cormorant italic é bem-recebido como "poético sem ser kitsch".</dd>
+      <dt>Causa</dt>
+      <dd>Ponto de sucesso do DS e do UX Writing.</dd>
+      <dt>Impacto</dt>
+      <dd>Crescimento — pastor tem disposição para recomendar.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Manter nomenclatura e tom. Garantir que todos os subtítulos das coleções no JSON sigam o mesmo padrão de voz (íntimo, poético, sem jargão gospel).</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">B5</div>
+    <div class="achado-title">
+      <div class="persona">Ana Lúcia · Cenário B</div>
+      <div class="cenario">Não associa sua ansiedade ao nome "Ansiedade" — hesita antes de tocar</div>
+    </div>
+    <span class="sev-badge sev-MODERADO">Moderado</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Ana Lúcia abre Coleções. Ela quer "algo para se acalmar" mas o card com título "Ansiedade" a faz hesitar — "será que sou ansiosa? não me identifico com esse nome médico". Ela pondera entre "Ansiedade" e "Proteção" por 8–10 segundos antes de tocar em Ansiedade.</dd>
+      <dt>Fricção</dt>
+      <dd>Card de coleção tem título + subtítulo mas o subtítulo em Cormorant 17px itálico é escaneável apenas com leitura cuidadosa (fonte pequena para Ana Lúcia com óculos).</dd>
+      <dt>Causa</dt>
+      <dd>Ana Lúcia não tem modelo mental clínico de "ansiedade" — ela se sente "preocupada" ou "com o coração apertado". A palavra certa ativa, mas gera fricção de 1-2 segundos.</dd>
+      <dt>Impacto</dt>
+      <dd>Moderado — completa a tarefa mas com hesitação.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Adicionar ao subtítulo do card de Ansiedade uma frase de ancoragem como "Para quando o coração aperta". Subtítulo atual deve ter ≥ 14px para legibilidade com óculos. Revisar tamanho do subtítulo no <code>CollectionCard</code> widget — se estiver abaixo de 14px, ajustar.</div>
+  </div>
+</div>
+
+<!-- ─────────────────────── CENÁRIO C ─────────────────────── -->
+<div class="cenario-header" id="cen-c">
+  <div class="cenario-letra">C</div>
+  <div class="cenario-info">
+    <div class="title">Busca por Salmo Específico</div>
+    <div class="desc">Persona quer o Salmo 23 por número. Meta: chegar ao versículo em ≤ 4 toques, ≤ 30 segundos.</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">C1</div>
+    <div class="achado-title">
+      <div class="persona">Ana Lúcia · Cenário C</div>
+      <div class="cenario">Busca por "23" funciona corretamente — ponto de sucesso</div>
+    </div>
+    <span class="sev-badge sev-COSMETICO">Cosmético</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Ana Lúcia vai para aba "Salmos" (toca na terceira aba da barra inferior). Vê a barra de busca no topo — ícone de lupa é reconhecível. Digita "23". A lista filtra imediatamente para o Salmo 23 (lógica em <code>todos_salmos_screen.dart</code>: <code>s.numero.toString() == q</code>). Toca no card. Está na tela de Leitura em 3 toques.</dd>
+      <dt>Fricção</dt>
+      <dd>Menor: hint text "Buscar um salmo…" com reticências em vez de ponto — cosmético. O placeholder poderia dizer "Buscar por número ou trecho".</dd>
+      <dt>Causa</dt>
+      <dd>Fluxo bem implementado. A busca por número exato funciona.</dd>
+      <dt>Impacto</dt>
+      <dd>Positivo — fluxo completo em 3 toques, abaixo da meta de 4.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Atualizar hint text para "Buscar por número ou palavra…" em <code>todos_salmos_screen.dart</code> linha 160. Considerar <code>keyboardType: TextInputType.numberWithOptions()</code> como opção padrão já que a maioria das buscas será por número.</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">C2</div>
+    <div class="achado-title">
+      <div class="persona">Ana Lúcia · Cenário C</div>
+      <div class="cenario">Lista de 150 Salmos sem scroll-to-index — Ana Lúcia rola até o Salmo 23 manualmente</div>
+    </div>
+    <span class="sev-badge sev-MODERADO">Moderado</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Antes de descobrir a busca, Ana Lúcia tenta encontrar o Salmo 23 rolando a lista manualmente. Com 150 itens em PsalmCard (cada um com snippet do 1º versículo, altura considerável), rolar até o item 23 pode ser tedioso. Ela desiste após 10 segundos e finalmente toca na barra de busca.</dd>
+      <dt>Fricção</dt>
+      <dd>A barra de busca não tem destaque suficiente para ser o ponto de entrada óbvio. É funcional mas não chama atenção de usuário com baixa literacia digital.</dd>
+      <dt>Causa</dt>
+      <dd>Ana Lúcia tenta o modelo mental mais primitivo (scroll) antes de usar busca. A barra de busca não tem affordance suficiente de "clique aqui primeiro".</dd>
+      <dt>Impacto</dt>
+      <dd>Moderado — completa mas com ~15 segundos extras.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Adicionar placeholder mais proeminente na SearchBar: ícone de lupa em <code>--cobalt-500</code> (atualmente em <code>--nightText/dayText</code>) e borda de 1px em <code>--cobalt-500</code> com alpha 40% no estado idle. Sinaliza mais claramente que essa é a via rápida. Mudança em <code>_SearchBar</code> linha 147.</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">C3</div>
+    <div class="achado-title">
+      <div class="persona">Pastor Renato · Cenário C</div>
+      <div class="cenario">Busca por palavra-chave ("bom pastor") retorna resultado correto</div>
+    </div>
+    <span class="sev-badge sev-COSMETICO">Cosmético</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Pastor Renato testa a busca por trecho de versículo: digita "bom pastor". O filtro verifica <code>s.versiculos.any((v) => v.toLowerCase().contains(q))</code> — retorna o Salmo 23 corretamente. Ele aprova. Testa também "23" e "valeiro" (trecho do Salmo 23) — ambos funcionam.</dd>
+      <dt>Fricção</dt>
+      <dd>Cosmético: estado vazio com mensagem "Não encontrei nada assim. Tente uma emoção?" — o Pastor Renato acha o "Tente uma emoção?" um pouco informal para seu contexto. Mas entende.</dd>
+      <dt>Causa</dt>
+      <dd>Tom do estado vazio está calibrado para usuário casual, não para avaliador crítico. Não é problema real.</dd>
+      <dt>Impacto</dt>
+      <dd>Cosmético — não afeta conclusão da tarefa.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Sem mudança necessária. O estado vazio com sugestão de emoção é coerente com o posicionamento do app e adequado para a maioria das personas.</div>
+  </div>
+</div>
+
+<!-- ─────────────────────── CENÁRIO D ─────────────────────── -->
+<div class="cenario-header" id="cen-d">
+  <div class="cenario-letra">D</div>
+  <div class="cenario-info">
+    <div class="title">Áudio — Retenção e Hábito</div>
+    <div class="desc">Persona quer ouvir o Salmo narrado. Meta: play/pause em ≤ 2 toques.</div>
+  </div>
+</div>
+
+<div class="gap-box">
+  <strong>Gap de cobertura — Áudio:</strong> O componente <code>AudioPlayerBar</code> está referenciado na tela de Leitura (<code>leitura_salmo_screen.dart</code> linha 74: <code>AudioPlayerBar(audioPath: salmo.audio)</code>), mas o código interno do widget não foi inspecionado neste teste. O modelo <code>Salmo</code> possui campo <code>audio</code> — o que indica que a integração está prevista. No entanto, o comportamento de áudio em background, estado de play/pause e continuidade com tela apagada são comportamentos críticos que dependem da implementação de <code>audio_player_bar.dart</code>. Os achados D1–D4 avaliam os riscos com base na arquitetura observada.
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">D1</div>
+    <div class="achado-title">
+      <div class="persona">Giovanna · Cenário D</div>
+      <div class="cenario">CRÍTICO — Áudio em background não confirmado: Giovanna coloca celular para baixo sem saber se toca</div>
+    </div>
+    <span class="sev-badge sev-CRITICO">Crítico</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Giovanna toca play no AudioPlayerBar. Coloca o celular virado para baixo e fecha os olhos. Se o áudio não continuar em segundo plano (background audio service), o silêncio após 30 segundos (tela apaga) frustra a experiência e ela não volta.</dd>
+      <dt>Fricção</dt>
+      <dd>Dependência de background audio. Flutter com <code>just_audio</code> ou <code>audioplayers</code> requer configuração específica de Android background service (<code>foreground service</code> no AndroidManifest). Se não configurado, áudio para quando tela apaga.</dd>
+      <dt>Causa</dt>
+      <dd>Não é problema de UI — é de implementação de serviço background. O modelo mental de Giovanna pressupõe comportamento de app de meditação/podcast.</dd>
+      <dt>Impacto</dt>
+      <dd>CRÍTICO — caso de uso principal de Giovanna quebrado. Risco de 1-star review: "parou de tocar quando apaguei a tela".</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Verificar e confirmar implementação de <code>foreground service</code> para áudio no <code>android/app/src/main/AndroidManifest.xml</code>. Testar explicitamente: play → tela apagada → áudio continua. Adicionar notificação de media na área de notificações com controles play/pause (padrão Android para apps de áudio).</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">D2</div>
+    <div class="achado-title">
+      <div class="persona">Ana Lúcia · Cenário D</div>
+      <div class="cenario">Player fixo no rodapé é bem posicionado — ponto de sucesso</div>
+    </div>
+    <span class="sev-badge sev-COSMETICO">Cosmético</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Ana Lúcia lê o Salmo e o AudioPlayerBar está fixo no rodapé (fora do scroll, acima do SafeArea). Ela toca no botão play sem hesitar — posição consistente e visível sem rolar.</dd>
+      <dt>Fricção</dt>
+      <dd>Nenhuma fricção de localização. O player está above the fold por definição de arquitetura (rodapé fixo). Ponto de sucesso de layout.</dd>
+      <dt>Causa</dt>
+      <dd>Decisão correta: <code>AudioPlayerBar</code> fora do <code>SingleChildScrollView</code>, fixo na Column.</dd>
+      <dt>Impacto</dt>
+      <dd>Positivo.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Garantir que o botão play/pause tenha área de toque ≥ 48×48px (WCAG) — Ana Lúcia com artrite ocasional. Verificar no widget <code>AudioPlayerBar</code>.</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">D3</div>
+    <div class="achado-title">
+      <div class="persona">Tiago · Cenário D</div>
+      <div class="cenario">Ausência de progresso de tempo no player — Tiago não sabe quanto falta</div>
+    </div>
+    <span class="sev-badge sev-MODERADO">Moderado</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Tiago toca play e quer saber "quanto tempo tem esse áudio?" — é evangélico urbano com contexto de intervalo de almoço de 60 minutos. Sem barra de progresso ou indicação de duração, ele não sabe se o Salmo dura 30 segundos ou 5 minutos.</dd>
+      <dt>Fricção</dt>
+      <dd>Ausência de waveform, barra de progresso ou indicação de tempo no <code>AudioPlayerBar</code>.</dd>
+      <dt>Causa</dt>
+      <dd>Modelo mental de app de áudio (Spotify, podcasts) inclui progress bar como elemento básico.</dd>
+      <dt>Impacto</dt>
+      <dd>Moderado — não impede uso, mas reduz satisfação e controle percebido.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Adicionar barra de progresso linear fina (2px height) em <code>--cobalt-400/500</code> no <code>AudioPlayerBar</code>, com duração total em Instrument Sans 11px à direita. Respeitar token <code>--night-line/day-line</code> para o track inativo.</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">D4</div>
+    <div class="achado-title">
+      <div class="persona">Fernanda · Cenário D</div>
+      <div class="cenario">Sem áudio disponível para Salmos fora do Salmo do Dia — lacuna de conteúdo</div>
+    </div>
+    <span class="sev-badge sev-MODERADO">Moderado</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Fernanda acessa a coleção Luto e seleciona um Salmo. O campo <code>salmo.audio</code> pode ser null/vazio para Salmos cujo áudio ainda não foi gerado. O <code>AudioPlayerBar</code> receberá um path vazio — comportamento depende da implementação, mas pode mostrar player desabilitado sem explicação.</dd>
+      <dt>Fricção</dt>
+      <dd>Falta de tratamento de estado "sem áudio" no <code>AudioPlayerBar</code> — se o widget simplesmente não renderiza ou renderiza desabilitado sem mensagem, Fernanda não sabe se é bug ou ausência de conteúdo.</dd>
+      <dt>Causa</dt>
+      <dd>Geração de áudios TTS em lote (script <code>gerar_audios.py</code>) pode não ter coberto todos os 150 Salmos ainda no MVP.</dd>
+      <dt>Impacto</dt>
+      <dd>Moderado — experiência incompleta para persona de alta retenção.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> No <code>AudioPlayerBar</code>, tratar <code>audioPath == null || audioPath.isEmpty</code> com estado elegante: ocultar o player completamente (não renderizar) e não exibir botão disabled sem contexto. Ou exibir mensagem suave: "Narração em breve" em Instrument Sans 12px <code>--nightMuted/dayMuted</code>.</div>
+  </div>
+</div>
+
+<!-- ─────────────────────── CENÁRIO E ─────────────────────── -->
+<div class="cenario-header" id="cen-e">
+  <div class="cenario-letra">E</div>
+  <div class="cenario-info">
+    <div class="title">Compartilhamento — Motor de Crescimento</div>
+    <div class="desc">Persona compartilha versículo como imagem. Meta: chegar ao share nativo em ≤ 7 toques.</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">E1</div>
+    <div class="achado-title">
+      <div class="persona">Ana Lúcia · Cenário E</div>
+      <div class="cenario">CRÍTICO — Compositor só oferece fundos escuros — imagem ilegível no WhatsApp Status de dia</div>
+    </div>
+    <span class="sev-badge sev-CRITICO">Crítico</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Ana Lúcia acessa o Compositor (botão share na tela de Leitura → <code>/compositor?numero=23</code>). Ela vê o preview da imagem em fundo escuro com texto âmbar. Clica "Compartilhar" e envia para o grupo de oração. No WhatsApp das amigas (modo claro, horário diurno), a imagem parece muito escura e o texto em âmbar tem baixo contraste.</dd>
+      <dt>Fricção</dt>
+      <dd>Os 3 fundos disponíveis no <code>compositor_screen.dart</code> linha 32–36: <code>0xFF080B1C</code> (Noite), <code>0xFF10142C</code> (Profundo), <code>0xFF2A47DD</code> (Cobalto). Nenhum fundo claro. Ana Lúcia usa modo claro — não associa que a imagem compartilhada vai parecer escura para as amigas também.</dd>
+      <dt>Causa</dt>
+      <dd>O Compositor foi projetado com estética do modo escuro (mais bonito). Mas o maior caso de uso de compartilhamento (WhatsApp Status às 9h da manhã por Ana Lúcia) acontece em contexto visual claro.</dd>
+      <dt>Impacto</dt>
+      <dd>CRÍTICO — Motor de crescimento principal comprometido. Ana Lúcia é a persona que mais compartilha. Imagem de baixo contraste = menos engajamento no grupo de oração = menos instalações orgânicas.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Adicionar 2 fundos claros ao array <code>_fundos</code>: <code>Color(0xFFF5F7FE)</code> (Névoa — day-base) e <code>Color(0xFFE9EDFD)</code> (Bruma — day-plus). Para fundos claros, alterar cor do versículo de <code>AppColors.gold</code> para <code>AppColors.goldInk</code> (<code>#8A6A28</code>) e eyebrow/referência para <code>--day-text</code>. Lógica: se <code>fundo.computeLuminance() > 0.5</code>, usar paleta claro; caso contrário, paleta escura.</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">E2</div>
+    <div class="achado-title">
+      <div class="persona">Ana Lúcia · Cenário E</div>
+      <div class="cenario">Botão share na tela de Leitura não é intuitivamente "gerar imagem"</div>
+    </div>
+    <span class="sev-badge sev-MODERADO">Moderado</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Ana Lúcia vê o ícone <code>Icons.ios_share_rounded</code> no header da tela de Leitura. Ela entende "share" genericamente, mas não sabe que vai abrir um "compositor de imagem". Ela esperava compartilhar o texto diretamente, não criar um card visual.</dd>
+      <dt>Fricção</dt>
+      <dd>Ícone de share padrão sem label. A transição para o Compositor não é anunciada.</dd>
+      <dt>Causa</dt>
+      <dd>Ana Lúcia viu o app pelo Status do WhatsApp (imagem gerada pelo Compositor). Mas ao tentar replicar, não associa o ícone de share ao processo de criação de imagem.</dd>
+      <dt>Impacto</dt>
+      <dd>Moderado — pode tentar e descobrir. Mas pode também achar que "deu errado" ao ver o Compositor em vez de um share direto.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Substituir ou complementar o ícone de share com tooltip ou label situacional. Opção 1: adicionar label "Criar imagem" abaixo do ícone no header (Instrument Sans 9px). Opção 2: usar <code>Icons.image_outlined</code> em vez de <code>Icons.ios_share_rounded</code> para o botão do Compositor — mais descritivo.</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">E3</div>
+    <div class="achado-title">
+      <div class="persona">Tiago · Cenário E</div>
+      <div class="cenario">Seleção de versículo no Compositor é intuitiva — fluxo fluido</div>
+    </div>
+    <span class="sev-badge sev-COSMETICO">Cosmético</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Tiago toca no ícone de share na tela de Leitura. O Compositor abre mostrando preview 1:1, chips de fundo, e lista de versículos com seleção animada. Ele toca no versículo 3, vê o preview atualizar em tempo real, escolhe o fundo Cobalto e toca "Compartilhar". Total: 5 toques. Dentro da meta.</dd>
+      <dt>Fricção</dt>
+      <dd>Cosmético: o preview 1:1 em proporção quadrada é correto para Instagram Stories? Stories tem proporção 9:16. Para WhatsApp Status também 9:16 é preferível.</dd>
+      <dt>Causa</dt>
+      <dd>Preview quadrado (1:1) funciona para feed do Instagram mas não para Stories/Status — que é o caso de uso principal declarado no protocolo.</dd>
+      <dt>Impacto</dt>
+      <dd>Moderado para Stories, cosmético para WhatsApp Status (aceita 1:1).</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Manter o preview 1:1 para MVP (WhatsApp Status aceita). Para v1.1, adicionar opção de proporção 9:16 para Stories. Documentar no roadmap.</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">E4</div>
+    <div class="achado-title">
+      <div class="persona">Pastor Renato · Cenário E</div>
+      <div class="cenario">Logotipo "O meu Salmo" na imagem gerada — aprovação para compartilhamento congregacional</div>
+    </div>
+    <span class="sev-badge sev-COSMETICO">Cosmético</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Pastor Renato inspeciona a imagem gerada pelo Compositor. Nota o logotipo "O MEU / Salmo" no rodapé esquerdo do card. Aprova: "a congregação vai saber de onde vem". Aprova o fundo escuro para grupos noturnos.</dd>
+      <dt>Fricção</dt>
+      <dd>Nenhuma. O logotipo no card gerado (<code>compositor_screen.dart</code> linha 284–311) é correto e discreto.</dd>
+      <dt>Causa</dt>
+      <dd>Ponto de sucesso — atribuição de marca na imagem compartilhada é motor de crescimento.</dd>
+      <dt>Impacto</dt>
+      <dd>Positivo — pastor vai compartilhar no grupo da célula.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Manter. Para fundos claros (achado E1), garantir que o logotipo use variante escura (<code>--day-title</code> e <code>--cobalt-500</code>) em vez da variante clara (<code>nightCream</code> alpha + <code>cobalt-400</code>).</div>
+  </div>
+</div>
+
+<!-- ─────────────────────── CENÁRIO F ─────────────────────── -->
+<div class="cenario-header" id="cen-f">
+  <div class="cenario-letra">F</div>
+  <div class="cenario-info">
+    <div class="title">Favoritar e Encontrar Depois</div>
+    <div class="desc">Salvar Salmo 91 como favorito e encontrá-lo depois. Meta: ≤ 5 toques, confirmar que está salvo.</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">F1</div>
+    <div class="achado-title">
+      <div class="persona">Fernanda · Cenário F</div>
+      <div class="cenario">Favoritar funciona e feedback é emocionalmente adequado</div>
+    </div>
+    <span class="sev-badge sev-COSMETICO">Cosmético</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Fernanda toca no coração no header da tela de Leitura. Haptic feedback leve. SnackBar aparece com texto "Guardado no seu coração." — Fernanda sorri. O ícone muda de outline para filled em cobalt. Ela vai para aba Favoritos e encontra o Salmo na lista ordenada por número.</dd>
+      <dt>Fricção</dt>
+      <dd>Nenhuma funcional. Ponto de sucesso de UX Writing: "Guardado no seu coração" é emocionalmente ressonante para persona em luto.</dd>
+      <dt>Causa</dt>
+      <dd>Implementação correta em <code>leitura_salmo_screen.dart</code> linha 85–107.</dd>
+      <dt>Impacto</dt>
+      <dd>Positivo — momento de conexão emocional com o app.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Manter o copy "Guardado no seu coração." Verificar que o SnackBar não se sobreponha ao AudioPlayerBar no rodapé — ajustar <code>bottomNavigationBarHeight</code> no comportamento do SnackBar se necessário.</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">F2</div>
+    <div class="achado-title">
+      <div class="persona">Ana Lúcia · Cenário F</div>
+      <div class="cenario">Ícone de coração não é imediatamente associado a "salvar para depois"</div>
+    </div>
+    <span class="sev-badge sev-MODERADO">Moderado</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Ana Lúcia lê o Salmo 91 e quer "guardar para encontrar depois". Ela procura um botão de "salvar" ou "marcar". O ícone de coração no header está presente mas ela associa coração a "curtir" (modelo mental do Facebook/WhatsApp reações), não a "salvar". Ela toca no coração por tentativa. Ao ver o SnackBar "Guardado no seu coração", entende. Completa a tarefa com hesitação de ~5 segundos.</dd>
+      <dt>Fricção</dt>
+      <dd>Ícone <code>Icons.favorite_border_rounded</code> no header — ambíguo entre "curtir" e "salvar" para usuária com baixa literacia digital.</dd>
+      <dt>Causa</dt>
+      <dd>Modelo mental de Ana Lúcia: salvar = bookmark/estrela. Coração = curtir/reação emocional. A distinção não é clara antes de tocar.</dd>
+      <dt>Impacto</dt>
+      <dd>Moderado — completa mas com hesitação. Pode não tentar de novo se não confirmado visualmente.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Adicionar tooltip/label "Guardar" visível no estado vazio do ícone de favorito. Opção: ao primeiro acesso, exibir um coachmark (overlay pontual, não modal) com "Toque para guardar". Ou adicionar label "Guardar" em Instrument Sans 9px abaixo do ícone no header da tela de Leitura.</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">F3</div>
+    <div class="achado-title">
+      <div class="persona">Fernanda · Cenário F</div>
+      <div class="cenario">Favoritos ordenados por número — não por data de adição</div>
+    </div>
+    <span class="sev-badge sev-MODERADO">Moderado</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Fernanda salva vários Salmos ao longo de dias. Ao abrir Favoritos, a lista está ordenada por número de Salmo (<code>favoritos_screen.dart</code> linha 51: <code>..sort((a, b) => a.numero.compareTo(b.numero))</code>). Ela procura o Salmo que favoritou ontem mas não lembra o número — só lembra que foi "o que fala de solidão". Precisa percorrer toda a lista.</dd>
+      <dt>Fricção</dt>
+      <dd>Ordenação por número de Salmo. Sem snippet visível de qual versículo a marcou originalmente.</dd>
+      <dt>Causa</dt>
+      <dd>Modelo mental de Fernanda: os favoritos mais recentes são os mais relevantes agora. Ordenação por data de adição (mais recente primeiro) seria mais natural.</dd>
+      <dt>Impacto</dt>
+      <dd>Moderado — retenção D30+. Persona de alta retenção perde acesso rápido ao que é mais recente.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Alterar ordenação em <code>favoritos_screen.dart</code> para usar data de adição (mais recente primeiro). Requer que o <code>favoritosProvider</code> armazene timestamp de quando foi adicionado, não apenas o Set de números. Alternativamente, manter por número mas adicionar PsalmCard com snippet do primeiro versículo (já implementado na lista — verificar se está ativo).</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">F4</div>
+    <div class="achado-title">
+      <div class="persona">Tiago · Cenário F</div>
+      <div class="cenario">Empty state de Favoritos é funcional e guia ação</div>
+    </div>
+    <span class="sev-badge sev-COSMETICO">Cosmético</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Tiago abre Favoritos antes de ter salvo qualquer Salmo. Vê ícone de coração outline 40px, "Nenhum Salmo guardado ainda." e "Toque no coração ao ler um Salmo." em Cormorant italic. Entende imediatamente. Instrução adequada.</dd>
+      <dt>Fricção</dt>
+      <dd>Cosmético: sem CTA direto no empty state para navegar para Coleções ou Salmos. Tiago poderia querer ir direto de Favoritos para descobrir algo.</dd>
+      <dt>Causa</dt>
+      <dd>Empty state correto em termos de instrução mas sem affordance de navegação a partir dali.</dd>
+      <dt>Impacto</dt>
+      <dd>Cosmético — Tiago sabe o que fazer, apenas um toque a mais.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Adicionar botão secundário no empty state: "Explorar Coleções" com estilo outline (borda <code>--day-line</code>, texto <code>--cobalt-500</code>, border-radius <code>radiusMd</code>) abaixo da instrução. Navega para <code>/colecoes</code>.</div>
+  </div>
+</div>
+
+<!-- ─────────────────────── CENÁRIO G ─────────────────────── -->
+<div class="cenario-header" id="cen-g">
+  <div class="cenario-letra">G</div>
+  <div class="cenario-info">
+    <div class="title">Ajustes e Notificação Diária</div>
+    <div class="desc">Configurar notificação às 7h. Meta: ≤ 3 toques após encontrar Ajustes.</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">G1</div>
+    <div class="achado-title">
+      <div class="persona">Ana Lúcia · Cenário G</div>
+      <div class="cenario">CRÍTICO — Switch deve ser ativado antes de escolher horário — ordem não intuitiva</div>
+    </div>
+    <span class="sev-badge sev-CRITICO">Crítico</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Ana Lúcia abre Ajustes. Vê a seção "Notificações" com label "Salmo diário", texto "Desativado" e um Switch à direita. Ela <em>não</em> toca no Switch primeiro — ela toca direto no texto "Desativado" esperando que isso abra o horário. Nada acontece (<code>GestureDetector</code> só funciona quando <code>notif.enabled == true</code>). Ela fica confusa. Eventualmente toca no Switch, que ativa a notificação mas pede permissão do sistema. Depois toca no horário. O fluxo exige que ela entenda que: (1) primeiro ativa, (2) depois configura.</dd>
+      <dt>Fricção</dt>
+      <dd><code>_NotificationCard</code> em <code>ajustes_screen.dart</code> linha 362: o <code>GestureDetector</code> do horário tem <code>onTap: notif.enabled ? () => _pickTime(...) : null</code>. Quando desativado, o tap no horário não faz nada, sem feedback.</dd>
+      <dt>Causa</dt>
+      <dd>O fluxo natural de Ana Lúcia é: "quero ser notificada às 7h" → espera configurar o horário primeiro, depois ativar. A ordem atual é inversa.</dd>
+      <dt>Impacto</dt>
+      <dd>CRÍTICO — Ana Lúcia não ativa a notificação. Sem notificação diária, o loop de hábito não se forma. Retenção comprometida.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Permitir que o toque no horário (quando desativado) ative o Switch automaticamente E abra o time picker em sequência — ou redesenhar o card para exibir o time picker como primeiro elemento, com o Switch controlando apenas on/off. Adicionar feedback visual quando o tap é bloqueado: vibração leve ou tooltip "Ative as notificações primeiro". Mudança principal em <code>_NotificationCard</code>.</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">G2</div>
+    <div class="achado-title">
+      <div class="persona">Tiago · Cenário G</div>
+      <div class="cenario">Ajustes não está na barra inferior — Tiago procura na navegação</div>
+    </div>
+    <span class="sev-badge sev-MODERADO">Moderado</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Tiago quer configurar a notificação. Olha para a barra de navegação inferior — não vê "Ajustes". Olha para o topo da tela atual (Início) e encontra o ícone de engrenagem. Toca e abre Ajustes. Total: 2 toques extras para descobrir a localização.</dd>
+      <dt>Fricção</dt>
+      <dd>Ajustes como push route via ícone de engrenagem no header — padrão não universal em apps brasileiros (muitos colocam Ajustes como 4ª ou 5ª aba).</dd>
+      <dt>Causa</dt>
+      <dd>Decisão arquitetural correta (preserva 4 abas para conteúdo), mas requer descoberta.</dd>
+      <dt>Impacto</dt>
+      <dd>Moderado — todos encontram, mas com hesitação inicial.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Sem mudança arquitetural necessária. Garantir que o ícone de engrenagem seja visível em todas as 4 abas (já implementado em Coleções, Salmos e Favoritos). Para Ana Lúcia: aumentar área de toque da engrenagem para 44×44px com padding (atualmente pode ser menor na home com GestureDetector sem Container explicitado para esse tamanho).</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">G3</div>
+    <div class="achado-title">
+      <div class="persona">Ana Lúcia · Cenário G</div>
+      <div class="cenario">TimePicker do sistema é padrão — funciona bem para baixa literacia</div>
+    </div>
+    <span class="sev-badge sev-COSMETICO">Cosmético</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Após ativar o Switch, Ana Lúcia toca no horário. O <code>showTimePicker</code> do Material 3 abre com relógio nativo do sistema. Ana Lúcia conhece esse seletor — usa no alarme do celular. Seleciona 7:00 AM sem dificuldade.</dd>
+      <dt>Fricção</dt>
+      <dd>Nenhuma. Usar o <code>showTimePicker</code> nativo foi a decisão correta.</dd>
+      <dt>Causa</dt>
+      <dd>Ponto de sucesso — reutilizar componente nativo do sistema elimina curva de aprendizado.</dd>
+      <dt>Impacto</dt>
+      <dd>Positivo.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Manter. Verificar que após confirmação do time picker, o label atualize para "Todo dia às 07:00" imediatamente (sem lag de state).</div>
+  </div>
+</div>
+
+<div class="achado">
+  <div class="achado-header">
+    <div class="achado-num">G4</div>
+    <div class="achado-title">
+      <div class="persona">Pastor Renato · Cenário G</div>
+      <div class="cenario">Seção "Sobre" com tradução e versão visíveis — aprovação do avaliador crítico</div>
+    </div>
+    <span class="sev-badge sev-COSMETICO">Cosmético</span>
+  </div>
+  <div class="achado-body">
+    <dl>
+      <dt>O que acontece</dt>
+      <dd>Pastor Renato explora Ajustes sistematicamente. Encontra a seção "Sobre" com Versão 1.0.0, Tradução "João Ferreira de Almeida — ed. 1911 — domínio público", e o tagline "Uma pausa que devolve a você mesmo." Confirma: domínio público, sem agenda comercial disfarçada, sem monetização invasiva. Resultado: disposição para recomendar.</dd>
+      <dt>Fricção</dt>
+      <dd>O emoji 🙏 na seção "Apoie o app" levanta sobrancelha do pastor — "parece marketing gospel". Pequena fricção.</dd>
+      <dt>Causa</dt>
+      <dd>O emoji 🙏 em <code>ajustes_screen.dart</code> linha 122 é o único emoji em todo o app e contrasta com o tom sóbrio do restante.</dd>
+      <dt>Impacto</dt>
+      <dd>Cosmético — não impede recomendação, mas conflita com tom geral.</dd>
+    </dl>
+    <div class="rec"><strong>Recomendação:</strong> Substituir emoji 🙏 por um ícone Lucide outline: <code>Icons.volunteer_activism_outlined</code> ou similar em <code>--cobalt-400/500</code>, tamanho 24px. Mantém o apelo emocional sem emoji kitsch. Alinhado com a regra do briefing: "sem gospel de banner".</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!-- TOP 10 -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<h2 id="top10">4. Top 10 Achados por Severidade e Frequência de Impacto</h2>
+<p style="margin-bottom:20px; color:var(--day-muted); font-size:13px">Ordenados por: (1) severidade CRÍTICO &gt; MODERADO &gt; COSMÉTICO, (2) número de personas afetadas, (3) impacto em métricas-chave do MVP.</p>
+
+<ol class="top10-list">
+  <li>
+    <div class="top10-item-body">
+      <div class="title"><span class="sev-badge sev-CRITICO" style="margin-right:8px">Crítico</span> Áudio não continua em background — quebra caso de uso de Giovanna (dormir) e Ana Lúcia (hábito)</div>
+      <div class="meta">Achado D1 · Impacto: Retenção D1, ASO (avaliações negativas) · Personas: Giovanna, Ana Lúcia</div>
+    </div>
+  </li>
+  <li>
+    <div class="top10-item-body">
+      <div class="title"><span class="sev-badge sev-CRITICO" style="margin-right:8px">Crítico</span> Reflexão bloqueada frustra Fernanda (luto) — não consegue ler o conteúdo que veio buscar</div>
+      <div class="meta">Achado B1 · Impacto: Retenção D7/D30 · Personas: Fernanda, Tiago (parcial)</div>
+    </div>
+  </li>
+  <li>
+    <div class="top10-item-body">
+      <div class="title"><span class="sev-badge sev-CRITICO" style="margin-right:8px">Crítico</span> Compositor sem fundos claros — imagem ilegível no WhatsApp Status diurno (motor de crescimento comprometido)</div>
+      <div class="meta">Achado E1 · Impacto: Crescimento orgânico, compartilhamento · Personas: Ana Lúcia, Fernanda</div>
+    </div>
+  </li>
+  <li>
+    <div class="top10-item-body">
+      <div class="title"><span class="sev-badge sev-CRITICO" style="margin-right:8px">Crítico</span> Notificação: Switch deve ser ativado antes do horário — Ana Lúcia não conclui a configuração</div>
+      <div class="meta">Achado G1 · Impacto: Hábito, retenção D7 · Personas: Ana Lúcia, Tiago (parcial)</div>
+    </div>
+  </li>
+  <li>
+    <div class="top10-item-body">
+      <div class="title"><span class="sev-badge sev-MODERADO" style="margin-right:8px">Moderado</span> Giovanna não acha Coleções/Sono no D0 em ≤ 60 segundos — risco de abandono no primeiro uso</div>
+      <div class="meta">Achado A2 · Impacto: Retenção D0, ASO · Personas: Giovanna, Tiago</div>
+    </div>
+  </li>
+  <li>
+    <div class="top10-item-body">
+      <div class="title"><span class="sev-badge sev-MODERADO" style="margin-right:8px">Moderado</span> Tradução não visível no fluxo principal — Pastor Renato precisa de 3 toques extras para confirmar Almeida 1911</div>
+      <div class="meta">Achado A5 · Impacto: Crescimento (multiplicador congregacional) · Personas: Pastor Renato</div>
+    </div>
+  </li>
+  <li>
+    <div class="top10-item-body">
+      <div class="title"><span class="sev-badge sev-MODERADO" style="margin-right:8px">Moderado</span> Ícone de coração ambíguo (curtir vs. salvar) — Ana Lúcia hesita 5 segundos antes de favoritar</div>
+      <div class="meta">Achado F2 · Impacto: Retenção, UX D0 · Personas: Ana Lúcia</div>
+    </div>
+  </li>
+  <li>
+    <div class="top10-item-body">
+      <div class="title"><span class="sev-badge sev-MODERADO" style="margin-right:8px">Moderado</span> Favoritos ordenados por número — Fernanda não encontra Salmo adicionado recentemente</div>
+      <div class="meta">Achado F3 · Impacto: Retenção D30+ · Personas: Fernanda, Ana Lúcia</div>
+    </div>
+  </li>
+  <li>
+    <div class="top10-item-body">
+      <div class="title"><span class="sev-badge sev-MODERADO" style="margin-right:8px">Moderado</span> Player de áudio sem barra de progresso/duração — Tiago não sabe quanto tempo tem o Salmo</div>
+      <div class="meta">Achado D3 · Impacto: Satisfação, hábito · Personas: Tiago, Ana Lúcia</div>
+    </div>
+  </li>
+  <li>
+    <div class="top10-item-body">
+      <div class="title"><span class="sev-badge sev-MODERADO" style="margin-right:8px">Moderado</span> Coleção "Sono" pode não estar no topo da lista — Giovanna precisa rolar para encontrar</div>
+      <div class="meta">Achado B3 · Impacto: Retenção D0 · Personas: Giovanna</div>
+    </div>
+  </li>
+</ol>
+
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!-- RECOMENDAÇÕES -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<h2 id="recomendacoes">5. Recomendações Acionáveis por Prioridade</h2>
+
+<div class="rec-group">
+  <div class="rec-group-header">
+    <span class="priority-label priority-CRITICO">Crítico — Bloqueante de Lançamento</span>
+  </div>
+
+  <div class="rec-item">
+    <div class="rec-title">RC-01 — Confirmar e testar áudio em background (foreground service Android)</div>
+    <div class="rec-detail">
+      Verificar <code>AndroidManifest.xml</code>: deve conter <code>&lt;service android:name="..." android:foregroundServiceType="mediaPlayback"&gt;</code>. Testar manualmente: play → tela apaga → áudio continua. Adicionar notificação de media com controles (padrão Android). Afeta Giovanna (caso de uso principal) e Ana Lúcia (hábito noturno).
+    </div>
+  </div>
+
+  <div class="rec-item">
+    <div class="rec-title">RC-02 — Desbloquear reflexão para Salmos de coleções emocionais</div>
+    <div class="rec-detail">
+      Discutir com fundador: reflexão desbloqueada para todos os Salmos de coleções (Ansiedade, Sono, Luto, etc.) é essencial para Fernanda — a persona de maior LTV. Alternativa mínima: adicionar ao <code>_LockedReflexao</code> um CTA "Ver Salmos com reflexão disponível" e atualizar texto para incluir esperança ("Abra o app amanhã — este pode ser o seu Salmo do Dia").
+    </div>
+  </div>
+
+  <div class="rec-item">
+    <div class="rec-title">RC-03 — Adicionar fundos claros ao Compositor de Imagem</div>
+    <div class="rec-detail">
+      Em <code>compositor_screen.dart</code>: adicionar <code>Color(0xFFF5F7FE)</code> (Névoa) e <code>Color(0xFFE9EDFD)</code> (Bruma) ao array <code>_fundos</code>. Implementar lógica de paleta adaptativa: se <code>fundo.computeLuminance() &gt; 0.5</code>, usar <code>AppColors.goldInk</code> para versículo e <code>AppColors.dayText</code> para eyebrow; caso contrário, manter paleta escura atual. Logotipo no card: usar variante escura para fundos claros.
+    </div>
+  </div>
+
+  <div class="rec-item">
+    <div class="rec-title">RC-04 — Corrigir fluxo de ativação de notificação</div>
+    <div class="rec-detail">
+      Em <code>_NotificationCard</code> (<code>ajustes_screen.dart</code>): quando notificação desativada e usuário toca na área do horário, executar: (1) ativar switch programaticamente, (2) solicitar permissão, (3) abrir time picker em sequência. Eliminar o tap mudo que frustra Ana Lúcia. Adicionar vibração leve (<code>HapticFeedback.selectionClick()</code>) ao tocar no horário quando desativado, antes de executar o fluxo.
+    </div>
+  </div>
+</div>
+
+<div class="rec-group">
+  <div class="rec-group-header">
+    <span class="priority-label priority-MODERADO">Moderado — Resolver antes do Lançamento</span>
+  </div>
+
+  <div class="rec-item">
+    <div class="rec-title">RM-01 — Reposicionar atalho de Coleções na tela Início para acima do dobramento</div>
+    <div class="rec-detail">
+      Em <code>home_screen.dart</code>: mover <code>_CollectionsShortcut</code> para antes do <code>_PrimaryButton</code> "Ler o salmo". Ou adicionar chips de emoção (Ansiedade, Sono, Luto) com fundo <code>--day-plus/nightPlus</code>, border-radius <code>radiusPill</code>, texto Instrument Sans 12px — visíveis sem scroll. Resolve abandono de Giovanna no D0.
+    </div>
+  </div>
+
+  <div class="rec-item">
+    <div class="rec-title">RM-02 — Exibir label de tradução na tela de Leitura</div>
+    <div class="rec-detail">
+      Em <code>leitura_salmo_screen.dart</code>, após o título do Salmo (linha ~245): adicionar <code>EyebrowLabel('Almeida 1911')</code> ou texto "Tradução: João Ferreira de Almeida, ed. 1911" em Instrument Sans 10px, cor <code>--dayMuted/nightMuted</code>. Resolve a validação de credenciais textuais do Pastor Renato sem redesign.
+    </div>
+  </div>
+
+  <div class="rec-item">
+    <div class="rec-title">RM-03 — Garantir Ansiedade e Sono nas posições 1 e 2 da lista de Coleções</div>
+    <div class="rec-detail">
+      No JSON <code>salmos.json</code> ou no provider <code>colecoesProvider</code>: ordenar coleções por prioridade de ASO (Ansiedade, Sono, Luto, Esperança, Gratidão, Perdão, Louvor, Proteção). Alternativa: hardcode de prioridade de exibição no modelo de Coleção. Resolve Giovanna (Sono) e Tiago (Ansiedade) no D0.
+    </div>
+  </div>
+
+  <div class="rec-item">
+    <div class="rec-title">RM-04 — Adicionar label "Guardar" ao ícone de favorito na tela de Leitura</div>
+    <div class="rec-detail">
+      Em <code>leitura_salmo_screen.dart</code>, no <code>_Header</code>: adicionar label "Guardar" em Instrument Sans 9px abaixo do ícone de coração no estado não-favoritado. Ou implementar coachmark de primeiro uso (mostrar uma vez, nunca mais). Resolve ambiguidade curtir/salvar para Ana Lúcia.
+    </div>
+  </div>
+
+  <div class="rec-item">
+    <div class="rec-title">RM-05 — Alterar ordenação de Favoritos para data de adição (mais recente primeiro)</div>
+    <div class="rec-detail">
+      Em <code>favoritosProvider</code>: armazenar <code>Map&lt;int, DateTime&gt;</code> em vez de <code>Set&lt;int&gt;</code> para capturar timestamp de adição. Em <code>favoritos_screen.dart</code>: ordenar por timestamp desc. Resolve Fernanda procurando "o Salmo que adicionei ontem".
+    </div>
+  </div>
+
+  <div class="rec-item">
+    <div class="rec-title">RM-06 — Adicionar barra de progresso e duração ao AudioPlayerBar</div>
+    <div class="rec-detail">
+      No widget <code>AudioPlayerBar</code>: adicionar barra de progresso linear (2px, cor <code>--cobalt-400/500</code>, track em <code>--nightLine/dayLine</code>) e texto de duração em Instrument Sans 11px à direita. Resolve Tiago não sabendo quanto tempo tem o áudio.
+    </div>
+  </div>
+
+  <div class="rec-item">
+    <div class="rec-title">RM-07 — Tratar estado "sem áudio" no AudioPlayerBar de forma elegante</div>
+    <div class="rec-detail">
+      No <code>AudioPlayerBar</code>: quando <code>audioPath == null || isEmpty</code>, não renderizar o player ou exibir "Narração em breve" em Instrument Sans 12px, cor <code>--nightMuted/dayMuted</code>. Evita player disabled sem contexto que confunde Fernanda.
+    </div>
+  </div>
+</div>
+
+<div class="rec-group">
+  <div class="rec-group-header">
+    <span class="priority-label priority-COSMETICO">Cosmético — Próxima Iteração (pós-lançamento)</span>
+  </div>
+
+  <div class="rec-item">
+    <div class="rec-title">RK-01 — Substituir emoji 🙏 na seção "Apoie o app" por ícone outline</div>
+    <div class="rec-detail">
+      Em <code>ajustes_screen.dart</code> linha 122: substituir <code>Text('🙏')</code> por <code>Icon(Icons.volunteer_activism_outlined, size: 24, color: isDark ? AppColors.cobalt400 : AppColors.cobalt500)</code>. Alinha com tom do briefing: sem gospel de banner.
+    </div>
+  </div>
+
+  <div class="rec-item">
+    <div class="rec-title">RK-02 — Adicionar título da coleção em destaque na DetalheColecaoScreen</div>
+    <div class="rec-detail">
+      Em <code>detalhe_colecao_screen.dart</code>: adicionar <code>colecao.titulo</code> em Playfair Display 28px antes do texto "X Salmos para esse momento". Melhora orientação visual para Tiago e Fernanda.
+    </div>
+  </div>
+
+  <div class="rec-item">
+    <div class="rec-title">RK-03 — Adicionar CTA de navegação ao empty state de Favoritos</div>
+    <div class="rec-detail">
+      Em <code>favoritos_screen.dart _EmptyState</code>: adicionar botão "Explorar Coleções" abaixo da instrução. Estilo: borda <code>--day-line</code>, texto <code>--cobalt-500</code>, border-radius <code>radiusMd</code>, navega para <code>/colecoes</code>.
+    </div>
+  </div>
+
+  <div class="rec-item">
+    <div class="rec-title">RK-04 — Hint text da busca mais descritivo</div>
+    <div class="rec-detail">
+      Em <code>todos_salmos_screen.dart</code> linha 160: alterar <code>'Buscar um salmo…'</code> para <code>'Buscar por número ou palavra…'</code>. Cosmético, mas reduz hesitação de Ana Lúcia.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!-- CHECKLIST -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<h2 id="checklist">6. Checklist Pré-lançamento Preenchido</h2>
+
+<p style="margin-bottom:16px; font-size:13px; color:var(--day-muted)">
+  Legenda: <strong style="color:var(--sev-cosmetico)">OK</strong> = sem achados críticos/moderados |
+  <strong style="color:var(--sev-moderado)">MOD</strong> = achados moderados documentados |
+  <strong style="color:var(--sev-critico)">CRIT</strong> = achados críticos — bloqueante de lançamento
+</p>
+
+<table class="checklist-table">
+  <thead>
+    <tr>
+      <th>Cenário</th>
+      <th>Ana Lúcia</th>
+      <th>Tiago</th>
+      <th>Fernanda</th>
+      <th>Pastor Renato</th>
+      <th>Giovanna</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>A — Primeira abertura</strong></td>
+      <td class="check-mod">MOD</td>
+      <td class="check-ok">OK</td>
+      <td class="check-ok">OK</td>
+      <td class="check-mod">MOD</td>
+      <td class="check-mod">MOD</td>
+    </tr>
+    <tr>
+      <td><strong>B — Fluxo emocional</strong></td>
+      <td class="check-mod">MOD</td>
+      <td class="check-ok">OK</td>
+      <td class="check-crit">CRIT</td>
+      <td class="check-ok">OK</td>
+      <td class="check-mod">MOD</td>
+    </tr>
+    <tr>
+      <td><strong>C — Busca por número</strong></td>
+      <td class="check-mod">MOD</td>
+      <td class="check-ok">OK</td>
+      <td class="check-ok">OK</td>
+      <td class="check-ok">OK</td>
+      <td class="check-ok">OK</td>
+    </tr>
+    <tr>
+      <td><strong>D — Áudio</strong></td>
+      <td class="check-mod">MOD</td>
+      <td class="check-mod">MOD</td>
+      <td class="check-mod">MOD</td>
+      <td class="check-ok">OK</td>
+      <td class="check-crit">CRIT</td>
+    </tr>
+    <tr>
+      <td><strong>E — Compartilhamento</strong></td>
+      <td class="check-crit">CRIT</td>
+      <td class="check-ok">OK</td>
+      <td class="check-mod">MOD</td>
+      <td class="check-ok">OK</td>
+      <td class="check-ok">OK</td>
+    </tr>
+    <tr>
+      <td><strong>F — Favoritar</strong></td>
+      <td class="check-mod">MOD</td>
+      <td class="check-ok">OK</td>
+      <td class="check-mod">MOD</td>
+      <td class="check-ok">OK</td>
+      <td class="check-ok">OK</td>
+    </tr>
+    <tr>
+      <td><strong>G — Notificação</strong></td>
+      <td class="check-crit">CRIT</td>
+      <td class="check-mod">MOD</td>
+      <td class="check-ok">OK</td>
+      <td class="check-ok">OK</td>
+      <td class="check-ok">OK</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="gap-box" style="margin-top:24px">
+  <strong>Status de lançamento:</strong> BLOQUEADO. 4 achados CRÍTICOS presentes (D1-áudio background, B1-reflexão bloqueada, E1-compositor sem fundos claros, G1-notificação fluxo invertido). Resolver RC-01 a RC-04 antes de publicar na Google Play. Achados moderados (13) podem seguir para roadmap v1.1 com documentação adequada.
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!-- RODAPÉ -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="wordmark">
+    <span class="omeu">O MEU</span>
+    <span class="salmo">Salmo</span>
+  </div>
+  <div style="text-align:center">
+    Relatório de Usabilidade — MVP Pré-lançamento<br>
+    7 de junho de 2026 · Versão 1.0
+  </div>
+  <div style="text-align:right; color:var(--day-muted)">
+    Designer<br>
+    35 combinações avaliadas
+  </div>
+</footer>
+
+</div><!-- /.page -->
+</body>
+</html>

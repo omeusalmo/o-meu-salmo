@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>Template Screenshot — O meu Salmo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /*
+    ══════════════════════════════════════════════════════
+      O MEU SALMO — TEMPLATE DE SCREENSHOT PLAY STORE
+      Canvas: 1080 × 1920 px
+      Tokens: design-system.html (fonte da verdade)
+
+      COMO USAR:
+      1. Duplique este arquivo, renomeie (ex: 01-home-frame.html)
+      2. Troque .screenshot-img src para o PNG raw correspondente
+      3. Edite .eyebrow-text, .headline-text, .sub-text
+      4. Escolha layout: class="layout-top" ou "layout-bottom" no .text-block
+      5. Abra no Chrome · DevTools → screenshot de 1080×1920
+         ou: puppeteer / pageres --width 1080 --height 1920
+    ══════════════════════════════════════════════════════
+    */
+
+    body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #080B1C;
+      font-family: 'Instrument Sans', sans-serif;
+    }
+
+    /* ── Canvas ──────────────────────────────────────────── */
+    .canvas {
+      width: 1080px;
+      height: 1920px;
+      position: relative;
+      /* Gradiente sutil night-base → night-plus */
+      background: linear-gradient(175deg, #080B1C 0%, #0C0F24 45%, #10142C 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── Glow de fundo — atmosfera cobalt ────────────────── */
+    .bg-glow {
+      position: absolute;
+      width: 860px;
+      height: 860px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(42,71,221,0.10) 0%, transparent 68%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Bloco de texto ──────────────────────────────────── */
+    /*
+      layout-top  → texto no topo,  screenshot abaixo
+      layout-bottom → texto no rodapé, screenshot acima
+      (padrão aqui: layout-top)
+    */
+    .text-block {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+    }
+
+    .text-block.layout-top {
+      padding-top: 96px;
+      padding-bottom: 52px;
+    }
+
+    .text-block.layout-bottom {
+      order: 2;
+      padding-top: 52px;
+      padding-bottom: 80px;
+    }
+
+    /* Eyebrow label */
+    .eyebrow {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: #7080C8; /* night-muted */
+    }
+
+    /* Headline */
+    .headline {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 46px;
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: #EEF0FC; /* night-cream */
+      max-width: 820px;
+    }
+
+    /* Subheadline */
+    .subheadline {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.55;
+      color: #8C97D4; /* night-text */
+      max-width: 680px;
+      padding-top: 4px;
+    }
+
+    /* Separador decorativo */
+    .text-divider {
+      width: 36px;
+      height: 1px;
+      background: rgba(85,103,234,0.4); /* cobalt-400 translúcido */
+      margin: 6px auto 0;
+    }
+
+    /* ── Área do device / screenshot ─────────────────────── */
+    .device-wrapper {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .device-frame {
+      position: relative;
+      /* Largura do screenshot dentro do canvas — ajuste conforme precisão desejada */
+      width: 560px;
+      /* Sombra suave, sem borda/bezel pesado */
+      border-radius: 36px;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.06),
+        0 24px 80px rgba(0,0,0,0.65),
+        0 8px 24px rgba(0,0,0,0.40),
+        0 0 60px rgba(42,71,221,0.08);
+      overflow: hidden;
+    }
+
+    .screenshot-img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* ── Wordmark — canto inferior esquerdo ──────────────── */
+    .wordmark {
+      position: absolute;
+      bottom: 52px;
+      left: 64px;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .wordmark-eyebrow {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.30em;
+      text-transform: uppercase;
+      color: #7080C8;
+    }
+
+    .wordmark-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 20px;
+      font-weight: 400;
+      font-style: italic;
+      color: #5567EA; /* cobalt-400 */
+      letter-spacing: -0.01em;
+    }
+
+    /* ── Ponto decorativo cobalt ─────────────────────────── */
+    .accent-dot {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #2A47DD; /* cobalt-500 */
+      margin-right: 8px;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+    }
+
+    /* ══ Layout: layout-bottom variant ═══════════════════════
+       Para usar: adicione class="layout-bottom" ao .text-block
+       e adicione class="device-top" ao .device-wrapper
+    ══════════════════════════════════════════════════════════ */
+    .device-top {
+      order: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+
+    <!-- Atmosfera de fundo -->
+    <div class="bg-glow"></div>
+
+    <!--
+      BLOCO DE TEXTO
+      ─────────────
+      Para mover para baixo: troque "layout-top" → "layout-bottom"
+      e adicione class="device-top" ao .device-wrapper abaixo.
+    -->
+    <div class="text-block layout-top">
+      <span class="eyebrow"><span class="accent-dot"></span>eyebrow label</span>
+      <h1 class="headline eyebrow-text">Título do screenshot</h1>
+      <div class="text-divider"></div>
+      <p class="subheadline sub-text">Descrição da feature — o que o usuário ganha nesta tela.</p>
+    </div>
+
+    <!--
+      DEVICE / SCREENSHOT
+      ───────────────────
+      Troque o src abaixo pelo caminho relativo do PNG raw.
+      Exemplo: src="../raw/01-home.png"
+    -->
+    <div class="device-wrapper">
+      <div class="device-frame">
+        <img
+          class="screenshot-img"
+          src="../raw/01-home.png"
+          alt="Screenshot do app O meu Salmo"
+        >
+      </div>
+    </div>
+
+    <!-- Wordmark discreta no canto inferior -->
+    <div class="wordmark">
+      <span class="wordmark-eyebrow">O MEU</span>
+      <span class="wordmark-name">Salmo</span>
+    </div>
+
+  </div>
+</body>
+</html>
