@@ -150,48 +150,45 @@ class _AudioPlayerBarState extends ConsumerState<AudioPlayerBar> {
                       borderRadius: BorderRadius.circular(2),
                     ),
                   ),
-                  // Progress fill — interpolado para suavidade
+                  // Fill + Thumb — um único tween garante sincronia
                   if (available)
                     TweenAnimationBuilder<double>(
-                      tween: Tween(begin: 0, end: progress),
+                      tween: Tween(begin: 0.0, end: progress),
                       duration: const Duration(milliseconds: 200),
                       curve: Curves.easeOutCubic,
-                      builder: (_, value, __) => FractionallySizedBox(
-                        widthFactor: value,
-                        child: Container(
-                          height: 3,
-                          decoration: BoxDecoration(
-                            color: accent,
-                            borderRadius: BorderRadius.circular(2),
-                          ),
-                        ),
-                      ),
-                    ),
-                  // Thumb — segue o mesmo tween do fill
-                  if (available)
-                    TweenAnimationBuilder<double>(
-                      tween: Tween(begin: 0, end: progress),
-                      duration: const Duration(milliseconds: 200),
-                      curve: Curves.easeOutCubic,
-                      builder: (_, value, __) => Positioned(
-                        left: 0,
-                        right: 0,
-                        child: FractionallySizedBox(
-                          widthFactor: value,
-                          child: Align(
-                            alignment: Alignment.centerRight,
+                      builder: (_, value, __) => Stack(
+                        alignment: Alignment.centerLeft,
+                        clipBehavior: Clip.none,
+                        children: [
+                          FractionallySizedBox(
+                            widthFactor: value,
                             child: Container(
-                              width: 10,
-                              height: 10,
+                              height: 3,
                               decoration: BoxDecoration(
-                                color: isDark
-                                    ? AppColors.cobalt400
-                                    : AppColors.cobalt500,
-                                shape: BoxShape.circle,
+                                color: accent,
+                                borderRadius: BorderRadius.circular(2),
                               ),
                             ),
                           ),
-                        ),
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            child: FractionallySizedBox(
+                              widthFactor: value,
+                              child: Align(
+                                alignment: Alignment.centerRight,
+                                child: Container(
+                                  width: 10,
+                                  height: 10,
+                                  decoration: BoxDecoration(
+                                    color: accent,
+                                    shape: BoxShape.circle,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                 ],

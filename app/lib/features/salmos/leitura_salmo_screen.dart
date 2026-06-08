@@ -323,7 +323,7 @@ class _LockedReflexao extends StatelessWidget {
         TextButton(
           onPressed: () {
             HapticFeedback.lightImpact();
-            context.pop();
+            context.go('/colecoes');
           },
           style: TextButton.styleFrom(
             foregroundColor: accent,
@@ -332,7 +332,7 @@ class _LockedReflexao extends StatelessWidget {
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           ),
           child: Text(
-            'Explorar outros Salmos desta coleção',
+            'Explorar coleções',
             style: GoogleFonts.instrumentSans(
               fontSize: 14,
               fontWeight: FontWeight.w500,
