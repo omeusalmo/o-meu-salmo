@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../core/review/review_service.dart';
 import '../../data/providers/onboarding_provider.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
@@ -37,6 +38,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
 
     // Aquece o provider em T+0 para que _load() complete antes do delay de 3s
     ref.read(onboardingProvider);
+    ReviewService.instance.incrementSession();
 
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,

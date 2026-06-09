@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../core/analytics/analytics_service.dart';
+import '../../core/review/review_service.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/salmo.dart';
 import '../../data/providers/favoritos_provider.dart';
@@ -28,6 +29,10 @@ class _LeituraSalmoScreenState extends ConsumerState<LeituraSalmoScreen> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       AnalyticsService.instance.logPsalmOpened(widget.numero);
+    });
+    Future.delayed(const Duration(seconds: 10), () {
+      if (!mounted) return;
+      ReviewService.instance.maybeRequestReview();
     });
   }
 
