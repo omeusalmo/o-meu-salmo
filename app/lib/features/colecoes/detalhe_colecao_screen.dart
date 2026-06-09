@@ -70,7 +70,7 @@ class DetalheColecaoScreen extends ConsumerWidget {
               child: ListView(
                 padding: const EdgeInsets.symmetric(horizontal: AppTheme.sp5),
                 children: [
-                  const SizedBox(height: AppTheme.sp1),
+                  const SizedBox(height: AppTheme.sp5),
                   // Título hero — referência: CollectionScreen do UI kit
                   RichText(
                     text: TextSpan(
@@ -148,7 +148,7 @@ class _Header extends StatelessWidget {
         border: Border(bottom: BorderSide(color: border, width: 0.5)),
       ),
       padding: const EdgeInsets.fromLTRB(
-        AppTheme.sp3, AppTheme.sp1 + 2, AppTheme.sp5, AppTheme.sp3,
+        AppTheme.sp3, AppTheme.sp4, AppTheme.sp5, AppTheme.sp3,
       ),
       child: Row(
         children: [
