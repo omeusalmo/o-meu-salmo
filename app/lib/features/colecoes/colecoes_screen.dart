@@ -25,6 +25,7 @@ class ColecoesScreen extends ConsumerWidget {
         backgroundColor: bg,
         elevation: 0,
         scrolledUnderElevation: 0,
+        toolbarHeight: 64,
         centerTitle: false,
         automaticallyImplyLeading: false,
         actions: [
@@ -62,7 +63,7 @@ class ColecoesScreen extends ConsumerWidget {
           return ListView.separated(
             padding: const EdgeInsets.symmetric(
               horizontal: AppTheme.sp5,
-              vertical: AppTheme.sp4,
+              vertical: AppTheme.sp6,
             ),
             itemCount: colecoes.length,
             separatorBuilder: (_, __) => const SizedBox(height: AppTheme.sp3),

@@ -55,6 +55,7 @@ class _TodosSalmosScreenState extends ConsumerState<TodosSalmosScreen> {
         backgroundColor: bg,
         elevation: 0,
         scrolledUnderElevation: 0,
+        toolbarHeight: 64,
         centerTitle: false,
         automaticallyImplyLeading: false,
         actions: [
