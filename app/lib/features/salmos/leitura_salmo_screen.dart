@@ -212,6 +212,8 @@ class _BodyState extends ConsumerState<_Body> {
         children: [
           // Título hero
           RichText(
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
             text: TextSpan(
               style: GoogleFonts.playfairDisplay(
                 fontSize: 52,

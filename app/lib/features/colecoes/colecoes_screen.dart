@@ -43,7 +43,7 @@ class ColecoesScreen extends ConsumerWidget {
         title: Text(
           'Coleções',
           style: GoogleFonts.playfairDisplay(
-            fontSize: 28,
+            fontSize: 24,
             fontWeight: FontWeight.w400,
             color: titleClr,
             letterSpacing: -0.42,

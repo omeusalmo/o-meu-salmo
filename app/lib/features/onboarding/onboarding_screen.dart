@@ -267,7 +267,7 @@ class _Page1 extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: AppTheme.sp16),
+              const SizedBox(height: AppTheme.sp8),
             ],
           ),
         ),
@@ -297,8 +297,8 @@ class _Page2 extends StatelessWidget {
         child: Column(
           children: [
             const Spacer(flex: 2),
-            SizedBox(
-              height: 180,
+            ConstrainedBox(
+              constraints: const BoxConstraints(maxHeight: 200, minHeight: 120),
               child: Stack(
                 alignment: Alignment.center,
                 children: [
@@ -389,7 +389,7 @@ class _Page2 extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: AppTheme.sp16),
+            const SizedBox(height: AppTheme.sp8),
           ],
         ),
       ),
@@ -418,8 +418,10 @@ class _CollectionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 280,
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxWidth: 320),
+      child: Container(
+      width: double.infinity,
       padding: const EdgeInsets.all(AppTheme.sp5),
       decoration: BoxDecoration(
         color: cardBg,
@@ -465,6 +467,7 @@ class _CollectionCard extends StatelessWidget {
             ),
           ),
         ],
+      ),
       ),
     );
   }
@@ -524,7 +527,7 @@ class _Page3 extends StatelessWidget {
               crossAxisCount: 2,
               mainAxisSpacing: AppTheme.sp3,
               crossAxisSpacing: AppTheme.sp3,
-              childAspectRatio: 2.4,
+              childAspectRatio: MediaQuery.of(context).size.width < 360 ? 2.0 : 2.4,
               children: EmocaoInicial.values.map((e) {
                 final isSelected = e == selected;
                 return GestureDetector(
@@ -602,7 +605,7 @@ class _Page3 extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: AppTheme.sp16),
+            const SizedBox(height: AppTheme.sp8),
           ],
         ),
       ),

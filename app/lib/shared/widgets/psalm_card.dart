@@ -24,7 +24,6 @@ class PsalmCard extends StatelessWidget {
     final border   = isDark ? AppColors.nightLine  : AppColors.dayLine;
     final accent   = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
     final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
-    final muted    = isDark ? AppColors.nightText  : AppColors.dayText;
 
     return Material(
       color: surface,

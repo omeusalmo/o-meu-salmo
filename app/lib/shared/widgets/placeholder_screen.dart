@@ -24,7 +24,7 @@ class PlaceholderScreen extends StatelessWidget {
             Icon(
               icon,
               size: 56,
-              color: theme.colorScheme.primary.withOpacity(0.35),
+              color: theme.colorScheme.primary.withValues(alpha: 0.35),
             ),
             const SizedBox(height: 20),
             Text(title, style: theme.textTheme.headlineSmall),
@@ -32,7 +32,7 @@ class PlaceholderScreen extends StatelessWidget {
             Text(
               'Em construção',
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurface.withOpacity(0.45),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.45),
               ),
             ),
           ],

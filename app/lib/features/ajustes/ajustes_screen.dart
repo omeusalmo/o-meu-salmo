@@ -467,7 +467,6 @@ class _ApoieSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
     final text     = isDark ? AppColors.nightText  : AppColors.dayText;
-    final muted    = isDark ? AppColors.nightText  : AppColors.dayText;
     final accent   = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
     final border   = isDark ? AppColors.nightLine  : AppColors.dayLine;
 

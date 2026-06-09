@@ -69,7 +69,7 @@ class _TodosSalmosScreenState extends ConsumerState<TodosSalmosScreen> {
         title: Text(
           'Todos os Salmos',
           style: GoogleFonts.playfairDisplay(
-            fontSize: 28,
+            fontSize: 24,
             fontWeight: FontWeight.w400,
             color: titleClr,
             letterSpacing: -0.42,
@@ -273,7 +273,6 @@ class _EmptyState extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final text  = isDark ? AppColors.nightText  : AppColors.dayText;
-    final muted = isDark ? AppColors.nightText  : AppColors.dayText;
 
     return Center(
       child: Padding(

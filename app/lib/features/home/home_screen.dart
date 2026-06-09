@@ -149,6 +149,8 @@ class _HomeContent extends StatelessWidget {
 
               // ── Número hero do salmo ──────────────────────────────────
               RichText(
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
                 text: TextSpan(
                   style: GoogleFonts.playfairDisplay(
                     fontSize: 52,
@@ -396,51 +398,6 @@ class _PrimaryButton extends StatelessWidget {
               color: AppColors.nightCream,
               letterSpacing: 0.2,
             ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _SecondaryButton extends StatelessWidget {
-  final String label;
-  final VoidCallback? onTap;
-
-  const _SecondaryButton({super.key, required this.label, this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final accent = isDark ? AppColors.cobalt400 : AppColors.cobalt500;
-    final border = isDark ? AppColors.nightLine  : AppColors.dayLine;
-
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.symmetric(vertical: AppTheme.sp3 + 2),
-        decoration: BoxDecoration(
-          color: Colors.transparent,
-          borderRadius: BorderRadius.circular(AppTheme.radiusMd),
-          border: Border.all(color: border, width: 0.5),
-        ),
-        child: Center(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(Icons.headphones_outlined, size: 16, color: accent),
-              const SizedBox(width: AppTheme.sp2),
-              Text(
-                label,
-                style: GoogleFonts.instrumentSans(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w400,
-                  color: accent,
-                  letterSpacing: 0.2,
-                ),
-              ),
-            ],
           ),
         ),
       ),
