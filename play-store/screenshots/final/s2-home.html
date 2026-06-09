@@ -18,10 +18,19 @@
       position: relative;
     }
 
+    /* Top safe-zone band */
+    .top-spacer {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 60px;
+      background: #080B1C;
+      z-index: 4;
+    }
+
     /* Full-bleed app screenshot */
     .app-full {
       position: absolute;
-      inset: 0;
+      top: 60px; left: 0; right: 0; bottom: 0;
       z-index: 1;
     }
 
@@ -73,6 +82,9 @@
   </style>
 </head>
 <body>
+
+  <!-- Top safe-zone -->
+  <div class="top-spacer"></div>
 
   <!-- Full-bleed app -->
   <div class="app-full">
