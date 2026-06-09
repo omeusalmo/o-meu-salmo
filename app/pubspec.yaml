@@ -33,9 +33,10 @@ dependencies:
   # Compartilhamento nativo — abre share sheet do sistema (WhatsApp, Stories etc.)
   share_plus: ^13.1.0
 
-  # Firebase — Analytics de engajamento
+  # Firebase — Analytics de engajamento + crash reporting
   firebase_core: ^3.6.0
   firebase_analytics: ^11.3.3
+  firebase_crashlytics: ^4.1.0
   url_launcher: ^6.3.2
 
 dev_dependencies:
