@@ -26,6 +26,13 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     );
   }
 
+  void _prevPage() {
+    _controller.previousPage(
+      duration: const Duration(milliseconds: 350),
+      curve: Curves.easeOutCubic,
+    );
+  }
+
   Future<void> _skip() async {
     await ref.read(onboardingProvider.notifier).markDone();
     if (mounted) context.go('/home');
@@ -55,6 +62,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
         statusBarIconBrightness: _currentPage == 0
             ? Brightness.light
             : (isDark ? Brightness.light : Brightness.dark),
+        systemNavigationBarColor: Colors.transparent,
+        systemNavigationBarIconBrightness:
+            isDark ? Brightness.light : Brightness.dark,
       ),
       child: Scaffold(
         backgroundColor: _currentPage == 0
@@ -76,6 +86,28 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 ),
               ],
             ),
+            // Back button — visible on pages 1 and 2
+            if (_currentPage > 0)
+              SafeArea(
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: _prevPage,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        left: AppTheme.sp5,
+                        top: AppTheme.sp3,
+                      ),
+                      child: Icon(
+                        Icons.arrow_back_rounded,
+                        size: 22,
+                        color: isDark ? AppColors.nightText : AppColors.dayText,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             // Skip button — visible on pages 0 and 1 only
             if (_currentPage < 2)
               SafeArea(
@@ -209,7 +241,7 @@ class _Page1 extends StatelessWidget {
                 'Encontre o salmo certo para o que você está sentindo, a qualquer hora do dia.',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.cormorant(
-                  fontSize: 18,
+                  fontSize: 22,
                   fontStyle: FontStyle.italic,
                   color: Colors.white.withAlpha(204),
                   height: 1.5,
