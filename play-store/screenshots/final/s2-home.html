@@ -5,17 +5,89 @@
   <meta name="viewport" content="width=1080">
   <title>S2 — Home</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant:ital,wght@1,300;1,400&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *,*::before,*::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --night-base: #080B1C;
+      --night-plus: #10142C;
+      --night-line: #1E2348;
+      --night-muted: #7080C8;
+      --night-text: #8C97D4;
+      --night-cream: #EEF0FC;
+      --cobalt-400: #5567EA;
+      --cobalt-500: #2A47DD;
+      --gold: #C4A86A;
+    }
 
     body {
       width: 1080px;
       height: 1920px;
       overflow: hidden;
-      background: #080B1C;
-      font-family: 'Instrument Sans', sans-serif;
+      background: var(--night-base);
+      font-family: 'Instrument Sans', system-ui, sans-serif;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
       position: relative;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9000;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: .028;
+    }
+
+    /* ── ANIMATED BLOBS ── */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(90px);
+    }
+    .blob-1 {
+      width: 800px; height: 800px;
+      bottom: 100px; left: -160px;
+      background: radial-gradient(circle, rgba(42,71,221,.12) 0%, transparent 65%);
+      animation: bdrift 20s ease-in-out infinite;
+      z-index: 1;
+    }
+    .blob-2 {
+      width: 560px; height: 560px;
+      bottom: 300px; right: -80px;
+      background: radial-gradient(circle, rgba(59,43,140,.09) 0%, transparent 65%);
+      animation: bdrift 17s ease-in-out infinite;
+      animation-delay: -9s;
+      z-index: 1;
+    }
+    @keyframes bdrift {
+      0%,100% { transform: translate(0,0) scale(1); }
+      33%      { transform: translate(28px,-22px) scale(1.05); }
+      66%      { transform: translate(-18px,18px) scale(.96); }
+    }
+
+    /* ── GHOST NUMBER ── */
+    .ghost-number {
+      position: absolute;
+      right: -.04em;
+      bottom: 160px;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 560px;
+      letter-spacing: -.04em;
+      line-height: .88;
+      color: var(--cobalt-500);
+      opacity: .038;
+      pointer-events: none;
+      user-select: none;
+      z-index: 2;
     }
 
     /* Top safe-zone band */
@@ -23,8 +95,18 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 60px;
-      background: #080B1C;
+      background: var(--night-base);
       z-index: 4;
+    }
+
+    /* Cobalt accent line at top (LP psalm-card::after) */
+    .top-accent-line {
+      position: absolute;
+      top: 60px; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cobalt-500) 30%, var(--cobalt-400) 70%, transparent);
+      z-index: 5;
+      opacity: .45;
     }
 
     /* Full-bleed app screenshot */
@@ -32,8 +114,6 @@
       position: absolute;
       top: 60px; left: 0; right: 0; bottom: 0;
       z-index: 1;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.55);
-      border-top: 0.5px solid rgba(85,103,234,0.10);
     }
 
     .app-full img {
@@ -44,57 +124,79 @@
       display: block;
     }
 
-    /* Minimal footer overlay — 180px, gradient into night-base */
+    /* Footer overlay */
     .footer-overlay {
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      height: 360px;
+      height: 420px;
       background: linear-gradient(to bottom,
         transparent 0%,
-        rgba(8,11,28,0.72) 30%,
-        rgba(8,11,28,0.95) 60%,
-        #080B1C 100%
+        rgba(8,11,28,.72) 28%,
+        rgba(8,11,28,.95) 55%,
+        var(--night-base) 100%
       );
       z-index: 3;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 0 72px 88px;
+      padding: 0 80px 96px;
+    }
+
+    /* Gradient divider above text (LP .div) */
+    .gradient-divider {
+      height: .5px;
+      background: linear-gradient(90deg, transparent, var(--night-line) 25%, var(--night-line) 75%, transparent);
+      margin-bottom: 36px;
     }
 
     .headline {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Playfair Display', Georgia, serif;
       font-style: italic;
       font-weight: 400;
       font-size: 88px;
       line-height: 1.05;
-      color: #EEF0FC;
+      color: var(--night-cream);
       margin-bottom: 24px;
-      letter-spacing: -0.01em;
+      letter-spacing: -.02em;
+    }
+
+    /* LP: .hero-hl em */
+    .headline em {
+      font-style: italic;
+      color: var(--cobalt-400);
     }
 
     .sub {
-      font-family: 'Instrument Sans', sans-serif;
-      font-size: 26px;
+      font-family: 'Instrument Sans', system-ui, sans-serif;
+      font-size: 24px;
       font-weight: 400;
-      letter-spacing: 0.34em;
+      letter-spacing: .34em;
       text-transform: uppercase;
-      color: #7080C8;
+      color: var(--night-muted);
     }
   </style>
 </head>
 <body>
 
+  <!-- Animated blobs -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <!-- Ghost number -->
+  <div class="ghost-number">23</div>
+
   <!-- Top safe-zone -->
   <div class="top-spacer"></div>
+  <div class="top-accent-line"></div>
 
   <!-- Full-bleed app -->
   <div class="app-full">
     <img src="../raw-cropped/01-home.png" alt="Home — Salmo do dia">
   </div>
 
-  <!-- Minimal footer overlay -->
+  <!-- Footer overlay -->
   <div class="footer-overlay">
+    <div class="gradient-divider"></div>
     <h1 class="headline">Quando a ansiedade chega,<br>as palavras já estão lá</h1>
     <p class="sub">Para a noite difícil. Para o silêncio da manhã.</p>
   </div>

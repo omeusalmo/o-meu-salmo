@@ -5,47 +5,108 @@
   <meta name="viewport" content="width=1080">
   <title>S5 — Coleção Detalhe</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Instrument+Sans:wght@400;500&family=Cormorant:ital,wght@1,400&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant:ital,wght@1,300;1,400&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *,*::before,*::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --night-base: #080B1C;
+      --night-plus: #10142C;
+      --night-line: #1E2348;
+      --night-muted: #7080C8;
+      --night-text: #8C97D4;
+      --night-cream: #EEF0FC;
+      --cobalt-400: #5567EA;
+      --cobalt-500: #2A47DD;
+      --cobalt-600: #1B33B4;
+      --gold: #C4A86A;
+    }
 
     body {
       width: 1080px;
       height: 1920px;
       overflow: hidden;
-      background: #080B1C;
-      font-family: 'Instrument Sans', sans-serif;
+      background: var(--night-base);
+      font-family: 'Instrument Sans', system-ui, sans-serif;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
       position: relative;
     }
 
-    /* Subtle cobalt accent glow — top right */
-    .glow-accent {
+    /* ── NOISE OVERLAY ── */
+    body::after {
+      content: '';
       position: absolute;
-      top: -120px;
-      right: -80px;
-      width: 560px;
-      height: 560px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(85,103,234,0.14) 0%, transparent 65%);
+      inset: 0;
       pointer-events: none;
-      z-index: 1;
+      z-index: 9000;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: .028;
     }
 
-    /* Thin vertical accent stripe — left edge */
+    /* ── ANIMATED BLOBS ── */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(90px);
+    }
+    .blob-1 {
+      width: 560px; height: 560px;
+      top: -120px; right: -80px;
+      background: radial-gradient(circle, rgba(85,103,234,.14) 0%, transparent 65%);
+      animation: bdrift 20s ease-in-out infinite;
+      z-index: 1;
+    }
+    .blob-2 {
+      width: 420px; height: 420px;
+      bottom: 300px; left: -80px;
+      background: radial-gradient(circle, rgba(42,71,221,.09) 0%, transparent 65%);
+      animation: bdrift 17s ease-in-out infinite;
+      animation-delay: -9s;
+      z-index: 1;
+    }
+    @keyframes bdrift {
+      0%,100% { transform: translate(0,0) scale(1); }
+      33%      { transform: translate(28px,-22px) scale(1.05); }
+      66%      { transform: translate(-18px,18px) scale(.96); }
+    }
+
+    /* ── GHOST NUMBER ── */
+    .ghost-number {
+      position: absolute;
+      right: -.04em;
+      top: -.02em;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 600px;
+      letter-spacing: -.04em;
+      line-height: .88;
+      color: var(--cobalt-500);
+      opacity: .038;
+      pointer-events: none;
+      user-select: none;
+      z-index: 2;
+    }
+
+    /* Thin vertical accent stripe — left edge (kept from original, LP-aligned) */
     .accent-stripe {
       position: absolute;
       left: 0; top: 0; bottom: 0;
-      width: 3px;
+      width: 2px;
       background: linear-gradient(to bottom,
         transparent 0%,
-        #5567EA 20%,
-        #5567EA 80%,
+        var(--cobalt-400) 20%,
+        var(--cobalt-400) 80%,
         transparent 100%
       );
       z-index: 5;
+      opacity: .7;
     }
 
-    /* Top text block */
+    /* ── TOP TEXT BLOCK ── */
     .top-block {
       position: absolute;
       top: 0; left: 0; right: 0;
@@ -54,57 +115,70 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 90px 72px 40px;
+      padding: 90px 80px 44px;
     }
 
     .eyebrow-row {
       display: flex;
       align-items: center;
       gap: 14px;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
+    /* Deco dot (LP .pc-emo .dot style) */
     .dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #5567EA;
+      background: var(--cobalt-400);
       flex-shrink: 0;
     }
 
     .eyebrow {
-      font-family: 'Instrument Sans', sans-serif;
+      font-family: 'Instrument Sans', system-ui, sans-serif;
       font-size: 22px;
-      font-weight: 500;
-      letter-spacing: 0.5em;
+      font-weight: 400;
+      letter-spacing: .34em;
       text-transform: uppercase;
-      color: #5567EA;
+      color: var(--cobalt-400);
     }
 
     .headline {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Playfair Display', Georgia, serif;
       font-style: italic;
       font-weight: 400;
       font-size: 84px;
       line-height: 1.06;
-      color: #EEF0FC;
-      letter-spacing: -0.01em;
+      color: var(--night-cream);
+      letter-spacing: -.02em;
     }
 
-    /* App screenshot — centered, 55% height */
+    /* ── APP FRAME ── */
     .app-frame {
       position: absolute;
       top: 340px;
-      left: 40px;
-      right: 40px;
+      left: 40px; right: 40px;
       height: 1300px;
       z-index: 2;
-      border-radius: 18px;
+      border-radius: 22px;
       overflow: hidden;
+      /* LP psalm-card border + shadow */
+      border: .5px solid var(--night-line);
       box-shadow:
-        0 32px 100px rgba(0,0,0,0.50),
-        0 6px 24px rgba(0,0,0,0.25),
-        0 0 0 0.5px rgba(85,103,234,0.15);
+        0 48px 96px rgba(8,11,28,.75),
+        0 0 0 1px rgba(255,255,255,.04),
+        inset 0 1px 0 rgba(255,255,255,.07);
+    }
+
+    /* LP psalm-card::after — cobalt accent top line */
+    .app-frame::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cobalt-500) 35%, var(--cobalt-400) 65%, transparent);
+      z-index: 3;
+      pointer-events: none;
     }
 
     .app-frame img {
@@ -115,33 +189,59 @@
       display: block;
     }
 
-    /* Footer text */
+    /* ── FOOTER BLOCK ── */
     .footer-block {
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      height: 220px;
+      height: 230px;
       z-index: 3;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 0 72px;
-      background: linear-gradient(to bottom, transparent, #080B1C 50%);
+      gap: 20px;
+      padding: 0 80px;
+      background: linear-gradient(to bottom, transparent, rgba(8,11,28,.9) 50%, var(--night-base) 100%);
     }
 
-    .footer-sub {
-      font-family: 'Cormorant', serif;
+    /* Gradient divider (LP .div) */
+    .gradient-divider {
+      height: .5px;
+      width: 480px;
+      background: linear-gradient(90deg, transparent, var(--night-line) 25%, var(--night-line) 75%, transparent);
+    }
+
+    /* LP .pc-verse style — gold Cormorant italic */
+    .footer-verse {
+      font-family: 'Cormorant', Georgia, serif;
       font-style: italic;
       font-size: 28px;
       font-weight: 400;
-      color: #C4A86A;
+      color: var(--gold);
       text-align: center;
-      line-height: 1.5;
+      line-height: 1.55;
+    }
+
+    .footer-ref {
+      font-family: 'Instrument Sans', system-ui, sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--night-muted);
     }
   </style>
 </head>
 <body>
 
-  <div class="glow-accent"></div>
+  <!-- Animated blobs -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <!-- Ghost number -->
+  <div class="ghost-number">23</div>
+
+  <!-- Accent stripe -->
   <div class="accent-stripe"></div>
 
   <!-- Top text -->
@@ -160,8 +260,9 @@
 
   <!-- Footer -->
   <div class="footer-block">
-    <div style="width:48px;height:1.5px;background:#2A47DD;margin:0 auto 16px;opacity:0.7;"></div>
-    <p class="footer-sub">O Senhor é o meu pastor; nada me faltará.</p>
+    <div class="gradient-divider"></div>
+    <p class="footer-verse">O Senhor é o meu pastor; nada me faltará.</p>
+    <span class="footer-ref">Salmo 23 · 1</span>
   </div>
 
 </body>

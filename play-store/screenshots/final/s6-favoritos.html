@@ -5,42 +5,97 @@
   <meta name="viewport" content="width=1080">
   <title>S6 — Favoritos</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant:ital,wght@1,300;1,400&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *,*::before,*::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --night-base: #080B1C;
+      --night-plus: #10142C;
+      --night-line: #1E2348;
+      --night-muted: #7080C8;
+      --night-text: #8C97D4;
+      --night-cream: #EEF0FC;
+      --cobalt-400: #5567EA;
+      --cobalt-500: #2A47DD;
+      --cobalt-600: #1B33B4;
+      --gold: #C4A86A;
+    }
 
     body {
       width: 1080px;
       height: 1920px;
       overflow: hidden;
-      background: #080B1C;
-      font-family: 'Instrument Sans', sans-serif;
+      background: var(--night-base);
+      font-family: 'Instrument Sans', system-ui, sans-serif;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
       position: relative;
     }
 
-    /* Warm deep glow — lower center */
-    .glow-warm {
+    /* ── NOISE OVERLAY ── */
+    body::after {
+      content: '';
       position: absolute;
-      bottom: 100px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 900px;
-      height: 700px;
-      border-radius: 50%;
-      background: radial-gradient(ellipse,
-        rgba(42,71,221,0.20) 0%,
-        rgba(85,103,234,0.08) 40%,
-        transparent 70%
-      );
+      inset: 0;
       pointer-events: none;
-      z-index: 1;
+      z-index: 9000;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: .028;
     }
 
-    /* App screenshot — top, with margin */
+    /* ── ANIMATED BLOBS ── */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(90px);
+    }
+    .blob-1 {
+      width: 900px; height: 700px;
+      bottom: 80px; left: 50%;
+      transform: translateX(-50%);
+      background: radial-gradient(ellipse, rgba(42,71,221,.18) 0%, rgba(85,103,234,.07) 40%, transparent 70%);
+      animation: bdrift 20s ease-in-out infinite;
+      z-index: 1;
+    }
+    .blob-2 {
+      width: 520px; height: 520px;
+      top: -100px; right: -100px;
+      background: radial-gradient(circle, rgba(59,43,140,.09) 0%, transparent 65%);
+      animation: bdrift 17s ease-in-out infinite;
+      animation-delay: -9s;
+      z-index: 1;
+    }
+    @keyframes bdrift {
+      0%,100% { transform: translate(0,0) scale(1); }
+      33%      { transform: translate(28px,-22px) scale(1.05); }
+      66%      { transform: translate(-18px,18px) scale(.96); }
+    }
+
+    /* ── GHOST NUMBER ── */
+    .ghost-number {
+      position: absolute;
+      right: -.04em;
+      bottom: 200px;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 540px;
+      letter-spacing: -.04em;
+      line-height: .88;
+      color: var(--cobalt-500);
+      opacity: .038;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+    }
+
+    /* ── APP FRAME — top ── */
     .app-frame {
       position: absolute;
-      top: 80px;
-      left: 0; right: 0;
+      top: 80px; left: 0; right: 0;
       height: 1250px;
       z-index: 2;
       overflow: hidden;
@@ -54,63 +109,84 @@
       display: block;
     }
 
-    /* Bottom fade over app bottom edge */
+    /* Bottom fade over app */
     .app-frame::after {
       content: '';
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      height: 280px;
-      background: linear-gradient(to bottom, transparent, #10142C 85%, #10142C);
+      height: 320px;
+      background: linear-gradient(to bottom, transparent, var(--night-plus) 80%, var(--night-plus));
       pointer-events: none;
     }
 
-    /* Footer panel — 320px, slightly lighter surface */
+    /* ── FOOTER PANEL — LP surface color ── */
     .footer-panel {
       position: absolute;
       bottom: 0; left: 0; right: 0;
       height: 590px;
-      background: #10142C;
+      background: var(--night-plus);
       z-index: 3;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       justify-content: center;
-      padding: 0 72px 48px;
-      gap: 0;
+      padding: 0 80px 52px;
+      /* LP surface card border */
+      border-top: .5px solid var(--night-line);
     }
 
-    /* Top edge fade into app */
-    .footer-panel::before {
+    /* Cobalt top accent (LP psalm-card::after) */
+    .footer-panel::after {
       content: '';
       position: absolute;
-      top: -80px; left: 0; right: 0;
-      height: 80px;
-      background: linear-gradient(to bottom, transparent, #10142C);
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cobalt-500) 30%, var(--cobalt-400) 70%, transparent);
       pointer-events: none;
     }
 
+    /* Fade into app */
+    .footer-panel::before {
+      content: '';
+      position: absolute;
+      top: -100px; left: 0; right: 0;
+      height: 100px;
+      background: linear-gradient(to bottom, transparent, var(--night-plus));
+      pointer-events: none;
+    }
+
+    /* Deco bar (LP .sb-deco) */
+    .deco-bar {
+      width: 36px;
+      height: 2px;
+      background: var(--cobalt-500);
+      border-radius: 1px;
+      opacity: .7;
+      margin-bottom: 28px;
+    }
+
     .headline {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Playfair Display', Georgia, serif;
       font-style: italic;
       font-weight: 400;
       font-size: 96px;
       line-height: 1.04;
-      color: #EEF0FC;
-      letter-spacing: -0.02em;
-      margin-bottom: 20px;
+      color: var(--night-cream);
+      letter-spacing: -.02em;
+      margin-bottom: 22px;
     }
 
     .sub {
-      font-family: 'Instrument Sans', sans-serif;
-      font-size: 26px;
+      font-family: 'Instrument Sans', system-ui, sans-serif;
+      font-size: 24px;
       font-weight: 400;
-      letter-spacing: 0.22em;
+      letter-spacing: .22em;
       text-transform: uppercase;
-      color: #7080C8;
-      margin-bottom: 48px;
+      color: var(--night-muted);
+      margin-bottom: 44px;
     }
 
-    /* Collection chips row */
+    /* Collection chips (LP .chip style) */
     .chips {
       display: flex;
       flex-direction: row;
@@ -119,22 +195,54 @@
     }
 
     .chip {
-      font-family: 'Instrument Sans', sans-serif;
+      font-family: 'Instrument Sans', system-ui, sans-serif;
       font-size: 20px;
-      font-weight: 500;
-      letter-spacing: 0.18em;
+      font-weight: 400;
+      letter-spacing: .12em;
       text-transform: uppercase;
-      color: #8C97D4;
-      background: rgba(27, 51, 180, 0.40);
-      border: 0.5px solid rgba(85,103,234,0.30);
+      /* LP chip: background + border-radius:999px, colored per emotion */
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 32px;
       border-radius: 999px;
-      padding: 14px 36px;
     }
+
+    .chip-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Emotion chip colors matching LP */
+    .chip-ansiedade {
+      background: #EEEDF8;
+      color: #3D3889;
+    }
+    .chip-ansiedade .chip-dot { background: #5567EA; }
+
+    .chip-sono {
+      background: #EAF1E6;
+      color: #446650;
+    }
+    .chip-sono .chip-dot { background: #6A9A62; }
+
+    .chip-gratidao {
+      background: #FAF2E0;
+      color: #7A5A18;
+    }
+    .chip-gratidao .chip-dot { background: #C99A38; }
   </style>
 </head>
 <body>
 
-  <div class="glow-warm"></div>
+  <!-- Animated blobs -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <!-- Ghost number -->
+  <div class="ghost-number">150</div>
 
   <!-- App screenshot -->
   <div class="app-frame">
@@ -143,12 +251,13 @@
 
   <!-- Footer panel -->
   <div class="footer-panel">
+    <div class="deco-bar"></div>
     <h1 class="headline">Os seus,<br>para sempre</h1>
     <p class="sub">Salve os que tocaram em você. Offline, sem conta</p>
     <div class="chips">
-      <span class="chip">Ansiedade</span>
-      <span class="chip">Sono</span>
-      <span class="chip">Gratidão</span>
+      <span class="chip chip-ansiedade"><span class="chip-dot"></span>Ansiedade</span>
+      <span class="chip chip-sono"><span class="chip-dot"></span>Sono</span>
+      <span class="chip chip-gratidao"><span class="chip-dot"></span>Gratidão</span>
     </div>
   </div>
 
