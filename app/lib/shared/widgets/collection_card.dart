@@ -19,20 +19,44 @@ class CollectionCard extends StatelessWidget {
     this.emocaoId,
   });
 
-  // Mapeia o id da coleção para a cor emocional do design system.
-  static Color _emotionColor(String? id, bool isDark) {
-    switch (id) {
-      case 'ansiedade': return AppColors.emoAnsiedadeDot;
-      case 'sono':
-      case 'protecao':  return AppColors.emoPazDot;
-      case 'gratidao':
-      case 'louvor':    return AppColors.emoGratidaoDot;
-      case 'luto':      return AppColors.emoLutoDot;
-      case 'perdao':    return AppColors.emoDuvidaDot;
-      case 'esperanca': return isDark ? AppColors.cobalt400 : AppColors.cobalt500;
-      default:           return isDark ? AppColors.cobalt400 : AppColors.cobalt500;
-    }
-  }
+  static String _emoLabel(String? id) => switch (id) {
+    'ansiedade' => 'Ansiedade',
+    'sono'      => 'Sono',
+    'gratidao'  => 'Gratidão',
+    'luto'      => 'Luto',
+    'perdao'    => 'Perdão',
+    'esperanca' => 'Esperança',
+    'louvor'    => 'Louvor',
+    'protecao'  => 'Proteção',
+    _           => '',
+  };
+
+  static Color _emoBg(String? id) => switch (id) {
+    'ansiedade'          => AppColors.emoAnsiedadeBg,
+    'sono' || 'protecao' => AppColors.emoPazBg,
+    'gratidao' || 'louvor' => AppColors.emoGratidaoBg,
+    'luto'               => AppColors.emoLutoBg,
+    'perdao'             => AppColors.emoDuvidaBg,
+    _                    => AppColors.emoEsperancaBg,
+  };
+
+  static Color _emoFg(String? id) => switch (id) {
+    'ansiedade'          => AppColors.emoAnsiedadeFg,
+    'sono' || 'protecao' => AppColors.emoPazFg,
+    'gratidao' || 'louvor' => AppColors.emoGratidaoFg,
+    'luto'               => AppColors.emoLutoFg,
+    'perdao'             => AppColors.emoDuvidaFg,
+    _                    => AppColors.emoEsperancaFg,
+  };
+
+  static Color _emoDot(String? id) => switch (id) {
+    'ansiedade'          => AppColors.emoAnsiedadeDot,
+    'sono' || 'protecao' => AppColors.emoPazDot,
+    'gratidao' || 'louvor' => AppColors.emoGratidaoDot,
+    'luto'               => AppColors.emoLutoDot,
+    'perdao'             => AppColors.emoDuvidaDot,
+    _                    => AppColors.emoEsperancaDot,
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +66,10 @@ class CollectionCard extends StatelessWidget {
     final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
     final bodyClr  = isDark ? AppColors.nightText  : AppColors.dayText;
     final accent   = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
-    final dotColor = _emotionColor(emocaoId, isDark);
+    final chipBg   = _emoBg(emocaoId);
+    final chipFg   = _emoFg(emocaoId);
+    final chipDot  = _emoDot(emocaoId);
+    final chipLabel = _emoLabel(emocaoId);
 
     return Material(
       color: surface,
@@ -65,19 +92,41 @@ class CollectionCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Eyebrow: dot emocional + count
-              // dotColor fica apenas no ponto decorativo; texto usa bodyClr (AA 6.9:1 / 9.5:1)
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    width: 6,
-                    height: 6,
+                  Flexible(
+                   child: Container(
+                    padding: const EdgeInsets.fromLTRB(8, 4, 10, 4),
                     decoration: BoxDecoration(
-                      color: dotColor,
-                      shape: BoxShape.circle,
+                      color: chipBg,
+                      borderRadius: BorderRadius.circular(999),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Container(
+                          width: 6,
+                          height: 6,
+                          decoration: BoxDecoration(
+                            color: chipDot,
+                            shape: BoxShape.circle,
+                          ),
+                        ),
+                        const SizedBox(width: 5),
+                        Text(
+                          chipLabel,
+                          style: GoogleFonts.instrumentSans(
+                            fontSize: 11,
+                            fontWeight: FontWeight.w500,
+                            letterSpacing: 0.2,
+                            color: chipFg,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(width: 6),
+                  ),
                   Text(
                     '$totalSalmos SALMOS',
                     style: GoogleFonts.instrumentSans(

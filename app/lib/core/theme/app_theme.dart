@@ -38,10 +38,10 @@ class AppColors {
   static const emoAnsiedadeFg  = Color(0xFF3D3889);
   static const emoAnsiedadeDot = Color(0xFF5567EA);
   static const emoPazBg        = Color(0xFFEAF1E6);
-  static const emoPazFg        = Color(0xFF4E7A52);
+  static const emoPazFg        = Color(0xFF446650);
   static const emoPazDot       = Color(0xFF6A9A62);
   static const emoGratidaoBg   = Color(0xFFFAF2E0);
-  static const emoGratidaoFg   = Color(0xFF9A7320);
+  static const emoGratidaoFg   = Color(0xFF7A5A18);
   static const emoGratidaoDot  = Color(0xFFC99A38);
   static const emoLutoBg       = Color(0xFFF1EBEF);
   static const emoLutoFg       = Color(0xFF7A4A66);
@@ -49,6 +49,9 @@ class AppColors {
   static const emoDuvidaBg     = Color(0xFFECECF2);
   static const emoDuvidaFg     = Color(0xFF5E5A82);
   static const emoDuvidaDot    = Color(0xFF8480AA);
+  static const emoEsperancaBg  = Color(0xFFE6EAFD);
+  static const emoEsperancaFg  = Color(0xFF1B33B4);
+  static const emoEsperancaDot = Color(0xFF2A47DD);
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
