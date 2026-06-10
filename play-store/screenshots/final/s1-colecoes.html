@@ -82,7 +82,7 @@
       66%      { transform: translate(-18px,18px) scale(.96); }
     }
 
-    /* ── GHOST PSALM NUMBER (LP .ghost) ── */
+    /* ── GHOST NUMBER (LP .ghost) ── */
     .ghost-number {
       position: absolute;
       right: -.06em;
@@ -100,19 +100,25 @@
       z-index: 2;
     }
 
-    /* ── TOP ZONE ── */
-    .top-zone {
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 768px;
+    /* ── LAYOUT WRAPPER ── */
+    .layout {
+      position: relative;
+      z-index: 3;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      padding: 80px 80px 64px;
-      z-index: 3;
+      height: 1920px;
     }
 
-    /* Deco bar above eyebrow (LP .sb-deco) */
+    /* ── HEADER ZONE (~360px) ── */
+    .header-zone {
+      flex-shrink: 0;
+      height: 360px;
+      padding: 80px 80px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
     .deco-bar {
       width: 36px;
       height: 2px;
@@ -129,95 +135,120 @@
       letter-spacing: .34em;
       text-transform: uppercase;
       color: var(--night-text);
+      margin-bottom: 20px;
+    }
+
+    .headline {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 72px;
+      letter-spacing: -.02em;
+      line-height: 1.1;
+      color: var(--night-cream);
       margin-bottom: 40px;
     }
 
-    /* Asymmetric word grid */
-    .word-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .word-row {
-      display: flex;
-      align-items: baseline;
-      gap: 28px;
-      flex-wrap: wrap;
-    }
-
-    .word {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-style: italic;
-      line-height: 1.1;
-    }
-
-    .w-ansiedade { font-size: 108px; font-weight: 500; color: var(--cobalt-400); }
-    .w-sono      { font-size: 56px;  font-weight: 400; color: #6A9A62; }
-    .w-gratidao  { font-size: 68px;  font-weight: 400; color: #C99A38; }
-    .w-luto      { font-size: 50px;  font-weight: 400; color: #9A6A86; }
-    .w-esperanca { font-size: 62px;  font-weight: 400; color: var(--cobalt-500); }
-    .w-perdao    { font-size: 46px;  font-weight: 400; color: #8480AA; }
-    .w-louvor    { font-size: 72px;  font-weight: 400; color: #C99A38; }
-    .w-protecao  { font-size: 52px;  font-weight: 400; color: #6A9A62; }
-
-    /* Gradient divider below word-grid (LP .div) */
     .gradient-divider {
       height: .5px;
       background: linear-gradient(90deg, transparent, var(--night-line) 25%, var(--night-line) 75%, transparent);
-      margin-top: 32px;
     }
 
-    /* Glow behind word grid */
-    .glow {
-      position: absolute;
-      width: 700px;
-      height: 700px;
+    /* ── CARDS GRID ZONE ── */
+    .cards-zone {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      padding: 32px 48px 80px;
+      align-content: start;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--night-plus);
+      border: .5px solid var(--night-line);
+      border-radius: 22px;
+      padding: 28px 24px;
+      box-shadow:
+        0 2px 24px rgba(0,0,0,.35),
+        0 1px 0 rgba(255,255,255,.02) inset;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(85,103,234,.20) 0%, transparent 65%);
-      top: 260px;
-      left: 50%;
-      transform: translateX(-50%);
-      pointer-events: none;
-      z-index: 2;
-      filter: blur(60px);
+      margin-right: 8px;
+      flex-shrink: 0;
     }
 
-    /* Fade bridge */
-    .fade-bridge {
-      position: absolute;
-      top: 700px; left: 0; right: 0;
-      height: 140px;
-      background: linear-gradient(to bottom, var(--night-base), transparent);
-      z-index: 4;
-      pointer-events: none;
+    .emotion-name {
+      font-family: 'Instrument Sans', system-ui, sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--night-muted);
     }
 
-    /* ── BOTTOM 60% — app screenshot ── */
-    .app-zone {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 1200px;
-      z-index: 2;
+    .collection-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 44px;
+      line-height: 1.1;
+      color: var(--night-cream);
+      letter-spacing: -.01em;
+    }
+
+    .verse-snippet {
+      font-family: 'Cormorant', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 1.35;
+      color: var(--gold);
+      margin-top: 12px;
       overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
 
-    .app-zone img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
+    /* ── PER-CARD ACCENT COLORS ── */
+    .card-ansiedade {
+      border-top: 1px solid rgba(85, 103, 234, .6);
     }
-
-    .app-zone::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(to right, rgba(8,11,28,.35) 0%, transparent 12%),
-        linear-gradient(to left,  rgba(8,11,28,.35) 0%, transparent 12%);
-      pointer-events: none;
+    .card-sono {
+      border-top: 1px solid rgba(106, 154, 98, .6);
+    }
+    .card-gratidao {
+      border-top: 1px solid rgba(201, 154, 56, .6);
+    }
+    .card-luto {
+      border-top: 1px solid rgba(154, 106, 134, .6);
+    }
+    .card-esperanca {
+      border-top: 1px solid rgba(42, 71, 221, .6);
+    }
+    .card-perdao {
+      border-top: 1px solid rgba(132, 128, 170, .6);
+    }
+    .card-louvor {
+      border-top: 1px solid rgba(212, 168, 67, .6);
+    }
+    .card-protecao {
+      border-top: 1px solid rgba(74, 140, 111, .6);
     }
   </style>
 </head>
@@ -231,38 +262,101 @@
   <!-- Ghost number -->
   <div class="ghost-number">8</div>
 
-  <!-- Radial glow -->
-  <div class="glow"></div>
+  <!-- Main layout -->
+  <div class="layout">
 
-  <!-- App screenshot — bottom 60% -->
-  <div class="app-zone">
-    <img src="../raw-cropped/02-colecoes.png" alt="Coleções">
-  </div>
-
-  <!-- Fade bridge -->
-  <div class="fade-bridge"></div>
-
-  <!-- Emotional word grid — top 40% -->
-  <div class="top-zone">
-    <div class="deco-bar"></div>
-    <p class="eyebrow">Para o que você sente agora</p>
-    <div class="word-grid">
-      <div class="word-row">
-        <span class="word w-ansiedade">Ansiedade</span>
-        <span class="word w-gratidao">Gratidão</span>
-      </div>
-      <div class="word-row" style="padding-left: 48px;">
-        <span class="word w-sono">Sono</span>
-        <span class="word w-louvor">Louvor</span>
-        <span class="word w-luto">Luto</span>
-      </div>
-      <div class="word-row" style="padding-left: 16px; margin-top: -4px;">
-        <span class="word w-protecao">Proteção</span>
-        <span class="word w-perdao">Perdão</span>
-        <span class="word w-esperanca">Esperança</span>
-      </div>
+    <!-- Header zone -->
+    <div class="header-zone">
+      <div class="deco-bar"></div>
+      <p class="eyebrow">Para o que você sente agora</p>
+      <h1 class="headline">8 coleções de Salmos</h1>
+      <div class="gradient-divider"></div>
     </div>
-    <div class="gradient-divider"></div>
+
+    <!-- Cards grid -->
+    <div class="cards-zone">
+
+      <!-- 1 · Ansiedade -->
+      <div class="card card-ansiedade">
+        <div class="card-label">
+          <span class="dot" style="background:#5567EA;"></span>
+          <span class="emotion-name">Ansiedade</span>
+        </div>
+        <div class="collection-name">Ansiedade</div>
+        <div class="verse-snippet">"Lança o teu cuidado sobre o Senhor"</div>
+      </div>
+
+      <!-- 2 · Sono -->
+      <div class="card card-sono">
+        <div class="card-label">
+          <span class="dot" style="background:#6A9A62;"></span>
+          <span class="emotion-name">Sono</span>
+        </div>
+        <div class="collection-name">Sono</div>
+        <div class="verse-snippet">"Em paz me deito e logo adormeço"</div>
+      </div>
+
+      <!-- 3 · Gratidão -->
+      <div class="card card-gratidao">
+        <div class="card-label">
+          <span class="dot" style="background:#C99A38;"></span>
+          <span class="emotion-name">Gratidão</span>
+        </div>
+        <div class="collection-name">Gratidão</div>
+        <div class="verse-snippet">"Dai graças ao Senhor, pois ele é bom"</div>
+      </div>
+
+      <!-- 4 · Luto -->
+      <div class="card card-luto">
+        <div class="card-label">
+          <span class="dot" style="background:#9A6A86;"></span>
+          <span class="emotion-name">Luto</span>
+        </div>
+        <div class="collection-name">Luto</div>
+        <div class="verse-snippet">"Perto está o Senhor dos que sofrem"</div>
+      </div>
+
+      <!-- 5 · Esperança -->
+      <div class="card card-esperanca">
+        <div class="card-label">
+          <span class="dot" style="background:#2A47DD;"></span>
+          <span class="emotion-name">Esperança</span>
+        </div>
+        <div class="collection-name">Esperança</div>
+        <div class="verse-snippet">"A minha esperança vem do Senhor"</div>
+      </div>
+
+      <!-- 6 · Perdão -->
+      <div class="card card-perdao">
+        <div class="card-label">
+          <span class="dot" style="background:#8480AA;"></span>
+          <span class="emotion-name">Perdão</span>
+        </div>
+        <div class="collection-name">Perdão</div>
+        <div class="verse-snippet">"Tão longe quanto o oriente do ocidente"</div>
+      </div>
+
+      <!-- 7 · Louvor -->
+      <div class="card card-louvor">
+        <div class="card-label">
+          <span class="dot" style="background:#D4A843;"></span>
+          <span class="emotion-name">Louvor</span>
+        </div>
+        <div class="collection-name">Louvor</div>
+        <div class="verse-snippet">"É bom louvar ao nosso Deus"</div>
+      </div>
+
+      <!-- 8 · Proteção -->
+      <div class="card card-protecao">
+        <div class="card-label">
+          <span class="dot" style="background:#4A8C6F;"></span>
+          <span class="emotion-name">Proteção</span>
+        </div>
+        <div class="collection-name">Proteção</div>
+        <div class="verse-snippet">"O Senhor é o meu pastor"</div>
+      </div>
+
+    </div>
   </div>
 
 </body>
