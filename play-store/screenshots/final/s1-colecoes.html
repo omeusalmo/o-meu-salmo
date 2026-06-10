@@ -28,17 +28,14 @@
       width: 1080px;
       height: 1920px;
       overflow: hidden;
-      background:
-        radial-gradient(ellipse 70% 50% at 50% 20%, #111830 0%, #080B1C 55%),
-        radial-gradient(ellipse 50% 40% at 50% 80%, rgba(180,140,40,0.08) 0%, transparent 70%);
-      background-color: #080B1C;
+      background: var(--night-base);
       font-family: 'Instrument Sans', system-ui, sans-serif;
       font-weight: 300;
       -webkit-font-smoothing: antialiased;
       position: relative;
     }
 
-    /* ── NOISE OVERLAY ── */
+    /* ── NOISE OVERLAY (LP body::after) ── */
     body::after {
       content: '';
       position: absolute;
@@ -49,7 +46,7 @@
       opacity: .028;
     }
 
-    /* ── ANIMATED BLOBS ── */
+    /* ── ANIMATED BLOBS (LP hero blobs) ── */
     .blob {
       position: absolute;
       border-radius: 50%;
@@ -85,7 +82,7 @@
       66%      { transform: translate(-18px,18px) scale(.96); }
     }
 
-    /* ── GHOST NUMBER ── */
+    /* ── GHOST NUMBER (LP .ghost) ── */
     .ghost-number {
       position: absolute;
       right: -.06em;
@@ -109,24 +106,29 @@
       z-index: 3;
       display: flex;
       flex-direction: column;
+      height: 1920px;
     }
 
-    /* ── HEADER ZONE (~340px) ── */
+    /* ── VALUE-PROP ZONE (~460px) ── */
     .header-zone {
       flex-shrink: 0;
-      height: 340px;
-      padding: 72px 72px 0;
+      height: 460px;
+      padding: 90px 80px 0;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       position: relative;
     }
 
+    /* Bottom fade: cards emerge from darkness */
     .header-zone::after {
       content: '';
       position: absolute;
-      bottom: 0; left: 0; right: 0; height: 80px;
-      background: linear-gradient(to bottom, transparent, #080B1C);
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(to bottom, transparent 60%, #080B1C 100%);
       pointer-events: none;
       z-index: 4;
     }
@@ -136,103 +138,102 @@
       height: 2px;
       background: var(--cobalt-500);
       border-radius: 1px;
-      margin-bottom: 16px;
+      opacity: .7;
+      margin-bottom: 28px;
+    }
+
+    .eyebrow {
+      font-family: 'Instrument Sans', system-ui, sans-serif;
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: .30em;
+      text-transform: uppercase;
+      color: var(--night-text);
+      margin-bottom: 22px;
     }
 
     .headline {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .headline-line1 {
       font-family: 'Playfair Display', Georgia, serif;
       font-style: italic;
       font-weight: 400;
-      font-size: 64px;
-      letter-spacing: -.01em;
-      line-height: 1.1;
-      color: #8C97D4;
-    }
-
-    .headline-line2 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-style: italic;
-      font-weight: 600;
-      font-size: 96px;
+      font-size: 88px;
       letter-spacing: -.02em;
-      line-height: 1.0;
-      color: #EEF0FC;
-      margin-top: -8px;
+      line-height: 1.05;
+      color: var(--night-cream);
+      margin-bottom: 28px;
     }
 
     .sub {
       font-family: 'Instrument Sans', system-ui, sans-serif;
       font-size: 22px;
       font-weight: 300;
-      letter-spacing: .18em;
+      letter-spacing: .24em;
       text-transform: uppercase;
-      color: #7080C8;
-      margin-top: 20px;
+      color: var(--night-muted);
     }
 
-    /* ── CARDS ZONE ── */
-    /* padding-top 32px: natural breathing room after header.
-       Stack: 460 + 16 + 240 + 16 + 240 + 16 + 240 = 1228px.
-       Canvas: 1920px. Header: 340px. Top pad: 32px.
-       Cards bottom: 340 + 32 + 1228 = 1600px — last card occupies 1360–1600px, fully visible.
-       Esperança shows full card; scroll tension from visual crop is handled by the
-       tight canvas boundary (80px of canvas below card = implied depth). */
+    /* ── CARDS GRID ZONE ── */
     .cards-zone {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 0 48px 80px;
+      align-content: center;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--night-plus);
+      border: .5px solid var(--night-line);
+      border-radius: 22px;
+      padding: 32px 28px 36px;
+      box-shadow:
+        0 4px 32px rgba(0,0,0,.4),
+        0 1px 0 rgba(255,255,255,.02) inset;
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      padding: 32px 40px 0;
-    }
-
-    /* ── CARD BASE ── */
-    .card {
-      border-radius: 24px;
-      overflow: hidden;
       position: relative;
-      border: .5px solid rgba(255,255,255,.06);
+      overflow: hidden;
     }
 
-    /* Top-to-bottom scrim so content pops */
-    .card::before {
-      content: '';
+    /* Ghost letter decoration inside card */
+    .card-ghost {
       position: absolute;
-      bottom: 0; left: 0; right: 0; height: 70%;
-      background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 100%);
-      z-index: 1;
+      bottom: -.12em;
+      right: -.06em;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 260px;
+      line-height: 1;
+      letter-spacing: -.02em;
       pointer-events: none;
+      user-select: none;
+      z-index: 0;
     }
 
-    /* ── CARD CONTENT ── */
-    .card-content {
-      position: absolute;
-      z-index: 2;
-      left: 36px;
-      right: 36px;
-      bottom: 40px;
+    /* Card content sits above ghost letter */
+    .card-emotion-row,
+    .card-name,
+    .card-divider,
+    .card-verse {
+      position: relative;
+      z-index: 1;
     }
 
-    .card-content.secondary {
-      left: 28px;
-      right: 28px;
-      bottom: 28px;
-    }
-
+    /* ── EMOTION ROW ── */
     .card-emotion-row {
       display: flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     .dot {
       display: inline-block;
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       flex-shrink: 0;
     }
@@ -243,84 +244,55 @@
       font-weight: 400;
       letter-spacing: .28em;
       text-transform: uppercase;
+      color: var(--night-muted);
     }
 
+    /* ── COLLECTION NAME ── */
     .card-name {
       font-family: 'Playfair Display', Georgia, serif;
       font-style: italic;
-      font-weight: 500;
-      line-height: .95;
-      color: #EEF0FC;
-      letter-spacing: -.03em;
+      font-weight: 400;
+      font-size: 72px;
+      line-height: 1.0;
+      color: var(--night-cream);
+      letter-spacing: -.02em;
+      margin-bottom: 20px;
     }
 
-    .card-name.hero { font-size: 88px; }
-    .card-name.secondary { font-size: 60px; }
-
+    /* ── DIVIDER ── */
     .card-divider {
-      width: 40px;
+      width: 32px;
       height: 1px;
-      background: rgba(255,255,255,.12);
-      margin-top: 20px;
-      margin-bottom: 14px;
+      background: var(--night-line);
+      margin-bottom: 18px;
     }
 
-    .card-divider.secondary {
-      margin-top: 16px;
-      margin-bottom: 12px;
-    }
-
+    /* ── VERSE SNIPPET ── */
     .card-verse {
       font-family: 'Cormorant', Georgia, serif;
       font-style: italic;
       font-weight: 400;
+      font-size: 26px;
       line-height: 1.4;
       color: var(--gold);
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
 
-    .card-verse.hero { font-size: 28px; }
-    .card-verse.secondary { font-size: 24px; }
-
-    /* ── GHOST LETTER PER CARD ── */
-    .card-ghost {
-      position: absolute;
-      bottom: -0.1em;
-      right: -0.05em;
-      font-family: 'Playfair Display', Georgia, serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: 300px;
-      line-height: 1;
-      letter-spacing: -.02em;
-      pointer-events: none;
-      user-select: none;
-      z-index: 0;
-      opacity: .05;
-    }
-
-    /* ── PER-EMOTION CARD BACKGROUNDS ── */
+    /* ── PER-CARD ACCENT BORDERS ── */
     .card-ansiedade {
-      height: 460px;
-      background: radial-gradient(ellipse 120% 100% at 20% 60%, #1e2d5e 0%, #0c0f1e 55%, #080B1C 100%);
-      border-left: 2px solid rgba(85,103,234,0.6);
+      border-top: 1.5px solid rgba(85, 103, 234, .5);
     }
-
     .card-sono {
-      height: 240px;
-      background: radial-gradient(ellipse 120% 100% at 80% 40%, #1a0f2e 0%, #0d0a18 55%, #080B1C 100%);
-      border-left: 2px solid rgba(106,154,98,0.6);
+      border-top: 1.5px solid rgba(106, 154, 98, .5);
     }
-
     .card-luto {
-      height: 240px;
-      background: radial-gradient(ellipse 100% 80% at 50% 60%, #1c1410 0%, #0d0b09 60%, #080B1C 100%);
-      border-left: 2px solid rgba(154,106,134,0.6);
+      border-top: 1.5px solid rgba(154, 106, 134, .5);
     }
-
     .card-esperanca {
-      height: 240px;
-      background: radial-gradient(ellipse 100% 80% at 50% 20%, #1a1600 0%, #0e0d08 60%, #080B1C 100%);
-      border-left: 2px solid rgba(196,168,106,0.6);
+      border-top: 1.5px solid rgba(42, 71, 221, .5);
     }
   </style>
 </head>
@@ -337,73 +309,62 @@
   <!-- Main layout -->
   <div class="layout">
 
-    <!-- Header zone -->
+    <!-- Value-prop zone -->
     <div class="header-zone">
       <div class="deco-bar"></div>
-      <h1 class="headline">
-        <span class="headline-line1">O que você</span>
-        <span class="headline-line2">sente agora?</span>
-      </h1>
-      <p class="sub">4 emoções. O salmo certo para cada uma.</p>
+      <h1 class="headline">O Salmo certo agora</h1>
+      <p class="sub">Escolha o que sente. Ele encontra a palavra.</p>
     </div>
 
-    <!-- Cards stack -->
+    <!-- Cards grid: 2×2 -->
     <div class="cards-zone">
 
-      <!-- 1 · Ansiedade — hero card -->
+      <!-- 1 · Ansiedade -->
       <div class="card card-ansiedade">
-        <div class="card-ghost" style="color: rgba(85,103,234,1);">A</div>
-        <div class="card-content">
-          <div class="card-emotion-row">
-            <span class="dot" style="background: rgba(85,103,234,0.8);"></span>
-            <span class="emotion-label" style="color: rgba(85,103,234,0.8);">Ansiedade</span>
-          </div>
-          <div class="card-name hero">Ansiedade</div>
-          <div class="card-divider"></div>
-          <div class="card-verse hero">"Lança o teu cuidado sobre o Senhor"</div>
+        <div class="card-ghost" style="color: rgba(85,103,234,.04);">A</div>
+        <div class="card-emotion-row">
+          <span class="dot" style="background:#5567EA;"></span>
+          <span class="emotion-label">Ansiedade</span>
         </div>
+        <div class="card-name">Ansiedade</div>
+        <div class="card-divider"></div>
+        <div class="card-verse">"Lança o teu cuidado sobre o Senhor"</div>
       </div>
 
       <!-- 2 · Sono -->
       <div class="card card-sono">
-        <div class="card-ghost" style="color: rgba(106,154,98,1);">S</div>
-        <div class="card-content secondary">
-          <div class="card-emotion-row">
-            <span class="dot" style="background: rgba(106,154,98,0.8);"></span>
-            <span class="emotion-label" style="color: rgba(106,154,98,0.8);">Sono</span>
-          </div>
-          <div class="card-name secondary">Sono</div>
-          <div class="card-divider secondary"></div>
-          <div class="card-verse secondary">"Em paz me deito e logo adormeço"</div>
+        <div class="card-ghost" style="color: rgba(106,154,98,.04);">S</div>
+        <div class="card-emotion-row">
+          <span class="dot" style="background:#6A9A62;"></span>
+          <span class="emotion-label">Sono</span>
         </div>
+        <div class="card-name">Sono</div>
+        <div class="card-divider"></div>
+        <div class="card-verse">"Em paz me deito e logo adormeço"</div>
       </div>
 
       <!-- 3 · Luto -->
       <div class="card card-luto">
-        <div class="card-ghost" style="color: rgba(154,106,134,1);">L</div>
-        <div class="card-content secondary">
-          <div class="card-emotion-row">
-            <span class="dot" style="background: rgba(154,106,134,0.8);"></span>
-            <span class="emotion-label" style="color: rgba(154,106,134,0.8);">Luto</span>
-          </div>
-          <div class="card-name secondary">Luto</div>
-          <div class="card-divider secondary"></div>
-          <div class="card-verse secondary">"Perto está o Senhor dos que sofrem"</div>
+        <div class="card-ghost" style="color: rgba(154,106,134,.04);">L</div>
+        <div class="card-emotion-row">
+          <span class="dot" style="background:#9A6A86;"></span>
+          <span class="emotion-label">Luto</span>
         </div>
+        <div class="card-name">Luto</div>
+        <div class="card-divider"></div>
+        <div class="card-verse">"Perto está o Senhor dos que sofrem"</div>
       </div>
 
-      <!-- 4 · Esperança — cropped at bottom edge for scroll tension -->
+      <!-- 4 · Esperança -->
       <div class="card card-esperanca">
-        <div class="card-ghost" style="color: rgba(196,168,106,1);">E</div>
-        <div class="card-content secondary">
-          <div class="card-emotion-row">
-            <span class="dot" style="background: rgba(196,168,106,0.8);"></span>
-            <span class="emotion-label" style="color: rgba(196,168,106,0.8);">Esperança</span>
-          </div>
-          <div class="card-name secondary">Esperança</div>
-          <div class="card-divider secondary"></div>
-          <div class="card-verse secondary">"A minha esperança vem do Senhor"</div>
+        <div class="card-ghost" style="color: rgba(42,71,221,.04);">E</div>
+        <div class="card-emotion-row">
+          <span class="dot" style="background:#2A47DD;"></span>
+          <span class="emotion-label">Esperança</span>
         </div>
+        <div class="card-name">Esperança</div>
+        <div class="card-divider"></div>
+        <div class="card-verse">"A minha esperança vem do Senhor"</div>
       </div>
 
     </div>
