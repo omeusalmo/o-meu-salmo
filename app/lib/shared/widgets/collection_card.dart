@@ -37,106 +37,95 @@ class CollectionCard extends StatelessWidget {
     final accent   = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
     final dotColor = _emoDot(emocaoId);
 
-    return Material(
-      color: surface,
+    // ClipRRect handles borderRadius — BoxDecoration pode usar Border assimétrico
+    // sem triggerar "borderRadius can only be given on borders with uniform colors"
+    return ClipRRect(
       borderRadius: BorderRadius.circular(AppTheme.radiusMd),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(AppTheme.radiusMd),
-        splashColor: accent.withAlpha(30),
-        highlightColor: accent.withAlpha(15),
-        onTap: onTap,
-        child: Stack(
-          children: [
-            Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(AppTheme.radiusMd),
-                border: Border.all(color: border, width: 0.5),
-              ),
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppTheme.sp5,
-                vertical: AppTheme.sp5,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        width: 6,
-                        height: 6,
-                        decoration: BoxDecoration(
-                          color: dotColor,
-                          shape: BoxShape.circle,
-                        ),
-                      ),
-                      const SizedBox(width: 6),
-                      Text(
-                        '$totalSalmos SALMOS',
-                        style: GoogleFonts.instrumentSans(
-                          fontSize: 11,
-                          fontWeight: FontWeight.w400,
-                          letterSpacing: 3.74,
-                          color: bodyClr,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: AppTheme.sp2),
-                  Text(
-                    titulo,
-                    style: GoogleFonts.playfairDisplay(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w400,
-                      color: titleClr,
-                      height: 1.15,
-                      letterSpacing: -0.33,
-                    ),
-                  ),
-                  const SizedBox(height: AppTheme.sp1 + 2),
-                  Text(
-                    subtitulo,
-                    style: GoogleFonts.cormorant(
-                      fontSize: 15,
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.w400,
-                      color: bodyClr,
-                      height: 1.5,
-                    ),
-                  ),
-                  const SizedBox(height: AppTheme.sp4),
-                  Row(
-                    children: [
-                      Text(
-                        'Ver salmos',
-                        style: GoogleFonts.instrumentSans(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w500,
-                          color: accent,
-                        ),
-                      ),
-                      const SizedBox(width: AppTheme.sp1),
-                      Icon(Icons.arrow_forward_rounded, size: 13, color: accent),
-                    ],
-                  ),
-                ],
+      child: Material(
+        color: surface,
+        child: InkWell(
+          splashColor: accent.withAlpha(30),
+          highlightColor: accent.withAlpha(15),
+          onTap: onTap,
+          child: Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              border: Border(
+                top:    BorderSide(color: dotColor.withAlpha(128), width: 1.5),
+                left:   BorderSide(color: border, width: 0.5),
+                right:  BorderSide(color: border, width: 0.5),
+                bottom: BorderSide(color: border, width: 0.5),
               ),
             ),
-            Positioned(
-              top: 0,
-              left: 0,
-              right: 0,
-              child: Container(
-                height: 1.5,
-                decoration: BoxDecoration(
-                  color: dotColor.withAlpha(128),
-                  borderRadius: const BorderRadius.vertical(
-                    top: Radius.circular(AppTheme.radiusMd),
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppTheme.sp5,
+              vertical: AppTheme.sp5,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      width: 6,
+                      height: 6,
+                      decoration: BoxDecoration(
+                        color: dotColor,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                    const SizedBox(width: 6),
+                    Text(
+                      '$totalSalmos SALMOS',
+                      style: GoogleFonts.instrumentSans(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w400,
+                        letterSpacing: 3.74,
+                        color: bodyClr,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: AppTheme.sp2),
+                Text(
+                  titulo,
+                  style: GoogleFonts.playfairDisplay(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w400,
+                    color: titleClr,
+                    height: 1.15,
+                    letterSpacing: -0.33,
                   ),
                 ),
-              ),
+                const SizedBox(height: AppTheme.sp1 + 2),
+                Text(
+                  subtitulo,
+                  style: GoogleFonts.cormorant(
+                    fontSize: 15,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w400,
+                    color: bodyClr,
+                    height: 1.5,
+                  ),
+                ),
+                const SizedBox(height: AppTheme.sp4),
+                Row(
+                  children: [
+                    Text(
+                      'Ver salmos',
+                      style: GoogleFonts.instrumentSans(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500,
+                        color: accent,
+                      ),
+                    ),
+                    const SizedBox(width: AppTheme.sp1),
+                    Icon(Icons.arrow_forward_rounded, size: 13, color: accent),
+                  ],
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
