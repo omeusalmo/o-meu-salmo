@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../core/extensions/build_context_extensions.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/salmo.dart';
 import '../../data/providers/salmos_providers.dart';
@@ -16,7 +17,7 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncSalmo = ref.watch(salmoDoDialProvider);
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = context.isDark;
     final bg = isDark ? AppColors.nightBase : AppColors.dayBase;
 
     // Desbloqueia a reflexão do Salmo do Dia automaticamente
@@ -68,7 +69,7 @@ class _HomeContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark  = Theme.of(context).brightness == Brightness.dark;
+    final isDark  = context.isDark;
     final accent  = isDark ? AppColors.cobalt400 : AppColors.cobalt500;
     final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
     final muted   = isDark ? AppColors.nightText  : AppColors.dayText;
@@ -283,7 +284,7 @@ class _CollectionsShortcut extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark   = Theme.of(context).brightness == Brightness.dark;
+    final isDark   = context.isDark;
     final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
     final accent   = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
     final cardBg   = isDark
@@ -370,7 +371,7 @@ class _PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = context.isDark;
     final accent = isDark ? AppColors.cobalt400 : AppColors.cobalt500;
 
     return GestureDetector(

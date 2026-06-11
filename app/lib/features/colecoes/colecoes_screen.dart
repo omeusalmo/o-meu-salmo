@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../core/extensions/build_context_extensions.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/providers/salmos_providers.dart';
 import '../../shared/widgets/collection_card.dart';
@@ -13,11 +14,10 @@ class ColecoesScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncColecoes = ref.watch(colecoesProvider);
-    final isDark   = Theme.of(context).brightness == Brightness.dark;
-    final bg       = isDark ? AppColors.nightBase  : AppColors.dayBase;
-    final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
-    final border   = isDark ? AppColors.nightLine  : AppColors.dayLine;
-    final muted    = isDark ? AppColors.nightMuted : AppColors.dayMuted;
+    final bg       = context.colorBg;
+    final titleClr = context.colorTitle;
+    final border   = context.colorBorder;
+    final muted    = context.isDark ? AppColors.nightMuted : AppColors.dayMuted;
 
     return Scaffold(
       backgroundColor: bg,
@@ -89,11 +89,8 @@ class _LoadingState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final accent = Theme.of(context).brightness == Brightness.dark
-        ? AppColors.cobalt400
-        : AppColors.cobalt500;
     return Center(
-      child: CircularProgressIndicator(color: accent, strokeWidth: 1.5),
+      child: CircularProgressIndicator(color: context.colorAccent, strokeWidth: 1.5),
     );
   }
 }
@@ -103,14 +100,13 @@ class _ErrorState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Center(
       child: Text(
         'Não consegui carregar as coleções.\nTente novamente.',
         textAlign: TextAlign.center,
         style: GoogleFonts.instrumentSans(
           fontSize: 15,
-          color: isDark ? AppColors.nightText : AppColors.dayText,
+          color: context.colorText,
           height: 1.6,
         ),
       ),
@@ -123,13 +119,12 @@ class _EmptyState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Center(
       child: Text(
         'Nenhuma coleção por aqui.\nTente novamente em instantes.',
         style: GoogleFonts.instrumentSans(
           fontSize: 15,
-          color: isDark ? AppColors.nightText : AppColors.dayText,
+          color: context.colorText,
         ),
       ),
     );

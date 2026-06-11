@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../core/extensions/build_context_extensions.dart';
 import '../../core/theme/app_theme.dart';
 
 /// Uma linha de versículo com número superscrito à esquerda.
@@ -21,13 +22,13 @@ class VerseLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = context.isDark;
 
     final verseColor = destaque
         ? (isDark ? AppColors.gold : AppColors.goldInk)
-        : (isDark ? AppColors.nightText : AppColors.dayText);
+        : context.colorText;
 
-    final numColor = isDark ? AppColors.cobalt400 : AppColors.cobalt500;
+    final numColor = context.colorAccent;
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),

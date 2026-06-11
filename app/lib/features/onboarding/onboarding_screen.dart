@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../core/extensions/build_context_extensions.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/providers/onboarding_provider.dart';
 
@@ -54,7 +55,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = context.isDark;
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
@@ -285,7 +286,7 @@ class _Page2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = context.isDark;
     final cardBg = isDark ? AppColors.nightPlus : Colors.white;
     final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
     final textClr = isDark ? AppColors.nightText : AppColors.dayText;
@@ -488,7 +489,7 @@ class _Page3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = context.isDark;
     final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
     final textClr = isDark ? AppColors.nightText : AppColors.dayText;
     final mutedClr = isDark ? AppColors.nightMuted : AppColors.dayMuted;

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../core/analytics/analytics_service.dart';
+import '../../core/extensions/build_context_extensions.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/salmo.dart';
 import '../../data/providers/salmos_providers.dart';
@@ -20,7 +21,7 @@ class DetalheColecaoScreen extends ConsumerWidget {
     final colecaoAsync = ref.watch(colecaoDetalheProvider(colecaoId));
     final salmosAsync  = ref.watch(salmosProvider);
 
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = context.isDark;
     final bg     = isDark ? AppColors.nightBase : AppColors.dayBase;
 
     // Aguarda ambos os providers

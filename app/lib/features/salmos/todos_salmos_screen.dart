@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../core/analytics/analytics_service.dart';
+import '../../core/extensions/build_context_extensions.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/salmo.dart';
 import '../../data/providers/salmos_providers.dart';
@@ -43,11 +44,10 @@ class _TodosSalmosScreenState extends ConsumerState<TodosSalmosScreen> {
   @override
   Widget build(BuildContext context) {
     final asyncSalmos = ref.watch(salmosProvider);
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final bg = isDark ? AppColors.nightBase : AppColors.dayBase;
-    final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
-    final border = isDark ? AppColors.nightLine : AppColors.dayLine;
-    final muted  = isDark ? AppColors.nightText  : AppColors.dayText;
+    final bg       = context.colorBg;
+    final titleClr = context.colorTitle;
+    final border   = context.colorBorder;
+    final muted    = context.colorText;
 
     return Scaffold(
       backgroundColor: bg,
@@ -122,12 +122,11 @@ class _SearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark  = Theme.of(context).brightness == Brightness.dark;
-    final surface = isDark ? AppColors.nightPlus  : AppColors.dayPlus;
-    final border  = isDark ? AppColors.nightLine  : AppColors.dayLine;
-    final textClr = isDark ? AppColors.nightText  : AppColors.dayText;
-    final muted   = isDark ? AppColors.nightText  : AppColors.dayText;
-    final accent  = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
+    final surface = context.colorSurface;
+    final border  = context.colorBorder;
+    final textClr = context.colorText;
+    final muted   = context.colorText;
+    final accent  = context.colorAccent;
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(
@@ -160,7 +159,7 @@ class _SearchBar extends StatelessWidget {
                   hintText: 'Buscar um salmo…',
                   hintStyle: GoogleFonts.instrumentSans(
                     fontSize: 15,
-                    color: isDark ? AppColors.nightText : AppColors.dayText,
+                    color: context.colorText,
                   ),
                   border: InputBorder.none,
                   isDense: true,
@@ -235,11 +234,8 @@ class _LoadingState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final accent = Theme.of(context).brightness == Brightness.dark
-        ? AppColors.cobalt400
-        : AppColors.cobalt500;
     return Center(
-      child: CircularProgressIndicator(color: accent, strokeWidth: 1.5),
+      child: CircularProgressIndicator(color: context.colorAccent, strokeWidth: 1.5),
     );
   }
 }
@@ -249,14 +245,13 @@ class _ErrorState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Center(
       child: Text(
         'Não consegui carregar os Salmos.\nTente novamente.',
         textAlign: TextAlign.center,
         style: GoogleFonts.instrumentSans(
           fontSize: 15,
-          color: isDark ? AppColors.nightText : AppColors.dayText,
+          color: context.colorText,
           height: 1.6,
         ),
       ),
@@ -270,8 +265,7 @@ class _EmptyState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final text  = isDark ? AppColors.nightText  : AppColors.dayText;
+    final text  = context.colorText;
 
     return Center(
       child: Padding(
@@ -294,7 +288,7 @@ class _EmptyState extends StatelessWidget {
               style: GoogleFonts.cormorant(
                 fontSize: 17,
                 fontStyle: FontStyle.italic,
-                color: isDark ? AppColors.nightText : AppColors.dayText,
+                color: context.colorText,
               ),
             ),
           ],

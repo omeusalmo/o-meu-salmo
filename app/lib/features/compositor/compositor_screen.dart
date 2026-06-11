@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../core/analytics/analytics_service.dart';
+import '../../core/extensions/build_context_extensions.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/salmo.dart';
 import '../../data/providers/salmos_providers.dart';
@@ -76,7 +77,7 @@ class _CompositorScreenState extends ConsumerState<CompositorScreen> {
   @override
   Widget build(BuildContext context) {
     final asyncSalmo = ref.watch(salmoDetalheProvider(widget.numero));
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = context.isDark;
     final bg = isDark ? AppColors.nightBase : AppColors.dayBase;
 
     return Scaffold(
@@ -139,7 +140,7 @@ class _CompositorBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = context.isDark;
     final border = isDark ? AppColors.nightLine : AppColors.dayLine;
 
     return Column(
@@ -337,7 +338,7 @@ class _FundoChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark  = Theme.of(context).brightness == Brightness.dark;
+    final isDark  = context.isDark;
     final border  = isDark ? AppColors.nightLine  : AppColors.dayLine;
     final accent  = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
     final lblClr  = isDark ? AppColors.nightText  : AppColors.dayText;
@@ -504,7 +505,7 @@ class _ShareButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = context.isDark;
     final accent = isDark ? AppColors.cobalt400 : AppColors.cobalt500;
 
     return GestureDetector(

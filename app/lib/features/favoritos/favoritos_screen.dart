@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../core/extensions/build_context_extensions.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/salmo.dart';
 import '../../data/providers/favoritos_provider.dart';
@@ -21,17 +22,49 @@ class FavoritosScreen extends ConsumerStatefulWidget {
 class _FavoritosScreenState extends ConsumerState<FavoritosScreen> {
   _FavSortOrder _sortOrder = _FavSortOrder.byNumber;
 
+  // Cached sorted list — recomputed only when inputs change
+  List<Salmo> _cachedList = [];
+  Set<int>     _lastNumeros    = {};
+  Map<int, int> _lastTimestamps = {};
+  _FavSortOrder _lastSortOrder = _FavSortOrder.byNumber;
+
+  List<Salmo> _sortedFavoritos({
+    required Set<int>      numeros,
+    required List<Salmo>   todos,
+    required Map<int, int> timestamps,
+  }) {
+    if (numeros == _lastNumeros &&
+        timestamps == _lastTimestamps &&
+        _sortOrder == _lastSortOrder) {
+      return _cachedList;
+    }
+    final list = todos.where((s) => numeros.contains(s.numero)).toList();
+    if (_sortOrder == _FavSortOrder.byRecent) {
+      list.sort((a, b) {
+        final ta = timestamps[a.numero] ?? 0;
+        final tb = timestamps[b.numero] ?? 0;
+        return tb.compareTo(ta);
+      });
+    } else {
+      list.sort((a, b) => a.numero.compareTo(b.numero));
+    }
+    _lastNumeros    = numeros;
+    _lastTimestamps = timestamps;
+    _lastSortOrder  = _sortOrder;
+    _cachedList     = list;
+    return list;
+  }
+
   @override
   Widget build(BuildContext context) {
     final favoritosAsync  = ref.watch(favoritosProvider);
     final salmosAsync     = ref.watch(salmosProvider);
     final timestampsAsync = ref.watch(favTimestampsProvider);
-    final isDark    = Theme.of(context).brightness == Brightness.dark;
-    final bg        = isDark ? AppColors.nightBase  : AppColors.dayBase;
-    final titleClr  = isDark ? AppColors.nightCream : AppColors.dayTitle;
-    final border    = isDark ? AppColors.nightLine  : AppColors.dayLine;
-    final muted     = isDark ? AppColors.nightText  : AppColors.dayText;
-    final accent    = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
+    final bg        = context.colorBg;
+    final titleClr  = context.colorTitle;
+    final border    = context.colorBorder;
+    final muted     = context.colorText;
+    final accent    = context.colorAccent;
 
     Widget body;
 
@@ -58,18 +91,11 @@ class _FavoritosScreenState extends ConsumerState<FavoritosScreen> {
       final timestamps = timestampsAsync.value ?? {};
 
       if (numeros.isEmpty) {
-        body = _EmptyState(isDark: isDark);
+        body = const _EmptyState();
       } else {
-        final favoritos = todos.where((s) => numeros.contains(s.numero)).toList();
-        if (_sortOrder == _FavSortOrder.byRecent) {
-          favoritos.sort((a, b) {
-            final ta = timestamps[a.numero] ?? 0;
-            final tb = timestamps[b.numero] ?? 0;
-            return tb.compareTo(ta); // mais recente primeiro
-          });
-        } else {
-          favoritos.sort((a, b) => a.numero.compareTo(b.numero));
-        }
+        final favoritos = _sortedFavoritos(
+          numeros: numeros, todos: todos, timestamps: timestamps,
+        );
         body = _FavoritosList(salmos: favoritos);
       }
     }
@@ -85,7 +111,7 @@ class _FavoritosScreenState extends ConsumerState<FavoritosScreen> {
         actions: [
           PopupMenuButton<_FavSortOrder>(
             icon: Icon(Icons.sort_rounded, size: 20, color: muted),
-            color: isDark ? AppColors.nightBase : AppColors.dayBase,
+            color: bg,
             elevation: 4,
             onSelected: (v) => setState(() => _sortOrder = v),
             itemBuilder: (_) => [
@@ -181,12 +207,11 @@ class _FavoritosList extends StatelessWidget {
 }
 
 class _EmptyState extends StatelessWidget {
-  final bool isDark;
-  const _EmptyState({required this.isDark});
+  const _EmptyState();
 
   @override
   Widget build(BuildContext context) {
-    final text = isDark ? AppColors.nightText : AppColors.dayText;
+    final text = context.colorText;
 
     return Center(
       child: Padding(

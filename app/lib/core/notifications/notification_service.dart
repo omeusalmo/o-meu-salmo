@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
@@ -10,7 +12,7 @@ class NotificationService {
   bool _initialized = false;
 
   static const int _dailyPsalmId = 1;
-  static const String _channelId = 'salmo_diario';
+  static const String _channelId   = 'salmo_diario';
   static const String _channelName = 'Salmo diário';
 
   Future<void> init() async {
@@ -18,16 +20,33 @@ class NotificationService {
     tz.initializeTimeZones();
 
     const androidInit = AndroidInitializationSettings('@mipmap/launcher_icon');
-    const initSettings = InitializationSettings(android: androidInit);
-    await _plugin.initialize(initSettings);
+    const iosInit     = DarwinInitializationSettings(
+      requestAlertPermission: false,
+      requestBadgePermission: false,
+      requestSoundPermission: false,
+    );
+
+    await _plugin.initialize(
+      const InitializationSettings(android: androidInit, iOS: iosInit),
+    );
     _initialized = true;
   }
 
   Future<bool> requestPermission() async {
-    final android = _plugin.resolvePlatformSpecificImplementation<
-        AndroidFlutterLocalNotificationsPlugin>();
-    final granted = await android?.requestNotificationsPermission() ?? false;
-    return granted;
+    if (Platform.isAndroid) {
+      final android = _plugin.resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>();
+      return await android?.requestNotificationsPermission() ?? false;
+    }
+    if (Platform.isIOS) {
+      final ios = _plugin.resolvePlatformSpecificImplementation<
+          IOSFlutterLocalNotificationsPlugin>();
+      return await ios?.requestPermissions(
+            alert: true, badge: true, sound: true,
+          ) ??
+          false;
+    }
+    return false;
   }
 
   // Agenda notificação diária repetindo todo dia no horário especificado.
@@ -43,8 +62,7 @@ class NotificationService {
       scheduled = scheduled.add(const Duration(days: 1));
     }
 
-    final dayOfYear = _dayOfYear(scheduled);
-    final numero = (dayOfYear - 1) % 150 + 1;
+    final numero = (_dayOfYear(scheduled) - 1) % 150 + 1;
 
     await _plugin.zonedSchedule(
       _dailyPsalmId,
@@ -58,6 +76,11 @@ class NotificationService {
           importance: Importance.defaultImportance,
           priority: Priority.defaultPriority,
           icon: '@mipmap/launcher_icon',
+        ),
+        iOS: DarwinNotificationDetails(
+          presentAlert: true,
+          presentBadge: true,
+          presentSound: true,
         ),
       ),
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,

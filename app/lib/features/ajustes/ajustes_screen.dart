@@ -5,8 +5,9 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../core/theme/app_theme.dart';
+import '../../core/extensions/build_context_extensions.dart';
 import '../../core/notifications/notification_service.dart';
+import '../../core/theme/app_theme.dart';
 import '../../data/providers/settings_provider.dart';
 
 class AjustesScreen extends ConsumerWidget {
@@ -15,7 +16,7 @@ class AjustesScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeModeProvider);
-    final isDark    = Theme.of(context).brightness == Brightness.dark;
+    final isDark    = context.isDark;
     final bg        = isDark ? AppColors.nightBase  : AppColors.dayBase;
     final titleClr  = isDark ? AppColors.nightCream : AppColors.dayTitle;
     final border    = isDark ? AppColors.nightLine  : AppColors.dayLine;

@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../core/analytics/analytics_service.dart';
+import '../../core/extensions/build_context_extensions.dart';
 import '../../core/review/review_service.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/salmo.dart';
@@ -61,7 +62,7 @@ class _LeituraSalmoView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = context.isDark;
     final bg     = isDark ? AppColors.nightBase : AppColors.dayBase;
     final isFav  = ref.watch(favoritosProvider).value?.contains(salmo.numero) ?? false;
 
@@ -88,7 +89,7 @@ class _LeituraSalmoView extends ConsumerWidget {
     await ref.read(favoritosProvider.notifier).toggle(salmo.numero);
     if (!context.mounted) return;
     final msg = atual ? 'Removido dos favoritos.' : 'Guardado no seu coração.';
-    final isDarkCtx = Theme.of(context).brightness == Brightness.dark;
+    final isDarkCtx = context.isDark;
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
@@ -101,7 +102,7 @@ class _LeituraSalmoView extends ConsumerWidget {
         duration: const Duration(seconds: 2),
         behavior: SnackBarBehavior.floating,
         backgroundColor:
-            Theme.of(context).brightness == Brightness.dark
+            context.isDark
                 ? AppColors.nightPlus
                 : AppColors.dayPlus,
         shape: RoundedRectangleBorder(
@@ -129,7 +130,7 @@ class _Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = context.isDark;
     final border = isDark ? AppColors.nightLine  : AppColors.dayLine;
     final muted  = isDark ? AppColors.nightText  : AppColors.dayText;
     final accent = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
@@ -197,7 +198,7 @@ class _BodyState extends ConsumerState<_Body> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark  = Theme.of(context).brightness == Brightness.dark;
+    final isDark  = context.isDark;
     final accent  = isDark ? AppColors.cobalt400 : AppColors.cobalt500;
     final title   = isDark ? AppColors.nightCream : AppColors.dayTitle;
     final border  = isDark ? AppColors.nightLine  : AppColors.dayLine;
@@ -295,7 +296,7 @@ class _BodyState extends ConsumerState<_Body> {
 class _LockedReflexao extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = context.isDark;
     final muted  = isDark ? AppColors.nightText : AppColors.dayText;
     final accent = isDark ? AppColors.cobalt400 : AppColors.cobalt500;
 
@@ -369,7 +370,7 @@ class _UnlockedReflexao extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = context.isDark;
     final accent = isDark ? AppColors.cobalt400 : AppColors.cobalt500;
     final text   = isDark ? AppColors.nightText  : AppColors.dayText;
 
@@ -503,7 +504,7 @@ class _IconBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = context.isDark;
     final border = isDark ? AppColors.nightLine : AppColors.dayLine;
 
     return Semantics(
@@ -535,7 +536,7 @@ class _LoadingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark  = Theme.of(context).brightness == Brightness.dark;
+    final isDark  = context.isDark;
     final bg      = isDark ? AppColors.nightBase : AppColors.dayBase;
     final accent  = isDark ? AppColors.cobalt400 : AppColors.cobalt500;
 
@@ -557,7 +558,7 @@ class _ErrorView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = context.isDark;
     final bg     = isDark ? AppColors.nightBase : AppColors.dayBase;
     final text   = isDark ? AppColors.nightText : AppColors.dayText;
 
@@ -596,7 +597,7 @@ class _NotFoundView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = context.isDark;
     final bg     = isDark ? AppColors.nightBase : AppColors.dayBase;
     final text   = isDark ? AppColors.nightText : AppColors.dayText;
 
@@ -629,7 +630,7 @@ class _BackBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = context.isDark;
     final muted  = isDark ? AppColors.nightText  : AppColors.dayText;
     final border = isDark ? AppColors.nightLine  : AppColors.dayLine;
 

@@ -5,10 +5,14 @@ import '../../core/constants/app_constants.dart';
 
 const _kTimestampsKey = 'fav_timestamps';
 
+final _sharedPrefsProvider = FutureProvider<SharedPreferences>(
+  (_) => SharedPreferences.getInstance(),
+);
+
 class FavTimestampsNotifier extends AsyncNotifier<Map<int, int>> {
   @override
   Future<Map<int, int>> build() async {
-    final prefs = await SharedPreferences.getInstance();
+    final prefs = await ref.watch(_sharedPrefsProvider.future);
     final list = prefs.getStringList(_kTimestampsKey) ?? [];
     return Map.fromEntries(list.map((e) {
       final idx = e.indexOf(':');
@@ -31,7 +35,7 @@ class FavTimestampsNotifier extends AsyncNotifier<Map<int, int>> {
   }
 
   Future<void> _save(Map<int, int> data) async {
-    final prefs = await SharedPreferences.getInstance();
+    final prefs = await ref.read(_sharedPrefsProvider.future);
     await prefs.setStringList(
       _kTimestampsKey,
       data.entries.map((e) => '${e.key}:${e.value}').toList(),
@@ -50,7 +54,7 @@ final favTimestampsProvider =
 class FavoritesNotifier extends AsyncNotifier<Set<int>> {
   @override
   Future<Set<int>> build() async {
-    final prefs = await SharedPreferences.getInstance();
+    final prefs = await ref.watch(_sharedPrefsProvider.future);
     final list = prefs.getStringList(AppConstants.prefFavoritosKey) ?? [];
     return list.map(int.parse).toSet();
   }
@@ -69,7 +73,7 @@ class FavoritesNotifier extends AsyncNotifier<Set<int>> {
     // Update otimista — UI responde antes da escrita no disco
     state = AsyncValue.data(updated);
     AnalyticsService.instance.logPsalmFavorited(numero, added: adding);
-    final prefs = await SharedPreferences.getInstance();
+    final prefs = await ref.read(_sharedPrefsProvider.future);
     await prefs.setStringList(
       AppConstants.prefFavoritosKey,
       updated.map((n) => n.toString()).toList(),

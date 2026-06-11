@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../core/extensions/build_context_extensions.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/providers/audio_provider.dart';
 
@@ -46,12 +47,11 @@ class _AudioPlayerBarState extends ConsumerState<AudioPlayerBar> {
   @override
   Widget build(BuildContext context) {
     final audio  = ref.watch(audioPlayerProvider);
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final bg     = isDark ? AppColors.nightBase : AppColors.dayBase;
-    final border = isDark ? AppColors.nightLine : AppColors.dayLine;
-    final text   = isDark ? AppColors.nightText : AppColors.dayText;
-    final accent = isDark ? AppColors.cobalt400 : AppColors.cobalt500;
-    final muted  = isDark ? AppColors.nightText  : AppColors.dayText;
+    final bg     = context.colorBg;
+    final border = context.colorBorder;
+    final text   = context.colorText;
+    final accent = context.colorAccent;
+    final muted  = context.colorText;
 
     final available = audio.isAvailable;
 
@@ -101,44 +101,14 @@ class _AudioPlayerBarState extends ConsumerState<AudioPlayerBar> {
       ),
       child: Row(
         children: [
-          // Botão play/pause
-          Semantics(
-            label: audio.isPlaying ? 'Pausar áudio' : 'Ouvir o Salmo',
-            button: true,
-            child: GestureDetector(
-              onTap: available
-                  ? () => ref.read(audioPlayerProvider.notifier).playPause()
-                  : null,
-              child: Container(
-                width: 44,
-                height: 44,
-                decoration: BoxDecoration(
-                  color: btnColor,
-                  shape: BoxShape.circle,
-                  boxShadow: available
-                      ? [
-                          BoxShadow(
-                            color: AppColors.cobalt600.withAlpha(77),
-                            blurRadius: 30,
-                            offset: const Offset(0, 12),
-                          ),
-                        ]
-                      : null,
-                ),
-                child: Center(
-                  child: audio.isLoading
-                      ? const SizedBox(
-                          width: 16,
-                          height: 16,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 1.5,
-                            color: AppColors.nightCream,
-                          ),
-                        )
-                      : _PlayerIcon(isPlaying: audio.isPlaying),
-                ),
-              ),
-            ),
+          _PlayPauseButton(
+            isPlaying: audio.isPlaying,
+            isLoading: audio.isLoading,
+            available: available,
+            color: btnColor,
+            onTap: available
+                ? () => ref.read(audioPlayerProvider.notifier).playPause()
+                : null,
           ),
           const SizedBox(width: AppTheme.sp3),
 
@@ -153,13 +123,13 @@ class _AudioPlayerBarState extends ConsumerState<AudioPlayerBar> {
           ),
           const SizedBox(width: AppTheme.sp2 + 2),
 
-          // Barra de progresso com seek
           Expanded(
-            child: LayoutBuilder(
-              builder: (context, constraints) => GestureDetector(
-              onTapUp: available
-                  ? (d) {
-                      final ratio = (d.localPosition.dx / constraints.maxWidth).clamp(0.0, 1.0);
+            child: _ProgressTrack(
+              progress: available ? progress : 0.0,
+              trackColor: border,
+              fillColor: accent,
+              onSeek: available
+                  ? (ratio) {
                       final target = Duration(
                         milliseconds:
                             (audio.duration.inMilliseconds * ratio).round(),
@@ -167,61 +137,6 @@ class _AudioPlayerBarState extends ConsumerState<AudioPlayerBar> {
                       ref.read(audioPlayerProvider.notifier).seek(target);
                     }
                   : null,
-              child: Stack(
-                alignment: Alignment.centerLeft,
-                children: [
-                  // Track
-                  Container(
-                    height: 3,
-                    decoration: BoxDecoration(
-                      color: border,
-                      borderRadius: BorderRadius.circular(2),
-                    ),
-                  ),
-                  // Fill + Thumb — um único tween garante sincronia
-                  if (available)
-                    TweenAnimationBuilder<double>(
-                      tween: Tween(begin: 0.0, end: progress),
-                      duration: const Duration(milliseconds: 200),
-                      curve: Curves.easeOutCubic,
-                      builder: (_, value, __) => Stack(
-                        alignment: Alignment.centerLeft,
-                        clipBehavior: Clip.none,
-                        children: [
-                          FractionallySizedBox(
-                            widthFactor: value,
-                            child: Container(
-                              height: 3,
-                              decoration: BoxDecoration(
-                                color: accent,
-                                borderRadius: BorderRadius.circular(2),
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            left: 0,
-                            right: 0,
-                            child: FractionallySizedBox(
-                              widthFactor: value,
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Container(
-                                  width: 10,
-                                  height: 10,
-                                  decoration: BoxDecoration(
-                                    color: accent,
-                                    shape: BoxShape.circle,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                ],
-              ),
-            ),
             ),
           ),
           const SizedBox(width: AppTheme.sp2 + 2),
@@ -231,7 +146,7 @@ class _AudioPlayerBarState extends ConsumerState<AudioPlayerBar> {
             available ? _fmt(audio.duration) : '--:--',
             style: GoogleFonts.instrumentSans(
               fontSize: 10,
-              color: isDark ? AppColors.nightText : AppColors.dayText,
+              color: context.colorText,
               fontFeatures: const [FontFeature.tabularFigures()],
             ),
           ),
@@ -284,4 +199,142 @@ class _TrianglePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_TrianglePainter old) => old.color != color;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
+class _PlayPauseButton extends StatelessWidget {
+  final bool isPlaying;
+  final bool isLoading;
+  final bool available;
+  final Color color;
+  final VoidCallback? onTap;
+
+  const _PlayPauseButton({
+    required this.isPlaying,
+    required this.isLoading,
+    required this.available,
+    required this.color,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Semantics(
+      label: isPlaying ? 'Pausar áudio' : 'Ouvir o Salmo',
+      button: true,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          width: 44,
+          height: 44,
+          decoration: BoxDecoration(
+            color: color,
+            shape: BoxShape.circle,
+            boxShadow: available
+                ? [
+                    BoxShadow(
+                      color: AppColors.cobalt600.withAlpha(77),
+                      blurRadius: 30,
+                      offset: const Offset(0, 12),
+                    ),
+                  ]
+                : null,
+          ),
+          child: Center(
+            child: isLoading
+                ? const SizedBox(
+                    width: 16,
+                    height: 16,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 1.5,
+                      color: AppColors.nightCream,
+                    ),
+                  )
+                : _PlayerIcon(isPlaying: isPlaying),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
+class _ProgressTrack extends StatelessWidget {
+  final double progress;
+  final Color trackColor;
+  final Color fillColor;
+  final void Function(double ratio)? onSeek;
+
+  const _ProgressTrack({
+    required this.progress,
+    required this.trackColor,
+    required this.fillColor,
+    this.onSeek,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) => GestureDetector(
+        onTapUp: onSeek != null
+            ? (d) => onSeek!(
+                (d.localPosition.dx / constraints.maxWidth).clamp(0.0, 1.0))
+            : null,
+        child: Stack(
+          alignment: Alignment.centerLeft,
+          children: [
+            Container(
+              height: 3,
+              decoration: BoxDecoration(
+                color: trackColor,
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+            if (progress > 0)
+              TweenAnimationBuilder<double>(
+                tween: Tween(begin: 0.0, end: progress),
+                duration: const Duration(milliseconds: 200),
+                curve: Curves.easeOutCubic,
+                builder: (_, value, __) => Stack(
+                  alignment: Alignment.centerLeft,
+                  clipBehavior: Clip.none,
+                  children: [
+                    FractionallySizedBox(
+                      widthFactor: value,
+                      child: Container(
+                        height: 3,
+                        decoration: BoxDecoration(
+                          color: fillColor,
+                          borderRadius: BorderRadius.circular(2),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 0,
+                      right: 0,
+                      child: FractionallySizedBox(
+                        widthFactor: value,
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Container(
+                            width: 10,
+                            height: 10,
+                            decoration: BoxDecoration(
+                              color: fillColor,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../core/extensions/build_context_extensions.dart';
 import '../../core/theme/app_theme.dart';
 
 class CollectionCard extends StatelessWidget {
@@ -29,12 +30,11 @@ class CollectionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark   = Theme.of(context).brightness == Brightness.dark;
-    final surface  = isDark ? AppColors.nightPlus  : AppColors.dayPlus;
-    final border   = isDark ? AppColors.nightLine  : AppColors.dayLine;
-    final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
-    final bodyClr  = isDark ? AppColors.nightText  : AppColors.dayText;
-    final accent   = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
+    final surface  = context.colorSurface;
+    final border   = context.colorBorder;
+    final titleClr = context.colorTitle;
+    final bodyClr  = context.colorText;
+    final accent   = context.colorAccent;
     final dotColor = _emoDot(emocaoId);
 
     return ClipRRect(

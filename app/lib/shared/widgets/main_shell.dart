@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/extensions/build_context_extensions.dart';
 import '../../core/theme/app_theme.dart';
 
 class MainShell extends StatelessWidget {
@@ -33,9 +34,8 @@ class MainShell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final bg     = isDark ? AppColors.nightBase : AppColors.dayBase;
-    final border = isDark ? AppColors.nightLine : AppColors.dayLine;
+    final bg     = context.colorBg;
+    final border = context.colorBorder;
 
     return Scaffold(
       backgroundColor: bg,

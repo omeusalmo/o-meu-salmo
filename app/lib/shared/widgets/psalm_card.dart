@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../core/extensions/build_context_extensions.dart';
 import '../../core/theme/app_theme.dart';
 
 /// Card de listagem de Salmo — número Playfair cobalt + título + snippet.
@@ -19,11 +20,10 @@ class PsalmCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark   = Theme.of(context).brightness == Brightness.dark;
-    final surface  = isDark ? AppColors.nightPlus  : AppColors.dayPlus;
-    final border   = isDark ? AppColors.nightLine  : AppColors.dayLine;
-    final accent   = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
-    final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
+    final surface  = context.colorSurface;
+    final border   = context.colorBorder;
+    final accent   = context.colorAccent;
+    final titleClr = context.colorTitle;
 
     return Material(
       color: surface,
@@ -85,7 +85,7 @@ class PsalmCard extends StatelessWidget {
                           fontSize: 14,
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.w400,
-                          color: isDark ? AppColors.nightText : AppColors.dayText,
+                          color: context.colorText,
                           height: 1.4,
                         ),
                         maxLines: 1,
