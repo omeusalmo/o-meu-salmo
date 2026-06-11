@@ -116,7 +116,6 @@ class _SearchBar extends StatelessWidget {
   final ValueChanged<String> onChanged;
 
   const _SearchBar({
-    super.key,
     required this.controller,
     required this.onChanged,
   });
@@ -201,7 +200,6 @@ class _SalmosList extends StatelessWidget {
   final ValueChanged<int> onTap;
 
   const _SalmosList({
-    super.key,
     required this.salmos,
     required this.onTap,
   });
@@ -233,7 +231,7 @@ class _SalmosList extends StatelessWidget {
 // ─────────────────────────────────────────────────────────────────────────────
 
 class _LoadingState extends StatelessWidget {
-  const _LoadingState({super.key});
+  const _LoadingState();
 
   @override
   Widget build(BuildContext context) {
@@ -247,7 +245,7 @@ class _LoadingState extends StatelessWidget {
 }
 
 class _ErrorState extends StatelessWidget {
-  const _ErrorState({super.key});
+  const _ErrorState();
 
   @override
   Widget build(BuildContext context) {
@@ -268,7 +266,7 @@ class _ErrorState extends StatelessWidget {
 
 class _EmptyState extends StatelessWidget {
   final String query;
-  const _EmptyState({super.key, required this.query});
+  const _EmptyState({required this.query});
 
   @override
   Widget build(BuildContext context) {

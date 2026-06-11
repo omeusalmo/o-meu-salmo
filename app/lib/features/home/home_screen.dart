@@ -249,7 +249,7 @@ class _HomeContent extends StatelessWidget {
               const SizedBox(height: AppTheme.sp12),
 
               // ── Atalho coleções ───────────────────────────────────────
-              _CollectionsShortcut(),
+              const _CollectionsShortcut(),
 
               const SizedBox(height: AppTheme.sp10),
             ]),
@@ -279,7 +279,7 @@ class _HomeContent extends StatelessWidget {
 // ─────────────────────────────────────────────────────────────────────────────
 
 class _CollectionsShortcut extends StatelessWidget {
-  const _CollectionsShortcut({super.key});
+  const _CollectionsShortcut();
 
   @override
   Widget build(BuildContext context) {
@@ -300,7 +300,7 @@ class _CollectionsShortcut extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          EyebrowLabel('Encontre pelo que sente'),
+          const EyebrowLabel('Encontre pelo que sente'),
           const SizedBox(height: AppTheme.sp2),
           Text(
             'Como você está\nse sentindo hoje?',
@@ -366,7 +366,7 @@ class _PrimaryButton extends StatelessWidget {
   final String label;
   final VoidCallback? onTap;
 
-  const _PrimaryButton({super.key, required this.label, this.onTap});
+  const _PrimaryButton({required this.label, this.onTap});
 
   @override
   Widget build(BuildContext context) {

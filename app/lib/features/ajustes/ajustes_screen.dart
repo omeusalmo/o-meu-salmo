@@ -337,7 +337,7 @@ class AjustesScreen extends ConsumerWidget {
 
 class _NotificationCard extends ConsumerWidget {
   final bool isDark;
-  const _NotificationCard({super.key, required this.isDark});
+  const _NotificationCard({required this.isDark});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -461,7 +461,7 @@ class _NotificationCard extends ConsumerWidget {
 
 class _ApoieSheet extends StatelessWidget {
   final bool isDark;
-  const _ApoieSheet({super.key, required this.isDark});
+  const _ApoieSheet({required this.isDark});
 
   @override
   Widget build(BuildContext context) {
@@ -568,7 +568,7 @@ class _ApoieSheet extends StatelessWidget {
 
 class _CopyPixButton extends StatefulWidget {
   final bool isDark;
-  const _CopyPixButton({super.key, required this.isDark});
+  const _CopyPixButton({required this.isDark});
 
   @override
   State<_CopyPixButton> createState() => _CopyPixButtonState();
@@ -621,7 +621,7 @@ class _CopyPixButtonState extends State<_CopyPixButton> {
 class _SectionHeader extends StatelessWidget {
   final String title;
   final bool isDark;
-  const _SectionHeader(this.title, {super.key, required this.isDark});
+  const _SectionHeader(this.title, {required this.isDark});
 
   @override
   Widget build(BuildContext context) => Padding(
@@ -641,7 +641,7 @@ class _SectionHeader extends StatelessWidget {
 class _Card extends StatelessWidget {
   final Widget child;
   final bool isDark;
-  const _Card({super.key, required this.child, required this.isDark});
+  const _Card({required this.child, required this.isDark});
 
   @override
   Widget build(BuildContext context) => Container(
@@ -662,7 +662,7 @@ class _Card extends StatelessWidget {
 class _Label extends StatelessWidget {
   final String text;
   final bool isDark;
-  const _Label(this.text, {super.key, required this.isDark});
+  const _Label(this.text, {required this.isDark});
 
   @override
   Widget build(BuildContext context) => Text(
@@ -679,7 +679,7 @@ class _InfoRow extends StatelessWidget {
   final String label;
   final String value;
   final bool isDark;
-  const _InfoRow(this.label, this.value, {super.key, required this.isDark});
+  const _InfoRow(this.label, this.value, {required this.isDark});
 
   @override
   Widget build(BuildContext context) => Row(

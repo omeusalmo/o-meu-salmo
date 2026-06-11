@@ -125,7 +125,6 @@ class _CompositorBody extends StatelessWidget {
   final VoidCallback onShare;
 
   const _CompositorBody({
-    super.key,
     required this.salmo,
     required this.cardKey,
     required this.versicoloIdx,
@@ -169,7 +168,7 @@ class _CompositorBody extends StatelessWidget {
 
                 const SizedBox(height: AppTheme.sp6),
 
-                EyebrowLabel('Fundo'),
+                const EyebrowLabel('Fundo'),
                 const SizedBox(height: AppTheme.sp3),
                 Row(
                   children: List.generate(fundos.length, (i) => Padding(
@@ -186,7 +185,7 @@ class _CompositorBody extends StatelessWidget {
 
                 const SizedBox(height: AppTheme.sp6),
 
-                EyebrowLabel('Versículo'),
+                const EyebrowLabel('Versículo'),
                 const SizedBox(height: AppTheme.sp3),
                 ...salmo.versiculos.asMap().entries.map((e) => _VersicoloOption(
                   index: e.key,
@@ -225,7 +224,6 @@ class _ShareCard extends StatelessWidget {
   final Color fundo;
 
   const _ShareCard({
-    super.key,
     required this.salmo,
     required this.versicoloIdx,
     required this.fundo,
@@ -331,7 +329,6 @@ class _FundoChip extends StatelessWidget {
   final VoidCallback onTap;
 
   const _FundoChip({
-    super.key,
     required this.color,
     required this.label,
     required this.selected,
@@ -385,7 +382,6 @@ class _VersicoloOption extends StatelessWidget {
   final VoidCallback onTap;
 
   const _VersicoloOption({
-    super.key,
     required this.index,
     required this.texto,
     required this.selected,
@@ -453,7 +449,7 @@ class _VersicoloOption extends StatelessWidget {
 
 class _Header extends StatelessWidget {
   final bool isDark;
-  const _Header({super.key, required this.isDark});
+  const _Header({required this.isDark});
 
   @override
   Widget build(BuildContext context) {
@@ -504,7 +500,7 @@ class _ShareButton extends StatelessWidget {
   final bool sharing;
   final VoidCallback onTap;
 
-  const _ShareButton({super.key, required this.sharing, required this.onTap});
+  const _ShareButton({required this.sharing, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -568,7 +564,7 @@ class _ShareButton extends StatelessWidget {
 
 class _ErrorView extends StatelessWidget {
   final bool isDark;
-  const _ErrorView({super.key, required this.isDark});
+  const _ErrorView({required this.isDark});
 
   @override
   Widget build(BuildContext context) {

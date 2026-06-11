@@ -136,7 +136,7 @@ class _Header extends StatelessWidget {
   final String titulo;
   final bool isDark;
 
-  const _Header({super.key, required this.titulo, required this.isDark});
+  const _Header({required this.titulo, required this.isDark});
 
   @override
   Widget build(BuildContext context) {
@@ -188,7 +188,7 @@ class _Header extends StatelessWidget {
 
 class _ErrorView extends StatelessWidget {
   final bool isDark;
-  const _ErrorView({super.key, required this.isDark});
+  const _ErrorView({required this.isDark});
 
   @override
   Widget build(BuildContext context) {
@@ -211,7 +211,7 @@ class _ErrorView extends StatelessWidget {
 
 class _NotFoundView extends StatelessWidget {
   final bool isDark;
-  const _NotFoundView({super.key, required this.isDark});
+  const _NotFoundView({required this.isDark});
 
   @override
   Widget build(BuildContext context) {

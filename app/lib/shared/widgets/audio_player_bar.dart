@@ -127,7 +127,7 @@ class _AudioPlayerBarState extends ConsumerState<AudioPlayerBar> {
                 ),
                 child: Center(
                   child: audio.isLoading
-                      ? SizedBox(
+                      ? const SizedBox(
                           width: 16,
                           height: 16,
                           child: CircularProgressIndicator(
@@ -245,7 +245,7 @@ class _AudioPlayerBarState extends ConsumerState<AudioPlayerBar> {
 
 class _PlayerIcon extends StatelessWidget {
   final bool isPlaying;
-  const _PlayerIcon({super.key, required this.isPlaying});
+  const _PlayerIcon({required this.isPlaying});
 
   @override
   Widget build(BuildContext context) {
@@ -261,8 +261,8 @@ class _PlayerIcon extends StatelessWidget {
         ],
       );
     }
-    return CustomPaint(
-      size: const Size(10, 12),
+    return const CustomPaint(
+      size: Size(10, 12),
       painter: _TrianglePainter(color: color),
     );
   }

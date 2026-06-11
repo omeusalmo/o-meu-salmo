@@ -85,7 +85,7 @@ class ColecoesScreen extends ConsumerWidget {
 }
 
 class _LoadingState extends StatelessWidget {
-  const _LoadingState({super.key});
+  const _LoadingState();
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +99,7 @@ class _LoadingState extends StatelessWidget {
 }
 
 class _ErrorState extends StatelessWidget {
-  const _ErrorState({super.key});
+  const _ErrorState();
 
   @override
   Widget build(BuildContext context) {
@@ -119,7 +119,7 @@ class _ErrorState extends StatelessWidget {
 }
 
 class _EmptyState extends StatelessWidget {
-  const _EmptyState({super.key});
+  const _EmptyState();
 
   @override
   Widget build(BuildContext context) {
