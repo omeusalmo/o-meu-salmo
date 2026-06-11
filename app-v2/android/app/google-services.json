@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "167233814095",
+    "project_id": "o-meu-salmo",
+    "storage_bucket": "o-meu-salmo.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:167233814095:android:507e98a27915d67d8d343a",
+        "android_client_info": {
+          "package_name": "com.omeusalmo.salmos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDbY7bDSpBKA53MdMTice6f7-ENv1PtJQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
