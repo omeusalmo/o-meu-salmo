@@ -42,19 +42,22 @@ class PsalmCard extends StatelessWidget {
             horizontal: 18,
             vertical: AppTheme.sp4,
           ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
+          child: IntrinsicHeight(
+            child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Número — Playfair Display 32pt, minWidth 56 evita quebra em 3 dígitos
               SizedBox(
                 width: 56,
-                child: Text(
-                  '$numero',
-                  style: GoogleFonts.playfairDisplay(
-                    fontSize: 32,
-                    fontWeight: FontWeight.w400,
-                    color: accent,
-                    height: 1.0,
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    '$numero',
+                    style: GoogleFonts.playfairDisplay(
+                      fontSize: 32,
+                      fontWeight: FontWeight.w400,
+                      color: accent,
+                      height: 1.0,
+                    ),
                   ),
                 ),
               ),
@@ -94,6 +97,7 @@ class PsalmCard extends StatelessWidget {
               ),
             ],
           ),
+          ),  // IntrinsicHeight
         ),
       ),
     );
