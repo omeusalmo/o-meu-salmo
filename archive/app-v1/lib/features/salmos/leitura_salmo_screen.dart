@@ -9,13 +9,11 @@ import '../../core/extensions/build_context_extensions.dart';
 import '../../core/review/review_service.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/salmo.dart';
-import '../../data/providers/audio_provider.dart';
 import '../../data/providers/favoritos_provider.dart';
 import '../../data/providers/salmos_providers.dart';
 import '../../shared/widgets/audio_player_bar.dart';
 import '../../shared/widgets/eyebrow_label.dart';
 import '../../shared/widgets/verse_line.dart';
-import 'verse_sync.dart';
 
 class LeituraSalmoScreen extends ConsumerStatefulWidget {
   final int numero;
@@ -211,23 +209,6 @@ class _BodyState extends ConsumerState<_Body> {
         ?.contains(salmo.numero) ?? false;
     final hasReflexao = salmo.reflexao?.isNotEmpty == true;
 
-    // Karaokê da narração: enquanto o áudio toca, o versículo ativo
-    // (estimado pela posição) recebe o destaque âmbar. O select limita o
-    // rebuild ao momento em que o índice muda, não a cada tick de posição.
-    final versoAtivo = ref.watch(
-      audioPlayerProvider.select((audio) {
-        final narrando = audio.isPlaying &&
-            audio.isAvailable &&
-            audio.duration > Duration.zero;
-        if (!narrando) return 0;
-        return activeVerseIndex(
-          position: audio.position,
-          duration: audio.duration,
-          versiculos: salmo.versiculos,
-        );
-      }),
-    );
-
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(
         AppTheme.sp5, AppTheme.sp4 + 2, AppTheme.sp5, AppTheme.sp8,
@@ -276,12 +257,12 @@ class _BodyState extends ConsumerState<_Body> {
 
           const SizedBox(height: AppTheme.sp6),
 
-          // Versículos — destaque acompanha a narração quando tocando
+          // Versículos
           ...salmo.versiculos.asMap().entries.map(
             (e) => VerseLine(
               numero: e.key + 1,
               texto: e.value,
-              destaque: e.key == versoAtivo,
+              destaque: e.key == 0,
             ),
           ),
 

@@ -10,10 +10,6 @@ class CollectionCard extends StatelessWidget {
   final String? emocaoId;
   final VoidCallback onTap;
 
-  /// Numeral fantasma no canto inferior direito (conceito LP V2).
-  /// Em geral, o número do primeiro Salmo da coleção.
-  final int? ghostNumber;
-
   const CollectionCard({
     super.key,
     required this.titulo,
@@ -21,7 +17,6 @@ class CollectionCard extends StatelessWidget {
     required this.totalSalmos,
     required this.onTap,
     this.emocaoId,
-    this.ghostNumber,
   });
 
   static Color _emoDot(String? id) => switch (id) {
@@ -46,28 +41,8 @@ class CollectionCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(AppTheme.radiusMd),
       child: Stack(
         children: [
-          // Fundo do card (separado para o numeral ficar entre fundo e conteúdo)
-          Positioned.fill(child: ColoredBox(color: surface)),
-          // Numeral fantasma — decorativo, atrás do conteúdo
-          if (ghostNumber != null)
-            Positioned(
-              right: -6,
-              bottom: -22,
-              child: ExcludeSemantics(
-                child: Text(
-                  '$ghostNumber',
-                  style: GoogleFonts.playfairDisplay(
-                    fontSize: 96,
-                    fontWeight: FontWeight.w400,
-                    height: 0.9,
-                    letterSpacing: -2.9,
-                    color: dotColor.withAlpha(26),
-                  ),
-                ),
-              ),
-            ),
           Material(
-            color: Colors.transparent,
+            color: surface,
             child: InkWell(
               splashColor: accent.withAlpha(30),
               highlightColor: accent.withAlpha(15),

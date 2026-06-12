@@ -14,13 +14,14 @@ App Android de Salmos com curadoria por emoção. Solo founder: Jeff Silva (CEO)
 
 ```
 o-meu-salmo/                      ← raiz do git (github.com/omeusalmo/o-meu-salmo)
-├── app/                          ← Flutter app (Dart)
+├── app/                          ← Flutter app V2 (Dart) — promovida em 2026-06-12
 │   ├── lib/                      ← código Dart (features, core, data, shared)
 │   ├── android/                  ← config Android + signing
 │   ├── assets/                   ← salmos.json, imagens, áudios
 │   ├── docs/                     ← (legado — não é o GH Pages ativo)
 │   └── test/                     ← testes + testadores-meu-salmo.md
 ├── Landing Page/                 ← pasta legada (arquivos movidos para docs/)
+├── archive/                      ← V1 arquivada em 2026-06-12 (app-v1/, lp-v1/)
 ├── o-meu-salmo-design/
 │   ├── design-system.html        ← FONTE DA VERDADE visual ★
 │   ├── SKILL.md                  ← skill de design do projeto
@@ -37,7 +38,7 @@ o-meu-salmo/                      ← raiz do git (github.com/omeusalmo/o-meu-sa
 │   └── reflexoes-salmos.md       ← fonte das reflexões dos 150 salmos
 ├── audio_testes/                 ← testes de vozes TTS (salmo 23, 30 vozes)
 ├── docs/                         ← GitHub Pages (main /docs) → omeusalmo.com.br
-│   ├── index.html                ← landing page (HTML/CSS/JS inline) ★
+│   ├── index.html                ← landing page V2 (HTML/CSS/JS inline) ★
 │   ├── robots.txt
 │   ├── sitemap.xml
 │   ├── llms.txt

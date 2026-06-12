@@ -11,7 +11,6 @@ import '../../features/favoritos/favoritos_screen.dart';
 import '../../features/compositor/compositor_screen.dart';
 import '../../features/ajustes/ajustes_screen.dart';
 import '../../features/onboarding/onboarding_screen.dart';
-import '../../features/respirar/respirar_screen.dart';
 import '../../shared/widgets/main_shell.dart';
 
 final GoRouter appRouter = GoRouter(
@@ -90,10 +89,6 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/ajustes',
       pageBuilder: (_, state) => _slideUp(state, const AjustesScreen()),
-    ),
-    GoRoute(
-      path: '/respirar',
-      pageBuilder: (_, state) => _slideUp(state, const RespirarScreen()),
     ),
   ],
 );

@@ -26,16 +26,6 @@ fi
 
 flutter pub get
 
-# Áudios não são versionados (62 MB) — sincroniza do arquivo da V1 se existir,
-# senão gere com ../gerar_audios.py
-if [ -d ../archive/app-v1/assets/audios ] && [ -n "$(ls -A ../archive/app-v1/assets/audios 2>/dev/null)" ]; then
-  mkdir -p assets/audios
-  rsync -a ../archive/app-v1/assets/audios/ assets/audios/
-  echo "Áudios sincronizados de ../archive/app-v1/assets/audios"
-else
-  echo "⚠ assets/audios vazio — rode: python3 ../gerar_audios.py"
-fi
-
 echo ""
 echo "Projeto pronto!"
 echo ""

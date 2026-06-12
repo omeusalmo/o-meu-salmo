@@ -7,7 +7,6 @@ import '../../core/extensions/build_context_extensions.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/providers/salmos_providers.dart';
 import '../../shared/widgets/collection_card.dart';
-import '../../shared/widgets/staggered_entrance.dart';
 
 class ColecoesScreen extends ConsumerWidget {
   const ColecoesScreen({super.key});
@@ -70,18 +69,12 @@ class ColecoesScreen extends ConsumerWidget {
             separatorBuilder: (_, __) => const SizedBox(height: AppTheme.sp3),
             itemBuilder: (_, i) {
               final c = colecoes[i];
-              // Itens construídos tarde (fora da viewport inicial) não devem
-              // esperar a cascata inteira — atraso saturado em 5 passos.
-              return StaggeredEntrance(
-                index: i.clamp(0, 5),
-                child: CollectionCard(
-                  titulo: c.titulo,
-                  subtitulo: c.subtitulo,
-                  totalSalmos: c.salmos.length,
-                  emocaoId: c.id,
-                  ghostNumber: c.salmos.isNotEmpty ? c.salmos.first : null,
-                  onTap: () => context.push('/colecoes/${c.id}'),
-                ),
+              return CollectionCard(
+                titulo: c.titulo,
+                subtitulo: c.subtitulo,
+                totalSalmos: c.salmos.length,
+                emocaoId: c.id,
+                onTap: () => context.push('/colecoes/${c.id}'),
               );
             },
           );

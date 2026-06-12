@@ -9,7 +9,9 @@ import '../../core/theme/app_theme.dart';
 import '../../data/models/salmo.dart';
 import '../../data/providers/salmos_providers.dart';
 import '../../shared/widgets/eyebrow_label.dart';
-import '../../shared/widgets/verse_line.dart';
+import '../../shared/widgets/staggered_entrance.dart';
+import '../../shared/widgets/starfield_background.dart';
+import '../../shared/widgets/word_reveal_text.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -74,187 +76,237 @@ class _HomeContent extends StatelessWidget {
     final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
     final muted   = isDark ? AppColors.nightText  : AppColors.dayText;
 
-    return CustomScrollView(
-      slivers: [
-        SliverPadding(
-          padding: const EdgeInsets.fromLTRB(
-            AppTheme.sp5, AppTheme.sp5, AppTheme.sp5, 0,
-          ),
-          sliver: SliverList(
-            delegate: SliverChildListDelegate([
+    return Stack(
+      children: [
+        // Céu de partículas calmas atrás de todo o conteúdo (conceito LP V2)
+        const Positioned.fill(child: StarfieldBackground()),
+        CustomScrollView(
+          slivers: [
+            SliverPadding(
+              padding: const EdgeInsets.fromLTRB(
+                AppTheme.sp5, AppTheme.sp5, AppTheme.sp5, 0,
+              ),
+              sliver: SliverList(
+                delegate: SliverChildListDelegate([
 
-              // ── Cabeçalho: wordmark + engrenagem ─────────────────────
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  RichText(
-                    text: TextSpan(
+                  // ── Cabeçalho: wordmark + engrenagem ─────────────────────
+                  StaggeredEntrance(
+                    index: 0,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        TextSpan(
-                          text: 'O MEU ',
-                          style: GoogleFonts.instrumentSans(
-                            fontSize: 10,
-                            fontWeight: FontWeight.w400,
-                            letterSpacing: 2.8,
-                            color: muted,
+                        RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: 'O MEU ',
+                                style: GoogleFonts.instrumentSans(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w400,
+                                  letterSpacing: 2.8,
+                                  color: muted,
+                                ),
+                              ),
+                              TextSpan(
+                                text: 'Salmo',
+                                style: GoogleFonts.playfairDisplay(
+                                  fontSize: 19,
+                                  fontStyle: FontStyle.italic,
+                                  fontWeight: FontWeight.w400,
+                                  color: accent,
+                                  height: 1.0,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        TextSpan(
-                          text: 'Salmo',
-                          style: GoogleFonts.playfairDisplay(
-                            fontSize: 19,
-                            fontStyle: FontStyle.italic,
-                            fontWeight: FontWeight.w400,
-                            color: accent,
-                            height: 1.0,
+                        const Spacer(),
+                        Semantics(
+                          label: 'Configurações',
+                          button: true,
+                          child: GestureDetector(
+                            onTap: () => context.push('/ajustes'),
+                            child: Icon(Icons.settings_outlined, size: 20, color: muted),
                           ),
                         ),
                       ],
                     ),
                   ),
-                  const Spacer(),
-                  Semantics(
-                    label: 'Configurações',
-                    button: true,
-                    child: GestureDetector(
-                      onTap: () => context.push('/ajustes'),
-                      child: Icon(Icons.settings_outlined, size: 20, color: muted),
+                  const SizedBox(height: AppTheme.sp10),
+
+                  StaggeredEntrance(
+                    index: 1,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          _formatDate(DateTime.now()),
+                          style: GoogleFonts.instrumentSans(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: isDark ? AppColors.nightText : AppColors.dayText,
+                            letterSpacing: 0.5,
+                          ),
+                        ),
+                        const SizedBox(height: AppTheme.sp1),
+                        Text(
+                          'Para hoje,',
+                          style: GoogleFonts.playfairDisplay(
+                            fontSize: 22,
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.w400,
+                            color: titleClr,
+                            height: 1.1,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
-              const SizedBox(height: AppTheme.sp10),
 
-              Text(
-                _formatDate(DateTime.now()),
-                style: GoogleFonts.instrumentSans(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                  color: isDark ? AppColors.nightText : AppColors.dayText,
-                  letterSpacing: 0.5,
-                ),
-              ),
-              const SizedBox(height: AppTheme.sp1),
-              Text(
-                'Para hoje,',
-                style: GoogleFonts.playfairDisplay(
-                  fontSize: 22,
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.w400,
-                  color: titleClr,
-                  height: 1.1,
-                ),
-              ),
+                  const SizedBox(height: AppTheme.sp8),
 
-              const SizedBox(height: AppTheme.sp8),
-
-              // ── Número hero do salmo ──────────────────────────────────
-              RichText(
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                text: TextSpan(
-                  style: GoogleFonts.playfairDisplay(
-                    fontSize: 52,
-                    fontWeight: FontWeight.w400,
-                    color: titleClr,
-                    height: 0.88,
-                    letterSpacing: -1.3,
-                  ),
-                  children: [
-                    const TextSpan(text: 'Salmo '),
-                    TextSpan(
-                      text: '${salmo.numero}',
-                      style: TextStyle(
-                        fontStyle: FontStyle.italic,
-                        color: accent,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: AppTheme.sp2),
-
-              // Título
-              if (salmo.titulo.isNotEmpty)
-                Text(
-                  salmo.titulo,
-                  style: GoogleFonts.instrumentSans(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: isDark ? AppColors.nightText : AppColors.dayText,
-                    letterSpacing: 0.2,
-                  ),
-                ),
-
-              const SizedBox(height: AppTheme.sp6),
-
-              // ── Versículo-âncora (em âmbar) ───────────────────────────
-              if (salmo.versiculos.isNotEmpty) ...[
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border(
-                      left: BorderSide(color: accent, width: 2),
-                    ),
-                  ),
-                  padding: const EdgeInsets.only(left: AppTheme.sp4),
-                  child: VerseLine(
-                    numero: 1,
-                    texto: salmo.versiculos.first,
-                    destaque: true,
-                  ),
-                ),
-                const SizedBox(height: AppTheme.sp8),
-              ],
-
-              // ── CTAs ──────────────────────────────────────────────────
-              _PrimaryButton(
-                label: 'Ler o salmo',
-                onTap: () => context.push('/salmos/${salmo.numero}'),
-              ),
-
-              if (salmo.reflexao?.isNotEmpty == true) ...[
-                const SizedBox(height: AppTheme.sp3),
-                Semantics(
-                  label: 'Reflexão liberada. Abrir o Salmo.',
-                  button: true,
-                  child: GestureDetector(
-                    onTap: () => context.push('/salmos/${salmo.numero}'),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                      decoration: BoxDecoration(
-                        color: accent.withAlpha(18),
-                        borderRadius: BorderRadius.circular(AppTheme.radiusPill),
-                        border: Border.all(color: accent.withAlpha(60), width: 0.5),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(Icons.lock_open_outlined, size: 12, color: accent),
-                          const SizedBox(width: 5),
+                  // ── Número hero do salmo ──────────────────────────────────
+                  StaggeredEntrance(
+                    index: 2,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        RichText(
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          text: TextSpan(
+                            style: GoogleFonts.playfairDisplay(
+                              fontSize: 52,
+                              fontWeight: FontWeight.w400,
+                              color: titleClr,
+                              height: 0.88,
+                              letterSpacing: -1.3,
+                            ),
+                            children: [
+                              const TextSpan(text: 'Salmo '),
+                              TextSpan(
+                                text: '${salmo.numero}',
+                                style: TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                  color: accent,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        if (salmo.titulo.isNotEmpty) ...[
+                          const SizedBox(height: AppTheme.sp2),
                           Text(
-                            'reflexão liberada',
+                            salmo.titulo,
                             style: GoogleFonts.instrumentSans(
-                              fontSize: 11,
-                              fontWeight: FontWeight.w500,
-                              color: accent,
-                              letterSpacing: 0.3,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              color: isDark ? AppColors.nightText : AppColors.dayText,
+                              letterSpacing: 0.2,
                             ),
                           ),
                         ],
-                      ),
+                      ],
                     ),
                   ),
-                ),
-              ],
 
-              const SizedBox(height: AppTheme.sp12),
+                  const SizedBox(height: AppTheme.sp6),
 
-              // ── Atalho coleções ───────────────────────────────────────
-              const _CollectionsShortcut(),
+                  // ── Versículo-âncora (em âmbar, palavra a palavra) ────────
+                  if (salmo.versiculos.isNotEmpty) ...[
+                    StaggeredEntrance(
+                      index: 3,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border(
+                            left: BorderSide(color: accent, width: 2),
+                          ),
+                        ),
+                        padding: const EdgeInsets.only(left: AppTheme.sp4),
+                        child: WordRevealText(
+                          text: salmo.versiculos.first,
+                          delay: const Duration(milliseconds: 450),
+                          style: GoogleFonts.cormorant(
+                            fontSize: 19,
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.w400,
+                            height: 1.6,
+                            color: isDark ? AppColors.gold : AppColors.goldInk,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: AppTheme.sp8),
+                  ],
 
-              const SizedBox(height: AppTheme.sp10),
-            ]),
-          ),
+                  // ── CTAs ──────────────────────────────────────────────────
+                  StaggeredEntrance(
+                    index: 4,
+                    child: _PrimaryButton(
+                      label: 'Ler o salmo',
+                      onTap: () => context.push('/salmos/${salmo.numero}'),
+                    ),
+                  ),
+
+                  if (salmo.reflexao?.isNotEmpty == true) ...[
+                    const SizedBox(height: AppTheme.sp3),
+                    StaggeredEntrance(
+                      index: 5,
+                      child: Semantics(
+                        label: 'Reflexão liberada. Abrir o Salmo.',
+                        button: true,
+                        child: GestureDetector(
+                          onTap: () => context.push('/salmos/${salmo.numero}'),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                            decoration: BoxDecoration(
+                              color: accent.withAlpha(18),
+                              borderRadius: BorderRadius.circular(AppTheme.radiusPill),
+                              border: Border.all(color: accent.withAlpha(60), width: 0.5),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(Icons.lock_open_outlined, size: 12, color: accent),
+                                const SizedBox(width: 5),
+                                Text(
+                                  'reflexão liberada',
+                                  style: GoogleFonts.instrumentSans(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w500,
+                                    color: accent,
+                                    letterSpacing: 0.3,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+
+                  const SizedBox(height: AppTheme.sp12),
+
+                  // ── Respirar — pausa guiada com o Salmo 46 ────────────────
+                  const StaggeredEntrance(
+                    index: 6,
+                    child: _RespirarCard(),
+                  ),
+
+                  const SizedBox(height: AppTheme.sp3),
+
+                  // ── Atalho coleções ───────────────────────────────────────
+                  const StaggeredEntrance(
+                    index: 7,
+                    child: _CollectionsShortcut(),
+                  ),
+
+                  const SizedBox(height: AppTheme.sp10),
+                ]),
+              ),
+            ),
+          ],
         ),
       ],
     );
@@ -272,6 +324,90 @@ class _HomeContent extends StatelessWidget {
     ];
     // weekday: 1=seg … 7=dom → índice 0=dom
     return '${days[d.weekday % 7]}, ${d.day} de ${months[d.month - 1]}';
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Respirar — pausa guiada
+// ─────────────────────────────────────────────────────────────────────────────
+
+class _RespirarCard extends StatelessWidget {
+  const _RespirarCard();
+
+  @override
+  Widget build(BuildContext context) {
+    final titleClr = context.colorTitle;
+    final textClr  = context.colorText;
+    final accent   = context.colorAccent;
+
+    return Semantics(
+      label: 'Respirar. Um minuto de pausa com o Salmo 46.',
+      button: true,
+      child: GestureDetector(
+        onTap: () {
+          HapticFeedback.selectionClick();
+          context.push('/respirar');
+        },
+        child: Container(
+          padding: const EdgeInsets.all(AppTheme.sp5),
+          decoration: BoxDecoration(
+            color: context.colorSurface,
+            borderRadius: BorderRadius.circular(AppTheme.radiusLg),
+            border: Border.all(color: context.colorBorder, width: 0.5),
+          ),
+          child: Row(
+            children: [
+              Container(
+                width: 34,
+                height: 34,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: RadialGradient(
+                    colors: [
+                      AppColors.cobalt400.withAlpha(95),
+                      AppColors.cobalt500.withAlpha(0),
+                    ],
+                  ),
+                  border: Border.all(
+                    color: AppColors.cobalt400.withAlpha(70),
+                    width: 0.5,
+                  ),
+                ),
+              ),
+              const SizedBox(width: AppTheme.sp4),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Respirar',
+                      style: GoogleFonts.playfairDisplay(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: titleClr,
+                        height: 1.1,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      'Um minuto de pausa com o Salmo 46.',
+                      style: GoogleFonts.cormorant(
+                        fontSize: 15,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.w400,
+                        color: textClr,
+                        height: 1.4,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Icon(Icons.arrow_forward_rounded, size: 14, color: accent),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 

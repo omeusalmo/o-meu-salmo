@@ -51,12 +51,8 @@ class VerseLine extends StatelessWidget {
           ),
           const SizedBox(width: 12),
           Expanded(
-            // Cor anima na troca de destaque (karaokê da narração na V2)
-            child: AnimatedDefaultTextStyle(
-              duration: MediaQuery.of(context).disableAnimations
-                  ? Duration.zero
-                  : AppTheme.dur,
-              curve: AppTheme.ease,
+            child: Text(
+              texto,
               style: GoogleFonts.cormorant(
                 fontSize: 19,
                 fontStyle: FontStyle.italic,
@@ -64,7 +60,6 @@ class VerseLine extends StatelessWidget {
                 height: 1.6,
                 color: verseColor,
               ),
-              child: Text(texto),
             ),
           ),
         ],
