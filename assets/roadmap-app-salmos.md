@@ -79,6 +79,7 @@ As três frentes rodam juntas:
 - [ ] Acompanhar métricas: retenção, engajamento, compartilhamentos
 - [ ] Ouvir os primeiros usuários
 - [ ] v1.1: widget na tela inicial, mais coleções e reflexões, busca avançada
+- [ ] v1.1: conta opcional com Google para backup/sync de favoritos — local-first continua sem conta; convite contextual após o 3º favorito; exige fluxo de exclusão de conta (Play) e atualização do Data Safety/LGPD. Decidido em 2026-06-12: nunca como gate obrigatório.
 
 ## Fase 5 — Crescer e monetizar 💰 (só com sinal de retenção)
 
