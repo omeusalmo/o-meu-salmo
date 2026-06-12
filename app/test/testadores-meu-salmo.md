@@ -42,11 +42,11 @@
 
 ## Checklist — Antes de abrir o teste
 
-- [ ] Criar conta no Google Play Console (US$ 25) → [play.google.com/console](https://play.google.com/console)
-- [ ] Ter o build release assinado gerado (`flutter build appbundle --release`)
+- [x] Criar conta no Google Play Console (US$ 25) — criada em 2026-06-12
+- [x] Ter o build release assinado gerado — `app/build/app/outputs/bundle/release/app-release.aab` (124,6 MB)
 - [ ] Subir o AAB no Console (faixa de teste fechado)
 - [ ] Preencher a ficha básica do app (ícone, descrição curta, screenshots — pode ser provisório)
-- [ ] Publicar a política de privacidade em URL pública e cadastrar no Console
+- [x] Política de privacidade pública: https://omeusalmo.github.io/o-meu-salmo/privacy_policy.html (falta só cadastrar no Console)
 - [ ] Completar os 12 testadores nesta lista (com e-mail Google de cada um)
 - [ ] Adicionar os e-mails no Console e enviar os convites
 

@@ -62,12 +62,12 @@ As três frentes rodam juntas:
 
 ## Fase 2 — Pré-lançamento 🚦
 
-- [ ] Conta no Google Play Console (US$ 25)
-- [ ] Política de privacidade publicada
+- [x] Conta no Google Play Console (US$ 25) — criada em 2026-06-12
+- [x] Política de privacidade publicada (omeusalmo.github.io/o-meu-salmo/privacy_policy.html)
 - [ ] Teste fechado: 12 testadores por 14 dias (exigência atual)
 - [ ] ASO: ícone, screenshots, descrição (palavras: salmos, ansiedade, oração, dormir)
 - [ ] Analytics validado (eventos disparando de verdade)
-- [ ] Landing page no ar
+- [x] Landing page no ar (V2 — github.io; domínio próprio pendente)
 
 ## Fase 3 — Lançamento 🚀
 
