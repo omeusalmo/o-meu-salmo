@@ -251,7 +251,7 @@ class _HomeContent extends StatelessWidget {
                   if (salmo.reflexao?.isNotEmpty == true) ...[
                     const SizedBox(height: AppTheme.sp3),
                     StaggeredEntrance(
-                      index: 4,
+                      index: 5,
                       child: Semantics(
                         label: 'Reflexão liberada. Abrir o Salmo.',
                         button: true,
@@ -290,7 +290,7 @@ class _HomeContent extends StatelessWidget {
 
                   // ── Respirar — pausa guiada com o Salmo 46 ────────────────
                   const StaggeredEntrance(
-                    index: 5,
+                    index: 6,
                     child: _RespirarCard(),
                   ),
 
@@ -298,7 +298,7 @@ class _HomeContent extends StatelessWidget {
 
                   // ── Atalho coleções ───────────────────────────────────────
                   const StaggeredEntrance(
-                    index: 6,
+                    index: 7,
                     child: _CollectionsShortcut(),
                   ),
 

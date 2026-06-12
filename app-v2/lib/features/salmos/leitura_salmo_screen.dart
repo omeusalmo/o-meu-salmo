@@ -212,18 +212,21 @@ class _BodyState extends ConsumerState<_Body> {
     final hasReflexao = salmo.reflexao?.isNotEmpty == true;
 
     // Karaokê da narração: enquanto o áudio toca, o versículo ativo
-    // (estimado pela posição) recebe o destaque âmbar.
-    final audio = ref.watch(audioPlayerProvider);
-    final narrando = audio.isPlaying &&
-        audio.isAvailable &&
-        audio.duration > Duration.zero;
-    final versoAtivo = narrando
-        ? activeVerseIndex(
-            position: audio.position,
-            duration: audio.duration,
-            versiculos: salmo.versiculos,
-          )
-        : 0;
+    // (estimado pela posição) recebe o destaque âmbar. O select limita o
+    // rebuild ao momento em que o índice muda, não a cada tick de posição.
+    final versoAtivo = ref.watch(
+      audioPlayerProvider.select((audio) {
+        final narrando = audio.isPlaying &&
+            audio.isAvailable &&
+            audio.duration > Duration.zero;
+        if (!narrando) return 0;
+        return activeVerseIndex(
+          position: audio.position,
+          duration: audio.duration,
+          versiculos: salmo.versiculos,
+        );
+      }),
+    );
 
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(

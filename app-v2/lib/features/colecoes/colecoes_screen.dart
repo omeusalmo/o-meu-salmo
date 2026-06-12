@@ -70,8 +70,10 @@ class ColecoesScreen extends ConsumerWidget {
             separatorBuilder: (_, __) => const SizedBox(height: AppTheme.sp3),
             itemBuilder: (_, i) {
               final c = colecoes[i];
+              // Itens construídos tarde (fora da viewport inicial) não devem
+              // esperar a cascata inteira — atraso saturado em 5 passos.
               return StaggeredEntrance(
-                index: i,
+                index: i.clamp(0, 5),
                 child: CollectionCard(
                   titulo: c.titulo,
                   subtitulo: c.subtitulo,

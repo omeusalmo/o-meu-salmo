@@ -46,12 +46,12 @@ class _AudioPlayerBarState extends ConsumerState<AudioPlayerBar> {
 
   @override
   Widget build(BuildContext context) {
-    final audio  = ref.watch(audioPlayerProvider);
-    final bg     = context.colorBg;
+    final audio = ref.watch(audioPlayerProvider);
+    final bg = context.colorBg;
     final border = context.colorBorder;
-    final text   = context.colorText;
+    final text = context.colorText;
     final accent = context.colorAccent;
-    final muted  = context.colorText;
+    final muted = context.colorText;
 
     final available = audio.isAvailable;
 
@@ -67,14 +67,15 @@ class _AudioPlayerBarState extends ConsumerState<AudioPlayerBar> {
         ),
         child: Row(
           children: [
-            Icon(Icons.headphones_outlined, size: 18, color: muted.withAlpha(100)),
+            Icon(Icons.headphones_outlined,
+                size: 18, color: muted.withAlpha(100)),
             const SizedBox(width: AppTheme.sp3),
             Text(
               'Narração em breve',
               style: GoogleFonts.instrumentSans(
                 fontSize: 13,
                 fontStyle: FontStyle.italic,
-                color: muted.withAlpha(100),
+                color: muted,
               ),
             ),
           ],
@@ -82,7 +83,7 @@ class _AudioPlayerBarState extends ConsumerState<AudioPlayerBar> {
       );
     }
 
-    final btnColor  = available ? accent : muted;
+    final btnColor = available ? accent : muted;
 
     // Progresso 0.0–1.0
     final progress = (audio.duration.inMilliseconds > 0)
@@ -277,62 +278,66 @@ class _ProgressTrack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
-      builder: (context, constraints) => GestureDetector(
-        onTapUp: onSeek != null
-            ? (d) => onSeek!(
-                (d.localPosition.dx / constraints.maxWidth).clamp(0.0, 1.0))
-            : null,
-        child: Stack(
-          alignment: Alignment.centerLeft,
-          children: [
-            Container(
-              height: 3,
-              decoration: BoxDecoration(
-                color: trackColor,
-                borderRadius: BorderRadius.circular(2),
+      builder: (context, constraints) => Semantics(
+        label: 'Barra de progresso da narração',
+        slider: onSeek != null,
+        child: GestureDetector(
+          onTapUp: onSeek != null
+              ? (d) => onSeek!(
+                  (d.localPosition.dx / constraints.maxWidth).clamp(0.0, 1.0))
+              : null,
+          child: Stack(
+            alignment: Alignment.centerLeft,
+            children: [
+              Container(
+                height: 3,
+                decoration: BoxDecoration(
+                  color: trackColor,
+                  borderRadius: BorderRadius.circular(2),
+                ),
               ),
-            ),
-            if (progress > 0)
-              TweenAnimationBuilder<double>(
-                tween: Tween(begin: 0.0, end: progress),
-                duration: const Duration(milliseconds: 200),
-                curve: Curves.easeOutCubic,
-                builder: (_, value, __) => Stack(
-                  alignment: Alignment.centerLeft,
-                  clipBehavior: Clip.none,
-                  children: [
-                    FractionallySizedBox(
-                      widthFactor: value,
-                      child: Container(
-                        height: 3,
-                        decoration: BoxDecoration(
-                          color: fillColor,
-                          borderRadius: BorderRadius.circular(2),
+              if (progress > 0)
+                TweenAnimationBuilder<double>(
+                  tween: Tween(begin: 0.0, end: progress),
+                  duration: const Duration(milliseconds: 200),
+                  curve: Curves.easeOutCubic,
+                  builder: (_, value, __) => Stack(
+                    alignment: Alignment.centerLeft,
+                    clipBehavior: Clip.none,
+                    children: [
+                      FractionallySizedBox(
+                        widthFactor: value,
+                        child: Container(
+                          height: 3,
+                          decoration: BoxDecoration(
+                            color: fillColor,
+                            borderRadius: BorderRadius.circular(2),
+                          ),
                         ),
                       ),
-                    ),
-                    Positioned(
-                      left: 0,
-                      right: 0,
-                      child: FractionallySizedBox(
-                        widthFactor: value,
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: Container(
-                            width: 10,
-                            height: 10,
-                            decoration: BoxDecoration(
-                              color: fillColor,
-                              shape: BoxShape.circle,
+                      Positioned(
+                        left: 0,
+                        right: 0,
+                        child: FractionallySizedBox(
+                          widthFactor: value,
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Container(
+                              width: 10,
+                              height: 10,
+                              decoration: BoxDecoration(
+                                color: fillColor,
+                                shape: BoxShape.circle,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-          ],
+            ],
+          ),
         ),
       ),
     );
