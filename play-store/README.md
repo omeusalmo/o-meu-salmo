@@ -21,11 +21,11 @@ play-store/
 │   │   ├── 06-todos-salmos.png
 │   │   ├── 07-favoritos.png
 │   │   └── 08-ajustes.png
+│   ├── raw-cropped/                   ← raw sem a status bar (1080×2310)
 │   └── final/                         ← frames HTML prontos para screenshot final
 │       ├── template-screenshot.html   ← template base (arquivo de trabalho)
-│       ├── 01-home-frame.html         ★ ENTREGÁVEL (a criar)
-│       ├── 02-colecoes-frame.html     ★ ENTREGÁVEL (a criar)
-│       └── ...                        ★ um por screenshot
+│       └── s1…s7-*.html               ★ ENTREGÁVEIS (s7-respirar é da V2)
+├── export/                            ← PNGs finais (1080×1920 + feature graphic)
 └── listing/
     └── estrategia-screenshots.md      ← copy de cada tela (criado pelo agente marketing)
 ```

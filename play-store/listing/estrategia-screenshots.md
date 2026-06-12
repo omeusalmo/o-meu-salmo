@@ -221,3 +221,13 @@ Não é funil de conversão. É acompanhamento.
 ---
 
 *Documento criado em 2026-06-08. Revisar quando houver novos screenshots (áudio, versão iOS, dark/light mode alternado).*
+
+---
+
+## Atualização V2 — 2026-06-12
+
+- Todas as capturas em `raw/` e `raw-cropped/` refeitas com o **app V2** (fundo de partículas na Home, player de áudio visível na leitura, card Respirar).
+- **Novo screenshot: Respirar** (`s7-respirar.html` → `export/s7-respirar.png`). Headline: "Respire. Você não está só." Sub: "Um minuto de pausa guiada com o Salmo 46". Posição sugerida: **5**, dentro do bloco *Experiência* — colecao-detalhe e favoritos passam para 6 e 7. Total: 7 de 8 (dentro do limite do Play).
+- `s3-leitura` sub atualizado: "Texto integral, com narração em áudio" — o player aparece na captura.
+- Feature graphic: linha de provas agora "8 coleções · Áudio narrado · Offline · Grátis".
+
