@@ -1,5 +1,5 @@
 # ASO Copy — O meu Salmo
-_Para colar no Google Play Console. Revisado em 2026-06-07._
+_Para colar no Google Play Console. Revisado em 2026-06-12 — alinhado com o app V2._
 
 ---
 
@@ -24,6 +24,9 @@ O meu Salmo é um app de Salmos bíblicos com curadoria por emoção. Não é ma
 
 — 8 coleções emocionais: Ansiedade, Sono, Gratidão, Luto, Esperança, Perdão, Louvor, Proteção
 — 150 Salmos completos, texto integral
+— 150 narrações em áudio, em português, sem pressa
+— A narração acompanha a leitura: o versículo que você ouve se acende na tela
+— Respirar: um minuto de pausa guiada com o Salmo 46
 — Reflexão por Salmo: um convite para pausar e meditar
 — Salmo do dia: uma notificação gentil, todo dia
 — Favoritos: salve os que tocaram em você
@@ -59,6 +62,7 @@ católico, evangélico, espiritualidade,
 salmo 23, salmo 91, salmo para dormir, oração para dormir,
 versículo do dia, palavra do dia,
 oração para ansiedade, bíblia offline, perdão, proteção,
+salmos em áudio, salmos narrados, bíblia em áudio, respiração guiada,
 saúde mental cristã, bem-estar espiritual, cura interior, meditação bíblica
 ```
 
@@ -79,3 +83,24 @@ saúde mental cristã, bem-estar espiritual, cura interior, meditação bíblica
 - **Público-alvo:** 13+ (conteúdo religioso, sem restrição)
 - **Contém anúncios:** Não
 - **Compras no app:** Não (MVP)
+
+---
+
+## Screenshots — set V2 (2026-06-12)
+
+Capturas reais do app V2 em `assets/screenshots/` (1080×2400, tema escuro).
+Play aceita no máximo 8 por formato — ordem de upload sugerida (jornada emocional):
+
+| # | Arquivo | Legenda sugerida (overlay, a cargo do designer) |
+|---|---------|--------------------------------------------------|
+| 1 | 01-home.png | O Salmo certo para hoje |
+| 2 | 09-respirar.png | Um minuto de pausa guiada |
+| 3 | 02-colecoes.png | Como você está se sentindo? |
+| 4 | 03-colecao-detalhe.png | Salmos para esse momento |
+| 5 | 04-leitura-salmo.png | Leitura com narração em áudio |
+| 6 | 05-reflexao.png | Uma reflexão para levar consigo |
+| 7 | 07-favoritos.png | Guardados no coração |
+| 8 | 06-todos-salmos.png | Os 150 Salmos, com busca |
+
+`08-ajustes.png` fica fora do upload (mostra build anterior à troca do emoji 🙏
+por ícone outline — recapturar se for usar).

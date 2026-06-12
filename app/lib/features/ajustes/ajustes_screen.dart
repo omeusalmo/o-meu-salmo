@@ -120,7 +120,11 @@ class AjustesScreen extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('🙏', style: TextStyle(fontSize: 28)),
+                Icon(
+                  Icons.volunteer_activism_outlined,
+                  size: 26,
+                  color: isDark ? AppColors.cobalt400 : AppColors.cobalt500,
+                ),
                 const SizedBox(height: AppTheme.sp2),
                 Text(
                   'Você usa. Gosta.',
