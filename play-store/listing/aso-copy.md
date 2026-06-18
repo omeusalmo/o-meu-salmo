@@ -5,13 +5,13 @@ _Para colar no Google Play Console. Revisado em 2026-06-12 — alinhado com o ap
 
 ## Título
 `O meu Salmo — Salmos do dia`
-_(30 chars exatos. Keyword primária: "salmos". Secundária: "dia" = hábito diário.)_
+_(29 chars. Limite 30. Keyword primária: "salmos". Secundária: "dia" = hábito diário.)_
 
 ---
 
 ## Descrição curta
 `Salmos para cada momento da vida. Ansiedade, sono, gratidão, luto, esperança.`
-_(78 chars. Emocional + lista de coleções como keywords.)_
+_(79 chars. Limite 80. Emocional + lista de coleções como keywords.)_
 
 ---
 
@@ -86,21 +86,20 @@ saúde mental cristã, bem-estar espiritual, cura interior, meditação bíblica
 
 ---
 
-## Screenshots — set V2 (2026-06-12)
+## Screenshots — set final de upload (2026-06-12)
 
-Capturas reais do app V2 em `assets/screenshots/` (1080×2400, tema escuro).
-Play aceita no máximo 8 por formato — ordem de upload sugerida (jornada emocional):
+Set definitivo emoldurado em `play-store/export/` (1080×1920, tema escuro, legenda já embutida).
+São **7 imagens** — subir nesta ordem (jornada emocional; Play destaca as 2-3 primeiras):
 
-| # | Arquivo | Legenda sugerida (overlay, a cargo do designer) |
-|---|---------|--------------------------------------------------|
-| 1 | 01-home.png | O Salmo certo para hoje |
-| 2 | 09-respirar.png | Um minuto de pausa guiada |
-| 3 | 02-colecoes.png | Como você está se sentindo? |
-| 4 | 03-colecao-detalhe.png | Salmos para esse momento |
-| 5 | 04-leitura-salmo.png | Leitura com narração em áudio |
-| 6 | 05-reflexao.png | Uma reflexão para levar consigo |
-| 7 | 07-favoritos.png | Guardados no coração |
-| 8 | 06-todos-salmos.png | Os 150 Salmos, com busca |
+| Ordem upload | Arquivo (`play-store/export/`) | Tela | Legenda embutida |
+|---|---|---|---|
+| 1 | s2-home.png | Home / Salmo do dia | "Quando a ansiedade chega…" |
+| 2 | s7-respirar.png | Respirar | "Respire. Você não está só." |
+| 3 | s1-colecoes.png | Coleções | "O Salmo certo agora" |
+| 4 | s5-colecao.png | Coleção (detalhe) | "Curadoria, não acaso" |
+| 5 | s3-leitura.png | Leitura + áudio | "As palavras certas existem" |
+| 6 | s4-reflexao.png | Reflexão | "Mais que ler — pausar" |
+| 7 | s6-favoritos.png | Favoritos | "Os seus, para sempre" |
 
-`08-ajustes.png` fica fora do upload (mostra build anterior à troca do emoji 🙏
-por ícone outline — recapturar se for usar).
+Brutas (sem moldura, 1080×2400) ficam em `assets/screenshots/` — fonte das emolduradas, não subir.
+`todos-salmos` e `ajustes` ficam fora do set final.

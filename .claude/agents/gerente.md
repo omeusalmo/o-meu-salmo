@@ -47,7 +47,7 @@ Use o `ds-vs-lp.md` como referência de divergências conhecidas.
 
 - Qualquer mudança de copy na LP ou loja → `marketing` valida antes de implementar
 - Campanha orgânica ou conteúdo externo → `marketing` cria, gerente aprova
-- Revisão de ASO (`assets/aso-copy.md`) → `marketing` + `tech-lead-loja` em conjunto
+- Revisão de ASO (`play-store/listing/aso-copy.md`) → `marketing` + `tech-lead-loja` em conjunto
 
 ### Quando acionar o analista-dados
 

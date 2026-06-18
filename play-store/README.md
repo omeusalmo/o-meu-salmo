@@ -2,6 +2,9 @@
 
 Pasta raiz de todos os assets de loja do O meu Salmo.
 
+> **Pasta de upload:** `export/` é o bundle final pronto para o Google Play Console.
+> Tudo que sobe pra ficha do app está lá. O resto são fontes / arquivos de trabalho.
+
 ---
 
 ## Estrutura
@@ -9,29 +12,43 @@ Pasta raiz de todos os assets de loja do O meu Salmo.
 ```
 play-store/
 ├── README.md                          ← este arquivo
+├── export/                            ★ BUNDLE DE UPLOAD (subir tudo daqui)
+│   ├── icon-512.png                   ← ícone hi-res 512×512, sem alpha
+│   ├── feature-graphic.png            ← 1024×500
+│   ├── s1-colecoes.png                ← screenshots finais 1080×1920
+│   ├── s2-home.png
+│   ├── s3-leitura.png
+│   ├── s4-reflexao.png
+│   ├── s5-colecao.png
+│   ├── s6-favoritos.png
+│   └── s7-respirar.png
+├── listing/
+│   ├── aso-copy.md                    ★ textos da loja (título, descrições, tags)
+│   └── estrategia-screenshots.md      ← copy de cada tela (agente marketing)
 ├── feature-graphic/
-│   └── feature-graphic.html           ★ ENTREGÁVEL — 1024×500px
-├── screenshots/
-│   ├── raw/                           ← capturas diretas do app (arquivos de trabalho)
-│   │   ├── 01-home.png
-│   │   ├── 02-colecoes.png
-│   │   ├── 03-colecao-detalhe.png
-│   │   ├── 04-leitura-salmo.png
-│   │   ├── 05-reflexao.png
-│   │   ├── 06-todos-salmos.png
-│   │   ├── 07-favoritos.png
-│   │   └── 08-ajustes.png
-│   ├── raw-cropped/                   ← raw sem a status bar (1080×2310)
-│   └── final/                         ← frames HTML prontos para screenshot final
-│       ├── template-screenshot.html   ← template base (arquivo de trabalho)
-│       └── s1…s7-*.html               ★ ENTREGÁVEIS (s7-respirar é da V2)
-├── export/                            ← PNGs finais (1080×1920 + feature graphic)
-└── listing/
-    └── estrategia-screenshots.md      ← copy de cada tela (criado pelo agente marketing)
+│   └── feature-graphic.html           ← fonte HTML do feature graphic
+└── screenshots/
+    ├── raw/                           ← capturas diretas do app (trabalho)
+    ├── raw-cropped/                   ← raw sem status bar (1080×2310)
+    └── final/                         ← frames HTML → fonte das PNGs em export/
+        ├── template-screenshot.html   ← template base
+        └── s1…s7-*.html
 ```
 
-**Entregáveis finais** = arquivos `.html` na pasta `final/` e `feature-graphic/`  
-**Arquivos de trabalho** = PNGs em `raw/`, template base, este README
+**Bundle de upload** = tudo em `export/` + textos em `listing/aso-copy.md`  
+**Fontes** = HTML em `final/` e `feature-graphic/` (geram as PNGs de `export/`)  
+**Trabalho** = PNGs em `raw/`, template base, este README
+
+> Ícone fonte: `o-meu-salmo-design/assets/app-icon-512.png` (com alpha).
+> `export/icon-512.png` é a versão achatada (fundo cobalt sólido) que o Play exige.
+
+---
+
+## Ordem de upload dos screenshots (jornada emocional)
+
+Play destaca as 2-3 primeiras. Subir nesta ordem:
+
+`s2-home` → `s7-respirar` → `s1-colecoes` → `s5-colecao` → `s3-leitura` → `s4-reflexao` → `s6-favoritos`
 
 ---
 

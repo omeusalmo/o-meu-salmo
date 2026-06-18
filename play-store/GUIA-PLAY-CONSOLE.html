@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; color: #10142C; font-size: 11px; line-height: 1.5; }
+  h1 { font-size: 24px; color: #2A47DD; margin: 0 0 2px; }
+  .sub { color: #4E5899; font-size: 12px; margin: 0 0 16px; }
+  h2 { font-size: 15px; color: #2A47DD; border-bottom: 2px solid #2A47DD; padding-bottom: 4px; margin: 22px 0 10px; }
+  h3 { font-size: 12px; color: #0C1230; margin: 12px 0 4px; }
+  .step { background: #E9EDFD; border-radius: 8px; padding: 4px 10px; font-weight: 600; color: #2E3A86; display: inline-block; margin-bottom: 6px; }
+  .copy { background: #F4F6FE; border: 1px solid #C9D2F5; border-radius: 8px; padding: 10px 12px; font-family: "SF Mono", Menlo, monospace; font-size: 10.5px; white-space: pre-wrap; margin: 4px 0 10px; }
+  .meta { font-size: 9.5px; color: #6B76A8; margin: -6px 0 12px; }
+  table { width: 100%; border-collapse: collapse; margin: 6px 0 12px; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid #D8DEF5; font-size: 10.5px; vertical-align: top; }
+  th { background: #2A47DD; color: #fff; }
+  td a { color: #2A47DD; word-break: break-all; }
+  .ok { color: #1B7A3D; font-weight: 600; }
+  .warn { color: #B5450B; font-weight: 600; }
+  ul.checklist { list-style: none; padding-left: 0; }
+  ul.checklist li { padding: 3px 0 3px 22px; position: relative; }
+  ul.checklist li:before { content: "☐"; position: absolute; left: 0; font-size: 13px; color: #2A47DD; }
+  .shots { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0; }
+  .shot { width: 90px; text-align: center; font-size: 8.5px; color: #4E5899; }
+  .shot img { width: 90px; border: 1px solid #C9D2F5; border-radius: 6px; display: block; }
+  .fg img { width: 100%; max-width: 360px; border: 1px solid #C9D2F5; border-radius: 6px; }
+  .icon-row { display: flex; align-items: center; gap: 12px; }
+  .icon-row img { width: 72px; height: 72px; border-radius: 14px; }
+  .pagebreak { page-break-before: always; }
+  code { background: #E9EDFD; padding: 1px 5px; border-radius: 4px; font-size: 10px; }
+  footer { margin-top: 24px; font-size: 9px; color: #8C97D4; border-top: 1px solid #D8DEF5; padding-top: 6px; }
+</style>
+</head>
+<body>
+
+<h1>O meu Salmo — Guia de Publicação no Google Play</h1>
+<p class="sub">App: <strong>com.omeusalmo.salmos</strong> · versão 1.0.0+1 · gerado 2026-06-18</p>
+
+<p>Conta no Play Console já criada (ID 5781430462576080799). Este guia tem <strong>todos os textos prontos para colar</strong> e os <strong>caminhos de cada arquivo de imagem</strong>. Siga os passos em ordem. Todos os assets de upload estão em <code>play-store/export/</code>.</p>
+
+<h2>Passo 1 — Criar o app no Console</h2>
+<ul class="checklist">
+  <li>Todos os apps → <strong>Criar app</strong></li>
+  <li>Nome: <code>O meu Salmo</code> · Idioma padrão: <strong>Português (Brasil)</strong></li>
+  <li>Tipo: <strong>App</strong> · Gratuito</li>
+  <li>Aceitar declarações (diretrizes do desenvolvedor + leis de exportação dos EUA)</li>
+</ul>
+
+<h2>Passo 2 — Ficha da loja (Presença na Play Store → Ficha principal)</h2>
+
+<h3>Nome do app (máx. 30)</h3>
+<div class="copy">O meu Salmo — Salmos do dia</div>
+<p class="meta">29 caracteres.</p>
+
+<h3>Descrição breve (máx. 80)</h3>
+<div class="copy">Salmos para cada momento da vida. Ansiedade, sono, gratidão, luto, esperança.</div>
+<p class="meta">79 caracteres.</p>
+
+<h3>Descrição completa (máx. 4000)</h3>
+<div class="copy">Tem momentos em que a gente precisa de silêncio — mas de um silêncio que fale.
+
+O meu Salmo é um app de Salmos bíblicos com curadoria por emoção. Não é mais um app de Bíblia. É um lugar calmo, bonito, sem propaganda, para você encontrar o texto certo no momento certo.
+
+— 8 coleções emocionais: Ansiedade, Sono, Gratidão, Luto, Esperança, Perdão, Louvor, Proteção
+— 150 Salmos completos, texto integral
+— 150 narrações em áudio, em português, sem pressa
+— A narração acompanha a leitura: o versículo que você ouve se acende na tela
+— Respirar: um minuto de pausa guiada com o Salmo 46
+— Reflexão por Salmo: um convite para pausar e meditar
+— Salmo do dia: uma notificação gentil, todo dia
+— Favoritos: salve os que tocaram em você
+— Compartilhe versículos como imagem
+— 100% offline — funciona sem internet
+— Sem conta, sem cadastro, sem propaganda
+
+Para católicos e evangélicos. Para quem está em dor e para quem está em paz. Para quem leu Salmos a vida toda e para quem está lendo pela primeira vez.
+
+Um devocional diário para os momentos em que as palavras comuns não chegam.
+
+"Uma pausa que devolve a você mesmo."</div>
+
+<h3>Tags / palavras-chave (campo de pesquisa / referência)</h3>
+<div class="copy">salmos, salmos bíblicos, bíblia, oração, meditação cristã, ansiedade, sono, gratidão, luto, esperança, devocional, reflexão bíblica, versículos, católico, evangélico, espiritualidade, salmo 23, salmo 91, salmo para dormir, oração para dormir, versículo do dia, palavra do dia, oração para ansiedade, bíblia offline, perdão, proteção, salmos em áudio, salmos narrados, bíblia em áudio, respiração guiada, saúde mental cristã, bem-estar espiritual, cura interior, meditação bíblica</div>
+
+<table>
+  <tr><th>Campo</th><th>Valor</th></tr>
+  <tr><td>Categoria do app</td><td>Estilo de vida (secundária: Livros e referência)</td></tr>
+  <tr><td>E-mail de suporte</td><td>omeusalmo@gmail.com</td></tr>
+  <tr><td>Política de privacidade</td><td><a href="https://omeusalmo.github.io/o-meu-salmo/privacy_policy.html">https://omeusalmo.github.io/o-meu-salmo/privacy_policy.html</a> <span class="ok">(live ✓)</span></td></tr>
+</table>
+
+<h2 class="pagebreak">Passo 3 — Recursos gráficos (mesma tela da ficha)</h2>
+
+<h3>Ícone do app — 512×512</h3>
+<div class="icon-row">
+  <img src="export/icon-512.png" alt=" icon">
+  <div>
+    Arquivo: <a href="export/icon-512.png">play-store/export/icon-512.png</a><br>
+    512×512 · PNG sem transparência <span class="ok">(pronto ✓)</span>
+  </div>
+</div>
+
+<h3>Gráfico de destaque (feature graphic) — 1024×500</h3>
+<div class="fg"><img src="export/feature-graphic.png" alt="feature graphic"></div>
+<p class="meta">Arquivo: <a href="export/feature-graphic.png">play-store/export/feature-graphic.png</a></p>
+
+<h3>Screenshots de smartphone — subir nesta ordem (jornada emocional)</h3>
+<p class="meta">Play destaca as 2-3 primeiras. Mínimo 2, recomendado as 7. Todas 1080×1920.</p>
+<div class="shots">
+  <div class="shot"><img src="export/s2-home.png"><br>1 · Home</div>
+  <div class="shot"><img src="export/s7-respirar.png"><br>2 · Respirar</div>
+  <div class="shot"><img src="export/s1-colecoes.png"><br>3 · Coleções</div>
+  <div class="shot"><img src="export/s5-colecao.png"><br>4 · Coleção</div>
+  <div class="shot"><img src="export/s3-leitura.png"><br>5 · Leitura</div>
+  <div class="shot"><img src="export/s4-reflexao.png"><br>6 · Reflexão</div>
+  <div class="shot"><img src="export/s6-favoritos.png"><br>7 · Favoritos</div>
+</div>
+<table>
+  <tr><th>Ordem</th><th>Arquivo</th></tr>
+  <tr><td>1</td><td><a href="export/s2-home.png">export/s2-home.png</a></td></tr>
+  <tr><td>2</td><td><a href="export/s7-respirar.png">export/s7-respirar.png</a></td></tr>
+  <tr><td>3</td><td><a href="export/s1-colecoes.png">export/s1-colecoes.png</a></td></tr>
+  <tr><td>4</td><td><a href="export/s5-colecao.png">export/s5-colecao.png</a></td></tr>
+  <tr><td>5</td><td><a href="export/s3-leitura.png">export/s3-leitura.png</a></td></tr>
+  <tr><td>6</td><td><a href="export/s4-reflexao.png">export/s4-reflexao.png</a></td></tr>
+  <tr><td>7</td><td><a href="export/s6-favoritos.png">export/s6-favoritos.png</a></td></tr>
+</table>
+
+<h2 class="pagebreak">Passo 4 — Formulários obrigatórios (Política e programas)</h2>
+<ul class="checklist">
+  <li><strong>Classificação de conteúdo</strong>: responder questionário. Categoria Referência/educação. Sem violência, sexo, drogas → resultado <strong>Livre / 3+</strong></li>
+  <li><strong>Segurança dos dados</strong>: declarar o que Firebase Analytics coleta. App não pede login. Coleta: identificadores/uso para analytics (não vinculados a identidade). Sem dados sensíveis. Marcar criptografia em trânsito.</li>
+  <li><strong>Público-alvo e conteúdo</strong>: faixa <strong>13+</strong> (conteúdo religioso, sem restrição). Não direcionado a crianças.</li>
+  <li><strong>App de notícias</strong>: Não · <strong>App de COVID</strong>: Não</li>
+  <li><strong>Anúncios</strong>: <span class="warn">declarar "Não contém anúncios"</span></li>
+  <li><strong>Acesso ao app</strong>: todo conteúdo disponível sem restrição (sem login) → marcar essa opção</li>
+</ul>
+
+<h2>Passo 5 — Enviar o AAB</h2>
+<ul class="checklist">
+  <li>Testes → <strong>Teste interno</strong> (subir aqui primeiro; mãe testa no device físico)</li>
+  <li>Criar versão → aceitar <strong>Play App Signing</strong> (Google gerencia a chave de distribuição)</li>
+  <li>Subir o bundle:</li>
+</ul>
+<div class="copy">app/build/app/outputs/bundle/release/app-release.aab</div>
+<p class="meta">124,6 MB · assinado com keystore omeusalmo.jks · versão 1.0.0 (código 1).</p>
+
+<h2>Passo 6 — Revisar e publicar</h2>
+<ul class="checklist">
+  <li>Painel "Visão geral da publicação" → resolver qualquer pendência em vermelho</li>
+  <li>Adicionar e-mails de testadores no Teste interno → enviar link para a mãe</li>
+  <li>Validar no device físico (ver testadores-meu-salmo.md)</li>
+  <li>Promover de Teste interno → <strong>Produção</strong> quando aprovado</li>
+</ul>
+
+<h2>Pendências conhecidas (não bloqueiam o teste interno)</h2>
+<table>
+  <tr><th>Item</th><th>Situação</th></tr>
+  <tr><td>Domínio omeusalmo.com.br</td><td><span class="warn">sem DNS (NXDOMAIN)</span> — usar URL github.io na privacidade por enquanto</td></tr>
+  <tr><td>Tamanho do AAB</td><td>124 MB (62 MB de áudios). Funciona; considerar streaming dos áudios no futuro</td></tr>
+  <tr><td>KGP warning</td><td>firebase_analytics, in_app_review, share_plus em Kotlin plugin antigo. Upgrade futuro</td></tr>
+</table>
+
+<footer>
+O meu Salmo · Guia de publicação · Textos: play-store/listing/aso-copy.md · Assets: play-store/export/ · Privacidade: omeusalmo.github.io/o-meu-salmo/privacy_policy.html
+</footer>
+
+</body>
+</html>
