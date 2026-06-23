@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"><style>
+@page { size: A4; margin: 16mm 14mm; }
+* { box-sizing: border-box; }
+body { font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; color: #10142C; font-size: 11px; line-height: 1.45; }
+h1 { font-size: 22px; color: #2A47DD; margin: 0 0 2px; }
+.lead { color: #4E5899; font-size: 10.5px; margin: 0 0 4px; }
+.meta { background: #E9EDFD; border-radius: 6px; padding: 6px 10px; font-size: 10.5px; margin: 10px 0 14px; color: #2E3A86; }
+h2 { font-size: 13px; color: #2A47DD; margin: 16px 0 6px; border-bottom: 1px solid #C9D2F5; padding-bottom: 3px; }
+h2 .crit { color: #B5450B; font-size: 9.5px; font-weight: 600; }
+ul { list-style: none; padding-left: 2px; margin: 4px 0; }
+li { padding: 2px 0 2px 22px; position: relative; }
+li:before { content: "☐"; position: absolute; left: 0; font-size: 14px; color: #2A47DD; }
+table { width: 100%; border-collapse: collapse; margin: 6px 0; }
+th, td { border: 1px solid #C9D2F5; padding: 6px 8px; font-size: 10px; text-align: left; }
+th { background: #2A47DD; color: #fff; }
+td { height: 26px; }
+.note { font-size: 9.5px; color: #6B76A8; margin-top: 4px; }
+b { color: #0C1230; }
+.avoid-break { page-break-inside: avoid; }
+</style></head><body>
+
+<h1>QA Manual — O meu Salmo</h1>
+<p class="lead">Teste no celular Android <b>físico</b> antes de abrir o teste fechado. Emulador não pega áudio real, notificação agendada e offline.</p>
+<div class="meta">Build: 1.0.0 (1) &nbsp;·&nbsp; Device: __________ &nbsp;·&nbsp; Android: ____ &nbsp;·&nbsp; Data: ____</div>
+
+<div class="avoid-break"><h2>1. Instalação e primeira abertura</h2><ul>
+<li>Instala pela Play Store (link de teste) sem erro</li>
+<li>Ícone na home = ícone cobalt "O meu Salmo" (não o robô padrão)</li>
+<li>Splash aparece (~3s) e some sozinha</li>
+<li>Primeira tela carrega sem crash, sem tela branca</li>
+</ul></div>
+
+<div class="avoid-break"><h2>2. Home / Salmo do dia</h2><ul>
+<li>Mostra Salmo do dia: número, título, versículo</li>
+<li>Data do dia correta</li>
+<li>"Ler o salmo" abre a leitura certa</li>
+<li>Atalho "Respirar" visível e clicável</li>
+</ul></div>
+
+<div class="avoid-break"><h2>3. Coleções (8 emoções)</h2><ul>
+<li>As 8 aparecem: Ansiedade, Sono, Gratidão, Luto, Esperança, Perdão, Louvor, Proteção</li>
+<li>Abrir coleção lista os salmos dela</li>
+<li>Cada salmo da lista abre a leitura correta</li>
+</ul></div>
+
+<div class="avoid-break"><h2>4. Leitura + Áudio <span class="crit">CRÍTICO</span></h2><ul>
+<li>Texto integral do salmo carrega</li>
+<li>Play inicia a narração em PT</li>
+<li><b>Versículo ouvido acende/destaca na tela</b> (sincronia áudio↔texto)</li>
+<li>Pause/resume funciona</li>
+<li>Barra de progresso anda; arrastar reposiciona</li>
+<li>Áudio continua com tela bloqueada / app em segundo plano</li>
+<li>Áudio para ao sair do salmo (não toca sobreposto)</li>
+<li>Testar salmo curto (117) e o mais longo (119)</li>
+</ul></div>
+
+<div class="avoid-break"><h2>5. Respirar (Salmo 46)</h2><ul>
+<li>Abre o modo Respirar</li>
+<li>Ciclo de respiração roda suave (1 min)</li>
+<li>Texto/versículo do Salmo 46 aparece</li>
+<li>Sai limpo ao terminar ou fechar</li>
+</ul></div>
+
+<div class="avoid-break"><h2>6. Reflexão</h2><ul>
+<li>Reflexão do salmo aparece</li>
+<li>Conteúdo coerente com o salmo aberto</li>
+</ul></div>
+
+<div class="avoid-break"><h2>7. Favoritos</h2><ul>
+<li>Marcar favorito (coração) num salmo</li>
+<li>Aparece na aba Favoritos</li>
+<li>Desmarcar remove da lista</li>
+<li><b>Fechar e reabrir o app → favorito persiste</b></li>
+</ul></div>
+
+<div class="avoid-break"><h2>8. Compartilhar</h2><ul>
+<li>Gera <b>imagem</b> do versículo (não só texto)</li>
+<li>Imagem on-brand (cobalt, legível)</li>
+<li>Sheet de compartilhamento do Android abre</li>
+</ul></div>
+
+<div class="avoid-break"><h2>9. Notificação "Salmo do dia" <span class="crit">CRÍTICO — só no físico</span></h2><ul>
+<li>Toggle liga/desliga</li>
+<li>Editar horário salva o novo horário</li>
+<li>Ajustar pra ~2 min à frente → <b>notificação chega no horário</b></li>
+<li>Tocar na notificação abre o app no salmo do dia</li>
+<li>Reiniciar o celular → notificação ainda dispara (sobrevive reboot)</li>
+</ul></div>
+
+<div class="avoid-break"><h2>10. Ajustes / Tema</h2><ul>
+<li>Sistema / Claro / Escuro — troca aplica na hora</li>
+<li>Tema claro legível (contraste OK em todas as telas)</li>
+<li>Versão exibida = 1.0.0</li>
+<li>Fechar/reabrir mantém o tema escolhido</li>
+</ul></div>
+
+<div class="avoid-break"><h2>11. Offline <span class="crit">CRÍTICO — promessa da LP</span></h2><ul>
+<li>Ativar modo avião</li>
+<li>Abrir salmos, ler texto → funciona</li>
+<li><b>Tocar áudio → funciona offline</b></li>
+<li>Coleções, favoritos, Respirar → funcionam sem rede</li>
+<li>Nenhuma tela trava esperando internet</li>
+</ul></div>
+
+<div class="avoid-break"><h2>12. Robustez</h2><ul>
+<li>Girar tela não quebra layout</li>
+<li>Fonte grande do sistema não corta texto crítico</li>
+<li>Voltar (gesto/botão) navega correto, não fecha app à toa</li>
+<li>Uso de 5 min sem crash / sem travar / sem vazar áudio</li>
+</ul></div>
+
+<div class="avoid-break"><h2>Bugs encontrados</h2>
+<table>
+<tr><th style="width:24px">#</th><th>Tela</th><th>O que aconteceu</th><th style="width:90px">Severidade</th><th style="width:44px">Print?</th></tr>
+<tr><td>1</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>2</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>3</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>4</td><td></td><td></td><td></td><td></td></tr>
+</table>
+<p class="note">Severidade: <b>bloqueia</b> (não lança) / <b>alta</b> (lança mas corrige logo) / <b>baixa</b> (backlog). Bug que bloqueia → corrigir, rebuildar AAB, subir nova versão <b>antes</b> do teste fechado.</p>
+</div>
+
+</body></html>
