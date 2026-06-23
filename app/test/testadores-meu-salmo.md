@@ -75,3 +75,40 @@ Sugestões rápidas:
 - Grupos de devs brasileiros (Discord, Telegram) — costumam ajudar
 
 > Dica: ao convidar, explique em uma frase o que é o app e peça só que instalem e usem por alguns dias. Quanto mais simples o pedido, maior a adesão.
+
+---
+
+## Mensagem de recrutamento
+
+### Convite (WhatsApp / pessoal)
+
+> Oi, [nome]! Tudo bem?
+>
+> Tô lançando um app que fiz, o **O meu Salmo** — Salmos com áudio narrado, organizados por momento (ansiedade, sono, gratidão, luto…). É gratuito, sem anúncios e funciona offline.
+>
+> Pra publicar na Play Store o Google exige um grupo de pessoas testando antes. Você me ajudaria? É só:
+> 1. Me passar o **e-mail do Google** do seu celular Android
+> 2. Quando eu liberar, clicar num link e instalar
+> 3. Usar de vez em quando por 2 semanas
+>
+> Sem compromisso, leva 1 minuto pra instalar. Posso te incluir?
+
+### Quando topar — peça só isto
+
+> Me manda o **e-mail da conta Google** que tá logada no seu celular Android (o mesmo da Play Store). É esse que eu cadastro.
+
+### Depois que o teste abrir — passo a passo pro testador
+
+> Pronto, liberei! Pra instalar:
+> 1. Abre este link no celular: **[COLAR LINK DE OPT-IN AQUI]**
+> 2. Toca em **"Tornar-se testador"** / "Become a tester"
+> 3. Toca no link que aparece pra abrir na **Play Store** e instala normal
+> 4. Abre o app pelo menos uma vez 🙏
+>
+> Se aparecer "item não encontrado", espera uns minutos (a Play demora a liberar) ou confirma que tá logado com o e-mail que você me passou.
+
+### Lembrete (meio do período, pra quem não instalou)
+
+> Oi! Lembra do teste do **O meu Salmo**? Faltou você instalar 🙂 É rapidinho pelo link: **[LINK]**. Preciso de todo mundo ativo pra conseguir publicar. Valeu demais!
+
+> **Tom:** caloroso e direto pra recrutar (≠ tom do produto, que é sóbrio sem emoji). O link de opt-in sai no Console depois de criar a faixa de teste fechado.
