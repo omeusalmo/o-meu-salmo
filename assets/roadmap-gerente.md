@@ -222,6 +222,18 @@ _Pré-requisito: E1 validado. Meta: ≥ 15% sessões via widget em 30 dias._
 
 ---
 
+## Backlog Técnico — Otimização & Infra (pós-MVP)
+
+Levantado durante a publicação na Play (2026-06-22). Nenhum bloqueia o lançamento.
+
+| Item | Contexto | Tensão / cuidado |
+|---|---|---|
+| Tamanho do bundle (124MB AAB; 62MB de áudio) | Download real do usuário é menor (AAB split por ABI/densidade, ~50-70MB). Áudio já é mono 24kHz 32kbps MP3 — já enxuto. | Re-encode (24kbps ou HE-AAC) dá só ~20-35%. Ganho modesto vs. esforço (instalar ffmpeg + rebuild + re-test). |
+| Áudio sob demanda (baixar no 1º play, CDN/Supabase) | Única alavanca que tira os 62MB do bundle. Supabase já existe no projeto Plantio (ref `rkpqpghtuacjxcomisle`). | **CONFLITA com "100% offline" da LP e com a decisão offline-first.** Só vale se cachear permanente após 1º download. Reconciliar com Sprint E2 (Áudio Offline Completo) antes de decidir — as duas direções se opõem. |
+| Domínio omeusalmo.com.br | NXDOMAIN — não registrado. Privacy URL atual = github.io (funciona, não bloqueia loja). | Cloudflare **não** dá domínio grátis (só registro a preço de custo + DNS grátis). `.com.br` só via registro.br (~R$40/ano). Freenom morto, não usar. |
+
+---
+
 ## Decisões fixadas (não renegociar sem motivo)
 
 | Decisão | Razão |
