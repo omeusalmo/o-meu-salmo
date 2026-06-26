@@ -222,6 +222,42 @@ _Pré-requisito: E1 validado. Meta: ≥ 15% sessões via widget em 30 dias._
 
 ---
 
+## Internacionalização (i18n) — arquitetura preparada (pós-MVP)
+
+Decisão (2026-06-25): **deixar a fundação pronta sem commitar idioma**. App nasce só PT-BR.
+Não mexer no código durante o ciclo de teste/lançamento — executar i18n só depois do MVP no ar.
+
+### Escopo real — 3 camadas (custo bem diferente)
+
+| Camada | Conteúdo | Esforço | Fonte por idioma |
+|---|---|---|---|
+| **UI** (~50 labels) | "Ajustes", "Coleções", "Compartilhar", "Apoie o app"… (hoje hardcoded em PT) | Baixo, mecânico | tradução de strings |
+| **Conteúdo bíblico** | 150 salmos × {título, versículos} + 8 coleções | Alto | **tradução bíblica de domínio público** (PT = Almeida 1911; ES = Reina-Valera 1909; EN = KJV) |
+| **Reflexões** | 150 reflexões + perguntas (conteúdo **original**, fonte `assets/reflexoes-salmos.md`) | Alto, editorial | traduzir/adaptar uma a uma |
+| **Áudio** | 150 narrações por idioma | Alto, scriptável | TTS no idioma via `gerar_audios.py` |
+
+> A UI é barata. O caro é conteúdo + áudio: cada idioma novo ≈ 150 textos traduzidos + 150 reflexões + 150 narrações TTS.
+
+### Arquitetura-alvo (quando executar)
+
+- **UI:** adicionar `flutter_localizations` + `intl`, `l10n.yaml`, ARB por idioma (`app_pt.arb`, `app_es.arb`…). Migrar strings hardcoded de forma incremental. `supportedLocales` no `MaterialApp` + seletor de idioma em Ajustes.
+- **Conteúdo:** quebrar `salmos.json` por idioma → `assets/content/salmos_<lang>.json` (mesma estrutura: `salmos[]` com numero/titulo/traducao/versiculos/temas/reflexao/audio/reflexao_pergunta). Carregar conforme locale.
+- **Áudio:** pasta por idioma → `assets/audios/<lang>/salmo_NNN.mp3`. Campo `audio` no JSON vira relativo ao idioma. **Casa com o item "áudio sob demanda"** do backlog técnico — não embutir N idiomas no bundle; baixar só o idioma ativo.
+- **Atribuição:** cada idioma exibe sua tradução/licença em Ajustes → "Sobre" (hoje: "João Ferreira de Almeida ed. 1911 — domínio público").
+
+### Play Console (independente do app — fazer quando lançar idioma)
+- Store listing por idioma: Console → **Presença na Play Store → Configurações da ficha → Idiomas e traduções** → adicionar idioma → traduzir título/descrições. **Não exige rebuild** do app.
+- Screenshots podem ser reaproveitados ou localizados por idioma.
+
+### Sequência recomendada
+1. UI i18n primeiro (prova de conceito, baixo risco) — app fica bilíngue na casca, conteúdo segue PT
+2. Um idioma completo de conteúdo+áudio como piloto (ES = maior ROI: LatAm católico/evangélico, Reina-Valera 1909 domínio público)
+3. Medir adoção antes de abrir o 3º idioma
+
+> **Não tocar no código agora.** Migração de strings = diff grande + re-test. Executar em branch dedicada pós-MVP.
+
+---
+
 ## Backlog Técnico — Otimização & Infra (pós-MVP)
 
 Levantado durante a publicação na Play (2026-06-22). Nenhum bloqueia o lançamento.
