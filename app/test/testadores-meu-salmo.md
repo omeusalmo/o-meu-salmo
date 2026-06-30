@@ -27,8 +27,8 @@
 | 2 | Marli | | ☐ | ☐ | ☐ | |
 | 3 | Josi | | ☐ | ☐ | ☐ | |
 | 4 | Davi | | ☐ | ☐ | ☐ | |
-| 5 | | | ☐ | ☐ | ☐ | |
-| 6 | | | ☐ | ☐ | ☐ | |
+| 5 | Diego | | ☐ | ☐ | ☐ | |
+| 6 | Jenifer | | ☐ | ☐ | ☐ | |
 | 7 | | | ☐ | ☐ | ☐ | |
 | 8 | | | ☐ | ☐ | ☐ | |
 | 9 | | | ☐ | ☐ | ☐ | |
@@ -36,7 +36,7 @@
 | 11 | | | ☐ | ☐ | ☐ | |
 | 12 | | | ☐ | ☐ | ☐ | |
 
-**Progresso:** 4 / 12 nomes confirmados — faltam 8 para atingir o mínimo.
+**Progresso:** 6 / 12 nomes confirmados — faltam 6 para atingir o mínimo.
 
 ---
 
