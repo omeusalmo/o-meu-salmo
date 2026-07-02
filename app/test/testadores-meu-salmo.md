@@ -43,12 +43,13 @@
 ## Checklist — Antes de abrir o teste
 
 - [x] Criar conta no Google Play Console (US$ 25) — criada em 2026-06-12
-- [x] Ter o build release assinado gerado — `app/build/app/outputs/bundle/release/app-release.aab` (124,6 MB)
-- [ ] Subir o AAB no Console (faixa de teste fechado)
-- [ ] Preencher a ficha básica do app (ícone, descrição curta, screenshots — pode ser provisório)
-- [x] Política de privacidade pública: https://omeusalmo.github.io/o-meu-salmo/privacy_policy.html (falta só cadastrar no Console)
-- [ ] Completar os 12 testadores nesta lista (com e-mail Google de cada um)
-- [ ] Adicionar os e-mails no Console e enviar os convites
+- [x] Ter o build release assinado gerado — AAB código 2 (1.0.0+2, sem alarme exato)
+- [x] Subir o AAB no Console (faixa de teste fechado) — código 2 publicado
+- [x] Preencher a ficha básica do app (ícone, descrição, screenshots, Data Safety, classificação, público-alvo)
+- [x] Política de privacidade cadastrada no Console: https://omeusalmo.github.io/o-meu-salmo/privacy_policy.html
+- [x] **App APROVADO na revisão do Google (2026-06-30)** — teste fechado ativo
+- [ ] Completar os 12 testadores nesta lista (com e-mail Google de cada um) — 6/12 nomes, 0 e-mails
+- [ ] Adicionar os e-mails no Console e enviar os convites (link de opt-in já ativo)
 
 ## Checklist — Durante os 14 dias
 
