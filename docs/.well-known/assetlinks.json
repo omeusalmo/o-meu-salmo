@@ -3,7 +3,7 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "br.com.omeusalmo",
+      "package_name": "com.omeusalmo.salmos",
       "sha256_cert_fingerprints": [
         "64:9B:65:EE:71:E2:E1:6D:BB:A2:B4:4B:1B:0D:03:85:BD:EF:C6:C2:AC:6E:E4:6A:36:F3:AE:22:B5:49:39:7E"
       ]
