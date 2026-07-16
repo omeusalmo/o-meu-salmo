@@ -29,14 +29,14 @@
 | 4 | Davi | | ☐ | ☐ | ☐ | |
 | 5 | Diego | | ☐ | ☐ | ☐ | |
 | 6 | Jenifer | | ☐ | ☐ | ☐ | |
-| 7 | | | ☐ | ☐ | ☐ | |
-| 8 | | | ☐ | ☐ | ☐ | |
+| 7 | Junia | | ☐ | ☐ | ☐ | |
+| 8 | Jessica Pureza | | ☐ | ☐ | ☐ | |
 | 9 | | | ☐ | ☐ | ☐ | |
 | 10 | | | ☐ | ☐ | ☐ | |
 | 11 | | | ☐ | ☐ | ☐ | |
 | 12 | | | ☐ | ☐ | ☐ | |
 
-**Progresso:** 6 / 12 nomes confirmados — faltam 6 para atingir o mínimo.
+**Progresso:** 8 / 12 nomes confirmados — faltam 4 para atingir o mínimo.
 
 ---
 
