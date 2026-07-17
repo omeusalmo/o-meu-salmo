@@ -41,14 +41,14 @@ O card de versículo compartilhado é o único asset de marketing que importa. T
 
 **Bio do Instagram (150 chars):**
 ```
-O meu Salmo — salmos com curadoria por sentimento
+O meu Salmo · salmos com curadoria por sentimento
 Para quem precisa de palavras em dias difíceis
 ↓ Baixar grátis
 ```
 
 **Texto de lançamento para WhatsApp:**
 ```
-Lancei meu app hoje — O meu Salmo. É um app de Salmos com curadoria por sentimento: você escolhe como está chegando (ansiedade, sono, luto, gratidão) e o app encontra as palavras certas. Gratuito, sem anúncios. Se fizer sentido pra você, baixa e me conta o que acha: [link]
+Lancei meu app hoje: O meu Salmo. É um app de Salmos com curadoria por sentimento: você escolhe como está chegando (ansiedade, sono, luto, gratidão) e o app encontra as palavras certas. Gratuito, sem anúncios. Se fizer sentido pra você, baixa e me conta o que acha: [link]
 ```
 
 **Descrição curta universal:**
