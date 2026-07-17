@@ -258,6 +258,23 @@ Não mexer no código durante o ciclo de teste/lançamento — executar i18n só
 
 ---
 
+## Batch v1.0.0+3 — "Hardening" (executar só APÓS o teste fechado passar)
+
+Agrupar tudo que exige rebuild numa versão só. **Não rebuildar o AAB aprovado no meio do teste.**
+
+| Item | O quê |
+|---|---|
+| R8 / minify | `isMinifyEnabled` + `isShrinkResources` = true (build.gradle.kts). Ganho modesto (áudio domina), mas melhora stack traces. |
+| Remover AD_ID | `tools:node="remove"` na permissão do Firebase → então re-declarar "não usa ID de publicidade" no Console. Combina com o posicionamento sem anúncios. |
+| Atualizar deps | firebase_core 3.6.0, flutter_local_notifications 17.2.2, share_plus 13.1.0 + resolver aviso KGP (firebase_analytics, in_app_review, share_plus). |
+| DUMP | já removido no manifest (commit 72485d9) — entra neste build. |
+| **Travessões nas strings de UI** | Tom humanizado (LP já limpa em 2026-07-13). 4 casos de **prosa** a trocar por ponto: `home_screen.dart:454`, `onboarding_screen.dart:362`, `leitura_salmo_screen.dart:338`, `notification_service.dart:70`. **MANTER** `compositor_screen.dart:61` (travessão de citação = norma tipográfica). Opcionais (separadores): `ajustes_screen.dart:197` e `:318`. `salmos.json` já está limpo (0/150). |
+| Crashlytics | opcional: incluir gatilho temporário de crash pra revalidar. |
+
+> Descrição da loja (`play-store/listing/aso-copy.md`, 22 travessões) **não** depende de rebuild — editar direto no Console quando quiser.
+
+---
+
 ## Backlog Técnico — Otimização & Infra (pós-MVP)
 
 Levantado durante a publicação na Play (2026-06-22). Nenhum bloqueia o lançamento.
