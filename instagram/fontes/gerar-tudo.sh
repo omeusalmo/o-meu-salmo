@@ -14,13 +14,13 @@ shot() { # shot <html> <png-destino> <WxH>
 }
 
 # cards (4:5) → posição na fila
-shot "$DIR/cards/dia-01-domingo-esperanca.html" "$FILA/01-dom-card-esperanca.png"  1080,1350
-shot "$DIR/cards/dia-03-terca-ansiedade.html"   "$FILA/03-sex-card-ansiedade.png"  1080,1350
-shot "$DIR/cards/dia-05-quinta-sono.html"       "$FILA/04-dom-card-sono.png"       1080,1350
-shot "$DIR/cards/dia-02-segunda-gratidao.html"  "$FILA/06-sex-card-gratidao.png"   1080,1350
-shot "$DIR/cards/dia-04-quarta-perdao.html"     "$FILA/07-dom-card-perdao.png"     1080,1350
-shot "$DIR/cards/dia-06-sexta-louvor.html"      "$FILA/09-sex-card-louvor.png"     1080,1350
-shot "$DIR/cards/dia-07-sabado-protecao.html"   "$FILA/10-dom-card-protecao.png"   1080,1350
+shot "$DIR/cards/dia-01-domingo-esperanca.html" "$FILA/01-dom-card-esperanca/post.png"  1080,1350
+shot "$DIR/cards/dia-03-terca-ansiedade.html"   "$FILA/03-sex-card-ansiedade/post.png"  1080,1350
+shot "$DIR/cards/dia-05-quinta-sono.html"       "$FILA/04-dom-card-sono/post.png"       1080,1350
+shot "$DIR/cards/dia-02-segunda-gratidao.html"  "$FILA/06-sex-card-gratidao/post.png"   1080,1350
+shot "$DIR/cards/dia-04-quarta-perdao.html"     "$FILA/07-dom-card-perdao/post.png"     1080,1350
+shot "$DIR/cards/dia-06-sexta-louvor.html"      "$FILA/09-sex-card-louvor/post.png"     1080,1350
+shot "$DIR/cards/dia-07-sabado-protecao.html"   "$FILA/10-dom-card-protecao/post.png"   1080,1350
 
 # carrossel do app (post 00, 4:5)
 for f in "$DIR"/carrossel-app/*.html; do

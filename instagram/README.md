@@ -6,20 +6,22 @@
 
 ## Estrutura (sem duplicação)
 
+**1 post = 1 pasta.** Abre a pasta do próximo número, arrasta a(s) imagem(ns), copia a `legenda.txt`. Fim.
+
 ```
 instagram/
-├── fila-de-postagem/        ★ ÚNICA casa dos PNGs finais + legendas
-│   ├── 00-pin-carrossel-app/     (PRIMEIRO POST — apresenta o app; fixar no perfil)
-│   ├── 01-dom-card-esperanca     (light cobalt)
-│   ├── 02-qua-reel-salmo-23/     (fundo + áudio 43s → CapCut)
-│   ├── 03-sex-card-ansiedade     (dark cobalt)
-│   ├── 04-dom-card-sono          (dark verde)
-│   ├── 05-qua-carrossel-ansiedade/ (7 slides)
-│   ├── 06-sex-card-gratidao      (light âmbar)
-│   ├── 07-dom-card-perdao        (dark lavanda)
-│   ├── 08-qua-reel-salmo-121/    (fundo + áudio 40s → CapCut)
-│   ├── 09-sex-card-louvor        (light âmbar)
-│   └── 10-dom-card-protecao      (dark verde)
+├── fila-de-postagem/        ★ 11 pastas, 1 por post, na ordem de publicação
+│   ├── 00-pin-carrossel-app/       5 slides + legenda.txt   (1º post; FIXAR no perfil)
+│   ├── 01-dom-card-esperanca/      post.png + legenda.txt   (light cobalt)
+│   ├── 02-qua-reel-salmo-23/       fundo.png + audio.mp3 + legenda.txt (montar no CapCut)
+│   ├── 03-sex-card-ansiedade/      post.png + legenda.txt   (dark cobalt)
+│   ├── 04-dom-card-sono/           post.png + legenda.txt   (dark verde)
+│   ├── 05-qua-carrossel-ansiedade/ 7 slides + legenda.txt   (subir na ordem dos nomes)
+│   ├── 06-sex-card-gratidao/       post.png + legenda.txt   (light âmbar)
+│   ├── 07-dom-card-perdao/         post.png + legenda.txt   (dark lavanda)
+│   ├── 08-qua-reel-salmo-121/      fundo.png + audio.mp3 + legenda.txt (CapCut)
+│   ├── 09-sex-card-louvor/         post.png + legenda.txt   (light âmbar)
+│   └── 10-dom-card-protecao/       post.png + legenda.txt   (dark verde)
 └── fontes/                  ← só HTML (nunca PNG aqui)
     ├── gerar-tudo.sh        ★ regenera TODA a fila com 1 comando
     ├── cards/               (7 cards)
@@ -28,7 +30,8 @@ instagram/
     └── reels/               (2 fundos 9:16)
 ```
 
-**Editar uma arte:** mexe no HTML em `fontes/` → roda `fontes/gerar-tudo.sh` → fila atualizada. Fim.
+**Nomenclatura das pastas:** `NN-dia-formato-tema` → `04-dom-card-sono` = 4º post, domingo, card, tema Sono.
+**Editar uma arte:** mexe no HTML em `fontes/` → roda `fontes/gerar-tudo.sh` → fila atualizada.
 
 ## Paleta por emoção (herdada da LP, tokens `--emo-*` de docs/index.html)
 
