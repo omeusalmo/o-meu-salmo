@@ -10,7 +10,7 @@ body { width:1080px; height:1350px; overflow:hidden; }
   display:flex; flex-direction:column; align-items:center; justify-content:center;
   padding:120px 100px; position:relative; text-align:center;
 }
-.logo { position:absolute; top:64px; left:0; right:0; font-family:'Instrument Sans',sans-serif;
+.logo { position:absolute; top:72px; left:0; right:0; font-family:'Instrument Sans',sans-serif;
   font-size:22px; font-weight:500; color:#FFF; opacity:0.25; letter-spacing:5px; text-transform:uppercase; }
 .progress { position:absolute; top:64px; right:72px; font-family:'Instrument Sans',sans-serif;
   font-size:22px; color:#FFF; opacity:0.30; letter-spacing:3px; }
@@ -23,7 +23,7 @@ body { width:1080px; height:1350px; overflow:hidden; }
   color:#8C97D4; line-height:1.5; margin-top:44px; max-width:820px; }
 .chips { display:flex; flex-wrap:wrap; gap:18px; justify-content:center; margin-top:56px; max-width:840px; }
 .chip { font-family:'Instrument Sans',sans-serif; font-size:26px; color:#EEF0FC;
-  border:1px solid rgba(85,103,234,.55); border-radius:999px; padding:14px 34px; }
+  border:1px solid; border-radius:999px; padding:14px 34px; }
 .cue { position:absolute; bottom:72px; left:0; right:0; font-family:'Instrument Sans',sans-serif;
   font-size:24px; color:#FFF; opacity:0.35; letter-spacing:2px; }
 .gold { color:#C4A86A; }
@@ -31,13 +31,15 @@ body { width:1080px; height:1350px; overflow:hidden; }
 .mark { font-family:'Playfair Display',serif; font-size:400px; color:#5567EA; opacity:0.05;
   position:absolute; bottom:-90px; right:-30px; line-height:1; }
 
+.bookmark{position:absolute;top:0;left:50%;transform:translateX(-50%);width:34px;height:50px;background:#5567EA;clip-path:polygon(0 0,100% 0,100% 100%,50% 70%,0 100%);opacity:0.9;}
 </style></head><body>
 <div class="slide">
+  <div class="bookmark"></div>
   <div class="logo">O Meu Salmo</div>
   <div class="progress">1 de 3</div>
   <div class="title">Você escolhe<br>a <em>emoção.</em></div>
   <div class="sub">O app encontra as palavras.</div>
-  <div class="chips"><span class="chip">Ansiedade</span><span class="chip">Sono</span><span class="chip">Gratidão</span><span class="chip">Luto</span><span class="chip">Esperança</span><span class="chip">Perdão</span><span class="chip">Louvor</span><span class="chip">Proteção</span></div>
+  <div class="chips"><span class="chip" style="color:#8B9AF2;border-color:#8B9AF255;background:#8B9AF214">Ansiedade</span><span class="chip" style="color:#8FC287;border-color:#8FC28755;background:#8FC28714">Sono</span><span class="chip" style="color:#E2B95C;border-color:#E2B95C55;background:#E2B95C14">Gratidão</span><span class="chip" style="color:#C793B1;border-color:#C793B155;background:#C793B114">Luto</span><span class="chip" style="color:#7C90F0;border-color:#7C90F055;background:#7C90F014">Esperança</span><span class="chip" style="color:#ABA7D6;border-color:#ABA7D655;background:#ABA7D614">Perdão</span><span class="chip" style="color:#E2B95C;border-color:#E2B95C55;background:#E2B95C14">Louvor</span><span class="chip" style="color:#8FC287;border-color:#8FC28755;background:#8FC28714">Proteção</span></div>
   
 </div>
 </body></html>
