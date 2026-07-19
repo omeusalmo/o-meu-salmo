@@ -38,16 +38,16 @@ Stories: **opcionais**, quando der. Melhor uso: repostar o feed no story (2 toqu
 ### Semana 1
 | Dia | Conteúdo | Arte | Legenda |
 |---|---|---|---|
-| Dom | Card Esperança (Sl 23) | `semana-1/dia-01-domingo-esperanca.png` | `instagram/legendas-semana-1.md` |
-| Qua | **Reel Salmo 23 narrado** | `reels/reel-salmo-23.png` + `reels/audio-salmo-23.mp3` | ver abaixo |
-| Sex | Card Ansiedade (Sl 55) | `semana-1/dia-03-terca-ansiedade.png` | `legendas-semana-1.md` |
+| Dom | Card Esperança (Sl 23) | `fila-de-postagem/01-dom-card-esperanca.png` | `.txt` ao lado da imagem |
+| Qua | **Reel Salmo 23 narrado** | `fila-de-postagem/02-qua-reel-salmo-23/` | ver abaixo |
+| Sex | Card Ansiedade (Sl 55) | `fila-de-postagem/03-sex-card-ansiedade.png` | `.txt` ao lado |
 
 ### Semana 2
 | Dia | Conteúdo | Arte | Legenda |
 |---|---|---|---|
-| Dom | Card Sono (Sl 4) | `semana-1/dia-05-quinta-sono.png` | `legendas-semana-1.md` |
-| Qua | **Carrossel Ansiedade** (7 slides) | `carrossel-ansiedade/slide-01..07.png` na ordem | ver abaixo |
-| Sex | Card Gratidão (Sl 100) | `semana-1/dia-02-segunda-gratidao.png` | `legendas-semana-1.md` |
+| Dom | Card Sono (Sl 4) | `fila-de-postagem/04-dom-card-sono.png` | `.txt` ao lado |
+| Qua | **Carrossel Ansiedade** (7 slides) | `fila-de-postagem/05-qua-carrossel-ansiedade/` na ordem | ver abaixo |
+| Sex | Card Gratidão (Sl 100) | `fila-de-postagem/06-sex-card-gratidao.png` | `.txt` ao lado |
 
 Sobram na gaveta pra Semana 3+: cards Perdão (Sl 51), Louvor (Sl 150), Proteção (Sl 91) e o Reel Salmo 121.
 
