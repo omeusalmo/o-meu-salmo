@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O Meu Salmo — Estratégia Instagram v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --night-base: #080B1C;
+  --night-plus: #10142C;
+  --night-line: #1E2348;
+  --cobalt: #2A47DD;
+  --cobalt-lt: #5567EA;
+  --gold: #C4A86A;
+  --cream: #EEF0FC;
+  --text: #8C97D4;
+  --muted: #7080C8;
+
+  --emo-ansiedade: #5567EA;
+  --emo-sono: #6A9A62;
+  --emo-gratidao: #C99A38;
+  --emo-luto: #9A6A86;
+  --emo-esperanca: #2A47DD;
+  --emo-perdao: #8480AA;
+  --emo-louvor: #C99A38;
+  --emo-protecao: #6A9A62;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Instrument Sans', sans-serif;
+  background: #fff;
+  color: #1a1a2e;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ─── CAPA ─── */
+.cover {
+  background: linear-gradient(165deg, var(--night-base) 0%, var(--night-plus) 70%, #131838 100%);
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 60px;
+  page-break-after: always;
+  position: relative;
+}
+.cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  pointer-events: none;
+}
+.cover-eyebrow {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--cobalt-lt);
+  margin-bottom: 32px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.cover-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px;
+  font-weight: 400;
+  color: var(--cream);
+  text-align: center;
+  line-height: 1.15;
+  position: relative;
+  z-index: 1;
+}
+.cover-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+.cover-sub {
+  font-family: 'Cormorant', serif;
+  font-size: 22px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text);
+  text-align: center;
+  margin-top: 24px;
+  position: relative;
+  z-index: 1;
+}
+.cover-meta {
+  margin-top: 80px;
+  display: flex;
+  gap: 48px;
+  position: relative;
+  z-index: 1;
+}
+.cover-meta-item {
+  text-align: center;
+}
+.cover-meta-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  color: var(--gold);
+  display: block;
+}
+.cover-meta-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.cover-brand {
+  position: absolute;
+  bottom: 48px;
+  font-size: 12px;
+  color: var(--cream);
+  opacity: 0.3;
+  letter-spacing: 3px;
+  z-index: 1;
+}
+.cover-brand .salmo { font-family: 'Playfair Display', serif; font-style: italic; }
+
+/* ─── LAYOUT PÁGINAS ─── */
+.page {
+  padding: 56px 64px 64px;
+  max-width: 900px;
+  margin: 0 auto;
+  page-break-before: always;
+}
+.page:first-of-type { page-break-before: avoid; }
+
+/* ─── SEÇÃO ─── */
+.section { margin-bottom: 52px; }
+
+.section-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  margin-bottom: 8px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--night-base);
+  border-bottom: 1.5px solid #E2E6F8;
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+  line-height: 1.3;
+}
+.section-title em { font-style: italic; color: #2A47DD; }
+
+/* ─── TEXTO ─── */
+p { margin-bottom: 12px; color: #2e3a5e; line-height: 1.7; }
+strong { font-weight: 600; color: #080B1C; }
+em { font-style: italic; }
+
+/* ─── TABELAS ─── */
+table { width: 100%; border-collapse: collapse; margin-bottom: 24px; font-size: 12.5px; }
+th {
+  background: var(--night-base);
+  color: var(--cream);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 10px 14px;
+  text-align: left;
+}
+td {
+  padding: 9px 14px;
+  border-bottom: 1px solid #EAECF8;
+  color: #2e3a5e;
+  vertical-align: top;
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) td { background: #F7F8FE; }
+
+/* ─── GRID COLEÇÕES ─── */
+.emo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.emo-card {
+  border-radius: 12px;
+  padding: 16px 14px;
+  background: var(--night-base);
+}
+.emo-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+.emo-name {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.emo-tagline {
+  font-family: 'Cormorant', serif;
+  font-size: 13px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.4;
+}
+
+/* ─── TOKENS VISUAIS ─── */
+.token-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.token-card {
+  border: 1px solid #E2E6F8;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.token-swatch {
+  height: 40px;
+}
+.token-info {
+  padding: 10px 12px;
+}
+.token-name {
+  font-size: 10px;
+  font-weight: 600;
+  color: #080B1C;
+  margin-bottom: 2px;
+}
+.token-hex {
+  font-size: 10px;
+  font-family: 'Instrument Sans', monospace;
+  color: #7080C8;
+  letter-spacing: 1px;
+}
+
+/* ─── PILARES ─── */
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.pillar-card {
+  border-radius: 12px;
+  border: 1.5px solid #E2E6F8;
+  padding: 18px 16px;
+}
+.pillar-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #E2E6F8;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.pillar-name {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  margin-bottom: 6px;
+}
+.pillar-desc {
+  font-size: 11.5px;
+  color: #4e5e8a;
+  line-height: 1.5;
+}
+.pillar-pct {
+  margin-top: 10px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #2A47DD;
+  letter-spacing: 1px;
+}
+
+/* ─── CALENDÁRIO ─── */
+.cal-week { margin-bottom: 32px; }
+.cal-week-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--night-base);
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #E2E6F8;
+}
+.cal-week-title span {
+  font-size: 11px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 400;
+  color: #7080C8;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-left: 12px;
+}
+
+/* ─── EMO BADGE ─── */
+.emo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.emo-badge .b-dot { width: 6px; height: 6px; border-radius: 50%; }
+
+/* ─── LEGENDA / CAPTION ─── */
+.caption-box {
+  background: var(--night-base);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-bottom: 16px;
+}
+.caption-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--cobalt-lt);
+  margin-bottom: 14px;
+}
+.caption-text {
+  font-family: 'Cormorant', serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.8;
+  white-space: pre-line;
+}
+.caption-tags {
+  margin-top: 12px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 11px;
+  color: var(--cobalt-lt);
+  line-height: 1.8;
+}
+
+/* ─── HOOKS BANK ─── */
+.hook-list { list-style: none; }
+.hook-list li {
+  padding: 12px 16px;
+  border-left: 3px solid var(--cobalt);
+  margin-bottom: 10px;
+  background: #F7F8FE;
+  border-radius: 0 8px 8px 0;
+  font-family: 'Cormorant', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--night-base);
+}
+.hook-list li span {
+  display: block;
+  font-family: 'Instrument Sans', sans-serif;
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #7080C8;
+  margin-top: 4px;
+}
+
+/* ─── BIO / HIGHLIGHTS ─── */
+.bio-box {
+  background: var(--night-base);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  border: 1px solid var(--night-line);
+}
+.bio-text {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 2;
+  white-space: pre-line;
+}
+.bio-url {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.highlight-card {
+  border-radius: 10px;
+  padding: 14px 12px;
+  background: #F7F8FE;
+  border: 1px solid #E2E6F8;
+  text-align: center;
+}
+.highlight-icon {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+.highlight-name {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  margin-bottom: 4px;
+}
+.highlight-desc {
+  font-size: 10px;
+  color: #7080C8;
+  line-height: 1.4;
+}
+
+/* ─── KPIs ─── */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.kpi-card {
+  border-radius: 12px;
+  border: 1.5px solid #E2E6F8;
+  padding: 18px 16px;
+  text-align: center;
+}
+.kpi-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--cobalt);
+  display: block;
+  margin-bottom: 4px;
+}
+.kpi-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #7080C8;
+  margin-bottom: 8px;
+}
+.kpi-period {
+  font-size: 10px;
+  color: #9aa0c0;
+  font-style: italic;
+}
+
+/* ─── NOTA / CALLOUT ─── */
+.callout {
+  border-left: 3px solid var(--gold);
+  padding: 14px 18px;
+  background: #FFFBF2;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 20px;
+  font-size: 12.5px;
+  color: #3a2e0a;
+  line-height: 1.6;
+}
+
+/* ─── REGRA ANTI-INTRO ─── */
+.rule-box {
+  border: 1.5px solid #2A47DD22;
+  background: #F4F6FF;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 20px;
+}
+.rule-box .rule-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  margin-bottom: 8px;
+}
+.rule-box ul { padding-left: 20px; }
+.rule-box li { margin-bottom: 6px; font-size: 12.5px; color: #2e3a5e; }
+
+/* ─── FOOTER ─── */
+.page-footer {
+  text-align: center;
+  font-size: 10px;
+  color: #b0b8d8;
+  letter-spacing: 2px;
+  padding: 48px 0 16px;
+  border-top: 1px solid #E2E6F8;
+  margin-top: 48px;
+}
+.page-footer .salmo { font-family: 'Playfair Display', serif; font-style: italic; }
+
+@media print {
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { page-break-before: always; }
+  .cover { page-break-after: always; min-height: 100vh; }
+  .no-break { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     CAPA
+══════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-eyebrow">Estratégia de Conteúdo · Instagram</div>
+  <div class="cover-title">O meu <em>Salmo</em></div>
+  <div class="cover-sub">Presença digital alinhada à identidade v2</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-num">30</span>
+      <span class="cover-meta-label">dias de calendário</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-num">8</span>
+      <span class="cover-meta-label">coleções emocionais</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-num">3</span>
+      <span class="cover-meta-label">pilares de conteúdo</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-num">14</span>
+      <span class="cover-meta-label">imagens geradas</span>
+    </div>
+  </div>
+  <div class="cover-brand">O meu <span class="salmo">Salmo</span> &nbsp;·&nbsp; Jeff Silva, CEO &nbsp;·&nbsp; Jun 2026</div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     P1 — POSICIONAMENTO + IDENTIDADE VISUAL
+══════════════════════════════════════════════ -->
+<div class="page">
+
+  <div class="section">
+    <div class="section-label">01 · Posicionamento</div>
+    <div class="section-title">Por que existimos no Instagram</div>
+
+    <div class="callout">
+      O Instagram não vende o app. Ele é o abrigo antes do abrigo. Quem nos encontra aqui já está procurando algo — e nós entregamos o versículo antes de pedir qualquer coisa.
+    </div>
+
+    <p><strong>Proposta de presença:</strong> conta de salmos curados por emoção. Cada post entrega valor completo — um versículo, uma coleção, um momento de paz — sem depender do app para fazer sentido.</p>
+
+    <p><strong>Tom:</strong> íntimo, sóbrio, poético. Sem performático religioso. Sem emoji. Sem jargão de marketing. Fala direto com quem está em momento de vulnerabilidade.</p>
+
+    <div class="rule-box no-break">
+      <div class="rule-title">Regra de ouro — sem posts de apresentação</div>
+      <ul>
+        <li>Bio + Highlights explicam o app. Posts entregam salmos.</li>
+        <li>Se o post fala <em>sobre</em> o app em vez de falar <em>com</em> o leitor, reescrever ou cortar.</li>
+        <li>Nenhum post de "olá, somos o O Meu Salmo". A conta existe a partir do primeiro versículo.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">02 · Sistema Visual v2</div>
+    <div class="section-title">Tokens e tipografia — fonte: design-system.html</div>
+
+    <div class="token-grid no-break">
+      <div class="token-card">
+        <div class="token-swatch" style="background:#080B1C"></div>
+        <div class="token-info"><div class="token-name">Night Base</div><div class="token-hex">#080B1C</div></div>
+      </div>
+      <div class="token-card">
+        <div class="token-swatch" style="background:#10142C"></div>
+        <div class="token-info"><div class="token-name">Night Plus (superfície)</div><div class="token-hex">#10142C</div></div>
+      </div>
+      <div class="token-card">
+        <div class="token-swatch" style="background:#1E2348"></div>
+        <div class="token-info"><div class="token-name">Night Line (borda)</div><div class="token-hex">#1E2348</div></div>
+      </div>
+      <div class="token-card">
+        <div class="token-swatch" style="background:#C4A86A"></div>
+        <div class="token-info"><div class="token-name">Gold (referência/verso)</div><div class="token-hex">#C4A86A</div></div>
+      </div>
+      <div class="token-card">
+        <div class="token-swatch" style="background:#EEF0FC"></div>
+        <div class="token-info"><div class="token-name">Cream (título/texto)</div><div class="token-hex">#EEF0FC</div></div>
+      </div>
+      <div class="token-card">
+        <div class="token-swatch" style="background:#8C97D4"></div>
+        <div class="token-info"><div class="token-name">Text (corpo)</div><div class="token-hex">#8C97D4</div></div>
+      </div>
+      <div class="token-card">
+        <div class="token-swatch" style="background:#7080C8"></div>
+        <div class="token-info"><div class="token-name">Muted (label/UI)</div><div class="token-hex">#7080C8</div></div>
+      </div>
+      <div class="token-card">
+        <div class="token-swatch" style="background:#2A47DD"></div>
+        <div class="token-info"><div class="token-name">Cobalt (acento)</div><div class="token-hex">#2A47DD</div></div>
+      </div>
+      <div class="token-card">
+        <div class="token-swatch" style="background:#5567EA"></div>
+        <div class="token-info"><div class="token-name">Cobalt Light</div><div class="token-hex">#5567EA</div></div>
+      </div>
+    </div>
+
+    <p><strong>Tipografia:</strong> Playfair Display (números-âncora, títulos), Cormorant itálico (versículos), Instrument Sans (UI, tags, labels).</p>
+    <p><strong>Grain:</strong> SVG fractalNoise, 5% opacidade — mesma textura da LP. Presente em todos os posts.</p>
+    <p><strong>Gradiente de fundo:</strong> 165° — <code>#080B1C → #10142C → #131838</code>.</p>
+    <p><strong>Número-âncora:</strong> número do Salmo em Playfair 300px, 5% opacidade, canto superior direito.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">03 · Coleções Emocionais</div>
+    <div class="section-title">8 coleções — cores e taglines oficiais da LP</div>
+
+    <div class="emo-grid no-break">
+      <div class="emo-card">
+        <div class="emo-dot" style="background:#5567EA"></div>
+        <div class="emo-name">Ansiedade</div>
+        <div class="emo-tagline">Para a mente que não para de pensar.</div>
+      </div>
+      <div class="emo-card">
+        <div class="emo-dot" style="background:#6A9A62"></div>
+        <div class="emo-name">Sono</div>
+        <div class="emo-tagline">Para a noite que custa a passar.</div>
+      </div>
+      <div class="emo-card">
+        <div class="emo-dot" style="background:#C99A38"></div>
+        <div class="emo-name">Gratidão</div>
+        <div class="emo-tagline">Para a alegria que pede voz.</div>
+      </div>
+      <div class="emo-card">
+        <div class="emo-dot" style="background:#9A6A86"></div>
+        <div class="emo-name">Luto</div>
+        <div class="emo-tagline">Para a saudade que ainda pesa.</div>
+      </div>
+      <div class="emo-card">
+        <div class="emo-dot" style="background:#2A47DD"></div>
+        <div class="emo-name">Esperança</div>
+        <div class="emo-tagline">Para o amanhã que parece distante.</div>
+      </div>
+      <div class="emo-card">
+        <div class="emo-dot" style="background:#8480AA"></div>
+        <div class="emo-name">Perdão</div>
+        <div class="emo-tagline">Para o peso que precisa de descanso.</div>
+      </div>
+      <div class="emo-card">
+        <div class="emo-dot" style="background:#C99A38"></div>
+        <div class="emo-name">Louvor</div>
+        <div class="emo-tagline">Para o coração que quer celebrar.</div>
+      </div>
+      <div class="emo-card">
+        <div class="emo-dot" style="background:#6A9A62"></div>
+        <div class="emo-name">Proteção</div>
+        <div class="emo-tagline">Para os dias de medo.</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      Taglines usadas verbatim nos posts — são o texto-âncora da LP. Nunca reescrever ou variar.
+    </div>
+  </div>
+
+  <div class="page-footer">O meu <span class="salmo">Salmo</span> &nbsp;·&nbsp; Estratégia Instagram v2 &nbsp;·&nbsp; Confidencial</div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     P2 — CONTA, BIO, PILARES
+══════════════════════════════════════════════ -->
+<div class="page">
+
+  <div class="section">
+    <div class="section-label">04 · Estrutura da Conta</div>
+    <div class="section-title">Bio, link e Highlights</div>
+
+    <p><strong>Handle:</strong> @omeusalmo &nbsp;·&nbsp; <strong>Nome de exibição:</strong> O Meu Salmo</p>
+
+    <div class="bio-box no-break">
+      <div class="bio-text">As palavras que você não encontra estão aqui.
+150 Salmos · 8 emoções · áudio narrado
+Gratuito no Android ↓</div>
+      <div class="bio-url">omeusalmo.com.br</div>
+    </div>
+
+    <p><strong>Link na bio:</strong> <code>omeusalmo.com.br</code> (direto para a LP — sem Linktree). Call-to-action do Google Play dentro da LP.</p>
+
+    <p><strong>Highlights:</strong></p>
+    <div class="highlight-grid no-break">
+      <div class="highlight-card">
+        <div class="highlight-icon">📖</div>
+        <div class="highlight-name">Salmos</div>
+        <div class="highlight-desc">versículos favoritos dos posts</div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">🌙</div>
+        <div class="highlight-name">Para a noite</div>
+        <div class="highlight-desc">coleções Sono + Proteção</div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">🫁</div>
+        <div class="highlight-name">Ansiedade</div>
+        <div class="highlight-desc">os 5 salmos do carrossel</div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">📱</div>
+        <div class="highlight-name">App</div>
+        <div class="highlight-desc">screenshots + como baixar</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">05 · Pilares de Conteúdo</div>
+    <div class="section-title">Três formatos, uma voz</div>
+
+    <div class="pillar-grid no-break">
+      <div class="pillar-card">
+        <div class="pillar-num">01</div>
+        <div class="pillar-name">Salmo do dia</div>
+        <div class="pillar-desc">Card único. Um versículo, coleção, tagline oficial. Formato âncora da conta.</div>
+        <div class="pillar-pct">55% dos posts</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">02</div>
+        <div class="pillar-name">Carrossel coleção</div>
+        <div class="pillar-desc">5–7 slides. Hook na capa, salmos da coleção, CTA no último slide.</div>
+        <div class="pillar-pct">30% dos posts</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">03</div>
+        <div class="pillar-name">Reflexão</div>
+        <div class="pillar-desc">2–3 slides. Verso + parágrafo curto da reflexão do Salmo (fonte: reflexoes-salmos.md).</div>
+        <div class="pillar-pct">15% dos posts</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      Reels por enquanto fora do escopo — exige narração de áudio que ainda não está pronta para exportação. Prioridade: saturar feed estático antes de adicionar formato.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">06 · Horários</div>
+    <div class="section-title">Quando postar — por coleção e contexto emocional</div>
+
+    <table class="no-break">
+      <thead>
+        <tr><th>Dia</th><th>Horário</th><th>Coleção</th><th>Lógica</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Domingo</td><td>7h</td><td>Esperança</td><td>primeiro pensamento da manhã de descanso</td></tr>
+        <tr><td>Segunda</td><td>18h</td><td>Gratidão</td><td>fim do primeiro dia da semana — busca de fôlego</td></tr>
+        <tr><td>Terça</td><td>20h</td><td>Ansiedade</td><td>pico de busca por "versículo ansiedade" (dados de busca)</td></tr>
+        <tr><td>Quarta</td><td>18h</td><td>Perdão / Luto</td><td>meio da semana — peso emocional acumulado</td></tr>
+        <tr><td>Quinta</td><td>21h</td><td>Sono</td><td>preparo para dormir — horário de deitar</td></tr>
+        <tr><td>Sexta</td><td>18h</td><td>Louvor</td><td>encerramento do trabalho — célula e culto</td></tr>
+        <tr><td>Sábado</td><td>10h</td><td>Proteção</td><td>manhã de sabado — reflexão semanal</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>Carrosseis:</strong> preferencialmente terça ou quinta — algoritmo do Instagram prioriza carrosseis no horário de maior engajamento da conta.</p>
+  </div>
+
+  <div class="page-footer">O meu <span class="salmo">Salmo</span> &nbsp;·&nbsp; Estratégia Instagram v2 &nbsp;·&nbsp; Confidencial</div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     P3 — FÓRMULA DE LEGENDA + BANCO DE HOOKS
+══════════════════════════════════════════════ -->
+<div class="page">
+
+  <div class="section">
+    <div class="section-label">07 · Legenda</div>
+    <div class="section-title">Fórmula de legenda v2 — exemplo completo</div>
+
+    <p>Estrutura: <strong>tagline da coleção → versículo → 2–3 linhas na voz da LP → CTA suave → hashtags.</strong></p>
+
+    <div class="caption-box no-break">
+      <div class="caption-label">Exemplo — Terça 20h · Ansiedade · Sal 94:19</div>
+      <div class="caption-text">Para a mente que não para de pensar.
+
+"Quando os meus pensamentos se multiplicam dentro de mim,
+os teus consolos alegram a minha alma."
+— Salmo 94 · 19
+
+Tem dias que o pensamento não pede licença. Esse versículo
+não promete silêncio — promete companhia no barulho.
+
+A coleção Ansiedade tem os salmos para esse momento.
+Para ler, ouvir e guardar no coração. Link na bio.</div>
+      <div class="caption-tags">#salmos #ansiedade #salmo94 #palavradedeus #versiculododia
+#saudementalcrista #feemDeus #cristaosbrasil #salmosparahojevar</div>
+    </div>
+
+    <div class="caption-box no-break">
+      <div class="caption-label">Exemplo — Quinta 21h · Sono · Sal 4:8</div>
+      <div class="caption-text">Para a noite que custa a passar.
+
+"Em paz me deito e logo adormeço, pois só tu,
+Senhor, me fazes habitar em segurança."
+— Salmo 4 · 8
+
+Não é um truque para dormir. É um lugar seguro para pousar.
+
+Para quem ainda está acordado. Link na bio.</div>
+      <div class="caption-tags">#salmos #sono #insonia #salmo4 #palavradedeus #versiculodanoite
+#feemDeus #dormiremseguranca #cristaosbrasil</div>
+    </div>
+
+    <div class="callout">
+      CTA sempre suave e sem urgência: "Link na bio." ou "A coleção X tem os salmos para esse momento." Nunca "Baixe agora!", "Não perca!", "Clique aqui!".
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">08 · Banco de Hooks</div>
+    <div class="section-title">Frases da LP que viram copy de post</div>
+
+    <ul class="hook-list">
+      <li>
+        "Para a mente que não para de pensar."
+        <span>hook capa carrossel Ansiedade · Terça 20h</span>
+      </li>
+      <li>
+        "Há um Salmo esperando por você."
+        <span>CTA padrão — último slide de todo carrossel</span>
+      </li>
+      <li>
+        "Oito portas para o mesmo abrigo."
+        <span>carrossel das 8 coleções · post de calendário semana 3</span>
+      </li>
+      <li>
+        "Para ouvir no escuro, quando as palavras escritas parecem longe demais."
+        <span>posts noturnos Sono + Proteção · Qui 21h · Sáb 10h</span>
+      </li>
+      <li>
+        "Respire. Aquietai-vos, e sabei que eu sou Deus."
+        <span>post-pausa (Sal 46:10) — sem CTA, zero produto</span>
+      </li>
+      <li>
+        "Para quem cuida da saúde mental com fé."
+        <span>posicionamento em parcerias e colabs de conteúdo</span>
+      </li>
+      <li>
+        "Cada Salmo tem sua voz."
+        <span>futuros Reels de áudio narrado</span>
+      </li>
+      <li>
+        "150 Salmos. Uma emoção de cada vez."
+        <span>carrossel de onboarding / apresentação do conceito</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-label">09 · Hashtags</div>
+    <div class="section-title">Stack por coleção</div>
+
+    <table class="no-break">
+      <thead>
+        <tr><th>Coleção</th><th>Hashtags específicas (sempre + 3–4 gerais abaixo)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Ansiedade</td><td>#ansiedade #saudementalcrista #salmo94 #versiculoparaansiedade #feeansiedade</td></tr>
+        <tr><td>Sono</td><td>#insonia #dormiremseguranca #salmo4 #versiculodanoite #noite</td></tr>
+        <tr><td>Gratidão</td><td>#gratidao #coracaograto #salmo100 #versiculodedia #alegria</td></tr>
+        <tr><td>Luto</td><td>#luto #perdaemfamilia #salmo46 #doreesperanca #deusconforta</td></tr>
+        <tr><td>Esperança</td><td>#esperanca #salmo62 #confiancanossenhor #futurocombens</td></tr>
+        <tr><td>Perdão</td><td>#perdao #reconciliacao #salmo51 #gracadedeus #recomecar</td></tr>
+        <tr><td>Louvor</td><td>#louvor #adoracao #salmo150 #celula #culto #musicacrista</td></tr>
+        <tr><td>Proteção</td><td>#protecao #salmo91 #medo #deusprotetor #esconderijodoaltissimo</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Gerais sempre presentes:</strong> #salmos #palavradedeus #versiculododia #cristaosbrasil #feemDeus #biblia</p>
+    <p>Total por post: 10–15 hashtags. Não usar mais — dilui alcance no algoritmo atual.</p>
+  </div>
+
+  <div class="page-footer">O meu <span class="salmo">Salmo</span> &nbsp;·&nbsp; Estratégia Instagram v2 &nbsp;·&nbsp; Confidencial</div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     P4 — CALENDÁRIO 30 DIAS
+══════════════════════════════════════════════ -->
+<div class="page">
+
+  <div class="section-label">10 · Calendário de Conteúdo</div>
+  <div class="section-title">30 dias — Semanas 1 a 4</div>
+
+  <!-- SEMANA 1 -->
+  <div class="cal-week no-break">
+    <div class="cal-week-title">Semana 1 <span>ativação — âncoras da LP</span></div>
+    <table>
+      <thead>
+        <tr><th>Dia/Hora</th><th>Formato</th><th>Coleção</th><th>Salmo · Versículo</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Dom · 7h</td><td>Card único</td><td><span class="emo-badge" style="background:#2A47DD18;color:#2A47DD"><span class="b-dot" style="background:#2A47DD"></span>Esperança</span></td><td>Sal 62:5 — "Descansa só em Deus…"</td><td>✓ PNG gerado</td></tr>
+        <tr><td>Seg · 18h</td><td>Card único</td><td><span class="emo-badge" style="background:#C99A3818;color:#a07828"><span class="b-dot" style="background:#C99A38"></span>Gratidão</span></td><td>Sal 100:2 — "Servi ao Senhor com alegria…"</td><td>✓ PNG gerado</td></tr>
+        <tr><td>Ter · 20h</td><td>Card único</td><td><span class="emo-badge" style="background:#5567EA18;color:#5567EA"><span class="b-dot" style="background:#5567EA"></span>Ansiedade</span></td><td>Sal 94:19 — "Quando os meus pensamentos…"</td><td>✓ PNG gerado</td></tr>
+        <tr><td>Qua · 18h</td><td>Card único</td><td><span class="emo-badge" style="background:#8480AA18;color:#8480AA"><span class="b-dot" style="background:#8480AA"></span>Perdão</span></td><td>Sal 32:1 — "Bem-aventurado aquele…"</td><td>✓ PNG gerado</td></tr>
+        <tr><td>Qui · 21h</td><td>Card único</td><td><span class="emo-badge" style="background:#6A9A6218;color:#4a7a42"><span class="b-dot" style="background:#6A9A62"></span>Sono</span></td><td>Sal 4:8 — "Em paz me deito…"</td><td>✓ PNG gerado</td></tr>
+        <tr><td>Sex · 18h</td><td>Card único</td><td><span class="emo-badge" style="background:#C99A3818;color:#a07828"><span class="b-dot" style="background:#C99A38"></span>Louvor</span></td><td>Sal 150:1 — "Louvai ao Senhor…"</td><td>✓ PNG gerado</td></tr>
+        <tr><td>Sáb · 10h</td><td>Card único</td><td><span class="emo-badge" style="background:#6A9A6218;color:#4a7a42"><span class="b-dot" style="background:#6A9A62"></span>Proteção</span></td><td>Sal 91:1 — "Aquele que habita…"</td><td>✓ PNG gerado</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SEMANA 2 -->
+  <div class="cal-week no-break">
+    <div class="cal-week-title">Semana 2 <span>profundidade — carrossel ansiedade + luto</span></div>
+    <table>
+      <thead>
+        <tr><th>Dia/Hora</th><th>Formato</th><th>Coleção</th><th>Tema / Versículo</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Dom · 7h</td><td>Card único</td><td><span class="emo-badge" style="background:#2A47DD18;color:#2A47DD"><span class="b-dot" style="background:#2A47DD"></span>Esperança</span></td><td>Sal 42:1 — "Como o cervo brama…"</td><td>⏳ gerar</td></tr>
+        <tr><td>Seg · 18h</td><td>Card único</td><td><span class="emo-badge" style="background:#C99A3818;color:#a07828"><span class="b-dot" style="background:#C99A38"></span>Gratidão</span></td><td>Sal 103:2 — "Bendize, ó minha alma…"</td><td>⏳ gerar</td></tr>
+        <tr><td>Ter · 20h</td><td>Carrossel 7 slides</td><td><span class="emo-badge" style="background:#5567EA18;color:#5567EA"><span class="b-dot" style="background:#5567EA"></span>Ansiedade</span></td><td>"Para a mente que não para de pensar." (5 salmos)</td><td>✓ PNG gerado</td></tr>
+        <tr><td>Qua · 18h</td><td>Card único</td><td><span class="emo-badge" style="background:#9A6A8618;color:#9A6A86"><span class="b-dot" style="background:#9A6A86"></span>Luto</span></td><td>Sal 34:18 — "O Senhor está perto dos que têm o coração quebrado…"</td><td>⏳ gerar</td></tr>
+        <tr><td>Qui · 21h</td><td>Card único</td><td><span class="emo-badge" style="background:#6A9A6218;color:#4a7a42"><span class="b-dot" style="background:#6A9A62"></span>Sono</span></td><td>Sal 127:2 — "Ele dá o sono ao seu amado."</td><td>⏳ gerar</td></tr>
+        <tr><td>Sex · 18h</td><td>Card único</td><td><span class="emo-badge" style="background:#C99A3818;color:#a07828"><span class="b-dot" style="background:#C99A38"></span>Louvor</span></td><td>Sal 47:1 — "Batei palmas todos os povos…"</td><td>⏳ gerar</td></tr>
+        <tr><td>Sáb · 10h</td><td>Card único</td><td><span class="emo-badge" style="background:#6A9A6218;color:#4a7a42"><span class="b-dot" style="background:#6A9A62"></span>Proteção</span></td><td>Sal 121:2 — "O meu socorro vem do Senhor…"</td><td>⏳ gerar</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SEMANA 3 -->
+  <div class="cal-week no-break">
+    <div class="cal-week-title">Semana 3 <span>expansão — carrossel sono + reflexão</span></div>
+    <table>
+      <thead>
+        <tr><th>Dia/Hora</th><th>Formato</th><th>Coleção</th><th>Tema / Versículo</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Dom · 7h</td><td>Reflexão (2 slides)</td><td><span class="emo-badge" style="background:#8480AA18;color:#8480AA"><span class="b-dot" style="background:#8480AA"></span>Perdão</span></td><td>Sal 51:1 — reflexão: "Deus não pede que você esqueça"</td><td>⏳ gerar</td></tr>
+        <tr><td>Seg · 18h</td><td>Card único</td><td><span class="emo-badge" style="background:#C99A3818;color:#a07828"><span class="b-dot" style="background:#C99A38"></span>Gratidão</span></td><td>Sal 136:1 — "Rendei graças ao Senhor…"</td><td>⏳ gerar</td></tr>
+        <tr><td>Ter · 20h</td><td>Card único</td><td><span class="emo-badge" style="background:#5567EA18;color:#5567EA"><span class="b-dot" style="background:#5567EA"></span>Ansiedade</span></td><td>Sal 46:10 — "Aquietai-vos e sabei que eu sou Deus." (post-pausa)</td><td>⏳ gerar</td></tr>
+        <tr><td>Qua · 18h</td><td>Card único</td><td><span class="emo-badge" style="background:#9A6A8618;color:#9A6A86"><span class="b-dot" style="background:#9A6A86"></span>Luto</span></td><td>Sal 30:5 — "O choro pode durar uma noite, mas a alegria vem pela manhã."</td><td>⏳ gerar</td></tr>
+        <tr><td>Qui · 21h</td><td>Carrossel 7 slides</td><td><span class="emo-badge" style="background:#6A9A6218;color:#4a7a42"><span class="b-dot" style="background:#6A9A62"></span>Sono</span></td><td>"Para a noite que custa a passar." (5 salmos)</td><td>⏳ gerar</td></tr>
+        <tr><td>Sex · 18h</td><td>Card único</td><td><span class="emo-badge" style="background:#C99A3818;color:#a07828"><span class="b-dot" style="background:#C99A38"></span>Louvor</span></td><td>Sal 98:1 — "Cantai ao Senhor um cântico novo…"</td><td>⏳ gerar</td></tr>
+        <tr><td>Sáb · 10h</td><td>Card único</td><td><span class="emo-badge" style="background:#2A47DD18;color:#2A47DD"><span class="b-dot" style="background:#2A47DD"></span>Esperança</span></td><td>Sal 130:5 — "Espero no Senhor; a minha alma espera…"</td><td>⏳ gerar</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SEMANA 4 -->
+  <div class="cal-week no-break">
+    <div class="cal-week-title">Semana 4 <span>consolidação — carrossel 8 coleções + fechar mês</span></div>
+    <table>
+      <thead>
+        <tr><th>Dia/Hora</th><th>Formato</th><th>Coleção</th><th>Tema / Versículo</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Dom · 7h</td><td>Card único</td><td><span class="emo-badge" style="background:#2A47DD18;color:#2A47DD"><span class="b-dot" style="background:#2A47DD"></span>Esperança</span></td><td>Sal 23:1 — "O Senhor é o meu pastor…"</td><td>⏳ gerar</td></tr>
+        <tr><td>Seg · 18h</td><td>Card único</td><td><span class="emo-badge" style="background:#C99A3818;color:#a07828"><span class="b-dot" style="background:#C99A38"></span>Gratidão</span></td><td>Sal 16:11 — "Na tua presença há plenitude de alegria…"</td><td>⏳ gerar</td></tr>
+        <tr><td>Ter · 20h</td><td>Carrossel 9 slides</td><td>Todas</td><td>"Oito portas para o mesmo abrigo." — apresentação das 8 coleções</td><td>⏳ gerar</td></tr>
+        <tr><td>Qua · 18h</td><td>Card único</td><td><span class="emo-badge" style="background:#8480AA18;color:#8480AA"><span class="b-dot" style="background:#8480AA"></span>Perdão</span></td><td>Sal 103:12 — "Quanto o oriente está afastado do ocidente…"</td><td>⏳ gerar</td></tr>
+        <tr><td>Qui · 21h</td><td>Reflexão (2 slides)</td><td><span class="emo-badge" style="background:#6A9A6218;color:#4a7a42"><span class="b-dot" style="background:#6A9A62"></span>Sono</span></td><td>Sal 3:5 — "Eu me deitei e dormi; acordei, porque o Senhor me sustém."</td><td>⏳ gerar</td></tr>
+        <tr><td>Sex · 18h</td><td>Card único</td><td><span class="emo-badge" style="background:#C99A3818;color:#a07828"><span class="b-dot" style="background:#C99A38"></span>Louvor</span></td><td>Sal 150:6 — "Tudo que tem fôlego louve ao Senhor."</td><td>⏳ gerar</td></tr>
+        <tr><td>Sáb · 10h</td><td>Card único</td><td><span class="emo-badge" style="background:#6A9A6218;color:#4a7a42"><span class="b-dot" style="background:#6A9A62"></span>Proteção</span></td><td>Sal 91:11 — "Ele ordenará seus anjos a seu respeito…"</td><td>⏳ gerar</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="page-footer">O meu <span class="salmo">Salmo</span> &nbsp;·&nbsp; Estratégia Instagram v2 &nbsp;·&nbsp; Confidencial</div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     P5 — IMAGENS GERADAS + KPIs
+══════════════════════════════════════════════ -->
+<div class="page">
+
+  <div class="section">
+    <div class="section-label">11 · Imagens Geradas</div>
+    <div class="section-title">14 PNGs prontos — instagram/v2/</div>
+
+    <table class="no-break">
+      <thead>
+        <tr><th>Arquivo</th><th>Coleção</th><th>Versículo</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>semana-1/dia-01-dom-esperanca.png</td><td>Esperança</td><td>Sal 62:5</td></tr>
+        <tr><td>semana-1/dia-02-seg-gratidao.png</td><td>Gratidão</td><td>Sal 100:2</td></tr>
+        <tr><td>semana-1/dia-03-ter-ansiedade.png</td><td>Ansiedade</td><td>Sal 94:19</td></tr>
+        <tr><td>semana-1/dia-04-qua-perdao.png</td><td>Perdão</td><td>Sal 32:1</td></tr>
+        <tr><td>semana-1/dia-05-qui-sono.png</td><td>Sono</td><td>Sal 4:8</td></tr>
+        <tr><td>semana-1/dia-06-sex-louvor.png</td><td>Louvor</td><td>Sal 150:1</td></tr>
+        <tr><td>semana-1/dia-07-sab-protecao.png</td><td>Proteção</td><td>Sal 91:1</td></tr>
+        <tr><td>carrossel-ansiedade/slide-01-hook.png</td><td>Ansiedade</td><td>Hook: "Para a mente que não para de pensar."</td></tr>
+        <tr><td>carrossel-ansiedade/slide-02-salmo-94.png</td><td>Ansiedade</td><td>Sal 94:19</td></tr>
+        <tr><td>carrossel-ansiedade/slide-03-salmo-46.png</td><td>Ansiedade</td><td>Sal 46:1</td></tr>
+        <tr><td>carrossel-ansiedade/slide-04-salmo-55.png</td><td>Ansiedade</td><td>Sal 55:22</td></tr>
+        <tr><td>carrossel-ansiedade/slide-05-salmo-121.png</td><td>Ansiedade</td><td>Sal 121:2</td></tr>
+        <tr><td>carrossel-ansiedade/slide-06-salmo-62.png</td><td>Ansiedade</td><td>Sal 62:5</td></tr>
+        <tr><td>carrossel-ansiedade/slide-07-cta.png</td><td>—</td><td>CTA: "Há um Salmo esperando por você."</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>Gerador:</strong> <code>instagram/v2/gerar-v2.js</code> — rodar com <code>node gerar-v2.js</code> para regenerar. Chrome headless, sem API externa, completamente offline.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">12 · KPIs</div>
+    <div class="section-title">Metas por horizonte — foco em alcance orgânico</div>
+
+    <div class="kpi-grid no-break">
+      <div class="kpi-card">
+        <span class="kpi-val">500</span>
+        <div class="kpi-label">seguidores</div>
+        <div class="kpi-period">fim do mês 1</div>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-val">8%</span>
+        <div class="kpi-label">taxa de engajamento</div>
+        <div class="kpi-period">meta sustentável m1–m3</div>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-val">50</span>
+        <div class="kpi-label">cliques link/semana</div>
+        <div class="kpi-period">fim do mês 1</div>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-val">2.000</span>
+        <div class="kpi-label">seguidores</div>
+        <div class="kpi-period">fim do mês 3</div>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-val">1</span>
+        <div class="kpi-label">carrossel viral (&gt;5k alcance)</div>
+        <div class="kpi-period">até mês 2</div>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-val">200</span>
+        <div class="kpi-label">cliques link/semana</div>
+        <div class="kpi-period">fim do mês 3</div>
+      </div>
+    </div>
+
+    <p><strong>Métrica-pilar:</strong> saves > likes. Salmos são conteúdo para salvar e revisitar — save rate alto indica conteúdo certo para o público certo.</p>
+    <p><strong>Sinal de produto:</strong> comentários com "que salmo posso usar para…" = demanda por curadoria = validação do conceito de app.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">13 · Benchmarking</div>
+    <div class="section-title">Referências e diferenciais competitivos</div>
+
+    <table class="no-break">
+      <thead>
+        <tr><th>Conta / Padrão</th><th>O que fazem bem</th><th>Nosso diferencial</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Contas de versículo do dia (genéricas)</td>
+          <td>Volume alto, fácil de acompanhar</td>
+          <td>Curadoria por emoção — não postamos aleatório, cada salmo tem contexto</td>
+        </tr>
+        <tr>
+          <td>Contas de saúde mental cristã</td>
+          <td>Alta busca, nicho crescente</td>
+          <td>Usamos a emoção como porta de entrada, não como diagnóstico</td>
+        </tr>
+        <tr>
+          <td>YouVersion / Bible.com</td>
+          <td>Audiência massiva, planos diários</td>
+          <td>Foco exclusivo em Salmos + voz poética — não competimos em escala, competimos em intimidade</td>
+        </tr>
+        <tr>
+          <td>Contas poéticas cristãs (visual forte)</td>
+          <td>Estética premium, salva muito</td>
+          <td>Somos os únicos com sistema visual coeso + app android integrado</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      Oportunidade de viralização: carrosseis de "5 salmos para [emoção específica]" têm alto save rate no nicho cristão brasileiro. Algoritmo do IG favorece carrosseis completos lidos (scroll até o final). Ansiedade + Sono são as emoções de maior busca orgânica.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">14 · Próximos passos</div>
+    <div class="section-title">O que gerar ainda</div>
+
+    <table class="no-break">
+      <thead>
+        <tr><th>Entregável</th><th>Como gerar</th><th>Prioridade</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Semana 2 — 6 cards (sem carrossel ansiedade, já pronto)</td><td>Adicionar ao gerar-v2.js ou novo arquivo</td><td>Alta</td></tr>
+        <tr><td>Semana 3 — 7 posts + carrossel Sono</td><td>Adicionar ao gerar-v2.js</td><td>Alta</td></tr>
+        <tr><td>Semana 4 — 7 posts + carrossel 8 coleções</td><td>Novo template no gerar-v2.js</td><td>Média</td></tr>
+        <tr><td>Slides de reflexão (2 slides)</td><td>Novo layout no gerar-v2.js (texto + reflexão da fonte reflexoes-salmos.md)</td><td>Média</td></tr>
+        <tr><td>Legendas completas das semanas 2–4</td><td>Banco de legendas em /instagram/v2/legendas.md</td><td>Média</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="page-footer">O meu <span class="salmo">Salmo</span> &nbsp;·&nbsp; Estratégia Instagram v2 &nbsp;·&nbsp; Jun 2026 &nbsp;·&nbsp; Confidencial</div>
+</div>
+
+</body>
+</html>

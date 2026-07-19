@@ -1,8 +1,9 @@
 # Estratégia Instagram — O meu Salmo
 
 > **TL;DR:** 4 pilares (card 40% · Reel narrado 25% · carrossel 20% · founder 15%), 3-4 posts/semana,
-> sem stories diários (só quando der). Assets da Semana 1 e 2 prontos nas pastas `instagram/`.
-> Reels usam a narração real do app = demo do diferencial com custo zero.
+> sem stories diários (só quando der). Reels usam a narração real do app = demo do diferencial com custo zero.
+> **Posts prontos e numerados em `instagram/fila-de-postagem/`** (imagem + legenda .txt lado a lado,
+> ordem do calendário, 10 posts = ~4 semanas). Ver `instagram/README.md`.
 
 Atualizado: 2026-07-19 · Tom: íntimo, sóbrio, sem travessão, sem bloco de hashtag, máx. 1 emoji discreto (ideal zero).
 
