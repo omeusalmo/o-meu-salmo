@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { width:1080px; height:1920px; overflow:hidden; }
+.slide {
+  width:1080px; height:1920px;
+  background: linear-gradient(165deg, #0A1628 0%, #0D1F40 45%, #0F2550 75%, #1A3A6E 100%);
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  padding:220px 90px 300px;
+  position:relative;
+}
+.watermark {
+  font-family:'Cormorant Garamond', serif;
+  font-size:520px; font-weight:300;
+  color:#3B82F6; opacity:0.05;
+  position:absolute; bottom:-80px; right:-30px;
+  line-height:1; letter-spacing:-24px;
+}
+.accent-bar {
+  position:absolute; top:0; left:0; right:0; height:4px;
+  background: linear-gradient(90deg, transparent 0%, #3B82F6 40%, #3B82F6 60%, transparent 100%);
+  opacity:0.5;
+}
+.logo {
+  position:absolute; top:200px; left:0; right:0;
+  text-align:center;
+  font-family:'DM Sans', sans-serif;
+  font-size:26px; font-weight:500;
+  color:#FFFFFF; opacity:0.3;
+  letter-spacing:6px; text-transform:uppercase;
+}
+.collection-tag {
+  font-family:'DM Sans', sans-serif;
+  font-size:26px; font-weight:500;
+  letter-spacing:8px; text-transform:uppercase;
+  color:#3B82F6; opacity:0.9;
+  margin-bottom:56px;
+}
+.deco-line {
+  width:70px; height:2px;
+  background: linear-gradient(90deg, transparent, #3B82F6, transparent);
+  opacity:0.5; margin: 0 auto 56px;
+}
+.verse {
+  font-family:'Cormorant Garamond', serif;
+  font-size:78px; font-weight:300; font-style:italic;
+  color:#FFFFFF; line-height:1.5;
+  text-align:center;
+  max-width:900px;
+}
+.ref-wrap { margin-top:72px; display:flex; flex-direction:column; align-items:center; gap:14px; }
+.ref-line { width:36px; height:2px; background:#C9A96E; opacity:0.45; }
+.ref {
+  font-family:'DM Sans', sans-serif;
+  font-size:28px; font-weight:300;
+  color:#C9A96E; opacity:0.9;
+  letter-spacing:3px;
+}
+.cta {
+  position:absolute; bottom:260px; left:0; right:0;
+  text-align:center;
+  font-family:'DM Sans', sans-serif;
+  font-size:24px; font-weight:400;
+  color:#FFFFFF; opacity:0.4;
+  letter-spacing:2px;
+}
+</style></head><body>
+<div class="slide">
+  <div class="accent-bar"></div>
+  <div class="watermark">23</div>
+  <div class="logo">O Meu Salmo</div>
+  <div class="collection-tag">Esperança</div>
+  <div class="deco-line"></div>
+  <div class="verse">"O Senhor é o meu pastor;<br>nada me faltará."</div>
+  <div class="ref-wrap">
+    <div class="ref-line"></div>
+    <div class="ref">Salmos 23 · narração do app</div>
+  </div>
+  <div class="cta">ouça com o som ligado</div>
+</div>
+</body></html>
