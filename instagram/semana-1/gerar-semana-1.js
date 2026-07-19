@@ -20,7 +20,7 @@ slides.forEach((name) => {
   const pngPath  = path.join(DIR, `${name}.png`);
   try {
     execSync(
-      `"${CHROME}" --headless=new --disable-gpu --screenshot="${pngPath}" --window-size=1080,1080 --hide-scrollbars "file://${htmlPath}" 2>/dev/null`,
+      `"${CHROME}" --headless=new --disable-gpu --screenshot="${pngPath}" --window-size=1080,1350 --hide-scrollbars "file://${htmlPath}" 2>/dev/null`,
       { timeout: 15000 }
     );
     console.log(`✓ ${name}.png`);

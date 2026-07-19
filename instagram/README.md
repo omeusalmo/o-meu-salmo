@@ -27,6 +27,12 @@ instagram/
 └── _arquivo/v2/             ← versão antiga (fontes pequenas), não usar
 ```
 
+## Specs (revisão 2026-07-19, skill social-media-carousel)
+- Feed (cards + carrossel): **1080×1350 (4:5)** — ocupa mais tela que o quadrado, mais alcance
+- Reels: 1080×1920 (9:16)
+- Carrossel: contador de progresso "N de 5" no topo dos slides de valor + "Salve este post" no CTA (save > like pro algoritmo)
+- Geradores já ajustados pra 1350; regenerar mantém o formato
+
 ## Regras rápidas
 - Cadência: **dom + qua + sex** (3/semana). Stories opcionais.
 - Reels (02 e 08): montar no CapCut (~10 min) — passo a passo em `marketing/estrategia-instagram.md`.
@@ -40,6 +46,6 @@ instagram/
 node semana-1/gerar-semana-1.js
 # carrossel / reels (Chrome headless direto)
 "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new \
-  --screenshot=SAIDA.png --window-size=1080,1080 --hide-scrollbars "file://$PWD/ARQUIVO.html"
+  --screenshot=SAIDA.png --window-size=1080,1350 --hide-scrollbars "file://$PWD/ARQUIVO.html"
 # (reels usam --window-size=1080,1920)
 ```
