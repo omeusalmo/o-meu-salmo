@@ -20,9 +20,13 @@ gancho de lançamento nos dois canais ao mesmo tempo).
 
 - `lancamento/anuncio-feed.png` (1080×1350) — feed Instagram/Facebook
 - `lancamento/anuncio-story.png` (1080×1920) — Stories/Reels, dobra como criativo pago
-- `lancamento/legenda-organica.txt` — legenda do post orgânico de lançamento
+- `lancamento/anuncio-video-story.mp4` (1080×1920, 8.3s, **mudo**) — Salmo 23 sendo lido em
+  efeito teleprompter (linha ativa em destaque, como no app), crossfade entre linhas, CTA fixo
+  no rodapé. Feito pra rodar sem som no feed. Ver `legenda-video.txt`.
+- `lancamento/legenda-organica.txt` / `legenda-video.txt` — legendas dos posts orgânicos
 - `lancamento/copy-anuncio-meta.txt` — 3 variantes de copy pro Gerenciador de Anúncios (headline/texto/CTA)
-- `fontes/anuncio-lancamento.html` — template fonte
+- `fontes/anuncio-lancamento.html` — template fonte dos estáticos
+- `fontes/gerar-video-lancamento.sh` — regenera o vídeo do zero (screenshots dos 6 estados + ffmpeg)
 
 ### Direção visual (revisão 2026-07-20)
 

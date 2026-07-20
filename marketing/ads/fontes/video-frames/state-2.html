@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@1,400&family=Playfair+Display:ital,wght@0,600;1,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { width:1080px; height:1920px; overflow:hidden; }
+.ad { width:1080px; height:1920px; position:relative; background:radial-gradient(120% 70% at 50% 0%, #182a6e 0%, #10142C 40%, #080B1C 100%); }
+.bookmark { position:absolute; top:0; left:50%; transform:translateX(-50%); width:34px; height:50px; background:#5567EA; opacity:.85; clip-path:polygon(0 0,100% 0,100% 100%,50% 70%,0 100%); }
+.top { position:absolute; top:110px; left:0; right:0; text-align:center; }
+.eyebrow { font-family:'Instrument Sans',sans-serif; font-weight:600; font-size:24px; letter-spacing:5px; text-transform:uppercase; color:#FFFFFF; opacity:.4; }
+.label { font-family:'Instrument Sans',sans-serif; font-weight:400; font-size:26px; color:#8C97D4; margin-top:18px; }
+.label b { color:#EEF0FC; font-weight:500; }
+.reader { position:absolute; top:560px; left:96px; right:96px; height:800px; overflow:hidden; }
+.stack { position:relative; transition:none; }
+.row { display:flex; align-items:flex-start; gap:26px; min-height:190px; }
+.num { font-family:'Instrument Sans',sans-serif; font-size:22px; color:#5567EA; opacity:.5; padding-top:12px; width:28px; }
+.txt { font-family:'Cormorant',serif; font-style:italic; font-weight:400; line-height:1.3; transition:none; }
+.active .num { opacity:1; color:#C4A86A; }
+.active .txt { color:#C4A86A; font-size:58px; text-shadow:0 0 40px rgba(196,168,106,.35); }
+.dim .txt { color:#5C68A0; font-size:42px; opacity:.4; }
+.bottom { position:absolute; left:80px; right:80px; bottom:120px; }
+.chips { display:flex; flex-wrap:wrap; gap:14px; margin-bottom:34px; justify-content:center; }
+.chip { font-family:'Instrument Sans',sans-serif; font-weight:500; font-size:23px; border:1px solid; border-radius:999px; padding:11px 28px; }
+.pillrow { text-align:center; }
+.pill { display:inline-block; font-family:'Instrument Sans',sans-serif; font-weight:600; font-size:25px; letter-spacing:.5px; color:#050714; background:#C4A86A; border-radius:999px; padding:16px 38px; }
+</style></head><body>
+<div class="ad">
+  <div class="bookmark"></div>
+  <div class="top">
+    <div class="eyebrow">O Meu Salmo</div>
+    <div class="label">Salmo 23 &middot; <b>O Senhor é o Meu Pastor</b></div>
+  </div>
+  <div class="reader"><div class="stack" style="top:-120px">
+    <div class="row dim"><div class="num">1</div><div class="txt">O Senhor é o meu pastor;</div></div>
+    <div class="row dim"><div class="num">2</div><div class="txt">nada me faltará.</div></div>
+    <div class="row active"><div class="num">3</div><div class="txt">Deitar-me faz em pastos verdejantes;</div></div>
+    <div class="row dim"><div class="num">4</div><div class="txt">guia-me mansamente a águas tranquilas.</div></div>
+    <div class="row dim"><div class="num">5</div><div class="txt">Refrigera a minha alma;</div></div>
+    <div class="row dim"><div class="num">6</div><div class="txt">guia-me nas veredas da justiça.</div></div>
+  </div></div>
+  <div class="bottom">
+    <div class="chips">
+      <span class="chip" style="color:#8B9AF2;border-color:#8B9AF255;background:#8B9AF21f">Ansiedade</span>
+      <span class="chip" style="color:#8FC287;border-color:#8FC28755;background:#8FC2871f">Sono</span>
+      <span class="chip" style="color:#E2B95C;border-color:#E2B95C55;background:#E2B95C1f">Gratidão</span>
+      <span class="chip" style="color:#C793B1;border-color:#C793B155;background:#C793B11f">Luto</span>
+    </div>
+    <div class="pillrow"><span class="pill">Baixe grátis</span></div>
+  </div>
+</div>
+</body></html>
