@@ -22,7 +22,19 @@ gancho de lançamento nos dois canais ao mesmo tempo).
 - `lancamento/anuncio-story.png` (1080×1920) — Stories/Reels, dobra como criativo pago
 - `lancamento/legenda-organica.txt` — legenda do post orgânico de lançamento
 - `lancamento/copy-anuncio-meta.txt` — 3 variantes de copy pro Gerenciador de Anúncios (headline/texto/CTA)
-- `fontes/anuncio-lancamento.html` — template fonte (screenshot real do app + headline + chips por emoção)
+- `fontes/anuncio-lancamento.html` — template fonte
+
+### Direção visual (revisão 2026-07-20)
+
+- **Fonte da screenshot:** `play-store/screenshots/raw-cropped/` (tela limpa, sem overlay de
+  marketing). Nunca usar `play-store/export/s*.png` como fundo de anúncio — essas têm frase
+  sobreposta pela própria arte da ficha da loja.
+- **Full-bleed, não floating-card:** a screenshot cobre a arte inteira (recortada da tela de
+  leitura, versículo real como textura) em vez de um card flutuante com sombra sobre fundo
+  sólido. O floating-card-com-glow é o clichê genérico de anúncio SaaS — full-bleed lê como
+  conteúdo real, não como peça publicitária, e para mais o scroll.
+- **Scrim sólido, não gradiente puro:** faixa opaca (não degradê) atrás do headline pra garantir
+  zero colisão com o texto da própria UI do app por trás.
 
 ## Estratégia de mídia paga (visão geral)
 
