@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@1,300&family=Playfair+Display:ital,wght@0,500;1,500&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { width:1080px; height:__H__px; overflow:hidden; }
+.ad {
+  width:1080px; height:__H__px; position:relative;
+  background: radial-gradient(120% 90% at 50% 0%, #182a6e 0%, #10142C 42%, #080B1C 100%);
+  display:flex; flex-direction:column; align-items:center;
+  padding:__PADTOP__px 90px __PADBOT__px;
+}
+.bookmark {
+  position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:34px; height:50px; background:#5567EA; opacity:.85;
+  clip-path:polygon(0 0,100% 0,100% 100%,50% 70%,0 100%);
+}
+.eyebrow {
+  font-family:'Instrument Sans',sans-serif; font-weight:500; font-size:22px;
+  letter-spacing:6px; text-transform:uppercase; color:#FFFFFF; opacity:.35;
+  margin-bottom:36px;
+}
+h1 {
+  font-family:'Playfair Display',serif; font-weight:500; font-size:__H1__px;
+  color:#EEF0FC; line-height:1.05; text-align:center; letter-spacing:-.01em;
+}
+h1 em { font-style:italic; color:#5567EA; }
+.sub {
+  font-family:'Cormorant',serif; font-style:italic; font-weight:300; font-size:__SUB__px;
+  color:#8C97D4; text-align:center; margin-top:26px; max-width:780px; line-height:1.5;
+}
+.shot-wrap { margin-top:__SHOTMT__px; position:relative; }
+.shot-wrap:before {
+  content:""; position:absolute; inset:-2px; border-radius:38px;
+  background:linear-gradient(160deg,#5567EA55,transparent 60%); filter:blur(28px); opacity:.6;
+}
+.shot {
+  position:relative; width:__SHOTW__px; border-radius:32px;
+  box-shadow:0 40px 90px -20px rgba(5,8,24,.75), 0 0 0 1px rgba(255,255,255,.06);
+  display:block;
+}
+.chips { display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:__CHIPMT__px; max-width:880px; }
+.chip {
+  font-family:'Instrument Sans',sans-serif; font-size:22px; border:1px solid; border-radius:999px;
+  padding:10px 26px;
+}
+.foot { margin-top:auto; display:flex; align-items:center; gap:14px; }
+.pill {
+  font-family:'Instrument Sans',sans-serif; font-weight:500; font-size:24px; letter-spacing:.5px;
+  color:#C4A86A; border:1px solid #C4A86A55; border-radius:999px; padding:14px 34px;
+}
+</style></head><body>
+<div class="ad">
+  <div class="bookmark"></div>
+  <div class="eyebrow">O Meu Salmo</div>
+  <h1>O app<br><em>chegou.</em></h1>
+  <div class="sub">150 Salmos, organizados pelo<br>que você sente.</div>
+  <div class="shot-wrap"><img class="shot" src="../fontes/screenshot-home.png"></div>
+  <div class="chips">
+    <span class="chip" style="color:#8B9AF2;border-color:#8B9AF255;background:#8B9AF214">Ansiedade</span>
+    <span class="chip" style="color:#8FC287;border-color:#8FC28755;background:#8FC28714">Sono</span>
+    <span class="chip" style="color:#E2B95C;border-color:#E2B95C55;background:#E2B95C14">Gratidão</span>
+    <span class="chip" style="color:#7C90F0;border-color:#7C90F055;background:#7C90F014">Esperança</span>
+  </div>
+  <div class="foot"><span class="pill">Grátis · Sem anúncios</span></div>
+</div>
+</body></html>

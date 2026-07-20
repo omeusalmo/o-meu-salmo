@@ -1,0 +1,36 @@
+Copy pronta pro Gerenciador de Anúncios — objetivo "Promoção de app" (App Installs)
+Usar assim que o app estiver em PRODUÇÃO (link público na Play Store).
+
+── Variante A — Reveal ──
+Texto primário:
+O app chegou. 150 Salmos organizados pelo que você sente: ansiedade, sono,
+gratidão, luto e mais. Com áudio, offline, sem anúncios.
+
+Título (headline, até 40 car.): O app de Salmos chegou
+Descrição (até 30 car.): Grátis. Sem anúncios.
+CTA sugerido: Instalar
+
+── Variante B — Dor específica (ansiedade/sono) ──
+Texto primário:
+Pros dias em que o peito aperta sem motivo, ou a noite custa a chegar:
+150 Salmos separados pelo que você está sentindo, com narração em áudio.
+Grátis, offline, sem anúncios.
+
+Título: Um Salmo pra cada momento
+Descrição: Baixe grátis
+CTA sugerido: Instalar
+
+── Variante C — Hábito diário ──
+Texto primário:
+Todo dia, um Salmo esperando por você. O meu Salmo organiza 150 Salmos
+em 8 emoções e manda um lembrete gentil, sem pressa, sem anúncio no meio.
+
+Título: Seu Salmo do dia, todo dia
+Descrição: Gratuito para sempre
+CTA sugerido: Instalar
+
+── Notas de segmentação (ver marketing/prompt-opus-campanhas-pagas.md p/ plano completo) ──
+- Interesses: fé/espiritualidade, música gospel, devocionais, bem-estar mental, meditação
+- Idioma/local: PT-BR, Brasil
+- Posicionamentos iniciais: Feed + Stories + Reels (Instagram e Facebook)
+- Orçamento de teste: R$20-30/dia por variante nos primeiros 4-5 dias, depois concentrar no vencedor
