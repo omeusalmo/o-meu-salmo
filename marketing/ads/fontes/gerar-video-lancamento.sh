@@ -1,40 +1,42 @@
 #!/bin/bash
-# Gera o vídeo de lançamento (Salmo 23 sendo lido, teleprompter mudo) a partir
-# dos 5 estados HTML em fontes/video-frames/ (4 leitura + 1 outro/CTA).
-# Requer ffmpeg (brew install ffmpeg).
+# Gera o vídeo de lançamento (1080x1920, mudo, Reels/Stories):
+# headline de posicionamento fixo no topo + Salmo 23 preenchendo letra a letra
+# (efeito karaokê via clip-path) + chips + CTA cobalt. Requer ffmpeg + Chrome.
 # Uso: cd marketing/ads/fontes && ./gerar-video-lancamento.sh
-
 set -e
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 export PATH="/opt/homebrew/bin:$PATH"
 DIR="$(cd "$(dirname "$0")" && pwd)"
 OUT="$DIR/../lancamento/anuncio-video-story.mp4"
-TMP=$(mktemp -d)
+HTMLD=$(mktemp -d); PNGD=$(mktemp -d)
 
-for i in 0 1 2 3 4; do
-  "$CHROME" --headless=new --disable-gpu --screenshot="$TMP/state-$i.png" \
-    --window-size=1080,1920 --hide-scrollbars \
-    "file://$DIR/video-frames/state-$i.html" 2>/dev/null
+N=60          # frames do preenchimento
+FPS=12        # 60/12 = 5s de fill
+HOLD=30       # frames repetidos do final = 2.5s parado no CTA
+
+# 1. HTML determinístico por frame (progresso p in [0,1])
+python3 "$DIR/gerar-video-fill.py" batch >/dev/null
+cp /tmp/fillframes/*.html "$HTMLD/" 2>/dev/null || true
+
+# 2. screenshot de cada frame
+i=0
+for f in $(ls "$HTMLD"/f*.html | sort); do
+  printf -v n "%03d" "$i"
+  "$CHROME" --headless=new --disable-gpu --screenshot="$PNGD/frame-$n.png" \
+    --window-size=1080,1920 --hide-scrollbars "file://$f" 2>/dev/null
+  i=$((i+1))
 done
 
-D=1.8       # segundos por linha lida (leitura, estados 0-3)
-T=0.5       # duração do crossfade
-OUTRO=3.2   # segundos que o frame final (headline + CTA) fica parado
+# 3. segura o frame final (CTA) por HOLD frames
+last=$(printf "%03d" $((N-1)))
+for h in $(seq 1 "$HOLD"); do
+  printf -v n "%03d" $((N-1+h))
+  cp "$PNGD/frame-$last.png" "$PNGD/frame-$n.png"
+done
 
-O1=$(echo "1 * ($D - $T)" | bc)
-O2=$(echo "2 * ($D - $T)" | bc)
-O3=$(echo "3 * ($D - $T)" | bc)
-O4=$(echo "$O3 + ($D - $T)" | bc)
-TOTAL=$(echo "$O4 + $OUTRO" | bc)
+# 4. monta o vídeo
+ffmpeg -y -framerate "$FPS" -i "$PNGD/frame-%03d.png" \
+  -r 30 -pix_fmt yuv420p -movflags +faststart -an "$OUT" 2>&1 | tail -2
 
-INPUTS=""; for i in 0 1 2 3 4; do INPUTS="$INPUTS -loop 1 -t 14 -i $TMP/state-$i.png"; done
-
-ffmpeg -y $INPUTS -filter_complex "\
-[0][1]xfade=transition=fade:duration=$T:offset=$O1[v1];\
-[v1][2]xfade=transition=fade:duration=$T:offset=$O2[v2];\
-[v2][3]xfade=transition=fade:duration=$T:offset=$O3[v3];\
-[v3][4]xfade=transition=fade:duration=$T:offset=$O4[vout]" \
-  -map "[vout]" -t "$TOTAL" -r 30 -pix_fmt yuv420p -movflags +faststart -an "$OUT" 2>&1 | tail -3
-
-rm -rf "$TMP"
+rm -rf "$HTMLD" "$PNGD"
 echo "✓ $OUT ($(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "$OUT")s)"

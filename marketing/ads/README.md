@@ -20,9 +20,14 @@ gancho de lançamento nos dois canais ao mesmo tempo).
 
 - `lancamento/anuncio-feed.png` (1080×1350) — feed Instagram/Facebook
 - `lancamento/anuncio-story.png` (1080×1920) — Stories/Reels, dobra como criativo pago
-- `lancamento/anuncio-video-story.mp4` (1080×1920, 8.3s, **mudo**) — Salmo 23 sendo lido em
-  efeito teleprompter (linha ativa em destaque, como no app), crossfade entre linhas, CTA fixo
-  no rodapé. Feito pra rodar sem som no feed. Ver `legenda-video.txt`.
+- `lancamento/anuncio-video-story.mp4` (1080×1920, 7.5s, **mudo**) — headline de posicionamento
+  grande fixo no topo ("O Salmo certo, pra cada emoção.") + Salmo 23 preenchendo **letra a letra**
+  em dourado (efeito karaokê via clip-path de duas camadas: texto apagado embaixo, dourado
+  revelado por wipe), termina parado no CTA cobalt. Feito pra rodar sem som no feed. Ver
+  `legenda-video.txt`.
+  - Fonte: `fontes/gerar-video-fill.py` (HTML determinístico por frame, progresso p in [0,1]) +
+    `fontes/gerar-video-lancamento.sh` (screenshot 60 frames + hold no final + ffmpeg). Efeito de
+    fill escolhido a pedido do Jeff (2026-07-22), substitui o teleprompter linha-a-linha anterior.
 - `lancamento/legenda-organica.txt` / `legenda-video.txt` — legendas dos posts orgânicos
 - `lancamento/copy-anuncio-meta.txt` — 3 variantes de copy pro Gerenciador de Anúncios (headline/texto/CTA)
 - `fontes/anuncio-lancamento.html` — template fonte dos estáticos
