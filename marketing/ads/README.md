@@ -18,8 +18,12 @@ gancho de lançamento nos dois canais ao mesmo tempo).
 
 ## O que está pronto pra esse dia
 
-- `lancamento/anuncio-feed.png` (1080×1350) — feed Instagram/Facebook
-- `lancamento/anuncio-story.png` (1080×1920) — Stories/Reels, dobra como criativo pago
+Kit coeso — os 3 formatos saem do mesmo sistema visual (Salmo 23, headline de
+posicionamento, fill dourado, chips por emoção, CTA cobalt, microcopy):
+
+- `lancamento/anuncio-feed.png` (1080×1350) — feed Instagram/Facebook. Gerado por
+  `fontes/gerar-imagem-ads.py` (still do conceito do vídeo, fill congelado no meio da leitura).
+- `lancamento/anuncio-story.png` (1080×1920) — Stories/Reels, dobra como criativo pago. Mesmo gerador.
 - `lancamento/anuncio-video-story.mp4` (1080×1920, 7.5s, **mudo**) — headline de posicionamento
   grande fixo no topo ("O Salmo certo, pra cada emoção.") + Salmo 23 preenchendo **letra a letra**
   em dourado (efeito karaokê via clip-path de duas camadas: texto apagado embaixo, dourado
@@ -36,8 +40,8 @@ gancho de lançamento nos dois canais ao mesmo tempo).
     consecutivos = ~0.
 - `lancamento/legenda-organica.txt` / `legenda-video.txt` — legendas dos posts orgânicos
 - `lancamento/copy-anuncio-meta.txt` — 3 variantes de copy pro Gerenciador de Anúncios (headline/texto/CTA)
-- `fontes/anuncio-lancamento.html` — template fonte dos estáticos
-- `fontes/gerar-video-lancamento.sh` — regenera o vídeo do zero (screenshots dos 6 estados + ffmpeg)
+- `fontes/gerar-imagem-ads.py` — regenera os 2 estáticos (feed 1350 + story 1920)
+- `fontes/gerar-video-lancamento.sh` — regenera o vídeo do zero
 
 ### Revisão cruzada — Designer, Marketing, Gerente (2026-07-21)
 
@@ -66,17 +70,18 @@ Gerente: aprovou o timing de "pronto e guardado até produção liberar"; sinali
 gargalo real do projeto é recrutamento de testadores (9/12 nomes, 7/12 e-mails em
 2026-07-21), não o kit de marketing.
 
-### Direção visual (revisão 2026-07-20)
+### Coesão do kit (revisão 2026-07-23)
 
-- **Fonte da screenshot:** `play-store/screenshots/raw-cropped/` (tela limpa, sem overlay de
-  marketing). Nunca usar `play-store/export/s*.png` como fundo de anúncio — essas têm frase
-  sobreposta pela própria arte da ficha da loja.
-- **Full-bleed, não floating-card:** a screenshot cobre a arte inteira (recortada da tela de
-  leitura, versículo real como textura) em vez de um card flutuante com sombra sobre fundo
-  sólido. O floating-card-com-glow é o clichê genérico de anúncio SaaS — full-bleed lê como
-  conteúdo real, não como peça publicitária, e para mais o scroll.
-- **Scrim sólido, não gradiente puro:** faixa opaca (não degradê) atrás do headline pra garantir
-  zero colisão com o texto da própria UI do app por trás.
+Os estáticos eram de uma geração anterior (full-bleed de screenshot real da tela) e ficaram
+fora de sintonia com o vídeo. Refeitos do mesmo sistema visual do vídeo (`gerar-imagem-ads.py`):
+
+- **Salmo 23, não 68.** A versão anterior usava o screenshot da home com o Salmo 68 do dia
+  ("pereçam os ímpios diante de Deus" / "Cantai a Deus") — conteúdo marcial que contradiz o
+  posicionamento de conforto pra quem está em ansiedade/luto. Salmo 23 (o pastor) é o certo.
+- **CTA e microcopy iguais ao vídeo:** barra cobalt full-width "Baixar grátis →" + "Grátis ·
+  Sem anúncios" (antes era pill pequena "Baixe grátis", sem microcopy).
+- **Still do fill:** o versículo aparece com o preenchimento dourado congelado no meio da
+  leitura, comunicando o diferencial (narração acende o texto) mesmo parado.
 
 ## Estratégia de mídia paga (visão geral)
 
@@ -99,8 +104,15 @@ Resumo do que importa agora:
 
 ```bash
 cd marketing/ads
-"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new \
-  --screenshot=lancamento/anuncio-feed.png --window-size=1080,1350 --hide-scrollbars \
-  "file://$PWD/fontes/anuncio-feed.html"
-# story: --window-size=1080,1920 + fontes/anuncio-story.html
+# estáticos (feed + story):
+python3 fontes/gerar-imagem-ads.py
+CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+"$CHROME" --headless=new --virtual-time-budget=6000 --screenshot=lancamento/anuncio-story.png \
+  --window-size=1080,1920 --hide-scrollbars "file:///tmp/ads-story.html"
+"$CHROME" --headless=new --virtual-time-budget=6000 --screenshot=lancamento/anuncio-feed.png \
+  --window-size=1080,1350 --hide-scrollbars "file:///tmp/ads-feed.html"
+
+# vídeo:
+./fontes/gerar-video-lancamento.sh
 ```
+> `--virtual-time-budget` é obrigatório (sem ele a webfont não carrega antes do screenshot).
