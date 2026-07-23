@@ -28,6 +28,12 @@ gancho de lançamento nos dois canais ao mesmo tempo).
   - Fonte: `fontes/gerar-video-fill.py` (HTML determinístico por frame, progresso p in [0,1]) +
     `fontes/gerar-video-lancamento.sh` (screenshot 60 frames + hold no final + ffmpeg). Efeito de
     fill escolhido a pedido do Jeff (2026-07-22), substitui o teleprompter linha-a-linha anterior.
+  - **Gotchas de renderização (não remover do pipeline):** (1) cada frame é um Chrome headless
+    novo — sem `--virtual-time-budget=6000` a webfont não termina de carregar antes do screenshot
+    e o texto cai em fallback com métrica diferente, fazendo a fonte "mudar de tamanho" entre
+    frames. (2) grão estático de média-zero + `-crf 16 -x264-params aq-mode=3` matam o banding do
+    gradiente escuro que, sem isso, tremeluz sob compressão. Ambos verificados com diff de frames
+    consecutivos = ~0.
 - `lancamento/legenda-organica.txt` / `legenda-video.txt` — legendas dos posts orgânicos
 - `lancamento/copy-anuncio-meta.txt` — 3 variantes de copy pro Gerenciador de Anúncios (headline/texto/CTA)
 - `fontes/anuncio-lancamento.html` — template fonte dos estáticos

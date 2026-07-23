@@ -20,7 +20,10 @@ cp /tmp/fillframes/*.html "$HTMLD/"
 i=0
 for f in $(ls "$HTMLD"/f*.html | sort); do
   printf -v n "%03d" "$i"
-  "$CHROME" --headless=new --disable-gpu --screenshot="$PNGD/frame-$n.png" \
+  # --virtual-time-budget: espera a webfont carregar antes de capturar; sem isso
+  # frames caem em fallback e o texto muda de tamanho entre frames.
+  "$CHROME" --headless=new --disable-gpu --virtual-time-budget=6000 \
+    --screenshot="$PNGD/frame-$n.png" \
     --window-size=1080,1920 --hide-scrollbars "file://$f" 2>/dev/null
   i=$((i+1))
 done
