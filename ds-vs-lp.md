@@ -26,7 +26,7 @@
 | cobalt-600 | `#1B33B4` | `#1B33B4` | ✓ |
 | cobalt-700 | `#142A8C` | `#142A8C` | ✓ |
 | gold | `#C4A86A` | `#C4A86A` | ✓ |
-| gold-ink | `#8A6A28` | `#8A6A28` | ✓ |
+| gold-ink | `#6B4E1C` | `#6B4E1C` | ✓ | (escurecido de #8A6A28 → AAA 7.2:1, a11y público +velho) |
 
 ---
 

@@ -15,7 +15,7 @@ class AppColors {
 
   // Âmbar — SOMENTE versículo em destaque e peças sociais
   static const gold    = Color(0xFFC4A86A); // sobre escuro (AAA 8.5:1)
-  static const goldInk = Color(0xFF8A6A28); // sobre claro (AA 4.7:1)
+  static const goldInk = Color(0xFF6B4E1C); // sobre claro (AAA 7.2:1) — escurecido p/ público +velho
 
   // Modo noturno (padrão emocional)
   static const nightBase  = Color(0xFF080B1C);

@@ -67,7 +67,7 @@ o-meu-salmo/                      ← raiz do git (github.com/omeusalmo/o-meu-sa
 | Texto | `#8C97D4` | `#2E3A86` |
 | Título | `#EEF0FC` | `#0C1230` |
 | Muted/label | `#7080C8` | `#4E5899` |
-| Versículo (gold) | `#C4A86A` | `#8A6A28` |
+| Versículo (gold) | `#C4A86A` | `#6B4E1C` |
 
 Fontes: Playfair Display (display/número), Cormorant italic (versículo), Instrument Sans (UI/label).
 

@@ -9,7 +9,7 @@ Auto-compaixão, Teoria do Apego, Logoterapia, Mindfulness) e termina em uma per
 ## Salmo 1 — O Caminho do Justo
 *Temas: sabedoria, caminho*
 
-As escolhas cotidianas constroem o ambiente mental em que vivemos. A psicologia comportamental mostra que o contexto que habitamos, as conversas que mantemos e o que consumimos moldam quem nos tornamos ao longo do tempo. Pequenas escolhas repetidas criam a pessoa que somos.
+Você vai se parecendo com o lugar onde passa os dias. O que escuta e quem anda ao seu lado vão te moldando devagar, quase sem você reparar. A gente acaba sendo feito das escolhas pequenas que repete sem pensar.
 
 **Que ambientes e companhias têm alimentado o que você quer cultivar em si mesmo?**
 
@@ -18,7 +18,7 @@ As escolhas cotidianas constroem o ambiente mental em que vivemos. A psicologia 
 ## Salmo 2 — O Rei Ungido pelo Senhor
 *Temas: confiança, reinado*
 
-Diante do caos e da incerteza, a mente humana busca um ponto fixo de ancoragem. A Teoria do Apego (Bowlby) mostra que ter um "porto seguro" interno é o que nos permite agir com coragem no mundo. Não é a ausência do medo que liberta; é saber onde retornar.
+Quando tudo balança, é natural procurar alguma coisa firme pra segurar. Quem tem um porto seguro por dentro consegue se arriscar lá fora sem medo do que vai encontrar na volta, porque sabe que tem pra onde voltar. A coragem talvez seja menos deixar de sentir medo e mais ter esse lugar de retorno.
 
 **O que serve como âncora para você quando o mundo ao redor parece instável?**
 
@@ -27,7 +27,7 @@ Diante do caos e da incerteza, a mente humana busca um ponto fixo de ancoragem. 
 ## Salmo 3 — Confiança em Deus na Tribulação
 *Temas: proteção, confiança*
 
-Sentir-se cercado de adversários, reais ou imaginados, ativa o sistema de ameaça do cérebro, que não distingue perigo físico de ameaça social. A psicologia compassiva (Paul Gilbert) ensina que reconhecer esse estado sem julgamento é o primeiro passo para sair dele. O medo pede atenção, não fuga.
+Sentir o mundo contra você, mesmo quando a ameaça é mais impressão do que fato, liga um alarme antigo no corpo, aquele que não distingue um perigo real de um olhar atravessado. Reparar nesse estado sem se culpar por ele já é começar a sair dele. O medo pede atenção; quando você o escuta sem correr, ele afrouxa.
 
 **Quando você se sente cercado, qual é o primeiro movimento que costuma fazer: se fechar ou buscar apoio?**
 
@@ -36,7 +36,7 @@ Sentir-se cercado de adversários, reais ou imaginados, ativa o sistema de amea�
 ## Salmo 4 — Oração da Tarde
 *Temas: paz, descanso*
 
-O ato de parar antes de dormir e nomear o que pesou no dia é uma prática validada pela pesquisa em regulação emocional. James Gross mostrou que processar conscientemente as emoções do dia reduz a ruminação noturna e melhora a qualidade do sono. O silêncio da noite não é ausência; é espaço para integrar.
+Parar antes de dormir e dar nome ao que pesou no dia muda alguma coisa por dentro. Quando você encara o que sentiu em vez de empurrar pra baixo, a cabeça para de repetir o dia em círculo e o sono chega mais fácil. No silêncio da noite, sem pressa de atravessá-lo, o dia finalmente assenta.
 
 **O que precisa ser nomeado antes de você conseguir descansar esta noite?**
 
@@ -45,7 +45,7 @@ O ato de parar antes de dormir e nomear o que pesou no dia é uma prática valid
 ## Salmo 5 — Oração da Manhã
 *Temas: oração, manhã*
 
-Começar o dia com intenção deliberada é um dos hábitos mais estudados em psicologia do bem-estar. Orientar a atenção antes de as demandas chegarem cria um estado de agência: a sensação de que você conduz sua vida, e não o contrário. Manhãs não são obrigações; são convites.
+Dar um tom pro dia antes que ele comece a cobrar muda quem está no comando. Se você escolhe pra onde olhar antes de a correria chegar, fica com a sensação de conduzir a própria vida em vez de ser levado por ela. A manhã pode ser menos uma lista de obrigações e mais um convite, dependendo de como você chega nela.
 
 **Como você gostaria de começar este dia, se pudesse escolher o tom?**
 
@@ -54,7 +54,7 @@ Começar o dia com intenção deliberada é um dos hábitos mais estudados em ps
 ## Salmo 6 — Oração em Tempo de Angústia
 *Temas: luto, arrependimento, cura*
 
-A angústia que não encontra expressão tende a se instalar no corpo. A pesquisa de James Pennebaker mostrou que colocar em palavras o que dói, mesmo que só para si mesmo, ativa processos de cura psicológica mensuráveis. Chorar não é fraqueza: é o sistema nervoso fazendo o que precisa.
+A dor que não encontra saída tende a se guardar no corpo. Botar em palavras o que machuca, mesmo que só pra você, mesmo que ninguém mais escute, já começa a soltar o que estava preso. E chorar, longe de ser fraqueza, é o corpo fazendo exatamente o que precisa.
 
 **Há alguma dor que você tem guardado sem dar a ela palavras ou espaço?**
 
@@ -63,7 +63,7 @@ A angústia que não encontra expressão tende a se instalar no corpo. A pesquis
 ## Salmo 7 — Apelo à Justiça Divina
 *Temas: justiça, proteção*
 
-A sensação de injustiça ativa regiões cerebrais ligadas à dor física; ser tratado injustamente dói de verdade. Jonathan Haidt mostrou que o senso moral humano é profundo e instintivo. Entregar o julgamento final libera da armadilha de ruminar infinitamente sobre o que não podemos controlar.
+Ser tratado com injustiça dói de um jeito concreto; o corpo registra isso quase como registra a dor física. Faz sentido que você queira uma resolução. Mas entregar o julgamento final, deixar de ser juiz do que não está na sua mão, tira você da armadilha de remoer sem fim o que não pode controlar.
 
 **Existe alguma injustiça que você ainda carrega, esperando uma resolução que só depende de você soltar?**
 
@@ -72,7 +72,7 @@ A sensação de injustiça ativa regiões cerebrais ligadas à dor física; ser 
 ## Salmo 8 — A Glória do Senhor e a Dignidade do Homem
 *Temas: criação, louvor*
 
-Pesquisas sobre o estado de admiração (awe), conduzidas por Dacher Keltner e Jonathan Haidt, mostram que contemplar algo grandioso reduz a autocentralidade e aumenta a conexão com o todo. O sentimento de ser pequeno diante de algo imenso, curiosamente, nos faz sentir mais inteiros.
+Contemplar algo grandioso, um céu imenso, o mar sem fim, encolhe por um instante a importância que a gente dá a si mesmo, e nesse encolhimento cabe mais mundo. O sentimento de ser pequeno diante de algo enorme, por estranho que pareça, deixa você mais inteiro.
 
 **Quando foi a última vez que você se sentiu pequeno de um jeito bom, tomado por algo maior do que você?**
 
@@ -81,7 +81,7 @@ Pesquisas sobre o estado de admiração (awe), conduzidas por Dacher Keltner e J
 ## Salmo 9 — Louvor pela Justiça de Deus
 *Temas: louvor, justiça*
 
-Olhar para o passado e reconhecer o que foi superado é uma prática com efeitos comprovados sobre o bem-estar (Emmons & McCullough, 2003). Contar o que foi vencido não apaga as dificuldades futuras; calibra a perspectiva sobre a própria capacidade de atravessá-las.
+Olhar pra trás e reconhecer o que você já superou faz bem, e não é autoajuda vazia: quem recorda o que venceu se lembra do próprio tamanho. Contar as travessias não apaga as que ainda virão; ajusta a ideia que você faz da sua capacidade de atravessar.
 
 **O que você atravessou nos últimos anos que merece mais reconhecimento do que você tem dado?**
 
@@ -90,7 +90,7 @@ Olhar para o passado e reconhecer o que foi superado é uma prática com efeitos
 ## Salmo 10 — Clamor contra a Opressão
 *Temas: clamor, justiça*
 
-A psicologia existencial reconhece a angústia legítima diante do silêncio quando esperávamos resposta. Rollo May chamou de "coragem de ser" a capacidade de continuar existindo e questionando mesmo sem certezas. Perguntar "por quê?" é um ato de integridade, não de falta de fé.
+Quando você esperava uma resposta e encontra silêncio, a angústia que aparece é legítima; não é sinal de fé fraca. Continuar existindo e perguntando, mesmo sem ter certeza de nada, é uma forma de coragem. O "por quê?" que você faz é parte do cuidado, não o contrário dele.
 
 **Há uma pergunta que você tem evitado fazer porque teme a ausência de resposta?**
 
@@ -99,7 +99,7 @@ A psicologia existencial reconhece a angústia legítima diante do silêncio qua
 ## Salmo 11 — Confiança em Deus
 *Temas: confiança, proteção*
 
-Diante de ameaças, a resposta instintiva é fugir. A TCC mostra, porém, que avaliar racionalmente a base de onde nos encontramos antes de agir produz decisões mais alinhadas com nossos valores. Fuga nem sempre é segurança; às vezes é abandono do que mais importa.
+Diante de uma ameaça, o instinto manda fugir. Mas vale um instante pra olhar de onde você está antes de sair correndo, porque nem sempre a fuga leva a um lugar mais seguro. Às vezes ela só te afasta do que mais importava.
 
 **Em que situação de hoje você está fugindo quando poderia estar se firmando?**
 
@@ -108,7 +108,7 @@ Diante de ameaças, a resposta instintiva é fugir. A TCC mostra, porém, que av
 ## Salmo 12 — Clamor por Socorro
 *Temas: clamor, proteção*
 
-A sensação de que "não sobrou mais ninguém de confiança" é um estado psicológico que a pesquisa sobre solidão (Cacioppo & Patrick) identificou como tão prejudicial à saúde quanto fumar. Verbalizar o que falta é o primeiro movimento contrário ao isolamento silencioso.
+A sensação de que "não sobrou mais ninguém de confiança" pesa no corpo tanto quanto um mal que adoece devagar. Dizer em voz alta o que está faltando já é um passo contra o isolamento que se instala calado.
 
 **Quem em sua vida você tem tratado como dispensável quando, na verdade, precisaria mais?**
 
@@ -117,7 +117,7 @@ A sensação de que "não sobrou mais ninguém de confiança" é um estado psico
 ## Salmo 13 — Oração em Tempo de Desespero
 *Temas: ansiedade, esperança, clamor*
 
-"Até quando?" é a pergunta de quem ainda espera, e isso já diz muito. A psicologia da esperança (Snyder) distingue pessoas esperançosas não pela ausência de sofrimento, mas pela crença de que caminhos existem, mesmo que ainda não visíveis. O desespero que grita ainda não desistiu.
+"Até quando?" é a pergunta de quem ainda espera, e isso já diz muito sobre você. A esperança verdadeira não some quando o sofrimento aparece; ela insiste que há um caminho, mesmo sem você conseguir enxergá-lo ainda. O desespero que grita é sinal de que você não desistiu.
 
 **O que a persistência da sua dor diz sobre o quanto você ainda se importa?**
 
@@ -126,7 +126,7 @@ A sensação de que "não sobrou mais ninguém de confiança" é um estado psico
 ## Salmo 14 — A Insensatez dos Ímpios
 *Temas: sabedoria*
 
-A psicologia moral (Haidt) mostra que agir como se nossas escolhas não importassem, para nós ou para os outros, não é neutralidade, mas um tipo de ilusão cognitiva. Toda ação molda o mundo e a nós mesmos. Ignorar isso não nos protege das consequências; apenas as adia.
+Agir como se as suas escolhas não pesassem, nem pra você nem pra ninguém, não é neutralidade; é um jeito de se enganar. Toda ação deixa marca, em você e no mundo ao redor. Fingir que não deixa não evita a conta; só empurra ela pra frente.
 
 **Que área da sua vida você tem tratado como se suas escolhas não importassem, quando no fundo sabe que importam?**
 
@@ -135,7 +135,7 @@ A psicologia moral (Haidt) mostra que agir como se nossas escolhas não importas
 ## Salmo 15 — O Cidadão do Reino de Deus
 *Temas: santidade, sabedoria*
 
-Agir conforme o que se declara acreditar é um dos preditores mais robustos de bem-estar psicológico (Peterson & Seligman). Não se trata de perfeição, mas de coerência: que a pessoa que você é em particular seja reconhecível em público.
+Viver de acordo com o que você diz acreditar é um dos caminhos mais firmes pra uma vida em paz consigo mesma. Não se trata de ser perfeito, mas de ser inteiro: a pessoa que você é sozinho e a que você mostra aos outros deveriam se reconhecer.
 
 **Existe alguma distância entre quem você diz ser e quem você realmente age sendo?**
 
@@ -144,7 +144,7 @@ Agir conforme o que se declara acreditar é um dos preditores mais robustos de b
 ## Salmo 16 — Confiança e Alegria em Deus
 *Temas: confiança, alegria, paz*
 
-A satisfação com a vida, segundo pesquisas em psicologia positiva (Seligman), não depende tanto do que acontece, mas de onde colocamos nosso senso de identidade e pertencimento. Ancorar-se em algo além das circunstâncias cria uma estabilidade emocional que as variações da vida não destroem.
+A satisfação com a vida depende menos do que acontece e mais de onde você apoia o seu senso de quem é e de onde pertence. Quando esse apoio está em algo que as circunstâncias não alcançam, você ganha uma firmeza que os altos e baixos do dia não derrubam.
 
 **O que permanece firme em você quando tudo ao redor muda?**
 
@@ -153,7 +153,7 @@ A satisfação com a vida, segundo pesquisas em psicologia positiva (Seligman), 
 ## Salmo 17 — Oração por Proteção
 *Temas: proteção, oração*
 
-Pedir ajuda é, neurologicamente, um ato de regulação emocional: ativa o sistema de cuidado (ocitocina) e inibe o de ameaça. A pesquisa de Kristin Neff sobre auto-compaixão mostra que buscar amparo não é fraqueza; é o comportamento mais adaptativo diante da vulnerabilidade real.
+Pedir ajuda acalma o corpo: afrouxa o estado de alerta e liga a parte da gente que se sente cuidada. Buscar amparo quando você está frágil é a coisa mais sensata que existe, ainda que pareça o contrário.
 
 **Quando foi a última vez que você pediu ajuda com honestidade, sem minimizar o que estava sentindo?**
 
@@ -162,7 +162,7 @@ Pedir ajuda é, neurologicamente, um ato de regulação emocional: ativa o siste
 ## Salmo 18 — Louvor pela Vitória
 *Temas: louvor, vitória, gratidão*
 
-Celebrar o que foi superado não é vaidade; é consolidação de aprendizagem. A neurociência mostra que recordar ativamente momentos de superação fortalece redes neurais ligadas à resiliência, tornando mais provável que o cérebro recorra a essas memórias em crises futuras. Comemorar é treinar.
+Celebrar o que você superou não é vaidade; é fixar o aprendizado. Cada vez que você lembra de propósito de uma travessia vencida, deixa esse caminho mais fácil de encontrar na próxima crise. Comemorar é uma forma de treino.
 
 **Que vitória recente você não se permitiu celebrar como deveria?**
 
@@ -171,7 +171,7 @@ Celebrar o que foi superado não é vaidade; é consolidação de aprendizagem. 
 ## Salmo 19 — A Glória de Deus na Criação e na Lei
 *Temas: criação, sabedoria, louvor*
 
-A pesquisa sobre atenção plena mostra que parar para observar o mundo com curiosidade, sem agenda, restaura a capacidade de admiração que a rotina embota. O céu que não olhamos não deixa de proclamar algo; somos nós que paramos de ouvir.
+Parar pra olhar o mundo com curiosidade, sem querer nada em troca, devolve a capacidade de se admirar que a pressa vai gastando. O céu continua dizendo o que sempre disse; às vezes somos nós que deixamos de escutar.
 
 **Quando você parou pela última vez para contemplar algo sem querer nada em troca?**
 
@@ -180,7 +180,7 @@ A pesquisa sobre atenção plena mostra que parar para observar o mundo com curi
 ## Salmo 20 — Oração pela Vitória do Rei
 *Temas: oração, esperança*
 
-Torcer genuinamente pelo bem do outro, sem inveja nem competição, é um exercício de expansão do eu que a psicologia positiva chama de amor benevolente (loving-kindness). A Teoria da Autodeterminação (Deci & Ryan) mostra que conexão genuína com os outros é uma necessidade psicológica básica.
+Torcer de verdade pelo bem do outro, sem inveja e sem competição, alarga a gente por dentro. E precisar dos outros, sentir-se ligado a alguém, não é carência: é uma necessidade tão real quanto comer ou dormir.
 
 **Por quem você está torcendo de verdade hoje, sem reservas?**
 
@@ -189,7 +189,7 @@ Torcer genuinamente pelo bem do outro, sem inveja nem competição, é um exerc�
 ## Salmo 21 — O Rei se Alegra em Deus
 *Temas: gratidão, louvor*
 
-A alegria que se volta para agradecer, em vez de apenas usufruir, tem um efeito duradouro diferente do prazer que se esgota no próprio consumo. Barbara Fredrickson mostrou que a gratidão amplia o repertório de pensamentos e ações disponíveis: literalmente abre a mente.
+A alegria que se volta pra agradecer dura de um jeito diferente da que só consome e passa. Agradecer abre a mente: você começa a enxergar mais possibilidades do que via quando só aproveitava sem parar.
 
 **O que está bem em sua vida agora que você tem consumido sem parar para agradecer?**
 
@@ -198,7 +198,7 @@ A alegria que se volta para agradecer, em vez de apenas usufruir, tem um efeito 
 ## Salmo 22 — Clamor de Abandono e Canto de Louvor
 *Temas: luto, abandono, esperança*
 
-O grito "por que me desamparaste?" é talvez a expressão mais honesta de sofrimento que existe. A psicologia do trauma reconhece que o abandono, real ou percebido, deixa marcas profundas, e que nomeá-lo é parte essencial da cura. A dor nomeada já não nos governa da mesma forma.
+O grito "por que me desamparaste?" é talvez a coisa mais honesta que a dor consegue dizer. O abandono, real ou sentido, deixa marca funda, e dar nome a ele é parte de curar. A dor que você consegue nomear já não manda em você do mesmo jeito.
 
 **Existe um abandono que você ainda não nomeou, que você fingiu que não doeu o quanto doeu?**
 
@@ -207,7 +207,7 @@ O grito "por que me desamparaste?" é talvez a expressão mais honesta de sofrim
 ## Salmo 23 — O Senhor é o Meu Pastor
 *Temas: conforto, ansiedade, confiança*
 
-A imagem do pastor que conduz, e não que empurra, corresponde ao que a Teoria do Apego chama de "base segura": a presença que permite explorar o mundo sem medo do que encontraremos ao retornar. A segurança não elimina o vale da sombra; muda como o atravessamos.
+O pastor da imagem conduz, não empurra: é a presença que deixa você caminhar sem medo do que vai achar na volta. Ter isso não faz o vale da sombra desaparecer. Muda o jeito como você o atravessa, sabendo que não está sozinho.
 
 **O que mudaria na sua forma de atravessar os momentos difíceis se você tivesse certeza de que não está sozinho?**
 
@@ -216,7 +216,7 @@ A imagem do pastor que conduz, e não que empurra, corresponde ao que a Teoria d
 ## Salmo 24 — O Rei da Glória
 *Temas: louvor, santidade*
 
-Certas experiências nos reposicionam dentro de algo maior, e esse reposicionamento tem efeitos mensuráveis de redução do ego e aumento de comportamentos pró-sociais (Keltner). Reconhecer que há algo maior não diminui; expande.
+Certas experiências te recolocam dentro de algo maior, e isso, em vez de encolher, abre: você se importa mais com os outros e se prende menos a si mesmo. Reconhecer que existe algo maior que você não te diminui.
 
 **O que você reverencia, o que, quando você pensa nele, faz você se sentir parte de algo além de si mesmo?**
 
@@ -225,7 +225,7 @@ Certas experiências nos reposicionam dentro de algo maior, e esse reposicioname
 ## Salmo 25 — Oração por Orientação e Perdão
 *Temas: oração, perdão, sabedoria*
 
-Pedir orientação pressupõe humildade epistêmica: o reconhecimento de que não sabemos tudo o que precisamos saber. A pesquisa sobre tomada de decisão (Kahneman) mostra que os maiores erros vêm justamente da certeza excessiva. Quem pede caminho já fez metade do percurso.
+Pedir orientação começa por admitir que você não sabe tudo o que precisaria saber. E os erros maiores costumam nascer justamente do excesso de certeza, não da dúvida. Quem tem coragem de perguntar o caminho já andou metade dele.
 
 **Em que decisão de hoje você está fingindo ter mais certeza do que realmente tem?**
 
@@ -234,7 +234,7 @@ Pedir orientação pressupõe humildade epistêmica: o reconhecimento de que nã
 ## Salmo 26 — Oração por Integridade
 *Temas: integridade, confiança*
 
-Viver com integridade não significa nunca errar; significa que a direção que você escolhe para sua vida é coerente com quem você diz ser. Viktor Frankl ensinou que a liberdade humana está sempre na resposta que damos às circunstâncias, e não nas circunstâncias em si.
+Viver com integridade não é nunca errar; é manter a direção da sua vida coerente com quem você diz ser. E há uma liberdade que ninguém te tira: a de escolher como você responde ao que acontece, mesmo quando não escolheu o que aconteceu.
 
 **Suas ações desta semana estão alinhadas com o tipo de pessoa que você quer ser?**
 
@@ -243,7 +243,7 @@ Viver com integridade não significa nunca errar; significa que a direção que 
 ## Salmo 27 — Confiança no Senhor
 *Temas: confiança, esperança, proteção*
 
-"A quem temerei?" pressupõe que o medo é real, mas não definitivo. A TCC mostra que o medo não precisa desaparecer para que a ação seja possível; precisa apenas ser avaliado com mais precisão. Coragem não é ausência de medo: é decidir que outra coisa importa mais.
+"A quem temerei?" não finge que o medo não existe; assume que ele existe e não manda. O medo não precisa sumir pra você agir, só precisa ser visto com clareza, do tamanho real dele. Coragem é decidir que outra coisa importa mais do que ele.
 
 **O que você está deixando de fazer porque o medo chegou antes da coragem?**
 
@@ -252,7 +252,7 @@ Viver com integridade não significa nunca errar; significa que a direção que 
 ## Salmo 28 — Oração por Proteção
 *Temas: proteção, clamor*
 
-O silêncio de quem esperávamos que respondesse pode ser a experiência mais desorientadora que existe. A pesquisa sobre isolamento emocional mostra que o pior não é a ausência do outro, mas a incerteza sobre se fomos ouvidos. Verbalizar o que sentimos é romper o silêncio de dentro.
+O silêncio de quem você esperava que respondesse desorienta como poucas coisas. Às vezes o que mais dói não é a falta do outro, mas não saber se você foi ouvido. Dizer em voz alta o que sente já rompe o silêncio por dentro.
 
 **Há algo que você tem segurado dentro de si porque não tem certeza de que será ouvido?**
 
@@ -261,7 +261,7 @@ O silêncio de quem esperávamos que respondesse pode ser a experiência mais de
 ## Salmo 29 — A Voz do Senhor na Tempestade
 *Temas: louvor, criação*
 
-Tempestades, mares e montanhas produzem o estado de admiração que Dacher Keltner associa à expansão do senso de tempo, redução da ansiedade e aumento do sentido de vida. A natureza fala uma linguagem que o corpo entende antes da mente.
+Tempestade, mar aberto, montanha: diante do que é grande demais, o tempo parece afrouxar e a ansiedade baixa. A natureza fala uma língua que o corpo entende antes da cabeça.
 
 **Quando foi a última vez que algo no mundo natural parou você completamente?**
 
@@ -270,7 +270,7 @@ Tempestades, mares e montanhas produzem o estado de admiração que Dacher Keltn
 ## Salmo 30 — Louvor pela Cura
 *Temas: cura, gratidão, louvor*
 
-A recuperação de uma crise, física ou emocional, raramente é reconhecida com a solenidade que merece. A pesquisa de Pennebaker mostra que revisitar e narrar o que foi superado tem efeito terapêutico real: reorganiza a memória, reduz o impacto do trauma e fortalece a identidade de sobrevivente.
+Sair de uma crise, do corpo ou da alma, raramente recebe a solenidade que merece. Voltar e contar o que você atravessou não é remoer: reorganiza a memória, tira força do que te feriu e te devolve como alguém que sobreviveu.
 
 **O que você atravessou que ainda não recebeu de você o reconhecimento de que foi real e custou caro?**
 
@@ -279,7 +279,7 @@ A recuperação de uma crise, física ou emocional, raramente é reconhecida com
 ## Salmo 31 — Confiança em Tempos de Perigo
 *Temas: confiança, proteção, ansiedade*
 
-"Em ti me refugio" é uma declaração de entrega, e a pesquisa sobre regulação emocional mostra que a entrega consciente ativa o sistema parassimpático e reduz o cortisol. Soltar o controle que nunca tivemos não é derrota; é o primeiro movimento de recuperação.
+"Em ti me refugio" é um jeito de entregar, e entregar de propósito acalma o corpo, baixa uma tensão que a gente nem percebe que está segurando. Largar um controle que você nunca teve de verdade não é perder; é onde a recuperação começa.
 
 **O que você está tentando controlar agora que, se você soltasse, te aliviaria?**
 
@@ -288,7 +288,7 @@ A recuperação de uma crise, física ou emocional, raramente é reconhecida com
 ## Salmo 32 — Felicidade do Perdão
 *Temas: perdão, alegria, gratidão*
 
-Carregar culpa não resolvida consome recursos cognitivos significativos: a mente revive o erro em loops. A psicologia do perdão (Worthington) mostra que perdoar a si mesmo não é negar o que aconteceu, mas recusar deixar que o passado defina o presente. A leveza que se segue é fisiológica, não apenas simbólica.
+Carregar culpa sem resolução consome você por dentro: a mente fica reprisando o erro em loop. Perdoar a si mesmo não é fingir que nada aconteceu; é se recusar a deixar o passado mandar no presente. E o alívio que vem depois é real, você sente no corpo.
 
 **Existe algo que você fez, ou deixou de fazer, que ainda não se permitiu perdoar?**
 
@@ -297,7 +297,7 @@ Carregar culpa não resolvida consome recursos cognitivos significativos: a ment
 ## Salmo 33 — Louvor ao Criador
 *Temas: louvor, criação, confiança*
 
-Confiar no que não controlamos é contraintuitivo para uma mente treinada em planejamento e previsão. E ainda assim, pesquisas sobre bem-estar (Langer, Frankl) mostram que a capacidade de se render ao que não pode ser controlado é um dos preditores mais fortes de saúde mental duradoura.
+Confiar no que você não controla vai contra tudo o que uma mente treinada em planejar quer fazer. E mesmo assim, saber se render ao que não está nas suas mãos é uma das coisas que mais sustentam a saúde mental ao longo do tempo.
 
 **Em que área da vida você ainda está lutando por controle quando o que precisaria era de confiança?**
 
@@ -306,7 +306,7 @@ Confiar no que não controlamos é contraintuitivo para uma mente treinada em pl
 ## Salmo 34 — Louvor pela Libertação
 *Temas: gratidão, proteção, louvor*
 
-"Bendirei o Senhor em todo o tempo" não é ingenuidade emocional; é uma decisão sobre onde pousar a atenção. A psicologia da gratidão (Emmons) mostra que praticar gratidão mesmo em períodos difíceis não nega o sofrimento: cria um contrapeso que impede que ele consuma toda a perspectiva.
+"Bendirei o Senhor em todo o tempo" não é ingenuidade; é escolher onde pousar a atenção. Agradecer mesmo em dias difíceis não nega o que dói: cria um contrapeso pra que a dor não tome conta de toda a vista.
 
 **O que está bem em sua vida hoje, mesmo que ao lado de coisas que ainda doem?**
 
@@ -315,7 +315,7 @@ Confiar no que não controlamos é contraintuitivo para uma mente treinada em pl
 ## Salmo 35 — Oração contra os Inimigos
 *Temas: proteção, clamor*
 
-A sensação de ser perseguido ou injustiçado pode isolar, pois a narrativa de "eu contra o mundo" estreita a perspectiva. A TCC propõe examinar a evidência real por trás da percepção de ameaça. Nem toda oposição é perseguição; mas a dor da injustiça é real e merece ser ouvida.
+Sentir-se perseguido isola, porque a história de "eu contra o mundo" fecha o campo de visão. Vale olhar as evidências com calma: nem toda oposição é perseguição. Mas quando a injustiça é real, a dor dela também é, e merece ser ouvida.
 
 **Existe alguém ou algo que você está tratando como inimigo quando talvez fosse mais útil tratá-lo como obstáculo a ser superado?**
 
@@ -324,7 +324,7 @@ A sensação de ser perseguido ou injustiçado pode isolar, pois a narrativa de 
 ## Salmo 36 — A Maldade do Homem e a Bondade de Deus
 *Temas: sabedoria, bondade*
 
-A psicologia moral (Haidt, Baumeister) mostra que o mal raramente se apresenta como tal: quase sempre vem justificado, racionalizado, embrulhado em boas intenções. Reconhecer esse mecanismo em nós mesmos, antes de apontá-lo nos outros, é o exercício moral mais exigente.
+O mal quase nunca se anuncia como mal: costuma vir justificado, explicado, embrulhado em boa intenção. Enxergar esse mecanismo primeiro em você, antes de apontá-lo nos outros, é o exercício mais difícil que existe.
 
 **Em que situação recente você usou boas intenções para justificar algo que, no fundo, sabe que não deveria ter feito?**
 
@@ -333,7 +333,7 @@ A psicologia moral (Haidt, Baumeister) mostra que o mal raramente se apresenta c
 ## Salmo 37 — Confiança no Senhor
 *Temas: confiança, paz, sabedoria*
 
-Agitar-se por causa do sucesso alheio é um dos estados emocionais que mais drenam recursos psicológicos sem produzir nenhum benefício real. A psicologia positiva sugere substituir a comparação social por uma bússola interna: o quanto estou alinhado com meus próprios valores?
+Se irritar com o sucesso dos outros drena você sem devolver nada em troca. Ajuda trocar a régua: em vez de medir sua vida pela dos outros, perguntar o quanto você está andando na direção que você mesmo escolheu.
 
 **Você está medindo seu progresso pela régua da própria vida ou pela comparação com o que outros alcançaram?**
 
@@ -342,7 +342,7 @@ Agitar-se por causa do sucesso alheio é um dos estados emocionais que mais dren
 ## Salmo 38 — Oração em Tempo de Doença
 *Temas: luto, arrependimento, clamor*
 
-A doença, física ou emocional, muitas vezes vem acompanhada de culpa, como se o sofrimento fosse sempre merecido. A psicologia da auto-compaixão (Neff) distingue responsabilidade de autopunição: reconhecer o que poderia ser diferente, sem usar isso como justificativa para se machucar mais.
+A doença, do corpo ou da alma, muitas vezes vem junto com culpa, como se todo sofrimento fosse castigo merecido. Há uma diferença entre se responsabilizar e se punir: reconhecer o que poderia ser diferente sem usar isso pra se machucar ainda mais.
 
 **Você está se culpando por algo que merecia compreensão, não punição?**
 
@@ -351,7 +351,7 @@ A doença, física ou emocional, muitas vezes vem acompanhada de culpa, como se 
 ## Salmo 39 — A Brevidade da Vida
 *Temas: meditação, brevidade*
 
-A contemplação da finitude é, paradoxalmente, uma das vias mais eficazes para clarificar o que realmente importa. Pesquisas de Terror Management Theory (Greenberg) mostram que pensar na morte, quando bem processado, aumenta o comprometimento com valores genuínos.
+Pensar na finitude, por estranho que pareça, é um dos jeitos mais rápidos de clarear o que de fato importa. Quando bem digerida, a consciência de que o tempo acaba aproxima você dos valores que são realmente seus.
 
 **Se o tempo é curto, o que você está guardando para depois que poderia ser agora?**
 
@@ -360,7 +360,7 @@ A contemplação da finitude é, paradoxalmente, uma das vias mais eficazes para
 ## Salmo 40 — Louvor e Súplica
 *Temas: louvor, gratidão, esperança*
 
-"Esperei com paciência" descreve a espera ativa, distinta da resignação passiva. A pesquisa sobre esperança (Snyder) mostra que pessoas esperançosas não esperam apenas: planejam, buscam alternativas, mantêm a ação. Esperar com expectativa é muito diferente de esperar com paralisia.
+"Esperei com paciência" fala de uma espera ativa, não de resignação. Quem espera com esperança não fica só parado: procura caminhos, se mantém em movimento. Esperar acreditando é muito diferente de esperar travado.
 
 **Enquanto você espera pelo que ainda não chegou, o que você pode fazer hoje?**
 
@@ -369,7 +369,7 @@ A contemplação da finitude é, paradoxalmente, uma das vias mais eficazes para
 ## Salmo 41 — Oração em Tempo de Doença
 *Temas: cura, proteção*
 
-Cuidar do fraco enquanto se está vulnerável é um ato de paradoxo produtivo: a pesquisa sobre altruísmo (Post) mostra que ajudar os outros ativa sistemas de recompensa no cérebro e reduz a percepção da própria dor. A atenção que damos ao outro, às vezes, é o que nos tira do buraco.
+Cuidar de alguém frágil enquanto você mesmo está por baixo tem um efeito estranho e bom: ajudar o outro alivia a percepção da própria dor. Às vezes é justamente a atenção que você oferece que te puxa do buraco.
 
 **Existe alguém em sua vida que precisaria de atenção, e que focar nela poderia também fazer bem a você?**
 
@@ -378,7 +378,7 @@ Cuidar do fraco enquanto se está vulnerável é um ato de paradoxo produtivo: a
 ## Salmo 42 — Sede de Deus
 *Temas: saudade, sede, esperança, luto*
 
-A nostalgia, o anseio pelo que foi bom e passou, é uma emoção complexa que pesquisadores como Constantine Sedikides identificaram como benéfica quando não paralisa: reativa o senso de que houve conexão, sentido e amor no passado, e que esses podem existir de novo.
+A saudade, esse anseio pelo que foi bom e passou, não é só tristeza. Ela reacende a lembrança de que houve conexão e sentido um dia, e de que isso pode voltar a existir. Aquilo de que você sente falta aponta pra algo que ainda importa.
 
 **O que você anseia que já não tem, e o que isso diz sobre o que você precisa buscar agora?**
 
@@ -387,7 +387,7 @@ A nostalgia, o anseio pelo que foi bom e passou, é uma emoção complexa que pe
 ## Salmo 43 — Oração por Orientação Divina
 *Temas: esperança, oração*
 
-Não saber para onde ir é um dos estados mais angustiantes para a mente humana, que busca continuamente coerência e direção. A Logoterapia (Frankl) propõe que mesmo em situações sem saída clara há sempre uma resposta possível: a atitude que escolhemos diante do impasse.
+Não saber pra onde ir é um dos estados mais angustiantes que existem, porque a mente vive pedindo direção. Mesmo quando não há saída clara, sobra sempre uma escolha: a atitude que você toma diante do impasse.
 
 **No impasse em que você se encontra, qual atitude ainda está em suas mãos?**
 
@@ -396,7 +396,7 @@ Não saber para onde ir é um dos estados mais angustiantes para a mente humana,
 ## Salmo 44 — Clamor de Desolação Nacional
 *Temas: clamor, esperança*
 
-Existem momentos em que a desolação é coletiva, quando não é apenas eu que sofro, mas todos ao meu redor. A psicologia social reconhece que lamentos compartilhados criam coesão: nomear juntos o que dói transforma a tragédia em narrativa comum, e narrativa comum em identidade.
+Há momentos em que a desolação não é só sua: todo mundo em volta também sofre. Nomear juntos o que dói cria uma espécie de laço; a tragédia partilhada vira história comum, e história comum aproxima as pessoas.
 
 **Que dor você está carregando sozinho que, se compartilhada, seria mais leve?**
 
@@ -405,7 +405,7 @@ Existem momentos em que a desolação é coletiva, quando não é apenas eu que 
 ## Salmo 45 — Cântico Real
 *Temas: louvor*
 
-O belo, seja na música, na palavra ou na presença de alguém, tem efeitos psicofisiológicos mensuráveis: reduz cortisol, ativa o sistema de recompensa e aumenta o senso de conexão. Cultivar o belo não é superficialidade; é uma necessidade psicológica básica frequentemente negligenciada.
+O belo, na música, na palavra, na presença de alguém, faz bem de um jeito que o corpo registra: acalma, alegra, aproxima. Cultivar beleza não é frescura; é uma necessidade que a gente costuma deixar de lado.
 
 **O que de belo você tem deixado de notar, ou de criar, na rotina?**
 
@@ -414,7 +414,7 @@ O belo, seja na música, na palavra ou na presença de alguém, tem efeitos psic
 ## Salmo 46 — Deus, o Nosso Refúgio
 *Temas: ansiedade, confiança, proteção, paz*
 
-A metáfora do refúgio é estudada em psicologia como "base segura": um ponto de retorno que nos permite aventurar sem medo do abandono. Quando sabemos que há onde voltar, ousamos mais. A segurança não vem da ausência de perigo.
+O refúgio de que o Salmo fala funciona como um ponto de retorno: um lugar seguro pra onde voltar depois de se arriscar. Quando você sabe que existe esse lugar, ousa mais. A segurança não vem de não haver perigo; vem de ter pra onde voltar.
 
 **O que seria possível em sua vida se você tivesse a certeza profunda de que há onde voltar quando errar?**
 
@@ -423,7 +423,7 @@ A metáfora do refúgio é estudada em psicologia como "base segura": um ponto d
 ## Salmo 47 — O Rei de Toda a Terra
 *Temas: louvor, alegria*
 
-A alegria coletiva tem um poder que a alegria solitária não tem. A pesquisa sobre emoções compartilhadas (Rimé) mostra que partilhar alegria amplifica o prazer e fortalece vínculos sociais. Alegria guardada para si perde metade de seu peso.
+A alegria dividida tem uma força que a alegria sozinha não alcança. Quando você compartilha o que te faz bem, o prazer aumenta e os laços ficam mais fortes. Alegria guardada só pra você perde metade do tamanho.
 
 **Com quem você está compartilhando suas alegrias, ou as está guardando em silêncio?**
 
@@ -432,7 +432,7 @@ A alegria coletiva tem um poder que a alegria solitária não tem. A pesquisa so
 ## Salmo 48 — A Cidade de Deus
 *Temas: louvor, confiança*
 
-Pertencer a algo maior que si mesmo, uma comunidade, uma tradição, um propósito, é uma das necessidades mais estudadas em psicologia (Baumeister & Leary, 1995). O sentido de pertencimento não é luxo emocional; é uma necessidade tão básica quanto comida e sono.
+Pertencer a algo maior que você, uma comunidade, uma tradição, um propósito, é uma das necessidades mais fundas que existem. Sentir que se pertence não é luxo emocional; é tão básico quanto comida e sono.
 
 **A que você sente que pertence de verdade, e o que seria necessário para aprofundar esse pertencimento?**
 
@@ -441,7 +441,7 @@ Pertencer a algo maior que si mesmo, uma comunidade, uma tradição, um propósi
 ## Salmo 49 — A Vaidade das Riquezas
 *Temas: sabedoria, riquezas*
 
-A pesquisa clássica de Kahneman sobre felicidade e renda mostra que acima de um limiar básico, mais dinheiro não produz mais bem-estar subjetivo. O que produz felicidade duradoura são relações, propósito e engajamento, exatamente o que o acúmulo excessivo frequentemente sacrifica.
+Passado um certo ponto, mais dinheiro não traz mais felicidade, por mais que a gente insista em acreditar que traz. O que sustenta o bem-estar são relações, propósito e sentido, justamente o que o acúmulo sem freio costuma sacrificar.
 
 **O que você tem perseguido com a energia que deveria investir no que de fato importa?**
 
@@ -450,7 +450,7 @@ A pesquisa clássica de Kahneman sobre felicidade e renda mostra que acima de um
 ## Salmo 50 — Deus, o Juiz de Israel
 *Temas: adoração, sabedoria*
 
-Há uma diferença entre o gesto externo e a intenção interna. A psicologia da motivação (Deci & Ryan) distingue motivação extrínseca, fazer para parecer, de motivação intrínseca, fazer porque é real e importante. O ritual sem coração não é neutro: empurra para mais longe o contato com o que é genuíno.
+Existe diferença entre o gesto de fora e a intenção de dentro. Fazer algo só pra parecer é diferente de fazer porque aquilo é real pra você. O ritual sem coração não é inofensivo: vai te afastando aos poucos do que é genuíno.
 
 **Há algo que você faz por aparência que já não tem correspondência com o que você realmente sente?**
 
@@ -459,7 +459,7 @@ Há uma diferença entre o gesto externo e a intenção interna. A psicologia da
 ## Salmo 51 — Oração por Perdão e Restauração
 *Temas: perdão, arrependimento, restauração*
 
-O arrependimento autêntico, distinto da autopunição improdutiva, envolve três movimentos: reconhecer o erro, reparar o que for possível e ajustar o curso. Kristin Neff mostra que tratar a si mesmo como trataria um amigo que errou é o que torna a mudança possível, não a punição.
+O arrependimento que transforma, diferente da autopunição que só machuca, tem três passos: reconhecer o erro, reparar o que der e corrigir a rota. Tratar você mesmo como trataria um amigo que errou é o que abre espaço pra mudança. A punição, não.
 
 **Você tem se arrependido de um jeito que produz mudança, ou de um jeito que apenas te machuca mais?**
 
@@ -468,7 +468,7 @@ O arrependimento autêntico, distinto da autopunição improdutiva, envolve trê
 ## Salmo 52 — A Sorte do Soberbo
 *Temas: sabedoria, confiança*
 
-Confiar excessivamente na própria força é um viés cognitivo bem documentado (efeito Dunning-Kruger). A humildade genuína não é se diminuir: é ter uma avaliação precisa de si mesmo, incluindo limitações. Quem se conhece bem precisa menos se defender.
+Confiar demais na própria força é uma armadilha conhecida: quanto menos a gente sabe, mais certeza costuma ter. Humildade de verdade não é se diminuir; é se enxergar com precisão, limites inclusive. Quem se conhece bem precisa se defender menos.
 
 **Existe alguma área em que você está confiando excessivamente na sua própria capacidade sem considerar o que não sabe?**
 
@@ -477,7 +477,7 @@ Confiar excessivamente na própria força é um viés cognitivo bem documentado 
 ## Salmo 53 — A Insensatez dos Ímpios
 *Temas: sabedoria*
 
-Agir como se nossas escolhas acontecessem no vácuo, sem consequências para nós e para os outros, é uma ilusão que a psicologia social chama de "distância moral". Quanto mais distante percebemos o impacto das nossas ações, mais facilmente as justificamos. Aproximar-se é o primeiro passo para agir melhor.
+Agir como se as suas escolhas não tivessem consequência, pra você ou pros outros, é uma ilusão confortável. Quanto mais distante você sente o impacto do que faz, mais fácil justificar. Chegar perto desse impacto é o primeiro passo pra agir melhor.
 
 **Que consequência das suas escolhas você tem mantido propositalmente à distância para não ter que lidar com ela?**
 
@@ -486,7 +486,7 @@ Agir como se nossas escolhas acontecessem no vácuo, sem consequências para nó
 ## Salmo 54 — Oração por Proteção
 *Temas: proteção, clamor*
 
-Pedir ajuda por necessidade real, e não por vaidade, é um dos atos de vulnerabilidade mais honestos. A pesquisa de Brené Brown mostra que é justamente esse ato que cria conexão genuína, não a performance de força que nunca precisa de ninguém.
+Pedir ajuda por necessidade de verdade, e não por manha, é um dos atos mais honestos de vulnerabilidade que existem. É justamente aí que nasce a conexão real, não na pose de quem nunca precisa de ninguém.
 
 **O que você precisaria pedir hoje, e o que está impedindo você de pedir?**
 
@@ -495,7 +495,7 @@ Pedir ajuda por necessidade real, e não por vaidade, é um dos atos de vulnerab
 ## Salmo 55 — Clamor contra a Traição
 *Temas: ansiedade, traição, clamor*
 
-A traição de alguém próximo é, psicologicamente, um dos eventos mais disruptivos que existem: viola as suposições básicas sobre como o mundo funciona (Janoff-Bulman). Recompor a confiança em outros e em si mesmo depois de uma traição é um processo, não uma decisão.
+A traição de alguém próximo é um dos golpes mais desorganizadores que existem: abala as certezas mais básicas sobre como o mundo funciona. Refazer a confiança, nos outros e em você mesmo, é um processo lento, não uma decisão que se toma de uma vez.
 
 **Existe uma traição que ainda governa suas relações atuais, mesmo que a situação já tenha passado?**
 
@@ -504,7 +504,7 @@ A traição de alguém próximo é, psicologicamente, um dos eventos mais disrup
 ## Salmo 56 — Confiança em Deus no Perigo
 *Temas: confiança, medo, ansiedade*
 
-"Quando temo, confio em ti": a sequência importa. O medo não é eliminado antes da confiança; a confiança é exercida dentro do medo. A neurociência da coragem (Damasio) mostra que agir apesar do medo, repetidamente, é o que gradualmente recalibra a resposta ao perigo.
+"Quando temo, confio em ti": a ordem das palavras diz muito. A confiança não vem depois que o medo passa; ela é exercida dentro do medo. Agir com medo, de novo e de novo, é o que aos poucos ensina o corpo a responder diferente.
 
 **Que medo você está esperando sumir antes de agir, quando na verdade ele só some depois que você age?**
 
@@ -513,7 +513,7 @@ A traição de alguém próximo é, psicologicamente, um dos eventos mais disrup
 ## Salmo 57 — Confiança em Deus
 *Temas: confiança, proteção*
 
-Encontrar abrigo mesmo dentro de circunstâncias que não mudam é a base da resiliência psicológica. Viktor Frankl descobriu nos campos de concentração que a última liberdade humana é escolher a atitude diante do que não podemos controlar. O abrigo que buscamos às vezes já está dentro.
+Achar abrigo mesmo quando as circunstâncias não mudam é o coração da resiliência. Há uma liberdade que resiste até ao pior: a de escolher a atitude diante do que não se pode controlar. O abrigo que você procura, às vezes, já está dentro de você.
 
 **Em que circunstância você está esperando que o ambiente mude para se sentir seguro, quando a segurança poderia vir de dentro?**
 
@@ -522,7 +522,7 @@ Encontrar abrigo mesmo dentro de circunstâncias que não mudam é a base da res
 ## Salmo 58 — Oração contra Juízes Injustos
 *Temas: justiça, clamor*
 
-A indignação moral diante da injustiça é, segundo Jonathan Haidt, uma das emoções sociais mais universais e adaptativas: ela move pessoas a agir pelo bem coletivo. A questão não é eliminar a indignação, mas canalizá-la para ação construtiva em vez de ruminação que exaure.
+A indignação diante da injustiça é uma das reações mais humanas que existem, e move as pessoas a agir pelo bem de todos. O ponto não é apagar essa indignação, mas dar a ela um destino: virar ação, em vez de remoer sem fim.
 
 **Sua indignação por algo injusto está te movendo para alguma ação, ou está te consumindo sem produzir nada?**
 
@@ -531,7 +531,7 @@ A indignação moral diante da injustiça é, segundo Jonathan Haidt, uma das em
 ## Salmo 59 — Oração por Proteção
 *Temas: proteção, clamor*
 
-Sentir-se rodeado de hostilidade ativa o sistema de ameaça com mais intensidade do que perigos objetivos costumam justificar. A TCC propõe observar a evidência real: quem de fato representa perigo, e quem apenas parece, por causa do estado interno em que nos encontramos?
+Sentir-se cercado de hostilidade dispara o alarme interno com mais força do que o perigo real costuma justificar. Vale separar as coisas: quem de fato te ameaça e quem só parece ameaçar por causa do estado em que você está.
 
 **Você está respondendo a uma ameaça real agora, ou a uma interpretação de ameaça que merece ser revisada?**
 
@@ -540,7 +540,7 @@ Sentir-se rodeado de hostilidade ativa o sistema de ameaça com mais intensidade
 ## Salmo 60 — Oração Nacional por Restauração
 *Temas: esperança, restauração*
 
-A experiência de ser rejeitado, por pessoa, comunidade ou circunstância, testa a capacidade de manter identidade e esperança. A pesquisa sobre resiliência (Southwick & Charney) mostra que um dos fatores mais protetores é a crença de que a recuperação é possível, mesmo quando as evidências ainda não a confirmam.
+Ser rejeitado, por uma pessoa, um grupo ou pela própria vida, testa a sua capacidade de continuar acreditando em recuperação. E é justamente essa crença, a de que dá pra se refazer, que mais protege, mesmo quando nada ainda confirma isso.
 
 **O que seria necessário para você acreditar que a restauração é possível, mesmo sem vê-la ainda?**
 
@@ -549,7 +549,7 @@ A experiência de ser rejeitado, por pessoa, comunidade ou circunstância, testa
 ## Salmo 61 — Oração por Proteção
 *Temas: proteção, oração*
 
-"Ouve o meu clamor": a simplicidade do pedido contrasta com a complexidade do que sentimos. A pesquisa em psicologia da linguagem mostra que simplificar o que precisamos, colocar em poucas palavras, clarifica não só a comunicação, mas o próprio entendimento interno da necessidade.
+"Ouve o meu clamor": o pedido é simples, mesmo quando o que se sente é complicado. Resumir o que você precisa em poucas palavras clareia não só a comunicação, mas o seu próprio entendimento do que está faltando.
 
 **Se você tivesse que resumir em uma frase o que mais precisa agora, o que diria?**
 
@@ -558,7 +558,7 @@ A experiência de ser rejeitado, por pessoa, comunidade ou circunstância, testa
 ## Salmo 62 — Descanso em Deus
 *Temas: paz, confiança, descanso*
 
-"Somente em Deus espera silenciosa a minha alma": o silêncio como prática é contraintuitivo numa cultura que equipara atividade com valor. A pesquisa sobre mindfulness mostra que intervalos de quietude não são ausência; são momentos em que o sistema nervoso se regula e o que realmente importa se revela.
+"Somente em Deus espera silenciosa a minha alma": o silêncio como prática vai contra uma cultura que confunde estar ocupado com ter valor. Os intervalos de quietude não são tempo perdido; é neles que o corpo se acalma e o que importa de verdade aparece.
 
 **Quando você criou espaço de silêncio real na sua vida pela última vez, não ausência de ruído, mas presença verdadeira consigo mesmo?**
 
@@ -567,7 +567,7 @@ A experiência de ser rejeitado, por pessoa, comunidade ou circunstância, testa
 ## Salmo 63 — Sede de Deus
 *Temas: sede, louvor, adoração*
 
-A sede, fisiológica e psicológica, é o sinal mais honesto de que algo necessário está faltando. A psicologia das necessidades (Deci & Ryan) mostra que ignorar necessidades genuínas não as elimina; as converte em comportamentos substitutos que raramente satisfazem.
+A sede, do corpo ou da alma, é o sinal mais honesto de que falta algo necessário. Ignorar uma necessidade real não faz ela sumir; ela se transforma em substitutos que quase nunca satisfazem de verdade.
 
 **Qual necessidade genuína você tem tentado preencher com substitutos, e o que seria ir direto à fonte?**
 
@@ -576,7 +576,7 @@ A sede, fisiológica e psicológica, é o sinal mais honesto de que algo necess�
 ## Salmo 64 — Oração contra Inimigos
 *Temas: proteção, clamor*
 
-A ruminação sobre o que os outros pensam e tramam é uma das formas mais comuns de sofrimento mental desnecessário. A pesquisa de mind-wandering (Killingsworth & Gilbert) mostra que a mente errante, sobretudo em direção a conteúdos negativos, é a principal fonte de infelicidade cotidiana.
+Ficar remoendo o que os outros pensam e tramam é uma das formas mais comuns de sofrimento que a gente cria sozinho. A mente que fica vagando, sobretudo na direção do que é ruim, é uma das maiores fontes de infelicidade no dia a dia.
 
 **Quanto tempo mental você está gastando hoje com o que os outros pensam de você?**
 
@@ -585,7 +585,7 @@ A ruminação sobre o que os outros pensam e tramam é uma das formas mais comun
 ## Salmo 65 — Louvor pelo Dom da Chuva
 *Temas: gratidão, criação, louvor*
 
-A gratidão pelo que sustenta a vida sem que o mereçamos é uma das formas mais antigas e eficazes de reduzir o narcisismo implícito que nos faz sentir que o mundo gira em torno de nós. Reconhecer o que foi dado sem ser pedido calibra o senso de proporção.
+Agradecer pelo que sustenta a vida sem que você tenha feito por merecer é um dos jeitos mais antigos de furar aquela sensação de que o mundo gira em torno da gente. Reconhecer o que te foi dado sem você pedir recoloca as coisas no tamanho certo.
 
 **O que sustenta sua vida que você nunca pediu, nunca conquistou e raramente agradece?**
 
@@ -594,7 +594,7 @@ A gratidão pelo que sustenta a vida sem que o mereçamos é uma das formas mais
 ## Salmo 66 — Louvor pelas Obras de Deus
 *Temas: louvor, gratidão*
 
-Narrar a própria vida, contar o que aconteceu e o que foi superado, é uma das práticas terapêuticas mais antigas. James Pennebaker mostrou que narrar experiências difíceis com distância suficiente para integrá-las produz saúde física e emocional mensuráveis.
+Contar a própria vida, o que aconteceu e o que você superou, é uma das práticas de cura mais antigas que existem. Narrar as experiências difíceis com distância suficiente pra integrá-las faz bem ao corpo e à mente, de um jeito que se percebe.
 
 **Qual parte da sua história você ainda não conseguiu contar com um mínimo de distância e integração?**
 
@@ -603,7 +603,7 @@ Narrar a própria vida, contar o que aconteceu e o que foi superado, é uma das 
 ## Salmo 67 — Oração pela Bênção de Deus
 *Temas: bênção, missão*
 
-A bênção que transborda para além de mim é o modelo de propósito que Viktor Frankl chamou de "autotranscendência": a vida ganha sentido não quando é vivida para si mesma, mas quando serve a algo além. O bem que recebemos encontra seu cumprimento no bem que fazemos.
+A bênção que transborda pra além de você é o que dá sentido de verdade: a vida ganha peso não quando é vivida só pra si, mas quando serve a algo maior. O bem que você recebe se completa no bem que você faz.
 
 **O que de bom você tem recebido que poderia, e ainda não está, passando adiante?**
 
@@ -612,7 +612,7 @@ A bênção que transborda para além de mim é o modelo de propósito que Vikto
 ## Salmo 68 — O Deus da Vitória
 *Temas: louvor, vitória*
 
-Celebrar o que foi superado é um ato de memória ativa que fortalece a identidade resiliente. A pesquisa sobre narrativa (McAdams) mostra que pessoas que integram suas conquistas passadas na própria história têm mais recursos psicológicos para enfrentar desafios futuros.
+Celebrar o que você venceu é um jeito de guardar a memória viva e fortalecer quem você é. Quem inclui as próprias conquistas na história que conta sobre si tem mais de onde tirar força quando o próximo desafio chega.
 
 **Que conquista do passado você poderia usar como evidência de que é capaz de atravessar o que enfrenta hoje?**
 
@@ -621,7 +621,7 @@ Celebrar o que foi superado é um ato de memória ativa que fortalece a identida
 ## Salmo 69 — Clamor em Grande Angústia
 *Temas: luto, clamor, esperança*
 
-"As águas me sobem até o pescoço": a imagem da angústia que sobe é reconhecida em psicologia como inundação emocional, quando a emoção ultrapassa a janela de tolerância e a capacidade de pensar fica comprometida. O que o Salmo faz, clamar e nomear, é exatamente o que a terapia propõe.
+"As águas me sobem até o pescoço": a angústia que sobe até tirar o chão. Quando a emoção passa do limite, fica difícil até pensar. O que o Salmo faz, clamar e dar nome ao que afoga, é exatamente o que a terapia recomenda.
 
 **Quando você está submerso, você consegue nomear o que está sentindo, ou o sentimento te engole antes?**
 
@@ -630,7 +630,7 @@ Celebrar o que foi superado é um ato de memória ativa que fortalece a identida
 ## Salmo 70 — Oração Urgente por Ajuda
 *Temas: clamor, urgência*
 
-Há momentos em que não temos tempo para elaborar: a necessidade é urgente e crua. A psicologia de crise mostra que em momentos de urgência emocional a única intervenção necessária é a conexão; ser ouvido, não explicado. O socorro que o coração pede raramente é uma solução; é presença.
+Há momentos em que não dá tempo de elaborar: a necessidade é urgente e crua. No auge da urgência, o que basta muitas vezes é conexão, ser ouvido, não receber explicação. O socorro que o coração pede quase nunca é uma solução; é presença.
 
 **Neste momento, o que você mais precisa: solução ou alguém que simplesmente esteja presente?**
 
@@ -639,7 +639,7 @@ Há momentos em que não temos tempo para elaborar: a necessidade é urgente e c
 ## Salmo 71 — Confiança na Velhice
 *Temas: confiança, esperança, velhice*
 
-A pesquisa sobre envelhecimento saudável (Carstensen) mostra que à medida que percebemos o tempo como finito, tendemos a priorizar o que tem significado sobre o que tem novidade. A maturidade não é perda; é curadoria.
+Quando o tempo começa a parecer finito, a gente naturalmente passa a escolher o que tem sentido em vez do que é só novidade. Envelhecer, nesse sentido, não é perder; é escolher melhor o que fica.
 
 **O que, com o tempo, ficou mais claro sobre o que realmente importa para você?**
 
@@ -648,7 +648,7 @@ A pesquisa sobre envelhecimento saudável (Carstensen) mostra que à medida que 
 ## Salmo 72 — O Rei Justo e Seu Reino
 *Temas: justiça, esperança*
 
-A esperança em um mundo mais justo não é ingenuidade: é um dos motores psicológicos mais poderosos de ação sustentada. A pesquisa sobre motivação moral mostra que agir por valores transcendentes produz engajamento mais duradouro e resiliência maior diante dos obstáculos.
+Esperar por um mundo mais justo não é ingenuidade; é um dos motores mais fortes de ação que dura. Quem age por algo maior que si mesmo se cansa menos e aguenta mais os obstáculos do caminho.
 
 **O que um mundo mais justo precisaria de você especificamente?**
 
@@ -657,7 +657,7 @@ A esperança em um mundo mais justo não é ingenuidade: é um dos motores psico
 ## Salmo 73 — O Destino dos Ímpios e dos Justos
 *Temas: sabedoria, confusão, fé*
 
-A crise de fé, o momento em que a realidade que vemos contradiz o que acreditamos, é uma das experiências de crescimento mais dolorosas e necessárias. James Fowler mostra que a dúvida autêntica não destrói a fé madura: é o que a produz.
+A crise de fé, aquele momento em que o que você vê contradiz o que acredita, é uma das dores de crescimento mais difíceis e mais necessárias. A dúvida honesta não destrói uma fé madura; é ela que a constrói.
 
 **Existe uma contradição entre o que você acredita e o que você observa que ainda não foi dita em voz alta?**
 
@@ -666,7 +666,7 @@ A crise de fé, o momento em que a realidade que vemos contradiz o que acreditam
 ## Salmo 74 — Clamor pela Restauração do Santuário
 *Temas: clamor, restauração*
 
-O que é destruído não é necessariamente perdido para sempre, mas a restauração raramente acontece de forma automática. A psicologia do luto ensina que depois da destruição há um trabalho: reconhecer o que foi perdido, processar, e então perguntar o que pode ser reconstruído.
+O que foi destruído nem sempre está perdido pra sempre, mas a reconstrução raramente acontece sozinha. Depois da perda existe um trabalho a fazer: reconhecer o que se foi, sentir isso, e só então perguntar o que ainda pode ser reerguido.
 
 **O que foi destruído em sua vida que você ainda não se permitiu lamentar adequadamente antes de tentar reconstruir?**
 
@@ -675,7 +675,7 @@ O que é destruído não é necessariamente perdido para sempre, mas a restaura�
 ## Salmo 75 — Deus, o Juiz
 *Temas: justiça, louvor*
 
-A gratidão que antecede a resolução, que agradece antes de ver o resultado, pressupõe uma confiança que vai além da lógica imediata. A pesquisa sobre mentalidade de gratidão (Emmons) mostra que pessoas que cultivam essa postura têm maior tolerância à incerteza e menor reatividade emocional.
+Agradecer antes de ver o resultado, antes de saber como termina, pressupõe uma confiança que vai além da lógica do momento. Quem cultiva essa postura aguenta melhor a incerteza e reage com menos sobressalto ao que vem.
 
 **Você consegue ser grato agora, antes de saber como as coisas vão terminar?**
 
@@ -684,7 +684,7 @@ A gratidão que antecede a resolução, que agradece antes de ver o resultado, p
 ## Salmo 76 — A Vitória de Deus
 *Temas: louvor, vitória*
 
-Reconhecer a fonte de uma vitória, em vez de atribuí-la exclusivamente à própria capacidade, é um exercício de humildade que, paradoxalmente, reduz a ansiedade de desempenho. Quando não precisamos ter sido os únicos responsáveis, o peso do fracasso futuro também diminui.
+Reconhecer que uma vitória teve mais mãos além das suas, em vez de creditar tudo à própria força, alivia a pressão de desempenho. Quando você não precisa ter sido o único responsável pelo acerto, o peso de um fracasso futuro também fica menor.
 
 **Existe alguma vitória recente que você atribuiu inteiramente a si mesmo quando havia mais do que isso envolvido?**
 
@@ -693,7 +693,7 @@ Reconhecer a fonte de uma vitória, em vez de atribuí-la exclusivamente à pró
 ## Salmo 77 — Meditação sobre os Feitos de Deus
 *Temas: ansiedade, meditação, memória*
 
-"Lembro-me e me perturbo": a memória pode ser fonte de angústia tanto quanto de consolo. A psicologia cognitiva mostra que o que escolhemos recordar ativamente molda o humor de longo prazo mais do que os eventos atuais.
+"Lembro-me e me perturbo": a memória consola tanto quanto atormenta. O que você escolhe recordar com frequência molda o seu humor no longo prazo mais do que o que está acontecendo agora.
 
 **O que você recorda com mais frequência: o que te fortaleceu ou o que te falhou?**
 
@@ -702,7 +702,7 @@ Reconhecer a fonte de uma vitória, em vez de atribuí-la exclusivamente à pró
 ## Salmo 78 — As Misericórdias de Deus com Israel
 *Temas: história, fé, gratidão*
 
-Conhecer a história, de uma família, de um povo ou de si mesmo, é um ato de ancoragem psicológica. A pesquisa sobre narrativa familiar (Duke & Fivush) mostra que pessoas que conhecem sua história, incluindo as dificuldades, têm maior resiliência e senso de identidade.
+Conhecer a própria história, de uma família, de um povo ou de si mesmo, dá chão pra gente se firmar. Quem sabe de onde veio, inclusive das partes difíceis, costuma ter mais resistência e um senso mais claro de quem é.
 
 **Que parte da sua história, incluindo os momentos difíceis, você ainda não integrou à sua narrativa de quem você é?**
 
@@ -711,7 +711,7 @@ Conhecer a história, de uma família, de um povo ou de si mesmo, é um ato de a
 ## Salmo 79 — Clamor pela Restauração Nacional
 *Temas: clamor, restauração*
 
-O lamento coletivo, quando uma comunidade nomeia juntos o que foi perdido, tem uma função psicossocial que o lamento individual não tem: cria solidariedade na dor e permite que o sofrimento compartilhado se torne ponto de partida para reconstrução comum.
+O lamento coletivo, quando uma comunidade nomeia junta o que perdeu, faz algo que o lamento solitário não faz: cria solidariedade na dor. O sofrimento partilhado pode virar ponto de partida pra reconstruir juntos.
 
 **Existe uma dor que você e as pessoas ao seu redor estão carregando separadamente quando poderiam estar carregando juntos?**
 
@@ -720,7 +720,7 @@ O lamento coletivo, quando uma comunidade nomeia juntos o que foi perdido, tem u
 ## Salmo 80 — Oração pela Restauração de Israel
 *Temas: restauração, clamor*
 
-A imagem da vinha que precisa ser restaurada, não destruída, mas cuidada novamente, é a metáfora da recuperação que não começa do zero. A pesquisa sobre crescimento pós-traumático (Tedeschi & Calhoun) mostra que o que permanece após a crise é material para reconstrução, não apenas ruína.
+A vinha da imagem não é arrasada e esquecida; é cuidada de novo. A recuperação nem sempre começa do zero: o que sobra depois de uma crise é material pra reconstruir, não só escombro.
 
 **O que permaneceu em você depois de suas maiores crises, que você poderia tratar como ponto de partida, não de abandono?**
 
@@ -729,7 +729,7 @@ A imagem da vinha que precisa ser restaurada, não destruída, mas cuidada novam
 ## Salmo 81 — Chamado ao Arrependimento
 *Temas: adoração, arrependimento*
 
-Ouvir no sentido profundo de estar disposto a mudar é diferente de escutar. A psicologia da mudança (Prochaska & DiClemente) mostra que a contemplação, o estágio em que realmente consideramos mudar, é o passo mais crítico e frequentemente saltado. Ouvir de verdade custa algo.
+Ouvir de verdade, no sentido de estar disposto a mudar, é diferente de só escutar. Antes de qualquer mudança vem um momento em que a gente de fato considera mudar, e é justamente esse passo que a maioria pula. Ouvir pra valer custa alguma coisa.
 
 **Há algo que você tem ouvido repetidamente, de pessoas, de eventos, de si mesmo, que ainda não se converteu em mudança?**
 
@@ -738,7 +738,7 @@ Ouvir no sentido profundo de estar disposto a mudar é diferente de escutar. A p
 ## Salmo 82 — Deus, o Juiz Supremo
 *Temas: justiça*
 
-A responsabilidade de agir com justiça, especialmente diante de quem não tem poder de se defender, é uma obrigação moral que a psicologia social chama de responsabilidade proativa. A indiferença não é neutralidade; é escolha.
+Agir com justiça, principalmente diante de quem não tem como se defender, é uma responsabilidade que não dá pra terceirizar. Ficar indiferente não é ficar neutro; é também uma escolha, com consequências.
 
 **Onde você tem a capacidade de agir com justiça e ainda não agiu?**
 
@@ -747,7 +747,7 @@ A responsabilidade de agir com justiça, especialmente diante de quem não tem p
 ## Salmo 83 — Oração contra os Inimigos de Israel
 *Temas: proteção, clamor*
 
-A percepção de que forças se unem contra nós pode ser tanto uma leitura acurada quanto uma distorção cognitiva. Distinguir os dois exige a disposição de examinar as evidências com honestidade, sem deixar o medo decidir.
+A sensação de que tudo se une contra você tanto pode estar certa quanto ser um truque do medo. Separar uma coisa da outra exige olhar as evidências com honestidade, sem deixar o susto decidir por você.
 
 **O que de ameaçador em sua vida é real e o que pode ser amplificação do medo?**
 
@@ -756,7 +756,7 @@ A percepção de que forças se unem contra nós pode ser tanto uma leitura acur
 ## Salmo 84 — Amor pela Casa de Deus
 *Temas: adoração, saudade, amor*
 
-O anseio por um lugar que nos acolhe, onde podemos ser inteiros, é uma das necessidades mais fundamentais da experiência humana. A psicologia do pertencimento (Baumeister & Leary) mostra que esse anseio, quando cronicamente não atendido, é uma das fontes mais profundas de sofrimento.
+O desejo de um lugar que te acolhe, onde você pode ser inteiro, é uma das necessidades mais fundas que existem. Quando esse anseio fica sem resposta por muito tempo, vira uma das dores mais profundas que uma pessoa carrega.
 
 **Você tem um lugar, físico, relacional ou interno, onde pode ser inteiramente você mesmo?**
 
@@ -765,7 +765,7 @@ O anseio por um lugar que nos acolhe, onde podemos ser inteiros, é uma das nece
 ## Salmo 85 — Oração pela Restauração
 *Temas: restauração, esperança, paz*
 
-Paz e justiça se encontram: a psicologia social chama isso de "paz positiva", não apenas ausência de conflito, mas presença de condições que permitem que cada pessoa floresça. A reconciliação sem justiça é frágil; a justiça sem reconciliação é fria.
+Paz de verdade não é só a ausência de conflito; é quando existem condições pra cada um florescer. Por isso reconciliação sem justiça não se sustenta, e justiça sem reconciliação fica dura, sem calor.
 
 **Em que relação você está buscando paz sem lidar com o que ainda precisa ser resolvido?**
 
@@ -774,7 +774,7 @@ Paz e justiça se encontram: a psicologia social chama isso de "paz positiva", n
 ## Salmo 86 — Clamor por Misericórdia
 *Temas: clamor, perdão, gratidão*
 
-"Sou pobre e necessitado": a declaração de necessidade sem disfarce é, psicologicamente, um ato de coragem. Pesquisa de Brené Brown mostra que a vulnerabilidade, mostrar a necessidade real e não a versão curada, é a base de toda conexão genuína.
+"Sou pobre e necessitado": dizer que precisa, sem maquiar, é um ato de coragem. Mostrar a necessidade real, e não uma versão arrumada de você, é o que abre espaço pra uma conexão de verdade.
 
 **Qual necessidade você está mascarando porque acha que não deveria tê-la?**
 
@@ -783,7 +783,7 @@ Paz e justiça se encontram: a psicologia social chama isso de "paz positiva", n
 ## Salmo 87 — Glória de Sião
 *Temas: louvor*
 
-Sentir-se herdeiro de algo que vem de antes e vai além cria um senso de continuidade psicológica que a pesquisa sobre identidade narrativa (McAdams) associa ao bem-estar e à saúde mental. Somos mais do que nossa história individual.
+Sentir-se herdeiro de algo que começou antes de você e vai continuar depois cria um senso de continuidade que faz bem à alma. Você é mais do que a sua história individual; é parte de uma linha maior.
 
 **Você se sente parte de algo que precede e sobrevive a você, e o que esse pertencimento muda na forma como vive?**
 
@@ -792,7 +792,7 @@ Sentir-se herdeiro de algo que vem de antes e vai além cria um senso de continu
 ## Salmo 88 — Clamor em Profunda Angústia
 *Temas: luto, noite, solidão, abandono*
 
-Este é o único Salmo que não termina em resolução, e isso é psicologicamente honesto. Nem todo sofrimento encontra consolo imediato. A psicologia do luto ensina que apressar a resolução é uma forma de violência simbólica: o que a dor profunda pede, às vezes, é simplesmente ser testemunhada.
+Este é o único Salmo que não termina em consolo, e há uma honestidade nisso. Nem toda dor encontra alívio na hora. Apressar a saída do sofrimento pode ser uma forma de violência; o que a dor funda pede, às vezes, é só ser vista por alguém.
 
 **Você tem se apressado para sair do sofrimento antes de ter vivido o tempo que ele necessitava?**
 
@@ -801,7 +801,7 @@ Este é o único Salmo que não termina em resolução, e isso é psicologicamen
 ## Salmo 89 — A Fidelidade das Promessas de Deus
 *Temas: confiança, promessas, história*
 
-Fidelidade não é a ausência de crises; é a persistência do compromisso através delas. A pesquisa sobre relacionamentos duradouros (Gottman) mostra que o que distingue vínculos sólidos não é a ausência de conflito, mas a confiança de que a relação sobreviverá ao conflito.
+Fidelidade não é não ter crises; é o compromisso que insiste através delas. O que distingue os laços que duram não é a falta de conflito, mas a confiança de que a relação vai sobreviver a ele.
 
 **Em que compromisso você está sendo fiel, mesmo sem ver os frutos imediatos?**
 
@@ -810,7 +810,7 @@ Fidelidade não é a ausência de crises; é a persistência do compromisso atra
 ## Salmo 90 — A Eternidade de Deus e a Brevidade da Vida
 *Temas: meditação, brevidade, oração*
 
-"Ensina-nos a contar os nossos dias": a consciência da finitude como prática intencional, não como morbidez. A pesquisa sobre administração do tempo mostra que quem tem maior consciência da finitude tende a tomar decisões mais alinhadas com valores genuínos e menos com urgências fabricadas.
+"Ensina-nos a contar os nossos dias": ter consciência de que o tempo acaba, não como peso mórbido, mas como lucidez. Quem carrega essa noção costuma decidir mais pelo que importa de verdade e menos por urgências inventadas.
 
 **Se você soubesse exatamente quanto tempo tem, o que faria diferente amanhã?**
 
@@ -819,7 +819,7 @@ Fidelidade não é a ausência de crises; é a persistência do compromisso atra
 ## Salmo 91 — Debaixo da Sombra do Todo-Poderoso
 *Temas: proteção, confiança, ansiedade, sono*
 
-A ansiedade noturna, quando o pensamento acelera e o dia para, é o estado em que o cérebro tenta resolver o que é insolúvel no escuro. A neurociência do sono (Walker) mostra que criar um ritual de entrega antes de dormir regula o sistema nervoso e melhora a qualidade do descanso.
+A ansiedade da noite, quando o pensamento acelera e o mundo para, é a hora em que a cabeça tenta resolver no escuro o que não tem solução ali. Criar um pequeno ritual de entrega antes de dormir acalma o corpo e melhora o descanso.
 
 **O que você levaria para a cama esta noite que seria melhor deixar do lado de fora?**
 
@@ -828,7 +828,7 @@ A ansiedade noturna, quando o pensamento acelera e o dia para, é o estado em qu
 ## Salmo 92 — Louvor pela Bondade de Deus
 *Temas: louvor, gratidão*
 
-Cantar o que é bom é uma prática de atenção seletiva intencional. O cérebro humano tem viés de negatividade (Baumeister): eventos ruins pesam mais do que bons da mesma magnitude. Cultivar o louvor é, literalmente, trabalhar contra esse viés.
+Cantar o que é bom é escolher, de propósito, pra onde olhar. A cabeça tem uma queda pro negativo: o que é ruim pesa mais que o bom do mesmo tamanho. Cultivar o louvor é remar contra essa corrente.
 
 **O que foi bom hoje que, sem esforço de atenção, você não teria notado?**
 
@@ -837,7 +837,7 @@ Cantar o que é bom é uma prática de atenção seletiva intencional. O cérebr
 ## Salmo 93 — O Senhor Reina
 *Temas: louvor, reinado*
 
-Diante da instabilidade, a proclamação de estabilidade é um ato de reorientação cognitiva. A TCC chama isso de "ancorar no que é estável" quando a ansiedade catastrofiza o que é temporário. Nem tudo que se move vai se romper.
+Diante da instabilidade, afirmar o que é firme é um jeito de reorientar a mente. Quando a ansiedade transforma o que é passageiro em catástrofe, ajuda ancorar no que permanece. Nem tudo que balança vai quebrar.
 
 **O que é sólido e estável na sua vida agora, mesmo que ao redor tudo pareça incerto?**
 
@@ -846,7 +846,7 @@ Diante da instabilidade, a proclamação de estabilidade é um ato de reorienta�
 ## Salmo 94 — Deus, o Juiz
 *Temas: clamor, justiça, confiança*
 
-Distinguir o que podemos mudar do que precisamos soltar é, para a TCC, a habilidade central da saúde mental. Clamar por justiça é o reconhecimento de que nem todo julgamento está em nossas mãos, e que isso não é fraqueza, mas sabedoria.
+Saber separar o que você pode mudar do que precisa soltar é uma das habilidades centrais da saúde mental. Clamar por justiça é admitir que nem todo julgamento está nas suas mãos, e isso não é fraqueza; é sabedoria.
 
 **Que injustiça você está tentando resolver que está além do que você pode controlar, e que precisaria ser entregue?**
 
@@ -855,7 +855,7 @@ Distinguir o que podemos mudar do que precisamos soltar é, para a TCC, a habili
 ## Salmo 95 — Chamado ao Louvor e à Obediência
 *Temas: adoração, louvor*
 
-"Hoje, se ouvirdes a sua voz, não endurecereis o coração": o endurecimento do coração é, psicologicamente, a construção gradual de mecanismos de defesa contra o que nos afeta demais. A questão não é eliminar as defesas, mas reconhecer quando elas nos protegem do que precisaríamos sentir.
+"Hoje, se ouvirdes a sua voz, não endurecereis o coração": endurecer é ir levantando, sem perceber, defesas contra o que nos afeta demais. O ponto não é derrubar todas as defesas, mas notar quando elas te protegem justamente do que você precisaria sentir.
 
 **Há algo que você tem se recusado a deixar te afetar, e que talvez precisasse deixar?**
 
@@ -864,7 +864,7 @@ Distinguir o que podemos mudar do que precisamos soltar é, para a TCC, a habili
 ## Salmo 96 — Cantai ao Senhor um Cântico Novo
 *Temas: louvor, missão*
 
-"Cântico novo": não a repetição mecânica, mas o encontro fresco com o que é real. A psicologia da criatividade (Csikszentmihalyi) mostra que novidade e significado são necessidades humanas genuínas. A rotina sem renovação entorpece; a renovação sem ancoragem desorienta. Precisamos dos dois.
+"Cântico novo" não é repetir por repetir; é reencontrar o que é real com olhos frescos. Novidade e sentido são necessidades de verdade: a rotina sem renovação anestesia, a renovação sem raiz desorienta. A gente precisa das duas.
 
 **Que área da sua vida precisa de uma abordagem fresca, ao invés da repetição do que já não funciona?**
 
@@ -873,7 +873,7 @@ Distinguir o que podemos mudar do que precisamos soltar é, para a TCC, a habili
 ## Salmo 97 — O Senhor Reina
 *Temas: louvor, reinado*
 
-A alegria que emerge da convicção, não do sentimento do momento, mas do que se sabe ser verdadeiro, é mais estável do que a euforia situacional. A psicologia do bem-estar (Seligman) distingue prazer hedônico de bem-estar eudaimônico: um é termômetro, o outro é bússola.
+A alegria que nasce da convicção, do que você sabe ser verdadeiro, é mais firme do que a euforia que depende do momento. Uma é termômetro, sobe e desce com o dia; a outra é bússola, aponta a direção mesmo quando o clima muda.
 
 **Sua alegria hoje depende mais de como você se sente ou de quem você sabe que é?**
 
@@ -882,7 +882,7 @@ A alegria que emerge da convicção, não do sentimento do momento, mas do que s
 ## Salmo 98 — Cantai ao Senhor
 *Temas: louvor, alegria*
 
-A expressão criativa, cantar, tocar, criar, é um dos canais mais eficazes de processamento emocional. Arteterapia e musicoterapia têm base empírica sólida: o corpo e a voz fazem o que as palavras às vezes não conseguem.
+Cantar, tocar, criar: a expressão criativa é um dos caminhos mais eficazes pra processar o que se sente. O corpo e a voz alcançam o que as palavras, às vezes, não dão conta de dizer.
 
 **Que forma de expressão criativa você tem negligenciado que poderia ser um canal para o que você está sentindo?**
 
@@ -891,7 +891,7 @@ A expressão criativa, cantar, tocar, criar, é um dos canais mais eficazes de p
 ## Salmo 99 — O Santo Senhor Reina
 *Temas: adoração, santidade*
 
-O tremor diante do sagrado é uma experiência que redimensiona a autocentragem sem diminuir a dignidade. A pesquisa sobre humildade intelectual (Leary) mostra que reconhecer algo maior que si mesmo não encolhe; expande a perspectiva.
+O tremor diante do sagrado recoloca você no seu tamanho sem tirar a sua dignidade. Reconhecer algo maior que você mesmo não encolhe ninguém; alarga a vista.
 
 **Existe algo que você reverencia o suficiente para que mude como você se comporta?**
 
@@ -900,7 +900,7 @@ O tremor diante do sagrado é uma experiência que redimensiona a autocentragem 
 ## Salmo 100 — Louvai ao Senhor
 *Temas: louvor, alegria, gratidão*
 
-"Celebrai com júbilo": a alegria que se expressa, e não apenas se sente, tem efeito amplificador. A pesquisa sobre expressão emocional mostra que externalizar emoções positivas, pelo corpo, pela voz e pelo movimento, as torna mais duradouras e mais compartilháveis.
+"Celebrai com júbilo": a alegria que se expressa, e não só se sente por dentro, se espalha e dura mais. Quando você põe a alegria pra fora, pelo corpo, pela voz, ela fica mais viva e mais fácil de dividir.
 
 **Você expressa a sua alegria, ou a guarda em silêncio como se celebrar fosse inadequado?**
 
@@ -909,7 +909,7 @@ O tremor diante do sagrado é uma experiência que redimensiona a autocentragem 
 ## Salmo 101 — Compromisso com a Integridade
 *Temas: integridade, sabedoria*
 
-"Andarei com coração íntegro" é uma declaração de valores que a pesquisa sobre motivação mostra ser mais eficaz quando feita explicitamente. Articular o tipo de pessoa que queremos ser, em vez de apenas tentar, aumenta a probabilidade de agirmos de acordo.
+"Andarei com coração íntegro" é declarar em voz alta que valores você quer seguir. Dizer com clareza o tipo de pessoa que você quer ser, em vez de só tentar no escuro, aumenta a chance de agir assim de verdade.
 
 **Que compromisso com quem você quer ser você poderia articular com mais clareza hoje?**
 
@@ -918,7 +918,7 @@ O tremor diante do sagrado é uma experiência que redimensiona a autocentragem 
 ## Salmo 102 — Oração do Aflito
 *Temas: luto, clamor, esperança*
 
-Dias contados, solidão, sensação de abandono: a aflição que este Salmo descreve é visceral. A psicologia reconhece que a dor intensa tende a estreitar o senso de tempo, fazendo tudo parecer permanente. A memória de que estados mudam, que já mudaram antes, é um recurso terapêutico real.
+Dias contados, solidão, sensação de abandono: a aflição deste Salmo é visceral. A dor intensa aperta o senso de tempo e faz tudo parecer pra sempre. Lembrar que os estados mudam, que já mudaram antes, é um alívio real.
 
 **Quando você está no fundo, você consegue lembrar de outras vezes em que também estava no fundo e saiu?**
 
@@ -927,7 +927,7 @@ Dias contados, solidão, sensação de abandono: a aflição que este Salmo desc
 ## Salmo 103 — Louvor pelas Misericórdias de Deus
 *Temas: gratidão, perdão, louvor, misericórdia*
 
-"Benze, ó minha alma, ao Senhor": a instrução dada a si mesmo. A pesquisa sobre auto-instrução cognitiva (Meichenbaum) mostra que a forma como nos falamos internamente tem impacto direto na regulação emocional. Instruir a própria alma a louvar não é ingenuidade; é regulação intencional.
+"Benze, ó minha alma, ao Senhor": uma ordem que você dá a si mesmo. O jeito como você fala consigo por dentro mexe direto com o que sente. Instruir a própria alma a louvar não é ingenuidade; é cuidar de propósito do estado interno.
 
 **Como você se fala internamente quando está no limite, e o que mudaria se você falasse de outro jeito?**
 
@@ -936,7 +936,7 @@ Dias contados, solidão, sensação de abandono: a aflição que este Salmo desc
 ## Salmo 104 — O Senhor Criador
 *Temas: louvor, criação*
 
-A maravilha diante da criação é um dos indutores mais eficazes de estados de admiração (Keltner & Haidt), que reduzem a autocentralidade e aumentam o senso de conexão com o todo. Admirar cura o narcisismo.
+A maravilha diante da criação é um dos jeitos mais certeiros de sair de si e se sentir parte de algo maior. Admirar, de certo modo, cura aquela sensação de que tudo gira em torno da gente.
 
 **O que no mundo natural ainda te faz parar, e quando foi a última vez que você parou de verdade?**
 
@@ -945,7 +945,7 @@ A maravilha diante da criação é um dos indutores mais eficazes de estados de 
 ## Salmo 105 — As Maravilhas de Deus na História de Israel
 *Temas: história, gratidão*
 
-Contar a história, especialmente os momentos em que a saída parecia impossível e veio, é uma prática de memória terapêutica. A pesquisa sobre narrativa e resiliência (Bonanno) mostra que pessoas que conseguem construir uma narrativa coerente de suas adversidades têm melhor recuperação.
+Contar a própria história, principalmente as vezes em que a saída parecia impossível e apareceu, é uma prática que cura. Quem consegue dar sentido às próprias adversidades, encaixá-las numa história que faz sentido, se recupera melhor.
 
 **Você tem uma narrativa coerente da sua história, incluindo as partes difíceis, ou ainda existem capítulos que você não sabe como encaixar?**
 
@@ -954,7 +954,7 @@ Contar a história, especialmente os momentos em que a saída parecia impossíve
 ## Salmo 106 — Pecados de Israel e Graça de Deus
 *Temas: história, arrependimento*
 
-Reconhecer padrões de erro repetidos, na história de um povo ou na própria vida, não é autopunição; é o início da aprendizagem. A psicologia da mudança mostra que o autoconhecimento honesto, sem defesa excessiva, é o que torna possível agir diferente.
+Enxergar padrões de erro que se repetem, na vida de um povo ou na sua, não é se castigar; é onde o aprendizado começa. É o olhar honesto sobre si, sem tanta defesa, que abre a porta pra agir diferente.
 
 **Que padrão você reconhece em si mesmo que se repete, e que você ainda não decidiu de fato mudar?**
 
@@ -963,7 +963,7 @@ Reconhecer padrões de erro repetidos, na história de um povo ou na própria vi
 ## Salmo 107 — Ação de Graças pelos Feitos de Deus
 *Temas: gratidão, louvor*
 
-Revisar a jornada, e não apenas o destino, é uma das práticas mais eficazes de bem-estar porque ancora o presente no que foi superado (Emmons). Passamos pelo deserto, pelo mar, pela prisão e pela doença, e chegamos até aqui.
+Rever o caminho, e não só o destino, é uma das práticas que mais fazem bem, porque firma o presente no que já foi superado. Você passou pelo deserto, pelo mar, pela doença, e chegou até aqui.
 
 **O que você atravessou que, quando revisita, te lembra de que é mais capaz do que costuma acreditar?**
 
@@ -972,7 +972,7 @@ Revisar a jornada, e não apenas o destino, é uma das práticas mais eficazes d
 ## Salmo 108 — Oração por Ajuda contra o Inimigo
 *Temas: confiança, louvor*
 
-Louvar antes da vitória, antes do problema se resolver, é uma postura que a psicologia chama de orientação para o crescimento: agir a partir do que se quer se tornar, não apenas do que se é agora. Não é negação da realidade; é recusa em deixar que a realidade atual defina o limite do possível.
+Louvar antes da vitória, antes de o problema se resolver, é agir já a partir de quem você quer se tornar. Não é fingir que a realidade não existe; é se recusar a deixar que o presente decida sozinho o tamanho do possível.
 
 **Em que situação você poderia agir a partir de confiança, em vez de esperar que as circunstâncias primeiro te dessem razão para confiar?**
 
@@ -981,7 +981,7 @@ Louvar antes da vitória, antes do problema se resolver, é uma postura que a ps
 ## Salmo 109 — Clamor contra Inimigos
 *Temas: clamor, justiça*
 
-O desejo de que o mal que nos fizeram seja revertido é uma resposta humana natural; suprimi-lo produz repressão emocional, que tem custo psicológico real. A questão não é proibir o sentimento, mas não deixar que ele governe ações que nos prejudicariam mais. Sentir não é agir.
+Querer que o mal que te fizeram seja desfeito é uma reação humana; engolir isso à força só vira repressão, que cobra caro depois. O ponto não é proibir o sentimento, mas não deixar que ele comande atos que te machucariam ainda mais. Sentir não é agir.
 
 **Existe um sentimento que você julgou errado ter, quando na verdade o problema não é senti-lo, mas o que faz com ele?**
 
@@ -990,7 +990,7 @@ O desejo de que o mal que nos fizeram seja revertido é uma resposta humana natu
 ## Salmo 110 — O Senhor e Seu Rei
 *Temas: louvor, esperança*
 
-A esperança escatológica, a crença de que a história tem um sentido e uma direção, é, em linguagem psicológica, o que Snyder chamou de pensamento esperançoso: a convicção de que caminhos existem, mesmo quando ainda não são visíveis. Esperança não é otimismo ingênuo; é orientação.
+Acreditar que a história tem um rumo e um sentido é, no fundo, uma forma de esperança: a convicção de que existem caminhos, mesmo quando ainda não dá pra vê-los. Esperança não é otimismo ingênuo; é uma direção.
 
 **O que você ainda espera, e o que essa esperança diz sobre o que você acredita ser possível?**
 
@@ -999,7 +999,7 @@ A esperança escatológica, a crença de que a história tem um sentido e uma di
 ## Salmo 111 — Louvor pelas Obras de Deus
 *Temas: louvor, gratidão*
 
-Dar atenção deliberada ao que é bom e verdadeiro é um antídoto contra a superficialidade que a aceleração da vida produz. A pesquisa sobre atenção (Kabat-Zinn) mostra que a qualidade da presença, e não a quantidade de experiências, é o que determina a qualidade da vida.
+Dar atenção de propósito ao que é bom e verdadeiro é um remédio contra a superficialidade que a pressa espalha. É a qualidade da sua presença, e não a quantidade de experiências, que define a qualidade da vida.
 
 **O que merece mais da sua atenção do que tem recebido?**
 
@@ -1008,7 +1008,7 @@ Dar atenção deliberada ao que é bom e verdadeiro é um antídoto contra a sup
 ## Salmo 112 — Felicidade do Justo
 *Temas: sabedoria, bênção*
 
-A pesquisa sobre forças de caráter (Peterson & Seligman) mostra que conhecer e usar as próprias forças, e não apenas corrigir fraquezas, é o caminho mais direto para o florescimento. A felicidade do justo não é recompensa futura; é consequência natural de viver alinhado com o que é genuíno.
+Conhecer e usar as suas melhores qualidades, e não só corrigir defeitos, é o caminho mais curto pra florescer. A felicidade de quem vive certo não é prêmio lá na frente; é o que acontece naturalmente quando você vive alinhado com o que é seu.
 
 **Você conhece suas forças, o que de melhor há em você, e está as usando no que faz?**
 
@@ -1017,7 +1017,7 @@ A pesquisa sobre forças de caráter (Peterson & Seligman) mostra que conhecer e
 ## Salmo 113 — Louvor ao Deus Exaltado
 *Temas: louvor, misericórdia*
 
-O paradoxo de quem se abaixa para levantar o humilde é, psicologicamente, o modelo de todo cuidado genuíno: quem verdadeiramente cuida não condescende; se aproxima. A misericórdia que de fato transforma não olha de cima para baixo; encontra no mesmo nível.
+Quem se abaixa pra levantar o outro mostra como é o cuidado de verdade: não é olhar de cima com pena, é chegar perto. A misericórdia que transforma encontra a pessoa no mesmo nível, olho no olho.
 
 **Em que relação você está em posição de cuidar, e está fazendo isso de cima para baixo ou de igual para igual?**
 
@@ -1026,7 +1026,7 @@ O paradoxo de quem se abaixa para levantar o humilde é, psicologicamente, o mod
 ## Salmo 114 — O Êxodo
 *Temas: história, louvor*
 
-A memória do êxodo é o recurso psicológico mais usado pelos hebreus em tempos de crise: o mesmo que abriu o mar pode abrir o que está fechado agora. Rememorar o que pareceu impossível e aconteceu fortalece a crença no que ainda parece impossível.
+A memória do êxodo era o que os hebreus resgatavam nas crises: o mesmo que abriu o mar pode abrir o que está fechado agora. Lembrar do que pareceu impossível e aconteceu fortalece a fé no que ainda parece impossível hoje.
 
 **Qual êxodo da sua própria vida você pode lembrar hoje, que te dá evidência de que saídas existem?**
 
@@ -1035,7 +1035,7 @@ A memória do êxodo é o recurso psicológico mais usado pelos hebreus em tempo
 ## Salmo 115 — A Glória Pertence ao Senhor
 *Temas: fé, confiança*
 
-Deslocar o centro de gravidade de si mesmo, reconhecer que nem tudo gira em torno da própria glória, é um exercício que a psicologia associa à redução da ansiedade de desempenho. Quando o resultado não depende só de mim, o peso do fracasso possível também não é só meu.
+Tirar o centro de gravidade de si mesmo, aceitar que nem tudo gira em torno da própria glória, alivia a pressão de desempenho. Quando o resultado não depende só de você, o peso de um possível fracasso também deixa de ser só seu.
 
 **Em que área da vida você está carregando um peso que poderia ser compartilhado ou entregue?**
 
@@ -1044,7 +1044,7 @@ Deslocar o centro de gravidade de si mesmo, reconhecer que nem tudo gira em torn
 ## Salmo 116 — Louvor pela Libertação da Morte
 *Temas: gratidão, cura, louvor*
 
-Sobreviver a algo que quase nos destruiu muda a relação com a própria vida. A pesquisa sobre crescimento pós-traumático (Tedeschi & Calhoun) mostra que muitas pessoas, depois de crises sérias, desenvolvem maior apreciação pela vida, relações mais profundas e clareza sobre o que realmente importa.
+Sobreviver a algo que quase te destruiu muda a relação que você tem com a vida. Muita gente, depois de uma crise séria, passa a valorizar mais o que vive, a se ligar mais fundo às pessoas e a enxergar com clareza o que de fato importa.
 
 **O que quase te destruiu, e o que essa experiência te ensinou sobre o que você valoriza?**
 
@@ -1053,7 +1053,7 @@ Sobreviver a algo que quase nos destruiu muda a relação com a própria vida. A
 ## Salmo 117 — Louvor a Deus de Todas as Nações
 *Temas: louvor, missão*
 
-O louvor universal pressupõe que o que é mais fundamentalmente verdadeiro sobre nós é compartilhado, não dividido. A psicologia cultural (Triandis) mostra que sob as diferenças de superfície, as necessidades humanas básicas são surpreendentemente universais.
+O louvor de todos os povos pressupõe que o mais verdadeiro em nós é o que temos em comum, não o que nos separa. Por baixo das diferenças de superfície, as necessidades humanas básicas são espantosamente parecidas.
 
 **O que você tem em comum com pessoas muito diferentes de você, que poderia ser ponto de conexão em vez de divisão?**
 
@@ -1062,7 +1062,7 @@ O louvor universal pressupõe que o que é mais fundamentalmente verdadeiro sobr
 ## Salmo 118 — Ação de Graças pela Vitória
 *Temas: gratidão, louvor, vitória, esperança*
 
-"A pedra que os construtores rejeitaram tornou-se a pedra angular": o que foi descartado como inútil revelou-se essencial. A psicologia da resiliência mostra que traços e experiências que pareciam fraquezas frequentemente se tornam, quando integrados, a base da força mais particular de uma pessoa.
+"A pedra que os construtores rejeitaram tornou-se a pedra angular": o que foi descartado como inútil se revelou essencial. Muitas vezes traços e experiências que pareciam fraqueza, quando integrados, viram a base da sua força mais própria.
 
 **O que em você foi rejeitado, por outros ou por você mesmo, que poderia ser a sua pedra angular?**
 
@@ -1071,7 +1071,7 @@ O louvor universal pressupõe que o que é mais fundamentalmente verdadeiro sobr
 ## Salmo 119 — A Lei do Senhor
 *Temas: sabedoria, lei, meditação*
 
-O comprometimento com valores que guiam as escolhas, independentemente de como nos sentimos no momento, é o que a ACT chama de "ação comprometida": agir de acordo com o que importa, não de acordo com o que é confortável. Valores são bússola, não termômetro.
+Deixar que os valores guiem as escolhas, independentemente de como você se sente no momento, é agir pelo que importa em vez de agir pelo que é confortável. Valores são bússola, não termômetro.
 
 **Suas decisões cotidianas estão sendo guiadas pelo que você valoriza ou pelo que sente no momento?**
 
@@ -1080,7 +1080,7 @@ O comprometimento com valores que guiam as escolhas, independentemente de como n
 ## Salmo 120 — Clamor por Libertação
 *Temas: clamor, paz*
 
-Viver entre pessoas cuja linguagem é o conflito e a manipulação exaure de um jeito que é difícil de nomear. A pesquisa sobre ambientes tóxicos (Holt-Lunstad) mostra que relações crônicas de baixa qualidade têm impacto na saúde tão significativo quanto o tabagismo. O lugar que habitamos molda quem nos tornamos.
+Viver entre pessoas cuja língua é o conflito e a manipulação cansa de um jeito difícil de explicar. Relações ruins que se arrastam machucam a saúde tanto quanto vícios que adoecem devagar. O lugar que você habita vai moldando quem você se torna.
 
 **Os ambientes que você frequenta estão te formando ou te deformando?**
 
@@ -1089,7 +1089,7 @@ Viver entre pessoas cuja linguagem é o conflito e a manipulação exaure de um 
 ## Salmo 121 — O Senhor, Nosso Guardião
 *Temas: proteção, confiança, sono, ansiedade*
 
-"O teu guardador não dormirá": a imagem do cuidado que não descansa é o antídoto para a hipervigilância, a sensação de que precisamos estar sempre de guarda porque ninguém mais está. A pesquisa sobre ansiedade generalizada mostra que aprender a "soltar o turno" é central para a recuperação.
+"O teu guardador não dormirá": a imagem de um cuidado que não tira folga é o oposto da hipervigilância, aquela sensação de que você precisa ficar de guarda porque ninguém mais está. Aprender a passar o turno pra outro é parte de sarar.
 
 **Você consegue descansar de verdade, ou sempre há uma parte de você que fica de guarda mesmo quando não precisa?**
 
@@ -1098,7 +1098,7 @@ Viver entre pessoas cuja linguagem é o conflito e a manipulação exaure de um 
 ## Salmo 122 — Alegria em Ir à Casa do Senhor
 *Temas: adoração, alegria, paz*
 
-A antecipação prazerosa, a alegria que começa antes da experiência, é um estado que a neurociência associa à dopamina: o prazer de esperar algo bom pode ser tão significativo quanto a experiência em si. Cultivar expectativa genuína é cultivar alegria.
+A alegria que começa antes da experiência, na expectativa de algo bom, pode ser tão gostosa quanto o próprio momento. Cultivar essa espera boa já é cultivar alegria.
 
 **O que em sua vida próxima você pode antecipar com prazer genuíno?**
 
@@ -1107,7 +1107,7 @@ A antecipação prazerosa, a alegria que começa antes da experiência, é um es
 ## Salmo 123 — Clamor por Misericórdia
 *Temas: clamor, humildade*
 
-Olhar para o alto é um gesto estudado em psicologia corporificada (embodied cognition): a postura do corpo influencia o estado mental. Levantar a cabeça não muda o problema; muda a perspectiva de onde o problema é visto.
+Olhar pra cima é mais do que um gesto: a postura do corpo mexe com o estado da mente. Levantar a cabeça não muda o problema, mas muda o ponto de onde você o enxerga.
 
 **De qual perspectiva você está olhando para o seu problema agora, e o que mudaria se você erguesse os olhos?**
 
@@ -1116,7 +1116,7 @@ Olhar para o alto é um gesto estudado em psicologia corporificada (embodied cog
 ## Salmo 124 — O Senhor, Nosso Auxílio
 *Temas: gratidão, proteção*
 
-"Se não fora o Senhor": o exercício mental de imaginar o pior que poderia ter acontecido e não aconteceu é uma forma de gratidão subtrativa (Koo et al.) que pesquisas mostram ser mais eficaz para aumentar o bem-estar. Apreciar o que não perdemos.
+"Se não fora o Senhor": imaginar o pior que poderia ter acontecido e não aconteceu é um jeito de agradecer pelo avesso. Em vez de olhar só o que você tem, apreciar o que você não perdeu.
 
 **O que poderia ter dado muito mais errado do que deu, e você esqueceu de ser grato por isso?**
 
@@ -1125,7 +1125,7 @@ Olhar para o alto é um gesto estudado em psicologia corporificada (embodied cog
 ## Salmo 125 — Confiança no Senhor
 *Temas: confiança, paz*
 
-"Os que confiam no Senhor são como o monte Sião, que não pode ser abalado": a estabilidade não como rigidez, mas como enraizamento profundo. A pesquisa sobre regulação emocional mostra que pessoas com maior estabilidade de identidade não são aquelas que nunca são afetadas, mas as que voltam ao centro mais rapidamente.
+"Os que confiam no Senhor são como o monte Sião, que não se abala": firmeza aqui não é rigidez, é raiz funda. Quem tem essa estabilidade não é quem nunca se abala, mas quem volta ao centro mais depressa depois de balançar.
 
 **O que te ancora, o que, quando tudo treme, te lembra de quem você é?**
 
@@ -1134,7 +1134,7 @@ Olhar para o alto é um gesto estudado em psicologia corporificada (embodied cog
 ## Salmo 126 — Cântico da Restauração
 *Temas: esperança, alegria, restauração*
 
-"Éramos como os que sonham": a restauração tão completa que parece irreal. A pesquisa sobre estados de maravilha mostra que a surpresa positiva tem efeito de "reset" emocional, abrindo perspectivas que o estado habitual não permitia ver.
+"Éramos como os que sonham": uma restauração tão completa que parece mentira. A surpresa boa tem um efeito de reset: abre perspectivas que o estado de sempre não deixava enxergar.
 
 **Há alguma área da sua vida em que você parou de acreditar em restauração, e onde essa esperança precisaria ser reacesa?**
 
@@ -1143,7 +1143,7 @@ Olhar para o alto é um gesto estudado em psicologia corporificada (embodied cog
 ## Salmo 127 — A Bênção de Deus no Lar
 *Temas: bênção, família, descanso*
 
-"Em vão trabalham os que a edificam": a ilusão de que podemos, pelo esforço puro, garantir todos os resultados. A pesquisa sobre esgotamento (Maslach) mostra que o burnout raramente é excesso de trabalho; é trabalho sem sentido ou sem descanso. Ambos exaurem.
+"Em vão trabalham os que a edificam": a ilusão de que só à força de esforço a gente garante todo resultado. O esgotamento raramente vem do tanto de trabalho; vem do trabalho sem sentido ou sem descanso. Os dois esgotam.
 
 **O que você está construindo com tanto esforço que, na verdade, não depende só de você?**
 
@@ -1152,7 +1152,7 @@ Olhar para o alto é um gesto estudado em psicologia corporificada (embodied cog
 ## Salmo 128 — Bênção do Lar Temente a Deus
 *Temas: bênção, família*
 
-A pesquisa de Gottman sobre relacionamentos saudáveis mostra que o contentamento, a capacidade de apreciar o que se tem em vez de comparar com o que falta, é um dos preditores mais robustos de felicidade familiar. O lar que se busca muitas vezes já existe; o olhar é que precisa mudar.
+O contentamento, essa capacidade de apreciar o que se tem em vez de comparar com o que falta, é uma das coisas que mais sustentam a felicidade dentro de casa. Muitas vezes o lar que você procura já existe; o que precisa mudar é o olhar.
 
 **Você está vivendo dentro do que tem com presença, ou sempre com um olho no que ainda não chegou?**
 
@@ -1161,7 +1161,7 @@ A pesquisa de Gottman sobre relacionamentos saudáveis mostra que o contentament
 ## Salmo 129 — Confiança apesar das Perseguições
 *Temas: confiança, perseverança*
 
-"Gravemente me angustiaram desde a minha mocidade, mas não prevaleceram": a identidade do sobrevivente que não nega o sofrimento, mas recusa ser definido por ele. A pesquisa sobre resiliência mostra que a narrativa que construímos sobre nossas adversidades tem impacto direto na recuperação.
+"Gravemente me angustiaram desde a minha mocidade, mas não prevaleceram": a voz de quem sobreviveu sem negar o que sofreu, mas se recusando a ser definido por isso. A história que você conta sobre as suas dificuldades pesa direto na sua recuperação.
 
 **Como você se descreve em relação às dificuldades que viveu: como alguém que foi destruído por elas ou como alguém que as atravessou?**
 
@@ -1170,7 +1170,7 @@ A pesquisa de Gottman sobre relacionamentos saudáveis mostra que o contentament
 ## Salmo 130 — Clamor do Abismo
 *Temas: perdão, esperança, luto, arrependimento*
 
-"Das profundezas clamo": o ponto mais baixo que existe. A psicologia reconhece que tocar o fundo pode ser, paradoxalmente, um momento de clareza. Quando não há mais como cair, o que realmente importa emerge com uma precisão que a vida confortável raramente produz.
+"Das profundezas clamo": o ponto mais baixo que existe. Tocar o fundo pode, por estranho que soe, ser um momento de clareza. Quando não há mais como cair, o que de fato importa aparece com uma nitidez que a vida confortável raramente dá.
 
 **O que seu momento mais difícil, quando você estava no fundo, te mostrou sobre o que é essencial?**
 
@@ -1179,7 +1179,7 @@ A pesquisa de Gottman sobre relacionamentos saudáveis mostra que o contentament
 ## Salmo 131 — Humildade e Paz
 *Temas: humildade, paz, descanso*
 
-"Como a criança desmamada": não mais exigindo, mas simplesmente presente. A psicologia do mindfulness chama isso de mente de principiante, a capacidade de estar sem agenda, sem necessidade de resolver ou conquistar. O descanso mais profundo não é físico; é a ausência de exigência.
+"Como a criança desmamada": não mais exigindo, só presente. É a capacidade de estar sem agenda, sem precisar resolver ou conquistar nada. O descanso mais fundo não é o do corpo; é o de parar de se cobrar.
 
 **Quando foi a última vez que você estava em algum lugar apenas para estar, sem produzir, resolver ou melhorar nada?**
 
@@ -1188,7 +1188,7 @@ A pesquisa de Gottman sobre relacionamentos saudáveis mostra que o contentament
 ## Salmo 132 — Oração pela Casa de Davi
 *Temas: adoração, promessas*
 
-Comprometer-se com algo maior que a própria vida é o que Viktor Frankl chamou de movimento essencial do ser humano: transcender a si mesmo em direção a um significado que persiste além das circunstâncias.
+Comprometer-se com algo maior que a própria vida é um movimento essencial da gente: sair de si mesmo em direção a um sentido que continua de pé mesmo quando as circunstâncias mudam.
 
 **A que promessa você está comprometido que vale mais do que o seu próprio conforto?**
 
@@ -1197,7 +1197,7 @@ Comprometer-se com algo maior que a própria vida é o que Viktor Frankl chamou 
 ## Salmo 133 — A Beleza da Unidade
 *Temas: unidade, bênção*
 
-"Quão bom e quão suave é que os irmãos vivam em união": a harmonia comunitária como algo raro e precioso, não automático. A pesquisa sobre capital social (Putnam) mostra que a qualidade das conexões numa comunidade é um dos maiores preditores de saúde, felicidade e expectativa de vida.
+"Quão bom e quão suave é que os irmãos vivam em união": a harmonia entre pessoas é rara e preciosa, nunca automática. A qualidade das conexões numa comunidade é uma das coisas que mais influenciam a saúde, a felicidade e até quanto se vive.
 
 **Você está contribuindo para a harmonia das comunidades a que pertence, ou tem sido fonte de divisão?**
 
@@ -1206,7 +1206,7 @@ Comprometer-se com algo maior que a própria vida é o que Viktor Frankl chamou 
 ## Salmo 134 — Bênção Noturna
 *Temas: adoração, noite*
 
-O ritual de encerramento, um gesto deliberado que marca o fim do dia, tem respaldo em pesquisa sobre regulação circadiana e bem-estar psicológico. Encerrar conscientemente, em vez de deixar o dia simplesmente acabar, cria a transição que o sistema nervoso precisa para descansar de verdade.
+Um ritual de encerramento, um gesto simples que marca o fim do dia, faz diferença no descanso. Encerrar de propósito, em vez de deixar o dia só se esvair, cria a transição que o corpo precisa pra descansar de verdade.
 
 **Qual seria o gesto ou a prática que você poderia usar para encerrar conscientemente o seu dia?**
 
@@ -1215,7 +1215,7 @@ O ritual de encerramento, um gesto deliberado que marca o fim do dia, tem respal
 ## Salmo 135 — Louvor ao Senhor
 *Temas: louvor, história*
 
-Louvar não por dever, mas por reconhecimento genuíno do que é verdadeiro: essa distinção é central na psicologia da motivação intrínseca. Fazer algo porque queremos, não porque precisamos, é o que torna a prática sustentável e restauradora, não esgotante.
+Louvar não por obrigação, mas por reconhecer de verdade o que é bom, muda tudo. Fazer algo porque você quer, e não porque tem que fazer, é o que torna a prática restauradora em vez de mais um peso.
 
 **O que você faz por obrigação que poderia começar a fazer por escolha genuína?**
 
@@ -1224,7 +1224,7 @@ Louvar não por dever, mas por reconhecimento genuíno do que é verdadeiro: ess
 ## Salmo 136 — Louvor pelas Misericórdias Eternas
 *Temas: gratidão, louvor, misericórdia*
 
-A repetição, "porque a sua benignidade dura para sempre", é um dispositivo que a neurociência confirma: repetir afirmações verdadeiras consolida redes neurais associadas a elas. Não é superstição; é aprendizagem.
+A repetição de "porque a sua benignidade dura para sempre" tem uma razão: repetir uma verdade vai fixando ela em você. Não é superstição; é o jeito como a gente aprende.
 
 **Que verdade sobre sua vida você poderia repetir com mais frequência, não como mantra vazio, mas como reconhecimento real?**
 
@@ -1233,7 +1233,7 @@ A repetição, "porque a sua benignidade dura para sempre", é um dispositivo qu
 ## Salmo 137 — Canto do Exílio
 *Temas: luto, saudade, exílio*
 
-"Como cantaríamos as canções do Senhor em terra estranha?" é a pergunta legítima de quem perdeu o contexto em que o que é sagrado fazia sentido. A pesquisa sobre diáspora e identidade mostra que manter conexão com a cultura de origem, mesmo em contextos adversos, é fator de proteção psicológica.
+"Como cantaríamos as canções do Senhor em terra estranha?" é a pergunta de quem perdeu o chão onde o sagrado fazia sentido. Manter viva a ligação com as próprias raízes, mesmo longe e em terreno hostil, protege por dentro.
 
 **Existe algo que você perdeu, lugar, relação ou fase da vida, que você ainda não sabe como honrar onde está agora?**
 
@@ -1242,7 +1242,7 @@ A repetição, "porque a sua benignidade dura para sempre", é um dispositivo qu
 ## Salmo 138 — Louvor pela Fidelidade de Deus
 *Temas: gratidão, confiança*
 
-"Quando clamei, me respondeste": o registro de que houve resposta. A pesquisa sobre memória autobiográfica mostra que as memórias que selecionamos para contar a nós mesmos formam a narrativa de quem somos. Escolher lembrar do que funcionou, sem negar o que falhou, é higiene narrativa.
+"Quando clamei, me respondeste": guardar registro de que houve resposta. As memórias que você escolhe contar pra si mesmo formam a história de quem você é. Lembrar do que deu certo, sem negar o que falhou, é um cuidado com essa história.
 
 **Você tem registrado as vezes em que pediu e veio ajuda, ou só as vezes em que pediu e nada aconteceu?**
 
@@ -1251,7 +1251,7 @@ A repetição, "porque a sua benignidade dura para sempre", é um dispositivo qu
 ## Salmo 139 — O Deus que Tudo Conhece
 *Temas: confiança, identidade, meditação*
 
-"Tu me sondas e me conheces": ser completamente conhecido sem ser rejeitado é, para a psicologia do apego, o fundamento de toda saúde relacional. John Bowlby mostrou que a necessidade de ser visto inteiramente e ainda assim amado é a necessidade mais fundamental que existe.
+"Tu me sondas e me conheces": ser conhecido por inteiro e ainda assim não ser rejeitado é a base de toda relação saudável. Ser visto por completo e, mesmo assim, amado, é talvez a necessidade mais funda que existe.
 
 **Existe alguém que te conhece de verdade, e o que aconteceria se você se permitisse ser mais conhecido?**
 
@@ -1260,7 +1260,7 @@ A repetição, "porque a sua benignidade dura para sempre", é um dispositivo qu
 ## Salmo 140 — Oração por Proteção
 *Temas: proteção, clamor*
 
-A manipulação encoberta, a agressão que se disfarça de razão, é difícil de nomear justamente porque vem embrulhada em justificativas (George Simon). Reconhecer o padrão antes que cause dano começa pela honestidade sobre o que se observa.
+A manipulação disfarçada, a agressão que se veste de razão, é difícil de nomear porque vem sempre embrulhada em justificativa. Reconhecer o padrão antes que ele te machuque começa por ser honesto com o que você observa.
 
 **Existe uma situação em sua vida em que você está sendo manipulado, e ainda não nomeou isso claramente para si mesmo?**
 
@@ -1269,7 +1269,7 @@ A manipulação encoberta, a agressão que se disfarça de razão, é difícil d
 ## Salmo 141 — Oração por Guarda
 *Temas: oração, integridade*
 
-"Põe, Senhor, guarda à minha boca": a consciência de que as palavras têm consequências que o impulso do momento não prevê. A pesquisa sobre comunicação e relacionamentos (Gottman) mostra que a qualidade das interações cotidianas, especialmente nos momentos de tensão, é o que determina a saúde de qualquer vínculo.
+"Põe, Senhor, guarda à minha boca": saber que as palavras têm um efeito que o impulso da hora não calcula. É a qualidade das trocas do dia a dia, sobretudo nos momentos de tensão, que decide a saúde de qualquer vínculo.
 
 **Que palavra ou resposta impulsiva você tem dado que, se você parasse antes, mudaria?**
 
@@ -1278,7 +1278,7 @@ A manipulação encoberta, a agressão que se disfarça de razão, é difícil d
 ## Salmo 142 — Clamor em Solidão
 *Temas: clamor, solidão, luto*
 
-"Ninguém se preocupa comigo": a solidão que não é ausência de pessoas, mas ausência de conexão real. A pesquisa de Cacioppo mostra que a solidão percebida, a sensação de estar desconectado independentemente de quantas pessoas estão ao redor, é tão prejudicial à saúde quanto condições médicas graves.
+"Ninguém se preocupa comigo": a solidão que não é falta de gente por perto, mas falta de conexão de verdade. Sentir-se desconectado, mesmo cercado de pessoas, machuca a saúde tanto quanto uma doença séria.
 
 **Você se sente realmente visto pelas pessoas que estão ao seu redor, ou apenas presente?**
 
@@ -1287,7 +1287,7 @@ A manipulação encoberta, a agressão que se disfarça de razão, é difícil d
 ## Salmo 143 — Oração por Livramento
 *Temas: oração, restauração, ansiedade*
 
-"O meu espírito desfallece dentro de mim": o esgotamento que não é preguiça, mas exaustão genuína. A pesquisa sobre recuperação psicológica mostra que o erro mais comum é tentar sair do esgotamento com mais esforço, quando o que o sistema precisa é de descanso e de significado.
+"O meu espírito desfallece dentro de mim": o esgotamento que não é preguiça, é exaustão de verdade. O erro mais comum é tentar sair dele com mais esforço, quando o que o corpo pede é descanso e sentido.
 
 **O que você está tentando resolver com mais esforço quando o que precisava era de algo completamente diferente?**
 
@@ -1296,7 +1296,7 @@ A manipulação encoberta, a agressão que se disfarça de razão, é difícil d
 ## Salmo 144 — Oração pela Vitória e pela Paz
 *Temas: gratidão, proteção*
 
-"Bendito seja o Senhor, minha rocha": a gratidão antes do resultado, não depois. A pesquisa sobre mentalidade de abundância (Dweck) mostra que a postura com a qual entramos numa situação difícil influencia os recursos que conseguimos mobilizar dentro dela.
+"Bendito seja o Senhor, minha rocha": a gratidão que vem antes do resultado, não depois. A postura com que você entra numa situação difícil influencia os recursos que consegue reunir dentro dela.
 
 **Com que postura interna você está entrando nos desafios que enfrenta agora: gratidão antecipada ou ansiedade preventiva?**
 
@@ -1305,7 +1305,7 @@ A manipulação encoberta, a agressão que se disfarça de razão, é difícil d
 ## Salmo 145 — Grande Louvor ao Senhor
 *Temas: louvor, misericórdia, gratidão*
 
-"Geração após geração louvará as tuas obras": o louvor como prática transgeracional, que une passado, presente e futuro numa narrativa contínua. A pesquisa sobre identidade narrativa (McAdams) mostra que sentir-se parte de uma história maior do que a própria vida é fator de proteção psicológica e fonte de significado.
+"Geração após geração louvará as tuas obras": o louvor que atravessa o tempo, ligando quem veio antes, quem está aqui e quem virá. Sentir-se parte de uma história maior que a própria vida protege por dentro e dá sentido.
 
 **De que narrativa maior do que a sua própria você se sente parte, e o que isso muda em como você vive o dia a dia?**
 
@@ -1314,7 +1314,7 @@ A manipulação encoberta, a agressão que se disfarça de razão, é difícil d
 ## Salmo 146 — Confiança no Deus Eterno
 *Temas: confiança, esperança, louvor*
 
-"Não ponhas a tua confiança nos príncipes": o alerta contra a dependência excessiva de estruturas e pessoas que são, inevitavelmente, falíveis. A pesquisa sobre locus de controle (Rotter) mostra que bem-estar psicológico está associado a encontrar um equilíbrio entre confiar no que podemos influenciar e aceitar o que não podemos.
+"Não ponhas a tua confiança nos príncipes": um alerta contra depender demais de pessoas e estruturas que, cedo ou tarde, falham. O bem-estar vem de um equilíbrio: confiar no que você pode influenciar e aceitar o que não pode.
 
 **Em quem ou no quê você está depositando uma confiança que essa pessoa ou estrutura não tem condições de sustentar?**
 
@@ -1323,7 +1323,7 @@ A manipulação encoberta, a agressão que se disfarça de razão, é difícil d
 ## Salmo 147 — Louvor ao Onipotente e Misericordioso
 *Temas: louvor, cura*
 
-"Cura os quebrantados de coração e cuida das suas feridas": a cura como processo de atenção às feridas, não de negação delas. A pesquisa sobre cuidado compassivo (Gilbert) mostra que o primeiro movimento de cura não é força, mas gentileza: olhar para a ferida sem apartar os olhos.
+"Cura os quebrantados de coração e cuida das suas feridas": curar é dar atenção à ferida, não fingir que ela não existe. O primeiro passo não é força; é gentileza, olhar pra dor sem desviar os olhos.
 
 **Que ferida em você está esperando ser olhada com mais gentileza, antes de ser exigida a fortalecer?**
 
@@ -1332,7 +1332,7 @@ A manipulação encoberta, a agressão que se disfarça de razão, é difícil d
 ## Salmo 148 — Louvor ao Senhor em Toda a Criação
 *Temas: louvor, criação*
 
-Sol, lua, estrelas, profundezas, fogo, granizo, montanhas e animais: toda a criação louvando. A pesquisa sobre transcendência (Keltner) mostra que essa visão de pertencer a um todo vivo reduz o isolamento existencial e aumenta o bem-estar. Somos parte de algo muito maior.
+Sol, lua, estrelas, montanhas, bichos: toda a criação louvando junto. Sentir-se parte de um todo vivo diminui aquele isolamento profundo e faz bem. Você é parte de algo muito maior do que imagina.
 
 **O que você observa no mundo natural que te lembra de que faz parte de algo muito maior do que você?**
 
@@ -1341,7 +1341,7 @@ Sol, lua, estrelas, profundezas, fogo, granizo, montanhas e animais: toda a cria
 ## Salmo 149 — Novo Cântico de Louvor
 *Temas: louvor, alegria*
 
-Cantar um cântico novo pressupõe que a alegria pode ser cultivada deliberadamente, não apenas esperada. A pesquisa sobre intervenções positivas (Lyubomirsky) mostra que a alegria sustentada é sempre parcialmente uma escolha de atenção e prática.
+Cantar um cântico novo pressupõe que a alegria pode ser cultivada de propósito, não só esperada. A alegria que dura é, em boa parte, uma escolha de pra onde olhar e do que praticar.
 
 **O que precisaria acontecer em você, não nas circunstâncias, para que você cantasse um cântico novo hoje?**
 
@@ -1350,7 +1350,7 @@ Cantar um cântico novo pressupõe que a alegria pode ser cultivada deliberadame
 ## Salmo 150 — Louvor a Deus com Todos os Instrumentos
 *Temas: louvor, alegria, adoração*
 
-Tudo que respira, cada instrumento, cada som, convocado para o louvor. A última palavra dos Salmos não é lamento, nem pedido, nem doutrina: é celebração total. A psicologia da experiência de pico (Maslow) descreve momentos assim como aqueles em que o eu e o mundo, por um instante, coincidem.
+Tudo que respira, cada instrumento, cada som, chamado ao louvor. A última palavra dos Salmos não é lamento, nem pedido, nem doutrina: é celebração inteira. São aqueles instantes raros em que você e o mundo, por um momento, coincidem.
 
 **Qual seria o som, o gesto, a palavra, a expressão do louvor mais honesto que você poderia oferecer hoje?**
 
