@@ -65,6 +65,18 @@ class SalmosApp extends ConsumerWidget {
       themeMode: themeMode,
       routerConfig: appRouter,
       debugShowCheckedModeBanner: false,
+      builder: (context, child) {
+        // Acessibilidade: honra o aumento de fonte do sistema, mas limita a
+        // ampliação a 1.3x (o maior passo padrão do Android). Sem o teto,
+        // fontes gigantes (ex.: modo "enorme" da Samsung) cortam e sobrepõem
+        // texto em telas com espaçamento fixo (onboarding, grid emocional).
+        final clamped =
+            MediaQuery.textScalerOf(context).clamp(maxScaleFactor: 1.3);
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(textScaler: clamped),
+          child: child!,
+        );
+      },
     );
   }
 }

@@ -11,6 +11,7 @@ import '../../data/providers/salmos_providers.dart';
 import '../../shared/widgets/eyebrow_label.dart';
 import '../../shared/widgets/staggered_entrance.dart';
 import '../../shared/widgets/starfield_background.dart';
+import '../../shared/widgets/tema_chip.dart';
 import '../../shared/widgets/word_reveal_text.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -205,6 +206,11 @@ class _HomeContent extends StatelessWidget {
                               letterSpacing: 0.2,
                             ),
                           ),
+                        ],
+                        if (salmo.temas.isNotEmpty) ...[
+                          const SizedBox(height: AppTheme.sp3),
+                          // Emoção da curadoria — reforça o sentimento do dia.
+                          TemaChips(salmo.temas, max: 2),
                         ],
                       ],
                     ),

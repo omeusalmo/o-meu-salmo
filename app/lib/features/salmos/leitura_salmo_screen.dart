@@ -14,6 +14,7 @@ import '../../data/providers/favoritos_provider.dart';
 import '../../data/providers/salmos_providers.dart';
 import '../../shared/widgets/audio_player_bar.dart';
 import '../../shared/widgets/eyebrow_label.dart';
+import '../../shared/widgets/tema_chip.dart';
 import '../../shared/widgets/verse_line.dart';
 import 'verse_sync.dart';
 
@@ -272,6 +273,12 @@ class _BodyState extends ConsumerState<_Body> {
                 letterSpacing: 0.2,
               ),
             ),
+          ],
+
+          if (salmo.temas.isNotEmpty) ...[
+            const SizedBox(height: AppTheme.sp3),
+            // Emoções da curadoria — reforça o sentimento do Salmo.
+            TemaChips(salmo.temas, max: 3),
           ],
 
           const SizedBox(height: AppTheme.sp6),

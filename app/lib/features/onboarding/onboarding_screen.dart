@@ -528,7 +528,11 @@ class _Page3 extends StatelessWidget {
               crossAxisCount: 2,
               mainAxisSpacing: AppTheme.sp3,
               crossAxisSpacing: AppTheme.sp3,
-              childAspectRatio: MediaQuery.of(context).size.width < 360 ? 2.0 : 2.4,
+              // Célula acompanha a fonte: quanto maior o texto, mais baixa a
+              // razão (mais alta a célula) — evita corte do label emocional.
+              childAspectRatio:
+                  (MediaQuery.of(context).size.width < 360 ? 2.0 : 2.4) /
+                      MediaQuery.textScalerOf(context).scale(1),
               children: EmocaoInicial.values.map((e) {
                 final isSelected = e == selected;
                 return GestureDetector(
