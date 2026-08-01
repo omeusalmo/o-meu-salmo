@@ -68,7 +68,7 @@ Este sistema codifica a identidade visual já aprovada (cor, tipografia, logotip
 
 ### Cor
 - **Principal — Cobalto `#2A47DD`** (Luminous Blue, tendência WGSN 2027 associada a "espiritualidade e emoção"). Único acento de interface: botões, ícones ativos, "Salmo" do logo, progresso.
-- **Secundária — Âmbar**, usada **com extrema parcimônia**: marca apenas o **versículo em destaque** e peças sociais. Nunca é cor de UI. `#C4A86A` sobre escuro (AAA); `#8A6A28` para texto sobre claro (AA).
+- **Secundária — Âmbar**, usada **com extrema parcimônia**: marca apenas o **versículo em destaque** e peças sociais. Nunca é cor de UI. `#C4A86A` sobre escuro (AAA); `#6B4E1C` para texto sobre claro (AAA).
 - **Dois modos.** Noturno é o padrão (fundo `#080B1C`, cobalto-noite quase-preto). Diurno é off-white frio-mineral (`#F5F7FE`) — nunca branco puro, nunca preto puro.
 - **Emoções:** cada emoção tem uma cor própria (chip + tinta + ponto), estável entre os modos. É um *sistema de navegação*, não decoração.
 
@@ -117,7 +117,7 @@ Auditoria WCAG 2.1 completa com correções aplicadas em junho 2026. Referência
 
 ### Regras de cor (texto)
 - Texto normal ≥ 4.5:1 (AA) · texto grande (≥18pt ou ≥14pt bold) ≥ 3:1 · AAA ≥ 7:1.
-- Âmbar `#C4A86A` **reprova como texto no claro** (2.1:1) — use `#8A6A28` (gold-ink, AA 4.7:1).
+- Âmbar `#C4A86A` **reprova como texto no claro** (2.1:1) — use `#6B4E1C` (gold-ink, AAA 7.2:1).
 - **`nightMuted #353C73`** (1.9:1) e **`dayMuted #8C97D4`** (2.6:1) **nunca usar como texto** — reservados para decoração (dots, ícones inativos, separadores).
 - No escuro, texto/ícones de acento: usar **cobalt-400** (4.2:1, AA grande). cobalt-500 não serve no escuro.
 - Triângulo do play: **creme `#EEF0FC`** sobre cobalt = 6.2:1 (AAA).

@@ -54,7 +54,7 @@ MODO CLARO (diurno)
 
 VERSÍCULO (âmbar — somente texto de Salmo, nunca UI)
 --gold:        #C4A86A   ← versículo em modo escuro
---gold-ink:    #8A6A28   ← versículo em modo claro
+--gold-ink:    #6B4E1C   ← versículo em modo claro
 ```
 
 **Regra de cor:** cobalt `#2A47DD` é o único acento de UI. Âmbar só para versículo em destaque. Sem gradientes roxo/dourado brilhante.

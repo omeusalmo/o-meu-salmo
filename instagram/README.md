@@ -44,7 +44,7 @@ instagram/
 | Perdão | dark lavanda | `#8480AA` |
 | Luto (futuro) | dark malva | `#9A6A86` |
 
-Base sempre DS: Playfair (títulos), Cormorant itálico (versículos), Instrument Sans (labels), gold `#C4A86A`/`#8A6A28` nas referências.
+Base sempre DS: Playfair (títulos), Cormorant itálico (versículos), Instrument Sans (labels), gold `#C4A86A`/`#6B4E1C` nas referências.
 
 ## Specs
 - Feed (cards/carrosséis): **1080×1350 (4:5)** · Reels: 1080×1920

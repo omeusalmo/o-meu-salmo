@@ -1,8 +1,7 @@
-# Reflexões dos Salmos — Rascunho para Revisão
+# Reflexões dos Salmos
 
-Cada reflexão tem 2–3 frases com embasamento em psicologia (ACT, TCC, Psicologia Positiva,
-Auto-compaixão, Teoria do Apego, Logoterapia, Mindfulness) e termina em uma pergunta aberta.
-**Este documento é para aprovação antes de entrar no app.**
+Cada reflexão tem 2–3 frases de tom íntimo e sóbrio, ancoradas em psicologia mas sem jargão clínico, e termina numa pergunta aberta.
+**Revisadas (humanizer + gerente + uxwriter) e portadas para `salmos.json` em 2026-07-31.**
 
 ---
 
@@ -27,7 +26,7 @@ Quando tudo balança, é natural procurar alguma coisa firme pra segurar. Quem t
 ## Salmo 3 — Confiança em Deus na Tribulação
 *Temas: proteção, confiança*
 
-Sentir o mundo contra você, mesmo quando a ameaça é mais impressão do que fato, liga um alarme antigo no corpo, aquele que não distingue um perigo real de um olhar atravessado. Reparar nesse estado sem se culpar por ele já é começar a sair dele. O medo pede atenção; quando você o escuta sem correr, ele afrouxa.
+Sentir o mundo contra você aperta o peito, mesmo quando a ameaça é mais impressão do que fato. Por dentro, a gente nem sempre distingue um perigo real de um olhar atravessado. Reparar nesse estado sem se culpar por ele já é começar a sair; o medo pede atenção, e quando você o escuta sem correr, ele afrouxa.
 
 **Quando você se sente cercado, qual é o primeiro movimento que costuma fazer: se fechar ou buscar apoio?**
 
@@ -65,7 +64,7 @@ A dor que não encontra saída tende a se guardar no corpo. Botar em palavras o 
 
 Ser tratado com injustiça dói de um jeito concreto; o corpo registra isso quase como registra a dor física. Faz sentido que você queira uma resolução. Mas entregar o julgamento final, deixar de ser juiz do que não está na sua mão, tira você da armadilha de remoer sem fim o que não pode controlar.
 
-**Existe alguma injustiça que você ainda carrega, esperando uma resolução que só depende de você soltar?**
+**Existe uma injustiça que você ainda carrega, esperando uma solução que, no fundo, só depende de você soltar?**
 
 ---
 
@@ -137,7 +136,7 @@ Agir como se as suas escolhas não pesassem, nem pra você nem pra ninguém, nã
 
 Viver de acordo com o que você diz acreditar é um dos caminhos mais firmes pra uma vida em paz consigo mesma. Não se trata de ser perfeito, mas de ser inteiro: a pessoa que você é sozinho e a que você mostra aos outros deveriam se reconhecer.
 
-**Existe alguma distância entre quem você diz ser e quem você realmente age sendo?**
+**Existe alguma distância entre quem você diz ser e quem você realmente é quando age?**
 
 ---
 
@@ -153,7 +152,7 @@ A satisfação com a vida depende menos do que acontece e mais de onde você apo
 ## Salmo 17 — Oração por Proteção
 *Temas: proteção, oração*
 
-Pedir ajuda acalma o corpo: afrouxa o estado de alerta e liga a parte da gente que se sente cuidada. Buscar amparo quando você está frágil é a coisa mais sensata que existe, ainda que pareça o contrário.
+Pedir ajuda acalma o corpo e aciona em você a parte que se sente cuidada. Buscar amparo quando você está frágil é a coisa mais sensata a fazer, ainda que pareça o contrário.
 
 **Quando foi a última vez que você pediu ajuda com honestidade, sem minimizar o que estava sentindo?**
 
@@ -218,7 +217,7 @@ O pastor da imagem conduz, não empurra: é a presença que deixa você caminhar
 
 Certas experiências te recolocam dentro de algo maior, e isso, em vez de encolher, abre: você se importa mais com os outros e se prende menos a si mesmo. Reconhecer que existe algo maior que você não te diminui.
 
-**O que você reverencia, o que, quando você pensa nele, faz você se sentir parte de algo além de si mesmo?**
+**O que você reverencia? O que, ao pensar nele, te faz sentir parte de algo maior que você?**
 
 ---
 
@@ -288,7 +287,7 @@ Sair de uma crise, do corpo ou da alma, raramente recebe a solenidade que merece
 ## Salmo 32 — Felicidade do Perdão
 *Temas: perdão, alegria, gratidão*
 
-Carregar culpa sem resolução consome você por dentro: a mente fica reprisando o erro em loop. Perdoar a si mesmo não é fingir que nada aconteceu; é se recusar a deixar o passado mandar no presente. E o alívio que vem depois é real, você sente no corpo.
+Carregar culpa sem resolução consome você por dentro: a cabeça fica reprisando o erro em loop. Deixar a culpa ir, aceitando o perdão, não é fingir que nada aconteceu; é se recusar a deixar o passado mandar no presente. E o alívio que vem depois é real, você sente no corpo.
 
 **Existe algo que você fez, ou deixou de fazer, que ainda não se permitiu perdoar?**
 
@@ -297,7 +296,7 @@ Carregar culpa sem resolução consome você por dentro: a mente fica reprisando
 ## Salmo 33 — Louvor ao Criador
 *Temas: louvor, criação, confiança*
 
-Confiar no que você não controla vai contra tudo o que uma mente treinada em planejar quer fazer. E mesmo assim, saber se render ao que não está nas suas mãos é uma das coisas que mais sustentam a saúde mental ao longo do tempo.
+Confiar no que você não controla vai contra tudo o que uma cabeça acostumada a planejar quer fazer. E mesmo assim, saber se render ao que não está nas suas mãos é uma das coisas que mais sustentam a paz por dentro, com o tempo.
 
 **Em que área da vida você ainda está lutando por controle quando o que precisaria era de confiança?**
 
@@ -317,7 +316,7 @@ Confiar no que você não controla vai contra tudo o que uma mente treinada em p
 
 Sentir-se perseguido isola, porque a história de "eu contra o mundo" fecha o campo de visão. Vale olhar as evidências com calma: nem toda oposição é perseguição. Mas quando a injustiça é real, a dor dela também é, e merece ser ouvida.
 
-**Existe alguém ou algo que você está tratando como inimigo quando talvez fosse mais útil tratá-lo como obstáculo a ser superado?**
+**Tem alguém que você trata como inimigo, quando talvez seja só um obstáculo a atravessar?**
 
 ---
 
@@ -405,7 +404,7 @@ Há momentos em que a desolação não é só sua: todo mundo em volta também s
 ## Salmo 45 — Cântico Real
 *Temas: louvor*
 
-O belo, na música, na palavra, na presença de alguém, faz bem de um jeito que o corpo registra: acalma, alegra, aproxima. Cultivar beleza não é frescura; é uma necessidade que a gente costuma deixar de lado.
+O belo, na música, na palavra, na presença de alguém, faz bem de um jeito que o corpo registra: acalma, alegra, aproxima. Cultivar beleza não é supérfluo; é uma necessidade que a gente costuma deixar de lado.
 
 **O que de belo você tem deixado de notar, ou de criar, na rotina?**
 
@@ -441,7 +440,7 @@ Pertencer a algo maior que você, uma comunidade, uma tradição, um propósito,
 ## Salmo 49 — A Vaidade das Riquezas
 *Temas: sabedoria, riquezas*
 
-Passado um certo ponto, mais dinheiro não traz mais felicidade, por mais que a gente insista em acreditar que traz. O que sustenta o bem-estar são relações, propósito e sentido, justamente o que o acúmulo sem freio costuma sacrificar.
+Passado um certo ponto, mais dinheiro não traz mais felicidade, por mais que a gente insista em acreditar que traz. O que enche a vida são os laços, um propósito, um sentido, justamente o que a corrida por acumular costuma sacrificar.
 
 **O que você tem perseguido com a energia que deveria investir no que de fato importa?**
 
@@ -459,7 +458,7 @@ Existe diferença entre o gesto de fora e a intenção de dentro. Fazer algo só
 ## Salmo 51 — Oração por Perdão e Restauração
 *Temas: perdão, arrependimento, restauração*
 
-O arrependimento que transforma, diferente da autopunição que só machuca, tem três passos: reconhecer o erro, reparar o que der e corrigir a rota. Tratar você mesmo como trataria um amigo que errou é o que abre espaço pra mudança. A punição, não.
+O arrependimento que transforma é diferente da autopunição que só machuca: reconhece o erro, repara o que dá e muda de rumo, sem se destruir no caminho. Tratar você mesmo como trataria um amigo que errou é o que abre espaço pra mudança; a punição fecha.
 
 **Você tem se arrependido de um jeito que produz mudança, ou de um jeito que apenas te machuca mais?**
 
@@ -560,7 +559,7 @@ Ser rejeitado, por uma pessoa, um grupo ou pela própria vida, testa a sua capac
 
 "Somente em Deus espera silenciosa a minha alma": o silêncio como prática vai contra uma cultura que confunde estar ocupado com ter valor. Os intervalos de quietude não são tempo perdido; é neles que o corpo se acalma e o que importa de verdade aparece.
 
-**Quando você criou espaço de silêncio real na sua vida pela última vez, não ausência de ruído, mas presença verdadeira consigo mesmo?**
+**Quando foi a última vez que você teve um silêncio de verdade, não só a falta de barulho, mas presença consigo mesmo?**
 
 ---
 
@@ -576,7 +575,7 @@ A sede, do corpo ou da alma, é o sinal mais honesto de que falta algo necessár
 ## Salmo 64 — Oração contra Inimigos
 *Temas: proteção, clamor*
 
-Ficar remoendo o que os outros pensam e tramam é uma das formas mais comuns de sofrimento que a gente cria sozinho. A mente que fica vagando, sobretudo na direção do que é ruim, é uma das maiores fontes de infelicidade no dia a dia.
+Ficar remoendo o que os outros pensam e tramam é um dos sofrimentos mais comuns que a gente cria sozinho. A cabeça que fica vagando, sobretudo na direção do que é ruim, rouba boa parte da paz do dia.
 
 **Quanto tempo mental você está gastando hoje com o que os outros pensam de você?**
 
@@ -621,7 +620,7 @@ Celebrar o que você venceu é um jeito de guardar a memória viva e fortalecer 
 ## Salmo 69 — Clamor em Grande Angústia
 *Temas: luto, clamor, esperança*
 
-"As águas me sobem até o pescoço": a angústia que sobe até tirar o chão. Quando a emoção passa do limite, fica difícil até pensar. O que o Salmo faz, clamar e dar nome ao que afoga, é exatamente o que a terapia recomenda.
+"As águas me sobem até o pescoço": a angústia que sobe até tirar o chão. Quando a emoção passa do limite, fica difícil até pensar. O que o Salmo faz, clamar e dar nome ao que afoga, já é começo de alívio.
 
 **Quando você está submerso, você consegue nomear o que está sentindo, ou o sentimento te engole antes?**
 
@@ -657,7 +656,7 @@ Esperar por um mundo mais justo não é ingenuidade; é um dos motores mais fort
 ## Salmo 73 — O Destino dos Ímpios e dos Justos
 *Temas: sabedoria, confusão, fé*
 
-A crise de fé, aquele momento em que o que você vê contradiz o que acredita, é uma das dores de crescimento mais difíceis e mais necessárias. A dúvida honesta não destrói uma fé madura; é ela que a constrói.
+A crise de fé, aquele momento em que o que você vê contradiz o que acredita, é uma das dores de amadurecimento mais difíceis e mais necessárias. A dúvida honesta não destrói uma fé madura; é ela que a constrói.
 
 **Existe uma contradição entre o que você acredita e o que você observa que ainda não foi dita em voz alta?**
 
@@ -684,7 +683,7 @@ Agradecer antes de ver o resultado, antes de saber como termina, pressupõe uma 
 ## Salmo 76 — A Vitória de Deus
 *Temas: louvor, vitória*
 
-Reconhecer que uma vitória teve mais mãos além das suas, em vez de creditar tudo à própria força, alivia a pressão de desempenho. Quando você não precisa ter sido o único responsável pelo acerto, o peso de um fracasso futuro também fica menor.
+Reconhecer que uma vitória teve mais mãos além das suas, em vez de creditar tudo à própria força, alivia a pressão de dar conta de tudo sozinho. Quando você não precisa ter sido o único responsável pelo acerto, o peso de um fracasso futuro também fica menor.
 
 **Existe alguma vitória recente que você atribuiu inteiramente a si mesmo quando havia mais do que isso envolvido?**
 
@@ -792,9 +791,9 @@ Sentir-se herdeiro de algo que começou antes de você e vai continuar depois cr
 ## Salmo 88 — Clamor em Profunda Angústia
 *Temas: luto, noite, solidão, abandono*
 
-Este é o único Salmo que não termina em consolo, e há uma honestidade nisso. Nem toda dor encontra alívio na hora. Apressar a saída do sofrimento pode ser uma forma de violência; o que a dor funda pede, às vezes, é só ser vista por alguém.
+Este é o único Salmo que não termina em consolo, e há uma honestidade nisso. Nem toda dor encontra alívio na hora. Apressar a saída do sofrimento atropela o que ele pede; o que a dor funda pede, às vezes, é só ser vista por alguém.
 
-**Você tem se apressado para sair do sofrimento antes de ter vivido o tempo que ele necessitava?**
+**Você tem se apressado para sair do sofrimento antes de ter vivido o tempo que ele pedia?**
 
 ---
 
@@ -846,7 +845,7 @@ Diante da instabilidade, afirmar o que é firme é um jeito de reorientar a ment
 ## Salmo 94 — Deus, o Juiz
 *Temas: clamor, justiça, confiança*
 
-Saber separar o que você pode mudar do que precisa soltar é uma das habilidades centrais da saúde mental. Clamar por justiça é admitir que nem todo julgamento está nas suas mãos, e isso não é fraqueza; é sabedoria.
+Saber separar o que você pode mudar do que precisa soltar é uma das coisas que mais trazem paz. Clamar por justiça é admitir que nem todo julgamento está nas suas mãos, e isso não é fraqueza; é sabedoria.
 
 **Que injustiça você está tentando resolver que está além do que você pode controlar, e que precisaria ser entregue?**
 
@@ -866,7 +865,7 @@ Saber separar o que você pode mudar do que precisa soltar é uma das habilidade
 
 "Cântico novo" não é repetir por repetir; é reencontrar o que é real com olhos frescos. Novidade e sentido são necessidades de verdade: a rotina sem renovação anestesia, a renovação sem raiz desorienta. A gente precisa das duas.
 
-**Que área da sua vida precisa de uma abordagem fresca, ao invés da repetição do que já não funciona?**
+**Que área da sua vida precisa de um olhar novo, em vez de repetir o que já não funciona?**
 
 ---
 
@@ -911,7 +910,7 @@ O tremor diante do sagrado recoloca você no seu tamanho sem tirar a sua dignida
 
 "Andarei com coração íntegro" é declarar em voz alta que valores você quer seguir. Dizer com clareza o tipo de pessoa que você quer ser, em vez de só tentar no escuro, aumenta a chance de agir assim de verdade.
 
-**Que compromisso com quem você quer ser você poderia articular com mais clareza hoje?**
+**Que compromisso com quem você quer ser daria pra deixar mais claro hoje?**
 
 ---
 
@@ -1010,7 +1009,7 @@ Dar atenção de propósito ao que é bom e verdadeiro é um remédio contra a s
 
 Conhecer e usar as suas melhores qualidades, e não só corrigir defeitos, é o caminho mais curto pra florescer. A felicidade de quem vive certo não é prêmio lá na frente; é o que acontece naturalmente quando você vive alinhado com o que é seu.
 
-**Você conhece suas forças, o que de melhor há em você, e está as usando no que faz?**
+**Você conhece suas forças, o que de melhor há em você, e está usando elas no que faz?**
 
 ---
 
@@ -1035,7 +1034,7 @@ A memória do êxodo era o que os hebreus resgatavam nas crises: o mesmo que abr
 ## Salmo 115 — A Glória Pertence ao Senhor
 *Temas: fé, confiança*
 
-Tirar o centro de gravidade de si mesmo, aceitar que nem tudo gira em torno da própria glória, alivia a pressão de desempenho. Quando o resultado não depende só de você, o peso de um possível fracasso também deixa de ser só seu.
+Tirar o centro de gravidade de si mesmo, aceitar que nem tudo gira em torno da própria glória, alivia a pressão de dar conta de tudo sozinho. Quando o resultado não depende só de você, o peso de um possível fracasso também deixa de ser só seu.
 
 **Em que área da vida você está carregando um peso que poderia ser compartilhado ou entregue?**
 
@@ -1080,7 +1079,7 @@ Deixar que os valores guiem as escolhas, independentemente de como você se sent
 ## Salmo 120 — Clamor por Libertação
 *Temas: clamor, paz*
 
-Viver entre pessoas cuja língua é o conflito e a manipulação cansa de um jeito difícil de explicar. Relações ruins que se arrastam machucam a saúde tanto quanto vícios que adoecem devagar. O lugar que você habita vai moldando quem você se torna.
+Viver entre pessoas cuja língua é o conflito e a manipulação cansa de um jeito difícil de explicar. Relações ruins que se arrastam vão corroendo a gente caladas, dia após dia. O lugar que você habita vai moldando quem você se torna.
 
 **Os ambientes que você frequenta estão te formando ou te deformando?**
 
@@ -1188,7 +1187,7 @@ O contentamento, essa capacidade de apreciar o que se tem em vez de comparar com
 ## Salmo 132 — Oração pela Casa de Davi
 *Temas: adoração, promessas*
 
-Comprometer-se com algo maior que a própria vida é um movimento essencial da gente: sair de si mesmo em direção a um sentido que continua de pé mesmo quando as circunstâncias mudam.
+Comprometer-se com algo maior que a própria vida é um movimento essencial do ser humano: sair de si mesmo em direção a um sentido que continua de pé mesmo quando as circunstâncias mudam.
 
 **A que promessa você está comprometido que vale mais do que o seu próprio conforto?**
 
@@ -1251,7 +1250,7 @@ A repetição de "porque a sua benignidade dura para sempre" tem uma razão: rep
 ## Salmo 139 — O Deus que Tudo Conhece
 *Temas: confiança, identidade, meditação*
 
-"Tu me sondas e me conheces": ser conhecido por inteiro e ainda assim não ser rejeitado é a base de toda relação saudável. Ser visto por completo e, mesmo assim, amado, é talvez a necessidade mais funda que existe.
+"Tu me sondas e me conheces": ser conhecido por inteiro e ainda assim não ser rejeitado é o que sustenta qualquer vínculo verdadeiro. Ser visto por completo e ainda assim amado é talvez o que a gente mais precisa.
 
 **Existe alguém que te conhece de verdade, e o que aconteceria se você se permitisse ser mais conhecido?**
 
@@ -1287,7 +1286,7 @@ A manipulação disfarçada, a agressão que se veste de razão, é difícil de 
 ## Salmo 143 — Oração por Livramento
 *Temas: oração, restauração, ansiedade*
 
-"O meu espírito desfallece dentro de mim": o esgotamento que não é preguiça, é exaustão de verdade. O erro mais comum é tentar sair dele com mais esforço, quando o que o corpo pede é descanso e sentido.
+"O meu espírito desfalece dentro de mim": o esgotamento que não é preguiça, é exaustão de verdade. O erro mais comum é tentar sair dele com mais esforço, quando o que o corpo pede é descanso e sentido.
 
 **O que você está tentando resolver com mais esforço quando o que precisava era de algo completamente diferente?**
 
@@ -1356,4 +1355,4 @@ Tudo que respira, cada instrumento, cada som, chamado ao louvor. A última palav
 
 ---
 
-*Documento gerado para revisão. Após aprovação, as reflexões serão inseridas no campo `reflexao` de cada entrada do `salmos.json`.*
+*Revisadas e inseridas nos campos `reflexao` / `reflexao_pergunta` de cada entrada do `salmos.json` (2026-07-31).*

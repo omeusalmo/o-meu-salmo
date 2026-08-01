@@ -8,7 +8,7 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root{
-  --cobalt:#2A47DD; --lum:#5567EA; --gold:#C4A86A; --gold-ink:#8A6A28;
+  --cobalt:#2A47DD; --lum:#5567EA; --gold:#C4A86A; --gold-ink:#6B4E1C;
   --night:#080B1C; --plus:#10142C; --cream:#EEF0FC; --dtext:#8C97D4;
   --lbase:#F5F7FE; --lplus:#E9EDFD; --lline:#D5DCF3; --ltext:#2E3A86; --ltitle:#0C1230; --lmuted:#8C97D4;
   --pass:#2E7D5B; --large:#9A7320; --fail:#B23A48;
@@ -77,7 +77,7 @@ body{ font-family:'Instrument Sans',sans-serif; background:#ECEDF0; color:var(--
       <h3>Regras de uso do âmbar</h3>
       <div class="rule"><div class="k" style="background:var(--pass)"></div><div class="t"><b>Pontual, não onipresente.</b> O âmbar marca só o <b>versículo em destaque</b> (Salmo do dia) e o card de compartilhamento — nunca o corpo de leitura inteiro. É o brilho do sagrado, não a cor de interface.</div></div>
       <div class="rule"><div class="k" style="background:var(--pass)"></div><div class="t"><b>No escuro:</b> <code>#C4A86A</code> sobre a noite rende 8.5:1 (AAA). Pode ser texto à vontade.</div></div>
-      <div class="rule"><div class="k" style="background:var(--fail)"></div><div class="t"><b>No claro, como texto:</b> o <code>#C4A86A</code> some (2.1:1 — reprova). Para texto no claro use o âmbar profundo <code>#8A6A28</code> (4.7:1, AA).</div></div>
+      <div class="rule"><div class="k" style="background:var(--fail)"></div><div class="t"><b>No claro, como texto:</b> o <code>#C4A86A</code> some (2.1:1 — reprova). Para texto no claro use o âmbar profundo <code>#6B4E1C</code> (7.2:1, AAA).</div></div>
       <div class="rule"><div class="k" style="background:var(--large)"></div><div class="t"><b>No claro, decorativo:</b> o <code>#C4A86A</code> só vale como fio, ponto ou preenchimento — jamais como texto essencial.</div></div>
       <div class="rule"><div class="k" style="background:var(--pass)"></div><div class="t"><b>Cobalto &amp; play:</b> no escuro, o acento de texto é o tom claro <code>#5567EA</code>; o triângulo do play vai em creme sobre o botão cobalto (creme/cobalto = 6.2:1), nunca no tom da noite.</div></div>
     </div>
@@ -107,7 +107,7 @@ const LIGHT = [
   {role:'Corpo de texto', pair:'Texto / Claro', fg:'#2E3A86', bg:'#F5F7FE', sample:'Aa', large:false},
   {role:'Acento de texto', pair:'Cobalto 500 / Claro', fg:'#2A47DD', bg:'#F5F7FE', sample:'Aa', large:false},
   {role:'Âmbar como texto — reprova', pair:'Âmbar #C4A86A / Claro', fg:'#C4A86A', bg:'#F5F7FE', sample:'salmo', vs:true, large:false},
-  {role:'Âmbar p/ texto no claro ✓', pair:'Âmbar-ink #8A6A28 / Claro', fg:'#8A6A28', bg:'#F5F7FE', sample:'salmo', vs:true, large:false},
+  {role:'Âmbar p/ texto no claro ✓', pair:'Âmbar-ink #6B4E1C / Claro', fg:'#6B4E1C', bg:'#F5F7FE', sample:'salmo', vs:true, large:false},
   {role:'Texto sobre botão', pair:'Branco / Cobalto', fg:'#F5F7FE', bg:'#2A47DD', sample:'Ouvir', large:false},
 ];
 

@@ -17,7 +17,7 @@ Read `README.md` first — it holds the full brand context, voice & tone, visual
 
 ## Non-negotiables
 - Two assets only: **logotype** (site/LP) and **icon** (app/social). No isolated symbol.
-- Cobalt `#2A47DD` is the only UI accent. Amber is used sparingly — only the highlighted verse and social pieces; never as UI/text color (use `#8A6A28` if amber text on light is unavoidable).
+- Cobalt `#2A47DD` is the only UI accent. Amber is used sparingly — only the highlighted verse and social pieces; never as UI/text color (use `#6B4E1C` if amber text on light is unavoidable).
 - Voice: "você", intimate, calm, sentence case, **no emoji**, no "gospel app" tropes (no purple/gold gradients, no crosses/halos), no Inter/Roboto/Arial.
 - Icons: outline only, thin rounded stroke (Lucide recommended). Never heavy filled.
 
