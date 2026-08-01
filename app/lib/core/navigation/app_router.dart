@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../extensions/build_context_extensions.dart';
+import '../../shared/widgets/error_state_view.dart';
 import '../../features/splash/splash_screen.dart';
 import '../../features/home/home_screen.dart';
 import '../../features/colecoes/colecoes_screen.dart';
@@ -17,6 +19,20 @@ import '../../shared/widgets/main_shell.dart';
 final GoRouter appRouter = GoRouter(
   initialLocation: '/splash',
   debugLogDiagnostics: false,
+  // Rota desconhecida (ex.: deep link inválido) cai numa tela com saída,
+  // nunca na tela de erro crua do go_router.
+  errorBuilder: (context, state) => Scaffold(
+    backgroundColor: context.colorBg,
+    body: SafeArea(
+      child: ErrorStateView(
+        titulo: 'Página não encontrada',
+        mensagem: 'O link que você abriu não existe ou saiu do ar.',
+        icon: Icons.explore_off_outlined,
+        acaoLabel: 'Voltar ao início',
+        onAcao: () => context.go('/home'),
+      ),
+    ),
+  ),
   routes: [
     GoRoute(
       path: '/splash',

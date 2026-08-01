@@ -73,7 +73,7 @@ class UnlockedPsalmsNotifier extends AsyncNotifier<Set<int>> {
   Future<Set<int>> build() async {
     final prefs = await SharedPreferences.getInstance();
     final stored = prefs.getStringList(AppConstants.prefUnlockedPsalms) ?? [];
-    return stored.map(int.parse).toSet();
+    return stored.map(int.tryParse).whereType<int>().toSet();
   }
 
   Future<void> unlock(int numero) async {

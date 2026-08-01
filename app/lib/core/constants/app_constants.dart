@@ -16,6 +16,7 @@ class AppConstants {
   static const String prefUnlockedPsalms     = 'unlocked_psalms';
   static const String prefOnboardingDone     = 'onboarding_done';
   static const String prefEmocaoInicial      = 'emocao_inicial';
+  static const String prefUsageDataEnabled   = 'usage_data_enabled';
 
   static const int defaultNotifHour   = 8;
   static const int defaultNotifMinute = 0;

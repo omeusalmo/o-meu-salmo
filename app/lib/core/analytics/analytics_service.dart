@@ -1,4 +1,5 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 
 /// Singleton que encapsula Firebase Analytics.
@@ -18,6 +19,15 @@ class AnalyticsService {
     } catch (e) {
       debugPrint('[Analytics] Firebase não disponível: $e');
     }
+  }
+
+  /// Liga/desliga a coleta de dados de uso (Analytics + Crashlytics).
+  /// Respeita a escolha do usuário no opt-out de Ajustes (LGPD).
+  Future<void> setCollectionEnabled(bool enabled) async {
+    try {
+      await _analytics?.setAnalyticsCollectionEnabled(enabled);
+      await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(enabled);
+    } catch (_) {}
   }
 
   Future<void> _log(String name, [Map<String, Object>? params]) async {
@@ -49,8 +59,11 @@ class AnalyticsService {
       });
 
   /// Usuário abriu uma coleção temática.
-  Future<void> logCollectionOpened(String id, String titulo) =>
-      _log('collection_opened', {'collection_id': id, 'collection_title': titulo});
+  ///
+  /// Loga só o `id` agregado — nunca o título ("Ansiedade", "Luto"), que
+  /// vincularia estado emocional/religioso ao device (dado sensível, LGPD Art. 11).
+  Future<void> logCollectionOpened(String id) =>
+      _log('collection_opened', {'collection_id': id});
 
   /// Usuário realizou uma busca.
   Future<void> logSearch(String query, bool hasResults) =>

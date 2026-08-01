@@ -186,7 +186,7 @@ class AjustesScreen extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _InfoRow('Versão', '1.0.0', isDark: isDark),
+                _InfoRow('Versão', '1.0.1', isDark: isDark),
                 Divider(
                   height: AppTheme.sp5,
                   thickness: 0.5,
@@ -272,26 +272,61 @@ class AjustesScreen extends ConsumerWidget {
           _SectionHeader('Privacidade', isDark: isDark),
           _Card(
             isDark: isDark,
-            child: GestureDetector(
-              onTap: () => _abrirPrivacidade(),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      'Política de privacidade',
-                      style: GoogleFonts.instrumentSans(
-                        fontSize: 14,
-                        color: isDark ? AppColors.nightText : AppColors.dayText,
+            child: Column(
+              children: [
+                // Opt-out de dados de uso (Analytics/Crashlytics) — LGPD
+                Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _Label('Compartilhar dados de uso', isDark: isDark),
+                          const SizedBox(height: 2),
+                          Text(
+                            'Ajuda a melhorar o app (uso e falhas, sem identificar você). Você pode desligar quando quiser.',
+                            style: GoogleFonts.instrumentSans(
+                              fontSize: 12,
+                              color: muted,
+                              height: 1.4,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
+                    const SizedBox(width: AppTheme.sp3),
+                    Switch(
+                      value: ref.watch(usageDataProvider),
+                      onChanged: (v) =>
+                          ref.read(usageDataProvider.notifier).set(v),
+                      activeThumbColor:
+                          isDark ? AppColors.cobalt400 : AppColors.cobalt500,
+                    ),
+                  ],
+                ),
+                Divider(height: AppTheme.sp5, thickness: 0.5, color: border),
+                GestureDetector(
+                  onTap: () => _abrirPrivacidade(),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'Política de privacidade',
+                          style: GoogleFonts.instrumentSans(
+                            fontSize: 14,
+                            color: isDark ? AppColors.nightText : AppColors.dayText,
+                          ),
+                        ),
+                      ),
+                      Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        size: 14,
+                        color: isDark ? AppColors.nightText : AppColors.dayText,
+                      ),
+                    ],
                   ),
-                  Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    size: 14,
-                    color: isDark ? AppColors.nightText : AppColors.dayText,
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
 

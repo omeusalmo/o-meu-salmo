@@ -161,6 +161,7 @@
         <li>Localização geográfica</li>
         <li>Contatos, câmera ou microfone</li>
         <li>Dados de navegação ou histórico de outros apps</li>
+        <li>Identificador de publicidade (Advertising ID) — o app não tem anúncios e não coleta esse identificador</li>
         <li>Qualquer dado armazenado em servidor próprio</li>
       </ul>
     </section>
@@ -188,19 +189,18 @@
       <p><strong>4.1 Firebase Analytics (Google)</strong></p>
       <p>
         O app usa o Firebase Analytics para entender como os salmos e recursos são utilizados
-        de forma agregada e anônima. Os eventos coletados incluem, por exemplo: salmo aberto,
-        áudio tocado, salmo compartilhado, favorito adicionado.
+        de forma agregada e pseudonimizada (não vinculada à sua identidade). Os eventos coletados
+        incluem, por exemplo: salmo aberto, áudio tocado, salmo compartilhado, favorito adicionado.
+        Nunca registramos o texto que você busca nem a emoção que você escolhe no início.
       </p>
       <p>
-        Esses dados <strong>não identificam você pessoalmente</strong> e são processados pelo
+        Esses dados <strong>não são vinculados à sua identidade</strong> e são processados pelo
         Google conforme a
         <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">
           Política de Privacidade do Google
         </a>.
-        Você pode desativar a coleta de dados de analytics pelo Google em
-        <a href="https://support.google.com/analytics/answer/181881" target="_blank" rel="noopener">
-          Opções de publicidade do Google
-        </a>.
+        Você pode desativar a coleta de dados de uso (Analytics e Crashlytics) a qualquer momento,
+        diretamente no app, em <strong>Ajustes &rarr; Privacidade &rarr; "Compartilhar dados de uso"</strong>.
       </p>
 
       <p><strong>4.2 Firebase Crashlytics (Google)</strong></p>
@@ -211,7 +211,7 @@
         técnicos do app.
       </p>
       <p>
-        Esses dados <strong>não identificam você pessoalmente</strong> e são processados pelo
+        Esses dados <strong>não são vinculados à sua identidade</strong> e são processados pelo
         Google conforme a
         <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">
           Política de Privacidade do Google
@@ -224,8 +224,8 @@
       <h2>5. Permissões do app</h2>
       <ul>
         <li>
-          <strong>INTERNET:</strong> usada exclusivamente para transmitir eventos anônimos
-          ao Firebase Analytics (Google). Sem essa permissão o analytics não funciona,
+          <strong>INTERNET:</strong> usada para transmitir os dados de uso ao Firebase
+          Analytics e Crashlytics (Google). Sem ela, esses recursos não funcionam,
           mas o app funciona normalmente de forma offline.
         </li>
         <li>
@@ -237,15 +237,19 @@
           a notificação do Salmo do dia. Você pode revogar essa permissão a qualquer momento
           nas configurações do sistema.
         </li>
+        <li>
+          <strong>WAKE_LOCK e FOREGROUND_SERVICE:</strong> permitem que a narração em áudio
+          continue tocando com a tela apagada. Nenhum dado é enviado.
+        </li>
       </ul>
     </section>
 
     <section>
       <h2>6. Crianças</h2>
       <p>
-        O app não coleta dados de nenhum usuário, independentemente da idade.
-        Não temos conhecimento de que dados sejam coletados de crianças menores de 13 anos
-        além dos eventos anônimos do Firebase Analytics descritos na seção 4.
+        O app não é direcionado a crianças e não coleta dados pessoais identificáveis de
+        ninguém. Os dados de uso pseudônimos do Firebase (seção 4) aplicam-se a todos os
+        usuários e podem ser desativados a qualquer momento nos Ajustes do app.
       </p>
     </section>
 
@@ -291,7 +295,7 @@
     </section>
 
     <footer>
-      <p><strong>Data de vigência:</strong> 4 de junho de 2025</p>
+      <p><strong>Data de vigência:</strong> 1 de agosto de 2026</p>
       <p style="margin-top: 0.5rem;">O Meu Salmo &mdash; Salmos para cada momento da vida</p>
     </footer>
 

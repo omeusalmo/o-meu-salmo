@@ -14,10 +14,15 @@ class FavTimestampsNotifier extends AsyncNotifier<Map<int, int>> {
   Future<Map<int, int>> build() async {
     final prefs = await ref.watch(_sharedPrefsProvider.future);
     final list = prefs.getStringList(_kTimestampsKey) ?? [];
-    return Map.fromEntries(list.map((e) {
+    final entries = <MapEntry<int, int>>[];
+    for (final e in list) {
       final idx = e.indexOf(':');
-      return MapEntry(int.parse(e.substring(0, idx)), int.parse(e.substring(idx + 1)));
-    }));
+      if (idx <= 0) continue;
+      final k = int.tryParse(e.substring(0, idx));
+      final v = int.tryParse(e.substring(idx + 1));
+      if (k != null && v != null) entries.add(MapEntry(k, v));
+    }
+    return Map.fromEntries(entries);
   }
 
   Future<void> add(int numero) async {
@@ -56,7 +61,7 @@ class FavoritesNotifier extends AsyncNotifier<Set<int>> {
   Future<Set<int>> build() async {
     final prefs = await ref.watch(_sharedPrefsProvider.future);
     final list = prefs.getStringList(AppConstants.prefFavoritosKey) ?? [];
-    return list.map(int.parse).toSet();
+    return list.map(int.tryParse).whereType<int>().toSet();
   }
 
   Future<void> toggle(int numero) async {

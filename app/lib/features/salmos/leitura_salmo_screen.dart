@@ -14,6 +14,7 @@ import '../../data/providers/favoritos_provider.dart';
 import '../../data/providers/salmos_providers.dart';
 import '../../shared/widgets/audio_player_bar.dart';
 import '../../shared/widgets/eyebrow_label.dart';
+import '../../shared/widgets/error_state_view.dart';
 import '../../shared/widgets/tema_chip.dart';
 import '../../shared/widgets/verse_line.dart';
 import 'verse_sync.dart';
@@ -46,7 +47,10 @@ class _LeituraSalmoScreenState extends ConsumerState<LeituraSalmoScreen> {
 
     return asyncSalmo.when(
       loading: () => _LoadingView(numero: widget.numero),
-      error: (_, __) => _ErrorView(numero: widget.numero),
+      error: (_, __) => _ErrorView(
+        numero: widget.numero,
+        onRetry: () => ref.invalidate(salmoDetalheProvider(widget.numero)),
+      ),
       data: (salmo) => salmo == null
           ? _NotFoundView(numero: widget.numero)
           : _LeituraSalmoView(salmo: salmo),
@@ -580,34 +584,23 @@ class _LoadingView extends StatelessWidget {
 
 class _ErrorView extends StatelessWidget {
   final int numero;
-  const _ErrorView({required this.numero});
+  final VoidCallback onRetry;
+  const _ErrorView({required this.numero, required this.onRetry});
 
   @override
   Widget build(BuildContext context) {
-    final isDark = context.isDark;
-    final bg     = isDark ? AppColors.nightBase : AppColors.dayBase;
-    final text   = isDark ? AppColors.nightText : AppColors.dayText;
-
     return Scaffold(
-      backgroundColor: bg,
+      backgroundColor: context.colorBg,
       body: SafeArea(
         child: Column(
           children: [
             const _BackBar(),
             Expanded(
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(AppTheme.sp5),
-                  child: Text(
-                    'Não consegui carregar este Salmo.\nTente novamente.',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.instrumentSans(
-                      fontSize: 15,
-                      color: text,
-                      height: 1.6,
-                    ),
-                  ),
-                ),
+              child: ErrorStateView(
+                titulo: 'Não consegui carregar este Salmo',
+                mensagem: 'Verifique sua conexão e tente de novo.',
+                acaoLabel: 'Tentar de novo',
+                onAcao: onRetry,
               ),
             ),
           ],

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import '../models/salmo.dart';
 import '../models/colecao.dart';
@@ -57,12 +58,24 @@ class SalmosRepository {
     final raw = await rootBundle.loadString(AppConstants.salmosJsonPath);
     final data = json.decode(raw) as Map<String, dynamic>;
 
-    _cachedSalmos = (data['salmos'] as List)
-        .map((s) => Salmo.fromJson(s as Map<String, dynamic>))
-        .toList();
+    // Parse resiliente por item: um registro malformado (edição futura de
+    // conteúdo) é ignorado sem derrubar o app inteiro. Melhor 149 salmos que 0.
+    _cachedSalmos = [];
+    for (final s in (data['salmos'] as List? ?? [])) {
+      try {
+        _cachedSalmos!.add(Salmo.fromJson(s as Map<String, dynamic>));
+      } catch (e) {
+        debugPrint('[Salmos] registro ignorado: $e');
+      }
+    }
 
-    _cachedColecoes = (data['colecoes'] as List? ?? [])
-        .map((c) => Colecao.fromJson(c as Map<String, dynamic>))
-        .toList();
+    _cachedColecoes = [];
+    for (final c in (data['colecoes'] as List? ?? [])) {
+      try {
+        _cachedColecoes!.add(Colecao.fromJson(c as Map<String, dynamic>));
+      } catch (e) {
+        debugPrint('[Colecoes] registro ignorado: $e');
+      }
+    }
   }
 }

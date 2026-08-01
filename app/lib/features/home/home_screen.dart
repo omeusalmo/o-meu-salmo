@@ -11,6 +11,7 @@ import '../../data/providers/salmos_providers.dart';
 import '../../shared/widgets/eyebrow_label.dart';
 import '../../shared/widgets/staggered_entrance.dart';
 import '../../shared/widgets/starfield_background.dart';
+import '../../shared/widgets/error_state_view.dart';
 import '../../shared/widgets/tema_chip.dart';
 import '../../shared/widgets/word_reveal_text.dart';
 
@@ -51,9 +52,15 @@ class HomeScreen extends ConsumerWidget {
                 strokeWidth: 1.5,
               ),
             ),
-            error: (_, __) => _ErrorView(key: const ValueKey('error'), isDark: isDark),
+            error: (_, __) => _ErrorView(
+              key: const ValueKey('error'),
+              onRetry: () => ref.invalidate(salmoDoDialProvider),
+            ),
             data: (salmo) => salmo == null
-                ? _EmptyView(key: const ValueKey('empty'), isDark: isDark)
+                ? _EmptyView(
+                    key: const ValueKey('empty'),
+                    onRetry: () => ref.invalidate(salmoDoDialProvider),
+                  )
                 : _HomeContent(key: ValueKey('data-${salmo.numero}'), salmo: salmo),
           ),
         ),
@@ -553,39 +560,28 @@ class _PrimaryButton extends StatelessWidget {
 // ─────────────────────────────────────────────────────────────────────────────
 
 class _ErrorView extends StatelessWidget {
-  final bool isDark;
-  const _ErrorView({super.key, required this.isDark});
+  final VoidCallback onRetry;
+  const _ErrorView({super.key, required this.onRetry});
 
   @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Não consegui carregar o Salmo de hoje.\nTente novamente.',
-        textAlign: TextAlign.center,
-        style: GoogleFonts.instrumentSans(
-          fontSize: 15,
-          color: isDark ? AppColors.nightText : AppColors.dayText,
-          height: 1.6,
-        ),
-      ),
-    );
-  }
+  Widget build(BuildContext context) => ErrorStateView(
+        titulo: 'Não consegui carregar o Salmo de hoje',
+        mensagem: 'Verifique sua conexão e tente de novo.',
+        acaoLabel: 'Tentar de novo',
+        onAcao: onRetry,
+      );
 }
 
 class _EmptyView extends StatelessWidget {
-  final bool isDark;
-  const _EmptyView({super.key, required this.isDark});
+  final VoidCallback onRetry;
+  const _EmptyView({super.key, required this.onRetry});
 
   @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Nenhum Salmo por aqui ainda.\nTente novamente em instantes.',
-        style: GoogleFonts.instrumentSans(
-          fontSize: 15,
-          color: isDark ? AppColors.nightText : AppColors.dayText,
-        ),
-      ),
-    );
-  }
+  Widget build(BuildContext context) => ErrorStateView(
+        titulo: 'Nenhum Salmo por aqui ainda',
+        mensagem: 'Tente de novo em instantes.',
+        icon: Icons.menu_book_outlined,
+        acaoLabel: 'Tentar de novo',
+        onAcao: onRetry,
+      );
 }

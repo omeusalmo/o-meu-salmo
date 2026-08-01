@@ -44,7 +44,7 @@ class DetalheColecaoScreen extends ConsumerWidget {
     final colecao = colecaoAsync.value;
     if (colecao != null) {
       WidgetsBinding.instance.addPostFrameCallback((_) =>
-          AnalyticsService.instance.logCollectionOpened(colecao.id, colecao.titulo));
+          AnalyticsService.instance.logCollectionOpened(colecao.id));
     }
     if (colecao == null) {
       return _NotFoundView(isDark: isDark);

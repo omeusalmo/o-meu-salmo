@@ -93,9 +93,12 @@ class AudioPlayerNotifier extends Notifier<AudioState> {
 
     state = const AudioState(isLoading: true);
     try {
-      final dur = await _player.setAudioSource(
-        AudioSource.uri(Uri.parse('asset:///assets/$audioPath')),
-      );
+      // Timeout evita spinner eterno no botão play se um MP3 travar o decoder.
+      final dur = await _player
+          .setAudioSource(
+            AudioSource.uri(Uri.parse('asset:///assets/$audioPath')),
+          )
+          .timeout(const Duration(seconds: 15));
       state = AudioState(
         isAvailable: true,
         duration: dur ?? Duration.zero,

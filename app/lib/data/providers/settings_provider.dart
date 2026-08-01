@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../core/analytics/analytics_service.dart';
 import '../../core/constants/app_constants.dart';
 
 class ThemeModeNotifier extends Notifier<ThemeMode> {
@@ -75,3 +76,32 @@ class NotificationSettingsNotifier
 final notificationSettingsProvider = NotifierProvider<
     NotificationSettingsNotifier,
     ({bool enabled, int hour, int minute})>(NotificationSettingsNotifier.new);
+
+// ─── Dados de uso (opt-out de Analytics/Crashlytics) ─────────────────────────
+
+/// Consentimento de coleta de dados de uso. Padrão ligado; usuário pode desligar
+/// em Ajustes. A escolha é aplicada ao Firebase e persistida.
+class UsageDataNotifier extends Notifier<bool> {
+  @override
+  bool build() {
+    _load();
+    return true;
+  }
+
+  Future<void> _load() async {
+    final prefs = await SharedPreferences.getInstance();
+    final enabled = prefs.getBool(AppConstants.prefUsageDataEnabled) ?? true;
+    state = enabled;
+    await AnalyticsService.instance.setCollectionEnabled(enabled);
+  }
+
+  Future<void> set(bool value) async {
+    state = value;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(AppConstants.prefUsageDataEnabled, value);
+    await AnalyticsService.instance.setCollectionEnabled(value);
+  }
+}
+
+final usageDataProvider =
+    NotifierProvider<UsageDataNotifier, bool>(UsageDataNotifier.new);

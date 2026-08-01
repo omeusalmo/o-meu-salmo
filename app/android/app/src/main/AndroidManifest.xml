@@ -12,6 +12,10 @@
     <!-- Áudio em background -->
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <!-- Advertising ID: app não tem anúncios. Remove a permissão injetada pelo
+         firebase_analytics para não coletar identificador de rastreio publicitário. -->
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove"/>
+    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID" tools:node="remove"/>
 
     <application
         android:label="O meu Salmo"

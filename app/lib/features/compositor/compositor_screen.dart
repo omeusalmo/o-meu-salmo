@@ -52,8 +52,10 @@ class _CompositorScreenState extends ConsumerState<CompositorScreen> {
       if (bytes == null) return;
 
       final png = bytes.buffer.asUint8List();
-      final verse = salmo.versiculos[_versicoloIdx];
-      final refStr = 'Salmo ${salmo.numero} · ${_versicoloIdx + 1}';
+      if (salmo.versiculos.isEmpty) return;
+      final idx = _versicoloIdx.clamp(0, salmo.versiculos.length - 1);
+      final verse = salmo.versiculos[idx];
+      final refStr = 'Salmo ${salmo.numero} · ${idx + 1}';
 
       await SharePlus.instance.share(
         ShareParams(

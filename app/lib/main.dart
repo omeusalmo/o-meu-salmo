@@ -5,7 +5,9 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'core/analytics/analytics_service.dart';
+import 'core/constants/app_constants.dart';
 import 'core/notifications/notification_service.dart';
 import 'core/firebase_options.dart';
 import 'core/navigation/app_router.dart';
@@ -20,13 +22,24 @@ void main() async {
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-  await NotificationService.instance.init();
+  // Guard: falha do plugin de notificação em algum device/OEM não pode
+  // impedir o runApp — sem isto, uma exceção aqui = tela branca no launch.
+  try {
+    await NotificationService.instance.init();
+  } catch (e) {
+    debugPrint('[Notif] init falhou (seguindo sem notificação): $e');
+  }
 
   try {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
     AnalyticsService.instance.init();
+    // Aplica a escolha de opt-out do usuário (Ajustes) já no launch.
+    final prefs = await SharedPreferences.getInstance();
+    await AnalyticsService.instance.setCollectionEnabled(
+      prefs.getBool(AppConstants.prefUsageDataEnabled) ?? true,
+    );
     FlutterError.onError =
         FirebaseCrashlytics.instance.recordFlutterFatalError;
     PlatformDispatcher.instance.onError = (error, stack) {
