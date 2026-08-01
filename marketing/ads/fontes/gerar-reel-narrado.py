@@ -1,24 +1,75 @@
 #!/usr/bin/env python3
-"""Gera frames HTML de um reel narrado (devocional, orgânico) com fill dourado.
-Rodapé de marca suave (sem CTA de download — app ainda em teste fechado).
+"""Gera frames HTML de um reel narrado usando O MESMO template do vídeo de
+lançamento (gerar-video-fill.py) — headline de posicionamento, 4 chips, CTA
+cobalt, microcopy — pra manter a série consistente pros seguidores.
+Só variam: o ref line (Salmo NNN · título) e os versículos exibidos.
 Uso: python3 gerar-reel-narrado.py <num> <n_frames>  -> /tmp/reelframes/f###.html"""
 import sys, os, html as H
 
 PSALMS = {
-    121: dict(titulo="O Senhor, Nosso Guardião", chip="Esperança", cor="#7C90F0",
+    121: dict(titulo="O Senhor, Nosso Guardião",
               linhas=["Elevo os meus olhos para os montes;",
                       "de onde me vem o socorro?",
                       "O meu socorro vem do Senhor,",
                       "que fez os céus e a terra."]),
-    100: dict(titulo="Louvai ao Senhor", chip="Gratidão", cor="#E2B95C",
+    100: dict(titulo="Louvai ao Senhor",
               linhas=["Celebrai com júbilo ao Senhor,",
                       "todos os habitantes da terra.",
                       "Servi ao Senhor com alegria,",
                       "e apresentai-vos com cântico."]),
 }
 
+# Template idêntico ao gerar-video-fill.py (série consistente).
+HEAD = """<!DOCTYPE html><html><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@1,400;1,500&family=Playfair+Display:ital,wght@0,600;1,600&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{width:1080px;height:1920px;overflow:hidden;}
+.ad{width:1080px;height:1920px;position:relative;background:radial-gradient(120% 70% at 50% 0%,#182a6e 0%,#10142C 40%,#080B1C 100%);}
+.bookmark{position:absolute;top:0;left:50%;transform:translateX(-50%);width:34px;height:50px;background:#5567EA;opacity:.85;clip-path:polygon(0 0,100% 0,100% 100%,50% 70%,0 100%);}
+.top{position:absolute;top:150px;left:80px;right:80px;text-align:center;}
+.eyebrow{font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:24px;letter-spacing:6px;text-transform:uppercase;color:#FFFFFF;opacity:.4;margin-bottom:28px;}
+.headline{font-family:'Playfair Display',serif;font-weight:600;font-size:82px;line-height:1.06;letter-spacing:-.015em;color:#EEF0FC;}
+.headline em{font-style:italic;color:#5567EA;}
+.ref{font-family:'Instrument Sans',sans-serif;font-weight:400;font-size:24px;letter-spacing:.5px;color:#8C97D4;margin-top:34px;}
+.reader{position:absolute;top:770px;left:96px;right:96px;}
+.line{position:relative;margin-bottom:38px;white-space:nowrap;}
+.dim,.lit{font-family:'Cormorant',serif;font-style:italic;font-weight:400;font-size:56px;line-height:1.2;}
+.dim{color:#8C97D4;opacity:.30;}
+.lit{position:absolute;top:0;left:0;color:#C4A86A;}
+.bottom{position:absolute;left:64px;right:64px;bottom:96px;}
+.chips{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:30px;justify-content:center;}
+.chip{font-family:'Instrument Sans',sans-serif;font-weight:500;font-size:21px;border:1px solid;border-radius:999px;padding:9px 24px;}
+.cta{display:flex;align-items:center;justify-content:center;gap:14px;background:#5567EA;border-radius:22px;padding:30px 0;box-shadow:0 24px 60px -14px rgba(85,103,234,.55);}
+.cta span{font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:38px;color:#EEF0FC;}
+.micro{text-align:center;font-family:'Instrument Sans',sans-serif;font-weight:500;font-size:22px;color:#C4A86A;opacity:.85;margin-top:20px;letter-spacing:.3px;}
+</style></head><body>
+<div class="ad">
+  <div class="bookmark"></div>
+  <div class="top">
+    <div class="eyebrow">O Meu Salmo</div>
+    <div class="headline">O Salmo certo,<br>pra cada <em>emoção.</em></div>
+    <div class="ref">__REF__</div>
+  </div>
+  <div class="reader">
+"""
 
-def head(num, p):
+FOOT = """
+  </div>
+  <div class="bottom">
+    <div class="chips">
+      <span class="chip" style="color:#8B9AF2;border-color:#8B9AF255;background:#8B9AF21f">Ansiedade</span>
+      <span class="chip" style="color:#8FC287;border-color:#8FC28755;background:#8FC2871f">Sono</span>
+      <span class="chip" style="color:#E2B95C;border-color:#E2B95C55;background:#E2B95C1f">Gratidão</span>
+      <span class="chip" style="color:#C793B1;border-color:#C793B155;background:#C793B11f">Luto</span>
+    </div>
+    <div class="cta"><span>Baixar grátis</span><span>&rarr;</span></div>
+    <div class="micro">Grátis · Sem anúncios</div>
+  </div>
+</div></body></html>"""
+
+
+def frame_html(num, p):
     ps = PSALMS[num]
     lens = [len(l) for l in ps["linhas"]]
     total = sum(lens)
@@ -34,42 +85,8 @@ def head(num, p):
             f'    <div class="line"><span class="dim">{esc}</span>'
             f'<span class="lit" style="clip-path:inset(0 {right}% 0 0)">{esc}</span></div>'
         )
-    return f"""<!DOCTYPE html><html><head><meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@1,400&family=Playfair+Display:ital,wght@0,600;1,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-*{{margin:0;padding:0;box-sizing:border-box;}}
-body{{width:1080px;height:1920px;overflow:hidden;}}
-.ad{{width:1080px;height:1920px;position:relative;background:radial-gradient(120% 70% at 50% 0%,#182a6e 0%,#10142C 40%,#080B1C 100%);}}
-.bookmark{{position:absolute;top:0;left:50%;transform:translateX(-50%);width:34px;height:50px;background:#5567EA;opacity:.85;clip-path:polygon(0 0,100% 0,100% 100%,50% 70%,0 100%);}}
-.top{{position:absolute;top:180px;left:80px;right:80px;text-align:center;}}
-.eyebrow{{font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:24px;letter-spacing:6px;text-transform:uppercase;color:#FFFFFF;opacity:.38;margin-bottom:30px;}}
-.psalm{{font-family:'Playfair Display',serif;font-weight:600;font-size:96px;line-height:1;letter-spacing:-.01em;color:#EEF0FC;}}
-.psalm em{{font-style:italic;color:#5567EA;}}
-.sub{{font-family:'Instrument Sans',sans-serif;font-weight:400;font-size:30px;color:#8C97D4;margin-top:26px;letter-spacing:.3px;}}
-.reader{{position:absolute;top:820px;left:96px;right:96px;}}
-.line{{position:relative;margin-bottom:40px;white-space:nowrap;}}
-.dim,.lit{{font-family:'Cormorant',serif;font-style:italic;font-weight:400;font-size:54px;line-height:1.2;}}
-.dim{{color:#8C97D4;opacity:.30;}}
-.lit{{position:absolute;top:0;left:0;color:#C4A86A;}}
-.bottom{{position:absolute;left:0;right:0;bottom:150px;text-align:center;}}
-.chip{{display:inline-block;font-family:'Instrument Sans',sans-serif;font-weight:500;font-size:24px;border:1px solid {ps['cor']}55;background:{ps['cor']}1f;color:{ps['cor']};border-radius:999px;padding:11px 30px;margin-bottom:30px;}}
-.brand{{font-family:'Instrument Sans',sans-serif;font-weight:500;font-size:26px;color:#C4A86A;opacity:.85;letter-spacing:.5px;}}
-</style></head><body>
-<div class="ad">
-  <div class="bookmark"></div>
-  <div class="top">
-    <div class="eyebrow">O Meu Salmo</div>
-    <div class="psalm">Salmo <em>{num}</em></div>
-    <div class="sub">{ps['titulo']}</div>
-  </div>
-  <div class="reader">
-{chr(10).join(rows)}
-  </div>
-  <div class="bottom">
-    <div class="chip">{ps['chip']}</div><br>
-    <div class="brand">omeusalmo.com.br</div>
-  </div>
-</div></body></html>"""
+    ref = f"Salmo {num} · {ps['titulo']}"
+    return HEAD.replace("__REF__", ref) + "\n".join(rows) + FOOT
 
 
 if __name__ == "__main__":
@@ -78,5 +95,5 @@ if __name__ == "__main__":
     for f in os.listdir("/tmp/reelframes"):
         os.remove(f"/tmp/reelframes/{f}")
     for k in range(N):
-        open(f"/tmp/reelframes/f{k:03d}.html", "w").write(head(num, k / (N - 1)))
-    print(f"Salmo {num}: {N} frames")
+        open(f"/tmp/reelframes/f{k:03d}.html", "w").write(frame_html(num, k / (N - 1)))
+    print(f"Salmo {num}: {N} frames (template do vídeo de lançamento)")
