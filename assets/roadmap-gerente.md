@@ -208,6 +208,25 @@ _Pré-requisito: E1 validado. Meta: ≥ 15% sessões via widget em 30 dias._
 
 ---
 
+## Backlog do Ciclo de Teste Fechado (2026-07-23)
+
+_Itens levantados durante o teste fechado. Podem entrar em novas builds (AAB código 3+) na trilha de teste sem resetar os 14 dias. Prioridade: bug de acessibilidade antes do lançamento; os demais conforme cabível._
+
+| # | Item | Tipo | Prioridade | Responsável | Quando |
+|---|------|------|------------|-------------|--------|
+| T1 | Layout quebra quando usuário aumenta a fonte no device (visto no aparelho da mãe do Jeff) | Bug acessibilidade | **P0 — antes do lançamento** | tech-lead-app | Durante o teste |
+| T2 | Exibir tag da categoria/emoção visível no Salmo do Dia e em cada salmo (dá ênfase ao sentimento) | Feature UX | P1 | tech-lead-app + designer | Durante ou logo após teste |
+| T3 | Deixar espaço no código para desbloquear reflexões assistindo vídeo (rewarded ad gating) | Arquitetura / monetização | P2 | tech-lead-app | Pós-lançamento (casa com Sprint C monetização) |
+| T4 | Passar o humanizer nas 150 reflexões (`assets/reflexoes-salmos.md`) para melhorar os textos | Conteúdo editorial | P1 | gerente + marketing | Pós-teste, antes de escalar |
+
+**Notas de execução:**
+- **T1 (fonte):** testar com `MediaQuery.textScaler` alto (device: Configurações → Tela → Tamanho da fonte no máximo). Provável causa = alturas/containers fixos que não acompanham o texto. Validar as telas: Salmo do Dia, leitura do salmo, coleções, onboarding.
+- **T2 (tag categoria):** cada salmo tem `temas[]` no JSON; expor como chip/label na UI. Seguir design system (cobalt + Instrument Sans label).
+- **T3 (rewarded):** só deixar o gancho de arquitetura pronto (entitlement/flag), sem integrar AdMob ainda. Reflexão é conteúdo espiritual — validar tom antes de gatear com anúncio.
+- **T4 (humanizer):** rodar skill humanizer em modo arquivo sobre `reflexoes-salmos.md`; preservar tom íntimo/sóbrio/poético do produto (sem emoji, sem jargão). Revisar antes de subir ao app.
+
+---
+
 ## Backlog — Features Cortadas (revisitar com dados)
 
 | Feature | Motivo do corte | Quando revisar |
@@ -282,7 +301,7 @@ Levantado durante a publicação na Play (2026-06-22). Nenhum bloqueia o lançam
 | Item | Contexto | Tensão / cuidado |
 |---|---|---|
 | Tamanho do bundle (124MB AAB; 62MB de áudio) | Download real do usuário é menor (AAB split por ABI/densidade, ~50-70MB). Áudio já é mono 24kHz 32kbps MP3 — já enxuto. | Re-encode (24kbps ou HE-AAC) dá só ~20-35%. Ganho modesto vs. esforço (instalar ffmpeg + rebuild + re-test). |
-| Áudio sob demanda (baixar no 1º play, CDN/Supabase) | Única alavanca que tira os 62MB do bundle. Supabase já existe no projeto Plantio (ref `rkpqpghtuacjxcomisle`). | **CONFLITA com "100% offline" da LP e com a decisão offline-first.** Só vale se cachear permanente após 1º download. Reconciliar com Sprint E2 (Áudio Offline Completo) antes de decidir — as duas direções se opõem. |
+| Áudio streaming/sob demanda + **vozes premium (usuário escolhe a voz)** — _análise pedida 2026-08-02_ | **MB:** tira ~62MB do bundle (150 MP3, ~410KB cada). Áudio domina o peso hoje → download por usuário cairia bastante. Streaming (CDN/Supabase; ref Plantio `rkpqpghtuacjxcomisle` já existe) permite **pacotes de voz sob demanda sem inchar o app nem exigir nova build** → habilita monetização premium (escolha de vozes, casa com Sprint C freemium). **Prós:** app muito mais leve (↑ instalação/ASO, updates menores), vozes premium via server, trocar/adicionar voz sem rebuild. **Contras:** quebra offline-first (LP diz "100% offline"), precisa infra+custo, latência/buffer no play, público 40+ em rede ruim, gasta dados do usuário. | **Mitigação (híbrido, recomendado):** voz padrão continua **bundled** (offline grátis garantido) + vozes premium/extras via **streaming com "baixar p/ ouvir offline"** (download+cache permanente). Não perde offline-first e habilita premium. Reconciliar com Sprint E2 (Áudio Offline Completo) antes de fechar. |
 | Domínio omeusalmo.com.br | NXDOMAIN — não registrado. Privacy URL atual = github.io (funciona, não bloqueia loja). | Cloudflare **não** dá domínio grátis (só registro a preço de custo + DNS grátis). `.com.br` só via registro.br (~R$40/ano). Freenom morto, não usar. Ao comprar: apontar A records pros IPs do GitHub Pages (185.199.108-111.153) + CNAME www→omeusalmo.github.io. Desbloqueia App Links (assetlinks.json já pronto). |
 | ~~**Hardening da API key Firebase**~~ ✅ FEITO 2026-07-09 | Key `AIzaSy...PtJQ` restrita por package `com.omeusalmo.salmos` + SHA-1 (assinatura + upload) no Cloud Console (projeto `o-meu-salmo`, não `meu-salmo`/TTS). | ✅ Validado 2026-07-12: crash de teste chegou no Crashlytics com a key restrita (build release local, cert de upload). |
 
