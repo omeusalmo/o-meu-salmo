@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -20,9 +22,11 @@ class TodosSalmosScreen extends ConsumerStatefulWidget {
 class _TodosSalmosScreenState extends ConsumerState<TodosSalmosScreen> {
   final _searchController = TextEditingController();
   String _query = '';
+  Timer? _searchDebounce;
 
   @override
   void dispose() {
+    _searchDebounce?.cancel();
     _searchController.dispose();
     super.dispose();
   }
@@ -37,8 +41,23 @@ class _TodosSalmosScreenState extends ConsumerState<TodosSalmosScreen> {
       if (s.titulo.toLowerCase().contains(q)) return true;
       return s.versiculos.any((v) => v.toLowerCase().contains(q));
     }).toList();
-    AnalyticsService.instance.logSearch(q, result.isNotEmpty);
     return result;
+  }
+
+  // Loga a busca uma vez, após o usuário parar de digitar (antes: 1 evento por tecla).
+  void _onSearchChanged(String q) {
+    setState(() => _query = q);
+    _searchDebounce?.cancel();
+    final query = q.toLowerCase().trim();
+    if (query.isEmpty) return;
+    _searchDebounce = Timer(const Duration(milliseconds: 800), () {
+      final salmos = ref.read(salmosProvider).value ?? [];
+      final has = salmos.any((s) =>
+          s.numero.toString() == query ||
+          s.titulo.toLowerCase().contains(query) ||
+          s.versiculos.any((v) => v.toLowerCase().contains(query)));
+      AnalyticsService.instance.logSearch(query, has);
+    });
   }
 
   @override
@@ -85,7 +104,7 @@ class _TodosSalmosScreenState extends ConsumerState<TodosSalmosScreen> {
         children: [
           _SearchBar(
             controller: _searchController,
-            onChanged: (q) => setState(() => _query = q),
+            onChanged: _onSearchChanged,
           ),
           Expanded(
             child: asyncSalmos.when(

@@ -102,7 +102,9 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
 
     _controller.forward();
 
-    Future.delayed(const Duration(milliseconds: 3000), () {
+    // Navega logo após a animação (1800ms) + respiro curto. Antes: 3000ms cegos.
+    // onboardingProvider (prefs, ~ms) já resolveu bem antes disso.
+    Future.delayed(const Duration(milliseconds: 2200), () {
       if (!mounted) return;
       final done = ref.read(onboardingProvider);
       context.go(done ? '/home' : '/onboarding');
