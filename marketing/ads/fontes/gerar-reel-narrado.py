@@ -17,6 +17,16 @@ PSALMS = {
                       "todos os habitantes da terra.",
                       "Servi ao Senhor com alegria,",
                       "e apresentai-vos com cântico."]),
+    4: dict(titulo="Oração da Tarde",
+            linhas=["Em paz me deitarei e dormirei,",
+                    "porque só tu, Senhor,",
+                    "me fazes habitar",
+                    "em segurança."]),
+    150: dict(titulo="Louvor a Deus",
+              linhas=["Louvai a Deus no seu santuário;",
+                      "louvai-o no firmamento do seu poder!",
+                      "Tudo quanto tem fôlego",
+                      "louve ao Senhor."]),
 }
 
 # Template idêntico ao gerar-video-fill.py (série consistente).
