@@ -616,25 +616,19 @@ class _NotFoundView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = context.isDark;
-    final bg     = isDark ? AppColors.nightBase : AppColors.dayBase;
-    final text   = isDark ? AppColors.nightText : AppColors.dayText;
-
     return Scaffold(
-      backgroundColor: bg,
+      backgroundColor: context.colorBg,
       body: SafeArea(
         child: Column(
           children: [
             const _BackBar(),
             Expanded(
-              child: Center(
-                child: Text(
-                  'Salmo $numero não encontrado.',
-                  style: GoogleFonts.instrumentSans(
-                    fontSize: 15,
-                    color: text,
-                  ),
-                ),
+              child: ErrorStateView(
+                titulo: 'Salmo $numero não encontrado',
+                mensagem: 'Ele pode não existir nesta edição.',
+                icon: Icons.menu_book_outlined,
+                acaoLabel: 'Ver todos os salmos',
+                onAcao: () => context.go('/salmos'),
               ),
             ),
           ],

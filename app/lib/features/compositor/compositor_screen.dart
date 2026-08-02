@@ -9,6 +9,7 @@ import 'package:share_plus/share_plus.dart';
 
 import '../../core/analytics/analytics_service.dart';
 import '../../core/extensions/build_context_extensions.dart';
+import '../../shared/widgets/error_state_view.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/salmo.dart';
 import '../../data/providers/salmos_providers.dart';
@@ -92,9 +93,9 @@ class _CompositorScreenState extends ConsumerState<CompositorScreen> {
               strokeWidth: 1.5,
             ),
           ),
-          error: (_, __) => _ErrorView(isDark: isDark),
+          error: (_, __) => const _ErrorView(),
           data: (salmo) => salmo == null
-              ? _ErrorView(isDark: isDark)
+              ? const _ErrorView()
               : _CompositorBody(
                   salmo: salmo,
                   cardKey: _cardKey,
@@ -566,19 +567,14 @@ class _ShareButton extends StatelessWidget {
 }
 
 class _ErrorView extends StatelessWidget {
-  final bool isDark;
-  const _ErrorView({required this.isDark});
+  const _ErrorView();
 
   @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Não foi possível abrir o compositor. Tente fechar e reabrir.',
-        style: GoogleFonts.instrumentSans(
-          fontSize: 15,
-          color: isDark ? AppColors.nightText : AppColors.dayText,
-        ),
-      ),
-    );
-  }
+  Widget build(BuildContext context) => ErrorStateView(
+        titulo: 'Não foi possível abrir o compositor',
+        mensagem: 'Feche e tente de novo.',
+        icon: Icons.image_not_supported_outlined,
+        acaoLabel: 'Fechar',
+        onAcao: () => context.pop(),
+      );
 }

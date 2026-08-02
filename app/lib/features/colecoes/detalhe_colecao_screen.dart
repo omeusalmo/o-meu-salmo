@@ -8,6 +8,7 @@ import '../../core/extensions/build_context_extensions.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/salmo.dart';
 import '../../data/providers/salmos_providers.dart';
+import '../../shared/widgets/error_state_view.dart';
 import '../../shared/widgets/eyebrow_label.dart';
 import '../../shared/widgets/psalm_card.dart';
 
@@ -38,7 +39,10 @@ class DetalheColecaoScreen extends ConsumerWidget {
     }
 
     if (colecaoAsync.hasError || salmosAsync.hasError) {
-      return _ErrorView(isDark: isDark);
+      return _ErrorView(onRetry: () {
+        ref.invalidate(colecaoDetalheProvider(colecaoId));
+        ref.invalidate(salmosProvider);
+      });
     }
 
     final colecao = colecaoAsync.value;
@@ -47,7 +51,7 @@ class DetalheColecaoScreen extends ConsumerWidget {
           AnalyticsService.instance.logCollectionOpened(colecao.id));
     }
     if (colecao == null) {
-      return _NotFoundView(isDark: isDark);
+      return const _NotFoundView();
     }
 
     final todosSalmos = salmosAsync.value ?? [];
@@ -188,45 +192,37 @@ class _Header extends StatelessWidget {
 // ─────────────────────────────────────────────────────────────────────────────
 
 class _ErrorView extends StatelessWidget {
-  final bool isDark;
-  const _ErrorView({required this.isDark});
+  final VoidCallback onRetry;
+  const _ErrorView({required this.onRetry});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: isDark ? AppColors.nightBase : AppColors.dayBase,
-      body: Center(
-        child: Text(
-          'Não consegui carregar esta coleção.\nTente novamente.',
-          textAlign: TextAlign.center,
-          style: GoogleFonts.instrumentSans(
-            fontSize: 15,
-            color: isDark ? AppColors.nightText : AppColors.dayText,
-            height: 1.6,
+  Widget build(BuildContext context) => Scaffold(
+        backgroundColor: context.colorBg,
+        body: SafeArea(
+          child: ErrorStateView(
+            titulo: 'Não consegui carregar esta coleção',
+            mensagem: 'Verifique sua conexão e tente de novo.',
+            acaoLabel: 'Tentar de novo',
+            onAcao: onRetry,
           ),
         ),
-      ),
-    );
-  }
+      );
 }
 
 class _NotFoundView extends StatelessWidget {
-  final bool isDark;
-  const _NotFoundView({required this.isDark});
+  const _NotFoundView();
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: isDark ? AppColors.nightBase : AppColors.dayBase,
-      body: Center(
-        child: Text(
-          'Coleção não encontrada.',
-          style: GoogleFonts.instrumentSans(
-            fontSize: 15,
-            color: isDark ? AppColors.nightText : AppColors.dayText,
+  Widget build(BuildContext context) => Scaffold(
+        backgroundColor: context.colorBg,
+        body: SafeArea(
+          child: ErrorStateView(
+            titulo: 'Coleção não encontrada',
+            mensagem: 'Ela pode ter sido movida ou removida.',
+            icon: Icons.explore_off_outlined,
+            acaoLabel: 'Ver coleções',
+            onAcao: () => context.go('/colecoes'),
           ),
         ),
-      ),
-    );
-  }
+      );
 }
