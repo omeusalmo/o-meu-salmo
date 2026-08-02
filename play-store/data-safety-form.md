@@ -3,6 +3,12 @@
 > TL;DR: preencher exatamente como abaixo. Reflete o app APÓS remoção do AD_ID (v1.0.1+3).
 > Console → Política → Segurança dos dados. Atualizado 2026-08-01.
 
+## 0. Declaração do ID de publicidade (App content / Conteúdo do app)
+
+⚠️ **Ao subir o código 3 o Console dá erro** ("o app usa AD_ID mas o manifesto não inclui a permissão"). Esperado — o AD_ID foi removido de propósito (v1.0.1+3).
+→ Clicar **"Atualizar a declaração"** → responder que o app **NÃO usa ID de publicidade** → salvar. Erro some.
+(Antes, o código 2 declarava "usa". Agora não usa mais = alinhado com privacidade.)
+
 ## 1. Coleta e compartilhamento (visão geral)
 
 - **O app coleta ou compartilha algum dos tipos de dados exigidos?** → **SIM** (via Firebase Analytics + Crashlytics do Google).
