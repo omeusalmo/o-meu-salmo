@@ -37,6 +37,8 @@ o-meu-salmo/                      ← raiz do git (github.com/omeusalmo/o-meu-sa
 │   ├── roadmap-gerente.md        ← roadmap pós-lançamento para agente gerente
 │   └── reflexoes-salmos.md       ← fonte das reflexões dos 150 salmos
 ├── audio_testes/                 ← testes de vozes TTS (salmo 23, 30 vozes)
+├── play-store/                   ← kit de loja: export/ (bundle upload) + listing/aso-copy.md (textos ★) + data-safety-form.md
+│                                   ⚠️ screenshots em export/ são de 2026-06-12 (refazer antes da produção)
 ├── docs/                         ← GitHub Pages (main /docs) → omeusalmo.com.br
 │   ├── index.html                ← landing page V2 (HTML/CSS/JS inline) ★
 │   ├── robots.txt
