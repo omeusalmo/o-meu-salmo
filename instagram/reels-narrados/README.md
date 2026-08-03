@@ -10,14 +10,17 @@ no Facebook e Instagram. Conteúdo orgânico — Salmo 23 engajou organicamente 
 |---|---|---|---|---|
 | `salmo-121.mp4` | 121 · O Senhor, Nosso Guardião | Esperança | ~41s | `legenda-salmo-121.txt` |
 | `salmo-100.mp4` | 100 · Louvai ao Senhor | Gratidão | ~37s | `legenda-salmo-100.txt` |
+| `salmo-4.mp4` | 4 · Oração da Tarde | Sono | ~57s | `legenda-salmo-4.txt` |
+| `salmo-150.mp4` | 150 · Louvor a Deus | Louvor | ~37s | `legenda-salmo-150.txt` |
 
-## Formato — MESMO template do vídeo de lançamento (série consistente)
-- 1080×1920 (9:16), **com áudio** (narração real de `app/assets/audios/`)
-- Layout idêntico ao `marketing/ads/lancamento/anuncio-video-story.mp4` (Salmo 23): headline
-  "O Salmo certo, pra cada emoção." no topo, ref line "Salmo NNN · título", fill dourado letra a
-  letra, 4 chips de emoção, CTA cobalt "Baixar grátis →", microcopy "Grátis · Sem anúncios".
-  Só variam o ref line e os versículos — pra o seguidor reconhecer a série na hora.
-- Fill nos primeiros ~6s, depois segura os versículos enquanto a narração continua.
+## Formato — DEVOCIONAL (estilo `fila-de-postagem/02-qua-reel-salmo-23/meupastor.mp4`)
+- 1080×1920 (9:16), **com áudio** (narração real de `app/assets/audios/`), frame estático.
+- Layout limpo (NÃO é o estilo do anúncio): eyebrow "O MEU SALMO", tag da emoção colorida +
+  linha deco, **um versículo-assinatura centralizado** (Cormorant itálico branco), ref line gold
+  "Salmos NNN · narração do app", número fantasma grande no canto, rodapé "ouça com o som ligado".
+- **SEM** headline de posicionamento, **SEM** os 4 chips, **SEM** CTA "Baixar grátis". São posts
+  devocionais compartilhados como os cards — quem oferece amparo, não quem vende app.
+- Cor de acento por emoção (tag/deco/número): Esperança cobalt, Gratidão/Louvor âmbar, Sono verde.
 
 ## Regenerar
 ```bash
@@ -28,11 +31,11 @@ cd marketing/ads
 Config dos salmos (versículos exibidos, título) em `fontes/gerar-reel-narrado.py`.
 Pra adicionar um salmo novo: incluir no dict PSALMS e rodar o .sh com o número.
 
-## CTA "Baixar grátis"
-Decisão do Jeff (2026-08-01): **manter "Baixar grátis →"** em todos, pela consistência da série
-com o vídeo de lançamento. Launch está próximo (AAB v1.0.1+3 pronto, 12/12 testadores).
+## Histórico de CTA
+- 2026-08-01: reels haviam adotado o template do anúncio (com "Baixar grátis →").
+- 2026-08-03: **Jeff pediu pra remover o CTA** — os reels são posts devocionais compartilhados
+  como os outros, não anúncio. Refeitos no estilo devocional (`meupastor.mp4`), sem botão de download.
 
 ## Nota de posicionamento
-Áudio mono 24kHz do app (qualidade ok pra reel). O fill é um reveal de abertura, não
-sincronizado palavra a palavra com a fala (não temos timing por palavra) — lê como
-"o salmo sendo narrado com a estética do app", não como legenda karaokê exata.
+Áudio mono 24kHz do app (qualidade ok pra reel). Frame estático + narração, no estilo do
+`meupastor.mp4` — o versículo-assinatura + "ouça com o som ligado" convidam a ligar o som.

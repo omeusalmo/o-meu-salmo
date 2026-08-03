@@ -1,109 +1,62 @@
 #!/usr/bin/env python3
-"""Gera frames HTML de um reel narrado usando O MESMO template do vídeo de
-lançamento (gerar-video-fill.py) — headline de posicionamento, 4 chips, CTA
-cobalt, microcopy — pra manter a série consistente pros seguidores.
-Só variam: o ref line (Salmo NNN · título) e os versículos exibidos.
-Uso: python3 gerar-reel-narrado.py <num> <n_frames>  -> /tmp/reelframes/f###.html"""
-import sys, os, html as H
+"""Gera o frame HTML de um reel narrado no estilo DEVOCIONAL (igual ao
+02-qua-reel-salmo-23/meupastor.mp4): versículo único centralizado, tag da
+emoção, número fantasma, "ouça com o som ligado". Estático + narração muxada.
+SEM headline de posicionamento, SEM chips, SEM CTA de download (é post
+compartilhado como os outros, não anúncio).
+Uso: python3 gerar-reel-narrado.py <num>  -> escreve /tmp/reel-frame.html"""
+import sys
 
+# num: (emoção, cor de acento, versículo com <br>, ref)
 PSALMS = {
-    121: dict(titulo="O Senhor, Nosso Guardião",
-              linhas=["Elevo os meus olhos para os montes;",
-                      "de onde me vem o socorro?",
-                      "O meu socorro vem do Senhor,",
-                      "que fez os céus e a terra."]),
-    100: dict(titulo="Louvai ao Senhor",
-              linhas=["Celebrai com júbilo ao Senhor,",
-                      "todos os habitantes da terra.",
-                      "Servi ao Senhor com alegria,",
-                      "e apresentai-vos com cântico."]),
-    4: dict(titulo="Oração da Tarde",
-            linhas=["Em paz me deitarei e dormirei,",
-                    "porque só tu, Senhor,",
-                    "me fazes habitar",
-                    "em segurança."]),
-    150: dict(titulo="Louvor a Deus",
-              linhas=["Louvai a Deus no seu santuário;",
-                      "louvai-o no firmamento do seu poder!",
-                      "Tudo quanto tem fôlego",
-                      "louve ao Senhor."]),
+    121: ("Esperança", "#7C90F0",
+          '"O meu socorro vem do Senhor,<br>que fez os céus e a terra."'),
+    100: ("Gratidão", "#E2B95C",
+          '"Servi ao Senhor com alegria,<br>e apresentai-vos a ele com cântico."'),
+    4:   ("Sono", "#8FC287",
+          '"Em paz me deitarei e dormirei,<br>porque só tu, Senhor,<br>me fazes habitar em segurança."'),
+    150: ("Louvor", "#E2B95C",
+          '"Tudo quanto tem fôlego<br>louve ao Senhor."'),
+    23:  ("Esperança", "#7C90F0",
+          '"O Senhor é o meu pastor;<br>nada me faltará."'),
 }
 
-# Template idêntico ao gerar-video-fill.py (série consistente).
-HEAD = """<!DOCTYPE html><html><head><meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@1,400;1,500&family=Playfair+Display:ital,wght@0,600;1,600&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{width:1080px;height:1920px;overflow:hidden;}
-.ad{width:1080px;height:1920px;position:relative;background:radial-gradient(120% 70% at 50% 0%,#182a6e 0%,#10142C 40%,#080B1C 100%);}
-.bookmark{position:absolute;top:0;left:50%;transform:translateX(-50%);width:34px;height:50px;background:#5567EA;opacity:.85;clip-path:polygon(0 0,100% 0,100% 100%,50% 70%,0 100%);}
-.top{position:absolute;top:150px;left:80px;right:80px;text-align:center;}
-.eyebrow{font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:24px;letter-spacing:6px;text-transform:uppercase;color:#FFFFFF;opacity:.4;margin-bottom:28px;}
-.headline{font-family:'Playfair Display',serif;font-weight:600;font-size:82px;line-height:1.06;letter-spacing:-.015em;color:#EEF0FC;}
-.headline em{font-style:italic;color:#5567EA;}
-.ref{font-family:'Instrument Sans',sans-serif;font-weight:400;font-size:24px;letter-spacing:.5px;color:#8C97D4;margin-top:34px;}
-.reader{position:absolute;top:770px;left:96px;right:96px;}
-.line{position:relative;margin-bottom:38px;white-space:nowrap;}
-.dim,.lit{font-family:'Cormorant',serif;font-style:italic;font-weight:400;font-size:56px;line-height:1.2;}
-.dim{color:#8C97D4;opacity:.30;}
-.lit{position:absolute;top:0;left:0;color:#C4A86A;}
-.bottom{position:absolute;left:64px;right:64px;bottom:96px;}
-.chips{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:30px;justify-content:center;}
-.chip{font-family:'Instrument Sans',sans-serif;font-weight:500;font-size:21px;border:1px solid;border-radius:999px;padding:9px 24px;}
-.cta{display:flex;align-items:center;justify-content:center;gap:14px;background:#5567EA;border-radius:22px;padding:30px 0;box-shadow:0 24px 60px -14px rgba(85,103,234,.55);}
-.cta span{font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:38px;color:#EEF0FC;}
-.micro{text-align:center;font-family:'Instrument Sans',sans-serif;font-weight:500;font-size:22px;color:#C4A86A;opacity:.85;margin-top:20px;letter-spacing:.3px;}
-</style></head><body>
-<div class="ad">
-  <div class="bookmark"></div>
-  <div class="top">
-    <div class="eyebrow">O Meu Salmo</div>
-    <div class="headline">O Salmo certo,<br>pra cada <em>emoção.</em></div>
-    <div class="ref">__REF__</div>
-  </div>
-  <div class="reader">
-"""
 
-FOOT = """
-  </div>
-  <div class="bottom">
-    <div class="chips">
-      <span class="chip" style="color:#8B9AF2;border-color:#8B9AF255;background:#8B9AF21f">Ansiedade</span>
-      <span class="chip" style="color:#8FC287;border-color:#8FC28755;background:#8FC2871f">Sono</span>
-      <span class="chip" style="color:#E2B95C;border-color:#E2B95C55;background:#E2B95C1f">Gratidão</span>
-      <span class="chip" style="color:#C793B1;border-color:#C793B155;background:#C793B11f">Luto</span>
-    </div>
-    <div class="cta"><span>Baixar grátis</span><span>&rarr;</span></div>
-    <div class="micro">Grátis · Sem anúncios</div>
-  </div>
+def frame_html(num):
+    emo, cor, verse = PSALMS[num]
+    return f"""<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;1,300;1,400&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{{margin:0;padding:0;box-sizing:border-box;}}
+body{{width:1080px;height:1920px;overflow:hidden;}}
+.slide{{width:1080px;height:1920px;background:linear-gradient(165deg,#080B1C 0%,#10142C 45%,#141a38 75%,#22307c 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:220px 90px 300px;position:relative;}}
+.watermark{{font-family:'Cormorant',serif;font-size:520px;font-weight:300;color:{cor};opacity:0.06;position:absolute;bottom:-80px;right:-30px;line-height:1;letter-spacing:-24px;}}
+.accent-bar{{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent 0%,{cor} 40%,{cor} 60%,transparent 100%);opacity:0.5;}}
+.bookmark{{position:absolute;top:0;left:50%;transform:translateX(-50%);width:34px;height:50px;background:#5567EA;clip-path:polygon(0 0,100% 0,100% 100%,50% 70%,0 100%);opacity:0.9;}}
+.logo{{position:absolute;top:200px;left:0;right:0;text-align:center;font-family:'Instrument Sans',sans-serif;font-size:26px;font-weight:500;color:#FFFFFF;opacity:0.3;letter-spacing:6px;text-transform:uppercase;}}
+.tag{{font-family:'Instrument Sans',sans-serif;font-size:26px;font-weight:500;letter-spacing:8px;text-transform:uppercase;color:{cor};opacity:0.95;margin-bottom:52px;}}
+.deco{{width:70px;height:2px;background:linear-gradient(90deg,transparent,{cor},transparent);opacity:0.5;margin:0 auto 52px;}}
+.verse{{font-family:'Cormorant',serif;font-size:66px;font-weight:300;font-style:italic;color:#FFFFFF;line-height:1.5;text-align:center;max-width:920px;}}
+.refwrap{{margin-top:64px;display:flex;flex-direction:column;align-items:center;gap:14px;}}
+.refline{{width:36px;height:2px;background:#C4A86A;opacity:0.45;}}
+.ref{{font-family:'Instrument Sans',sans-serif;font-size:28px;font-weight:400;color:#C4A86A;opacity:0.9;letter-spacing:3px;}}
+.cue{{position:absolute;bottom:230px;left:0;right:0;text-align:center;font-family:'Instrument Sans',sans-serif;font-size:24px;font-weight:400;color:#FFFFFF;opacity:0.4;letter-spacing:2px;}}
+</style></head><body>
+<div class="slide">
+  <div class="bookmark"></div>
+  <div class="accent-bar"></div>
+  <div class="watermark">{num}</div>
+  <div class="logo">O Meu Salmo</div>
+  <div class="tag">{emo}</div>
+  <div class="deco"></div>
+  <div class="verse">{verse}</div>
+  <div class="refwrap"><div class="refline"></div><div class="ref">Salmos {num} · narração do app</div></div>
+  <div class="cue">ouça com o som ligado</div>
 </div></body></html>"""
 
 
-def frame_html(num, p):
-    ps = PSALMS[num]
-    lens = [len(l) for l in ps["linhas"]]
-    total = sum(lens)
-    filled = p * total
-    before = 0
-    rows = []
-    for i, line in enumerate(ps["linhas"]):
-        local = max(0.0, min(1.0, (filled - before) / lens[i]))
-        before += lens[i]
-        right = round((1 - local) * 100, 2)
-        esc = H.escape(line)
-        rows.append(
-            f'    <div class="line"><span class="dim">{esc}</span>'
-            f'<span class="lit" style="clip-path:inset(0 {right}% 0 0)">{esc}</span></div>'
-        )
-    ref = f"Salmo {num} · {ps['titulo']}"
-    return HEAD.replace("__REF__", ref) + "\n".join(rows) + FOOT
-
-
 if __name__ == "__main__":
-    num = int(sys.argv[1]); N = int(sys.argv[2]) if len(sys.argv) > 2 else 40
-    os.makedirs("/tmp/reelframes", exist_ok=True)
-    for f in os.listdir("/tmp/reelframes"):
-        os.remove(f"/tmp/reelframes/{f}")
-    for k in range(N):
-        open(f"/tmp/reelframes/f{k:03d}.html", "w").write(frame_html(num, k / (N - 1)))
-    print(f"Salmo {num}: {N} frames (template do vídeo de lançamento)")
+    num = int(sys.argv[1])
+    open("/tmp/reel-frame.html", "w").write(frame_html(num))
+    print(f"Salmo {num}: frame devocional gerado")
