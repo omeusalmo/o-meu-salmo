@@ -1,7 +1,6 @@
 class AppConstants {
   AppConstants._();
 
-  static const String appName = 'Salmos';
   static const String salmosJsonPath = 'assets/salmos.json';
 
   // Chaves SharedPreferences

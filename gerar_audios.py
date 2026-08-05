@@ -18,7 +18,8 @@ warnings.filterwarnings("ignore")
 # ── Caminhos ──────────────────────────────────────────────────────────────────
 
 ROOT        = Path(__file__).parent
-CREDENTIALS = ROOT / "app" / "google-credentials.json"
+# Fora do repo/Dropbox por segurança (chave viva de service account GCP).
+CREDENTIALS = Path.home() / "keystores" / "omeusalmo-gcp-credentials.json"
 SALMOS_JSON = ROOT / "app" / "assets" / "salmos.json"
 AUDIO_DIR   = ROOT / "app" / "assets" / "audios"
 LOG_FILE    = ROOT / "audio_testes" / "geracao.log"

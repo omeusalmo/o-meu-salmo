@@ -103,5 +103,5 @@ São **7 imagens** — subir nesta ordem (jornada emocional; Play destaca as 2-3
 | 6 | s4-reflexao.png | Reflexão | "Mais que ler — pausar" |
 | 7 | s6-favoritos.png | Favoritos | "Os seus, para sempre" |
 
-Brutas (sem moldura, 1080×2400) ficam em `assets/screenshots/` — fonte das emolduradas, não subir.
+Brutas (sem moldura, 1080×2400) ficam em `play-store/screenshots/raw/` — fonte das emolduradas, não subir.
 `todos-salmos` e `ajustes` ficam fora do set final.
