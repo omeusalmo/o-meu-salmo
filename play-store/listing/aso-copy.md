@@ -7,6 +7,8 @@ _Para colar no Google Play Console. Revisado em 2026-06-12 — alinhado com o ap
 `O meu Salmo: Salmos e Orações`
 _(29 chars. Limite 30. Combo "Salmos e Orações" = altíssima busca cristã BR, maior alavanca de rank. Keyword primária: "salmos" + "orações".)_
 
+> ✅ **Decidido pelo conselho de marca em 2026-08-03 (marketing/ASO, branding, gerente, designer, 4/4).** Título oficial. Aplicar no Console (hoje ainda está a variante com travessão "O meu Salmo — Salmos do dia"). "Salmo do dia" fica de fora do título (é retenção, não aquisição; estreita a marca) mas segue na descrição/notificação. Challengers p/ A/B futuro: `O meu Salmo: Salmo do Dia` (25), `O meu Salmo: Orações e Áudio` (28), `O meu Salmo: Salmos por emoção` (30).
+
 ---
 
 ## Descrição curta
