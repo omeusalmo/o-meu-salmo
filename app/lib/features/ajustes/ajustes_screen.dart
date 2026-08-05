@@ -338,7 +338,7 @@ class AjustesScreen extends ConsumerWidget {
 
   Future<void> _abrirPrivacidade() async {
     final uri = Uri.parse(
-      'https://omeusalmo.github.io/o-meu-salmo/privacy_policy.html',
+      'https://omeusalmo.com.br/privacy_policy.html',
     );
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
