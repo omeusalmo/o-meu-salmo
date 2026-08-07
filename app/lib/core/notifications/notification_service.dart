@@ -51,7 +51,13 @@ class NotificationService {
 
   // Agenda notificação diária repetindo todo dia no horário especificado.
   // O número do Salmo é calculado pelo dia do ano para variar sem servidor.
-  Future<void> scheduleDailySalmo(int hour, int minute) async {
+  // [totalSalmos] vem da lista real (salmosProvider) — nunca hardcoded aqui,
+  // senão uma mudança no catálogo pode sugerir um Salmo que não existe.
+  Future<void> scheduleDailySalmo(
+    int hour,
+    int minute, {
+    required int totalSalmos,
+  }) async {
     await cancelDailySalmo();
 
     final now = tz.TZDateTime.now(tz.local);
@@ -62,7 +68,7 @@ class NotificationService {
       scheduled = scheduled.add(const Duration(days: 1));
     }
 
-    final numero = (_dayOfYear(scheduled) - 1) % 150 + 1;
+    final numero = (_dayOfYear(scheduled) - 1) % totalSalmos + 1;
 
     await _plugin.zonedSchedule(
       _dailyPsalmId,

@@ -8,6 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../core/extensions/build_context_extensions.dart';
 import '../../core/notifications/notification_service.dart';
 import '../../core/theme/app_theme.dart';
+import '../../data/providers/salmos_providers.dart';
 import '../../data/providers/settings_provider.dart';
 import '../../shared/widgets/circle_icon_button.dart';
 
@@ -224,7 +225,10 @@ class _NotificationCard extends ConsumerWidget {
     if (enable) {
       final granted = await NotificationService.instance.requestPermission();
       if (!granted) return;
-      await NotificationService.instance.scheduleDailySalmo(hour, minute);
+      await NotificationService.instance.scheduleDailySalmo(
+        hour, minute,
+        totalSalmos: _totalSalmos(ref),
+      );
     } else {
       await NotificationService.instance.cancelDailySalmo();
     }
@@ -244,8 +248,16 @@ class _NotificationCard extends ConsumerWidget {
     );
     if (picked == null) return;
     await ref.read(notificationSettingsProvider.notifier).setTime(picked.hour, picked.minute);
-    await NotificationService.instance.scheduleDailySalmo(picked.hour, picked.minute);
+    await NotificationService.instance.scheduleDailySalmo(
+      picked.hour, picked.minute,
+      totalSalmos: _totalSalmos(ref),
+    );
   }
+
+  // Fallback 150 só cobre o instante raríssimo em que salmosProvider ainda
+  // não carregou quando o usuário liga a notificação.
+  int _totalSalmos(WidgetRef ref) =>
+      ref.read(salmosProvider).value?.length ?? 150;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

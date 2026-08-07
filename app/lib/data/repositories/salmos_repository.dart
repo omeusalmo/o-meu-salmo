@@ -13,6 +13,7 @@ import '../../core/constants/app_constants.dart';
 class SalmosRepository {
   List<Salmo>? _cachedSalmos;
   List<Colecao>? _cachedColecoes;
+  Map<int, Salmo>? _salmosPorNumero;
 
   Future<List<Salmo>> getSalmos() async {
     if (_cachedSalmos != null) return _cachedSalmos!;
@@ -27,12 +28,8 @@ class SalmosRepository {
   }
 
   Future<Salmo?> getSalmoPorNumero(int numero) async {
-    final list = await getSalmos();
-    try {
-      return list.firstWhere((s) => s.numero == numero);
-    } catch (_) {
-      return null;
-    }
+    await getSalmos(); // garante _salmosPorNumero carregado
+    return _salmosPorNumero![numero];
   }
 
   Future<List<Salmo>> getSalmosPorTema(String tema) async {
@@ -52,6 +49,7 @@ class SalmosRepository {
   void invalidateCache() {
     _cachedSalmos = null;
     _cachedColecoes = null;
+    _salmosPorNumero = null;
   }
 
   Future<void> _loadJson() async {
@@ -68,6 +66,7 @@ class SalmosRepository {
         debugPrint('[Salmos] registro ignorado: $e');
       }
     }
+    _salmosPorNumero = {for (final s in _cachedSalmos!) s.numero: s};
 
     _cachedColecoes = [];
     for (final c in (data['colecoes'] as List? ?? [])) {
