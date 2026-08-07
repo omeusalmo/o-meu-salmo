@@ -78,10 +78,6 @@ class _HomeContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final accent  = context.colorAccent;
-    final titleClr = context.colorTitle;
-    final muted   = context.colorText;
-
     return Stack(
       children: [
         // Céu de partículas calmas atrás de todo o conteúdo (conceito LP V2)
@@ -94,158 +90,23 @@ class _HomeContent extends StatelessWidget {
               ),
               sliver: SliverList(
                 delegate: SliverChildListDelegate([
-
-                  // ── Cabeçalho: wordmark + engrenagem ─────────────────────
-                  StaggeredEntrance(
-                    index: 0,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        RichText(
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: 'O MEU ',
-                                style: GoogleFonts.instrumentSans(
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w400,
-                                  letterSpacing: 2.8,
-                                  color: muted,
-                                ),
-                              ),
-                              TextSpan(
-                                text: 'Salmo',
-                                style: GoogleFonts.playfairDisplay(
-                                  fontSize: 19,
-                                  fontStyle: FontStyle.italic,
-                                  fontWeight: FontWeight.w400,
-                                  color: accent,
-                                  height: 1.0,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const Spacer(),
-                        Semantics(
-                          label: 'Configurações',
-                          button: true,
-                          child: GestureDetector(
-                            onTap: () => context.push('/ajustes'),
-                            child: Icon(Icons.settings_outlined, size: 20, color: muted),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  const StaggeredEntrance(index: 0, child: _HomeHeader()),
                   const SizedBox(height: AppTheme.sp10),
 
-                  StaggeredEntrance(
-                    index: 1,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          _formatDate(DateTime.now()),
-                          style: GoogleFonts.instrumentSans(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: context.colorText,
-                            letterSpacing: 0.5,
-                          ),
-                        ),
-                        const SizedBox(height: AppTheme.sp1),
-                        Text(
-                          'Para hoje,',
-                          style: GoogleFonts.playfairDisplay(
-                            fontSize: 22,
-                            fontStyle: FontStyle.italic,
-                            fontWeight: FontWeight.w400,
-                            color: titleClr,
-                            height: 1.1,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
+                  const StaggeredEntrance(index: 1, child: _TodayGreeting()),
                   const SizedBox(height: AppTheme.sp8),
 
-                  // ── Número hero do salmo ──────────────────────────────────
                   StaggeredEntrance(
                     index: 2,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        RichText(
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          text: TextSpan(
-                            style: GoogleFonts.playfairDisplay(
-                              fontSize: 52,
-                              fontWeight: FontWeight.w400,
-                              color: titleClr,
-                              height: 0.88,
-                              letterSpacing: -1.3,
-                            ),
-                            children: [
-                              const TextSpan(text: 'Salmo '),
-                              TextSpan(
-                                text: '${salmo.numero}',
-                                style: TextStyle(
-                                  fontStyle: FontStyle.italic,
-                                  color: accent,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        if (salmo.titulo.isNotEmpty) ...[
-                          const SizedBox(height: AppTheme.sp2),
-                          Text(
-                            salmo.titulo,
-                            style: GoogleFonts.instrumentSans(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              color: context.colorText,
-                              letterSpacing: 0.2,
-                            ),
-                          ),
-                        ],
-                        if (salmo.temas.isNotEmpty) ...[
-                          const SizedBox(height: AppTheme.sp3),
-                          // Emoção da curadoria — reforça o sentimento do dia.
-                          TemaChips(salmo.temas, max: 2),
-                        ],
-                      ],
-                    ),
+                    child: _PsalmHeroSection(salmo: salmo),
                   ),
-
                   const SizedBox(height: AppTheme.sp6),
 
                   // ── Versículo-âncora (em âmbar, palavra a palavra) ────────
                   if (salmo.versiculos.isNotEmpty) ...[
                     StaggeredEntrance(
                       index: 3,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border(
-                            left: BorderSide(color: accent, width: 2),
-                          ),
-                        ),
-                        padding: const EdgeInsets.only(left: AppTheme.sp4),
-                        child: WordRevealText(
-                          text: salmo.versiculos.first,
-                          delay: const Duration(milliseconds: 450),
-                          style: GoogleFonts.cormorant(
-                            fontSize: 19,
-                            fontStyle: FontStyle.italic,
-                            fontWeight: FontWeight.w400,
-                            height: 1.6,
-                            color: context.colorVerse,
-                          ),
-                        ),
-                      ),
+                      child: _AnchorVerse(texto: salmo.versiculos.first),
                     ),
                     const SizedBox(height: AppTheme.sp8),
                   ],
@@ -263,36 +124,8 @@ class _HomeContent extends StatelessWidget {
                     const SizedBox(height: AppTheme.sp3),
                     StaggeredEntrance(
                       index: 5,
-                      child: Semantics(
-                        label: 'Reflexão liberada. Abrir o Salmo.',
-                        button: true,
-                        child: GestureDetector(
-                          onTap: () => context.push('/salmos/${salmo.numero}'),
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                            decoration: BoxDecoration(
-                              color: accent.withAlpha(18),
-                              borderRadius: BorderRadius.circular(AppTheme.radiusPill),
-                              border: Border.all(color: accent.withAlpha(60), width: 0.5),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(Icons.lock_open_outlined, size: 12, color: accent),
-                                const SizedBox(width: 5),
-                                Text(
-                                  'reflexão liberada',
-                                  style: GoogleFonts.instrumentSans(
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.w500,
-                                    color: accent,
-                                    letterSpacing: 0.3,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                      child: _ReflexaoLiberadaChip(
+                        onTap: () => context.push('/salmos/${salmo.numero}'),
                       ),
                     ),
                   ],
@@ -322,19 +155,249 @@ class _HomeContent extends StatelessWidget {
       ],
     );
   }
+}
 
-  // Data em português sem depender do pacote intl
-  static String _formatDate(DateTime d) {
-    const days = [
-      'domingo', 'segunda-feira', 'terça-feira', 'quarta-feira',
-      'quinta-feira', 'sexta-feira', 'sábado',
-    ];
-    const months = [
-      'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
-      'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro',
-    ];
-    // weekday: 1=seg … 7=dom → índice 0=dom
-    return '${days[d.weekday % 7]}, ${d.day} de ${months[d.month - 1]}';
+// Data em português sem depender do pacote intl
+String _formatDate(DateTime d) {
+  const days = [
+    'domingo', 'segunda-feira', 'terça-feira', 'quarta-feira',
+    'quinta-feira', 'sexta-feira', 'sábado',
+  ];
+  const months = [
+    'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
+    'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro',
+  ];
+  // weekday: 1=seg … 7=dom → índice 0=dom
+  return '${days[d.weekday % 7]}, ${d.day} de ${months[d.month - 1]}';
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Cabeçalho: wordmark + engrenagem
+// ─────────────────────────────────────────────────────────────────────────────
+
+class _HomeHeader extends StatelessWidget {
+  const _HomeHeader();
+
+  @override
+  Widget build(BuildContext context) {
+    final accent = context.colorAccent;
+    final muted = context.colorText;
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: 'O MEU ',
+                style: GoogleFonts.instrumentSans(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w400,
+                  letterSpacing: 2.8,
+                  color: muted,
+                ),
+              ),
+              TextSpan(
+                text: 'Salmo',
+                style: GoogleFonts.playfairDisplay(
+                  fontSize: 19,
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.w400,
+                  color: accent,
+                  height: 1.0,
+                ),
+              ),
+            ],
+          ),
+        ),
+        const Spacer(),
+        Semantics(
+          label: 'Configurações',
+          button: true,
+          child: GestureDetector(
+            onTap: () => context.push('/ajustes'),
+            child: Icon(Icons.settings_outlined, size: 20, color: muted),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// "sexta-feira, 7 de agosto" + "Para hoje,"
+// ─────────────────────────────────────────────────────────────────────────────
+
+class _TodayGreeting extends StatelessWidget {
+  const _TodayGreeting();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          _formatDate(DateTime.now()),
+          style: GoogleFonts.instrumentSans(
+            fontSize: 12,
+            fontWeight: FontWeight.w400,
+            color: context.colorText,
+            letterSpacing: 0.5,
+          ),
+        ),
+        const SizedBox(height: AppTheme.sp1),
+        Text(
+          'Para hoje,',
+          style: GoogleFonts.playfairDisplay(
+            fontSize: 22,
+            fontStyle: FontStyle.italic,
+            fontWeight: FontWeight.w400,
+            color: context.colorTitle,
+            height: 1.1,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Número hero do salmo — "Salmo N", título, temas
+// ─────────────────────────────────────────────────────────────────────────────
+
+class _PsalmHeroSection extends StatelessWidget {
+  final Salmo salmo;
+  const _PsalmHeroSection({required this.salmo});
+
+  @override
+  Widget build(BuildContext context) {
+    final accent = context.colorAccent;
+    final titleClr = context.colorTitle;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        RichText(
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+          text: TextSpan(
+            style: GoogleFonts.playfairDisplay(
+              fontSize: 52,
+              fontWeight: FontWeight.w400,
+              color: titleClr,
+              height: 0.88,
+              letterSpacing: -1.3,
+            ),
+            children: [
+              const TextSpan(text: 'Salmo '),
+              TextSpan(
+                text: '${salmo.numero}',
+                style: TextStyle(
+                  fontStyle: FontStyle.italic,
+                  color: accent,
+                ),
+              ),
+            ],
+          ),
+        ),
+        if (salmo.titulo.isNotEmpty) ...[
+          const SizedBox(height: AppTheme.sp2),
+          Text(
+            salmo.titulo,
+            style: GoogleFonts.instrumentSans(
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+              color: context.colorText,
+              letterSpacing: 0.2,
+            ),
+          ),
+        ],
+        if (salmo.temas.isNotEmpty) ...[
+          const SizedBox(height: AppTheme.sp3),
+          // Emoção da curadoria — reforça o sentimento do dia.
+          TemaChips(salmo.temas, max: 2),
+        ],
+      ],
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Versículo-âncora (em âmbar, palavra a palavra)
+// ─────────────────────────────────────────────────────────────────────────────
+
+class _AnchorVerse extends StatelessWidget {
+  final String texto;
+  const _AnchorVerse({required this.texto});
+
+  @override
+  Widget build(BuildContext context) {
+    final accent = context.colorAccent;
+
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(left: BorderSide(color: accent, width: 2)),
+      ),
+      padding: const EdgeInsets.only(left: AppTheme.sp4),
+      child: WordRevealText(
+        text: texto,
+        delay: const Duration(milliseconds: 450),
+        style: GoogleFonts.cormorant(
+          fontSize: 19,
+          fontStyle: FontStyle.italic,
+          fontWeight: FontWeight.w400,
+          height: 1.6,
+          color: context.colorVerse,
+        ),
+      ),
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Pill "reflexão liberada"
+// ─────────────────────────────────────────────────────────────────────────────
+
+class _ReflexaoLiberadaChip extends StatelessWidget {
+  final VoidCallback onTap;
+  const _ReflexaoLiberadaChip({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    final accent = context.colorAccent;
+
+    return Semantics(
+      label: 'Reflexão liberada. Abrir o Salmo.',
+      button: true,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+          decoration: BoxDecoration(
+            color: accent.withAlpha(18),
+            borderRadius: BorderRadius.circular(AppTheme.radiusPill),
+            border: Border.all(color: accent.withAlpha(60), width: 0.5),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.lock_open_outlined, size: 12, color: accent),
+              const SizedBox(width: 5),
+              Text(
+                'reflexão liberada',
+                style: GoogleFonts.instrumentSans(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w500,
+                  color: accent,
+                  letterSpacing: 0.3,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 

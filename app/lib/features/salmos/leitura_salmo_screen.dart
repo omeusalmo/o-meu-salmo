@@ -13,6 +13,7 @@ import '../../data/providers/audio_provider.dart';
 import '../../data/providers/favoritos_provider.dart';
 import '../../data/providers/salmos_providers.dart';
 import '../../shared/widgets/audio_player_bar.dart';
+import '../../shared/widgets/circle_icon_button.dart';
 import '../../shared/widgets/eyebrow_label.dart';
 import '../../shared/widgets/error_state_view.dart';
 import '../../shared/widgets/tema_chip.dart';
@@ -142,19 +143,19 @@ class _Header extends StatelessWidget {
       ),
       child: Row(
         children: [
-          _IconBtn(
+          CircleIconButton(
             onTap: () => context.canPop() ? context.pop() : context.go('/salmos'),
             semanticsLabel: 'Voltar',
             child: Icon(Icons.arrow_back_ios_new_rounded, size: 18, color: muted),
           ),
           const Spacer(),
-          _IconBtn(
+          CircleIconButton(
             onTap: () => context.push('/compositor?numero=${salmo.numero}'),
             semanticsLabel: 'Compartilhar Salmo',
             child: Icon(Icons.ios_share_rounded, size: 18, color: muted),
           ),
           const SizedBox(width: AppTheme.sp2),
-          _IconBtn(
+          CircleIconButton(
             onTap: onFavoritoTap,
             semanticsLabel: isFavorito ? 'Remover dos favoritos' : 'Guardar nos favoritos',
             child: AnimatedSwitcher(
@@ -497,44 +498,6 @@ class _ReflexaoContent extends StatelessWidget {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Botão de ícone circular
-// ─────────────────────────────────────────────────────────────────────────────
-
-class _IconBtn extends StatelessWidget {
-  final VoidCallback? onTap;
-  final Widget child;
-  final String semanticsLabel;
-
-  const _IconBtn({
-    required this.onTap,
-    required this.child,
-    required this.semanticsLabel,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final border = context.colorBorder;
-
-    return Semantics(
-      label: semanticsLabel,
-      button: true,
-      child: GestureDetector(
-        onTap: onTap,
-        child: Container(
-          width: 44,
-          height: 44,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(color: border, width: 0.5),
-          ),
-          child: Center(child: child),
-        ),
-      ),
-    );
-  }
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
 // Estados de carregamento / erro / não encontrado
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -632,7 +595,7 @@ class _BackBar extends StatelessWidget {
       ),
       child: Row(
         children: [
-          _IconBtn(
+          CircleIconButton(
             onTap: () {
               final router = GoRouter.of(context);
               router.canPop() ? router.pop() : router.go('/salmos');

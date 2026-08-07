@@ -3,8 +3,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../core/analytics/analytics_service.dart';
 import '../../core/constants/app_constants.dart';
 
-const _kTimestampsKey = 'fav_timestamps';
-
 final _sharedPrefsProvider = FutureProvider<SharedPreferences>(
   (_) => SharedPreferences.getInstance(),
 );
@@ -13,7 +11,7 @@ class FavTimestampsNotifier extends AsyncNotifier<Map<int, int>> {
   @override
   Future<Map<int, int>> build() async {
     final prefs = await ref.watch(_sharedPrefsProvider.future);
-    final list = prefs.getStringList(_kTimestampsKey) ?? [];
+    final list = prefs.getStringList(AppConstants.prefFavTimestamps) ?? [];
     final entries = <MapEntry<int, int>>[];
     for (final e in list) {
       final idx = e.indexOf(':');
@@ -42,7 +40,7 @@ class FavTimestampsNotifier extends AsyncNotifier<Map<int, int>> {
   Future<void> _save(Map<int, int> data) async {
     final prefs = await ref.read(_sharedPrefsProvider.future);
     await prefs.setStringList(
-      _kTimestampsKey,
+      AppConstants.prefFavTimestamps,
       data.entries.map((e) => '${e.key}:${e.value}').toList(),
     );
   }

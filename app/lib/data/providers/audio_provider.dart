@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:audio_session/audio_session.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
@@ -43,6 +45,8 @@ class AudioState {
 class AudioPlayerNotifier extends Notifier<AudioState> {
   late final AudioPlayer _player;
   String? _currentPath;
+  StreamSubscription<Duration>? _positionSub;
+  StreamSubscription<bool>? _playingSub;
 
   @override
   AudioState build() {
@@ -62,19 +66,26 @@ class AudioPlayerNotifier extends Notifier<AudioState> {
         ));
 
     // Sincroniza posição em tempo real
-    _player.positionStream.listen((pos) {
+    _positionSub = _player.positionStream.listen((pos) {
       if (state.isAvailable) {
         state = state.copyWith(position: pos);
       }
     });
 
     // Sincroniza estado playing/paused
-    _player.playingStream.listen((playing) {
+    _playingSub = _player.playingStream.listen((playing) {
       state = state.copyWith(isPlaying: playing);
     });
 
-    // Limpa player quando o provider é descartado (navegação sai da tela)
-    ref.onDispose(() => _player.dispose());
+    // Limpa player quando o provider é descartado (navegação sai da tela).
+    // Cancela as subscriptions primeiro — sem isso, um evento de posição que
+    // chegue bem na hora do dispose tentaria atualizar state depois do
+    // provider morto.
+    ref.onDispose(() {
+      _positionSub?.cancel();
+      _playingSub?.cancel();
+      _player.dispose();
+    });
 
     return const AudioState();
   }

@@ -16,6 +16,9 @@ class AppConstants {
   static const String prefOnboardingDone     = 'onboarding_done';
   static const String prefEmocaoInicial      = 'emocao_inicial';
   static const String prefUsageDataEnabled   = 'usage_data_enabled';
+  static const String prefFavTimestamps      = 'fav_timestamps';
+  static const String prefReviewSessionCount = 'review_session_count';
+  static const String prefReviewRequested    = 'review_requested';
 
   static const int defaultNotifHour   = 8;
   static const int defaultNotifMinute = 0;

@@ -6,6 +6,7 @@ import '../../core/extensions/build_context_extensions.dart';
 import '../../core/theme/app_theme.dart';
 import '../../shared/widgets/ambient_glow.dart';
 import '../../shared/widgets/breathing_circle.dart';
+import '../../shared/widgets/circle_icon_button.dart';
 import '../../shared/widgets/eyebrow_label.dart';
 import '../../shared/widgets/staggered_entrance.dart';
 
@@ -41,27 +42,13 @@ class RespirarScreen extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      Semantics(
-                        label: 'Fechar',
-                        button: true,
-                        child: GestureDetector(
-                          onTap: () => context.pop(),
-                          child: Container(
-                            width: 44,
-                            height: 44,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: context.colorBorder,
-                                width: 0.5,
-                              ),
-                            ),
-                            child: Icon(
-                              Icons.close_rounded,
-                              size: 18,
-                              color: muted,
-                            ),
-                          ),
+                      CircleIconButton(
+                        onTap: () => context.pop(),
+                        semanticsLabel: 'Fechar',
+                        child: Icon(
+                          Icons.close_rounded,
+                          size: 18,
+                          color: muted,
                         ),
                       ),
                     ],

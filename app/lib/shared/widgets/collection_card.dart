@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../core/extensions/build_context_extensions.dart';
 import '../../core/theme/app_theme.dart';
+import '../../data/models/colecao.dart';
 
 class CollectionCard extends StatelessWidget {
   final String titulo;
@@ -24,14 +25,8 @@ class CollectionCard extends StatelessWidget {
     this.ghostNumber,
   });
 
-  static Color _emoDot(String? id) => switch (id) {
-    'ansiedade'            => AppColors.emoAnsiedadeDot,
-    'sono' || 'protecao'   => AppColors.emoPazDot,
-    'gratidao' || 'louvor' => AppColors.emoGratidaoDot,
-    'luto'                 => AppColors.emoLutoDot,
-    'perdao'               => AppColors.emoDuvidaDot,
-    _                      => AppColors.emoEsperancaDot,
-  };
+  static Color _emoDot(String? id) =>
+      kColecaoDotColor[id] ?? AppColors.emoEsperancaDot;
 
   @override
   Widget build(BuildContext context) {

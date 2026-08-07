@@ -8,6 +8,7 @@ import '../../core/extensions/build_context_extensions.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/salmo.dart';
 import '../../data/providers/salmos_providers.dart';
+import '../../shared/widgets/circle_icon_button.dart';
 import '../../shared/widgets/error_state_view.dart';
 import '../../shared/widgets/eyebrow_label.dart';
 import '../../shared/widgets/psalm_card.dart';
@@ -157,26 +158,13 @@ class _Header extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Semantics(
-            label: 'Voltar',
-            button: true,
-            child: GestureDetector(
-              onTap: () => context.canPop() ? context.pop() : context.go('/colecoes'),
-              child: Container(
-                width: 44,
-                height: 44,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: border, width: 0.5),
-                ),
-                child: Center(
-                  child: Icon(
-                    Icons.arrow_back_ios_new_rounded,
-                    size: 18,
-                    color: context.colorText,
-                  ),
-                ),
-              ),
+          CircleIconButton(
+            onTap: () => context.canPop() ? context.pop() : context.go('/colecoes'),
+            semanticsLabel: 'Voltar',
+            child: Icon(
+              Icons.arrow_back_ios_new_rounded,
+              size: 18,
+              color: context.colorText,
             ),
           ),
           const SizedBox(width: AppTheme.sp3),

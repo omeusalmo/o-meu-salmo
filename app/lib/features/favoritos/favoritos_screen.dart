@@ -22,22 +22,13 @@ class FavoritosScreen extends ConsumerStatefulWidget {
 class _FavoritosScreenState extends ConsumerState<FavoritosScreen> {
   _FavSortOrder _sortOrder = _FavSortOrder.byNumber;
 
-  // Cached sorted list — recomputed only when inputs change
-  List<Salmo> _cachedList = [];
-  Set<int>     _lastNumeros    = {};
-  Map<int, int> _lastTimestamps = {};
-  _FavSortOrder _lastSortOrder = _FavSortOrder.byNumber;
-
+  // Reordenar até ~150 favoritos a cada build é instantâneo — sem necessidade
+  // de cache manual (a tela irmã todos_salmos_screen.dart faz o mesmo).
   List<Salmo> _sortedFavoritos({
     required Set<int>      numeros,
     required List<Salmo>   todos,
     required Map<int, int> timestamps,
   }) {
-    if (numeros == _lastNumeros &&
-        timestamps == _lastTimestamps &&
-        _sortOrder == _lastSortOrder) {
-      return _cachedList;
-    }
     final list = todos.where((s) => numeros.contains(s.numero)).toList();
     if (_sortOrder == _FavSortOrder.byRecent) {
       list.sort((a, b) {
@@ -48,10 +39,6 @@ class _FavoritosScreenState extends ConsumerState<FavoritosScreen> {
     } else {
       list.sort((a, b) => a.numero.compareTo(b.numero));
     }
-    _lastNumeros    = numeros;
-    _lastTimestamps = timestamps;
-    _lastSortOrder  = _sortOrder;
-    _cachedList     = list;
     return list;
   }
 
