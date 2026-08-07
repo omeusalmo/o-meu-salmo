@@ -16,6 +16,17 @@ import '../../data/models/salmo.dart';
 import '../../data/providers/salmos_providers.dart';
 import '../../shared/widgets/eyebrow_label.dart';
 
+// Fundos disponíveis pro card de compartilhamento — constantes fixas, não
+// fazem parte do estado da tela (por isso ficam fora de _CompositorBody).
+const _fundos = [
+  AppColors.nightBase,  // Noite
+  AppColors.nightPlus,  // Profundo
+  AppColors.cobalt500,  // Cobalto
+  AppColors.dayBase,    // Névoa (day-base)
+  AppColors.dayPlus,    // Bruma (day-plus)
+];
+const _fundoLabels = ['Noite', 'Profundo', 'Cobalto', 'Névoa', 'Bruma'];
+
 class CompositorScreen extends ConsumerStatefulWidget {
   final int numero;
 
@@ -30,15 +41,6 @@ class _CompositorScreenState extends ConsumerState<CompositorScreen> {
   int _versicoloIdx = 0;
   int _fundoIdx = 0;
   bool _sharing = false;
-
-  static const _fundos = [
-    AppColors.nightBase,  // Noite
-    AppColors.nightPlus,  // Profundo
-    AppColors.cobalt500,  // Cobalto
-    AppColors.dayBase,    // Névoa (day-base)
-    AppColors.dayPlus,    // Bruma (day-plus)
-  ];
-  static const _fundoLabels = ['Noite', 'Profundo', 'Cobalto', 'Névoa', 'Bruma'];
 
   Future<void> _share(Salmo salmo) async {
     if (_sharing) return;
@@ -101,8 +103,6 @@ class _CompositorScreenState extends ConsumerState<CompositorScreen> {
                   cardKey: _cardKey,
                   versicoloIdx: _versicoloIdx,
                   fundoIdx: _fundoIdx,
-                  fundos: _fundos,
-                  fundoLabels: _fundoLabels,
                   sharing: _sharing,
                   onVersicoloChanged: (i) => setState(() => _versicoloIdx = i),
                   onFundoChanged: (i) => setState(() => _fundoIdx = i),
@@ -121,8 +121,6 @@ class _CompositorBody extends StatelessWidget {
   final GlobalKey cardKey;
   final int versicoloIdx;
   final int fundoIdx;
-  final List<Color> fundos;
-  final List<String> fundoLabels;
   final bool sharing;
   final ValueChanged<int> onVersicoloChanged;
   final ValueChanged<int> onFundoChanged;
@@ -133,8 +131,6 @@ class _CompositorBody extends StatelessWidget {
     required this.cardKey,
     required this.versicoloIdx,
     required this.fundoIdx,
-    required this.fundos,
-    required this.fundoLabels,
     required this.sharing,
     required this.onVersicoloChanged,
     required this.onFundoChanged,
@@ -164,7 +160,7 @@ class _CompositorBody extends StatelessWidget {
                     child: _ShareCard(
                       salmo: salmo,
                       versicoloIdx: versicoloIdx,
-                      fundo: fundos[fundoIdx],
+                      fundo: _fundos[fundoIdx],
                     ),
                   ),
                 ),
@@ -174,12 +170,12 @@ class _CompositorBody extends StatelessWidget {
                 const EyebrowLabel('Fundo'),
                 const SizedBox(height: AppTheme.sp3),
                 Row(
-                  children: List.generate(fundos.length, (i) => Padding(
+                  children: List.generate(_fundos.length, (i) => Padding(
                     padding: EdgeInsets.only(
-                        right: i < fundos.length - 1 ? AppTheme.sp3 : 0),
+                        right: i < _fundos.length - 1 ? AppTheme.sp3 : 0),
                     child: _FundoChip(
-                      color: fundos[i],
-                      label: fundoLabels[i],
+                      color: _fundos[i],
+                      label: _fundoLabels[i],
                       selected: i == fundoIdx,
                       onTap: () => onFundoChanged(i),
                     ),
@@ -460,7 +456,7 @@ class _Header extends StatelessWidget {
       child: Row(
         children: [
           CircleIconButton(
-            onTap: () => context.canPop() ? context.pop() : context.go('/salmos'),
+            onTap: () => context.popOrGo('/salmos'),
             semanticsLabel: 'Voltar',
             child: Icon(Icons.arrow_back_ios_new_rounded, size: 18, color: muted),
           ),

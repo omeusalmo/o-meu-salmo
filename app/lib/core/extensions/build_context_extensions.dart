@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../theme/app_theme.dart';
 
 extension BuildContextX on BuildContext {
@@ -12,4 +13,8 @@ extension BuildContextX on BuildContext {
   Color get colorMuted   => isDark ? AppColors.nightMuted : AppColors.dayMuted;
   Color get colorAccent  => isDark ? AppColors.cobalt400  : AppColors.cobalt500;
   Color get colorVerse   => isDark ? AppColors.gold       : AppColors.goldInk;
+
+  /// Volta se der (pilha de navegação tem histórico); senão vai pra [fallback].
+  /// Cobre o caso de abrir a tela direto por deep link, sem histórico.
+  void popOrGo(String fallback) => canPop() ? pop() : go(fallback);
 }

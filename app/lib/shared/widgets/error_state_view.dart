@@ -33,7 +33,7 @@ class ErrorStateView extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon, size: 40, color: accent.withValues(alpha: 0.55)),
+            Icon(icon, size: 40, color: accent.withAlpha(140)),
             const SizedBox(height: AppTheme.sp4),
             Text(
               titulo,
@@ -62,7 +62,7 @@ class ErrorStateView extends StatelessWidget {
                 onPressed: onAcao,
                 style: OutlinedButton.styleFrom(
                   foregroundColor: accent,
-                  side: BorderSide(color: accent.withValues(alpha: 0.5)),
+                  side: BorderSide(color: accent.withAlpha(128)),
                   shape: const StadiumBorder(),
                   padding: const EdgeInsets.symmetric(
                     horizontal: AppTheme.sp6,

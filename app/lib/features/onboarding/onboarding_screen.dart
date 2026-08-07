@@ -8,6 +8,7 @@ import '../../core/extensions/build_context_extensions.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/providers/onboarding_provider.dart';
 import '../../data/providers/settings_provider.dart';
+import '../../shared/widgets/bookmark_painter.dart';
 
 class OnboardingScreen extends ConsumerStatefulWidget {
   const OnboardingScreen({super.key});
@@ -219,7 +220,7 @@ class _Page1 extends StatelessWidget {
               const SizedBox(
                 width: 48,
                 height: 70,
-                child: CustomPaint(painter: _BookmarkPainter()),
+                child: CustomPaint(painter: BookmarkPainter()),
               ),
               const SizedBox(height: AppTheme.sp8),
               Text(
@@ -278,8 +279,7 @@ class _Page2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = context.isDark;
-    final cardBg = isDark ? AppColors.nightPlus : Colors.white;
+    final cardBg = context.colorSurface;
     final titleClr = context.colorTitle;
     final textClr = context.colorText;
     final border = context.colorBorder;
@@ -672,28 +672,4 @@ class _Page4 extends StatelessWidget {
       ),
     );
   }
-}
-
-// ── Bookmark (mesma forma da splash screen) ────────────────────────────────────
-
-class _BookmarkPainter extends CustomPainter {
-  const _BookmarkPainter();
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = Colors.white
-      ..style = PaintingStyle.fill;
-    final path = Path()
-      ..moveTo(0, 0)
-      ..lineTo(size.width, 0)
-      ..lineTo(size.width, size.height)
-      ..lineTo(size.width / 2, size.height * 0.72)
-      ..lineTo(0, size.height)
-      ..close();
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter old) => false;
 }

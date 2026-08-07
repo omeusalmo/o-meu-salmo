@@ -156,7 +156,7 @@ class _Header extends StatelessWidget {
       child: Row(
         children: [
           CircleIconButton(
-            onTap: () => context.canPop() ? context.pop() : context.go('/colecoes'),
+            onTap: () => context.popOrGo('/colecoes'),
             semanticsLabel: 'Voltar',
             child: Icon(
               Icons.arrow_back_ios_new_rounded,

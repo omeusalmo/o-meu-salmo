@@ -144,7 +144,7 @@ class _Header extends StatelessWidget {
       child: Row(
         children: [
           CircleIconButton(
-            onTap: () => context.canPop() ? context.pop() : context.go('/salmos'),
+            onTap: () => context.popOrGo('/salmos'),
             semanticsLabel: 'Voltar',
             child: Icon(Icons.arrow_back_ios_new_rounded, size: 18, color: muted),
           ),
@@ -596,10 +596,7 @@ class _BackBar extends StatelessWidget {
       child: Row(
         children: [
           CircleIconButton(
-            onTap: () {
-              final router = GoRouter.of(context);
-              router.canPop() ? router.pop() : router.go('/salmos');
-            },
+            onTap: () => context.popOrGo('/salmos'),
             semanticsLabel: 'Voltar',
             child: Icon(Icons.arrow_back_ios_new_rounded, size: 18, color: muted),
           ),
