@@ -79,10 +79,7 @@ class _FavoritosScreenState extends ConsumerState<FavoritosScreen> {
       body = Center(
         child: Text(
           'Não consegui carregar seus favoritos.',
-          style: GoogleFonts.instrumentSans(
-            fontSize: 15,
-            color: muted,
-          ),
+          style: AppTheme.body15(muted),
         ),
       );
     } else {
@@ -126,7 +123,7 @@ class _FavoritosScreenState extends ConsumerState<FavoritosScreen> {
                     const SizedBox(width: 8),
                     Text(
                       'Por número',
-                      style: GoogleFonts.instrumentSans(fontSize: 14, color: titleClr),
+                      style: AppTheme.caption14(titleClr),
                     ),
                   ],
                 ),
@@ -142,7 +139,7 @@ class _FavoritosScreenState extends ConsumerState<FavoritosScreen> {
                     const SizedBox(width: 8),
                     Text(
                       'Mais recentes',
-                      style: GoogleFonts.instrumentSans(fontSize: 14, color: titleClr),
+                      style: AppTheme.caption14(titleClr),
                     ),
                   ],
                 ),
@@ -228,10 +225,7 @@ class _EmptyState extends StatelessWidget {
             Text(
               'Nenhum Salmo guardado ainda.',
               textAlign: TextAlign.center,
-              style: GoogleFonts.instrumentSans(
-                fontSize: 15,
-                color: text,
-              ),
+              style: AppTheme.body15(text),
             ),
             const SizedBox(height: AppTheme.sp2),
             Text(

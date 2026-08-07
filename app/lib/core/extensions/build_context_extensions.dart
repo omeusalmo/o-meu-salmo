@@ -9,5 +9,7 @@ extension BuildContextX on BuildContext {
   Color get colorBorder  => isDark ? AppColors.nightLine  : AppColors.dayLine;
   Color get colorTitle   => isDark ? AppColors.nightCream : AppColors.dayTitle;
   Color get colorText    => isDark ? AppColors.nightText  : AppColors.dayText;
+  Color get colorMuted   => isDark ? AppColors.nightMuted : AppColors.dayMuted;
   Color get colorAccent  => isDark ? AppColors.cobalt400  : AppColors.cobalt500;
+  Color get colorVerse   => isDark ? AppColors.gold       : AppColors.goldInk;
 }

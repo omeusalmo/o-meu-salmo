@@ -71,10 +71,7 @@ class ErrorStateView extends StatelessWidget {
                 ),
                 child: Text(
                   acaoLabel!,
-                  style: GoogleFonts.instrumentSans(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  style: AppTheme.emphasis14(),
                 ),
               ),
             ],

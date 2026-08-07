@@ -80,8 +80,7 @@ class _CompositorScreenState extends ConsumerState<CompositorScreen> {
   @override
   Widget build(BuildContext context) {
     final asyncSalmo = ref.watch(salmoDetalheProvider(widget.numero));
-    final isDark = context.isDark;
-    final bg = isDark ? AppColors.nightBase : AppColors.dayBase;
+    final bg = context.colorBg;
 
     return Scaffold(
       backgroundColor: bg,
@@ -89,7 +88,7 @@ class _CompositorScreenState extends ConsumerState<CompositorScreen> {
         child: asyncSalmo.when(
           loading: () => Center(
             child: CircularProgressIndicator(
-              color: isDark ? AppColors.cobalt400 : AppColors.cobalt500,
+              color: context.colorAccent,
               strokeWidth: 1.5,
             ),
           ),
@@ -144,7 +143,7 @@ class _CompositorBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = context.isDark;
-    final border = isDark ? AppColors.nightLine : AppColors.dayLine;
+    final border = context.colorBorder;
 
     return Column(
       children: [
@@ -258,12 +257,7 @@ class _ShareCard extends StatelessWidget {
           // Eyebrow
           Text(
             'SALMO ${salmo.numero}',
-            style: GoogleFonts.instrumentSans(
-              fontSize: 11,
-              fontWeight: FontWeight.w400,
-              color: eyebrowColor,
-              letterSpacing: 3.74,
-            ),
+            style: AppTheme.eyebrowLabel(eyebrowColor),
           ),
           const Spacer(),
 
@@ -341,10 +335,9 @@ class _FundoChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark  = context.isDark;
-    final border  = isDark ? AppColors.nightLine  : AppColors.dayLine;
-    final accent  = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
-    final lblClr  = isDark ? AppColors.nightText  : AppColors.dayText;
+    final border  = context.colorBorder;
+    final accent  = context.colorAccent;
+    final lblClr  = context.colorText;
 
     return GestureDetector(
       onTap: onTap,
@@ -395,10 +388,10 @@ class _VersicoloOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final surface = isDark ? AppColors.nightPlus  : AppColors.dayPlus;
-    final border  = isDark ? AppColors.nightLine  : AppColors.dayLine;
-    final accent  = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
-    final textClr = isDark ? AppColors.nightText  : AppColors.dayText;
+    final surface = context.colorSurface;
+    final border  = context.colorBorder;
+    final accent  = context.colorAccent;
+    final textClr = context.colorText;
 
     return GestureDetector(
       onTap: onTap,
@@ -457,9 +450,9 @@ class _Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final border   = isDark ? AppColors.nightLine  : AppColors.dayLine;
-    final muted    = isDark ? AppColors.nightMuted : AppColors.dayMuted;
-    final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
+    final border   = context.colorBorder;
+    final muted    = context.colorMuted;
+    final titleClr = context.colorTitle;
 
     return Container(
       decoration: BoxDecoration(
@@ -508,8 +501,7 @@ class _ShareButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = context.isDark;
-    final accent = isDark ? AppColors.cobalt400 : AppColors.cobalt500;
+    final accent = context.colorAccent;
 
     return GestureDetector(
       onTap: sharing ? null : onTap,
@@ -551,12 +543,7 @@ class _ShareButton extends StatelessWidget {
                     const SizedBox(width: AppTheme.sp2),
                     Text(
                       'Compartilhar',
-                      style: GoogleFonts.instrumentSans(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.nightCream,
-                        letterSpacing: 0.2,
-                      ),
+                      style: AppTheme.emphasisTracked15(AppColors.nightCream),
                     ),
                   ],
                 ),

@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../core/extensions/build_context_extensions.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/providers/onboarding_provider.dart';
+import '../../data/providers/settings_provider.dart';
 
 class OnboardingScreen extends ConsumerStatefulWidget {
   const OnboardingScreen({super.key});
@@ -39,7 +40,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     if (mounted) context.go('/home');
   }
 
-  Future<void> _complete() async {
+  Future<void> _complete(bool allowUsageData) async {
+    await ref.read(usageDataProvider.notifier).set(allowUsageData);
     await ref.read(emocaoInicialProvider.notifier).set(_selectedEmocao);
     await ref.read(onboardingProvider.notifier).markDone();
     if (!mounted) return;
@@ -70,7 +72,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
       child: Scaffold(
         backgroundColor: _currentPage == 0
             ? const Color(0xFF2A47DD)
-            : (isDark ? AppColors.nightBase : AppColors.dayBase),
+            : (context.colorBg),
         body: Stack(
           children: [
             PageView(
@@ -83,8 +85,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 _Page3(
                   selected: _selectedEmocao,
                   onSelect: (e) => setState(() => _selectedEmocao = e),
-                  onComplete: _complete,
+                  onNext: _nextPage,
                 ),
+                _Page4(onComplete: _complete),
               ],
             ),
             // Back button — visible on pages 1 and 2
@@ -103,14 +106,15 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                       child: Icon(
                         Icons.arrow_back_rounded,
                         size: 22,
-                        color: isDark ? AppColors.nightText : AppColors.dayText,
+                        color: context.colorText,
                       ),
                     ),
                   ),
                 ),
               ),
-            // Skip button — visible on pages 0 and 1 only
-            if (_currentPage < 2)
+            // Skip button — hidden on the consent page (last): a escolha ali
+            // precisa ser explícita via um dos dois botões, não um atalho.
+            if (_currentPage < 3)
               SafeArea(
                 child: Align(
                   alignment: Alignment.topRight,
@@ -124,14 +128,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                       ),
                       child: Text(
                         'Pular',
-                        style: GoogleFonts.instrumentSans(
-                          fontSize: 14,
-                          color: _currentPage == 0
+                        style: AppTheme.caption14(_currentPage == 0
                               ? Colors.white.withAlpha(153)
-                              : (isDark
-                                  ? AppColors.nightText
-                                  : AppColors.dayText),
-                        ),
+                              : context.colorText),
                       ),
                     ),
                   ),
@@ -146,7 +145,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: List.generate(
-                      3,
+                      4,
                       (i) => _ProgressDot(
                         active: i == _currentPage,
                         onCobalt: _currentPage == 0,
@@ -181,7 +180,7 @@ class _ProgressDot extends StatelessWidget {
         onCobalt ? Colors.white : AppColors.cobalt500;
     final Color inactiveColor = onCobalt
         ? Colors.white.withAlpha(77)
-        : (isDark ? AppColors.nightMuted : AppColors.dayMuted);
+        : (context.colorMuted);
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
@@ -261,11 +260,7 @@ class _Page1 extends StatelessWidget {
                 ),
                 child: Text(
                   'Quero começar',
-                  style: GoogleFonts.instrumentSans(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
-                  ),
+                  style: AppTheme.buttonLabel(Colors.white),
                 ),
               ),
               const SizedBox(height: AppTheme.sp8),
@@ -288,9 +283,9 @@ class _Page2 extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = context.isDark;
     final cardBg = isDark ? AppColors.nightPlus : Colors.white;
-    final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
-    final textClr = isDark ? AppColors.nightText : AppColors.dayText;
-    final border = isDark ? AppColors.nightLine : AppColors.dayLine;
+    final titleClr = context.colorTitle;
+    final textClr = context.colorText;
+    final border = context.colorBorder;
 
     return SafeArea(
       child: Padding(
@@ -349,23 +344,13 @@ class _Page2 extends StatelessWidget {
             Text(
               'Salmos feitos para o seu momento',
               textAlign: TextAlign.center,
-              style: GoogleFonts.playfairDisplay(
-                fontSize: 28,
-                fontWeight: FontWeight.w400,
-                color: titleClr,
-                letterSpacing: -0.42,
-                height: 1.2,
-              ),
+              style: AppTheme.sectionHeadline(titleClr),
             ),
             const SizedBox(height: AppTheme.sp3),
             Text(
               'Ansiedade, gratidão, cansaço ou esperança — cada emoção tem seu salmo esperando por você.',
               textAlign: TextAlign.center,
-              style: GoogleFonts.instrumentSans(
-                fontSize: 15,
-                color: textClr,
-                height: 1.6,
-              ),
+              style: AppTheme.bodyRelaxed15(textClr),
             ),
             const Spacer(flex: 2),
             SizedBox(
@@ -383,10 +368,7 @@ class _Page2 extends StatelessWidget {
                 ),
                 child: Text(
                   'Isso é o que preciso',
-                  style: GoogleFonts.instrumentSans(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  style: AppTheme.buttonLabel(),
                 ),
               ),
             ),
@@ -479,20 +461,19 @@ class _CollectionCard extends StatelessWidget {
 class _Page3 extends StatelessWidget {
   final EmocaoInicial selected;
   final ValueChanged<EmocaoInicial> onSelect;
-  final VoidCallback onComplete;
+  final VoidCallback onNext;
 
   const _Page3({
     required this.selected,
     required this.onSelect,
-    required this.onComplete,
+    required this.onNext,
   });
 
   @override
   Widget build(BuildContext context) {
-    final isDark = context.isDark;
-    final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
-    final textClr = isDark ? AppColors.nightText : AppColors.dayText;
-    final mutedClr = isDark ? AppColors.nightMuted : AppColors.dayMuted;
+    final titleClr = context.colorTitle;
+    final textClr = context.colorText;
+    final mutedClr = context.colorMuted;
 
     return SafeArea(
       child: SingleChildScrollView(
@@ -503,13 +484,7 @@ class _Page3 extends StatelessWidget {
             Text(
               'Como você está\nse sentindo hoje?',
               textAlign: TextAlign.center,
-              style: GoogleFonts.playfairDisplay(
-                fontSize: 28,
-                fontWeight: FontWeight.w400,
-                color: titleClr,
-                letterSpacing: -0.42,
-                height: 1.2,
-              ),
+              style: AppTheme.sectionHeadline(titleClr),
             ),
             const SizedBox(height: AppTheme.sp3),
             Text(
@@ -542,7 +517,7 @@ class _Page3 extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: isSelected
                           ? AppColors.cobalt500.withAlpha(26)
-                          : (isDark ? AppColors.nightPlus : AppColors.dayPlus),
+                          : (context.colorSurface),
                       borderRadius:
                           BorderRadius.circular(AppTheme.radiusMd),
                       border: Border.all(
@@ -591,7 +566,7 @@ class _Page3 extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: onComplete,
+                onPressed: onNext,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.cobalt500,
                   foregroundColor: Colors.white,
@@ -602,11 +577,95 @@ class _Page3 extends StatelessWidget {
                   shadowColor: Colors.transparent,
                 ),
                 child: Text(
-                  'Encontrar meu salmo',
-                  style: GoogleFonts.instrumentSans(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  'Continuar',
+                  style: AppTheme.buttonLabel(),
+                ),
+              ),
+            ),
+            const SizedBox(height: AppTheme.sp8),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ── Page 4: Consentimento de dados de uso (LGPD, opt-in explícito) ─────────────
+
+class _Page4 extends StatelessWidget {
+  final ValueChanged<bool> onComplete;
+
+  const _Page4({required this.onComplete});
+
+  @override
+  Widget build(BuildContext context) {
+    final titleClr = context.colorTitle;
+    final textClr = context.colorText;
+    final mutedClr = context.colorMuted;
+
+    return SafeArea(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: AppTheme.sp5),
+        child: Column(
+          children: [
+            const SizedBox(height: AppTheme.sp10),
+            Text(
+              'Antes de continuar',
+              textAlign: TextAlign.center,
+              style: AppTheme.sectionHeadline(titleClr),
+            ),
+            const SizedBox(height: AppTheme.sp3),
+            Text(
+              'Usamos dados de uso, de forma anônima, pra entender o que ajuda e corrigir o que não funciona. Nunca vendemos nem compartilhamos nada.',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.instrumentSans(
+                fontSize: 14,
+                color: textClr,
+                height: 1.6,
+              ),
+            ),
+            const SizedBox(height: AppTheme.sp3),
+            Text(
+              'Você pode mudar isso a qualquer hora em Ajustes.',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.instrumentSans(
+                fontSize: 12,
+                color: mutedClr,
+              ),
+            ),
+            const SizedBox(height: AppTheme.sp6),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () => onComplete(true),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.cobalt500,
+                  foregroundColor: Colors.white,
+                  shape: const StadiumBorder(),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: AppTheme.sp4),
+                  elevation: 0,
+                  shadowColor: Colors.transparent,
+                ),
+                child: Text(
+                  'Permitir dados anônimos',
+                  style: AppTheme.buttonLabel(),
+                ),
+              ),
+            ),
+            const SizedBox(height: AppTheme.sp3),
+            SizedBox(
+              width: double.infinity,
+              child: TextButton(
+                onPressed: () => onComplete(false),
+                style: TextButton.styleFrom(
+                  foregroundColor: textClr,
+                  padding:
+                      const EdgeInsets.symmetric(vertical: AppTheme.sp4),
+                ),
+                child: Text(
+                  'Prefiro não',
+                  style: AppTheme.buttonLabel(),
                 ),
               ),
             ),

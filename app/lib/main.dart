@@ -35,10 +35,11 @@ void main() async {
       options: DefaultFirebaseOptions.currentPlatform,
     );
     AnalyticsService.instance.init();
-    // Aplica a escolha de opt-out do usuário (Ajustes) já no launch.
+    // Aplica a escolha de consentimento do usuário (onboarding/Ajustes) já no
+    // launch. Padrão desligado até consentimento explícito (LGPD).
     final prefs = await SharedPreferences.getInstance();
     await AnalyticsService.instance.setCollectionEnabled(
-      prefs.getBool(AppConstants.prefUsageDataEnabled) ?? true,
+      prefs.getBool(AppConstants.prefUsageDataEnabled) ?? false,
     );
     FlutterError.onError =
         FirebaseCrashlytics.instance.recordFlutterFatalError;

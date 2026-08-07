@@ -21,8 +21,7 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncSalmo = ref.watch(salmoDoDialProvider);
-    final isDark = context.isDark;
-    final bg = isDark ? AppColors.nightBase : AppColors.dayBase;
+    final bg = context.colorBg;
 
     // Desbloqueia a reflexão do Salmo do Dia automaticamente
     ref.listen<AsyncValue<Salmo?>>(salmoDoDialProvider, (_, next) {
@@ -48,7 +47,7 @@ class HomeScreen extends ConsumerWidget {
             loading: () => Center(
               key: const ValueKey('loading'),
               child: CircularProgressIndicator(
-                color: isDark ? AppColors.cobalt400 : AppColors.cobalt500,
+                color: context.colorAccent,
                 strokeWidth: 1.5,
               ),
             ),
@@ -79,10 +78,9 @@ class _HomeContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark  = context.isDark;
-    final accent  = isDark ? AppColors.cobalt400 : AppColors.cobalt500;
-    final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
-    final muted   = isDark ? AppColors.nightText  : AppColors.dayText;
+    final accent  = context.colorAccent;
+    final titleClr = context.colorTitle;
+    final muted   = context.colorText;
 
     return Stack(
       children: [
@@ -152,7 +150,7 @@ class _HomeContent extends StatelessWidget {
                           style: GoogleFonts.instrumentSans(
                             fontSize: 12,
                             fontWeight: FontWeight.w400,
-                            color: isDark ? AppColors.nightText : AppColors.dayText,
+                            color: context.colorText,
                             letterSpacing: 0.5,
                           ),
                         ),
@@ -209,7 +207,7 @@ class _HomeContent extends StatelessWidget {
                             style: GoogleFonts.instrumentSans(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
-                              color: isDark ? AppColors.nightText : AppColors.dayText,
+                              color: context.colorText,
                               letterSpacing: 0.2,
                             ),
                           ),
@@ -244,7 +242,7 @@ class _HomeContent extends StatelessWidget {
                             fontStyle: FontStyle.italic,
                             fontWeight: FontWeight.w400,
                             height: 1.6,
-                            color: isDark ? AppColors.gold : AppColors.goldInk,
+                            color: context.colorVerse,
                           ),
                         ),
                       ),
@@ -434,8 +432,8 @@ class _CollectionsShortcut extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark   = context.isDark;
-    final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
-    final accent   = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
+    final titleClr = context.colorTitle;
+    final accent   = context.colorAccent;
     final cardBg   = isDark
         ? AppColors.cobalt600.withAlpha(45)
         : AppColors.cobalt400.withAlpha(25);
@@ -469,7 +467,7 @@ class _CollectionsShortcut extends StatelessWidget {
               fontSize: 16,
               fontStyle: FontStyle.italic,
               fontWeight: FontWeight.w400,
-              color: isDark ? AppColors.nightText : AppColors.dayText,
+              color: context.colorText,
               height: 1.5,
             ),
           ),
@@ -489,11 +487,7 @@ class _CollectionsShortcut extends StatelessWidget {
                   children: [
                     Text(
                       'Ver coleções',
-                      style: GoogleFonts.instrumentSans(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: accent,
-                      ),
+                      style: AppTheme.emphasis14(accent),
                     ),
                     const SizedBox(width: AppTheme.sp1),
                     Icon(Icons.arrow_forward_rounded, size: 14, color: accent),
@@ -520,8 +514,7 @@ class _PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = context.isDark;
-    final accent = isDark ? AppColors.cobalt400 : AppColors.cobalt500;
+    final accent = context.colorAccent;
 
     return GestureDetector(
       onTap: onTap,
@@ -542,12 +535,7 @@ class _PrimaryButton extends StatelessWidget {
         child: Center(
           child: Text(
             label,
-            style: GoogleFonts.instrumentSans(
-              fontSize: 15,
-              fontWeight: FontWeight.w500,
-              color: AppColors.nightCream,
-              letterSpacing: 0.2,
-            ),
+            style: AppTheme.emphasisTracked15(AppColors.nightCream),
           ),
         ),
       ),

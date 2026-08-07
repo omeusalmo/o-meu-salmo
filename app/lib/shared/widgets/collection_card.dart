@@ -94,12 +94,7 @@ class CollectionCard extends StatelessWidget {
                         const SizedBox(width: 6),
                         Text(
                           '$totalSalmos SALMOS',
-                          style: GoogleFonts.instrumentSans(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w400,
-                            letterSpacing: 3.74,
-                            color: bodyClr,
-                          ),
+                          style: AppTheme.eyebrowLabel(bodyClr),
                         ),
                       ],
                     ),

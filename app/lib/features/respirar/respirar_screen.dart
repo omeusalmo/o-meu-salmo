@@ -16,10 +16,9 @@ class RespirarScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = context.isDark;
     final bg = context.colorBg;
     final muted = context.colorText;
-    final scripture = isDark ? AppColors.gold : AppColors.goldInk;
+    final scripture = context.colorVerse;
 
     return Scaffold(
       backgroundColor: bg,

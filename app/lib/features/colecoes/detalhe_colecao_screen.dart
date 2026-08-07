@@ -23,7 +23,7 @@ class DetalheColecaoScreen extends ConsumerWidget {
     final salmosAsync  = ref.watch(salmosProvider);
 
     final isDark = context.isDark;
-    final bg     = isDark ? AppColors.nightBase : AppColors.dayBase;
+    final bg     = context.colorBg;
 
     // Aguarda ambos os providers
     if (colecaoAsync.isLoading || salmosAsync.isLoading) {
@@ -31,7 +31,7 @@ class DetalheColecaoScreen extends ConsumerWidget {
         backgroundColor: bg,
         body: Center(
           child: CircularProgressIndicator(
-            color: isDark ? AppColors.cobalt400 : AppColors.cobalt500,
+            color: context.colorAccent,
             strokeWidth: 1.5,
           ),
         ),
@@ -82,7 +82,7 @@ class DetalheColecaoScreen extends ConsumerWidget {
                       style: GoogleFonts.playfairDisplay(
                         fontSize: 38,
                         fontWeight: FontWeight.w400,
-                        color: isDark ? AppColors.nightCream : AppColors.dayTitle,
+                        color: context.colorTitle,
                         height: 1.02,
                         letterSpacing: -0.76,
                       ),
@@ -100,7 +100,7 @@ class DetalheColecaoScreen extends ConsumerWidget {
                       fontSize: 17,
                       fontStyle: FontStyle.italic,
                       fontWeight: FontWeight.w400,
-                      color: isDark ? AppColors.nightText  : AppColors.dayText,
+                      color: context.colorText,
                       height: 1.5,
                     ),
                   ),
@@ -145,8 +145,8 @@ class _Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final border = isDark ? AppColors.nightLine  : AppColors.dayLine;
-    final accent = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
+    final border = context.colorBorder;
+    final accent = context.colorAccent;
 
     return Container(
       decoration: BoxDecoration(
@@ -173,7 +173,7 @@ class _Header extends StatelessWidget {
                   child: Icon(
                     Icons.arrow_back_ios_new_rounded,
                     size: 18,
-                    color: isDark ? AppColors.nightText : AppColors.dayText,
+                    color: context.colorText,
                   ),
                 ),
               ),

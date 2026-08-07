@@ -176,10 +176,7 @@ class _SearchBar extends StatelessWidget {
                 ),
                 decoration: InputDecoration(
                   hintText: 'Buscar um salmo…',
-                  hintStyle: GoogleFonts.instrumentSans(
-                    fontSize: 15,
-                    color: context.colorText,
-                  ),
+                  hintStyle: AppTheme.body15(context.colorText),
                   border: InputBorder.none,
                   isDense: true,
                   contentPadding: EdgeInsets.zero,
@@ -268,11 +265,7 @@ class _ErrorState extends StatelessWidget {
       child: Text(
         'Não consegui carregar os Salmos.\nTente novamente.',
         textAlign: TextAlign.center,
-        style: GoogleFonts.instrumentSans(
-          fontSize: 15,
-          color: context.colorText,
-          height: 1.6,
-        ),
+        style: AppTheme.bodyRelaxed15(context.colorText),
       ),
     );
   }
@@ -295,10 +288,7 @@ class _EmptyState extends StatelessWidget {
             Text(
               'Não encontrei nada assim.',
               textAlign: TextAlign.center,
-              style: GoogleFonts.instrumentSans(
-                fontSize: 15,
-                color: text,
-              ),
+              style: AppTheme.body15(text),
             ),
             const SizedBox(height: AppTheme.sp2),
             Text(

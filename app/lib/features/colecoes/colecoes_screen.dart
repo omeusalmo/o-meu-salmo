@@ -18,7 +18,7 @@ class ColecoesScreen extends ConsumerWidget {
     final bg       = context.colorBg;
     final titleClr = context.colorTitle;
     final border   = context.colorBorder;
-    final muted    = context.isDark ? AppColors.nightMuted : AppColors.dayMuted;
+    final muted    = context.colorMuted;
 
     return Scaffold(
       backgroundColor: bg,
@@ -111,11 +111,7 @@ class _ErrorState extends StatelessWidget {
       child: Text(
         'Não consegui carregar as coleções.\nTente novamente.',
         textAlign: TextAlign.center,
-        style: GoogleFonts.instrumentSans(
-          fontSize: 15,
-          color: context.colorText,
-          height: 1.6,
-        ),
+        style: AppTheme.bodyRelaxed15(context.colorText),
       ),
     );
   }
@@ -129,10 +125,7 @@ class _EmptyState extends StatelessWidget {
     return Center(
       child: Text(
         'Nenhuma coleção por aqui.\nTente novamente em instantes.',
-        style: GoogleFonts.instrumentSans(
-          fontSize: 15,
-          color: context.colorText,
-        ),
+        style: AppTheme.body15(context.colorText),
       ),
     );
   }

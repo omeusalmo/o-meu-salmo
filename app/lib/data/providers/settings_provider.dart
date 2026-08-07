@@ -77,20 +77,21 @@ final notificationSettingsProvider = NotifierProvider<
     NotificationSettingsNotifier,
     ({bool enabled, int hour, int minute})>(NotificationSettingsNotifier.new);
 
-// ─── Dados de uso (opt-out de Analytics/Crashlytics) ─────────────────────────
+// ─── Dados de uso (opt-in de Analytics/Crashlytics, LGPD) ────────────────────
 
-/// Consentimento de coleta de dados de uso. Padrão ligado; usuário pode desligar
-/// em Ajustes. A escolha é aplicada ao Firebase e persistida.
+/// Consentimento de coleta de dados de uso. Padrão desligado; o usuário liga
+/// explicitamente na tela de consentimento do onboarding (ou depois em
+/// Ajustes). A escolha é aplicada ao Firebase e persistida.
 class UsageDataNotifier extends Notifier<bool> {
   @override
   bool build() {
     _load();
-    return true;
+    return false;
   }
 
   Future<void> _load() async {
     final prefs = await SharedPreferences.getInstance();
-    final enabled = prefs.getBool(AppConstants.prefUsageDataEnabled) ?? true;
+    final enabled = prefs.getBool(AppConstants.prefUsageDataEnabled) ?? false;
     state = enabled;
     await AnalyticsService.instance.setCollectionEnabled(enabled);
   }

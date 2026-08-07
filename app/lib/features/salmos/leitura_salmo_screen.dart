@@ -69,8 +69,7 @@ class _LeituraSalmoView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDark = context.isDark;
-    final bg     = isDark ? AppColors.nightBase : AppColors.dayBase;
+    final bg     = context.colorBg;
     final isFav  = ref.watch(favoritosProvider).value?.contains(salmo.numero) ?? false;
 
     return Scaffold(
@@ -96,22 +95,15 @@ class _LeituraSalmoView extends ConsumerWidget {
     await ref.read(favoritosProvider.notifier).toggle(salmo.numero);
     if (!context.mounted) return;
     final msg = atual ? 'Removido dos favoritos.' : 'Guardado no seu coração.';
-    final isDarkCtx = context.isDark;
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
           msg,
-          style: GoogleFonts.instrumentSans(
-            fontSize: 14,
-            color: isDarkCtx ? AppColors.nightCream : AppColors.dayTitle,
-          ),
+          style: AppTheme.caption14(context.colorTitle),
         ),
         duration: const Duration(seconds: 2),
         behavior: SnackBarBehavior.floating,
-        backgroundColor:
-            context.isDark
-                ? AppColors.nightPlus
-                : AppColors.dayPlus,
+        backgroundColor: context.colorSurface,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppTheme.radiusMd),
         ),
@@ -137,10 +129,9 @@ class _Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = context.isDark;
-    final border = isDark ? AppColors.nightLine  : AppColors.dayLine;
-    final muted  = isDark ? AppColors.nightText  : AppColors.dayText;
-    final accent = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
+    final border = context.colorBorder;
+    final muted  = context.colorText;
+    final accent = context.colorAccent;
 
     return Container(
       decoration: BoxDecoration(
@@ -205,11 +196,10 @@ class _BodyState extends ConsumerState<_Body> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark  = context.isDark;
-    final accent  = isDark ? AppColors.cobalt400 : AppColors.cobalt500;
-    final title   = isDark ? AppColors.nightCream : AppColors.dayTitle;
-    final border  = isDark ? AppColors.nightLine  : AppColors.dayLine;
-    final text    = isDark ? AppColors.nightText  : AppColors.dayText;
+    final accent  = context.colorAccent;
+    final title   = context.colorTitle;
+    final border  = context.colorBorder;
+    final text    = context.colorText;
 
     final salmo = widget.salmo;
     final unlocked = ref.watch(unlockedPsalmsProvider).value
@@ -326,9 +316,8 @@ class _BodyState extends ConsumerState<_Body> {
 class _LockedReflexao extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final isDark = context.isDark;
-    final muted  = isDark ? AppColors.nightText : AppColors.dayText;
-    final accent = isDark ? AppColors.cobalt400 : AppColors.cobalt500;
+    final muted  = context.colorText;
+    final accent = context.colorAccent;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -371,11 +360,7 @@ class _LockedReflexao extends StatelessWidget {
           ),
           child: Text(
             'Explorar coleções',
-            style: GoogleFonts.instrumentSans(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: accent,
-            ),
+            style: AppTheme.emphasis14(accent),
           ),
         ),
       ],
@@ -400,9 +385,8 @@ class _UnlockedReflexao extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = context.isDark;
-    final accent = isDark ? AppColors.cobalt400 : AppColors.cobalt500;
-    final text   = isDark ? AppColors.nightText  : AppColors.dayText;
+    final accent = context.colorAccent;
+    final text   = context.colorText;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -458,12 +442,7 @@ class _RevealButton extends StatelessWidget {
                 const SizedBox(width: AppTheme.sp2),
                 Text(
                   'Ler a reflexão',
-                  style: GoogleFonts.instrumentSans(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                    color: accent,
-                    letterSpacing: 0.2,
-                  ),
+                  style: AppTheme.emphasisTracked15(accent),
                 ),
               ],
             ),
@@ -534,8 +513,7 @@ class _IconBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = context.isDark;
-    final border = isDark ? AppColors.nightLine : AppColors.dayLine;
+    final border = context.colorBorder;
 
     return Semantics(
       label: semanticsLabel,
@@ -566,9 +544,8 @@ class _LoadingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark  = context.isDark;
-    final bg      = isDark ? AppColors.nightBase : AppColors.dayBase;
-    final accent  = isDark ? AppColors.cobalt400 : AppColors.cobalt500;
+    final bg      = context.colorBg;
+    final accent  = context.colorAccent;
 
     return Scaffold(
       backgroundColor: bg,
@@ -643,9 +620,8 @@ class _BackBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = context.isDark;
-    final muted  = isDark ? AppColors.nightText  : AppColors.dayText;
-    final border = isDark ? AppColors.nightLine  : AppColors.dayLine;
+    final muted  = context.colorText;
+    final border = context.colorBorder;
 
     return Container(
       decoration: BoxDecoration(

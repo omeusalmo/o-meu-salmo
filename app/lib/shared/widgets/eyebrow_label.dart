@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../core/extensions/build_context_extensions.dart';
+import '../../core/theme/app_theme.dart';
 
 /// Rótulo de sobrelinha — Instrument Sans uppercase, tracking largo.
 /// Equivalente ao `.ds-eyebrow` do Design System.
@@ -23,12 +23,7 @@ class EyebrowLabel extends StatelessWidget {
       excludeSemantics: true,
       child: Text(
         text.toUpperCase(),
-        style: GoogleFonts.instrumentSans(
-          fontSize: 11,
-          fontWeight: FontWeight.w400,
-          letterSpacing: 3.74,
-          color: color ?? defaultColor,
-        ),
+        style: AppTheme.eyebrowLabel(color ?? defaultColor),
       ),
     );
   }

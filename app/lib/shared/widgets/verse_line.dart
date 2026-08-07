@@ -22,10 +22,9 @@ class VerseLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = context.isDark;
 
     final verseColor = destaque
-        ? (isDark ? AppColors.gold : AppColors.goldInk)
+        ? (context.colorVerse)
         : context.colorText;
 
     final numColor = context.colorAccent;

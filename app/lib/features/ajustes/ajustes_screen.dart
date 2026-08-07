@@ -17,10 +17,10 @@ class AjustesScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeModeProvider);
     final isDark    = context.isDark;
-    final bg        = isDark ? AppColors.nightBase  : AppColors.dayBase;
-    final titleClr  = isDark ? AppColors.nightCream : AppColors.dayTitle;
-    final border    = isDark ? AppColors.nightLine  : AppColors.dayLine;
-    final muted     = isDark ? AppColors.nightText  : AppColors.dayText;
+    final bg        = context.colorBg;
+    final titleClr  = context.colorTitle;
+    final border    = context.colorBorder;
+    final muted     = context.colorText;
 
     return Scaffold(
       backgroundColor: bg,
@@ -83,9 +83,9 @@ class AjustesScreen extends ConsumerWidget {
                         ? AppColors.cobalt400.withAlpha(38)
                         : AppColors.cobalt500.withAlpha(26),
                     selectedForegroundColor:
-                        isDark ? AppColors.cobalt400 : AppColors.cobalt500,
+                        context.colorAccent,
                     foregroundColor:
-                        isDark ? AppColors.nightText  : AppColors.dayText,
+                        context.colorText,
                     side: BorderSide(color: border, width: 0.5),
                     textStyle: GoogleFonts.instrumentSans(
                       fontSize: 13,
@@ -123,7 +123,7 @@ class AjustesScreen extends ConsumerWidget {
                 Icon(
                   Icons.volunteer_activism_outlined,
                   size: 26,
-                  color: isDark ? AppColors.cobalt400 : AppColors.cobalt500,
+                  color: context.colorAccent,
                 ),
                 const SizedBox(height: AppTheme.sp2),
                 Text(
@@ -131,7 +131,7 @@ class AjustesScreen extends ConsumerWidget {
                   style: GoogleFonts.playfairDisplay(
                     fontSize: 18,
                     fontWeight: FontWeight.w400,
-                    color: isDark ? AppColors.nightCream : AppColors.dayTitle,
+                    color: context.colorTitle,
                     height: 1.2,
                   ),
                 ),
@@ -140,7 +140,7 @@ class AjustesScreen extends ConsumerWidget {
                   'Gratuito e sem anúncios. Se o app faz parte do seu dia, considere apoiar com uma contribuição única.',
                   style: GoogleFonts.instrumentSans(
                     fontSize: 14,
-                    color: isDark ? AppColors.nightText : AppColors.dayText,
+                    color: context.colorText,
                     height: 1.55,
                   ),
                 ),
@@ -151,7 +151,7 @@ class AjustesScreen extends ConsumerWidget {
                     width: double.infinity,
                     padding: const EdgeInsets.symmetric(vertical: AppTheme.sp3),
                     decoration: BoxDecoration(
-                      color: isDark ? AppColors.cobalt400 : AppColors.cobalt500,
+                      color: context.colorAccent,
                       borderRadius: BorderRadius.circular(AppTheme.radiusMd),
                       boxShadow: [
                         BoxShadow(
@@ -190,7 +190,7 @@ class AjustesScreen extends ConsumerWidget {
                 Divider(
                   height: AppTheme.sp5,
                   thickness: 0.5,
-                  color: isDark ? AppColors.nightLine : AppColors.dayLine,
+                  color: context.colorBorder,
                 ),
                 _InfoRow(
                   'Tradução',
@@ -200,14 +200,14 @@ class AjustesScreen extends ConsumerWidget {
                 Divider(
                   height: AppTheme.sp5,
                   thickness: 0.5,
-                  color: isDark ? AppColors.nightLine : AppColors.dayLine,
+                  color: context.colorBorder,
                 ),
                 Text(
                   'O meu Salmo',
                   style: GoogleFonts.playfairDisplay(
                     fontSize: 15,
                     fontStyle: FontStyle.italic,
-                    color: isDark ? AppColors.cobalt400 : AppColors.cobalt500,
+                    color: context.colorAccent,
                   ),
                 ),
                 const SizedBox(height: 2),
@@ -215,7 +215,7 @@ class AjustesScreen extends ConsumerWidget {
                   'Uma pausa que devolve a você mesmo.',
                   style: GoogleFonts.instrumentSans(
                     fontSize: 12,
-                    color: isDark ? AppColors.nightText  : AppColors.dayText,
+                    color: context.colorText,
                     height: 1.5,
                   ),
                 ),
@@ -239,17 +239,14 @@ class AjustesScreen extends ConsumerWidget {
                       children: [
                         Text(
                           'Enviar sugestão',
-                          style: GoogleFonts.instrumentSans(
-                            fontSize: 14,
-                            color: isDark ? AppColors.nightText : AppColors.dayText,
-                          ),
+                          style: AppTheme.caption14(context.colorText),
                         ),
                         const SizedBox(height: 2),
                         Text(
                           'Abre o seu e-mail',
                           style: GoogleFonts.instrumentSans(
                             fontSize: 12,
-                            color: isDark ? AppColors.nightText : AppColors.dayText,
+                            color: context.colorText,
                             height: 1.4,
                           ),
                         ),
@@ -259,7 +256,7 @@ class AjustesScreen extends ConsumerWidget {
                   Icon(
                     Icons.arrow_forward_ios_rounded,
                     size: 14,
-                    color: isDark ? AppColors.nightText : AppColors.dayText,
+                    color: context.colorText,
                   ),
                 ],
               ),
@@ -274,7 +271,9 @@ class AjustesScreen extends ConsumerWidget {
             isDark: isDark,
             child: Column(
               children: [
-                // Opt-out de dados de uso (Analytics/Crashlytics) — LGPD
+                // Consentimento de dados de uso (Analytics/Crashlytics) — LGPD.
+                // Padrão desligado; ligado só se o usuário confirmar aqui ou
+                // no consentimento do onboarding.
                 Row(
                   children: [
                     Expanded(
@@ -300,7 +299,7 @@ class AjustesScreen extends ConsumerWidget {
                       onChanged: (v) =>
                           ref.read(usageDataProvider.notifier).set(v),
                       activeThumbColor:
-                          isDark ? AppColors.cobalt400 : AppColors.cobalt500,
+                          context.colorAccent,
                     ),
                   ],
                 ),
@@ -312,16 +311,13 @@ class AjustesScreen extends ConsumerWidget {
                       Expanded(
                         child: Text(
                           'Política de privacidade',
-                          style: GoogleFonts.instrumentSans(
-                            fontSize: 14,
-                            color: isDark ? AppColors.nightText : AppColors.dayText,
-                          ),
+                          style: AppTheme.caption14(context.colorText),
                         ),
                       ),
                       Icon(
                         Icons.arrow_forward_ios_rounded,
                         size: 14,
-                        color: isDark ? AppColors.nightText : AppColors.dayText,
+                        color: context.colorText,
                       ),
                     ],
                   ),
@@ -362,7 +358,7 @@ class AjustesScreen extends ConsumerWidget {
   void _showApoieSheet(BuildContext context, bool isDark) {
     showModalBottomSheet(
       context: context,
-      backgroundColor: isDark ? AppColors.nightPlus : AppColors.dayPlus,
+      backgroundColor: context.colorSurface,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(22)),
       ),
@@ -382,7 +378,7 @@ class _NotificationCard extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final notif  = ref.watch(notificationSettingsProvider);
-    final accent = isDark ? AppColors.cobalt400 : AppColors.cobalt500;
+    final accent = context.colorAccent;
 
     final timeLabel = '${notif.hour.toString().padLeft(2, '0')}:'
         '${notif.minute.toString().padLeft(2, '0')}';
@@ -412,9 +408,7 @@ class _NotificationCard extends ConsumerWidget {
                               style: GoogleFonts.instrumentSans(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w400,
-                                color: isDark
-                                    ? AppColors.nightText
-                                    : AppColors.dayText,
+                                color: context.colorText,
                                 letterSpacing: 10 * 0.034,
                               ),
                             ),
@@ -424,9 +418,7 @@ class _NotificationCard extends ConsumerWidget {
                                 fontSize: 22,
                                 fontWeight: FontWeight.w400,
                                 fontStyle: FontStyle.italic,
-                                color: isDark
-                                    ? AppColors.nightCream
-                                    : AppColors.dayTitle,
+                                color: context.colorTitle,
                               ),
                             ),
                           ],
@@ -505,10 +497,10 @@ class _ApoieSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final titleClr = isDark ? AppColors.nightCream : AppColors.dayTitle;
-    final text     = isDark ? AppColors.nightText  : AppColors.dayText;
-    final accent   = isDark ? AppColors.cobalt400  : AppColors.cobalt500;
-    final border   = isDark ? AppColors.nightLine  : AppColors.dayLine;
+    final titleClr = context.colorTitle;
+    final text     = context.colorText;
+    final accent   = context.colorAccent;
+    final border   = context.colorBorder;
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(
@@ -541,18 +533,14 @@ class _ApoieSheet extends StatelessWidget {
           const SizedBox(height: AppTheme.sp3),
           Text(
             'O meu Salmo é gratuito e sem anúncios. Se ele faz parte do seu dia, considere apoiar com uma contribuição única.',
-            style: GoogleFonts.instrumentSans(
-              fontSize: 15,
-              color: text,
-              height: 1.6,
-            ),
+            style: AppTheme.bodyRelaxed15(text),
           ),
           const SizedBox(height: AppTheme.sp6),
           // Chave Pix
           Container(
             padding: const EdgeInsets.all(AppTheme.sp4),
             decoration: BoxDecoration(
-              color: isDark ? AppColors.nightBase : AppColors.dayBase,
+              color: context.colorBg,
               border: Border.all(color: border, width: 0.5),
               borderRadius: BorderRadius.circular(AppTheme.radiusMd),
             ),
@@ -574,11 +562,7 @@ class _ApoieSheet extends StatelessWidget {
                       const SizedBox(height: 4),
                       Text(
                         'omeusalmo@gmail.com',
-                        style: GoogleFonts.instrumentSans(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: titleClr,
-                        ),
+                        style: AppTheme.emphasis14(titleClr),
                       ),
                     ],
                   ),
@@ -592,7 +576,7 @@ class _ApoieSheet extends StatelessWidget {
             'Abra seu banco → Pix → Pagar → Cole a chave.',
             style: GoogleFonts.instrumentSans(
               fontSize: 12,
-              color: isDark ? AppColors.nightText : AppColors.dayText,
+              color: context.colorText,
               height: 1.5,
             ),
           ),
@@ -626,7 +610,7 @@ class _CopyPixButtonState extends State<_CopyPixButton> {
 
   @override
   Widget build(BuildContext context) {
-    final accent = widget.isDark ? AppColors.cobalt400 : AppColors.cobalt500;
+    final accent = context.colorAccent;
     return GestureDetector(
       onTap: _copied ? null : _copy,
       child: AnimatedContainer(
@@ -668,12 +652,7 @@ class _SectionHeader extends StatelessWidget {
         padding: const EdgeInsets.only(left: AppTheme.sp1, bottom: AppTheme.sp2),
         child: Text(
           title.toUpperCase(),
-          style: GoogleFonts.instrumentSans(
-            fontSize: 11,
-            fontWeight: FontWeight.w400,
-            color: isDark ? AppColors.nightText  : AppColors.dayText,
-            letterSpacing: 3.74,
-          ),
+          style: AppTheme.eyebrowLabel(context.colorText),
         ),
       );
 }
@@ -688,10 +667,10 @@ class _Card extends StatelessWidget {
         width: double.infinity,
         padding: const EdgeInsets.all(AppTheme.sp4),
         decoration: BoxDecoration(
-          color: isDark ? AppColors.nightPlus : AppColors.dayPlus,
+          color: context.colorSurface,
           borderRadius: BorderRadius.circular(AppTheme.radiusMd),
           border: Border.all(
-            color: isDark ? AppColors.nightLine : AppColors.dayLine,
+            color: context.colorBorder,
             width: 0.5,
           ),
         ),
@@ -710,7 +689,7 @@ class _Label extends StatelessWidget {
         style: GoogleFonts.instrumentSans(
           fontSize: 14,
           fontWeight: FontWeight.w400,
-          color: isDark ? AppColors.nightText : AppColors.dayText,
+          color: context.colorText,
         ),
       );
 }
@@ -731,7 +710,7 @@ class _InfoRow extends StatelessWidget {
               label,
               style: GoogleFonts.instrumentSans(
                 fontSize: 13,
-                color: isDark ? AppColors.nightText  : AppColors.dayText,
+                color: context.colorText,
               ),
             ),
           ),
@@ -740,7 +719,7 @@ class _InfoRow extends StatelessWidget {
               value,
               style: GoogleFonts.instrumentSans(
                 fontSize: 13,
-                color: isDark ? AppColors.nightText : AppColors.dayText,
+                color: context.colorText,
                 height: 1.5,
               ),
             ),

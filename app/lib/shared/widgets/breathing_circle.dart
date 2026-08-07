@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../core/extensions/build_context_extensions.dart';
 import '../../core/theme/app_theme.dart';
@@ -124,12 +123,7 @@ class _BreathingCircleState extends State<BreathingCircle>
                 // Cue textual
                 Text(
                   _cue.toUpperCase(),
-                  style: GoogleFonts.instrumentSans(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w400,
-                    letterSpacing: 3.74,
-                    color: titleClr,
-                  ),
+                  style: AppTheme.eyebrowLabel(titleClr),
                 ),
               ],
             );

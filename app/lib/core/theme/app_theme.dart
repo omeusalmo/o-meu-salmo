@@ -233,4 +233,57 @@ class AppTheme {
       letterSpacing: 1.76,
     ),
   );
+
+  // ── Estilos nomeados reutilizados ──────────────────────────────────────
+  // Fora dos 13 papéis fixos do Material TextTheme acima — cobrem combinações
+  // de fonte que se repetem 3+ vezes pelas telas (ver revisao-codigo-2026-08.md,
+  // achado #3). Cor é sempre parâmetro: dark/light já vem de context.colorX.
+
+  static TextStyle caption14([Color? color]) =>
+      GoogleFonts.instrumentSans(fontSize: 14, color: color);
+
+  static TextStyle eyebrowLabel([Color? color]) => GoogleFonts.instrumentSans(
+        fontSize: 11,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 3.74,
+        color: color,
+      );
+
+  static TextStyle body15([Color? color]) =>
+      GoogleFonts.instrumentSans(fontSize: 15, color: color);
+
+  static TextStyle buttonLabel([Color? color]) => GoogleFonts.instrumentSans(
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+        color: color,
+      );
+
+  static TextStyle emphasis14([Color? color]) => GoogleFonts.instrumentSans(
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        color: color,
+      );
+
+  static TextStyle bodyRelaxed15([Color? color]) => GoogleFonts.instrumentSans(
+        fontSize: 15,
+        height: 1.6,
+        color: color,
+      );
+
+  static TextStyle emphasisTracked15([Color? color]) =>
+      GoogleFonts.instrumentSans(
+        fontSize: 15,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.2,
+        color: color,
+      );
+
+  static TextStyle sectionHeadline([Color? color]) =>
+      GoogleFonts.playfairDisplay(
+        fontSize: 28,
+        fontWeight: FontWeight.w400,
+        letterSpacing: -0.42,
+        height: 1.2,
+        color: color,
+      );
 }
