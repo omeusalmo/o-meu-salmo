@@ -143,12 +143,11 @@ class _CompositorBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = context.isDark;
     final border = context.colorBorder;
 
     return Column(
       children: [
-        _Header(isDark: isDark),
+        const _Header(),
         Expanded(
           child: SingleChildScrollView(
             padding: const EdgeInsets.symmetric(horizontal: AppTheme.sp5),
@@ -195,7 +194,6 @@ class _CompositorBody extends StatelessWidget {
                   index: e.key,
                   texto: e.value,
                   selected: e.key == versicoloIdx,
-                  isDark: isDark,
                   onTap: () => onVersicoloChanged(e.key),
                 )),
 
@@ -376,14 +374,12 @@ class _VersicoloOption extends StatelessWidget {
   final int index;
   final String texto;
   final bool selected;
-  final bool isDark;
   final VoidCallback onTap;
 
   const _VersicoloOption({
     required this.index,
     required this.texto,
     required this.selected,
-    required this.isDark,
     required this.onTap,
   });
 
@@ -446,8 +442,7 @@ class _VersicoloOption extends StatelessWidget {
 }
 
 class _Header extends StatelessWidget {
-  final bool isDark;
-  const _Header({required this.isDark});
+  const _Header();
 
   @override
   Widget build(BuildContext context) {

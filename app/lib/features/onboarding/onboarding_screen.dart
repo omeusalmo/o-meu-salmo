@@ -149,7 +149,6 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                       (i) => _ProgressDot(
                         active: i == _currentPage,
                         onCobalt: _currentPage == 0,
-                        isDark: isDark,
                       ),
                     ),
                   ),
@@ -166,12 +165,10 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
 class _ProgressDot extends StatelessWidget {
   final bool active;
   final bool onCobalt;
-  final bool isDark;
 
   const _ProgressDot({
     required this.active,
     required this.onCobalt,
-    required this.isDark,
   });
 
   @override

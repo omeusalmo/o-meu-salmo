@@ -23,8 +23,7 @@ class DetalheColecaoScreen extends ConsumerWidget {
     final colecaoAsync = ref.watch(colecaoDetalheProvider(colecaoId));
     final salmosAsync  = ref.watch(salmosProvider);
 
-    final isDark = context.isDark;
-    final bg     = context.colorBg;
+    final bg = context.colorBg;
 
     // Aguarda ambos os providers
     if (colecaoAsync.isLoading || salmosAsync.isLoading) {
@@ -56,9 +55,11 @@ class DetalheColecaoScreen extends ConsumerWidget {
     }
 
     final todosSalmos = salmosAsync.value ?? [];
+    // Índice O(1) por número — evita busca linear por item ao montar a coleção.
+    final salmosPorNumero = {for (final s in todosSalmos) s.numero: s};
     // Mantém a ordem definida na coleção
     final salmosDaColecao = colecao.salmos
-        .map((n) => todosSalmos.where((s) => s.numero == n).firstOrNull)
+        .map((n) => salmosPorNumero[n])
         .whereType<Salmo>()
         .toList();
 
@@ -68,10 +69,7 @@ class DetalheColecaoScreen extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _Header(
-              titulo: colecao.titulo,
-              isDark: isDark,
-            ),
+            _Header(titulo: colecao.titulo),
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.symmetric(horizontal: AppTheme.sp5),
@@ -140,9 +138,8 @@ class DetalheColecaoScreen extends ConsumerWidget {
 
 class _Header extends StatelessWidget {
   final String titulo;
-  final bool isDark;
 
-  const _Header({required this.titulo, required this.isDark});
+  const _Header({required this.titulo});
 
   @override
   Widget build(BuildContext context) {
