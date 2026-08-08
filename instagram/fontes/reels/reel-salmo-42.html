@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Instrument+Sans:wght@400;500&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { width:1080px; height:1920px; overflow:hidden; }
+.slide {
+  width:1080px; height:1920px;
+  background: linear-gradient(165deg, #080B1C 0%, #10142C 45%, #251b26 75%, #40263a 100%);
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  padding:220px 90px 300px;
+  position:relative;
+}
+.watermark {
+  font-family:'Cormorant', serif;
+  font-size:520px; font-weight:300;
+  color:#9A6A86; opacity:0.06;
+  position:absolute; bottom:-80px; right:-30px;
+  line-height:1; letter-spacing:-24px;
+}
+.accent-bar {
+  position:absolute; top:0; left:0; right:0; height:4px;
+  background: linear-gradient(90deg, transparent 0%, #9A6A86 40%, #9A6A86 60%, transparent 100%);
+  opacity:0.5;
+}
+.logo {
+  position:absolute; top:200px; left:0; right:0;
+  text-align:center;
+  font-family:'Instrument Sans', sans-serif;
+  font-size:26px; font-weight:500;
+  color:#FFFFFF; opacity:0.3;
+  letter-spacing:6px; text-transform:uppercase;
+}
+.collection-tag {
+  font-family:'Instrument Sans', sans-serif;
+  font-size:26px; font-weight:500;
+  letter-spacing:8px; text-transform:uppercase;
+  color:#C793B1; opacity:0.9;
+  margin-bottom:56px;
+}
+.deco-line {
+  width:70px; height:2px;
+  background: linear-gradient(90deg, transparent, #9A6A86, transparent);
+  opacity:0.5; margin: 0 auto 56px;
+}
+.verse {
+  font-family:'Cormorant', serif;
+  font-size:76px; font-weight:300; font-style:italic;
+  color:#FFFFFF; line-height:1.5;
+  text-align:center;
+  max-width:900px;
+}
+.ref-wrap { margin-top:72px; display:flex; flex-direction:column; align-items:center; gap:14px; }
+.ref-line { width:36px; height:2px; background:#C4A86A; opacity:0.45; }
+.ref {
+  font-family:'Instrument Sans', sans-serif;
+  font-size:28px; font-weight:300;
+  color:#C4A86A; opacity:0.9;
+  letter-spacing:3px;
+}
+.cta {
+  position:absolute; bottom:260px; left:0; right:0;
+  text-align:center;
+  font-family:'Instrument Sans', sans-serif;
+  font-size:24px; font-weight:400;
+  color:#FFFFFF; opacity:0.4;
+  letter-spacing:2px;
+}
+.bookmark{position:absolute;top:0;left:50%;transform:translateX(-50%);width:34px;height:50px;background:#5567EA;clip-path:polygon(0 0,100% 0,100% 100%,50% 70%,0 100%);opacity:0.9;}
+</style></head><body>
+<div class="slide">
+  <div class="bookmark"></div>
+  <div class="accent-bar"></div>
+  <div class="watermark">42</div>
+  <div class="logo">O Meu Salmo</div>
+  <div class="collection-tag">Luto</div>
+  <div class="deco-line"></div>
+  <div class="verse">"Como o cervo anseia<br>pelas correntes das águas,<br>assim a minha alma<br>anseia por ti, ó Deus."</div>
+  <div class="ref-wrap">
+    <div class="ref-line"></div>
+    <div class="ref">Salmos 42 · narração do app</div>
+  </div>
+  <div class="cta">ouça com o som ligado</div>
+</div>
+</body></html>

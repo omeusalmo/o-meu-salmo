@@ -3,9 +3,11 @@
 > **TL;DR:** 4 pilares (card 40% · Reel narrado 25% · carrossel 20% · founder 15%), 3-4 posts/semana,
 > sem stories diários (só quando der). Reels usam a narração real do app = demo do diferencial com custo zero.
 > **Posts prontos e numerados em `instagram/fila-de-postagem/`** (imagem + legenda .txt lado a lado,
-> ordem do calendário, 10 posts = ~4 semanas). Ver `instagram/README.md`.
+> ordem do calendário, 20 posts = ~8 semanas). Ver `instagram/README.md`.
+> Luto (posts 12 e 14) e founder (posts 16 e 19) já cobertos. Post 11 = anúncio de saída do teste
+> fechado pra Produção, trava até Jeff confirmar no Play Console (ver aviso no `legenda.txt`).
 
-Atualizado: 2026-07-19 · Tom: íntimo, sóbrio, sem travessão, sem bloco de hashtag, máx. 1 emoji discreto (ideal zero).
+Atualizado: 2026-08-08 · Tom: íntimo, sóbrio, sem travessão, sem bloco de hashtag, máx. 1 emoji discreto (ideal zero).
 
 ---
 
@@ -51,6 +53,24 @@ Stories: **opcionais**, quando der. Melhor uso: repostar o feed no story (2 toqu
 
 Sobram na gaveta pra Semana 3+: cards Perdão (Sl 51), Louvor (Sl 150), Proteção (Sl 91) e o Reel Salmo 121.
 
+### Semanas 3-4 (posts 11-15)
+| Dia | Conteúdo | Arte | Legenda |
+|---|---|---|---|
+| — | **Especial: lançamento em Produção** (⚠️ só postar após confirmação) | `fila-de-postagem/11-especial-lancamento-producao/` | `.txt` ao lado, CTA = link da Play Store |
+| Qua | **Reel Salmo 42 narrado** (Luto) | `fila-de-postagem/12-qua-reel-salmo-42/` | ver abaixo |
+| Sex | Card Ansiedade (Sl 46) | `fila-de-postagem/13-sex-card-ansiedade/` | `.txt` ao lado |
+| Dom | Card Luto (Sl 34) | `fila-de-postagem/14-dom-card-luto/` | `.txt` ao lado |
+| Qua | **Carrossel Como Funciona** (6 slides) | `fila-de-postagem/15-qua-carrossel-como-funciona/` na ordem | ver abaixo |
+
+### Semanas 5-6 (posts 16-20)
+| Dia | Conteúdo | Arte | Legenda |
+|---|---|---|---|
+| Sex | **Founder: por que fiz o app** | `fila-de-postagem/16-sex-founder-por-que-fiz/` | `.txt` ao lado |
+| Dom | Card Gratidão (Sl 103) | `fila-de-postagem/17-dom-card-gratidao/` | `.txt` ao lado |
+| Qua | Card Sono (Sl 127) | `fila-de-postagem/18-qua-card-sono/` | `.txt` ao lado |
+| Sex | **Founder: por que é grátis sem anúncio** | `fila-de-postagem/19-sex-founder-gratis-sem-anuncio/` | `.txt` ao lado |
+| Dom | Card Esperança (Sl 27) | `fila-de-postagem/20-dom-card-esperanca/` | `.txt` ao lado |
+
 ---
 
 ## Legendas dos posts novos
@@ -86,6 +106,28 @@ não desliga.
 O meu Salmo. Gratuito, offline, sem anúncios.
 ```
 
+### Reel Salmo 42 (post 12, Luto)
+```
+"Como o cervo anseia pelas correntes das águas, assim a
+minha alma anseia por ti, ó Deus."
+
+Salmo 42, narrado. Pra quando a saudade pesa e falta chão.
+
+O meu Salmo. Gratuito, offline, sem anúncios.
+omeusalmo.com.br
+```
+
+### Carrossel Como Funciona (post 15)
+```
+Achar o Salmo certo leva menos de 1 minuto.
+
+Você escolhe a emoção, o app entrega uma coleção pronta, e
+você lê ou ouve narrado, no seu tempo.
+
+Salve este post pra quando precisar do caminho.
+omeusalmo.com.br
+```
+
 ---
 
 ## Como montar o Reel (CapCut grátis, ~10 min)
@@ -107,10 +149,10 @@ O meu Salmo. Gratuito, offline, sem anúncios.
 
 Sem edição, celular na mão ou tela gravada. 1 a cada 2 semanas:
 
-1. **"Por que fiz um app de Salmos"** — "Eu queria abrir algo que me acalmasse, não mais uma rede social. Não achei. Fiz." + tela do app
-2. **"Por que é grátis e sem anúncio"** — "Anúncio no meio de um Salmo quebra o silêncio. Então não tem." (posicionamento vira conteúdo)
-3. **"Como escolho os salmos de cada emoção"** — bastidor da curadoria
-4. **Convocação de testadores** — enquanto durar o teste fechado (texto em `convocacao-testadores.md`)
+1. **"Por que fiz um app de Salmos"** ✅ post 16 — quote card estático (sem exigir vídeo); "Eu queria abrir alguma coisa que me acalmasse. Não mais uma rede social. Não achei. Então fiz." + tela do app. Se Jeff preferir gravar em vídeo depois, o texto do `legenda.txt` já serve de roteiro.
+2. **"Por que é grátis e sem anúncio"** ✅ post 19 — quote card estático; "Um anúncio no meio de um Salmo quebra o silêncio. Por isso não existe nenhum aqui." (posicionamento vira conteúdo)
+3. **"Como escolho os salmos de cada emoção"** — bastidor da curadoria, ainda na gaveta
+4. ~~Convocação de testadores~~ — descontinuado: app saiu do teste fechado (ver post especial 11)
 
 ---
 
@@ -125,4 +167,6 @@ Sem edição, celular na mão ou tela gravada. 1 a cada 2 semanas:
 - Sem travessão em texto publicado; separador = `·` ou ponto
 - Sem hashtag em bloco (máx. 3 discretas se fizer sentido: #salmos #devocional)
 - Nunca "baixe agora e transforme sua vida"
-- CTA sempre `omeusalmo.com.br` enquanto o app estiver em teste fechado
+- CTA sempre `omeusalmo.com.br` enquanto o app estiver em teste fechado. Única exceção: o post
+  especial de lançamento (11), que usa o link direto da Play Store por ser o próprio anúncio
+  da saída do teste fechado.

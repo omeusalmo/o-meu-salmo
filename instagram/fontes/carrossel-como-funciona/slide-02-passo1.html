@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Instrument+Sans:wght@400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { width:1080px; height:1350px; overflow:hidden; }
+.slide {
+  width:1080px; height:1350px;
+  background: linear-gradient(155deg, #080B1C 0%, #10142C 55%, #141a38 80%, #22307c 100%);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:120px 100px; position:relative; text-align:center;
+}
+.logo { position:absolute; top:72px; left:0; right:0; font-family:'Instrument Sans',sans-serif;
+  font-size:22px; font-weight:500; color:#FFF; opacity:0.25; letter-spacing:5px; text-transform:uppercase; }
+.progress { position:absolute; top:64px; right:72px; font-family:'Instrument Sans',sans-serif;
+  font-size:22px; color:#FFF; opacity:0.30; letter-spacing:3px; }
+.eyebrow { font-family:'Instrument Sans',sans-serif; font-size:24px; font-weight:500;
+  letter-spacing:7px; text-transform:uppercase; color:#5567EA; margin-bottom:48px; }
+.title { font-family:'Playfair Display',serif; font-size:88px; font-weight:400;
+  color:#EEF0FC; line-height:1.25; }
+.title em { font-style:italic; color:#5567EA; }
+.sub { font-family:'Cormorant',serif; font-style:italic; font-size:42px; font-weight:300;
+  color:#8C97D4; line-height:1.5; margin-top:40px; max-width:780px; }
+.chips { display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin-top:52px; max-width:860px; }
+.chip { font-family:'Instrument Sans',sans-serif; font-size:26px; border:1px solid; border-radius:999px; padding:12px 30px; }
+.bookmark{position:absolute;top:0;left:50%;transform:translateX(-50%);width:34px;height:50px;background:#5567EA;clip-path:polygon(0 0,100% 0,100% 100%,50% 70%,0 100%);opacity:0.9;}
+</style></head><body>
+<div class="slide">
+  <div class="bookmark"></div>
+  <div class="logo">O Meu Salmo</div>
+  <div class="progress">1 de 4</div>
+  <div class="eyebrow">Passo 1</div>
+  <div class="title">Você escolhe<br>como <em>chegou.</em></div>
+  <div class="sub">O ponto de partida é a sua emoção, não um índice de capítulos.</div>
+  <div class="chips"><span class="chip" style="color:#8B9AF2;border-color:#8B9AF255;background:#8B9AF214">Ansiedade</span><span class="chip" style="color:#8FC287;border-color:#8FC28755;background:#8FC28714">Sono</span><span class="chip" style="color:#E2B95C;border-color:#E2B95C55;background:#E2B95C14">Gratidão</span><span class="chip" style="color:#C793B1;border-color:#C793B155;background:#C793B114">Luto</span><span class="chip" style="color:#7C90F0;border-color:#7C90F055;background:#7C90F014">Esperança</span><span class="chip" style="color:#ABA7D6;border-color:#ABA7D655;background:#ABA7D614">Perdão</span><span class="chip" style="color:#E2B95C;border-color:#E2B95C55;background:#E2B95C14">Louvor</span><span class="chip" style="color:#8FC287;border-color:#8FC28755;background:#8FC28714">Proteção</span></div>
+</div>
+</body></html>
