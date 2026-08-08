@@ -17,7 +17,7 @@
 
 ## 2. Tipos de dados — declarar como COLETADO (nenhum como "compartilhado")
 
-Para cada um abaixo: **Coletado = Sim**, **Compartilhado = Não**, **Processado de forma efêmera = Não**, **Coleta obrigatória = Não (opcional, opt-out no app)**, **Finalidade = Análise / Funcionalidade do app**. Nenhum para publicidade/marketing.
+Para cada um abaixo: **Coletado = Sim**, **Compartilhado = Não**, **Processado de forma efêmera = Não**, **Coleta obrigatória = Não (opcional, opt-in no onboarding desde 2026-08-07)**, **Finalidade = Análise / Funcionalidade do app**. Nenhum para publicidade/marketing.
 
 | Categoria | Tipo específico | Coletado? | Por quê |
 |---|---|---|---|
