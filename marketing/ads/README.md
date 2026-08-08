@@ -1,9 +1,11 @@
 # Ads — O meu Salmo
 
-## ⚠️ Status: app ainda em teste fechado, sem link público
+## ⚠️ Status (2026-08-08): 12/12 testadores rodando há 10 dias, faltam ~4
 
-8/12 nomes, 6/12 e-mails, **0 convites enviados**. Play Store não tem página
-pública instalável ainda. Duas consequências práticas:
+Código 4 publicado 2026-08-08. Gate de produção (12 testadores × 14 dias
+contínuos) completa por volta de 2026-08-12 (conferir placar oficial no
+Console: Produção → "Solicitar a produção"). Play Store ainda não tem
+página pública instalável. Duas consequências práticas:
 
 1. **Tráfego pago não pode rodar** — campanha "Promoção de app" precisa de
    um destino real pra instalar. Rodar agora = pagar por clique que trava

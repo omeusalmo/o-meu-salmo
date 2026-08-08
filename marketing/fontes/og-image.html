@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Cormorant:ital@1&family=Instrument+Sans:wght@400;500&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px; height: 630px;
+    background: radial-gradient(ellipse 900px 600px at 50% 40%, #10142C 0%, #080B1C 70%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: 'Instrument Sans', sans-serif;
+    position: relative; overflow: hidden;
+  }
+  .stars { position: absolute; inset: 0; opacity: .5;
+    background-image: radial-gradient(1.5px 1.5px at 20% 30%, #8C97D4 50%, transparent),
+      radial-gradient(1.5px 1.5px at 75% 20%, #8C97D4 50%, transparent),
+      radial-gradient(1px 1px at 85% 60%, #7080C8 50%, transparent),
+      radial-gradient(1.5px 1.5px at 10% 75%, #7080C8 50%, transparent),
+      radial-gradient(1px 1px at 60% 85%, #8C97D4 50%, transparent),
+      radial-gradient(1.5px 1.5px at 92% 40%, #7080C8 50%, transparent);
+  }
+  .eyebrow { font-size: 15px; letter-spacing: .18em; text-transform: uppercase; color: #7080C8; margin-bottom: 24px; font-weight: 500; }
+  .verse { font-family: 'Cormorant', serif; font-style: italic; font-size: 40px; color: #C4A86A; text-align: center; max-width: 780px; line-height: 1.35; margin-bottom: 40px; }
+  .logo { font-size: 34px; display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px; }
+  .logo .o-meu { font-family: 'Instrument Sans', sans-serif; letter-spacing: .12em; text-transform: uppercase; color: #7080C8; font-size: 20px; font-weight: 500; }
+  .logo .salmo { font-family: 'Playfair Display', serif; font-style: italic; color: #EEF0FC; font-weight: 600; }
+  .tagline { font-size: 16px; color: #8C97D4; margin-top: 6px; }
+</style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="eyebrow">150 SALMOS · 8 EMOÇÕES</div>
+  <div class="verse">"Aquietai-vos, e sabei que eu sou Deus."</div>
+  <div class="logo"><span class="o-meu">O MEU</span><span class="salmo">Salmo</span></div>
+  <div class="tagline">Para cada emoção, o Salmo certo. Gratuito · Offline · Android</div>
+</body>
+</html>
