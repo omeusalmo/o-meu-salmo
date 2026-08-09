@@ -54,7 +54,7 @@ Só vale o esforço quando Fase 1 mostrar que o CPC compensa e você quiser aume
 
 ## Setup
 
-**Confirmado 2026-08-09:** Business Manager "O meu Salmo" já existe e ativo, Página + Instagram @omeusalmo conectados (Meta Business Suite). Falta só confirmar se a conta de anúncios (BRL) e forma de pagamento já estão configuradas — checar em Gerenciador de Anúncios → Configurações antes de criar a campanha.
+**PRONTO 2026-08-09:** Business Manager "O meu Salmo" ativo, Página + Instagram @omeusalmo conectados, conta de anúncios criada (BRL, ID `1711379634036207`) e forma de pagamento cadastrada. Nada bloqueando tecnicamente — só falta esperar o gate de produção (12 testadores × 14 dias) fechar, ~2026-08-12, pra criar a campanha de verdade.
 
 ## Sequência de lançamento (fator que mais importa)
 
