@@ -22,7 +22,7 @@ instagram/
 │   ├── 08-qua-reel-salmo-121/      fundo.png + audio.mp3 + legenda.txt (CapCut)
 │   ├── 09-sex-card-louvor/         post.png + legenda.txt   (light âmbar)
 │   ├── 10-dom-card-protecao/       post.png + legenda.txt   (dark verde)
-│   ├── 11-especial-lancamento-producao/  post.png + legenda.txt (light cobalt; ⚠️ SÓ POSTAR após Jeff confirmar Produção no Play Console — ver aviso no topo do legenda.txt; CTA = link direto da Play Store, não omeusalmo.com.br)
+│   ├── 11-especial-lancamento-producao/  carrossel 6 slides + legenda.txt (hook do kit de ads + 3 screenshots reais + benefícios + CTA; ⚠️ SÓ POSTAR após Jeff confirmar Produção no Play Console, ver aviso no topo do legenda.txt; CTA = link direto da Play Store, não omeusalmo.com.br)
 │   ├── 12-qua-reel-salmo-42/       fundo.png + audio.mp3 + legenda.txt (dark malva, Luto; CapCut)
 │   ├── 13-sex-card-ansiedade/      post.png + legenda.txt   (dark cobalt, Salmo 46)
 │   ├── 14-dom-card-luto/           post.png + legenda.txt   (dark malva, Salmo 34)
@@ -39,7 +39,7 @@ instagram/
     ├── carrossel-ansiedade/ (7 slides)
     ├── carrossel-como-funciona/ (6 slides)
     ├── founder/             (2 quote cards)
-    ├── especial/            (1 card de lançamento em produção)
+    ├── carrossel-lancamento/ (6 slides do carrossel de lançamento em produção)
     └── reels/               (3 fundos 9:16)
 ```
 

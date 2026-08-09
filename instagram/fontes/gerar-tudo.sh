@@ -28,7 +28,10 @@ shot "$DIR/cards/tema-sono-salmo-127.html"      "$FILA/18-qua-card-sono/post.png
 shot "$DIR/cards/tema-esperanca-salmo-27.html"  "$FILA/20-dom-card-esperanca/post.png"  1080,1350
 
 # especial (post 11, 4:5)
-shot "$DIR/especial/lancamento-producao.html" "$FILA/11-especial-lancamento-producao/post.png" 1080,1350
+# especial (post 11, carrossel 6 slides 4:5, mesmo sistema visual do kit de ads)
+for f in "$DIR"/carrossel-lancamento/*.html; do
+  shot "$f" "$FILA/11-especial-lancamento-producao/$(basename "${f%.html}").png" 1080,1350
+done
 
 # founder (4:5)
 shot "$DIR/founder/founder-por-que-fiz.html"        "$FILA/16-sex-founder-por-que-fiz/post.png"         1080,1350
