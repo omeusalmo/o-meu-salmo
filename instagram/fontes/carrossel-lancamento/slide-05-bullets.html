@@ -1,22 +1,27 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{width:1080px;height:1350px;overflow:hidden;}
 .wrap{width:1080px;height:1350px;position:relative;background:radial-gradient(120% 70% at 50% 0%,#182a6e 0%,#10142C 40%,#080B1C 100%);}
 .bookmark{position:absolute;top:0;left:50%;transform:translateX(-50%);width:34px;height:50px;background:#5567EA;opacity:.85;clip-path:polygon(0 0,100% 0,100% 100%,50% 70%,0 100%);}
 .counter{position:absolute;top:56px;right:64px;font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:22px;letter-spacing:1px;color:#7080C8;}
-.hl{position:absolute;top:170px;left:96px;right:96px;font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:56px;line-height:1.18;color:#EEF0FC;}
-.hl em{color:#5567EA;}
-.list{position:absolute;top:600px;left:96px;right:96px;}
-.item{display:flex;align-items:center;gap:26px;padding:44px 0;border-bottom:1px solid rgba(140,151,212,.16);}
+.top{position:absolute;top:150px;left:96px;right:96px;text-align:center;}
+.eyebrow{font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:24px;letter-spacing:6px;text-transform:uppercase;color:#FFFFFF;opacity:.4;margin-bottom:26px;}
+.hl{font-family:'Playfair Display',serif;font-weight:600;font-size:56px;line-height:1.18;letter-spacing:-.01em;color:#EEF0FC;}
+.hl em{font-style:italic;color:#5567EA;}
+.list{position:absolute;top:600px;left:150px;right:150px;}
+.item{display:flex;align-items:center;justify-content:center;gap:24px;padding:44px 0;border-bottom:1px solid rgba(140,151,212,.16);}
 .dot{width:10px;height:10px;border-radius:50%;background:#C4A86A;flex:none;}
-.item span{font-family:'Instrument Sans',sans-serif;font-weight:500;font-size:42px;color:#EEF0FC;}
+.item span{font-family:'Instrument Sans',sans-serif;font-weight:500;font-size:40px;color:#EEF0FC;}
 </style></head><body>
 <div class="wrap">
   <div class="bookmark"></div>
   <div class="counter">5 / 6</div>
-  <div class="hl">Tudo o que você<br>precisa, <em>nada</em><br>do que sobra.</div>
+  <div class="top">
+    <div class="eyebrow">O Meu Salmo</div>
+    <div class="hl">Tudo o que você precisa,<br><em>nada</em> do que sobra.</div>
+  </div>
   <div class="list">
     <div class="item"><div class="dot"></div><span>150 Salmos completos</span></div>
     <div class="item"><div class="dot"></div><span>8 emoções, com curadoria</span></div>
