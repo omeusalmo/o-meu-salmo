@@ -8,6 +8,7 @@ DIR="$(cd "$(dirname "$0")" && pwd)"
 FILA="$DIR/../fila-de-postagem"
 
 shot() { # shot <html> <png-destino> <WxH>
+  mkdir -p "$(dirname "$2")"
   "$CHROME" --headless=new --disable-gpu --screenshot="$2" \
     --window-size="$3" --hide-scrollbars "file://$1" 2>/dev/null \
     && echo "✓ $(basename "$2")"
@@ -51,6 +52,9 @@ done
 for f in "$DIR"/carrossel-como-funciona/*.html; do
   shot "$f" "$FILA/15-qua-carrossel-como-funciona/$(basename "${f%.html}").png" 1080,1350
 done
+
+# facebook — post "é um aplicativo" (post 21, 4:5)
+shot "$DIR/facebook-app/post-e-um-app.html" "$FILA/21-fb-e-um-app/post.png" 1080,1350
 
 # reels (9:16)
 shot "$DIR/reels/reel-salmo-23.html"  "$FILA/02-qua-reel-salmo-23/fundo.png"   1080,1920

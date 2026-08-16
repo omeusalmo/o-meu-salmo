@@ -1,0 +1,168 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Instrument+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{width:1080px;height:1350px;overflow:hidden;}
+
+.post{
+  width:1080px;height:1350px;position:relative;overflow:hidden;
+  background:linear-gradient(155deg,#080B1C 0%,#10142C 55%,#141a38 80%,#22307c 100%);
+  padding:64px 80px 0 80px;
+}
+
+/* marca */
+.brand{display:flex;align-items:center;gap:18px;height:44px;}
+.bm{width:26px;height:38px;background:#5567EA;opacity:.9;
+  clip-path:polygon(0 0,100% 0,100% 100%,50% 70%,0 100%);}
+.wm{font-family:'Instrument Sans',sans-serif;font-size:22px;font-weight:500;
+  letter-spacing:5px;text-transform:uppercase;color:#FFF;opacity:.30;}
+
+/* manchete — vive dentro do quadrado seguro (y 135..1215) */
+.headline{margin-top:48px;}
+.h-top{font-family:'Playfair Display',serif;font-size:60px;color:#EEF0FC;line-height:1.15;}
+.h-top em{font-style:italic;color:#5567EA;}
+.h-main{font-family:'Playfair Display',serif;font-size:92px;color:#EEF0FC;line-height:1.12;margin-top:4px;}
+.h-main em{font-style:italic;color:#5567EA;}
+
+/* conteudo */
+.row{display:flex;align-items:flex-start;gap:56px;margin-top:44px;}
+
+/* ---- mockup do aparelho ---- */
+.phone{
+  position:relative;flex:none;
+  width:393px;height:830px;padding:9px;border-radius:46px;
+  background:linear-gradient(150deg,#39406B 0%,#1B2140 30%,#11162F 62%,#0A0D1F 100%);
+  box-shadow:
+    0 0 130px rgba(85,103,234,.20),
+    0 46px 90px rgba(3,5,15,.62),
+    0 6px 18px rgba(3,5,15,.5),
+    inset 2px 2px 0 rgba(255,255,255,.26),
+    inset -2px -2px 0 rgba(255,255,255,.10);
+}
+.phone::before{ /* brilho de luz na lateral esquerda */
+  content:'';position:absolute;left:-1px;top:118px;width:3px;height:210px;border-radius:3px;
+  background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.30),rgba(255,255,255,0));
+}
+.phone::after{ /* botao lateral direito */
+  content:'';position:absolute;right:-3px;top:250px;width:3px;height:96px;border-radius:3px;
+  background:linear-gradient(180deg,#3B4370,#1A2040);
+}
+.screen{
+  width:375px;height:812px;border-radius:38px;overflow:hidden;
+  background:#080B1C;display:flex;flex-direction:column;position:relative;
+}
+.statusbar{
+  flex:none;height:28px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 22px;font-family:'Instrument Sans',sans-serif;font-size:16px;font-weight:500;
+  color:#C9D0F2;opacity:.62;letter-spacing:.5px;
+}
+.statusbar svg{display:block;opacity:.9;}
+.shotbox{flex:1;overflow:hidden;}
+.shotbox img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;
+  filter:brightness(1.14) contrast(1.04);}
+.punch{
+  position:absolute;top:8px;left:50%;transform:translateX(-50%);
+  width:15px;height:15px;border-radius:50%;background:#04050D;
+  box-shadow:0 0 0 1.5px rgba(0,0,0,.75),0 0 6px rgba(0,0,0,.5);z-index:4;
+}
+
+/* ---- coluna de provas ---- */
+.col{height:830px;display:flex;flex-direction:column;justify-content:center;}
+.eyebrow{
+  font-family:'Instrument Sans',sans-serif;font-size:26px;font-weight:500;
+  letter-spacing:4.2px;text-transform:uppercase;color:#8291F3;line-height:1.55;
+}
+.feats{list-style:none;margin-top:44px;}
+.feats li{
+  display:flex;align-items:center;gap:18px;margin-bottom:30px;white-space:nowrap;
+  font-family:'Instrument Sans',sans-serif;font-size:32px;color:#A9B3E4;line-height:1.3;
+}
+.feats li b{color:#EEF0FC;font-weight:500;}
+.dot{flex:none;width:10px;height:10px;border-radius:50%;background:#5567EA;}
+
+/* selo Google Play (desenhado, sem imagem externa) */
+.badge{
+  display:inline-flex;align-items:center;gap:18px;margin-top:36px;
+  background:#04060E;border:1.5px solid rgba(238,240,252,.38);border-radius:16px;
+  padding:15px 28px;box-shadow:0 14px 34px rgba(3,5,15,.45);
+}
+.badge .txt{display:flex;flex-direction:column;justify-content:center;}
+.badge .t1{font-family:'Instrument Sans',sans-serif;font-size:17px;font-weight:500;
+  letter-spacing:2.4px;text-transform:uppercase;color:#C9D0F2;line-height:1;}
+.badge .t2{font-family:'Instrument Sans',sans-serif;font-size:40px;font-weight:600;
+  color:#F3F5FF;line-height:1.15;margin-top:5px;letter-spacing:.3px;}
+
+/* rodape (fora do quadrado seguro — so reforco) */
+.footer{position:absolute;left:0;right:0;bottom:52px;text-align:center;
+  font-family:'Instrument Sans',sans-serif;font-size:28px;color:#C4A86A;letter-spacing:1.6px;}
+</style></head><body>
+<div class="post">
+
+  <div class="brand"><span class="bm"></span></div>
+
+  <!-- HEADLINE — trocar só as duas linhas abaixo -->
+  <div class="headline">
+    <div class="h-top">Baixe o app</div>
+    <div class="h-main">O meu <em>Salmo</em></div>
+  </div>
+  <!-- /HEADLINE -->
+
+  <div class="row">
+
+    <div class="phone">
+      <div class="screen">
+        <div class="punch"></div>
+        <div class="statusbar">
+          <span>20:14</span>
+          <span>
+            <svg width="82" height="19" viewBox="0 0 86 20" fill="none">
+              <rect x="0" y="12" width="4" height="7" rx="1" fill="#C9D0F2"/>
+              <rect x="7" y="8" width="4" height="11" rx="1" fill="#C9D0F2"/>
+              <rect x="14" y="4" width="4" height="15" rx="1" fill="#C9D0F2"/>
+              <rect x="21" y="0" width="4" height="19" rx="1" fill="#C9D0F2" opacity=".35"/>
+              <path d="M34 7.5c5-4.6 12.6-4.6 17.6 0" stroke="#C9D0F2" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M38 12.4c2.9-2.6 6.9-2.6 9.8 0" stroke="#C9D0F2" stroke-width="2.2" stroke-linecap="round"/>
+              <circle cx="42.9" cy="17.2" r="1.9" fill="#C9D0F2"/>
+              <rect x="60.8" y="4.6" width="21" height="11.4" rx="3" stroke="#C9D0F2" stroke-width="1.7"/>
+              <rect x="63.2" y="7" width="12.4" height="6.6" rx="1.4" fill="#C9D0F2"/>
+              <rect x="83" y="7.7" width="2.4" height="5.2" rx="1.2" fill="#C9D0F2"/>
+            </svg>
+          </span>
+        </div>
+        <div class="shotbox">
+          <img src="../../../play-store/screenshots/raw-cropped/02-colecoes.png" alt="Tela de coleções do aplicativo O meu Salmo">
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="eyebrow">Grátis para Android</div>
+
+      <ul class="feats">
+        <li><span class="dot"></span><span>Os <b>150 Salmos</b> completos</span></li>
+        <li><span class="dot"></span><span><b>Áudio narrado</b>, ouça sem ler</span></li>
+        <li><span class="dot"></span><span>Escolha pelo que <b>você sente</b></span></li>
+        <li><span class="dot"></span><span><b>Funciona sem internet</b></span></li>
+        <li><span class="dot"></span><span><b>Sem anúncios</b> e sem cadastro</span></li>
+      </ul>
+
+      <div class="badge">
+        <svg width="54" height="54" viewBox="0 0 512 512" aria-hidden="true">
+          <path d="M47.1 14.6C40.2 21.9 36.1 33.2 36.1 47.8v416.4c0 14.6 4.1 25.9 11 33.2l1.4 1.4 233.3-233.3v-5.5L48.5 13.2l-1.4 1.4z" fill="#00A0FF"/>
+          <path d="M359.2 342.4l-77.8-77.8v-5.5l77.8-77.8 1.8 1 92.1 52.3c26.3 14.9 26.3 39.3 0 54.3l-92.1 52.3-1.8 1.2z" fill="#FFCE00"/>
+          <path d="M361 341.2 281.4 261.6 47.1 495.9c8.7 9.2 23 10.3 39.2 1.2L361 341.2z" fill="#FF3A44"/>
+          <path d="M361 182.4 86.3 26.4c-16.2-9.2-30.5-8.1-39.2 1.2l234.3 234.2L361 182.4z" fill="#00E676"/>
+        </svg>
+        <span class="txt">
+          <span class="t1">Disponível no</span>
+          <span class="t2">Google Play</span>
+        </span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="footer">omeusalmo.com.br</div>
+</div>
+</body></html>
