@@ -72,8 +72,101 @@
       "inLanguage": "pt-BR",
       "isPartOf": {"@id": "https://omeusalmo.com.br/#website"},
       "about": {"@id": "https://omeusalmo.com.br/#app"},
+      "hasPart": {"@id": "https://omeusalmo.com.br/#faq"},
       "datePublished": "2026-01-01",
-      "dateModified": "2026-06-11"
+      "dateModified": "2026-08-16"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://omeusalmo.com.br/#faq",
+      "url": "https://omeusalmo.com.br/#faq",
+      "name": "Dúvidas comuns sobre o app O meu Salmo",
+      "inLanguage": "pt-BR",
+      "isPartOf": {"@id": "https://omeusalmo.com.br/#webpage"},
+      "about": {"@id": "https://omeusalmo.com.br/#app"},
+      "dateModified": "2026-08-16",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O aplicativo é gratuito?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "É sim. Baixar e usar tudo não custa nada, e não existe versão paga nem mensalidade. Dentro de Ajustes há uma chave Pix para quem quiser ajudar com uma doação, mas isso é escolha sua. Nada fica trancado se você não doar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Tem propaganda?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não tem nenhuma. Nada pisca na tela, nada interrompe a leitura e nada corta o áudio no meio."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Precisa criar conta ou fazer cadastro?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não precisa. O aplicativo não pede e-mail, senha nem número de telefone. Você instala, abre e já está lendo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O aplicativo pede meus dados?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. Ele não guarda seu nome, seu e-mail nem seu telefone, e não repassa dado nenhum para ninguém. Existe só uma medição de uso anônima, que ajuda a corrigir falhas, e ela funciona apenas se você autorizar. Dá para desligar quando quiser, em Ajustes, na parte de Privacidade."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Tem para iPhone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Por enquanto não. O aplicativo existe só para celular Android, na Play Store. A versão para iPhone está nos planos, ainda sem data."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como faço para baixar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No seu celular Android, abra a Play Store, escreva O meu Salmo na busca e toque em Instalar. Baixe conectado no Wi-Fi: são mais de 60 MB, porque os áudios dos 150 Salmos já vêm dentro do aplicativo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Funciona sem internet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depois de instalado, sim. A internet é necessária só na hora de baixar. A partir daí, os 150 Salmos, os áudios e os seus favoritos abrem sem sinal e sem Wi-Fi."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quais Salmos estão no aplicativo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Os 150, do primeiro ao último, com o texto inteiro. O Salmo 23 e o Salmo 91 estão lá, e os outros 148 também. A tradução é a de João Ferreira de Almeida, edição de 1911."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A voz que lê os Salmos é de uma pessoa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não é. Quem lê é uma voz de computador, a mesma nos 150 Salmos, com a leitura mais devagar e pausas no lugar certo. Não é o mesmo que alguém lendo para você, mas acompanha bem nas noites em que os olhos cansam."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Os meus favoritos ficam salvos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ficam guardados no próprio aparelho e continuam lá depois que você fecha o aplicativo. Como não existe conta, eles não viajam com você: ao trocar de celular, a lista de favoritos começa vazia de novo."
+          }
+        }
+      ]
     }
   ]
 }
@@ -684,6 +777,29 @@ body.ready .hero-scroll{opacity:.8;}
 .dl-mi::before{content:'·';opacity:.4;}
 
 /* ══════════════════════════════════════════════════ */
+/* FAQ                                                 */
+/* ══════════════════════════════════════════════════ */
+#faq{padding:100px 0 110px;}
+.faq-hd{max-width:620px;margin:0 auto 46px;text-align:center;}
+.faq-hd .eye{display:flex;justify-content:center;}
+.faq-hl{font-family:var(--font-d);font-size:clamp(28px,3.4vw,44px);font-weight:400;letter-spacing:-.018em;line-height:1.1;color:var(--tx);margin-top:12px;}
+.faq-hl em{font-style:italic;color:var(--accent-lt);}
+.faq-list{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.faq-item{
+  background:var(--surface);border:.5px solid var(--border);border-radius:22px;
+  padding:28px 30px;
+  transition:border-color var(--dur) var(--ease),transform var(--dur) var(--ease);
+}
+.faq-item:hover{border-color:var(--accent-lt);transform:translateY(-2px);}
+.faq-q{font-family:var(--font-d);font-size:21px;font-weight:400;line-height:1.25;letter-spacing:-.01em;color:var(--tx);margin-bottom:12px;}
+.faq-a{font-family:var(--font-u);font-size:16px;line-height:1.75;color:var(--text);}
+.faq-a a{color:var(--tx);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;}
+.faq-a a:hover{text-decoration-thickness:2px;}
+.faq-foot{margin-top:44px;text-align:center;font-family:var(--font-u);font-size:15px;line-height:1.75;color:var(--text);}
+.faq-foot a{color:var(--tx);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;}
+.faq-foot a:hover{text-decoration-thickness:2px;}
+
+/* ══════════════════════════════════════════════════ */
 /* FOOTER                                              */
 /* ══════════════════════════════════════════════════ */
 footer{padding:40px 0;border-top:.5px solid var(--border);}
@@ -712,6 +828,8 @@ footer{padding:40px 0;border-top:.5px solid var(--border);}
   #ribbon{display:none;}
   .ccard{width:260px;min-height:310px;}
   .cc-name{margin-top:72px;}
+  .faq-list{grid-template-columns:1fr;}
+  #faq{padding:80px 0 88px;}
 }
 @media(max-width:480px){
   .hero-hl{font-size:36px;}
@@ -1165,6 +1283,72 @@ gtag('config','G-FHW3F9M24T');
         <span class="dl-mi">Android</span>
       </div>
     </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ══ FAQ ═════════════════════════════════════════════ -->
+<section id="faq" aria-labelledby="faq-hl">
+  <div class="wrap">
+    <div class="faq-hd rv">
+      <div class="eye">Dúvidas Comuns</div>
+      <h2 class="faq-hl" id="faq-hl">Antes de instalar,<br>o que <em>costumam perguntar.</em></h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item rv d1">
+        <h3 class="faq-q">O aplicativo é gratuito?</h3>
+        <p class="faq-a">É sim. Baixar e usar tudo não custa nada, e não existe versão paga nem mensalidade. Dentro de Ajustes há uma chave Pix para quem quiser ajudar com uma doação, mas isso é escolha sua. Nada fica trancado se você não doar.</p>
+      </div>
+
+      <div class="faq-item rv d2">
+        <h3 class="faq-q">Tem propaganda?</h3>
+        <p class="faq-a">Não tem nenhuma. Nada pisca na tela, nada interrompe a leitura e nada corta o áudio no meio.</p>
+      </div>
+
+      <div class="faq-item rv d3">
+        <h3 class="faq-q">Precisa criar conta ou fazer cadastro?</h3>
+        <p class="faq-a">Não precisa. O aplicativo não pede e-mail, senha nem número de telefone. Você instala, abre e já está lendo.</p>
+      </div>
+
+      <div class="faq-item rv d4">
+        <h3 class="faq-q">O aplicativo pede meus dados?</h3>
+        <p class="faq-a">Não. Ele não guarda seu nome, seu e-mail nem seu telefone, e não repassa dado nenhum para ninguém. Existe só uma medição de uso anônima, que ajuda a corrigir falhas, e ela funciona apenas se você autorizar. Dá para desligar quando quiser, em Ajustes, na parte de Privacidade. A <a href="./privacy_policy.html">política de privacidade está aqui</a>.</p>
+      </div>
+
+      <div class="faq-item rv d5">
+        <h3 class="faq-q">Tem para iPhone?</h3>
+        <p class="faq-a">Por enquanto não. O aplicativo existe só para celular Android, na Play Store. A versão para iPhone está nos planos, ainda sem data.</p>
+      </div>
+
+      <div class="faq-item rv d1">
+        <h3 class="faq-q">Como faço para baixar?</h3>
+        <p class="faq-a">No seu celular Android, abra a Play Store, escreva O meu Salmo na busca e toque em Instalar. Se preferir, <a href="https://play.google.com/store/apps/details?id=com.omeusalmo.salmos" target="_blank" rel="noopener">abra a página do aplicativo por aqui</a>. Baixe conectado no Wi-Fi: são mais de 60 MB, porque os áudios dos 150 Salmos já vêm dentro do aplicativo.</p>
+      </div>
+
+      <div class="faq-item rv d2">
+        <h3 class="faq-q">Funciona sem internet?</h3>
+        <p class="faq-a">Depois de instalado, sim. A internet é necessária só na hora de baixar. A partir daí, os 150 Salmos, os áudios e os seus favoritos abrem sem sinal e sem Wi-Fi.</p>
+      </div>
+
+      <div class="faq-item rv d3">
+        <h3 class="faq-q">Quais Salmos estão no aplicativo?</h3>
+        <p class="faq-a">Os 150, do primeiro ao último, com o texto inteiro. O Salmo 23 e o Salmo 91 estão lá, e os outros 148 também. A tradução é a de João Ferreira de Almeida, edição de 1911.</p>
+      </div>
+
+      <div class="faq-item rv d4">
+        <h3 class="faq-q">A voz que lê os Salmos é de uma pessoa?</h3>
+        <p class="faq-a">Não é. Quem lê é uma voz de computador, a mesma nos 150 Salmos, com a leitura mais devagar e pausas no lugar certo. Não é o mesmo que alguém lendo para você, mas acompanha bem nas noites em que os olhos cansam.</p>
+      </div>
+
+      <div class="faq-item rv d5">
+        <h3 class="faq-q">Os meus favoritos ficam salvos?</h3>
+        <p class="faq-a">Ficam guardados no próprio aparelho e continuam lá depois que você fecha o aplicativo. Como não existe conta, eles não viajam com você: ao trocar de celular, a lista de favoritos começa vazia de novo.</p>
+      </div>
+    </div>
+
+    <p class="faq-foot rv">Ficou alguma dúvida que não está aqui? Escreva para <a href="mailto:omeusalmo@gmail.com">omeusalmo@gmail.com</a>.</p>
   </div>
 </section>
 
