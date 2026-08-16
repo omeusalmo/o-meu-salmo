@@ -28,7 +28,7 @@ O meu Salmo é um app de salmos e orações com curadoria por emoção. Não é 
 — 150 Salmos completos, texto integral — inclusive os mais amados, como o Salmo 23 e o Salmo 91
 — 150 narrações em áudio, em português, sem pressa: leia ou ouça cada salmo como uma oração
 — A narração em áudio acompanha a leitura: o versículo que você ouve se acende na tela
-— Respirar: um minuto de pausa guiada com o Salmo 46
+— Respirar: uma pausa guiada com o Salmo 46
 — Reflexão por Salmo: um convite para pausar, meditar e orar
 — Salmo do dia: uma notificação gentil, todo dia um salmo novo
 — Favoritos: salve os salmos e as orações que tocaram em você
