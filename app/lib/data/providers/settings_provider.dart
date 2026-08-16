@@ -32,7 +32,7 @@ class ThemeModeNotifier extends Notifier<ThemeMode> {
 final themeModeProvider =
     NotifierProvider<ThemeModeNotifier, ThemeMode>(ThemeModeNotifier.new);
 
-// ─── Notificação diária ──────────────────────────────────────────────────────
+// ─── Notificação do Salmo do dia ─────────────────────────────────────────────
 
 class NotificationSettingsNotifier
     extends Notifier<({bool enabled, int hour, int minute})> {

@@ -152,7 +152,7 @@ class _NotificationCard extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const _Label('Salmo diário'),
+                const _Label('Salmo do dia'),
                 if (notif.enabled) ...[
                   const SizedBox(height: AppTheme.sp2),
                   GestureDetector(
@@ -243,7 +243,7 @@ class _NotificationCard extends ConsumerWidget {
     final picked = await showTimePicker(
       context: context,
       initialTime: TimeOfDay(hour: currentHour, minute: currentMinute),
-      helpText: 'Horário do Salmo diário',
+      helpText: 'Horário do Salmo do dia',
     );
     if (picked == null) return;
     await ref.read(notificationSettingsProvider.notifier).setTime(picked.hour, picked.minute);
@@ -732,8 +732,13 @@ class _InfoRow extends StatelessWidget {
   Widget build(BuildContext context) => Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            width: 80,
+          // Coluna do rótulo: reserva 80px de texto (não de tela) para alinhar
+          // os valores. Acompanha a fonte do sistema e cresce se precisar —
+          // "Tradução" não cabia em 80px fixos a partir de 1.5x.
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              minWidth: MediaQuery.textScalerOf(context).scale(80),
+            ),
             child: Text(
               label,
               style: GoogleFonts.instrumentSans(

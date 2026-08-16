@@ -22,7 +22,7 @@ dependencies:
   # Persistência local para favoritos e preferências
   shared_preferences: ^2.3.2
 
-  # Notificações locais — Salmo diário
+  # Notificações locais — Salmo do dia
   flutter_local_notifications: ^17.2.2
   timezone: ^0.9.4
 

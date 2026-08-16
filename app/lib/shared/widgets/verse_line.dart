@@ -34,8 +34,14 @@ class VerseLine extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            width: 20,
+          // Calha do número: reserva 20px de texto (não de tela) para manter os
+          // versículos alinhados na coluna. A reserva acompanha a fonte do
+          // sistema e a caixa ainda pode crescer — o Salmo 119 vai até o
+          // versículo 176 e três dígitos não podem ser cortados.
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              minWidth: MediaQuery.textScalerOf(context).scale(20),
+            ),
             child: Padding(
               padding: const EdgeInsets.only(top: 5),
               child: Text(

@@ -80,12 +80,20 @@ class SalmosApp extends ConsumerWidget {
       routerConfig: appRouter,
       debugShowCheckedModeBanner: false,
       builder: (context, child) {
-        // Acessibilidade: honra o aumento de fonte do sistema, mas limita a
-        // ampliação a 1.3x (o maior passo padrão do Android). Sem o teto,
-        // fontes gigantes (ex.: modo "enorme" da Samsung) cortam e sobrepõem
-        // texto em telas com espaçamento fixo (onboarding, grid emocional).
+        // Acessibilidade: honra o aumento de fonte do sistema até 2.0x, que é
+        // o que as diretrizes do Android esperam e o que o público do app
+        // (60–75 anos, presbiopia) costuma pedir — a Samsung chega a "Enorme".
+        //
+        // O teto existe só para não deixar a escala crescer sem limite em
+        // acessibilidade extrema. Telas que não aguentam 2.0x se protegem
+        // sozinhas com MediaQuery.withClampedTextScaling (hoje: as duas
+        // primeiras do onboarding). Clamp é destrutivo: se cortássemos aqui,
+        // nenhuma tela abaixo conseguiria recuperar a escala que o usuário
+        // pediu — por isso o teto é alto aqui e baixo só onde precisa.
+        //
+        // Coberto por test/a11y/text_scale_test.dart.
         final clamped =
-            MediaQuery.textScalerOf(context).clamp(maxScaleFactor: 1.3);
+            MediaQuery.textScalerOf(context).clamp(maxScaleFactor: 2.0);
         return MediaQuery(
           data: MediaQuery.of(context).copyWith(textScaler: clamped),
           child: child!,

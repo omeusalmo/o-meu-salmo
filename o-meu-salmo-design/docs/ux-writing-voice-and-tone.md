@@ -174,7 +174,7 @@ Um conceito = um termo, em todas as telas.
 
 | ✓ Faça | ✗ Evite |
 |---|---|
-| "Salmo diário" (toggle — ativa notificação) | "Ativar notificações de Salmo" |
+| "Salmo do dia" (toggle — ativa notificação) | "Ativar notificações de Salmo", "Salmo diário" |
 | "Sistema / Claro / Escuro" (segmentos de tema) | "Automático / Light / Dark" |
 
 ---

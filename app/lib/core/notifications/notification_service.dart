@@ -12,8 +12,13 @@ class NotificationService {
   bool _initialized = false;
 
   static const int _dailyPsalmId = 1;
+  // ⚠️ _channelId é chave técnica do canal no Android, NÃO renomear: trocar
+  // cria um canal duplicado e quem já configurou perde o ajuste.
   static const String _channelId   = 'salmo_diario';
-  static const String _channelName = 'Salmo diário';
+  // Nome visível nas Configurações do Android. Renomear exige
+  // channelAction.update no AndroidNotificationDetails (ver scheduleDailySalmo),
+  // senão quem já ativou continua vendo o nome antigo para sempre.
+  static const String _channelName = 'Salmo do dia';
 
   Future<void> init() async {
     if (_initialized) return;
@@ -49,7 +54,7 @@ class NotificationService {
     return false;
   }
 
-  // Agenda notificação diária repetindo todo dia no horário especificado.
+  // Agenda o Salmo do dia repetindo todo dia no horário especificado.
   // O número do Salmo é calculado pelo dia do ano para variar sem servidor.
   // [totalSalmos] vem da lista real (salmosProvider) — nunca hardcoded aqui,
   // senão uma mudança no catálogo pode sugerir um Salmo que não existe.
@@ -79,6 +84,10 @@ class NotificationService {
         android: AndroidNotificationDetails(
           _channelId,
           _channelName,
+          // update, e não o padrão createIfNotExists: o canal já existe no
+          // aparelho de quem ativou a notificação antes da renomeação, e sem
+          // isto continuaria mostrando o nome antigo nas Configurações.
+          channelAction: AndroidNotificationChannelAction.update,
           importance: Importance.defaultImportance,
           priority: Priority.defaultPriority,
           icon: '@mipmap/launcher_icon',

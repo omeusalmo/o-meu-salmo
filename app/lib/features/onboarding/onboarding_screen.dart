@@ -10,6 +10,10 @@ import '../../data/providers/onboarding_provider.dart';
 import '../../data/providers/settings_provider.dart';
 import '../../shared/widgets/bookmark_painter.dart';
 
+/// Teto de ampliação de fonte das telas de onboarding que ainda não rolam.
+/// Some quando elas virarem SingleChildScrollView, como as telas 3 e 4.
+const double _tetoTelasSemRolagem = 1.3;
+
 class OnboardingScreen extends ConsumerStatefulWidget {
   const OnboardingScreen({super.key});
 
@@ -81,8 +85,22 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               physics: const NeverScrollableScrollPhysics(),
               onPageChanged: (i) => setState(() => _currentPage = i),
               children: [
-                _Page1(onNext: _nextPage),
-                _Page2(onNext: _nextPage),
+                // Telas 1 e 2 são Column com Spacer e sem rolagem: em 2.0x o
+                // conteúdo estoura e o botão sai da área visível, deixando o
+                // usuário preso no onboarding. Até elas virarem roláveis, o
+                // teto local segura só estas duas.
+                //
+                // As telas 3 (grid emocional) e 4 (consentimento) ficam de fora
+                // de propósito: ambas rolam e aguentam 2.0x. A 4 é o texto de
+                // LGPD, que precisa ser legível no tamanho que a pessoa pediu.
+                MediaQuery.withClampedTextScaling(
+                  maxScaleFactor: _tetoTelasSemRolagem,
+                  child: _Page1(onNext: _nextPage),
+                ),
+                MediaQuery.withClampedTextScaling(
+                  maxScaleFactor: _tetoTelasSemRolagem,
+                  child: _Page2(onNext: _nextPage),
+                ),
                 _Page3(
                   selected: _selectedEmocao,
                   onSelect: (e) => setState(() => _selectedEmocao = e),

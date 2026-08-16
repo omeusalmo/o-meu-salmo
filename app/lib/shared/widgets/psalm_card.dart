@@ -46,10 +46,18 @@ class PsalmCard extends StatelessWidget {
             child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              SizedBox(
-                width: 56,
+              // Calha do número: reserva 56px de texto (não de tela) para que
+              // os títulos fiquem alinhados entre os cards da lista. Como a
+              // reserva acompanha a fonte do sistema, 1, 2 ou 3 dígitos cabem
+              // na mesma calha em qualquer escala; e se ainda assim faltar
+              // espaço, a caixa cresce em vez de cortar o número.
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  minWidth: MediaQuery.textScalerOf(context).scale(56),
+                ),
                 child: Align(
                   alignment: Alignment.centerLeft,
+                  widthFactor: 1,
                   child: Text(
                     '$numero',
                     style: GoogleFonts.playfairDisplay(
