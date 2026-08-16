@@ -36,7 +36,6 @@ o-meu-salmo/                      ← raiz do git (github.com/omeusalmo/o-meu-sa
 │   ├── roadmap-app-salmos.md
 │   ├── roadmap-gerente.md        ← roadmap pós-lançamento para agente gerente
 │   └── reflexoes-salmos.md       ← fonte das reflexões dos 150 salmos
-├── audio_testes/                 ← testes de vozes TTS (salmo 23, 30 vozes)
 ├── play-store/                   ← kit de loja: export/ (bundle upload) + listing/aso-copy.md (textos ★) + data-safety-form.md
 │                                   ⚠️ screenshots em export/ são de 2026-06-12 (refazer antes da produção)
 ├── docs/                         ← GitHub Pages (main /docs) → omeusalmo.com.br
@@ -46,7 +45,7 @@ o-meu-salmo/                      ← raiz do git (github.com/omeusalmo/o-meu-sa
 │   ├── llms.txt
 │   └── privacy_policy.html
 ├── privacy_policy.html           ← cópia root (canônico em docs/)
-├── gerar_audios.py               ← script geração de áudios TTS
+├── gerar_audios.py               ← script geração de áudios TTS (voz única: pt-BR-Chirp3-HD-Zubenelgenubi, rate 0.92)
 └── ds-vs-lp.md                   ← auditoria DS × LP (tokens, divergências)
 ```
 
