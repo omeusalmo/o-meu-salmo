@@ -60,15 +60,25 @@ o-meu-salmo/                      ← raiz do git (github.com/omeusalmo/o-meu-sa
 
 **Fonte da verdade:** `o-meu-salmo-design/design-system.html`
 
+**DS v1.2 (2026-08-17).** Superfícies e acento mudaram por contraste WCAG. Valores antigos não valem mais.
+
 | Token | Escuro | Claro |
 |---|---|---|
-| Acento (cobalt-500) | `#2A47DD` | `#2A47DD` |
-| Acento claro (cobalt-400) | `#5567EA` | — |
-| Superfície | `#10142C` | `#E9EDFD` |
+| **Acento de TEXTO/ícone** | `#7C8BF0` (cobalt-350) | `#2A47DD` (cobalt-500) |
+| **Acento de PREENCHIMENTO** | `#2A47DD` | `#2A47DD` |
+| Superfície (card) | `#151A39` | `#E1E6FC` |
+| Borda | `#323A77` | `#A8B6E6` |
 | Texto | `#8C97D4` | `#2E3A86` |
 | Título | `#EEF0FC` | `#0C1230` |
 | Muted/label | `#7080C8` | `#4E5899` |
 | Versículo (gold) | `#C4A86A` | `#6B4E1C` |
+
+⚠️ **Três armadilhas:**
+1. `cobalt-350` ≠ `cobalt-300`. O 300 já existe como `#A29FE0` e continua em uso.
+2. **Acento de texto e de preenchimento são papéis diferentes.** `cobalt-350` só serve de foreground: como fundo sólido dá 2.72:1 com o creme, pior que o 400. Preenchimento é sempre cobalt-500, nos dois modos.
+3. `cobalt-400 #5567EA` reprova AA como texto no escuro (3.64:1 sobre a superfície). Não usar para texto normal.
+
+Regras semânticas do DS v1.2: alvo de toque mínimo 48dp (na linha inteira do link, não só no texto), suporte a fonte do sistema até 2.0x (proibido largura fixa e divisão em partes iguais), piso de texto 13px auxiliar / 14px para texto de decisão.
 
 Fontes: Playfair Display (display/número), Cormorant italic (versículo), Instrument Sans (UI/label).
 

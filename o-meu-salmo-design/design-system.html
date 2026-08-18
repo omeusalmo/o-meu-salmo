@@ -19,17 +19,19 @@ tailwind.config = {
       },
       colors: {
         cobalt: {
-          100: '#EEEDF8', 200: '#C9C7EE', 300: '#A29FE0',
+          100: '#EEEDF8', 200: '#C9C7EE', 300: '#A29FE0', 350: '#7C8BF0',
           400: '#5567EA', 500: '#2A47DD', 600: '#1B33B4', 700: '#142A8C',
         },
         gold: { DEFAULT: '#C4A86A', ink: '#6B4E1C' },
         night: {
-          base: '#080B1C', plus: '#10142C', line: '#1E2348',
+          base: '#080B1C', plus: '#151A39', line: '#323A77',
           muted: '#353C73', text: '#8C97D4', cream: '#EEF0FC',
+          accent: '#7C8BF0',
         },
         day: {
-          base: '#F5F7FE', plus: '#E9EDFD', line: '#D5DCF3',
+          base: '#F5F7FE', plus: '#E1E6FC', line: '#A8B6E6',
           muted: '#8C97D4', text: '#2E3A86', title: '#0C1230',
+          accent: '#2A47DD',
         },
       },
       borderRadius: { sm: '8px', md: '14px', lg: '22px', pill: '999px' },
@@ -75,15 +77,28 @@ tailwind.config = {
 
   /* ── Semantic CSS vars (mode-aware) ───────────────────────── */
   :root {
-    --ds-bg:     #080B1C; --ds-surface: #10142C; --ds-line: #1E2348;
+    --ds-bg:     #080B1C; --ds-surface: #151A39; --ds-line: #323A77;
     --ds-text:   #8C97D4; --ds-title:  #EEF0FC;
-    --ds-accent: #5567EA;
+    --ds-accent: #7C8BF0;      /* cobalt-350 — acento de TEXTO/ÍCONE no escuro */
+    --ds-fill:   #2A47DD;      /* cobalt-500 — acento de PREENCHIMENTO nos dois modos */
   }
   html:not(.dark) {
-    --ds-bg:     #F5F7FE; --ds-surface: #E9EDFD; --ds-line: #D5DCF3;
+    --ds-bg:     #F5F7FE; --ds-surface: #E1E6FC; --ds-line: #A8B6E6;
     --ds-text:   #2E3A86; --ds-title:  #0C1230;
     --ds-accent: #2A47DD;
+    --ds-fill:   #2A47DD;
   }
+
+  /* ── Lista de escolha (substitui SegmentedButton) ─────────── */
+  .choice-list { border:.5px solid var(--ds-line); border-radius:14px; overflow:hidden; }
+  .choice-row {
+    min-height:56px; padding:12px 16px; display:flex; align-items:center; gap:12px;
+    font-family:'Instrument Sans',sans-serif; font-size:15px;
+    color:var(--ds-text); cursor:pointer;
+  }
+  .choice-row + .choice-row { border-top:.5px solid var(--ds-line); }
+  .choice-row.is-selected { font-weight:500; color:var(--ds-accent); }
+  .choice-row .choice-label { flex:1; }
 
   /* ── Contrast badge ───────────────────────────────────────── */
   .cbadge {
@@ -129,7 +144,7 @@ tailwind.config = {
   }
   .play-btn {
     width:44px; height:44px; border-radius:50%;
-    background:var(--ds-accent); flex-shrink:0;
+    background:var(--ds-fill); flex-shrink:0;   /* preenchimento = cobalt-500 sempre */
     display:flex; align-items:center; justify-content:center;
     box-shadow:0 12px 30px rgba(27,51,180,.30);
   }
@@ -180,7 +195,7 @@ tailwind.config = {
       <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:22px; line-height:.9; color:var(--ds-accent);">Salmo</div>
     </div>
     <div class="flex items-center gap-6">
-      <span style="font-size:11px; letter-spacing:.2em; text-transform:uppercase; opacity:.4;">Design System v1.1</span>
+      <span style="font-size:11px; letter-spacing:.2em; text-transform:uppercase; opacity:.4;">Design System v1.2</span>
       <!-- Toggle -->
       <button id="toggle" onclick="toggleMode()" style="
         font-family:'Instrument Sans',sans-serif; font-size:11px; letter-spacing:.1em;
@@ -203,16 +218,107 @@ tailwind.config = {
   <!-- Cobalto scale -->
   <div>
     <p style="font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.4; margin-bottom:12px;">Cobalto — acento único de interface</p>
-    <div class="grid grid-cols-7 gap-2">
+    <div class="grid grid-cols-8 gap-2">
       <div class="swatch" style="background:#EEEDF8; color:#2A47DD;"><div class="swatch-label"><div class="swatch-name">100</div><div class="swatch-hex">#EEEDF8</div></div></div>
       <div class="swatch" style="background:#C9C7EE; color:#1B33B4;"><div class="swatch-label"><div class="swatch-name">200</div><div class="swatch-hex">#C9C7EE</div></div></div>
       <div class="swatch" style="background:#A29FE0; color:#080B1C;"><div class="swatch-label"><div class="swatch-name">300</div><div class="swatch-hex">#A29FE0</div></div></div>
-      <div class="swatch" style="background:#5567EA; color:#EEF0FC;"><div class="swatch-label"><div class="swatch-name">400 ◐</div><div class="swatch-hex">#5567EA</div></div></div>
+      <div class="swatch" style="background:#7C8BF0; color:#080B1C;"><div class="swatch-label"><div class="swatch-name">★ 350 ◐</div><div class="swatch-hex">#7C8BF0 — novo v1.2</div></div></div>
+      <div class="swatch" style="background:#5567EA; color:#EEF0FC;"><div class="swatch-label"><div class="swatch-name">400</div><div class="swatch-hex">#5567EA</div></div></div>
       <div class="swatch" style="background:#2A47DD; color:#EEF0FC;"><div class="swatch-label"><div class="swatch-name">★ 500</div><div class="swatch-hex">#2A47DD</div></div></div>
       <div class="swatch" style="background:#1B33B4; color:#EEF0FC;"><div class="swatch-label"><div class="swatch-name">600</div><div class="swatch-hex">#1B33B4</div></div></div>
       <div class="swatch" style="background:#142A8C; color:#EEF0FC;"><div class="swatch-label"><div class="swatch-name">700</div><div class="swatch-hex">#142A8C</div></div></div>
     </div>
-    <p style="font-size:11px; opacity:.45; margin-top:8px;">400 = texto/ícone sobre escuro · 500 = primária da marca + texto sobre claro</p>
+    <p style="font-size:11px; opacity:.45; margin-top:8px;">350 = texto/ícone sobre escuro (◐ substitui o 400 nesse papel) · 500 = primária da marca, texto sobre claro e preenchimento sólido nos dois modos</p>
+
+    <!-- ── cobalt-350: por que existe e quando usar ───────────── -->
+    <div style="border:.5px solid var(--ds-line); border-radius:14px; padding:24px; margin-top:20px; background:var(--ds-surface);">
+      <p style="font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--ds-accent); margin-bottom:14px;">cobalt-350 · #7C8BF0 — acento de texto no modo escuro</p>
+
+      <p style="font-size:13px; line-height:1.7; color:var(--ds-text); margin-bottom:18px;">
+        <strong style="color:var(--ds-title);">Por que existe.</strong>
+        O <code style="font-size:11px; background:var(--ds-bg); padding:2px 5px; border-radius:4px;">cobalt-400 #5567EA</code> reprova AA como texto normal sobre superfície escura:
+        <strong style="color:var(--ds-title);">3.90:1</strong> sobre a superfície antiga <code style="font-size:11px; background:var(--ds-bg); padding:2px 5px; border-radius:4px;">#10142C</code> e
+        <strong style="color:var(--ds-title);">3.64:1</strong> sobre a superfície nova. AA pede 4.5:1.
+        Isso atingia, em cascata: rótulo selecionado do seletor de tema, "O meu Salmo" em Ajustes &gt; Sobre,
+        ícone de editar horário, "CHAVE PIX" e "Copiar" no sheet de apoio. Não era um caso isolado, era o token.
+        Descoberto na revisão da tela de Ajustes, agosto/2026.
+      </p>
+
+      <div class="grid grid-cols-2 gap-4" style="margin-bottom:18px;">
+        <div>
+          <div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#2E7D5B; margin-bottom:8px;">✓ Use cobalt-350 para</div>
+          <ul style="font-size:12px; line-height:1.8; color:var(--ds-text); list-style:none; padding:0;">
+            <li>• Texto de ação sobre fundo/superfície escura</li>
+            <li>• Ícone informativo sobre escuro</li>
+            <li>• Rótulo do item selecionado na lista de escolha</li>
+            <li>• Qualquer coisa que hoje usa <code style="font-size:10px;">context.colorAccent</code> como <em>foreground</em> no tema escuro</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#B23A48; margin-bottom:8px;">✗ Nunca use cobalt-350 para</div>
+          <ul style="font-size:12px; line-height:1.8; color:var(--ds-text); list-style:none; padding:0;">
+            <li>• <strong style="color:var(--ds-title);">Preenchimento sólido de botão.</strong> Creme sobre cobalt-350 = <strong style="color:var(--ds-title);">2.72:1</strong>, reprova feio</li>
+            <li>• Qualquer superfície ou fundo</li>
+            <li>• Modo claro (lá o acento continua sendo o cobalt-500)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="border-top:.5px solid var(--ds-line); padding-top:16px;">
+        <div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; opacity:.5; margin-bottom:10px;">Valores medidos</div>
+        <table style="width:100%; font-size:12px; color:var(--ds-text); border-collapse:collapse;">
+          <tr style="opacity:.5; font-size:10px; text-transform:uppercase; letter-spacing:.08em;">
+            <td style="padding:5px 0;">Par</td><td>Razão</td><td>AA (4.5:1)</td>
+          </tr>
+          <tr style="border-top:.5px solid var(--ds-line);"><td style="padding:6px 0;">cobalt-350 sobre night-plus #151A39</td><td style="color:var(--ds-title);">5.50:1</td><td style="color:#2E7D5B;">passa</td></tr>
+          <tr style="border-top:.5px solid var(--ds-line);"><td style="padding:6px 0;">cobalt-350 sobre night-base #080B1C</td><td style="color:var(--ds-title);">6.33:1</td><td style="color:#2E7D5B;">passa</td></tr>
+          <tr style="border-top:.5px solid var(--ds-line);"><td style="padding:6px 0;">cobalt-350 sobre tinte de seleção #20264C</td><td style="color:var(--ds-title);">4.72:1</td><td style="color:#2E7D5B;">passa</td></tr>
+          <tr style="border-top:.5px solid var(--ds-line);"><td style="padding:6px 0;">cobalt-400 sobre night-plus (o problema)</td><td style="color:var(--ds-title);">3.64:1</td><td style="color:#B23A48;">reprova</td></tr>
+          <tr style="border-top:.5px solid var(--ds-line);"><td style="padding:6px 0;">creme sobre cobalt-350 (preenchimento)</td><td style="color:var(--ds-title);">2.72:1</td><td style="color:#B23A48;">reprova</td></tr>
+          <tr style="border-top:.5px solid var(--ds-line);"><td style="padding:6px 0;">creme sobre cobalt-500 (preenchimento correto)</td><td style="color:var(--ds-title);">6.08:1</td><td style="color:#2E7D5B;">passa</td></tr>
+        </table>
+        <p style="font-size:11px; opacity:.5; line-height:1.6; margin-top:12px;">
+          Candidato descartado: <code style="font-size:10px;">#6B7BEE</code> passa sobre a superfície (4.91:1) mas cai para 4.04:1 sobre o tinte de seleção. #7C8BF0 é o menor valor que passa em todos os três fundos.<br>
+          Atenção ao nome: <strong style="color:var(--ds-title);">cobalt-350 (#7C8BF0) não é o cobalt-300 (#A29FE0)</strong>, que continua existindo como tinte da rampa e não é acento.
+        </p>
+      </div>
+
+      <!-- Limiar do cobalt-400 como texto -->
+      <div style="border-top:.5px solid var(--ds-line); padding-top:16px; margin-top:18px;">
+        <div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ds-accent); margin-bottom:10px;">O cobalt-400 continua sendo texto — mas só em display</div>
+        <p style="font-size:13px; line-height:1.7; color:var(--ds-text); margin-bottom:14px;">
+          O cobalt-400 não foi aposentado. Ele reprova como <em>texto normal</em>, não como texto grande.
+          Em número de Salmo e título display ele é a cor certa: trocar tudo pelo 350 clarearia a página inteira e tiraria da marca o azul saturado que é a assinatura visual do produto.
+          <strong style="color:var(--ds-title);">Isto é decisão de design tomada com os números na mão, não um bug pendente</strong> — quem encontrar 3.64:1 num título de 40px não deve "consertar".
+        </p>
+        <div class="grid grid-cols-2 gap-4" style="margin-bottom:14px;">
+          <div style="border:.5px solid var(--ds-line); border-radius:14px; padding:16px;">
+            <div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#2E7D5B; margin-bottom:10px;">✓ cobalt-400 permitido</div>
+            <p style="font-size:12px; line-height:1.8; color:var(--ds-text);">
+              Só quando as quatro condições valem juntas:<br>
+              1. tamanho <strong style="color:var(--ds-title);">≥ 28px</strong><br>
+              2. fonte <strong style="color:var(--ds-title);">Playfair Display</strong> (papel display)<br>
+              3. peso ≥ 400<br>
+              4. contraste medido <strong style="color:var(--ds-title);">≥ 3.5:1</strong>
+            </p>
+          </div>
+          <div style="border:.5px solid var(--ds-line); border-radius:14px; padding:16px;">
+            <div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#B23A48; margin-bottom:10px;">✗ cobalt-400 proibido</div>
+            <p style="font-size:12px; line-height:1.8; color:var(--ds-text);">
+              Abaixo de 28px · qualquer texto em Instrument Sans, em qualquer tamanho · qualquer preenchimento sólido.<br>
+              Nesses casos: <strong style="color:var(--ds-title);">cobalt-350</strong> no escuro, <strong style="color:var(--ds-title);">cobalt-500</strong> no claro.
+            </p>
+          </div>
+        </div>
+        <p style="font-size:11px; opacity:.5; line-height:1.7;">
+          <strong style="color:var(--ds-title);">Por que 28px e não os 24px da WCAG.</strong>
+          A regra de "texto grande" da WCAG (24px normal, 18.66px negrito, mínimo 3.0:1) mede altura de glifo, não espessura de traço.
+          A Playfair é uma serifada de alto contraste: a hairline de um título de 24px é opticamente mais fina que a haste de um sans de 16px, e o público do app tem 60 a 75 anos.
+          Por isso o piso sobe para 28px, que é exatamente o token <code style="font-size:10px;">sectionHeadline</code>, e o mínimo sobe de 3.0:1 para 3.5:1.<br>
+          Medido na LP: 12 seletores entre 28px e 74px, de <strong style="color:var(--ds-title);">3.64:1</strong> (sobre superfície) a <strong style="color:var(--ds-title);">4.35:1</strong>. Todos dentro da regra.
+        </p>
+      </div>
+    </div>
   </div>
 
   <!-- Modos -->
@@ -222,11 +328,12 @@ tailwind.config = {
       <p style="font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.4; margin-bottom:12px;">◐ Noturno (padrão)</p>
       <div class="flex flex-col gap-1">
         <div class="swatch" style="background:#080B1C; color:#8C97D4; border-color:rgba(255,255,255,.12);"><div class="swatch-label"><div class="swatch-name">night-base</div><div class="swatch-hex">#080B1C — fundo</div></div></div>
-        <div class="swatch" style="background:#10142C; color:#8C97D4;"><div class="swatch-label"><div class="swatch-name">night-plus</div><div class="swatch-hex">#10142C — superfícies</div></div></div>
-        <div class="swatch" style="background:#1E2348; color:#8C97D4;"><div class="swatch-label"><div class="swatch-name">night-line</div><div class="swatch-hex">#1E2348 — bordas</div></div></div>
+        <div class="swatch" style="background:#151A39; color:#8C97D4;"><div class="swatch-label"><div class="swatch-name">night-plus · 1.15:1 vs base</div><div class="swatch-hex">#151A39 — superfícies (v1.2, era #10142C 1.08:1)</div></div></div>
+        <div class="swatch" style="background:#323A77; color:#EEF0FC;"><div class="swatch-label"><div class="swatch-name">night-line · 1.62:1 vs superfície</div><div class="swatch-hex">#323A77 — bordas e divisores (v1.2, era #1E2348 1.17:1)</div></div></div>
+        <div class="swatch" style="background:#151A39; color:#7C8BF0; border-color:#323A77;"><div class="swatch-label"><div class="swatch-name">night-accent · 5.5:1 <span class="cbadge" style="background:#2E7D5B;">AA</span></div><div class="swatch-hex">#7C8BF0 (cobalt-350) — texto e ícone de ação</div></div></div>
         <div class="swatch" style="background:#7080C8; color:#EEF0FC;"><div class="swatch-label"><div class="swatch-name">night-muted · 5.2:1 <span class="cbadge" style="background:#2E7D5B;">AA</span></div><div class="swatch-hex">#7080C8 — dots, separadores, labels metadata ≥10px</div></div></div>
-        <div class="swatch" style="background:#080B1C; color:#8C97D4; border-color:#1E2348;"><div class="swatch-label"><div class="swatch-name">night-text ·&nbsp;<span id="r-ntext">6.9:1</span>&nbsp;<span class="cbadge" style="background:#2E7D5B;">AA</span></div><div class="swatch-hex">#8C97D4 — corpo de texto</div></div></div>
-        <div class="swatch" style="background:#080B1C; color:#EEF0FC; border-color:#1E2348;"><div class="swatch-label"><div class="swatch-name">night-cream ·&nbsp;<span>17:1</span>&nbsp;<span class="cbadge" style="background:#2E7D5B;">AAA</span></div><div class="swatch-hex">#EEF0FC — títulos</div></div></div>
+        <div class="swatch" style="background:#080B1C; color:#8C97D4; border-color:#323A77;"><div class="swatch-label"><div class="swatch-name">night-text ·&nbsp;<span id="r-ntext">6.9:1</span>&nbsp;<span class="cbadge" style="background:#2E7D5B;">AA</span></div><div class="swatch-hex">#8C97D4 — corpo de texto</div></div></div>
+        <div class="swatch" style="background:#080B1C; color:#EEF0FC; border-color:#323A77;"><div class="swatch-label"><div class="swatch-name">night-cream ·&nbsp;<span>17:1</span>&nbsp;<span class="cbadge" style="background:#2E7D5B;">AAA</span></div><div class="swatch-hex">#EEF0FC — títulos</div></div></div>
       </div>
     </div>
     <!-- Diurno -->
@@ -234,21 +341,51 @@ tailwind.config = {
       <p style="font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.4; margin-bottom:12px;">○ Diurno</p>
       <div class="flex flex-col gap-1">
         <div class="swatch" style="background:#F5F7FE; color:#2E3A86;"><div class="swatch-label"><div class="swatch-name">day-base</div><div class="swatch-hex">#F5F7FE — fundo</div></div></div>
-        <div class="swatch" style="background:#E9EDFD; color:#2E3A86;"><div class="swatch-label"><div class="swatch-name">day-plus</div><div class="swatch-hex">#E9EDFD — superfícies</div></div></div>
-        <div class="swatch" style="background:#D5DCF3; color:#0C1230;"><div class="swatch-label"><div class="swatch-name">day-line</div><div class="swatch-hex">#D5DCF3 — bordas</div></div></div>
+        <div class="swatch" style="background:#E1E6FC; color:#2E3A86;"><div class="swatch-label"><div class="swatch-name">day-plus · 1.16:1 vs base</div><div class="swatch-hex">#E1E6FC — superfícies (v1.2, era #E9EDFD 1.09:1)</div></div></div>
+        <div class="swatch" style="background:#A8B6E6; color:#0C1230;"><div class="swatch-label"><div class="swatch-name">day-line · 1.61:1 vs superfície</div><div class="swatch-hex">#A8B6E6 — bordas e divisores (v1.2, era #D5DCF3 1.17:1)</div></div></div>
+        <div class="swatch" style="background:#E1E6FC; color:#2A47DD; border-color:#A8B6E6;"><div class="swatch-label"><div class="swatch-name">day-accent · 5.56:1 <span class="cbadge" style="background:#2E7D5B;">AA</span></div><div class="swatch-hex">#2A47DD (cobalt-500) — texto e ícone de ação</div></div></div>
         <div class="swatch" style="background:#F5F7FE; color:#4E5899;"><div class="swatch-label"><div class="swatch-name">day-muted (texto) · 6.2:1 <span class="cbadge" style="background:#2E7D5B;">AA</span></div><div class="swatch-hex">#4E5899 — labels metadata · dot decorativo: #8C97D4</div></div></div>
-        <div class="swatch" style="background:#F5F7FE; color:#2E3A86; border-color:#D5DCF3;"><div class="swatch-label"><div class="swatch-name">day-text ·&nbsp;<span>9.5:1</span>&nbsp;<span class="cbadge" style="background:#2E7D5B;">AAA</span></div><div class="swatch-hex">#2E3A86 — corpo de texto</div></div></div>
-        <div class="swatch" style="background:#F5F7FE; color:#0C1230; border-color:#D5DCF3;"><div class="swatch-label"><div class="swatch-name">day-title ·&nbsp;<span>16.5:1</span>&nbsp;<span class="cbadge" style="background:#2E7D5B;">AAA</span></div><div class="swatch-hex">#0C1230 — títulos</div></div></div>
+        <div class="swatch" style="background:#F5F7FE; color:#2E3A86; border-color:#A8B6E6;"><div class="swatch-label"><div class="swatch-name">day-text ·&nbsp;<span>9.5:1</span>&nbsp;<span class="cbadge" style="background:#2E7D5B;">AAA</span></div><div class="swatch-hex">#2E3A86 — corpo de texto</div></div></div>
+        <div class="swatch" style="background:#F5F7FE; color:#0C1230; border-color:#A8B6E6;"><div class="swatch-label"><div class="swatch-name">day-title ·&nbsp;<span>16.5:1</span>&nbsp;<span class="cbadge" style="background:#2E7D5B;">AAA</span></div><div class="swatch-hex">#0C1230 — títulos</div></div></div>
       </div>
     </div>
+  </div>
+
+  <!-- ── Separação de superfície e borda (v1.2) ──────────────── -->
+  <div style="border:.5px solid var(--ds-line); border-radius:14px; padding:24px; background:var(--ds-surface);">
+    <p style="font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--ds-accent); margin-bottom:14px;">Separação de superfície e borda — revisão v1.2</p>
+    <p style="font-size:13px; line-height:1.7; color:var(--ds-text); margin-bottom:18px;">
+      Até a v1.1 o card se separava do fundo por <strong style="color:var(--ds-title);">1.08:1</strong> (escuro) e <strong style="color:var(--ds-title);">1.09:1</strong> (claro),
+      com a borda em 1.17:1. Na prática o agrupamento da tela ficava inteiro apoiado no eyebrow de 11px:
+      para o público do app (60 a 75 anos, sensibilidade a contraste reduzida) os cards se dissolviam e a tela virava uma lista contínua.
+      Não há mínimo WCAG formal para separação decorativa, mas é o que sustenta a leitura de estrutura, então virou regra do sistema.
+    </p>
+    <p style="font-size:13px; line-height:1.7; color:var(--ds-text); margin-bottom:18px;">
+      <strong style="color:var(--ds-title);">Regra:</strong> superfície de card ≥ <strong style="color:var(--ds-title);">1.15:1</strong> contra o fundo da tela ·
+      borda e divisor ≥ <strong style="color:var(--ds-title);">1.60:1</strong> contra a superfície em que ficam.
+      Os hexes abaixo são os menores valores que cumprem a regra preservando matiz e saturação da paleta.
+    </p>
+    <table style="width:100%; font-size:12px; color:var(--ds-text); border-collapse:collapse;">
+      <tr style="opacity:.5; font-size:10px; text-transform:uppercase; letter-spacing:.08em;">
+        <td style="padding:5px 0;">Token</td><td>v1.1</td><td>v1.2</td><td>Antes</td><td>Depois</td>
+      </tr>
+      <tr style="border-top:.5px solid var(--ds-line);"><td style="padding:6px 0;">night-plus vs night-base</td><td style="opacity:.6;">#10142C</td><td style="color:var(--ds-title);">#151A39</td><td style="opacity:.6;">1.08:1</td><td style="color:var(--ds-title);">1.15:1</td></tr>
+      <tr style="border-top:.5px solid var(--ds-line);"><td style="padding:6px 0;">night-line vs night-plus</td><td style="opacity:.6;">#1E2348</td><td style="color:var(--ds-title);">#323A77</td><td style="opacity:.6;">1.17:1</td><td style="color:var(--ds-title);">1.62:1</td></tr>
+      <tr style="border-top:.5px solid var(--ds-line);"><td style="padding:6px 0;">day-plus vs day-base</td><td style="opacity:.6;">#E9EDFD</td><td style="color:var(--ds-title);">#E1E6FC</td><td style="opacity:.6;">1.09:1</td><td style="color:var(--ds-title);">1.16:1</td></tr>
+      <tr style="border-top:.5px solid var(--ds-line);"><td style="padding:6px 0;">day-line vs day-plus</td><td style="opacity:.6;">#D5DCF3</td><td style="color:var(--ds-title);">#A8B6E6</td><td style="opacity:.6;">1.17:1</td><td style="color:var(--ds-title);">1.61:1</td></tr>
+    </table>
+    <p style="font-size:11px; opacity:.5; line-height:1.6; margin-top:14px;">
+      Contra o fundo da tela as bordas novas ficam em 1.87:1 nos dois modos. A espessura continua 0.5px: o que muda é o valor, não o peso do traço.<br>
+      Texto revalidado sobre as superfícies novas, tudo acima de AA: night-text 6.05:1 · night-cream 14.94:1 · cobalt-350 5.50:1 · day-text 8.19:1 · day-title 14.78:1 · cobalt-500 5.56:1.
+    </p>
   </div>
 
   <!-- Âmbar -->
   <div style="border:.5px solid var(--ds-line); border-radius:14px; padding:24px;">
     <p style="font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.4; margin-bottom:16px;">Âmbar — versículo em destaque · uso pontual</p>
     <div class="grid grid-cols-2 gap-4 mb-4">
-      <div class="swatch" style="background:#080B1C; color:#C4A86A; border-color:#1E2348; height:64px;"><div class="swatch-label"><div class="swatch-name">#C4A86A no escuro · 8.5:1 <span class="cbadge" style="background:#2E7D5B;">AAA</span></div><div class="swatch-hex">Versículo em destaque ✓</div></div></div>
-      <div class="swatch" style="background:#F5F7FE; color:#6B4E1C; border-color:#D5DCF3; height:64px;"><div class="swatch-label"><div class="swatch-name">#6B4E1C no claro · 7.2:1 <span class="cbadge" style="background:#2E7D5B;">AAA</span></div><div class="swatch-hex">gold-ink para texto no claro ✓</div></div></div>
+      <div class="swatch" style="background:#080B1C; color:#C4A86A; border-color:#323A77; height:64px;"><div class="swatch-label"><div class="swatch-name">#C4A86A no escuro · 8.5:1 <span class="cbadge" style="background:#2E7D5B;">AAA</span></div><div class="swatch-hex">Versículo em destaque ✓</div></div></div>
+      <div class="swatch" style="background:#F5F7FE; color:#6B4E1C; border-color:#A8B6E6; height:64px;"><div class="swatch-label"><div class="swatch-name">#6B4E1C no claro · 7.2:1 <span class="cbadge" style="background:#2E7D5B;">AAA</span></div><div class="swatch-hex">gold-ink para texto no claro ✓</div></div></div>
     </div>
     <p style="font-size:12px; opacity:.55; line-height:1.6;">
       <strong style="opacity:.85;">#C4A86A no claro = 2.1:1 ✗</strong> — nunca usar como texto sobre claro.
@@ -404,9 +541,73 @@ tailwind.config = {
         <div class="specimen-meta">11px · ls 3.74 · UPPER</div>
         <div style="font-family:'Instrument Sans',sans-serif; font-size:11px; font-weight:400; letter-spacing:3.74px; text-transform:uppercase; color:var(--ds-text);">Eyebrow label · Reflexão</div>
       </div>
+      <div class="specimen-row">
+        <div class="specimen-meta">12px · ls 2.16 · UPPER</div>
+        <div style="font-family:'Instrument Sans',sans-serif; font-size:12px; font-weight:400; letter-spacing:2.16px; text-transform:uppercase; color:var(--ds-text);">Eyebrow dense · Notificações</div>
+      </div>
     </div>
     <p style="font-size:11px; opacity:.4; margin-top:8px;">
       Proibidas: Inter, Roboto, Arial, caligrafia de banner de culto.
+    </p>
+  </div>
+
+  <!-- ── eyebrowLabel vs eyebrowLabelDense ────────────────────── -->
+  <div style="border:.5px solid var(--ds-line); border-radius:14px; padding:24px; background:var(--ds-surface);">
+    <p style="font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--ds-accent); margin-bottom:14px;">Duas variantes de eyebrow — v1.2</p>
+    <p style="font-size:13px; line-height:1.7; color:var(--ds-text); margin-bottom:20px;">
+      O eyebrow editorial (11px, 0.34em) foi desenhado para <em>respirar</em> ao lado de tipografia display: uma etiqueta por vez, com muito espaço em volta.
+      Numa tela de configuração ele aparece seis vezes seguidas, e aí o tracking largo trabalha contra: as letras se separam a ponto de a palavra perder forma reconhecível,
+      que é exatamente o que um leitor de 65 anos não pode perder. A variante densa existe para esse contexto.
+      <strong style="color:var(--ds-title);">O token de 11px/0.34em continua válido e é o padrão</strong> — a variante não o substitui, só cobre listas.
+    </p>
+    <div class="grid grid-cols-2 gap-6">
+      <div style="border:.5px solid var(--ds-line); border-radius:14px; padding:20px;">
+        <div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; opacity:.5; margin-bottom:14px;">eyebrowLabel · padrão</div>
+        <div style="font-family:'Instrument Sans',sans-serif; font-size:11px; letter-spacing:3.74px; text-transform:uppercase; color:var(--ds-text); margin-bottom:6px;">Reflexão</div>
+        <div style="font-family:'Instrument Sans',sans-serif; font-size:11px; letter-spacing:3.74px; text-transform:uppercase; color:var(--ds-text);">8 Salmos</div>
+        <div style="font-size:11px; opacity:.45; line-height:1.6; margin-top:14px;">
+          11px · ls 3.74px (0.34em) · w400 · UPPER<br>
+          Contexto editorial: leitura, coleções, cards. Uma etiqueta isolada.
+        </div>
+      </div>
+      <div style="border:.5px solid var(--ds-line); border-radius:14px; padding:20px;">
+        <div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; opacity:.5; margin-bottom:14px;">eyebrowLabelDense · listas</div>
+        <div style="font-family:'Instrument Sans',sans-serif; font-size:12px; letter-spacing:2.16px; text-transform:uppercase; color:var(--ds-text); margin-bottom:6px;">Aparência</div>
+        <div style="font-family:'Instrument Sans',sans-serif; font-size:12px; letter-spacing:2.16px; text-transform:uppercase; color:var(--ds-text);">Notificações</div>
+        <div style="font-size:11px; opacity:.45; line-height:1.6; margin-top:14px;">
+          12px · ls 2.16px (0.18em) · w400 · UPPER<br>
+          Contexto de lista: Ajustes e qualquer tela com 3+ cabeçalhos de seção empilhados.
+        </div>
+      </div>
+    </div>
+    <p style="font-size:11px; opacity:.45; line-height:1.6; margin-top:14px;">
+      Semantics idêntica nas duas: <code style="font-size:10px; background:var(--ds-bg); padding:2px 5px; border-radius:4px;">Semantics(label: texto em case original, excludeSemantics: true)</code>. UPPER é só apresentação.
+    </p>
+  </div>
+
+  <!-- ── Piso de tamanho de texto (S12) ───────────────────────── -->
+  <div style="border:.5px solid var(--ds-line); border-radius:14px; padding:24px; background:var(--ds-surface);">
+    <p style="font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--ds-accent); margin-bottom:14px;">Piso de tamanho de texto — regra do sistema, v1.2</p>
+    <p style="font-size:13px; line-height:1.7; color:var(--ds-text); margin-bottom:18px;">
+      O público declarado tem 60 a 75 anos e a maioria <strong style="color:var(--ds-title);">nunca mexe na fonte do sistema</strong>.
+      Então o que vale é o comportamento em 1.0x, não o que acontece quando alguém aumenta. Dois pisos, sem exceção silenciosa:
+    </p>
+    <div class="grid grid-cols-2 gap-6" style="margin-bottom:18px;">
+      <div style="border:.5px solid var(--ds-line); border-radius:14px; padding:20px;">
+        <div style="font-family:'Playfair Display',serif; font-size:34px; line-height:1; color:var(--ds-accent); margin-bottom:8px;">13px</div>
+        <div style="font-size:13px; color:var(--ds-title); margin-bottom:6px;">Piso para rótulo auxiliar</div>
+        <div style="font-size:12px; opacity:.5; line-height:1.6;">Metadados, timecode, legenda decorativa. Coisa que o usuário pode ignorar sem perder nada.</div>
+      </div>
+      <div style="border:.5px solid var(--ds-line); border-radius:14px; padding:20px;">
+        <div style="font-family:'Playfair Display',serif; font-size:34px; line-height:1; color:var(--ds-accent); margin-bottom:8px;">14px</div>
+        <div style="font-size:13px; color:var(--ds-title); margin-bottom:6px;">Piso para texto de decisão</div>
+        <div style="font-size:12px; opacity:.5; line-height:1.6;">Qualquer texto que a pessoa precise ler para escolher algo: consentimento de dados, instrução de pagamento, explicação de toggle, mensagem de erro.</div>
+      </div>
+    </div>
+    <p style="font-size:12px; opacity:.55; line-height:1.7;">
+      <strong style="color:var(--ds-title);">Exceções permitidas:</strong> o eyebrow (11px ou 12px) por ser rótulo de estrutura, não de leitura, e o número de versículo (10px) por ser marcador decorativo já documentado.
+      Fora isso, 10px e 12px saem do produto.<br>
+      <strong style="color:var(--ds-title);">O piso é em 1.0x.</strong> Ele não substitui o suporte a fonte do sistema até 2.0x, que continua obrigatório e é testado em <code style="font-size:10px; background:var(--ds-bg); padding:2px 5px; border-radius:4px;">test/a11y/text_scale_test.dart</code>.
     </p>
   </div>
 </section>
@@ -499,22 +700,24 @@ tailwind.config = {
     <!-- Botão primário -->
     <div class="comp-card" style="background:var(--ds-surface);">
       <div class="comp-label">Botão primário</div>
-      <div style="background:var(--ds-accent); border-radius:14px; padding:14px; text-align:center; box-shadow:0 12px 30px rgba(27,51,180,.30); cursor:pointer;">
+      <div style="background:var(--ds-fill); border-radius:14px; padding:14px; text-align:center; box-shadow:0 12px 30px rgba(27,51,180,.30); cursor:pointer;">
         <span style="font-family:'Instrument Sans',sans-serif; font-size:15px; font-weight:500; color:#EEF0FC; letter-spacing:.01em;">Ler o salmo</span>
       </div>
       <div style="font-size:11px; opacity:.4;">
-        bg: cobalt-400 (dark) / cobalt-500 (light) · text: night-cream · shadow: cobalt 30%
+        bg: cobalt-500 nos dois modos (creme sobre ele = 6.08:1 ✓) · text: night-cream · shadow: cobalt 30%<br>
+        v1.2: no escuro o fundo era cobalt-400, que dava 4.10:1 com o creme e reprovava AA
       </div>
     </div>
 
     <!-- Botão revelar reflexão -->
     <div class="comp-card" style="background:var(--ds-surface);">
       <div class="comp-label">Botão revelar reflexão</div>
-      <div style="background:rgba(85,103,234,.09); border:1px solid rgba(85,103,234,.63); border-radius:14px; padding:14px; text-align:center; cursor:pointer;">
+      <div style="background:color-mix(in srgb, var(--ds-accent) 9%, var(--ds-surface)); border:1px solid color-mix(in srgb, var(--ds-accent) 63%, transparent); border-radius:14px; padding:14px; text-align:center; cursor:pointer;">
         <span style="font-family:'Instrument Sans',sans-serif; font-size:15px; font-weight:500; color:var(--ds-accent); letter-spacing:.01em;">Ler a reflexão</span>
       </div>
       <div style="font-size:11px; opacity:.4;">
-        bg: accent 9% · border: accent 63% · text: accent — entre ghost e primário
+        bg: accent 9% · border: accent 63% · text: accent — entre ghost e primário<br>
+        Texto sobre o próprio tinte: 4.85:1 escuro · 4.90:1 claro ✓ AA
       </div>
     </div>
 
@@ -543,6 +746,201 @@ tailwind.config = {
         </div>
       </div>
       <div style="font-size:11px; opacity:.4;">Todos com Semantics(label, button:true) · ícones sempre outline</div>
+    </div>
+
+    <!-- Estados de preenchimento -->
+    <div class="comp-card" style="background:var(--ds-surface); grid-column: span 2;">
+      <div class="comp-label">Estados · preenchimento sólido</div>
+      <p style="font-size:13px; line-height:1.7; color:var(--ds-text);">
+        <strong style="color:var(--ds-title);">Regra de uma linha: preenchimento só escurece, primeiro plano só clareia.</strong>
+        Um botão sólido que <em>clareia</em> no hover perde contraste com o texto em cima dele, que é o inverso do que a interação deveria comunicar.
+        Era o que acontecia em <code style="font-size:11px; background:var(--ds-bg); padding:2px 5px; border-radius:4px;">.btn:hover</code> e <code style="font-size:11px; background:var(--ds-bg); padding:2px 5px; border-radius:4px;">.play-btn:hover</code>, que iam para cobalt-400 e caíam para 4.10:1 com o creme.
+      </p>
+      <div class="grid grid-cols-4 gap-3">
+        <div>
+          <div style="background:#2A47DD; border-radius:14px; padding:14px; text-align:center;"><span style="font-family:'Instrument Sans',sans-serif; font-size:14px; font-weight:500; color:#EEF0FC;">Repouso</span></div>
+          <div style="font-size:11px; opacity:.5; margin-top:8px; line-height:1.5;">cobalt-500<br><strong style="color:var(--ds-title);">6.08:1</strong></div>
+        </div>
+        <div>
+          <div style="background:#1B33B4; border-radius:14px; padding:14px; text-align:center;"><span style="font-family:'Instrument Sans',sans-serif; font-size:14px; font-weight:500; color:#EEF0FC;">Hover</span></div>
+          <div style="font-size:11px; opacity:.5; margin-top:8px; line-height:1.5;">cobalt-600 · só ponteiro<br><strong style="color:var(--ds-title);">8.49:1</strong></div>
+        </div>
+        <div>
+          <div style="background:#142A8C; border-radius:14px; padding:14px; text-align:center;"><span style="font-family:'Instrument Sans',sans-serif; font-size:14px; font-weight:500; color:#EEF0FC;">Pressed</span></div>
+          <div style="font-size:11px; opacity:.5; margin-top:8px; line-height:1.5;">cobalt-700<br><strong style="color:var(--ds-title);">10.64:1</strong></div>
+        </div>
+        <div>
+          <div style="background:var(--ds-line); border-radius:14px; padding:14px; text-align:center;"><span style="font-family:'Instrument Sans',sans-serif; font-size:14px; font-weight:500; color:var(--ds-text);">Desabilitado</span></div>
+          <div style="font-size:11px; opacity:.5; margin-top:8px; line-height:1.5;">line + text, sem opacidade<br><strong style="color:var(--ds-title);">3.73:1 esc · 5.08:1 cl</strong></div>
+        </div>
+      </div>
+      <div style="border-top:.5px solid var(--ds-line); padding-top:14px;">
+        <div style="grid-column: span 2; font-size:12px; line-height:1.9; color:var(--ds-text);">
+          • <strong style="color:var(--ds-title);">Hover não existe no app.</strong> Em toque a escada é repouso → pressed direto. O passo de hover é exclusivo da LP.<br>
+          • <strong style="color:var(--ds-title);">Desabilitado não usa opacidade.</strong> Troca de token: fundo vira night-line/day-line e o rótulo vira night-text/day-text. A WCAG isenta controle inativo de contraste (1.4.3), mas os valores ficam registrados porque legível continua sendo melhor que isento.<br>
+          • <strong style="color:var(--ds-title);">Proibido como preenchimento em qualquer estado:</strong> cobalt-400 (4.10:1 com creme) e cobalt-350 (2.72:1). Os dois são tokens de primeiro plano.<br>
+          • Foco de teclado: contorno de 2px em cobalt-350 (escuro) / cobalt-500 (claro) com 2px de deslocamento. Nunca remover o outline sem repor um equivalente.
+        </div>
+      </div>
+    </div>
+
+    <!-- Chip de seleção -->
+    <div class="comp-card" style="background:var(--ds-surface); grid-column: span 2;">
+      <div class="comp-label">Chip de seleção · estado sem opacidade</div>
+
+      <div class="grid grid-cols-2 gap-6" style="align-items:start;">
+        <div>
+          <div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#2E7D5B; margin-bottom:10px;">✓ Estado por token</div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <div style="border-radius:999px; padding:9px 18px; background:color-mix(in srgb, var(--ds-accent) 10%, var(--ds-bg)); border:1px solid color-mix(in srgb, var(--ds-accent) 63%, transparent);">
+              <span style="font-family:'Instrument Sans',sans-serif; font-size:13px; font-weight:500; color:var(--ds-accent);">Ansiedade</span>
+            </div>
+            <div style="border-radius:999px; padding:9px 18px; background:transparent; border:.5px solid var(--ds-line);">
+              <span style="font-family:'Instrument Sans',sans-serif; font-size:13px; font-weight:400; color:var(--ds-text);">Sono</span>
+            </div>
+            <div style="border-radius:999px; padding:9px 18px; background:transparent; border:.5px solid var(--ds-line);">
+              <span style="font-family:'Instrument Sans',sans-serif; font-size:13px; font-weight:400; color:var(--ds-text);">Gratidão</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#B23A48; margin-bottom:10px;">✗ Estado por opacidade</div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <div style="border-radius:999px; padding:9px 18px; border:.5px solid var(--ds-line);">
+              <span style="font-family:'Instrument Sans',sans-serif; font-size:13px; font-weight:500; color:var(--ds-accent);">Ansiedade</span>
+            </div>
+            <div style="border-radius:999px; padding:9px 18px; border:.5px solid var(--ds-line); opacity:.48;">
+              <span style="font-family:'Instrument Sans',sans-serif; font-size:13px; color:var(--ds-text);">Sono</span>
+            </div>
+            <div style="border-radius:999px; padding:9px 18px; border:.5px solid var(--ds-line); opacity:.94;">
+              <span style="font-family:'Instrument Sans',sans-serif; font-size:13px; color:var(--ds-text);">Gratidão</span>
+            </div>
+          </div>
+          <div style="font-size:11px; opacity:.5; line-height:1.6; margin-top:10px;">
+            "Sono" em .48 reprova a 1.99:1. Subir para .94 conserta o contraste e apaga a distinção: o chip fica quase idêntico ao selecionado. Beco sem saída.
+          </div>
+        </div>
+      </div>
+
+      <div style="border-top:.5px solid var(--ds-line); padding-top:16px;">
+        <p style="font-size:13px; line-height:1.7; color:var(--ds-text); margin-bottom:16px;">
+          <strong style="color:var(--ds-title);">Opacidade não comunica estado.</strong>
+          Ela é um controle só, e um controle só não consegue atender duas exigências opostas ao mesmo tempo: esmaecer o suficiente para diferenciar e manter contraste suficiente para ler.
+          O limite matemático é 0.92, e a partir daí não há mais o que esmaecer. A saída não é achar o valor certo, é <strong style="color:var(--ds-title);">parar de usar opacidade</strong> e distribuir o estado por quatro canais que não brigam com o contraste.
+        </p>
+        <div class="grid grid-cols-2 gap-6">
+          <div>
+            <div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; opacity:.5; margin-bottom:10px;">Selecionado</div>
+            <ul style="font-size:12px; line-height:1.9; color:var(--ds-text); list-style:none; padding:0;">
+              <li>• Fundo: acento a <strong style="color:var(--ds-title);">10%</strong> (escuro) / <strong style="color:var(--ds-title);">8%</strong> (claro)</li>
+              <li>• Borda: 1px em acento a 63% — 3.17:1 escuro · 3.04:1 claro, acima dos 3:1 de grafismo</li>
+              <li>• Rótulo: cor de acento, peso <strong style="color:var(--ds-title);">w500</strong></li>
+              <li>• Contraste do rótulo: <strong style="color:var(--ds-title);">5.65:1</strong> escuro · <strong style="color:var(--ds-title);">5.71:1</strong> claro</li>
+            </ul>
+          </div>
+          <div>
+            <div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; opacity:.5; margin-bottom:10px;">Não selecionado</div>
+            <ul style="font-size:12px; line-height:1.9; color:var(--ds-text); list-style:none; padding:0;">
+              <li>• Fundo: transparente</li>
+              <li>• Borda: 0.5px em night-line / day-line</li>
+              <li>• Rótulo: night-text / day-text, peso <strong style="color:var(--ds-title);">w400</strong></li>
+              <li>• Contraste do rótulo: <strong style="color:var(--ds-title);">6.97:1</strong> escuro · <strong style="color:var(--ds-title);">9.50:1</strong> claro</li>
+            </ul>
+          </div>
+        </div>
+        <p style="font-size:11px; opacity:.5; line-height:1.7; margin-top:14px;">
+          Quatro diferenças simultâneas: preenchimento, cor da borda, cor do rótulo e peso. Nenhuma depende de opacidade e nenhuma depende só de cor, então o estado sobrevive a daltonismo e a tela ruim de sol.
+          É o mesmo padrão do botão "Ler a reflexão" que já existe no sistema, não um componente novo.
+        </p>
+      </div>
+    </div>
+
+    <!-- Lista de escolha -->
+    <div class="comp-card" style="background:var(--ds-surface); grid-column: span 2;">
+      <div class="comp-label">Lista de escolha · substitui SegmentedButton</div>
+
+      <div class="grid grid-cols-2 gap-6" style="align-items:start;">
+        <div>
+          <div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#2E7D5B; margin-bottom:10px;">✓ Lista de escolha</div>
+          <div class="choice-list">
+            <div class="choice-row is-selected" style="background:rgba(124,139,240,.10);">
+              <span class="choice-label">Sistema</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="choice-row"><span class="choice-label">Claro</span></div>
+            <div class="choice-row"><span class="choice-label">Escuro</span></div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#B23A48; margin-bottom:10px;">✗ SegmentedButton com rótulo que não cabe</div>
+          <div style="display:flex; border:.5px solid var(--ds-line); border-radius:999px; overflow:hidden; height:48px;">
+            <div style="flex:1; display:flex; align-items:center; justify-content:center; gap:6px; background:rgba(124,139,240,.10); color:var(--ds-accent); font-size:13px; font-family:'Instrument Sans',sans-serif; line-height:1.15; text-align:center;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Sistem<br>a</span>
+            </div>
+            <div style="flex:1; display:flex; align-items:center; justify-content:center; border-left:.5px solid var(--ds-line); font-size:13px; font-family:'Instrument Sans',sans-serif; color:var(--ds-text);">Claro</div>
+            <div style="flex:1; display:flex; align-items:center; justify-content:center; border-left:.5px solid var(--ds-line); font-size:13px; font-family:'Instrument Sans',sans-serif; color:var(--ds-text);">Escuro</div>
+          </div>
+          <div style="font-size:11px; opacity:.5; line-height:1.6; margin-top:10px;">
+            Reprodução fiel do que está em produção hoje em Ajustes, na fonte padrão. Não é hipótese de 2.0x.
+          </div>
+        </div>
+      </div>
+
+      <div style="border-top:.5px solid var(--ds-line); padding-top:16px; margin-top:6px;">
+        <div style="font-size:13px; line-height:1.7; color:var(--ds-text); margin-bottom:16px;">
+          <strong style="color:var(--ds-title);">Quando usar.</strong>
+          Escolha única entre 2 e 5 opções onde <strong style="color:var(--ds-title);">os rótulos não cabem em partes iguais</strong>.
+          O <code style="font-size:11px; background:var(--ds-bg); padding:2px 5px; border-radius:4px;">SegmentedButton</code> do Material divide a largura disponível em partes iguais,
+          então quem manda no layout é o rótulo mais longo, e ele quebra ou é cortado sem aviso.
+          Medido na tela de Ajustes, com as fontes reais do produto: "Sistema" precisa de <strong style="color:var(--ds-title);">48.2dp</strong> e recebe <strong style="color:var(--ds-title);">41.7dp</strong> já em 1.0x;
+          em 2.0x precisa de 96.4dp e recebe 62.2dp, e "Escuro" também passa a quebrar.
+          Não existe escala em que o horizontal seja seguro para esses três rótulos.
+        </div>
+        <div style="font-size:13px; line-height:1.7; color:var(--ds-text); margin-bottom:16px;">
+          <strong style="color:var(--ds-title);">Descartados, com render:</strong>
+          <code style="font-size:11px; background:var(--ds-bg); padding:2px 5px; border-radius:4px;">showSelectedIcon: false</code> libera ~26dp e resolve até 1.5x, mas quebra em 2.0x e remove o único indicador de seleção que não é cor.
+          <code style="font-size:11px; background:var(--ds-bg); padding:2px 5px; border-radius:4px;">direction: Axis.vertical</code> desenha o stadium no eixo vertical, o controle vira uma elipse e o texto vaza pela borda em 2.0x;
+          com <code style="font-size:11px; background:var(--ds-bg); padding:2px 5px; border-radius:4px;">expandedInsets</code> para forçar largura total, estoura <em>BoxConstraints forces an infinite height</em> dentro de ListView.
+        </div>
+
+        <div class="grid grid-cols-2 gap-6">
+          <div>
+            <div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; opacity:.5; margin-bottom:10px;">Especificação</div>
+            <ul style="font-size:12px; line-height:1.9; color:var(--ds-text); list-style:none; padding:0;">
+              <li>• Container: o card da seção. Sem caixa aninhada, sem borda dupla</li>
+              <li>• Linha: <code style="font-size:10px;">minHeight 56</code> + padding <code style="font-size:10px;">sp4</code> horizontal / <code style="font-size:10px;">sp3</code> vertical</li>
+              <li>• O minHeight garante 56dp em 1.0x; o padding deixa crescer sozinho em 2.0x, sem teto</li>
+              <li>• Rótulo: Instrument Sans 15px · w500 selecionado · w400 os demais</li>
+              <li>• Marca de seleção: check outline 20dp na cor de acento</li>
+              <li>• Fundo da linha selecionada: acento a 8% (claro) / 10% (escuro), raio sm 8, inset horizontal 8</li>
+              <li>• Divisor: 0.5px em night-line / day-line, <code style="font-size:10px;">indent sp4</code></li>
+              <li>• Raio do container: md 14</li>
+            </ul>
+            <div style="border:.5px solid #9A7320; border-radius:14px; padding:14px; margin-top:14px;">
+              <div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#9A7320; margin-bottom:8px;">⚠ Armadilha do tinte de seleção</div>
+              <p style="font-size:12px; line-height:1.7; color:var(--ds-text);">
+                O tinte escuro <code style="font-size:10px; background:var(--ds-bg); padding:2px 5px; border-radius:4px;">#20264C</code> é fundo reservado a <strong style="color:var(--ds-title);">texto de acento</strong>. Ele não é uma superfície de uso geral.<br>
+                ✓ cobalt-350 <strong style="color:var(--ds-title);">4.72:1</strong> · night-cream <strong style="color:var(--ds-title);">12.82:1</strong> · night-text <strong style="color:var(--ds-title);">5.19:1</strong><br>
+                ✗ night-muted <strong style="color:var(--ds-title);">3.89:1</strong> · cobalt-400 <strong style="color:var(--ds-title);">3.13:1</strong><br>
+                Nunca colocar rótulo secundário ou metadata em cima dele. No claro (<code style="font-size:10px; background:var(--ds-bg); padding:2px 5px; border-radius:4px;">#D3DAFA</code>) todos passam: cobalt-500 4.99:1 · day-text 7.35:1 · day-muted 4.77:1.
+              </p>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; opacity:.5; margin-bottom:10px;">Acessibilidade — não é opcional</div>
+            <ul style="font-size:12px; line-height:1.9; color:var(--ds-text); list-style:none; padding:0;">
+              <li>• <code style="font-size:10px;">Semantics(inMutuallyExclusiveGroup: true, selected: ..., button: true)</code> em cada linha</li>
+              <li>• <code style="font-size:10px;">Semantics(container: true, label: 'Tema')</code> no card, para nomear o grupo</li>
+              <li>• Sem isso o TalkBack perde o "1 de 3" que o SegmentedButton entregava de graça</li>
+              <li>• Estado nunca depende só de cor: o check carrega o significado sozinho</li>
+              <li>• Alvo de toque: 56dp de altura, acima dos 48dp mínimos</li>
+              <li>• Contraste do rótulo selecionado sobre o próprio tinte: 4.72:1 escuro · 4.99:1 claro, AA nos dois</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div style="font-size:11px; opacity:.4;">Origem: revisão da tela de Ajustes, agosto/2026. Evidência de campo: cenário G do relatório de usabilidade.</div>
     </div>
 
     <!-- VerseLine -->
@@ -671,6 +1069,20 @@ tailwind.config = {
     <div style="display:flex; gap:10px;"><div style="width:7px; height:7px; border-radius:50%; background:#2E7D5B; flex-shrink:0; margin-top:5px;"></div><div style="font-size:13px; line-height:1.6; color:var(--ds-text);"><strong style="color:var(--ds-title);">Opacidade em texto</strong> — withAlpha() em texto reduz contraste efetivo. Usar cor plena (night-text ou day-text). Opacidade é permitida apenas em elementos puramente decorativos.</div></div>
 
     <div style="display:flex; gap:10px;"><div style="width:7px; height:7px; border-radius:50%; background:#9A7320; flex-shrink:0; margin-top:5px;"></div><div style="font-size:13px; line-height:1.6; color:var(--ds-text);"><strong style="color:var(--ds-title);">Número de versículo</strong> — cobalt-400 a 10px no escuro = ~4.2:1 (abaixo de AA). Funciona como marcador decorativo; conteúdo essencial é o texto do versículo. Documentado como exceção controlada.</div></div>
+
+    <div style="display:flex; gap:10px;"><div style="width:7px; height:7px; border-radius:50%; background:#2E7D5B; flex-shrink:0; margin-top:5px;"></div><div style="font-size:13px; line-height:1.6; color:var(--ds-text);"><strong style="color:var(--ds-title);">Acento no escuro (v1.2)</strong> — como texto ou ícone, usar <code style="font-size:11px; background:var(--ds-surface); padding:2px 5px; border-radius:4px;">cobalt-350 #7C8BF0</code> (5.5:1). O <code style="font-size:11px; background:var(--ds-surface); padding:2px 5px; border-radius:4px;">cobalt-400</code> reprova AA nesse papel (3.64:1) e fica restrito a grafismos e a texto display em Playfair ≥28px, onde a regra é a de texto grande — limiar completo na seção 1. Como preenchimento sólido, os dois modos usam <code style="font-size:11px; background:var(--ds-surface); padding:2px 5px; border-radius:4px;">cobalt-500</code>, que dá 6.08:1 com o creme.</div></div>
+
+    <div style="display:flex; gap:10px;"><div style="width:7px; height:7px; border-radius:50%; background:#2E7D5B; flex-shrink:0; margin-top:5px;"></div><div style="font-size:13px; line-height:1.6; color:var(--ds-text);"><strong style="color:var(--ds-title);">Decoração sai da árvore de acessibilidade (v1.2)</strong> — elemento puramente visual não pode ser anunciado. Números fantasma, dots de emoção, marca d'água e ícone que só repete um rótulo ao lado: <code style="font-size:11px; background:var(--ds-surface); padding:2px 5px; border-radius:4px;">aria-hidden="true"</code> na web, <code style="font-size:11px; background:var(--ds-surface); padding:2px 5px; border-radius:4px;">ExcludeSemantics</code> no Flutter. Sem isso o leitor de tela recita "23", "94", "62" soltos no meio do conteúdo, e quem depende dele não tem como saber que aquilo era enfeite.</div></div>
+
+    <div style="display:flex; gap:10px;"><div style="width:7px; height:7px; border-radius:50%; background:#2E7D5B; flex-shrink:0; margin-top:5px;"></div><div style="font-size:13px; line-height:1.6; color:var(--ds-text);"><strong style="color:var(--ds-title);">Estado nunca é opacidade (v1.2)</strong> — opacidade é um controle só e não atende esmaecer e manter contraste ao mesmo tempo; o limite matemático do nosso pior par é 0.92. Estado se comunica por preenchimento, borda, cor de rótulo e peso, combinados. Nunca só por cor. Ver "Chip de seleção" na seção 5.</div></div>
+
+    <div style="display:flex; gap:10px;"><div style="width:7px; height:7px; border-radius:50%; background:#2E7D5B; flex-shrink:0; margin-top:5px;"></div><div style="font-size:13px; line-height:1.6; color:var(--ds-text);"><strong style="color:var(--ds-title);">Preenchimento escurece, primeiro plano clareia (v1.2)</strong> — hover e pressed de um botão sólido vão para cobalt-600 e cobalt-700. Clarear o preenchimento derruba o contraste do texto em cima dele. Escada completa e valores na seção 5.</div></div>
+
+    <div style="display:flex; gap:10px;"><div style="width:7px; height:7px; border-radius:50%; background:#2E7D5B; flex-shrink:0; margin-top:5px;"></div><div style="font-size:13px; line-height:1.6; color:var(--ds-text);"><strong style="color:var(--ds-title);">Alvo de toque 48dp (v1.2)</strong> — todo elemento tocável tem no mínimo 48×48dp de área, mesmo que o desenho pareça menor. Linhas de lista: 56dp. Botão de ícone circular: 44dp de desenho com 48dp de área. Vale para linha de link inteira, não só para o texto dela.</div></div>
+
+    <div style="display:flex; gap:10px;"><div style="width:7px; height:7px; border-radius:50%; background:#2E7D5B; flex-shrink:0; margin-top:5px;"></div><div style="font-size:13px; line-height:1.6; color:var(--ds-text);"><strong style="color:var(--ds-title);">Piso de tamanho de texto (v1.2)</strong> — 13px para rótulo auxiliar, 14px para texto de decisão, medido em 1.0x. Exceções documentadas: eyebrow e número de versículo. Ver seção 3.</div></div>
+
+    <div style="display:flex; gap:10px;"><div style="width:7px; height:7px; border-radius:50%; background:#2E7D5B; flex-shrink:0; margin-top:5px;"></div><div style="font-size:13px; line-height:1.6; color:var(--ds-text);"><strong style="color:var(--ds-title);">Fonte do sistema até 2.0x (v1.2)</strong> — o app honra a ampliação do Android até 2.0x. Nenhum rótulo pode depender de largura fixa ou de divisão em partes iguais. Telas que não aguentam se protegem com <code style="font-size:11px; background:var(--ds-surface); padding:2px 5px; border-radius:4px;">MediaQuery.withClampedTextScaling</code> localmente, nunca no topo da árvore.</div></div>
 
     <div style="display:flex; gap:10px;"><div style="width:7px; height:7px; border-radius:50%; background:#2E7D5B; flex-shrink:0; margin-top:5px;"></div><div style="font-size:13px; line-height:1.6; color:var(--ds-text);"><strong style="color:var(--ds-title);">nightMuted e dayMuted</strong> — valores atualizados para AA: nightMuted <code style="font-size:11px; background:var(--ds-surface); padding:2px 5px; border-radius:4px;">#7080C8</code> 5.2:1, dayMuted <code style="font-size:11px; background:var(--ds-surface); padding:2px 5px; border-radius:4px;">#4E5899</code> 6.2:1. Aceitos para labels metadata ≥10px, dots e separadores. Nunca para corpo de texto — usar night-text / day-text.</div></div>
   </div>
@@ -1068,7 +1480,7 @@ tailwind.config = {
     <span style="font-family:'Playfair Display',serif; font-style:italic; font-weight:500; font-size:18px; color:var(--ds-accent);">Salmo</span>
   </div>
   <div style="font-size:9px; letter-spacing:.14em; text-transform:uppercase; opacity:.35;">
-    Design System v1.1 · Acessibilidade WCAG 2.1 AA · Junho 2026
+    Design System v1.2 · Acessibilidade WCAG 2.1 AA · Agosto 2026
   </div>
 </footer>
 
@@ -1106,7 +1518,13 @@ function badge(r, large) {
 const pairs = [
   {role:'Título/número (noturno)',  fg:'#EEF0FC', bg:'#080B1C', large:false, note:'night-cream / night-base'},
   {role:'Corpo texto (noturno)',    fg:'#8C97D4', bg:'#080B1C', large:false, note:'night-text / night-base — corrigido v1.1'},
-  {role:'Acento cobalt-400 (noturno)', fg:'#5567EA', bg:'#080B1C', large:true,  note:'labels grandes, ícones ✓'},
+  {role:'Acento cobalt-350 (noturno)', fg:'#7C8BF0', bg:'#151A39', large:false, note:'novo v1.2 — texto de ação sobre superfície escura'},
+  {role:'cobalt-400 sobre superfície (reprovado)', fg:'#5567EA', bg:'#151A39', large:false, note:'o motivo do cobalt-350 — não usar como texto normal'},
+  {role:'Creme sobre cobalt-350 (proibido)', fg:'#EEF0FC', bg:'#7C8BF0', large:false, note:'cobalt-350 nunca é preenchimento — use cobalt-500'},
+  {role:'Rótulo selecionado sobre tinte', fg:'#7C8BF0', bg:'#20264C', large:false, note:'lista de escolha, modo escuro'},
+  {role:'night-muted sobre o tinte (proibido)', fg:'#7080C8', bg:'#20264C', large:false, note:'o tinte só aceita acento, creme ou night-text'},
+  {role:'Display Playfair ≥28px em cobalt-400', fg:'#5567EA', bg:'#080B1C', large:true,  note:'texto grande, mínimo 3.0 — decisão de design, não bug'},
+  {role:'Hover de preenchimento (cobalt-600)', fg:'#EEF0FC', bg:'#1B33B4', large:false, note:'preenchimento escurece, nunca clareia'},
   {role:'Título/número (diurno)',   fg:'#0C1230', bg:'#F5F7FE', large:false, note:'day-title / day-base'},
   {role:'Corpo texto (diurno)',     fg:'#2E3A86', bg:'#F5F7FE', large:false, note:'day-text / day-base — corrigido v1.1'},
   {role:'Acento cobalt-500 (diurno)',  fg:'#2A47DD', bg:'#F5F7FE', large:false, note:'texto de ação ✓'},
