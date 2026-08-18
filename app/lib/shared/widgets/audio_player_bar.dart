@@ -83,7 +83,9 @@ class _AudioPlayerBarState extends ConsumerState<AudioPlayerBar> {
       );
     }
 
-    final btnColor = available ? accent : muted;
+    // Disco do play é preenchimento sólido com o triângulo creme por cima:
+    // cobalt500 nos dois modos (6.08:1), não o acento do tema.
+    final btnColor = available ? context.colorAccentFill : muted;
 
     // Progresso 0.0–1.0
     final progress = (audio.duration.inMilliseconds > 0)

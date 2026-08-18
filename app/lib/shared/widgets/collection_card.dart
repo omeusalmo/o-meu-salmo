@@ -123,11 +123,13 @@ class CollectionCard extends StatelessWidget {
                           style: GoogleFonts.instrumentSans(
                             fontSize: 13,
                             fontWeight: FontWeight.w500,
-                            color: accent,
+                            // Texto pequeno: acento de texto.
+                            color: context.colorAccentText,
                           ),
                         ),
                         const SizedBox(width: AppTheme.sp1),
-                        Icon(Icons.arrow_forward_rounded, size: 13, color: accent),
+                        Icon(Icons.arrow_forward_rounded,
+                            size: 13, color: context.colorAccentText),
                       ],
                     ),
                   ],

@@ -446,7 +446,8 @@ class _CollectionCard extends StatelessWidget {
                   colecao,
                   style: GoogleFonts.playfairDisplay(
                     fontSize: 18,
-                    color: AppColors.cobalt500,
+                    // Era cobalt500 fixo nos dois temas: 2.46:1 no escuro.
+                    color: context.colorAccentText,
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -530,6 +531,9 @@ class _Page3 extends StatelessWidget {
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 150),
                     decoration: BoxDecoration(
+                      // Tinte e borda eram cobalt500 fixo nos dois temas: no
+                      // escuro o rótulo selecionado dava 2.29:1, o pior
+                      // contraste do app. Agora acompanham o tema.
                       color: isSelected
                           ? AppColors.cobalt500.withAlpha(26)
                           : (context.colorSurface),
@@ -537,7 +541,7 @@ class _Page3 extends StatelessWidget {
                           BorderRadius.circular(AppTheme.radiusMd),
                       border: Border.all(
                         color: isSelected
-                            ? AppColors.cobalt500
+                            ? context.colorAccent
                             : Colors.transparent,
                         width: 1.5,
                       ),
@@ -557,7 +561,7 @@ class _Page3 extends StatelessWidget {
                                   ? FontWeight.w500
                                   : FontWeight.w400,
                               color: isSelected
-                                  ? AppColors.cobalt500
+                                  ? context.colorAccentText
                                   : textClr,
                             ),
                             overflow: TextOverflow.ellipsis,

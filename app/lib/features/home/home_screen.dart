@@ -180,7 +180,6 @@ class _HomeHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final accent = context.colorAccent;
     final muted = context.colorText;
 
     return Row(
@@ -204,7 +203,8 @@ class _HomeHeader extends StatelessWidget {
                   fontSize: 19,
                   fontStyle: FontStyle.italic,
                   fontWeight: FontWeight.w400,
-                  color: accent,
+                  // Wordmark em 19px: abaixo dos 28px da regra de display.
+                  color: context.colorAccentText,
                   height: 1.0,
                 ),
               ),
@@ -293,6 +293,9 @@ class _PsalmHeroSection extends StatelessWidget {
               const TextSpan(text: 'Salmo '),
               TextSpan(
                 text: '${salmo.numero}',
+                // Herda os 52px Playfair w400 do pai: cumpre as quatro
+                // condições da regra de display do DS, então colorAccent aqui
+                // é proposital. Não "corrija" para o acento de texto.
                 style: TextStyle(
                   fontStyle: FontStyle.italic,
                   color: accent,
@@ -366,6 +369,8 @@ class _ReflexaoLiberadaChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final accent = context.colorAccent;
+    // Ícone e rótulo em cima do tinte: acento de texto, senão dá 3.99:1.
+    final accentText = context.colorAccentText;
 
     return Semantics(
       label: 'Reflexão liberada. Abrir o Salmo.',
@@ -382,14 +387,14 @@ class _ReflexaoLiberadaChip extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Icons.lock_open_outlined, size: 12, color: accent),
+              Icon(Icons.lock_open_outlined, size: 12, color: accentText),
               const SizedBox(width: 5),
               Text(
                 'reflexão liberada',
                 style: GoogleFonts.instrumentSans(
                   fontSize: 11,
                   fontWeight: FontWeight.w500,
-                  color: accent,
+                  color: accentText,
                   letterSpacing: 0.3,
                 ),
               ),
@@ -497,6 +502,9 @@ class _CollectionsShortcut extends StatelessWidget {
     final isDark   = context.isDark;
     final titleClr = context.colorTitle;
     final accent   = context.colorAccent;
+    // O card já é tingido de cobalto; o "Ver coleções" em cima dele precisa do
+    // acento de texto, senão dá 3.91:1 no escuro.
+    final accentText = context.colorAccentText;
     final cardBg   = isDark
         ? AppColors.cobalt600.withAlpha(45)
         : AppColors.cobalt400.withAlpha(25);
@@ -550,10 +558,11 @@ class _CollectionsShortcut extends StatelessWidget {
                   children: [
                     Text(
                       'Ver coleções',
-                      style: AppTheme.emphasis14(accent),
+                      style: AppTheme.emphasis14(accentText),
                     ),
                     const SizedBox(width: AppTheme.sp1),
-                    Icon(Icons.arrow_forward_rounded, size: 14, color: accent),
+                    Icon(Icons.arrow_forward_rounded,
+                        size: 14, color: accentText),
                   ],
                 ),
               ),
@@ -577,7 +586,9 @@ class _PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final accent = context.colorAccent;
+    // Preenchimento sólido com creme por cima: cobalt500 nos dois modos
+    // (6.08:1). Com o acento do tema escuro cairia para 4.10:1.
+    final accent = context.colorAccentFill;
 
     return GestureDetector(
       onTap: onTap,

@@ -27,7 +27,9 @@ class VerseLine extends StatelessWidget {
         ? (context.colorVerse)
         : context.colorText;
 
-    final numColor = context.colorAccent;
+    // Número do versículo é texto de 10px: acento de texto, obrigatoriamente.
+    // Com o acento de preenchimento ficava a 3.64:1 no escuro.
+    final numColor = context.colorAccentText;
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),

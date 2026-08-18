@@ -5,6 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:salmos_app/core/theme/app_theme.dart';
 import 'package:salmos_app/data/providers/audio_provider.dart';
 import 'package:salmos_app/data/providers/salmos_providers.dart';
@@ -17,8 +18,9 @@ import 'package:salmos_app/data/repositories/salmos_repository.dart';
 /// as diretrizes de acessibilidade do Android esperam que o app suporte.
 const List<double> kEscalas = [1.0, 1.3, 1.5, 2.0];
 
-/// Teto de ampliação que o app aplica hoje em `main.dart`.
-const double kTetoAtual = 1.3;
+/// Teto de ampliação que o app aplica em `main.dart`.
+/// Subiu de 1.3 para 2.0 quando o onboarding passou a se proteger sozinho.
+const double kTetoAtual = 2.0;
 
 /// Aparelho de referência do público-alvo: 360×800 dp (Galaxy A / Moto G).
 const Size kTelaTipica = Size(360, 800);
@@ -66,57 +68,78 @@ List<Override> overridesPadrao() => [
 // Fontes
 // ─────────────────────────────────────────────────────────────────────────────
 
-/// `true` quando a suíte conseguiu carregar uma fonte proporcional real.
+/// `true` quando as fontes do produto foram carregadas.
 ///
-/// Sem isso o `flutter test` usa a fonte sintética de teste, em que cada glifo
-/// ocupa exatamente 1 em — cerca do dobro de uma fonte de interface real. Toda
-/// medida de largura sairia inflada e o relatório apontaria corte onde não há.
+/// Sem fonte real o `flutter test` usa a fonte sintética, em que cada glifo
+/// ocupa 1 em, quase o dobro de uma fonte de interface. Toda medida de largura
+/// sairia inflada e o relatório apontaria corte onde não há.
 bool fontesReais = false;
 
-/// Registra uma fonte real sob os nomes de família que o `google_fonts` gera.
+/// `true` quando as fontes vieram dos assets do app, e não de um substituto.
+/// Medida de largura só é fiel a produção quando isto é `true`.
+bool fontesDoProduto = false;
+
+/// Cada combinação de família, peso e estilo que o app pede de fato.
 ///
-/// O app baixa Playfair/Cormorant/Instrument Sans em tempo de execução, o que
-/// não acontece em teste. Roboto (a fonte de sistema do Android) entra no lugar
-/// das três: as métricas não são idênticas às de produção, mas são de uma fonte
-/// proporcional de verdade — que é o que importa para medir se o texto cabe.
+/// Levantada varrendo as chamadas `GoogleFonts.*` de `lib/`. É a lista que
+/// define quais arquivos precisam existir em `assets/fonts/`: o google_fonts
+/// resolve pelo nome do arquivo, e um peso que falte volta a ser buscado na
+/// rede (ou estoura, com `allowRuntimeFetching` desligado).
+final List<TextStyle Function()> kEstilosUsadosPeloApp = [
+  () => GoogleFonts.playfairDisplay(fontWeight: FontWeight.w400),
+  () => GoogleFonts.playfairDisplay(
+      fontWeight: FontWeight.w400, fontStyle: FontStyle.italic),
+  () => GoogleFonts.playfairDisplay(
+      fontWeight: FontWeight.w500, fontStyle: FontStyle.italic),
+  () => GoogleFonts.playfairDisplay(fontWeight: FontWeight.w700),
+  () => GoogleFonts.cormorant(
+      fontWeight: FontWeight.w400, fontStyle: FontStyle.italic),
+  () => GoogleFonts.instrumentSans(fontWeight: FontWeight.w400),
+  () => GoogleFonts.instrumentSans(
+      fontWeight: FontWeight.w400, fontStyle: FontStyle.italic),
+  () => GoogleFonts.instrumentSans(fontWeight: FontWeight.w500),
+];
+
+/// Carrega as fontes do jeito que o app carrega: dos assets, sem rede.
+///
+/// Desde que as fontes passaram a ser empacotadas no pubspec, o teste não
+/// precisa mais registrar nada à mão — o próprio google_fonts acha os arquivos
+/// no AssetManifest. O que ainda falta é esperar: os carregamentos são
+/// assíncronos e, sem o await, o primeiro quadro sairia com a fonte de reserva.
 Future<void> carregarFontesReais() async {
-  final arquivo = _acharRoboto();
-  if (arquivo == null) return;
+  await _carregarIconesDoMaterial();
 
-  final bytes = ByteData.sublistView(await arquivo.readAsBytes());
-
-  // Nome de família do google_fonts = "Familia_variante"
-  // (GoogleFontsFamilyWithVariant.toString).
-  const familias = ['InstrumentSans', 'PlayfairDisplay', 'Cormorant'];
-  const variantes = [
-    'regular', 'italic',
-    '300', '300italic',
-    '500', '500italic',
-    '600', '600italic',
-    '700', '700italic',
-  ];
-
-  for (final familia in familias) {
-    for (final variante in variantes) {
-      await (FontLoader('${familia}_$variante')..addFont(Future.value(bytes)))
-          .load();
-    }
+  GoogleFonts.config.allowRuntimeFetching = false;
+  for (final estilo in kEstilosUsadosPeloApp) {
+    estilo();
   }
+  await GoogleFonts.pendingFonts();
+
   fontesReais = true;
+  fontesDoProduto = true;
 }
 
-File? _acharRoboto() {
+/// Sem isto os ícones saem como quadrado vazio nos renders, e não dá para
+/// conferir coisas como a marca de seleção do tema.
+Future<void> _carregarIconesDoMaterial() async {
+  final arquivo = _acharArtefato('MaterialIcons-Regular.otf');
+  if (arquivo == null) return;
+  final bytes = ByteData.sublistView(await arquivo.readAsBytes());
+  await (FontLoader('MaterialIcons')..addFont(Future.value(bytes))).load();
+}
+
+/// Procura um arquivo em material_fonts, dentro do cache do Flutter SDK.
+File? _acharArtefato(String nome) {
   final candidatos = <String>[
     if (Platform.environment['FLUTTER_ROOT'] case final raiz?)
-      '$raiz/bin/cache/artifacts/material_fonts/Roboto-Regular.ttf',
+      '$raiz/bin/cache/artifacts/material_fonts/$nome',
+    'build/unit_test_assets/fonts/$nome',
   ];
 
-  // Em `flutter test` o executável é o flutter_tester, dentro do cache do SDK.
-  // Sobe a árvore até achar a pasta de fontes do Material.
   var dir = File(Platform.resolvedExecutable).parent;
   for (var i = 0; i < 8; i++) {
-    candidatos.add('${dir.path}/material_fonts/Roboto-Regular.ttf');
-    candidatos.add('${dir.path}/artifacts/material_fonts/Roboto-Regular.ttf');
+    candidatos.add('${dir.path}/material_fonts/$nome');
+    candidatos.add('${dir.path}/artifacts/material_fonts/$nome');
     if (dir.parent.path == dir.path) break;
     dir = dir.parent;
   }
@@ -308,9 +331,12 @@ List<Achado> _acharTextoCortado(WidgetTester tester) {
     final amostra = texto.length > 46 ? '${texto.substring(0, 46)}…' : texto;
 
     if (ro.didExceedMaxLines) {
+      // maxLines entra na chave para a exceção poder ser declarada por
+      // política ("corte de uma linha é design nesta tela") e não texto a
+      // texto, que mudaria a cada Salmo novo no acervo.
       achados.add(Achado(
         TipoAchado.reticencias,
-        'reticencias:$amostra',
+        'reticencias:maxLines=${ro.maxLines}:$amostra',
         '"$amostra" cortado (maxLines: ${ro.maxLines})',
       ));
       continue;
@@ -382,12 +408,28 @@ void relatar(String tela, List<Resultado> resultados) {
 
 /// Menor escala em que a tela passou a estourar layout (overflow) em relação à
 /// linha de base. `null` = aguentou todas as escalas testadas.
-double? escalaDoPrimeiroOverflow(List<Resultado> resultados) {
+double? escalaDoPrimeiroOverflow(
+  List<Resultado> resultados, {
+  Set<String> truncamentoAceito = const {},
+}) {
   final base = resultados.firstWhere((r) => r.escala == 1.0);
   for (final r in resultados.where((r) => r.escala != 1.0)) {
-    if (r.novosSobre(base).any((a) => a.tipo == TipoAchado.overflow)) {
-      return r.escala;
-    }
+    final novos = r.novosSobre(base);
+    final quebrou = novos.any((a) {
+      switch (a.tipo) {
+        // Estouro de layout: sempre reprova.
+        case TipoAchado.overflow:
+          return true;
+        // Texto cortado também reprova. Antes só o overflow contava, e uma
+        // mudança que picotasse "Enviar sugestão" ao meio passaria batida.
+        // A exceção é declarada por tela, para o caso do corte ser decisão de
+        // design (título de card com maxLines: 1, por exemplo).
+        case TipoAchado.reticencias:
+        case TipoAchado.corteHorizontal:
+          return !truncamentoAceito.any(a.chave.contains);
+      }
+    });
+    if (quebrou) return r.escala;
   }
   return null;
 }

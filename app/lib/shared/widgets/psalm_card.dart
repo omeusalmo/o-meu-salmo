@@ -60,6 +60,10 @@ class PsalmCard extends StatelessWidget {
                   widthFactor: 1,
                   child: Text(
                     '$numero',
+                    // colorAccent (e não colorAccentText) é proposital: este
+                    // numeral cumpre as quatro condições da regra de display
+                    // do DS, 32px ≥ 28, Playfair Display, peso ≥ 400 e
+                    // 3.64:1 ≥ 3.5. Não "corrija" para o acento de texto.
                     style: GoogleFonts.playfairDisplay(
                       fontSize: 32,
                       fontWeight: FontWeight.w400,

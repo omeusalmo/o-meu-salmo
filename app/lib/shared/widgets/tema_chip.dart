@@ -89,17 +89,20 @@ class TemaChips extends StatelessWidget {
     final visiveis = temas.take(max).toList();
     if (visiveis.isEmpty) return const SizedBox.shrink();
 
+    // Fundo e borda usam o acento de preenchimento; o rótulo usa o acento de
+    // texto. Com o mesmo tom nos dois, o texto dava 3.99:1 no escuro.
     final accent = context.colorAccent;
+    final accentText = context.colorAccentText;
     return Wrap(
       spacing: AppTheme.sp2,
       runSpacing: AppTheme.sp2,
       children: [
-        for (final t in visiveis) _chip(accent, temaLabel(t)),
+        for (final t in visiveis) _chip(accent, accentText, temaLabel(t)),
       ],
     );
   }
 
-  Widget _chip(Color accent, String label) => Semantics(
+  Widget _chip(Color accent, Color accentText, String label) => Semantics(
         label: 'Tema: $label',
         excludeSemantics: true,
         child: Container(
@@ -114,7 +117,7 @@ class TemaChips extends StatelessWidget {
             style: GoogleFonts.instrumentSans(
               fontSize: 11,
               fontWeight: FontWeight.w500,
-              color: accent,
+              color: accentText,
               letterSpacing: 0.3,
             ),
           ),

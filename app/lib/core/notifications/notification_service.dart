@@ -5,8 +5,12 @@ import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
 class NotificationService {
-  NotificationService._();
-  static final NotificationService instance = NotificationService._();
+  /// Público só para o teste conseguir criar um dublê por herança.
+  NotificationService();
+  /// Trocável em teste (a permissão de notificação depende de plataforma
+  /// nativa, que não existe sob flutter test). Em produção nunca é
+  /// reatribuído.
+  static NotificationService instance = NotificationService();
 
   final _plugin = FlutterLocalNotificationsPlugin();
   bool _initialized = false;
@@ -23,6 +27,7 @@ class NotificationService {
   Future<void> init() async {
     if (_initialized) return;
     tz.initializeTimeZones();
+    tz.setLocalLocation(_zonaDoAparelho());
 
     const androidInit = AndroidInitializationSettings('@mipmap/launcher_icon');
     const iosInit     = DarwinInitializationSettings(
@@ -107,6 +112,36 @@ class NotificationService {
 
   Future<void> cancelDailySalmo() async {
     await _plugin.cancel(_dailyPsalmId);
+  }
+
+  /// Descobre o fuso do aparelho sem depender de pacote nativo.
+  ///
+  /// `tz.initializeTimeZones()` deixa `tz.local` em UTC (src/env.dart faz
+  /// `_local = _UTC`). Sem resolver isso, quem escolhe 08:00 recebe a
+  /// notificação às 05:00 de Brasília.
+  ///
+  /// A busca casa o deslocamento de agora E o de daqui a seis meses. Os dois
+  /// juntos separam fuso com horário de verão de fuso sem: só o deslocamento
+  /// atual acharia dezenas de zonas equivalentes e poderia escolher uma que
+  /// muda de hora em época diferente.
+  ///
+  /// Reserva é São Paulo, e não UTC: o app só é distribuído no Brasil, então
+  /// errar para o fuso do público é melhor que errar três horas para todos.
+  static tz.Location _zonaDoAparelho() {
+    final agora = DateTime.now();
+    final emSeisMeses = agora.add(const Duration(days: 182));
+    final deslocamentoAgora = agora.timeZoneOffset;
+    final deslocamentoDepois = emSeisMeses.timeZoneOffset;
+
+    for (final local in tz.timeZoneDatabase.locations.values) {
+      final a = Duration(
+          milliseconds: local.timeZone(agora.millisecondsSinceEpoch).offset);
+      final b = Duration(
+          milliseconds:
+              local.timeZone(emSeisMeses.millisecondsSinceEpoch).offset);
+      if (a == deslocamentoAgora && b == deslocamentoDepois) return local;
+    }
+    return tz.getLocation('America/Sao_Paulo');
   }
 
   int _dayOfYear(DateTime d) {

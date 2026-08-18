@@ -247,6 +247,9 @@ class _BodyState extends ConsumerState<_Body> {
                 const TextSpan(text: 'Salmo '),
                 TextSpan(
                   text: '${salmo.numero}',
+                  // Herda os 52px Playfair w400 do pai: cumpre as quatro
+                  // condições da regra de display do DS, então colorAccent
+                  // aqui é proposital. Não "corrija" para o acento de texto.
                   style: TextStyle(
                     fontStyle: FontStyle.italic,
                     color: accent,
@@ -317,8 +320,7 @@ class _BodyState extends ConsumerState<_Body> {
 class _LockedReflexao extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final muted  = context.colorText;
-    final accent = context.colorAccent;
+    final muted = context.colorText;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -354,14 +356,16 @@ class _LockedReflexao extends StatelessWidget {
             context.go('/colecoes');
           },
           style: TextButton.styleFrom(
-            foregroundColor: accent,
+            // Rótulo de 14px: acento de texto. Com o de preenchimento dava
+            // ~4.2:1 no escuro.
+            foregroundColor: context.colorAccentText,
             padding: EdgeInsets.zero,
             minimumSize: Size.zero,
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           ),
           child: Text(
             'Explorar coleções',
-            style: AppTheme.emphasis14(accent),
+            style: AppTheme.emphasis14(context.colorAccentText),
           ),
         ),
       ],
@@ -439,11 +443,15 @@ class _RevealButton extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(Icons.auto_stories_outlined, size: 16, color: accent),
+                // Conteúdo em cima do tinte de acento: precisa do acento de
+                // texto, senão dá 3.92:1 no escuro.
+                Icon(Icons.auto_stories_outlined,
+                    size: 16, color: context.colorAccentText),
                 const SizedBox(width: AppTheme.sp2),
                 Text(
                   'Ler a reflexão',
-                  style: AppTheme.emphasisTracked15(accent),
+                  style:
+                      AppTheme.emphasisTracked15(context.colorAccentText),
                 ),
               ],
             ),
@@ -487,7 +495,9 @@ class _ReflexaoContent extends StatelessWidget {
               fontSize: 17,
               fontStyle: FontStyle.italic,
               fontWeight: FontWeight.w400,
-              color: accent,
+              // 17px não alcança o piso de 28px da regra de display, então
+              // vale a regra de texto: acento de texto.
+              color: context.colorAccentText,
               height: 1.5,
             ),
           ),

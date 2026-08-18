@@ -27,6 +27,11 @@ import 'text_scale_harness.dart';
 ///
 /// O relatório impresso no output do `flutter test` é o entregável. Os `expect`
 /// abaixo apenas travam o que já está garantido, para não regredir.
+// Conhecidos e FORA DO ESCOPO desta leva, anotados para não se perderem:
+//   • compositor_screen.dart estoura layout em 1.5x;
+//   • respirar_screen.dart estoura em 320dp a 2.0x.
+// Nenhuma das duas telas está na matriz abaixo. São anteriores a este
+// trabalho e precisam de decisão de design, não de conserto mecânico.
 void main() {
   setUpAll(() async {
     GoogleFonts.config.allowRuntimeFetching = false;
@@ -49,12 +54,22 @@ void main() {
     });
   });
 
-  test('pré-requisito: fonte proporcional real carregada', () {
+  test('pré-requisito: as fontes do produto estão carregadas', () {
+    // Sem fonte proporcional real o flutter_test usa a fonte sintética, em que
+    // cada glifo ocupa 1 em, e toda medida de largura sai inflada.
     expect(
       fontesReais,
       isTrue,
-      reason: 'Sem fonte real as larguras saem infladas e o relatório mente. '
-          'Verifique material_fonts/Roboto-Regular.ttf no cache do Flutter.',
+      reason: 'Nenhuma fonte real carregou; as larguras sairiam infladas.',
+    );
+    // E sem as fontes DO PRODUTO as medidas não são de produção: Playfair é
+    // mais larga que o Roboto nos dígitos, Cormorant é mais estreita.
+    expect(
+      fontesDoProduto,
+      isTrue,
+      reason: 'As fontes do produto não carregaram. Elas vêm de assets/fonts, '
+          'declaradas no pubspec, e são o que faz este relatório valer para '
+          'produção.',
     );
   });
 
@@ -83,6 +98,9 @@ void main() {
     (_) => const OnboardingScreen(),
     depois: (t) => _irParaPagina(t, 2),
     tetoSemOverflow: 2.0,
+    // Os dois rótulos mais longos do grid têm Flexible + ellipsis de
+    // propósito: em 2.0x encolhem com elegância em vez de estourar a célula.
+    truncamentoAceito: const {'Sem dormir', 'Esperançoso'},
   );
 
   _auditar(
@@ -107,6 +125,9 @@ void main() {
     'Detalhe da coleção — Luto',
     (_) => const DetalheColecaoScreen(colecaoId: 'luto'),
     tetoSemOverflow: 2.0,
+    // PsalmCard corta título e trecho em uma linha por decisão de design: a
+    // lista precisa de altura previsível. O corte não é regressão aqui.
+    truncamentoAceito: const {'maxLines=1'},
   );
 
   // Salmo 105: título mais longo do acervo (43 caracteres) e número de 3 dígitos.
@@ -120,11 +141,27 @@ void main() {
       tetoSemOverflow: 2.0);
 
   _auditar('Todos os Salmos — busca', (_) => const TodosSalmosScreen(),
-      tetoSemOverflow: 2.0);
+      tetoSemOverflow: 2.0, truncamentoAceito: const {'maxLines=1'});
 
-  _auditar('Favoritos', (_) => const FavoritosScreen(), tetoSemOverflow: 2.0);
+  _auditar('Favoritos', (_) => const FavoritosScreen(),
+      tetoSemOverflow: 2.0, truncamentoAceito: const {'maxLines=1'});
 
-  _auditar('Ajustes', (_) => const AjustesScreen(), tetoSemOverflow: 2.0);
+  // Viewport alto de propósito: Ajustes é uma ListView e o que está abaixo da
+  // dobra nem chega a ser construído. Com 800dp de altura, metade da tela
+  // nunca era medida — "Enviar sugestão" e o card de doação passavam batidos.
+  // Aqui o risco é corte horizontal, não estouro vertical, então medir a tela
+  // inteira vale mais que reproduzir a altura do aparelho.
+  _auditar('Ajustes', (_) => const AjustesScreen(),
+      tamanho: const Size(360, 2400), tetoSemOverflow: 2.0);
+
+  // 320dp ainda existe na base Android brasileira e é onde a fonte grande
+  // aperta primeiro. O rótulo do consentimento LGPD era cortado aqui.
+  _auditar(
+    'Ajustes em tela pequena (320dp)',
+    (_) => const AjustesScreen(),
+    tamanho: const Size(320, 2400),
+    tetoSemOverflow: 2.0,
+  );
 
   // ───────────────────────────────────────────────────────────────────────────
   // Tela pequena — 320dp ainda existe na base Android brasileira e é onde a
@@ -348,6 +385,7 @@ void _auditar(
   Future<void> Function(WidgetTester)? depois,
   Size tamanho = kTelaTipica,
   required double tetoSemOverflow,
+  Set<String> truncamentoAceito = const {},
 }) {
   testWidgets(nome, (tester) async {
     final resultados = <Resultado>[];
@@ -363,7 +401,8 @@ void _auditar(
     }
     relatar(nome, resultados);
 
-    final quebrou = escalaDoPrimeiroOverflow(resultados);
+    final quebrou = escalaDoPrimeiroOverflow(resultados,
+        truncamentoAceito: truncamentoAceito);
     final observado = quebrou == null
         ? kEscalas.last
         : kEscalas[kEscalas.indexOf(quebrou) - 1];
@@ -372,7 +411,7 @@ void _auditar(
       observado,
       tetoSemOverflow,
       reason: 'A tela "$nome" aguenta hoje até ${observado}x sem estourar '
-          'layout, mas o teste esperava ${tetoSemOverflow}x. '
+          'layout NEM cortar texto, mas o teste esperava ${tetoSemOverflow}x. '
           'Veja o relatório impresso acima.',
     );
 

@@ -1,7 +1,7 @@
 name: salmos_app
 description: "Salmos — Experiência moderna de leitura com áudio e curadoria por emoção."
 publish_to: 'none'
-version: 1.0.1+4
+version: 1.0.2+5
 
 environment:
   sdk: '>=3.3.0 <4.0.0'
@@ -84,3 +84,13 @@ flutter:
     - assets/salmos.json
     - assets/audios/
     - assets/images/
+    # Fontes empacotadas: o app é offline e a tipografia faz parte da
+    # identidade. Sem isto o google_fonts baixa Playfair/Cormorant/Instrument
+    # Sans na primeira abertura, e quem instala sem rede vê a fonte do sistema.
+    #
+    # NÃO é um bloco `fonts:` de propósito. O google_fonts não lê `fonts:`; ele
+    # varre o AssetManifest e casa pelo FIM do nome do arquivo com
+    # "Familia-Variante" (ver findFamilyWithVariantAssetPath). Renomear
+    # qualquer arquivo aqui faz a família voltar a ser buscada na rede.
+    # Coberto por test/a11y/fontes_offline_test.dart.
+    - assets/fonts/

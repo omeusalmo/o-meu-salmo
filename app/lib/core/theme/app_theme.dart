@@ -8,29 +8,43 @@ import 'package:google_fonts/google_fonts.dart';
 class AppColors {
   AppColors._();
 
-  // Cobalto — único acento de interface
-  static const cobalt400 = Color(0xFF5567EA); // texto/ícone sobre escuro
-  static const cobalt500 = Color(0xFF2A47DD); // ★ primária da marca
+  // Cobalto — único acento de interface (DS v1.2)
+  //
+  // ⚠️ Acento de TEXTO e acento de PREENCHIMENTO são papéis diferentes, e a
+  // cor certa para um é a errada para o outro:
+  //   • texto/ícone sobre escuro → cobalt350 (5.50:1 sobre a superfície).
+  //     cobalt400 dá 3.64:1 e reprova AA.
+  //   • preenchimento sólido com creme por cima → cobalt500 nos dois modos
+  //     (6.08:1). cobalt350 como fundo dá 2.72:1, pior que o 400.
+  // No app: `context.colorAccentText` e `context.colorAccentFill`.
+  //
+  // cobalt350 NÃO é o cobalt-300 da rampa (#A29FE0), que é tinte, não acento.
+  static const cobalt350 = Color(0xFF7C8BF0); // texto/ícone de acento no escuro
+  static const cobalt400 = Color(0xFF5567EA); // borda e ícone decorativo
+  static const cobalt500 = Color(0xFF2A47DD); // ★ primária + preenchimento
   static const cobalt600 = Color(0xFF1B33B4); // pressed / shadow base
 
   // Âmbar — SOMENTE versículo em destaque e peças sociais
   static const gold    = Color(0xFFC4A86A); // sobre escuro (AAA 8.5:1)
   static const goldInk = Color(0xFF6B4E1C); // sobre claro (AAA 7.2:1) — escurecido p/ público +velho
 
-  // Modo noturno (padrão emocional)
+  // Modo noturno (padrão emocional) — superfícies do DS v1.2.
+  // As antigas (#10142C / #1E2348) davam 1.08:1 de card contra fundo e 1.17:1
+  // de borda: os cards se dissolviam para quem tem sensibilidade a contraste
+  // reduzida. Agora 1.15:1 e 1.62:1.
   static const nightBase  = Color(0xFF080B1C);
-  static const nightPlus  = Color(0xFF10142C);
-  static const nightLine  = Color(0xFF1E2348);
-  static const nightMuted = Color(0xFF353C73);
-  static const nightText  = Color(0xFF8C97D4); // AA 6.9:1
+  static const nightPlus  = Color(0xFF151A39); // v1.2, era #10142C
+  static const nightLine  = Color(0xFF323A77); // v1.2, era #1E2348
+  static const nightMuted = Color(0xFF7080C8); // v1.2, era #353C73 (1.65:1)
+  static const nightText  = Color(0xFF8C97D4); // AA 6.05:1 sobre superfície
   static const nightCream = Color(0xFFEEF0FC); // AAA 17:1
 
   // Modo diurno
   static const dayBase  = Color(0xFFF5F7FE);
-  static const dayPlus  = Color(0xFFE9EDFD);
-  static const dayLine  = Color(0xFFD5DCF3);
-  static const dayMuted = Color(0xFF8C97D4);
-  static const dayText  = Color(0xFF2E3A86); // AA
+  static const dayPlus  = Color(0xFFE1E6FC); // v1.2, era #E9EDFD
+  static const dayLine  = Color(0xFFA8B6E6); // v1.2, era #D5DCF3
+  static const dayMuted = Color(0xFF4E5899); // v1.2, era #8C97D4 (2.26:1)
+  static const dayText  = Color(0xFF2E3A86); // AA 8.19:1 sobre superfície
   static const dayTitle = Color(0xFF0C1230); // AAA
 
   // Cores de emoção (chips de curadoria)

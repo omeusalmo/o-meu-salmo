@@ -60,3 +60,6 @@ android/key.properties
 
 android/build/
 google-credentials.json
+
+# Saída de golden test que falhou (gerada, não versionar)
+test/**/failures/

@@ -61,7 +61,10 @@ class ErrorStateView extends StatelessWidget {
               OutlinedButton(
                 onPressed: onAcao,
                 style: OutlinedButton.styleFrom(
-                  foregroundColor: accent,
+                  // O rótulo herda esta cor, então é texto: acento de texto.
+                  // A borda continua no acento de preenchimento, que só
+                  // precisa dos 3:1 de elemento gráfico.
+                  foregroundColor: context.colorAccentText,
                   side: BorderSide(color: accent.withAlpha(128)),
                   shape: const StadiumBorder(),
                   padding: const EdgeInsets.symmetric(

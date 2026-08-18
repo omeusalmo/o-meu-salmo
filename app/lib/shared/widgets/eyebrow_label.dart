@@ -14,8 +14,9 @@ class EyebrowLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // nightMuted (1.90:1) e dayMuted (2.62:1) reprovam WCAG AA para texto normal.
-    // nightText (6.9:1) e dayText (9.5:1) garantem AA.
+    // Continua em colorText mesmo depois do DS v1.2 ter subido os muted para
+    // AA: muted é rótulo de metadado e dot, e aqui o eyebrow é conteúdo.
+    // nightText 6.05:1 e dayText 8.19:1 sobre a superfície.
     final defaultColor = context.colorText;
 
     return Semantics(

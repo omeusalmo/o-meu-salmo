@@ -412,7 +412,9 @@ class _VersicoloOption extends StatelessWidget {
                 '${index + 1}',
                 style: GoogleFonts.instrumentSans(
                   fontSize: 10,
-                  color: accent,
+                  // Sobre o tinte da linha selecionada, o acento de
+                  // preenchimento dava 3.27:1 no escuro.
+                  color: context.colorAccentText,
                 ),
               ),
             ),

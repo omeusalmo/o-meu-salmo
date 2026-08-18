@@ -20,6 +20,15 @@ class AppConstants {
   static const String prefReviewSessionCount = 'review_session_count';
   static const String prefReviewRequested    = 'review_requested';
 
+  /// Versão exibida em Ajustes.
+  ///
+  /// Fonte única: tem de bater com `version:` do pubspec.yaml. Não dá para ler
+  /// do bundle (esta versão do Flutter não gera version.json nos assets) e ler
+  /// via PackageInfo exigiria uma dependência nova só para isto — então o
+  /// acordo é travado por teste: test/core/app_version_test.dart falha se o
+  /// pubspec for bumpado e esta constante ficar para trás.
+  static const String appVersion = '1.0.2';
+
   static const int defaultNotifHour   = 8;
   static const int defaultNotifMinute = 0;
 
