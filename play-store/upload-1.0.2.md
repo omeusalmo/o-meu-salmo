@@ -1,6 +1,6 @@
 # Upload da versão 1.0.2 (código 5)
 
-**TL;DR:** AAB pronto em `app/build/app/outputs/bundle/release/app-release.aab`, 119,2 MB. Subir com lançamento gradual em 20%, porque o teste em aparelho físico foi pulado. Notas da versão prontas no item 3.
+**TL;DR:** AAB pronto em `app/build/app/outputs/bundle/release/app-release.aab`, 119,2 MB. Subir direto em **100%**, sem lançamento gradual. Notas da versão prontas no item 3.
 
 - Gerado em: 2026-08-18
 - Versão: `1.0.2`, código `5` (a produção é 1.0.1 código 4, de 13/08)
@@ -36,7 +36,7 @@ Um passo por vez.
 7. No campo **Nome da versão**, escreva `1.0.2`.
 8. No campo **Notas da versão**, cole o texto do item 3 abaixo, dentro das marcações `pt-BR` que já estiverem lá.
 9. Clique em **Próxima**.
-10. Na tela seguinte, procure **Lançamento gradual**. Marque e coloque **20%**. Motivo no item 4.
+10. Deixe o lançamento em **100%**, sem lançamento gradual. Motivo no item 4.
 11. Clique em **Salvar** e depois em **Enviar para revisão**.
 
 A revisão do Google costuma levar de algumas horas a alguns dias. A 1.0.1 continua no ar até a nova ser aprovada.
@@ -57,18 +57,28 @@ A tela de Ajustes ficou mais fácil de ler e de tocar, com melhor contraste no m
 
 ---
 
-## 4. Por que lançamento gradual em 20%
+## 4. Por que 100% e não lançamento gradual
 
-O teste em aparelho físico foi pulado. Duas coisas não puderam ser verificadas em emulador, porque emulador é sempre instalação limpa:
+Decisão do Jeff em 18/08, e a base de usuários justifica.
 
-- **Renomear o canal de notificação.** Quem já ativou a notificação na 1.0.1 tem um canal chamado "Salmo diário" registrado no Android. A versão nova manda o sistema renomear para "Salmo do dia". Se falhar, essa pessoa vê o nome antigo nas configurações do Android enquanto o app diz o nome novo. É inconsistência visual, não quebra nada.
-- **Sobrevivência das configurações.** As chaves de armazenamento não mudaram e isso foi conferido no código, então tema, favoritos, consentimento e horário devem sobreviver à atualização. Mas ninguém viu acontecer num aparelho que já tinha a versão antiga.
+Números do Play Console em 17/08 (últimos 28 dias): **113 impressões**, **37 aquisições**, **13 dispositivos ativos por mês**. Retenção de 7 dias ainda aparece como "dados indisponíveis", ou seja, não há volume suficiente nem para o Google calcular.
 
-Com 20%, se algo aparecer nos relatórios de falha ou nas avaliações, dá para interromper o lançamento antes de atingir todo mundo.
+Com 13 dispositivos ativos, um lançamento em 20% atinge cerca de 2 ou 3 aparelhos. Isso não é amostra estatística, é anedota: um problema real teria grande chance de não aparecer, e o gradual só atrasaria a correção chegar em quem precisa. Lançamento gradual existe para proteger uma base grande de um defeito não detectado; aqui a base inteira já é do tamanho de uma amostra.
 
-**Como acompanhar:** Play Console → **Qualidade** → **Android vitals**, olhando a taxa de falhas nos primeiros dias. E as avaliações novas na aba **Avaliações**.
+Além disso, esta versão corrige dois defeitos que atingem quem já usa o app hoje: a notificação chegando três horas antes e o número do Salmo cortado. Segurar a correção em 80% da base para proteger contra um risco cosmético não compensa.
 
-**Como subir para 100%:** depois de dois ou três dias sem falha nova, volte em **Produção**, abra a versão e clique em **Aumentar lançamento**.
+### O que continua sem verificação em aparelho
+
+Duas coisas não puderam ser testadas em emulador, porque emulador é sempre instalação limpa:
+
+- **Renomear o canal de notificação.** Quem ativou a notificação na 1.0.1 tem um canal "Salmo diário" registrado no Android. A versão nova manda o sistema renomear. Se falhar, a pessoa vê o nome antigo nas configurações do Android enquanto o app diz o novo. Inconsistência visual, não quebra nada.
+- **Sobrevivência das configurações.** As 15 chaves de armazenamento foram conferidas no código e nenhuma mudou, então tema, favoritos, consentimento e horário devem passar. Mas ninguém viu acontecer num aparelho que já tinha a versão antiga.
+
+### Como acompanhar depois de publicar
+
+- Play Console → **Qualidade** → **Android vitals**, taxa de falhas nos primeiros dias
+- Aba **Avaliações**, comentários novos
+- Se aparecer falha nova, dá para **interromper o lançamento** na própria tela de Produção, o que reverte para a 1.0.1 em quem ainda não atualizou
 
 ---
 
