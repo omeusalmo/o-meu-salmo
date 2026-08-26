@@ -178,13 +178,16 @@ class _NotificacaoFalsa extends NotificationService {
   Future<bool> requestPermission() async => true;
 
   @override
-  Future<void> scheduleDailySalmo(int hour, int minute,
-      {required int totalSalmos}) async {
+  Future<void> agendarJanela({
+    required int hour,
+    required int minute,
+    required List<ItemAgenda> agenda,
+  }) async {
     agendamentos.add((hora: hour, minuto: minute));
   }
 
   @override
-  Future<void> cancelDailySalmo() async {
+  Future<void> cancelarJanela() async {
     cancelada = true;
   }
 }

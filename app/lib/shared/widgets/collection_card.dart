@@ -9,6 +9,10 @@ class CollectionCard extends StatelessWidget {
   final String subtitulo;
   final int totalSalmos;
   final String? emocaoId;
+
+  /// Marca a coleção do sentimento que a pessoa escolheu no onboarding.
+  final bool escolhaInicial;
+
   final VoidCallback onTap;
 
   /// Numeral fantasma no canto inferior direito (conceito LP V2).
@@ -22,6 +26,7 @@ class CollectionCard extends StatelessWidget {
     required this.totalSalmos,
     required this.onTap,
     this.emocaoId,
+    this.escolhaInicial = false,
     this.ghostNumber,
   });
 
@@ -76,7 +81,9 @@ class CollectionCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
+                    Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      runSpacing: 6,
                       children: [
                         Container(
                           width: 6,
@@ -91,6 +98,32 @@ class CollectionCard extends StatelessWidget {
                           '$totalSalmos SALMOS',
                           style: AppTheme.eyebrowLabel(bodyClr),
                         ),
+                        // A emoção escolhida no onboarding era gravada e nunca
+                        // lida. Aqui ela marca a coleção correspondente, no
+                        // lugar onde a pessoa está justamente escolhendo entre
+                        // sentimentos. Wrap, e não Row, para a tag descer em
+                        // vez de espremer o rótulo com a fonte do sistema em 2x.
+                        if (escolhaInicial) ...[
+                          const SizedBox(width: 8),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 3,
+                            ),
+                            decoration: BoxDecoration(
+                              color: dotColor.withAlpha(38),
+                              borderRadius: BorderRadius.circular(
+                                AppTheme.radiusSm,
+                              ),
+                            ),
+                            child: Text(
+                              'SUA ESCOLHA',
+                              style: AppTheme.eyebrowLabel(
+                                context.colorAccentText,
+                              ),
+                            ),
+                          ),
+                        ],
                       ],
                     ),
                     const SizedBox(height: AppTheme.sp2),

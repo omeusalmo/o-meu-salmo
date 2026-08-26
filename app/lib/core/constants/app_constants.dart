@@ -27,7 +27,13 @@ class AppConstants {
   /// via PackageInfo exigiria uma dependência nova só para isto — então o
   /// acordo é travado por teste: test/core/app_version_test.dart falha se o
   /// pubspec for bumpado e esta constante ficar para trás.
-  static const String appVersion = '1.0.2';
+  static const String appVersion = '1.0.3';
+
+  /// Site do app. As páginas de salmo existem em /salmos/{numero} e são
+  /// App Links verificados: em quem tem o app, o link abre direto no salmo.
+  static const String siteBaseUrl = 'https://omeusalmo.com.br';
+  static String urlDoSalmo(int numero) => '$siteBaseUrl/salmos/$numero';
+  static const String urlPrivacidade = '$siteBaseUrl/privacy_policy.html';
 
   static const int defaultNotifHour   = 8;
   static const int defaultNotifMinute = 0;

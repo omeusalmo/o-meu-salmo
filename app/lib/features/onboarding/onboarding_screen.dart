@@ -6,6 +6,10 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../core/extensions/build_context_extensions.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/analytics/analytics_service.dart';
+import '../../core/notifications/notification_service.dart';
+import '../../core/notifications/agendador.dart';
+import '../../data/providers/salmos_providers.dart';
 import '../../data/providers/onboarding_provider.dart';
 import '../../data/providers/settings_provider.dart';
 import '../../shared/widgets/bookmark_painter.dart';
@@ -25,6 +29,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   final _controller = PageController();
   int _currentPage = 0;
   EmocaoInicial _selectedEmocao = EmocaoInicial.paz;
+  bool _querNotificacao = false;
 
   void _nextPage() {
     _controller.nextPage(
@@ -41,6 +46,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   }
 
   Future<void> _skip() async {
+    AnalyticsService.instance.logOnboardingSkipped(_currentPage + 1);
     await ref.read(onboardingProvider.notifier).markDone();
     if (mounted) context.go('/home');
   }
@@ -48,6 +54,27 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   Future<void> _complete(bool allowUsageData) async {
     await ref.read(usageDataProvider.notifier).set(allowUsageData);
     await ref.read(emocaoInicialProvider.notifier).set(_selectedEmocao);
+
+    // A permissão foi concedida na tela anterior; aqui a preferência é gravada
+    // e a primeira janela de avisos entra na agenda.
+    AnalyticsService.instance.logOnboardingDone(
+      emocao: _selectedEmocao.name,
+      dadosDeUso: allowUsageData,
+      notificacao: _querNotificacao,
+    );
+    AnalyticsService.instance.setEmocaoInicial(_selectedEmocao.name);
+    AnalyticsService.instance.setNotifEnabled(_querNotificacao);
+
+    if (_querNotificacao) {
+      await ref.read(notificationSettingsProvider.notifier).setEnabled(true);
+      try {
+        final salmos = await ref.read(salmosProvider.future);
+        await AgendadorSalmoDiario.reagendar(salmos);
+      } catch (e) {
+        debugPrint('[Notif] agendamento no onboarding falhou: $e');
+      }
+    }
+
     await ref.read(onboardingProvider.notifier).markDone();
     if (!mounted) return;
     final colId = _selectedEmocao.colecaoId;
@@ -83,7 +110,10 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             PageView(
               controller: _controller,
               physics: const NeverScrollableScrollPhysics(),
-              onPageChanged: (i) => setState(() => _currentPage = i),
+              onPageChanged: (i) {
+                setState(() => _currentPage = i);
+                AnalyticsService.instance.logOnboardingStep(i + 1);
+              },
               children: [
                 // Telas 1 e 2 são Column com Spacer e sem rolagem: em 2.0x o
                 // conteúdo estoura e o botão sai da área visível, deixando o
@@ -105,6 +135,25 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   selected: _selectedEmocao,
                   onSelect: (e) => setState(() => _selectedEmocao = e),
                   onNext: _nextPage,
+                ),
+                _PageNotificacao(
+                  onEscolher: (quer) async {
+                    // Só dispara o diálogo do sistema para quem disse que
+                    // quer. No Android 13+ duas recusas deixam a permissão
+                    // negada em definitivo, então perguntar a frio queima a
+                    // única chance que o app tem.
+                    if (quer) {
+                      _querNotificacao =
+                          await NotificationService.instance.requestPermission();
+                      AnalyticsService.instance.logNotifPermission(
+                        concedida: _querNotificacao,
+                        origem: 'onboarding',
+                      );
+                    } else {
+                      _querNotificacao = false;
+                    }
+                    _nextPage();
+                  },
                 ),
                 _Page4(onComplete: _complete),
               ],
@@ -133,7 +182,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               ),
             // Skip button — hidden on the consent page (last): a escolha ali
             // precisa ser explícita via um dos dois botões, não um atalho.
-            if (_currentPage < 3)
+            if (_currentPage < 4)
               SafeArea(
                 child: Align(
                   alignment: Alignment.topRight,
@@ -164,7 +213,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: List.generate(
-                      4,
+                      5,
                       (i) => _ProgressDot(
                         active: i == _currentPage,
                         onCobalt: _currentPage == 0,
@@ -610,6 +659,99 @@ class _Page3 extends StatelessWidget {
 }
 
 // ── Page 4: Consentimento de dados de uso (LGPD, opt-in explícito) ─────────────
+
+/// Pré-permissão de notificação.
+///
+/// O pedido do sistema só aparece para quem tocou em "Quero receber". No
+/// Android 13+ duas recusas do diálogo nativo deixam a permissão negada para
+/// sempre, sem caminho de volta dentro do app; perguntar antes, em português e
+/// com o valor explicado, preserva essa chance.
+///
+/// Vem logo depois da escolha do sentimento de propósito: é o momento em que a
+/// promessa "um salmo para como você está hoje" está fresca.
+class _PageNotificacao extends StatelessWidget {
+  final ValueChanged<bool> onEscolher;
+
+  const _PageNotificacao({required this.onEscolher});
+
+  @override
+  Widget build(BuildContext context) {
+    final titleClr = context.colorTitle;
+    final textClr = context.colorText;
+    final mutedClr = context.colorMuted;
+
+    return SafeArea(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: AppTheme.sp5),
+        child: Column(
+          children: [
+            const SizedBox(height: AppTheme.sp10),
+            Text(
+              'Um Salmo por dia',
+              textAlign: TextAlign.center,
+              style: AppTheme.sectionHeadline(titleClr),
+            ),
+            const SizedBox(height: AppTheme.sp3),
+            Text(
+              'Todo dia, no horário que você escolher, um Salmo novo chega pra você. Sem correria e sem cobrança.',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.instrumentSans(
+                fontSize: 14,
+                color: textClr,
+                height: 1.6,
+              ),
+            ),
+            const SizedBox(height: AppTheme.sp3),
+            Text(
+              'Dá pra desligar ou mudar a hora quando quiser, em Ajustes.',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.instrumentSans(
+                fontSize: 12,
+                color: mutedClr,
+              ),
+            ),
+            const SizedBox(height: AppTheme.sp6),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () => onEscolher(true),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.cobalt500,
+                  foregroundColor: Colors.white,
+                  shape: const StadiumBorder(),
+                  padding: const EdgeInsets.symmetric(vertical: AppTheme.sp4),
+                  elevation: 0,
+                  shadowColor: Colors.transparent,
+                ),
+                child: Text('Quero receber', style: AppTheme.buttonLabel()),
+              ),
+            ),
+            const SizedBox(height: AppTheme.sp3),
+            SizedBox(
+              width: double.infinity,
+              child: TextButton(
+                onPressed: () => onEscolher(false),
+                style: TextButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: AppTheme.sp4),
+                  shape: const StadiumBorder(),
+                ),
+                child: Text(
+                  'Agora não',
+                  style: GoogleFonts.instrumentSans(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
+                    color: textClr,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: AppTheme.sp8),
+          ],
+        ),
+      ),
+    );
+  }
+}
 
 class _Page4 extends StatelessWidget {
   final ValueChanged<bool> onComplete;

@@ -8,6 +8,9 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../core/constants/app_constants.dart';
 import '../../core/services/link_service.dart';
 import '../../core/extensions/build_context_extensions.dart';
+import '../../data/models/salmo.dart';
+import '../../core/analytics/analytics_service.dart';
+import '../../core/notifications/agendador.dart';
 import '../../core/notifications/notification_service.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/providers/salmos_providers.dart';
@@ -296,15 +299,16 @@ class _NotificationCard extends ConsumerWidget {
   ) async {
     if (enable) {
       final granted = await NotificationService.instance.requestPermission();
+      AnalyticsService.instance
+          .logNotifPermission(concedida: granted, origem: 'ajustes');
       if (!granted) return;
-      await NotificationService.instance.scheduleDailySalmo(
-        hour, minute,
-        totalSalmos: _totalSalmos(ref),
-      );
-    } else {
-      await NotificationService.instance.cancelDailySalmo();
     }
+    AnalyticsService.instance.setNotifEnabled(enable);
+    if (enable) AnalyticsService.instance.logNotifScheduled(hour);
+    // Preferência primeiro: o agendador lê prefs para decidir entre agendar e
+    // cancelar, então gravar depois faria ele agir com o valor antigo.
     await ref.read(notificationSettingsProvider.notifier).setEnabled(enable);
+    await AgendadorSalmoDiario.reagendar(await _salmos(ref));
   }
 
   Future<void> _pickTime(
@@ -322,16 +326,23 @@ class _NotificationCard extends ConsumerWidget {
     await ref
         .read(notificationSettingsProvider.notifier)
         .setTime(picked.hour, picked.minute);
-    await NotificationService.instance.scheduleDailySalmo(
-      picked.hour, picked.minute,
-      totalSalmos: _totalSalmos(ref),
-    );
+    AnalyticsService.instance.logNotifScheduled(picked.hour);
+    await AgendadorSalmoDiario.reagendar(await _salmos(ref));
   }
 
-  // Fallback 150 só cobre o instante raríssimo em que salmosProvider ainda
-  // não carregou quando o usuário liga a notificação.
-  int _totalSalmos(WidgetRef ref) =>
-      ref.read(salmosProvider).value?.length ?? 150;
+  /// Espera o catálogo carregar em vez de desistir com lista vazia.
+  ///
+  /// Se a pessoa liga a notificação antes do salmosProvider resolver, agendar
+  /// com lista vazia deixaria o botão ligado sem nenhum aviso marcado, e ela
+  /// só descobriria dias depois. O provider já costuma estar quente aqui;
+  /// quando não está, são milissegundos.
+  Future<List<Salmo>> _salmos(WidgetRef ref) async {
+    try {
+      return await ref.read(salmosProvider.future);
+    } catch (_) {
+      return const [];
+    }
+  }
 
   static String _formatarHora(int hour, int minute) =>
       '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}';
@@ -409,7 +420,7 @@ class _PrivacidadeSection extends ConsumerWidget {
   }
 
   Future<void> _abrirPrivacidade() async {
-    final uri = Uri.parse('https://omeusalmo.com.br/privacy_policy.html');
+    final uri = Uri.parse(AppConstants.urlPrivacidade);
     await LinkService.instance.abrir(uri, externo: true);
   }
 }

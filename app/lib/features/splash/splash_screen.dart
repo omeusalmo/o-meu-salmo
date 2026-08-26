@@ -4,6 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../core/notifications/notification_service.dart';
+import '../../core/notifications/agendador.dart';
+import '../../data/providers/salmos_providers.dart';
 import '../../core/review/review_service.dart';
 import '../../data/providers/onboarding_provider.dart';
 import '../../shared/widgets/bookmark_painter.dart';
@@ -108,7 +111,24 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
     Future.delayed(const Duration(milliseconds: 2200), () {
       if (!mounted) return;
       final done = ref.read(onboardingProvider);
-      context.go(done ? '/home' : '/onboarding');
+      if (!done) {
+        context.go('/onboarding');
+        return;
+      }
+      // Aberto pela notificação com o app morto: vai direto ao salmo do aviso.
+      // Quem ainda não passou pelo onboarding segue para ele de qualquer forma,
+      // senão cairia no app sem nunca ter escolhido nada.
+      final rota = NotificationService.instance.consumirRotaPendente();
+      context.go(rota ?? '/home');
+    });
+
+    // Reagenda a janela de notificações a cada abertura. Sem isto ela se
+    // esgotaria em duas semanas; e como o agendador lê prefs, quem está com a
+    // notificação desligada não paga nada por isso.
+    ref.read(salmosProvider.future).then((salmos) {
+      AgendadorSalmoDiario.reagendar(salmos);
+    }).catchError((Object e) {
+      debugPrint('[Notif] reagendamento falhou: $e');
     });
   }
 

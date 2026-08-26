@@ -1,6 +1,7 @@
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import '../../core/constants/app_constants.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -64,7 +65,10 @@ class _CompositorScreenState extends ConsumerState<CompositorScreen> {
       await SharePlus.instance.share(
         ShareParams(
           files: [XFile.fromData(png, mimeType: 'image/png', name: 'salmo_${salmo.numero}.png')],
-          text: '"$verse"\n— $refStr',
+          // A URL fecha o laço: quem recebe a imagem tem como chegar ao app.
+          // Linha própria e sem pontuação depois, senão o ponto final entra no
+          // link em vários clientes de mensagem.
+          text: '"$verse"\n— $refStr\n\n${AppConstants.urlDoSalmo(salmo.numero)}',
           subject: refStr,
         ),
       );

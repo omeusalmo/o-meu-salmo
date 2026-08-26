@@ -38,6 +38,86 @@ class AnalyticsService {
   }
 
   // ── Eventos ──────────────────────────────────────────────────────────────
+// ── Ativação ─────────────────────────────────────────────────────────────
+  // Mede o funil do primeiro minuto, que hoje é cego: sabemos quantos
+  // instalam e quantos ficam, mas não onde desistem no meio.
+
+  /// Passo do onboarding alcançado, de 1 a 5.
+  Future<void> logOnboardingStep(int passo) =>
+      _log('onboarding_step', {'step': passo});
+
+  /// Usuário pulou o onboarding, e em que passo.
+  Future<void> logOnboardingSkipped(int passo) =>
+      _log('onboarding_skipped', {'step': passo});
+
+  /// Onboarding concluído. Junta as três escolhas num evento só para dar
+  /// para cruzar retenção com o que a pessoa escolheu logo na entrada.
+  Future<void> logOnboardingDone({
+    required String emocao,
+    required bool dadosDeUso,
+    required bool notificacao,
+  }) =>
+      _log('onboarding_done', {
+        'emotion_id': emocao,
+        'usage_data': dadosDeUso,
+        'notif_opt_in': notificacao,
+      });
+
+  /// Resposta ao pedido de permissão de notificação.
+  ///
+  /// [origem] separa quem aceitou no onboarding de quem foi ligar depois em
+  /// Ajustes: são momentos muito diferentes de intenção.
+  Future<void> logNotifPermission({
+    required bool concedida,
+    required String origem,
+  }) =>
+      _log('notif_permission', {'granted': concedida, 'source': origem});
+
+  /// Notificação agendada, com o horário escolhido. O horário importa: se a
+  /// maioria escolher a noite, o conteúdo do aviso deveria mudar de tom.
+  Future<void> logNotifScheduled(int hora) =>
+      _log('notif_scheduled', {'hour': hora});
+
+  // ── Retenção ─────────────────────────────────────────────────────────────
+
+  /// Usuário abriu o app tocando na notificação. É a medida direta de se o
+  /// canal de retorno funciona.
+  Future<void> logNotifOpened(int numero) =>
+      _log('notif_opened', {'psalm_number': numero});
+
+  /// Leitura de fato, não só abertura de tela.
+  ///
+  /// psalm_opened dispara no instante em que a tela monta e mede intenção;
+  /// este só dispara depois de tempo em tela, e é o proxy honesto de ativação.
+  Future<void> logPsalmReadComplete(int numero, int segundos) =>
+      _log('psalm_read_complete', {
+        'psalm_number': numero,
+        'seconds': segundos,
+      });
+
+  // ── Propriedades de usuário ──────────────────────────────────────────────
+  // Valem mais que os eventos: permitem cortar retenção por segmento.
+
+  Future<void> _setProp(String nome, String? valor) async {
+    if (_analytics == null) return;
+    try {
+      await _analytics!.setUserProperty(name: nome, value: valor);
+    } catch (_) {}
+  }
+
+  /// Se a pessoa tem notificação ligada. Cruzar isto com retenção é a
+  /// pergunta mais importante que o app ainda não sabe responder.
+  Future<void> setNotifEnabled(bool ligada) =>
+      _setProp('notif_enabled', ligada ? 'true' : 'false');
+
+  /// Emoção escolhida no onboarding.
+  ///
+  /// Mesma granularidade agregada de collection_id (ver logCollectionOpened):
+  /// um rótulo de curadoria entre oito, nunca texto livre nem estado de saúde
+  /// declarado pela pessoa.
+  Future<void> setEmocaoInicial(String emocaoId) =>
+      _setProp('emocao_inicial', emocaoId);
+
 
   /// Usuário abriu a tela de leitura de um Salmo.
   Future<void> logPsalmOpened(int numero) =>

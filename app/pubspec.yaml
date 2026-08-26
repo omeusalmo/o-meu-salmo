@@ -1,7 +1,7 @@
 name: salmos_app
 description: "Salmos — Experiência moderna de leitura com áudio e curadoria por emoção."
 publish_to: 'none'
-version: 1.0.2+5
+version: 1.0.3+6
 
 environment:
   sdk: '>=3.3.0 <4.0.0'

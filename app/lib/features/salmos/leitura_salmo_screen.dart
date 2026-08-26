@@ -30,6 +30,13 @@ class LeituraSalmoScreen extends ConsumerStatefulWidget {
 }
 
 class _LeituraSalmoScreenState extends ConsumerState<LeituraSalmoScreen> {
+  /// Quando a tela abriu, para medir leitura de fato no dispose.
+  final _abertaEm = DateTime.now();
+
+  /// Abaixo disto foi passagem, não leitura: alguém tocou no salmo errado e
+  /// voltou. O piso evita inflar a métrica de ativação com esses casos.
+  static const _segundosMinimos = 15;
+
   @override
   void initState() {
     super.initState();
@@ -40,6 +47,18 @@ class _LeituraSalmoScreenState extends ConsumerState<LeituraSalmoScreen> {
       if (!mounted) return;
       ReviewService.instance.maybeRequestReview();
     });
+  }
+
+  @override
+  void dispose() {
+    // psalm_opened mede intenção (dispara no primeiro frame). Este mede
+    // leitura, e é o proxy honesto de ativação.
+    final segundos = DateTime.now().difference(_abertaEm).inSeconds;
+    if (segundos >= _segundosMinimos) {
+      AnalyticsService.instance
+          .logPsalmReadComplete(widget.numero, segundos);
+    }
+    super.dispose();
   }
 
   @override

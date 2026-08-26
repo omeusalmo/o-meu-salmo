@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/salmo.dart';
+import '../salmo_do_dia.dart';
 import '../models/colecao.dart';
 import '../repositories/salmos_repository.dart';
 import '../../core/constants/app_constants.dart';
@@ -43,29 +44,20 @@ final salmoDoDialProvider = FutureProvider<Salmo?>((ref) async {
     await prefs.setInt(AppConstants.prefUserSeed, seed);
   }
 
-  final todayEpochDay = DateTime.now().millisecondsSinceEpoch ~/ 86400000;
+  final hoje = diaCivil(DateTime.now());
   int installDay = prefs.getInt(AppConstants.prefInstallDay) ?? -1;
   if (installDay == -1) {
-    installDay = todayEpochDay;
+    installDay = hoje;
     await prefs.setInt(AppConstants.prefInstallDay, installDay);
   }
 
-  final shuffled = _seededShuffle(salmos, seed);
-  final position = (todayEpochDay - installDay) % shuffled.length;
-  return shuffled[position];
+  return salmoDoDia(
+    salmos: salmos,
+    semente: seed,
+    installDay: installDay,
+    dia: hoje,
+  );
 });
-
-List<Salmo> _seededShuffle(List<Salmo> list, int seed) {
-  final rng = Random(seed);
-  final copy = List<Salmo>.from(list);
-  for (int i = copy.length - 1; i > 0; i--) {
-    final j = rng.nextInt(i + 1);
-    final tmp = copy[i];
-    copy[i] = copy[j];
-    copy[j] = tmp;
-  }
-  return copy;
-}
 
 // Salmos cujas reflexões foram desbloqueadas (apareceram como Salmo do Dia).
 class UnlockedPsalmsNotifier extends AsyncNotifier<Set<int>> {

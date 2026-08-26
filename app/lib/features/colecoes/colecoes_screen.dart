@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../core/extensions/build_context_extensions.dart';
 import '../../core/theme/app_theme.dart';
+import '../../data/providers/onboarding_provider.dart';
 import '../../data/providers/salmos_providers.dart';
 import '../../shared/widgets/collection_card.dart';
 import '../../shared/widgets/staggered_entrance.dart';
@@ -15,6 +16,7 @@ class ColecoesScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncColecoes = ref.watch(colecoesProvider);
+    final emocaoInicial = ref.watch(emocaoInicialProvider);
     final bg       = context.colorBg;
     final titleClr = context.colorTitle;
     final border   = context.colorBorder;
@@ -79,6 +81,7 @@ class ColecoesScreen extends ConsumerWidget {
                   subtitulo: c.subtitulo,
                   totalSalmos: c.salmos.length,
                   emocaoId: c.id,
+                  escolhaInicial: c.id == emocaoInicial.colecaoId,
                   ghostNumber: c.salmos.isNotEmpty ? c.salmos.first : null,
                   onTap: () => context.push('/colecoes/${c.id}'),
                 ),

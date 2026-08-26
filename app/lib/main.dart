@@ -70,6 +70,14 @@ void main() async {
     };
   } catch (_) {}
 
+  // Tocar na notificação leva ao salmo daquele dia. O serviço não conhece o
+  // go_router; só avisa a rota, e a ligação acontece aqui.
+  NotificationService.instance.onSelecionarRota = (rota) {
+    final numero = int.tryParse(rota.split('/').last);
+    if (numero != null) AnalyticsService.instance.logNotifOpened(numero);
+    appRouter.go(rota);
+  };
+
   runApp(const ProviderScope(child: SalmosApp()));
 }
 
