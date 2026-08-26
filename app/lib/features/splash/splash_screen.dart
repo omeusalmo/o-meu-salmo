@@ -111,14 +111,15 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
     Future.delayed(const Duration(milliseconds: 2200), () {
       if (!mounted) return;
       final done = ref.read(onboardingProvider);
+      // Consome sempre, mesmo indo para o onboarding: guardada, a rota
+      // reapareceria na próxima abertura e levaria a um salmo que a pessoa
+      // não pediu.
+      final rota = NotificationService.instance.consumirRotaPendente();
       if (!done) {
         context.go('/onboarding');
         return;
       }
       // Aberto pela notificação com o app morto: vai direto ao salmo do aviso.
-      // Quem ainda não passou pelo onboarding segue para ele de qualquer forma,
-      // senão cairia no app sem nunca ter escolhido nada.
-      final rota = NotificationService.instance.consumirRotaPendente();
       context.go(rota ?? '/home');
     });
 

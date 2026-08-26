@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/salmo.dart';
@@ -38,24 +37,13 @@ final salmoDoDialProvider = FutureProvider<Salmo?>((ref) async {
 
   final prefs = await SharedPreferences.getInstance();
 
-  int seed = prefs.getInt(AppConstants.prefUserSeed) ?? 0;
-  if (seed == 0) {
-    seed = Random().nextInt(0x7FFFFFFF);
-    await prefs.setInt(AppConstants.prefUserSeed, seed);
-  }
-
-  final hoje = diaCivil(DateTime.now());
-  int installDay = prefs.getInt(AppConstants.prefInstallDay) ?? -1;
-  if (installDay == -1) {
-    installDay = hoje;
-    await prefs.setInt(AppConstants.prefInstallDay, installDay);
-  }
+  final id = await identidadeDoUsuario(prefs);
 
   return salmoDoDia(
     salmos: salmos,
-    semente: seed,
-    installDay: installDay,
-    dia: hoje,
+    semente: id.semente,
+    installDay: id.installDay,
+    dia: diaCivil(DateTime.now()),
   );
 });
 

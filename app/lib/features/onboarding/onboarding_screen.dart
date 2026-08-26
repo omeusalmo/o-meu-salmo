@@ -31,6 +31,15 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   EmocaoInicial _selectedEmocao = EmocaoInicial.paz;
   bool _querNotificacao = false;
 
+  /// Passos vistos até aqui.
+  ///
+  /// A coleta de dados nasce desligada (LGPD) e só é ligada na última página,
+  /// então evento disparado antes disso é descartado pelo SDK, não enfileirado.
+  /// Guardar aqui e despejar em _complete é o que faz o funil do primeiro
+  /// minuto existir de fato.
+  final _passosVistos = <int>{1};
+  int? _puloNoPasso;
+
   void _nextPage() {
     _controller.nextPage(
       duration: const Duration(milliseconds: 350),
@@ -46,7 +55,10 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   }
 
   Future<void> _skip() async {
-    AnalyticsService.instance.logOnboardingSkipped(_currentPage + 1);
+    // Quem pula nunca chega à página de consentimento, então a coleta segue
+    // desligada e não há o que registrar. Fica guardado só para o caso de o
+    // fluxo mudar no futuro.
+    _puloNoPasso = _currentPage + 1;
     await ref.read(onboardingProvider.notifier).markDone();
     if (mounted) context.go('/home');
   }
@@ -57,6 +69,20 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
 
     // A permissão foi concedida na tela anterior; aqui a preferência é gravada
     // e a primeira janela de avisos entra na agenda.
+    // Só agora a coleta pode estar ligada. Despeja o que foi acumulado antes.
+    if (allowUsageData) {
+      for (final passo in _passosVistos.toList()..sort()) {
+        AnalyticsService.instance.logOnboardingStep(passo);
+      }
+      if (_puloNoPasso != null) {
+        AnalyticsService.instance.logOnboardingSkipped(_puloNoPasso!);
+      }
+      AnalyticsService.instance.logNotifPermission(
+        concedida: _querNotificacao,
+        origem: 'onboarding',
+      );
+    }
+
     AnalyticsService.instance.logOnboardingDone(
       emocao: _selectedEmocao.name,
       dadosDeUso: allowUsageData,
@@ -112,7 +138,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               physics: const NeverScrollableScrollPhysics(),
               onPageChanged: (i) {
                 setState(() => _currentPage = i);
-                AnalyticsService.instance.logOnboardingStep(i + 1);
+                _passosVistos.add(i + 1);
               },
               children: [
                 // Telas 1 e 2 são Column com Spacer e sem rolagem: em 2.0x o
@@ -145,10 +171,6 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                     if (quer) {
                       _querNotificacao =
                           await NotificationService.instance.requestPermission();
-                      AnalyticsService.instance.logNotifPermission(
-                        concedida: _querNotificacao,
-                        origem: 'onboarding',
-                      );
                     } else {
                       _querNotificacao = false;
                     }

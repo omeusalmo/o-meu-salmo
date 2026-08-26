@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/models/salmo.dart';
@@ -37,7 +35,7 @@ class AgendadorSalmoDiario {
     await NotificationService.instance.agendarJanela(
       hour: hora,
       minute: minuto,
-      agenda: montarAgenda(salmos: salmos, prefs: prefs),
+      agenda: await montarAgenda(salmos: salmos, prefs: prefs),
     );
   }
 
@@ -45,21 +43,20 @@ class AgendadorSalmoDiario {
   ///
   /// Separado de [reagendar] para o teste conferir o conteúdo sem tocar no
   /// plugin nativo.
-  static List<ItemAgenda> montarAgenda({
+  static Future<List<ItemAgenda>> montarAgenda({
     required List<Salmo> salmos,
     required SharedPreferences prefs,
-  }) {
-    int semente = prefs.getInt(AppConstants.prefUserSeed) ?? 0;
-    if (semente == 0) semente = Random().nextInt(0x7FFFFFFF);
-
+  }) async {
+    // Lê e persiste, igual à Home. Gerar uma semente efêmera aqui fazia a
+    // notificação divergir do app até a Home montar pela primeira vez.
+    final id = await identidadeDoUsuario(prefs);
     final hoje = diaCivil(DateTime.now());
-    final installDay = prefs.getInt(AppConstants.prefInstallDay) ?? hoje;
 
     return List.generate(NotificationService.horizonteDias, (i) {
       final salmo = salmoDoDia(
         salmos: salmos,
-        semente: semente,
-        installDay: installDay,
+        semente: id.semente,
+        installDay: id.installDay,
         dia: hoje + i,
       );
       return ItemAgenda(

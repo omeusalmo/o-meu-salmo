@@ -8,6 +8,9 @@ library;
 
 import 'dart:math';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../core/constants/app_constants.dart';
 import 'models/salmo.dart';
 
 /// Dia civil do calendário local.
@@ -46,4 +49,31 @@ Salmo salmoDoDia({
   final ordenados = embaralhaComSemente(salmos, semente);
   final posicao = (dia - installDay) % ordenados.length;
   return ordenados[posicao];
+}
+
+/// Identidade do usuário para o Salmo do Dia: semente do embaralhamento e dia
+/// da instalação.
+///
+/// Lê e, se não existir, **cria e grava**. Antes cada lado fazia o seu: a Home
+/// gravava, o agendador de notificações gerava uma semente efêmera e a
+/// descartava. Como o onboarding leva para a coleção da emoção escolhida, a
+/// Home podia não montar por dias, e a notificação agendava com uma semente
+/// diferente a cada abertura: o aviso anunciava um salmo e o app abria outro,
+/// que é justamente o bug que esta versão conserta.
+Future<({int semente, int installDay})> identidadeDoUsuario(
+  SharedPreferences prefs,
+) async {
+  var semente = prefs.getInt(AppConstants.prefUserSeed) ?? 0;
+  if (semente == 0) {
+    semente = Random().nextInt(0x7FFFFFFF);
+    await prefs.setInt(AppConstants.prefUserSeed, semente);
+  }
+
+  var installDay = prefs.getInt(AppConstants.prefInstallDay) ?? -1;
+  if (installDay == -1) {
+    installDay = diaCivil(DateTime.now());
+    await prefs.setInt(AppConstants.prefInstallDay, installDay);
+  }
+
+  return (semente: semente, installDay: installDay);
 }

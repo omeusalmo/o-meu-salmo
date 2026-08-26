@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<script>(function(){var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:light)').matches?'light':'dark');document.documentElement.dataset.theme=t;})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página não encontrada · O meu Salmo</title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="/favicon.png" type="image/png">
+<meta name="theme-color" content="#080B1C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant:ital,wght@1,300;1,400&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/salmo.css">
+<style>
+  .nf{min-height:70vh;display:flex;flex-direction:column;justify-content:center;}
+  .nf .ph-num{font-size:clamp(2rem,7vw,3rem);}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+<nav aria-label="Navegação principal">
+  <div class="wrap inner">
+    <a class="logo" href="/" aria-label="O meu Salmo, página inicial">
+      <span class="om">O meu</span>
+      <span class="sa">Salmo</span>
+    </a>
+  </div>
+</nav>
+
+<main id="conteudo" tabindex="-1">
+  <div class="wrap-read nf">
+    <header class="ph">
+      <h1>
+        <span class="ph-num" id="titulo">Esta página não existe</span>
+      </h1>
+      <p class="lead" id="texto">O endereço pode ter mudado de lugar. Os salmos que já publicamos estão todos aqui.</p>
+    </header>
+
+    <section class="cta" aria-labelledby="cta-t">
+      <div class="cta-ghost" aria-hidden="true">Salmo</div>
+      <span class="eye">O aplicativo</span>
+      <h2 id="cta-t">Os 150 salmos, <em>narrados</em></h2>
+      <p id="cta-texto">No aplicativo estão todos os salmos, organizados por como você está se sentindo, cada um lido em voz alta. Funciona sem internet, e não tem anúncio nenhum.</p>
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.omeusalmo.salmos" rel="noopener">Baixar grátis no Android</a>
+      <p class="proof"><span>Sem cadastro</span> <span>· Sem anúncio</span> <span>· Funciona offline</span></p>
+    </section>
+
+    <p class="attrib"><a href="/salmos/">Ver os salmos publicados no site</a></p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ft-inner">
+      <a class="logo" href="/" aria-label="O meu Salmo">
+        <span class="om">O meu</span>
+        <span class="sa">Salmo</span>
+      </a>
+      <div class="ft-links">
+        <a href="/salmos/">Todos os salmos</a>
+        <a href="/#faq">Perguntas frequentes</a>
+        <a href="/privacy_policy.html">Privacidade</a>
+      </div>
+      <div class="ft-copy">&copy; 2026 O meu Salmo</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* O compartilhamento do app manda /salmos/{numero} para qualquer um dos 150,
+   mas só parte deles tem página publicada. Em vez do 404 genérico, quem chega
+   por um salmo que ainda não subiu vê o nome dele e um caminho para o app. */
+(function(){
+  var m = location.pathname.match(/^\/salmos\/(\d{1,3})\/?$/);
+  if (!m) return;
+  var n = parseInt(m[1], 10);
+  if (!(n >= 1 && n <= 150)) return;
+
+  document.getElementById('titulo').textContent = 'Salmo ' + n;
+  document.getElementById('texto').textContent =
+    'Este salmo ainda não está publicado aqui no site, mas está completo no aplicativo, com narração em áudio.';
+  document.getElementById('cta-texto').textContent =
+    'No aplicativo o Salmo ' + n + ' está inteiro e narrado, sem pressa. São 150 salmos organizados por como você está se sentindo. Funciona sem internet, e não tem anúncio nenhum.';
+  document.title = 'Salmo ' + n + ' · O meu Salmo';
+})();
+</script>
+</body>
+</html>

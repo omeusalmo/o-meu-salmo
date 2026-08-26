@@ -72,9 +72,18 @@ void main() async {
 
   // Tocar na notificação leva ao salmo daquele dia. O serviço não conhece o
   // go_router; só avisa a rota, e a ligação acontece aqui.
-  NotificationService.instance.onSelecionarRota = (rota) {
+  // Dois caminhos, mutuamente exclusivos: app vivo cai em onSelecionarRota,
+  // app morto cai em consumirRotaPendente (via splash). A notificação das 8h
+  // quase sempre encontra o app morto, então logar só no primeiro sub-reportaria
+  // justamente a métrica que mede se o canal de retorno funciona.
+  void registrarAbertura(String rota) {
     final numero = int.tryParse(rota.split('/').last);
     if (numero != null) AnalyticsService.instance.logNotifOpened(numero);
+  }
+
+  NotificationService.instance.aoAbrirPorNotificacao = registrarAbertura;
+  NotificationService.instance.onSelecionarRota = (rota) {
+    registrarAbertura(rota);
     appRouter.go(rota);
   };
 

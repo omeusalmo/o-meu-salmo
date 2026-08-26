@@ -41,10 +41,15 @@ class NotificationService {
   /// A splash consome no fim da inicialização (ver consumirRotaPendente).
   String? _rotaPendente;
 
+  /// Chamado quando uma rota de notificação é de fato consumida, em qualquer
+  /// um dos dois caminhos. Ligado no main.
+  void Function(String rota)? aoAbrirPorNotificacao;
+
   /// Devolve a rota pendente uma única vez.
   String? consumirRotaPendente() {
     final r = _rotaPendente;
     _rotaPendente = null;
+    if (r != null) aoAbrirPorNotificacao?.call(r);
     return r;
   }
 
@@ -65,6 +70,10 @@ class NotificationService {
   /// teto de alarmes do Android, e se a pessoa sumiu por mais que isso,
   /// parar de insistir é o comportamento certo.
   static const int horizonteDias = 14;
+
+  /// Teto de ids a limpar. Maior que [horizonteDias] de propósito, para
+  /// alcançar alarmes deixados por versões com janela maior.
+  static const int _tetoIds = 64;
   // ⚠️ _channelId é chave técnica do canal no Android, NÃO renomear: trocar
   // cria um canal duplicado e quem já configurou perde o ajuste.
   static const String _channelId   = 'salmo_diario';
@@ -167,6 +176,10 @@ class NotificationService {
             importance: Importance.defaultImportance,
             priority: Priority.defaultPriority,
             icon: '@mipmap/launcher_icon',
+            // Sem agrupar, quem passa duas semanas sem abrir volta a um painel
+            // com 14 avisos empilhados. Isso lê como spam e é gatilho de
+            // desinstalação justamente em quem a janela queria recuperar.
+            groupKey: _channelId,
             styleInformation: BigTextStyleInformation(
               item.versiculo,
               summaryText: 'Seu Salmo de hoje',
@@ -190,7 +203,9 @@ class NotificationService {
     // O id da 1.0.2 vai junto: sem isto a notificação congelada sobrevive ao
     // update e continua disparando ao lado da janela nova.
     await _plugin.cancel(_idLegado);
-    for (var i = 0; i < horizonteDias; i++) {
+    // Teto fixo, não horizonteDias: se uma versão futura encurtar a janela,
+    // os ids acima do novo limite ficariam órfãos disparando salmos velhos.
+    for (var i = 0; i < _tetoIds; i++) {
       await _plugin.cancel(_idBase + i);
     }
   }

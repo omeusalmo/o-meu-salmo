@@ -31,8 +31,8 @@ void main() {
     prefs = await SharedPreferences.getInstance();
   });
 
-  test('agenda cobre o horizonte inteiro, um item por dia', () {
-    final agenda = AgendadorSalmoDiario.montarAgenda(
+  test('agenda cobre o horizonte inteiro, um item por dia', () async {
+    final agenda = await AgendadorSalmoDiario.montarAgenda(
       salmos: _catalogo(150),
       prefs: prefs,
     );
@@ -43,11 +43,11 @@ void main() {
     );
   });
 
-  test('REGRESSÃO: o aviso de hoje é o mesmo salmo que a Home mostra', () {
+  test('REGRESSÃO: o aviso de hoje é o mesmo salmo que a Home mostra', () async {
     // O bug da 1.0.2: a notificação escolhia por "dia do ano % total" e a Home
     // por embaralhamento com semente. Anunciava um salmo e abria outro.
     final salmos = _catalogo(150);
-    final agenda = AgendadorSalmoDiario.montarAgenda(salmos: salmos, prefs: prefs);
+    final agenda = await AgendadorSalmoDiario.montarAgenda(salmos: salmos, prefs: prefs);
 
     final naHome = salmoDoDia(
       salmos: salmos,
@@ -59,27 +59,27 @@ void main() {
     expect(agenda.first.numero, naHome.numero);
   });
 
-  test('REGRESSÃO: cada dia tem o seu salmo, não o mesmo repetido', () {
+  test('REGRESSÃO: cada dia tem o seu salmo, não o mesmo repetido', () async {
     // O outro lado do bug: matchDateTimeComponents.time fazia um único
     // agendamento repetir o mesmo texto para sempre.
-    final agenda = AgendadorSalmoDiario.montarAgenda(
+    final agenda = await AgendadorSalmoDiario.montarAgenda(
       salmos: _catalogo(150),
       prefs: prefs,
     );
     expect(agenda.map((i) => i.numero).toSet(), hasLength(agenda.length));
   });
 
-  test('o corpo do aviso é o primeiro versículo, o mesmo que a Home destaca', () {
+  test('o corpo do aviso é o primeiro versículo, o mesmo que a Home destaca', () async {
     final salmos = _catalogo(150);
-    final agenda = AgendadorSalmoDiario.montarAgenda(salmos: salmos, prefs: prefs);
+    final agenda = await AgendadorSalmoDiario.montarAgenda(salmos: salmos, prefs: prefs);
     final salmo = salmos.firstWhere((s) => s.numero == agenda.first.numero);
     expect(agenda.first.versiculo, salmo.versiculos.first);
     expect(agenda.first.titulo, salmo.titulo);
   });
 
-  test('versículo longo é cortado em fronteira de palavra', () {
+  test('versículo longo é cortado em fronteira de palavra', () async {
     final longo = 'palavra ' * 40;
-    final agenda = AgendadorSalmoDiario.montarAgenda(
+    final agenda = await AgendadorSalmoDiario.montarAgenda(
       salmos: [
         Salmo(
           numero: 1,
@@ -104,5 +104,40 @@ void main() {
       throwsA(anything),
       reason: 'lista vazia é barrada antes, em reagendar()',
     );
+  });
+
+  test('REGRESSÃO: no dia 1, com prefs vazias, a semente é PERSISTIDA', () async {
+    // O caso real de produção que os outros testes não cobriam: eles plantavam
+    // uma semente no setUp. Sem persistir, cada abertura gerava uma semente
+    // nova e a notificação divergia da Home até a Home montar — e o onboarding
+    // leva para a coleção da emoção, então ela pode não montar por dias.
+    SharedPreferences.setMockInitialValues({});
+    final vazio = await SharedPreferences.getInstance();
+    expect(vazio.getInt(AppConstants.prefUserSeed), isNull);
+
+    await AgendadorSalmoDiario.montarAgenda(salmos: _catalogo(150), prefs: vazio);
+
+    expect(vazio.getInt(AppConstants.prefUserSeed), isNotNull,
+        reason: 'o agendador precisa gravar a semente, não só usá-la');
+    expect(vazio.getInt(AppConstants.prefInstallDay), isNotNull,
+        reason: 'sem installDay gravado o offset é sempre 0 e o salmo repete');
+  });
+
+  test('REGRESSÃO: agendador e Home concordam mesmo partindo do zero', () async {
+    SharedPreferences.setMockInitialValues({});
+    final zero = await SharedPreferences.getInstance();
+    final salmos = _catalogo(150);
+
+    // Ordem real: a splash agenda antes de a Home montar.
+    final agenda = await AgendadorSalmoDiario.montarAgenda(salmos: salmos, prefs: zero);
+    final id = await identidadeDoUsuario(zero);
+    final naHome = salmoDoDia(
+      salmos: salmos,
+      semente: id.semente,
+      installDay: id.installDay,
+      dia: diaCivil(DateTime.now()),
+    );
+
+    expect(agenda.first.numero, naHome.numero);
   });
 }

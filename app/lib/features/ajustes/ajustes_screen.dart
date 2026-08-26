@@ -301,7 +301,13 @@ class _NotificationCard extends ConsumerWidget {
       final granted = await NotificationService.instance.requestPermission();
       AnalyticsService.instance
           .logNotifPermission(concedida: granted, origem: 'ajustes');
-      if (!granted) return;
+      if (!granted) {
+        // Sem isto o switch voltava sozinho e nada explicava. No Android 13+,
+        // depois de duas recusas o pedido nem chega a mostrar diálogo: a
+        // pessoa toca, não acontece nada, e tenta de novo até desistir.
+        if (context.mounted) _avisarPermissaoBloqueada(context);
+        return;
+      }
     }
     AnalyticsService.instance.setNotifEnabled(enable);
     if (enable) AnalyticsService.instance.logNotifScheduled(hour);
@@ -342,6 +348,46 @@ class _NotificationCard extends ConsumerWidget {
     } catch (_) {
       return const [];
     }
+  }
+
+  /// Explica o bloqueio e diz onde resolver.
+  ///
+  /// Sem pacote novo: abrir a tela de permissões do sistema exigiria uma
+  /// dependência, e o texto já resolve para quem sabe onde procurar. O caminho
+  /// é ditado passo a passo porque o público tem 55+.
+  void _avisarPermissaoBloqueada(BuildContext context) {
+    showDialog<void>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: ctx.colorSurface,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppTheme.radiusLg),
+        ),
+        title: Text(
+          'O Android está bloqueando os avisos',
+          style: AppTheme.sectionHeadline(ctx.colorTitle).copyWith(fontSize: 20),
+        ),
+        content: Text(
+          'Para receber o Salmo do dia, abra os Ajustes do seu celular, '
+          'procure por Aplicativos, escolha O meu Salmo e ligue as '
+          'notificações. Depois é só voltar aqui.',
+          style: GoogleFonts.instrumentSans(
+            fontSize: 15,
+            height: 1.6,
+            color: ctx.colorText,
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(),
+            child: Text(
+              'Entendi',
+              style: AppTheme.emphasis14(ctx.colorAccentText),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   static String _formatarHora(int hour, int minute) =>

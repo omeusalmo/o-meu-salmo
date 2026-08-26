@@ -530,6 +530,10 @@ def main():
     arquivos[SAIDA / "salmos/index.html"] = pagina_hub(salmos, colecoes, mapa, data)
     arquivos[SAIDA / "assets/salmo.css"] = css_compartilhado()
     arquivos[SAIDA / "assets/salmo.js"] = (TPL / "salmo.js").read_text(encoding="utf-8")
+    # 404 com identidade: o app compartilha /salmos/{numero} para qualquer um
+    # dos 150, e só parte tem página. Sem isto, quem recebe a imagem cai na
+    # página genérica do GitHub.
+    arquivos[SAIDA / "404.html"] = (TPL / "404.html").read_text(encoding="utf-8")
     arquivos[SAIDA / "sitemap.xml"] = sitemap(data)
 
     if args.check:
