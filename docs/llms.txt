@@ -33,9 +33,11 @@ O meu Salmo é um aplicativo Android gratuito que organiza os 150 Salmos da Bíb
 - Preço: Gratuito
 - Idioma: Português (Brasil)
 - Download: Google Play Store
-- Suporte: jefsilvanh@gmail.com
+- Suporte: omeusalmo@gmail.com
 
 ## Links
 
 - [Landing page](https://omeusalmo.com.br/)
+- [Salmos completos, em letras grandes e sem anúncio](https://omeusalmo.com.br/salmos/)
+- [Baixar na Google Play](https://play.google.com/store/apps/details?id=com.omeusalmo.salmos)
 - [Política de privacidade](https://omeusalmo.com.br/privacy_policy.html)

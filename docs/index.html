@@ -47,11 +47,19 @@
         "availability": "https://schema.org/InStock"
       },
       "screenshot": "https://omeusalmo.com.br/og-image.png",
+      "_comentario_prova_social": "Nota real em 25/08/2026: 5,0 com apenas 4 avaliacoes. O Google raramente renderiza estrela com contagem tao baixa, e exibir '4 avaliacoes' na pagina pesa contra em vez de a favor. Quando passar de 10, descomentar o bloco abaixo com a contagem REAL do Play Console e ligar a secao de prova social na secao de download.",
+      "_aggregateRating_quando_passar_de_10": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "ratingCount": "SUBSTITUIR_PELO_NUMERO_REAL",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
       "keywords": "salmos por emoção, app de salmos android, devocional diário, devocional cristão, salmos para ansiedade, salmos para dormir, oração para dormir, salmo 91, saúde mental cristã, bem-estar espiritual, cura interior, meditação bíblica, versículo do dia, palavra do dia, salmos de esperança, aplicativo de salmos, salmos offline",
       "creator": {
         "@type": "Person",
         "name": "Jeff Silva",
-        "email": "jefsilvanh@gmail.com"
+        "email": "omeusalmo@gmail.com"
       }
     },
     {
@@ -148,6 +156,22 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Os 150, do primeiro ao último, com o texto inteiro. O Salmo 23 e o Salmo 91 estão lá, e os outros 148 também. A tradução é a de João Ferreira de Almeida, edição de 1911."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Por que o texto do Salmo soa diferente do que eu sei de cor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A tradução usada é a de João Ferreira de Almeida, edição de 1911, que está em domínio público e é reproduzida sem nenhuma alteração. Ela é mais antiga que a Almeida Corrigida Fiel e que a Revista e Atualizada, então algumas palavras soam diferentes das que você talvez tenha decorado."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quem escolhe os Salmos de cada coleção?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Quem faz o aplicativo leu e organizou os 150 Salmos, um a um. As notas de quando ler falam do momento em que aquele Salmo costuma ajudar, não do sentido teológico do texto. Para estudo bíblico aprofundado, seu pastor ou padre ajuda melhor que a gente."
           }
         },
         {
@@ -1151,6 +1175,11 @@ gtag('config','G-FHW3F9M24T');
   </div>
 </section>
 
+<div class="wrap rv" style="text-align:center;padding:8px 0 56px;">
+  <a href="https://play.google.com/store/apps/details?id=com.omeusalmo.salmos" class="btn mag" style="font-size:13px;padding:14px 32px;" aria-label="Baixar O meu Salmo grátis no Google Play" target="_blank" rel="noopener">Baixar grátis no Android</a>
+  <p style="font-family:var(--font-u);font-size:13px;color:var(--muted);margin-top:14px;">Sem cadastro · Sem anúncio · Funciona offline</p>
+</div>
+
 <div class="div"></div>
 
 <!-- ══ ÁUDIO ══════════════════════════════════════════ -->
@@ -1364,7 +1393,17 @@ gtag('config','G-FHW3F9M24T');
 
       <div class="faq-item rv d3">
         <h3 class="faq-q">Quais Salmos estão no aplicativo?</h3>
-        <p class="faq-a">Os 150, do primeiro ao último, com o texto inteiro. O Salmo 23 e o Salmo 91 estão lá, e os outros 148 também. A tradução é a de João Ferreira de Almeida, edição de 1911.</p>
+        <p class="faq-a">Os 150, do primeiro ao último, com o texto inteiro. O Salmo 23 e o Salmo 91 estão lá, e os outros 148 também. A tradução é a de João Ferreira de Almeida, edição de 1911. Você pode <a href="/salmos/">ler vários deles aqui pelo site</a>, sem instalar nada.</p>
+      </div>
+
+      <div class="faq-item rv d4">
+        <h3 class="faq-q">Por que o texto do Salmo soa diferente do que eu sei de cor?</h3>
+        <p class="faq-a">A tradução usada é a de João Ferreira de Almeida, edição de 1911, que está em domínio público e é reproduzida sem nenhuma alteração. Ela é mais antiga que a Almeida Corrigida Fiel e que a Revista e Atualizada, então algumas palavras soam diferentes das que você talvez tenha decorado.</p>
+      </div>
+
+      <div class="faq-item rv d5">
+        <h3 class="faq-q">Quem escolhe os Salmos de cada coleção?</h3>
+        <p class="faq-a">Quem faz o aplicativo leu e organizou os 150 Salmos, um a um. As notas de quando ler falam do momento em que aquele Salmo costuma ajudar, não do sentido teológico do texto. Para estudo bíblico aprofundado, seu pastor ou padre ajuda melhor que a gente.</p>
       </div>
 
       <div class="faq-item rv d4">
@@ -1388,6 +1427,7 @@ gtag('config','G-FHW3F9M24T');
     <div class="ft-inner">
       <div class="logo" style="opacity:.5"><span class="om">O meu</span><span class="sa" style="font-size:22px;">Salmo</span></div>
       <div class="ft-links">
+        <a href="/salmos/">Salmos</a>
         <a href="https://instagram.com/omeusalmo" target="_blank" rel="noopener">Instagram</a>
         <a href="./privacy_policy.html">Privacidade</a>
         <a href="mailto:omeusalmo@gmail.com">Suporte</a>
@@ -1842,6 +1882,7 @@ document.querySelectorAll('.mag').forEach(el=>{
   btn.addEventListener('click',()=>{
     const next = html.dataset.theme==='dark' ? 'light' : 'dark';
     setTheme(next);
+    if(typeof gtag!=='function')return;
     gtag('event','theme_toggle',{theme:next});
   });
 })();
@@ -1862,6 +1903,7 @@ document.querySelectorAll('.mag').forEach(el=>{
 (function(){
   document.querySelectorAll('.gp-badge-link,.btn.mag').forEach(function(el){
     el.addEventListener('click',function(){
+      if(typeof gtag!=='function')return;
       gtag('event','cta_click',{
         event_category:'conversion',
         event_label:el.getAttribute('aria-label')||el.textContent.trim(),
@@ -1871,6 +1913,7 @@ document.querySelectorAll('.mag').forEach(el=>{
   });
   document.querySelectorAll('.chip[data-emo]').forEach(function(el){
     el.addEventListener('click',function(){
+      if(typeof gtag!=='function')return;
       gtag('event','chip_click',{collection:el.dataset.emo});
     });
   });

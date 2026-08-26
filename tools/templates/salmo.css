@@ -1,0 +1,791 @@
+/* ══════════════════════════════════════════════════════════════
+   salmo.css · folha compartilhada das páginas de salmo e coleção
+   Tokens extraídos verbatim de docs/index.html (DS v1.2).
+   Gerado por tools/gerar_paginas.py. Editado na auditoria de design
+   de 2026-08-24: propagar as mudanças para o gerador.
+
+   Regras que esta folha assume:
+   · tamanhos de texto em rem, para acompanhar a fonte do sistema até 2x
+   · piso de 13px auxiliar / 14px para texto de decisão (DS v1.2)
+   · alvo de toque de 48px na linha inteira do link
+   · borda de componente interativo precisa de 3:1 (WCAG 1.4.11),
+     por isso --border-int existe separado de --border
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── RESET ────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+/* ── TOKENS (espelho de index.html) ───────────────── */
+:root{
+  --cobalt-100:#EEEDF8;--cobalt-200:#C9C7EE;--cobalt-300:#A29FE0;
+  --cobalt-350:#7C8BF0;
+  --cobalt-400:#5567EA;--cobalt-500:#2A47DD;--cobalt-600:#1B33B4;--cobalt-700:#142A8C;
+  --on-accent:#FFFFFF;
+  --gold:#C4A86A;--gold-ink:#6B4E1C;
+  --night-base:#080B1C;--night-plus:#151A39;--night-line:#323A77;
+  --night-muted:#7080C8;--night-text:#8C97D4;--night-cream:#EEF0FC;
+  --day-base:#F5F7FE;--day-plus:#E1E6FC;--day-line:#A8B6E6;
+  --day-muted:#8C97D4;--day-text:#2E3A86;--day-title:#0C1230;
+  --emo-a-bg:#EEEDF8;--emo-a-fg:#3D3889;--emo-a-dot:#5567EA;
+  --emo-p-bg:#EAF1E6;--emo-p-fg:#446650;--emo-p-dot:#6A9A62;
+  --emo-g-bg:#FAF2E0;--emo-g-fg:#7A5A18;--emo-g-dot:#C99A38;
+  --emo-l-bg:#F1EBEF;--emo-l-fg:#7A4A66;--emo-l-dot:#9A6A86;
+  --emo-d-bg:#ECECF2;--emo-d-fg:#5E5A82;--emo-d-dot:#8480AA;
+  --emo-e-bg:#E6EAFD;--emo-e-fg:#1B33B4;--emo-e-dot:#2A47DD;
+
+  --bg:var(--night-base);--surface:var(--night-plus);--border:var(--night-line);
+  --text:var(--night-text);--tx:var(--night-cream);--muted:var(--night-muted);
+  --accent:var(--cobalt-500);--accent-lt:var(--cobalt-400);--scripture:var(--gold);
+  --accent-txt:var(--cobalt-350);
+  --chip-sel-bg:#141831;--chip-sel-bd:rgba(124,139,240,.63);
+
+  /* Borda de COMPONENTE INTERATIVO. --night-line dá 1.87:1 contra o fundo,
+     reprova o mínimo de 3:1 do WCAG 1.4.11. --muted dá 5.22:1 e é token do DS. */
+  --border-int:var(--muted);
+
+  --font-d:'Playfair Display',Georgia,serif;
+  --font-v:'Cormorant',Georgia,serif;
+  --font-u:'Instrument Sans',system-ui,sans-serif;
+
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --spring:cubic-bezier(.34,1.56,.64,1);
+  --dur:.35s;--dur-s:.70s;--dur-f:.18s;
+
+  /* ── LEITURA: o diferencial destas páginas ──
+     Padrão 21px. A literatura de leitura para 65+ recomenda o topo da
+     faixa 18-22pt para leitura longa; os concorrentes ficam em 16-18px.
+     Os três degraus são 21 / 25 / 30px, e a coluna cresce junto para a
+     medida não encolher abaixo de ~50 caracteres. */
+  --read:1.3125rem;
+  --read-lh:1.70;
+  --read-col:680px;
+}
+:root[data-read="g"]{--read:1.5625rem;--read-lh:1.65;--read-col:760px;}
+:root[data-read="gg"]{--read:1.875rem;--read-lh:1.60;--read-col:840px;}
+
+/* ── LIGHT MODE ───────────────────────────────────── */
+[data-theme="light"]{
+  --bg:var(--day-base);--surface:var(--day-plus);
+  --border:var(--day-line);--text:var(--day-text);
+  --tx:var(--day-title);--muted:#4E5899;
+  --scripture:var(--gold-ink);
+  --accent-txt:var(--cobalt-500);
+  --chip-sel-bg:#E5E9FB;--chip-sel-bd:rgba(42,71,221,.63);
+}
+
+/* ── BASE ─────────────────────────────────────────── */
+html{
+  scroll-behavior:smooth;
+  /* respiro para âncoras de versículo (#v7) */
+  scroll-padding-top:1.5rem;
+  /* o Chrome do Android multiplica px por esta escala; deixar em auto
+     preserva o ajuste de tamanho de texto do sistema */
+  -webkit-text-size-adjust:100%;text-size-adjust:100%;
+}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:var(--font-u);font-weight:400;
+  font-size:1rem;line-height:1.6;
+  /* clip, não hidden: hidden transformaria o body em contexto de rolagem */
+  overflow-x:clip;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:9000;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:.022;
+}
+[data-theme="light"] body::after{opacity:.010;}
+a{color:inherit;text-decoration:none;}
+button{border:none;background:none;font-family:inherit;font-size:inherit;color:inherit;cursor:pointer;}
+h1,h2,h3{text-wrap:balance;}
+p,li{text-wrap:pretty;}
+
+.wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 32px;}
+.wrap-read{width:100%;max-width:var(--read-col);margin:0 auto;padding:0 32px;}
+
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0;
+}
+
+.eye{
+  font-family:var(--font-u);font-size:.875rem;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--text);
+}
+.div{height:1px;background:linear-gradient(90deg,transparent,var(--border) 25%,var(--border) 75%,transparent);}
+.logo{display:inline-flex;flex-direction:column;align-items:flex-start;line-height:1;padding:6px 0;}
+.logo .om{font-family:var(--font-u);font-size:.4375rem;font-weight:400;letter-spacing:.34em;text-transform:uppercase;padding-left:.34em;margin-bottom:3px;color:var(--text);}
+.logo .sa{font-family:var(--font-d);font-style:italic;font-weight:500;font-size:1.75rem;letter-spacing:-.015em;line-height:.86;color:var(--accent-lt);}
+[data-theme="light"] .logo .sa{color:var(--cobalt-500);}
+
+/* ── BOTÕES ───────────────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-family:var(--font-u);font-size:1rem;font-weight:500;letter-spacing:.01em;
+  color:var(--on-accent);background:var(--accent);padding:15px 28px;border-radius:999px;
+  box-shadow:0 8px 24px rgba(27,51,180,.35);
+  transition:background var(--dur-f),box-shadow var(--dur-f);
+  min-height:52px;text-align:center;line-height:1.35;
+}
+.btn:hover{background:var(--cobalt-600);box-shadow:0 12px 36px rgba(27,51,180,.5);}
+.btn:active{background:var(--cobalt-700);box-shadow:0 6px 18px rgba(20,42,140,.5);}
+.btn-ghost{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-family:var(--font-u);font-size:1rem;font-weight:500;letter-spacing:.01em;
+  color:var(--accent-txt);background:transparent;padding:14px 26px;border-radius:999px;
+  border:1px solid var(--border-int);min-height:52px;text-align:center;
+  transition:border-color var(--dur-f),color var(--dur-f),background var(--dur-f);
+}
+.btn-ghost:hover{border-color:var(--accent-txt);background:var(--chip-sel-bg);}
+
+/* ── NAV ──────────────────────────────────────────── */
+/* Não é fixa. Numa tela de 640px a barra fixa comia 11% da área de
+   leitura durante todo o salmo, e ela não oferece nada que se precise
+   no meio da leitura: o rodapé leva de volta pra casa. */
+body>nav{
+  position:relative;z-index:20;padding:12px 0;
+  background:var(--bg);
+  border-bottom:1px solid var(--border);
+}
+body>nav .inner{display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.nav-tools{display:flex;align-items:center;gap:10px;}
+.icon-btn{
+  width:48px;height:48px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--border-int);color:var(--text);
+  transition:border-color var(--dur-f),color var(--dur-f),background var(--dur-f);
+  flex-shrink:0;
+}
+.icon-btn:hover{border-color:var(--accent-txt);color:var(--tx);background:var(--chip-sel-bg);}
+.icon-btn:active{background:var(--chip-sel-bg);}
+[data-theme="dark"] .icon-moon{display:none;}
+[data-theme="light"] .icon-sun{display:none;}
+
+/* ── CONTROLE DE TAMANHO DE LEITURA ───────────────── */
+/* Fica logo acima do salmo, no momento em que a pessoa percebe que o
+   texto está pequeno, e não escondido num canto do topo. Rótulo escrito
+   por extenso: três "A" de tamanhos diferentes não se explicam sozinhos
+   para quem tem 70 anos e pouca familiaridade com interface. */
+.reader-ctl{
+  /* Sem cartão: a caixa preenchida competia com o próprio salmo, que é
+     o que a pessoa veio ler. Vira uma linha de ferramenta, discreta,
+     mas com rótulo escrito e alvo de 48px, que foi o ganho da auditoria. */
+  display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;
+  margin:26px 0 6px;padding:0 0 18px;
+  border-bottom:1px solid var(--border);
+}
+.rc-lbl{
+  font-family:var(--font-u);font-size:.875rem;font-weight:400;
+  color:var(--muted);white-space:nowrap;
+}
+/* flex-wrap para o caso de 2x: os botões quebram e empilham em vez de vazar */
+.rc-opts{display:flex;flex-wrap:wrap;gap:8px;}
+.reader-ctl button{
+  flex:0 0 auto;min-height:48px;padding:8px 16px;
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  border:1px solid var(--border-int);border-radius:999px;
+  color:var(--text);background:transparent;
+  transition:border-color var(--dur-f),color var(--dur-f),background var(--dur-f);
+}
+.reader-ctl button:hover{border-color:var(--accent-txt);color:var(--tx);}
+.reader-ctl button[aria-pressed="true"]{
+  background:var(--chip-sel-bg);color:var(--accent-txt);
+  border-color:var(--accent-txt);
+  box-shadow:inset 0 0 0 1px var(--accent-txt);
+}
+.rc-a{font-family:var(--font-d);font-weight:500;line-height:1;}
+.reader-ctl button:nth-child(1) .rc-a{font-size:.9375rem;}
+.reader-ctl button:nth-child(2) .rc-a{font-size:1.1875rem;}
+.reader-ctl button:nth-child(3) .rc-a{font-size:1.5rem;}
+.rc-w{font-family:var(--font-u);font-size:.9375rem;font-weight:500;}
+.reader-ctl button[aria-pressed="true"] .rc-w{font-weight:600;}
+
+/* ── BREADCRUMB ───────────────────────────────────── */
+.crumb{
+  font-family:var(--font-u);font-size:.8125rem;letter-spacing:.02em;
+  color:var(--muted);padding:14px 0 0;
+}
+.crumb ol{list-style:none;display:flex;align-items:center;flex-wrap:wrap;gap:0 8px;}
+.crumb li{display:flex;align-items:center;gap:8px;}
+.crumb a{padding:14px 4px;margin:-6px 0;transition:color var(--dur-f);text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;}
+.crumb a:hover{color:var(--accent-txt);text-decoration-color:currentColor;}
+.crumb .sep{opacity:.6;}
+
+/* ── CABEÇALHO DA PÁGINA ──────────────────────────── */
+/* Mais respiro no topo (20px→36px): é o lugar da página com espaço de
+   sobra, e é onde a marca d'água do número precisa de altura pra caber
+   sem cortar mal. overflow:hidden clipa o número na própria borda do
+   cabeçalho, ele nunca sangra pro corpo do salmo. */
+.ph{padding:36px 0 10px;position:relative;overflow:hidden;}
+.ph h1{font-weight:400;}
+.ph-num{
+  display:block;
+  font-family:var(--font-d);font-weight:400;
+  font-size:clamp(2.875rem,10vw,4.5rem);line-height:1;letter-spacing:-.02em;
+  color:var(--tx);
+}
+.ph-title{
+  display:block;
+  font-family:var(--font-d);font-style:italic;font-weight:400;
+  font-size:clamp(1.375rem,4.6vw,1.875rem);line-height:1.3;
+  color:var(--accent-txt);margin-top:10px;
+}
+.ph-meta{
+  display:flex;align-items:center;gap:8px 20px;flex-wrap:wrap;
+  margin-top:18px;font-family:var(--font-u);font-size:.9375rem;color:var(--muted);
+}
+
+/* ── MARCA D'ÁGUA (número fantasma) ───────────────────
+   Vocabulário emprestado da landing (números gigantes sangrando na
+   borda), traduzido pra caber num cabeçalho estreito: bem menor, bem
+   mais apagado (4-5% de opacidade), sem animação própria. É textura,
+   não protagonista. Reaproveitada em .ph (número do salmo) e .sec-head
+   (hub, com "150"). z-index negativo garante que ela pinta atrás do
+   texto normal, sem precisar tocar no empilhamento do resto do bloco. */
+.hd-ghost{
+  position:absolute;top:-.08em;right:-.02em;z-index:-1;
+  font-family:var(--font-d);font-weight:400;
+  font-size:clamp(5rem,22vw,8rem);line-height:1;letter-spacing:-.02em;
+  color:var(--accent);opacity:.04;
+  pointer-events:none;user-select:none;
+}
+[data-theme="light"] .hd-ghost{color:var(--cobalt-600);opacity:.05;}
+
+/* ── ENTRADA DO CABEÇALHO ──
+   Único momento de movimento fora do corpo do salmo: número, título,
+   metadados e (na página de salmo) o controle de leitura sobem e
+   chegam em sequência curta. Nada mais na página se move sozinho.
+   prefers-reduced-motion:no-preference é a guarda: sob redução de
+   movimento o bloco nunca passa por opacity:0, aparece pronto. */
+@media (prefers-reduced-motion: no-preference){
+  .ph .ph-num,.ph .ph-title,.ph .ph-meta,.ph + .reader-ctl,
+  .sec-head h1,.sec-head .sub,.sec-head .lead{
+    opacity:0;animation:hd-rise .7s var(--ease) both;
+  }
+  .ph .ph-num,.sec-head h1{animation-delay:.04s;}
+  .ph .ph-title,.sec-head .sub{animation-delay:.14s;}
+  .ph .ph-meta,.sec-head .lead{animation-delay:.24s;}
+  .ph + .reader-ctl{animation-delay:.34s;}
+}
+@keyframes hd-rise{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+/* Coleções aparecem como rótulo, não como chip: não há página de coleção
+   pra onde ir, e um chip com borda convida ao toque que não acontece. */
+.tag{
+  display:inline-flex;align-items:center;gap:8px;
+  color:var(--text);cursor:default;
+}
+/* Cada coleção tem sua cor no DS. Louvor compartilha os tokens de
+   Gratidão e Proteção compartilha os de Sono, conforme documentado em
+   design-system.html. O ponto é decorativo (aria-hidden) e quem carrega
+   a informação é o rótulo ao lado, então a cor aqui é reforço visual,
+   nunca o único sinal. */
+.tag .dot{width:9px;height:9px;border-radius:50%;background:var(--accent-txt);flex-shrink:0;}
+.tag[data-emo="ansiedade"] .dot{background:var(--emo-a-dot);}
+.tag[data-emo="sono"]      .dot{background:var(--emo-p-dot);}
+.tag[data-emo="protecao"]  .dot{background:var(--emo-p-dot);}
+.tag[data-emo="gratidao"]  .dot{background:var(--emo-g-dot);}
+.tag[data-emo="louvor"]    .dot{background:var(--emo-g-dot);}
+.tag[data-emo="luto"]      .dot{background:var(--emo-l-dot);}
+.tag[data-emo="perdao"]    .dot{background:var(--emo-d-dot);}
+.tag[data-emo="esperanca"] .dot{background:var(--emo-e-dot);}
+/* esperança usa cobalt-500, que no escuro fica em 2.83:1 contra o fundo.
+   Passa para o acento de texto do tema, que é o mesmo papel de cor e
+   rende 6.33:1, sem inventar cor fora do sistema. */
+.tag[data-emo="esperanca"] .dot{background:var(--accent-txt);}
+[data-theme="light"] .tag[data-emo="esperanca"] .dot{background:var(--emo-e-dot);}
+
+/* ── VERSÍCULO-ÂNCORA ─────────────────────────────── */
+/* Só use num versículo que NÃO seja o primeiro: repetir o versículo 1
+   logo acima da lista faz a pessoa ler a mesma frase duas vezes. */
+.anchor{
+  margin:32px 0 8px;padding:26px 0;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.anchor p{
+  font-family:var(--font-v);font-style:italic;font-weight:400;
+  font-size:clamp(1.375rem,5vw,1.875rem);line-height:1.5;color:var(--scripture);
+}
+
+/* ── CORPO DO SALMO ───────────────────────────────── */
+/* Território sagrado: daqui pra baixo só tipografia, ritmo e espaço em
+   branco trabalham. Nenhum efeito, nenhuma entrada animada, nada que
+   se mova enquanto a pessoa lê. */
+.psalm{margin:24px 0 0;list-style:none;}
+.psalm li{
+  display:grid;grid-template-columns:auto 1fr;gap:16px;
+  align-items:baseline;              /* número na mesma linha de base do texto */
+  padding:calc(var(--read) * .34) 0;
+  scroll-margin-top:1.5rem;
+  border-radius:12px;
+  transition:background var(--dur) var(--ease),box-shadow var(--dur) var(--ease),
+             padding var(--dur) var(--ease),margin var(--dur) var(--ease);
+}
+.psalm li .n{
+  font-family:var(--font-u);font-size:.875rem;font-weight:500;
+  color:var(--accent-txt);
+  min-width:1.7em;text-align:right;
+  font-variant-numeric:tabular-nums;
+  user-select:none;-webkit-user-select:none;
+}
+.psalm li .t{
+  /* Cormorant itálico, a mesma do corpo do versículo no app
+     (shared/widgets/verse_line.dart:67). Cormorant tem altura-x
+     bem menor que Playfair, então o mesmo valor em px parece
+     menor: compensado com +3px na base. */
+  font-family:var(--font-v);font-style:italic;font-weight:400;
+  font-size:calc(var(--read) + 3px);line-height:var(--read-lh);
+  color:var(--tx);
+}
+/* No escuro o texto claro sobre fundo escuro já "engorda" opticamente;
+   no claro a Playfair precisa do peso 500 pra não virar fio de cabelo. */
+[data-theme="dark"] .psalm li .t{font-weight:400;}
+.psalm li:target{
+  background:var(--chip-sel-bg);
+  box-shadow:inset 0 0 0 2px var(--accent-txt);
+  padding-left:14px;padding-right:14px;
+  margin-left:-14px;margin-right:-14px;
+}
+
+/* ── CAPITULAR ──
+   Só o primeiro versículo recebe letra capitular: gesto editorial de
+   missal, puramente tipográfico, sem repetir texto e sem pesar nos
+   outros quinze. align-items:start evita que a altura da capitular
+   puxe a linha de base do número junto com ela. */
+.psalm li:first-child{align-items:start;}
+.psalm li:first-child .n{padding-top:.22em;}
+.psalm li:first-child .t::first-letter{
+  font-family:var(--font-v);font-weight:500;
+  font-size:2.5em;line-height:.68;
+  float:left;padding-right:.09em;
+  color:var(--accent-txt);
+}
+/* Nos salmos em que o versículo mais conhecido é o próprio 1 (23, 42,
+   121, 130), ele leva o dourado. A capitular sai: capitular em cobalto
+   mais linha inteira em âmbar seriam dois destaques disputando a mesma
+   frase, e o verso já está emoldurado por fios. */
+.psalm li:first-child.v-gold{align-items:baseline;}
+.psalm li:first-child.v-gold .n{padding-top:0;}
+.psalm li:first-child.v-gold .t::first-letter{
+  font-family:inherit;font-weight:inherit;
+  font-size:inherit;line-height:inherit;
+  float:none;padding-right:0;
+  color:inherit;
+}
+
+/* ── VERSÍCULO DOURADO ──
+   Reserva de uma classe, não de um versículo fixo: quem monta a página
+   escolhe qual versículo do MEIO merece a pausa (nunca o primeiro, pra
+   não duplicar leitura). O tratamento é o mesmo já usado em .anchor e
+   .reflect .ask: reaproveita o vocabulário de escritura em destaque
+   que a página já tinha, não inventa um novo. Zero movimento: aqui
+   dentro só a tipografia muda. */
+.psalm li.v-gold{
+  margin:10px 0;
+  padding-top:calc(var(--read) * .34 + 16px);
+  padding-bottom:calc(var(--read) * .34 + 16px);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.psalm li.v-gold .n{color:var(--scripture);}
+.psalm li.v-gold .t{
+  font-family:var(--font-v);font-style:italic;font-weight:400;
+  font-size:calc(var(--read) + .0625rem);
+  color:var(--scripture);
+}
+
+/* ── FONTE DO TEXTO ───────────────────────────────── */
+/* Letra miúda de atribuição: informação verdadeira, peso visual baixo.
+   Antes ocupava um cartão preenchido, com mais destaque que a reflexão. */
+/* Atribuição da tradução: uma linha, logo depois do último versículo,
+   que é onde crédito de texto pertence editorialmente. O detalhe completo
+   mora na FAQ da home; aqui fica só o crédito e o caminho para lá.
+   Auditoria de 2026-08-24: substitui a antiga seção "Como esta página é
+   feita", removida a pedido do dono. */
+.attrib{
+  margin-top:28px;padding-top:18px;border-top:1px solid var(--border);
+  font-family:var(--font-u);font-size:.875rem;line-height:1.65;color:var(--muted);
+  max-width:64ch;
+}
+.attrib a{
+  color:var(--accent-txt);
+  text-decoration:underline;text-underline-offset:3px;
+  text-decoration-thickness:1px;
+}
+.attrib a:hover{text-decoration-thickness:2px;}
+.attrib b{color:var(--text);font-weight:500;}
+
+/* ── LINHA DE ACENTO (moldura de cartão) ───────────────
+   Um fio de 1px no topo de .reflect e .cta, cobalto esmaecendo pro
+   dourado: o mesmo par de cores que a fita de progresso usa na
+   landing. É moldura, não decoração sobre texto: vive na borda do
+   cartão, nunca no meio da leitura. Reaproveitar o mesmo recurso nos
+   dois cartões em vez de inventar um efeito por seção. */
+.reflect,.cta{position:relative;}
+.reflect::before,.cta::before{
+  content:'';position:absolute;top:0;left:22px;right:22px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--accent-lt) 30%,var(--scripture) 70%,transparent);
+  opacity:.55;
+}
+
+/* ── REFLEXÃO ─────────────────────────────────────── */
+.reflect{
+  margin:44px 0 0;padding:32px;border-radius:22px;
+  background:var(--surface);border:.5px solid var(--border);
+}
+.reflect .eye{color:var(--text);}
+.reflect h2{
+  font-family:var(--font-d);font-weight:400;
+  font-size:clamp(1.375rem,4.6vw,1.75rem);line-height:1.35;
+  color:var(--tx);margin:12px 0 16px;
+}
+.reflect p{
+  font-family:var(--font-d);font-weight:500;
+  font-size:calc(var(--read) - .0625rem);line-height:1.7;color:var(--tx);
+  max-width:58ch;
+}
+[data-theme="dark"] .reflect p{font-weight:400;}
+.reflect .ask{
+  margin-top:22px;padding-top:22px;border-top:1px solid var(--border);
+  font-family:var(--font-v);font-style:italic;font-weight:400;
+  font-size:calc(var(--read) + .125rem);line-height:1.5;color:var(--scripture);
+}
+.byline{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  margin-top:24px;padding-top:20px;border-top:1px solid var(--border);
+  font-family:var(--font-u);font-size:.875rem;color:var(--muted);
+}
+
+/* ── AVISO DE SAÚDE ───────────────────────────────── */
+.care{
+  margin-top:28px;padding:22px;border-radius:14px;
+  border:1px solid var(--border-int);background:var(--surface);
+  font-family:var(--font-u);font-size:1rem;line-height:1.7;color:var(--text);
+}
+.care b{color:var(--tx);font-weight:600;}
+.care p{max-width:58ch;}
+.care-tel{
+  display:inline-flex;align-items:center;justify-content:center;
+  margin-top:16px;min-height:52px;padding:14px 24px;
+  border:1px solid var(--border-int);border-radius:999px;
+  font-family:var(--font-u);font-size:1rem;font-weight:600;
+  color:var(--accent-txt);
+  transition:border-color var(--dur-f),background var(--dur-f);
+}
+.care-tel:hover{border-color:var(--accent-txt);background:var(--chip-sel-bg);}
+
+/* ── CTA ────────────────────────────────────────────
+   É a conversão principal da página: precisa se destacar do aviso do
+   CVV logo acima, que é o cartão mais parecido que existe aqui. Mais
+   respiro (64px, era 48px), borda fina de vitrine como a landing usa em
+   .psalm-card/.ccard (.5px, não a de componente interativo), o número
+   fantasma "Salmo" atrás do texto (mesmo recurso do rodapé de download
+   da landing, .dl-ghost), rótulo de cor e uma palavra em destaque no
+   título. Sem fundo mais claro: night-muted já mora a 4.53:1 da
+   superfície (auditoria ds-vs-lp.md), e qualquer tinte que clareasse
+   o cartão arriscava reprovar o texto do .proof. */
+.cta{
+  overflow:hidden;
+  /* isolation:isolate prende o z-index:-1 do .cta-ghost DENTRO deste
+     cartão. Sem isso, como .cta não cria contexto de empilhamento
+     próprio, o fantasma escapa para trás do --surface sólido do
+     próprio cartão e some (bug clássico de z-index negativo). */
+  isolation:isolate;
+  margin:64px 0 0;padding:44px 36px;border-radius:22px;
+  background:var(--surface);border:.5px solid var(--border);
+  text-align:center;
+}
+.cta-ghost{
+  position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);
+  z-index:-1;
+  font-family:var(--font-d);font-style:italic;font-weight:400;
+  font-size:clamp(64px,16vw,128px);line-height:.9;letter-spacing:-.02em;
+  color:var(--accent);opacity:.04;
+  pointer-events:none;user-select:none;white-space:nowrap;
+}
+[data-theme="light"] .cta-ghost{color:var(--cobalt-600);opacity:.05;}
+.cta .eye{display:block;color:var(--accent-txt);}
+.cta h2{
+  font-family:var(--font-d);font-weight:400;margin-top:12px;
+  font-size:clamp(1.5rem,5vw,1.9375rem);line-height:1.3;color:var(--tx);
+}
+.cta h2 em{font-style:italic;color:var(--accent-txt);}
+.cta p{
+  font-family:var(--font-u);font-size:1.0625rem;line-height:1.75;
+  color:var(--text);margin:16px auto 26px;max-width:46ch;
+}
+.cta .proof{
+  margin-top:18px;font-family:var(--font-u);font-size:.875rem;color:var(--muted);
+}
+.cta .proof span{white-space:nowrap;}
+
+/* ── NAVEGAÇÃO ENTRE SALMOS ─────────────────────────
+   Deixou de parecer cartão: sem borda, sem caixa própria por link. Um
+   traço só, acima do par inteiro (mesmo recurso de .list), separa a
+   navegação secundária do corpo. O toque continua generoso (48px);
+   auto-fit em vez de 1fr 1fr porque o DS proíbe divisão em partes
+   iguais, que estoura quando o nome do salmo cresce com a fonte do
+   sistema. */
+.pager{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:6px 24px;margin:56px 0 0;padding-top:22px;
+  border-top:1px solid var(--border);
+}
+.pager a{
+  display:block;padding:10px 8px;border-radius:8px;min-height:48px;
+  transition:background var(--dur-f);
+}
+.pager a:hover{background:var(--chip-sel-bg);}
+.pager a:hover .nm{color:var(--accent-txt);}
+.pager .lbl{display:block;font-family:var(--font-u);font-size:.8125rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.pager .nm{font-family:var(--font-d);font-size:1.25rem;color:var(--tx);margin-top:6px;display:block;transition:color var(--dur-f);}
+.pager a:visited .nm{color:var(--text);}
+.pager .next{text-align:right;}
+
+/* ── RELACIONADOS ─────────────────────────────────── */
+.rel{margin:44px 0 0;}
+.rel h2{
+  font-family:var(--font-d);font-weight:400;
+  font-size:clamp(1.375rem,4.6vw,1.75rem);color:var(--tx);margin-bottom:18px;
+}
+.rel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;}
+.rel-item{
+  display:block;padding:18px 20px;border-radius:14px;
+  border:1px solid var(--border-int);min-height:48px;
+  transition:border-color var(--dur-f),background var(--dur-f),
+             transform var(--dur-f) var(--ease),box-shadow var(--dur-f);
+}
+.rel-item:hover{
+  border-color:var(--accent-txt);background:var(--chip-sel-bg);
+  transform:translateY(-2px);box-shadow:0 14px 32px rgba(8,11,28,.30);
+}
+[data-theme="light"] .rel-item:hover{box-shadow:0 14px 32px rgba(42,71,221,.10);}
+.rel-item .rn{display:block;font-family:var(--font-u);font-size:.8125rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-txt);}
+.rel-item .rt{display:block;font-family:var(--font-d);font-size:1.125rem;line-height:1.35;color:var(--tx);margin-top:5px;}
+.rel-item:visited .rt{color:var(--text);}
+
+/* ── LISTA (hub e coleção) ────────────────────────── */
+.list{margin:32px 0 0;border-top:1px solid var(--border);}
+.list a{
+  position:relative;
+  display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;
+  padding:20px 12px;border-bottom:1px solid var(--border);
+  min-height:48px;
+  transition:background var(--dur-f),padding-left var(--dur-f) var(--ease);
+}
+.list a::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:var(--accent-txt);transform:scaleY(0);transform-origin:top;
+  transition:transform var(--dur-f) var(--ease);
+}
+.list a:hover{background:var(--surface);padding-left:20px;}
+.list a:hover::before{transform:scaleY(1);}
+.list .ln{
+  font-family:var(--font-d);font-size:1.625rem;color:var(--accent-txt);
+  min-width:52px;line-height:1;font-variant-numeric:tabular-nums;
+}
+.list .lt{display:block;font-family:var(--font-d);font-size:1.1875rem;line-height:1.35;color:var(--tx);}
+.list a:visited .lt{color:var(--text);}
+.list .ls{display:block;font-family:var(--font-u);font-size:.875rem;color:var(--muted);margin-top:4px;}
+/* mesmo código de cor das tags da página de salmo, para a coleção ser
+   reconhecível de uma página para a outra. Temas que não são coleção
+   ficam sem ponto, em vez de ganhar uma cor inventada. */
+.list .ls-dot{
+  display:inline-block;width:7px;height:7px;border-radius:50%;
+  margin-right:8px;vertical-align:.08em;background:var(--accent-txt);
+}
+.list .ls[data-emo="ansiedade"] .ls-dot{background:var(--emo-a-dot);}
+.list .ls[data-emo="sono"]      .ls-dot{background:var(--emo-p-dot);}
+.list .ls[data-emo="protecao"]  .ls-dot{background:var(--emo-p-dot);}
+.list .ls[data-emo="gratidao"]  .ls-dot{background:var(--emo-g-dot);}
+.list .ls[data-emo="louvor"]    .ls-dot{background:var(--emo-g-dot);}
+.list .ls[data-emo="luto"]      .ls-dot{background:var(--emo-l-dot);}
+.list .ls[data-emo="perdao"]    .ls-dot{background:var(--emo-d-dot);}
+.list .ls[data-emo="esperanca"] .ls-dot{background:var(--accent-txt);}
+[data-theme="light"] .list .ls[data-emo="esperanca"] .ls-dot{background:var(--emo-e-dot);}
+.list .lv{font-family:var(--font-u);font-size:.8125rem;color:var(--muted);white-space:nowrap;}
+
+/* ── GRADE DE COLEÇÕES ────────────────────────────── */
+.cols{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin:32px 0 0;}
+.col-card{
+  display:block;padding:28px 26px;border-radius:22px;
+  border:1px solid var(--border-int);min-height:48px;
+  transition:border-color var(--dur-f),background var(--dur-f),transform var(--dur-f) var(--ease);
+}
+.col-card:hover{border-color:var(--accent-txt);background:var(--surface);transform:translateY(-2px);}
+.col-card .cn{display:block;font-family:var(--font-d);font-size:1.375rem;line-height:1.3;color:var(--tx);}
+.col-card .cs{display:block;font-family:var(--font-v);font-style:italic;font-weight:400;font-size:1.125rem;line-height:1.45;color:var(--scripture);margin-top:8px;}
+.col-card .cc{display:block;font-family:var(--font-u);font-size:.8125rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:14px;}
+
+/* ── BARRA "ABRIR NO APP" ─────────────────────────── */
+/* Só aparece depois que o salmo termina. Durante a leitura, nada cobre
+   o texto: a promessa da página é justamente essa. */
+.appbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:300;
+  display:none;align-items:center;gap:12px;
+  padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+  background:rgba(8,11,28,.96);
+  backdrop-filter:blur(22px) saturate(1.6);
+  -webkit-backdrop-filter:blur(22px) saturate(1.6);
+  border-top:1px solid var(--border-int);
+  transform:translateY(110%);
+  transition:transform var(--dur) var(--ease);
+}
+[data-theme="light"] .appbar{background:rgba(245,247,254,.97);}
+body.has-appbar{padding-bottom:calc(88px + env(safe-area-inset-bottom));}
+body.has-appbar .appbar{display:flex;}
+body.appbar-on .appbar{transform:none;}
+.appbar .ab-txt{flex:1;min-width:0;}
+.appbar .ab-t{font-family:var(--font-u);font-size:.9375rem;font-weight:500;color:var(--tx);}
+.appbar .ab-s{font-family:var(--font-u);font-size:.8125rem;color:var(--muted);margin-top:2px;}
+.appbar .btn{padding:12px 20px;font-size:.8125rem;min-height:48px;flex-shrink:0;}
+
+/* ── FOOTER ───────────────────────────────────────── */
+/* Divisor em gradiente em vez de borda sólida: mesmo recurso que já
+   separa seções na landing (.div), fio que dissolve nas pontas em vez
+   de cortar a largura inteira. */
+footer{padding:48px 0 40px;margin-top:64px;position:relative;}
+footer::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--border) 15%,var(--border) 85%,transparent);
+}
+/* nota de método (era seção no corpo, entre o salmo e a reflexão): o
+   rodapé já tem seu próprio divisor no topo, então a nota perde a borda
+   e o respiro que a prendiam ao texto acima; só reaproveita a
+   tipografia da linha de atribuição. */
+/* Auditoria de 2026-08-24: margin-top estava zerado, então este fio
+   encostava direto na última linha do texto (sem respiro nenhum) antes de
+   abrir espaço pro logo. 28px em cima equilibra com os 28px que já existiam
+   embaixo. */
+footer .div{margin:28px 0 28px;}
+.ft-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+.ft-links{display:flex;gap:8px 28px;flex-wrap:wrap;}
+.ft-links a{font-family:var(--font-u);font-size:.875rem;letter-spacing:.02em;color:var(--text);transition:color var(--dur-f);padding:14px 0;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;}
+.ft-links a:hover{color:var(--accent-txt);text-decoration-color:currentColor;}
+.ft-copy{font-family:var(--font-u);font-size:.8125rem;color:var(--muted);}
+
+/* ── SEÇÃO ────────────────────────────────────────── */
+main{padding-bottom:24px;}
+.sec-head{padding:48px 0 6px;position:relative;overflow:hidden;}
+.sec-head h1{
+  font-family:var(--font-d);font-weight:400;
+  font-size:clamp(2rem,7vw,3.25rem);line-height:1.1;letter-spacing:-.02em;color:var(--tx);
+}
+.sec-head .sub{
+  font-family:var(--font-v);font-style:italic;font-weight:400;
+  font-size:clamp(1.1875rem,4vw,1.5625rem);line-height:1.45;color:var(--scripture);margin-top:14px;
+}
+.sec-head .lead{
+  font-family:var(--font-u);font-size:1.0625rem;line-height:1.75;color:var(--text);
+  margin-top:20px;max-width:56ch;
+}
+
+/* ── SKIP LINK / FOCUS ────────────────────────────── */
+.skip-link{
+  position:absolute;top:-100%;left:16px;z-index:99999;
+  background:var(--accent);color:var(--on-accent);
+  padding:14px 22px;border-radius:999px;
+  font-family:var(--font-u);font-size:1rem;font-weight:500;
+}
+.skip-link:focus{top:8px;}
+:focus-visible{outline:3px solid var(--accent-txt);outline-offset:3px;}
+main:focus{outline:none;}
+
+
+
+/* ── DESKTOP: duas colunas ──────────────────────────
+   Abaixo de 1080px a página é uma coluna só, que é o certo no celular.
+   Acima disso, o controle de leitura sai do fluxo e vira trilho lateral
+   fixo: a tela grande passa a ter uso, e a ferramenta para de disputar
+   espaço vertical com o texto. A ordem do DOM não muda, então leitor de
+   tela e tabulação seguem iguais. */
+@media(min-width:1080px){
+  /* o hub e páginas sem trilho ganham largura, mas sem grid */
+  .wrap-read{max-width:calc(var(--read-col) + 160px);}
+  .page:has(> .reader-ctl){max-width:calc(var(--read-col) + 296px);}
+
+  /* Numa página COM trilho, o miolo mede 976px enquanto os outros
+     containers mediam 840px. Como os dois se centralizam sozinhos, a
+     diferença de largura virava 68px de desalinhamento na borda
+     esquerda: breadcrumb e rodapé nasciam para dentro do texto.
+     Aqui todo container passa a medir igual, e quem não é grid limita
+     o conteúdo à coluna de leitura para não esticar a linha. */
+  body:has(.reader-ctl) .wrap-read{max-width:calc(var(--read-col) + 296px);}
+  body:has(.reader-ctl) .wrap-read:not(.page) > *{max-width:var(--read-col);}
+  .page:has(> .reader-ctl){
+    display:grid;
+    grid-template-columns:minmax(0,var(--read-col)) 240px;
+    column-gap:56px;
+    align-items:start;
+    justify-content:center;
+  }
+  .page:has(> .reader-ctl) > *{grid-column:1;min-width:0;}
+  .page > .reader-ctl{
+    /* linha 2 em diante: o cabeçalho fica sozinho na linha 1, com a
+       largura toda, senão ele era empurrado para baixo do trilho e
+       abria um buraco à esquerda. Abranger até o fim mantém o sticky
+       vivo durante a leitura inteira. */
+    grid-column:2;grid-row:1 / -1;
+    position:sticky;top:28px;
+    display:block;margin:0;padding:20px;
+    border:1px solid var(--border-int);border-radius:14px;border-bottom-width:1px;
+    background:var(--surface);
+  }
+  .page > .reader-ctl .rc-lbl{
+    display:block;margin-bottom:12px;
+    font-size:.8125rem;letter-spacing:.1em;text-transform:uppercase;
+  }
+  .page > .reader-ctl .rc-opts{flex-direction:column;}
+  .page > .reader-ctl button{width:100%;justify-content:flex-start;padding:10px 14px;}
+  /* O cabeçalho fica na coluna de texto, não na largura toda: assim a
+     marca d'água ancora no canto direito da coluna e não some atrás do
+     trilho, que tem fundo sólido. Cabeçalho e trilho dividem a linha 1. */
+  .page > .ph{grid-column:1;grid-row:1;}
+}
+@media(min-width:1400px){
+  .page:has(> .reader-ctl){max-width:calc(var(--read-col) + 360px);}
+  .page:has(> .reader-ctl){grid-template-columns:minmax(0,var(--read-col)) 280px;column-gap:80px;}
+  body:has(.reader-ctl) .wrap-read{max-width:calc(var(--read-col) + 360px);}
+}
+
+/* ── RESPONSIVO ───────────────────────────────────── */
+@media(max-width:640px){
+  .wrap,.wrap-read{padding:0 20px;}
+  .reflect{padding:26px 20px;}
+  .cta{padding:32px 20px;}
+  .care{padding:20px;}
+  .reader-ctl{padding:14px;}
+  .pager .next{text-align:left;}
+  .ft-inner{flex-direction:column;align-items:center;text-align:center;}
+  .ft-links{justify-content:center;gap:4px 20px;}
+  .psalm li{gap:12px;}
+  .rc-opts{gap:6px;}
+  .reader-ctl button{padding:10px 8px;gap:6px;}
+  .rc-w{font-size:.875rem;}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;}
+  html{scroll-behavior:auto;}
+}
+
+/* ── IMPRESSÃO ────────────────────────────────────── */
+/* Este público imprime salmo pra levar pra igreja e pro hospital. */
+@media print{
+  nav,footer,.appbar,.reader-ctl,.cta,.rel,.pager,.crumb,.skip-link,body::after{display:none!important;}
+  html,body{background:#fff!important;color:#000!important;}
+  .wrap-read{max-width:none;padding:0;}
+  .ph-num,.ph-title,.psalm li .t,.reflect h2,.reflect p,.care b{color:#000!important;}
+  .ph-title,.reflect .ask,.anchor p{color:#333!important;}
+  .psalm li .n,.ph-meta,.attrib,.byline{color:#555!important;}
+  .psalm li .t{font-size:14pt;line-height:1.6;}
+  .psalm li{break-inside:avoid;}
+  .reflect,.care{border:1px solid #999!important;background:none!important;}
+  .attrib a[href]::after{content:'';}
+  /* marca d'água e linhas de acento são só tela: no papel, só o texto */
+  .hd-ghost,.reflect::before,.cta::before{display:none!important;}
+  .ph .ph-num,.ph .ph-title,.ph .ph-meta,
+  .sec-head h1,.sec-head .sub,.sec-head .lead{opacity:1!important;animation:none!important;transform:none!important;}
+  .psalm li.v-gold{border-color:#999!important;}
+  .psalm li.v-gold .t,.psalm li.v-gold .n{color:#333!important;}
+}
