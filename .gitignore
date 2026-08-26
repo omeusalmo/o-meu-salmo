@@ -25,3 +25,10 @@ app/google-credentials.json
 __pycache__/
 *.pyc
 *.pyo
+
+# Artefatos de build. Um AAB deste app passa de 100 MB, que é o teto do
+# GitHub por arquivo, então um `git add -A` distraído quebraria o push.
+# Os releases ficam em gestao-de-apps/aab-releases/ só localmente.
+*.aab
+*.apk
+gestao-de-apps/aab-releases/
