@@ -28,7 +28,6 @@ __pycache__/
 
 # Artefatos de build. Um AAB deste app passa de 100 MB, que é o teto do
 # GitHub por arquivo, então um `git add -A` distraído quebraria o push.
-# Os releases ficam em gestao-de-apps/aab-releases/ só localmente.
+# Os releases ficam fora deste repo, em ~/Dropbox/Claude/gestao-de-apps/.
 *.aab
 *.apk
-gestao-de-apps/aab-releases/
