@@ -103,8 +103,11 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
 
     await ref.read(onboardingProvider.notifier).markDone();
     if (!mounted) return;
-    final colId = _selectedEmocao.colecaoId;
-    context.go(colId.isNotEmpty ? '/colecoes/$colId' : '/home');
+    // Sempre a Home. Antes ia direto para a coleção da emoção escolhida, o que
+    // pulava o Salmo do Dia e deixava a pessoa numa lista sem nunca ter visto
+    // a tela principal. A escolha não se perde: a coleção fica marcada com a
+    // tag "sua escolha" na lista de coleções.
+    context.go('/home');
   }
 
   @override

@@ -4,7 +4,23 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../core/analytics/analytics_service.dart';
 import '../../core/constants/app_constants.dart';
 
-class ThemeModeNotifier extends Notifier<ThemeMode> {
+/// Guarda contra uma corrida entre a leitura inicial e a escolha do usuário.
+///
+/// Os notifiers abaixo seguem o padrão `build() { _load(); return padrão; }`:
+/// devolvem o valor padrão na hora e corrigem quando o disco responde. Se o
+/// usuário decide nesse intervalo, e é exatamente o que acontece no
+/// onboarding, a leitura chega depois com o valor antigo e sobrescreve a
+/// escolha. O dado fica certo em disco e errado na tela, então a pessoa aceita
+/// e vê desligado.
+///
+/// `_escolhido` marca que já houve decisão explícita; `_load` respeita.
+mixin _RespeitaEscolha {
+  bool _escolhido = false;
+  void _marcarEscolha() => _escolhido = true;
+  bool get _jaEscolheu => _escolhido;
+}
+
+class ThemeModeNotifier extends Notifier<ThemeMode> with _RespeitaEscolha {
   @override
   ThemeMode build() {
     _load();
@@ -14,7 +30,7 @@ class ThemeModeNotifier extends Notifier<ThemeMode> {
   Future<void> _load() async {
     final prefs = await SharedPreferences.getInstance();
     final saved = prefs.getString(AppConstants.prefThemeModeKey);
-    if (saved == null) return;
+    if (saved == null || _jaEscolheu) return;
     final mode = ThemeMode.values.firstWhere(
       (m) => m.name == saved,
       orElse: () => ThemeMode.system,
@@ -23,6 +39,7 @@ class ThemeModeNotifier extends Notifier<ThemeMode> {
   }
 
   Future<void> set(ThemeMode mode) async {
+    _marcarEscolha();
     state = mode;
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(AppConstants.prefThemeModeKey, mode.name);
@@ -35,7 +52,8 @@ final themeModeProvider =
 // ─── Notificação do Salmo do dia ─────────────────────────────────────────────
 
 class NotificationSettingsNotifier
-    extends Notifier<({bool enabled, int hour, int minute})> {
+    extends Notifier<({bool enabled, int hour, int minute})>
+    with _RespeitaEscolha {
   @override
   ({bool enabled, int hour, int minute}) build() {
     _load();
@@ -51,10 +69,12 @@ class NotificationSettingsNotifier
     final enabled = prefs.getBool(AppConstants.prefNotificationEnabled) ?? false;
     final hour    = prefs.getInt(AppConstants.prefNotificationHour)    ?? AppConstants.defaultNotifHour;
     final minute  = prefs.getInt(AppConstants.prefNotificationMinute)  ?? AppConstants.defaultNotifMinute;
+    if (_jaEscolheu) return;
     state = (enabled: enabled, hour: hour, minute: minute);
   }
 
   Future<void> setEnabled(bool value, {int? hour, int? minute}) async {
+    _marcarEscolha();
     final h = hour   ?? state.hour;
     final m = minute ?? state.minute;
     state = (enabled: value, hour: h, minute: m);
@@ -82,7 +102,7 @@ final notificationSettingsProvider = NotifierProvider<
 /// Consentimento de coleta de dados de uso. Padrão desligado; o usuário liga
 /// explicitamente na tela de consentimento do onboarding (ou depois em
 /// Ajustes). A escolha é aplicada ao Firebase e persistida.
-class UsageDataNotifier extends Notifier<bool> {
+class UsageDataNotifier extends Notifier<bool> with _RespeitaEscolha {
   @override
   bool build() {
     _load();
@@ -92,11 +112,13 @@ class UsageDataNotifier extends Notifier<bool> {
   Future<void> _load() async {
     final prefs = await SharedPreferences.getInstance();
     final enabled = prefs.getBool(AppConstants.prefUsageDataEnabled) ?? false;
+    if (_jaEscolheu) return;
     state = enabled;
     await AnalyticsService.instance.setCollectionEnabled(enabled);
   }
 
   Future<void> set(bool value) async {
+    _marcarEscolha();
     state = value;
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool(AppConstants.prefUsageDataEnabled, value);

@@ -77,9 +77,8 @@ class NotificationService {
   // ⚠️ _channelId é chave técnica do canal no Android, NÃO renomear: trocar
   // cria um canal duplicado e quem já configurou perde o ajuste.
   static const String _channelId   = 'salmo_diario';
-  // Nome visível nas Configurações do Android. Renomear exige
-  // channelAction.update no AndroidNotificationDetails (ver scheduleDailySalmo),
-  // senão quem já ativou continua vendo o nome antigo para sempre.
+  // Nome visível nas Configurações do Android. A renomeação é aplicada por
+  // createNotificationChannel em init(), que atualiza o canal existente.
   static const String _channelName = 'Salmo do dia';
 
   Future<void> init() async {
@@ -107,6 +106,28 @@ class NotificationService {
           _rotaPendente = rota;
         }
       },
+    );
+
+    // Cria o canal explicitamente, e não pelo AndroidNotificationDetails.
+    //
+    // O plugin só cria o canal quando ele NÃO existe E a ação é
+    // createIfNotExists (ver canCreateNotificationChannel no fonte). Com
+    // channelAction.update, usado aqui para renomear o canal de quem vinha da
+    // 1.0.1, instalação nova nunca ganhava canal, e sem canal o Android 8+
+    // descarta a notificação sem erro nenhum: o alarme dispara, o receiver
+    // roda, e nada aparece.
+    //
+    // createNotificationChannel é idempotente: cria se não existe e atualiza
+    // nome e descrição se existe, que é exatamente o que os dois casos pedem.
+    final android = _plugin.resolvePlatformSpecificImplementation<
+        AndroidFlutterLocalNotificationsPlugin>();
+    await android?.createNotificationChannel(
+      const AndroidNotificationChannel(
+        _channelId,
+        _channelName,
+        description: 'Um Salmo por dia, no horário que você escolher.',
+        importance: Importance.defaultImportance,
+      ),
     );
 
     // App aberto a partir da notificação com o processo morto: o toque não
@@ -169,10 +190,9 @@ class NotificationService {
           android: AndroidNotificationDetails(
             _channelId,
             _channelName,
-            // update, e não o padrão createIfNotExists: o canal já existe no
-            // aparelho de quem ativou a notificação antes da renomeação, e sem
-            // isto continuaria mostrando o nome antigo nas Configurações.
-            channelAction: AndroidNotificationChannelAction.update,
+            // O canal é criado e mantido em init(). Aqui fica a rede de
+            // segurança, caso o init tenha falhado em algum OEM.
+            channelAction: AndroidNotificationChannelAction.createIfNotExists,
             importance: Importance.defaultImportance,
             priority: Priority.defaultPriority,
             icon: '@mipmap/launcher_icon',
