@@ -16,6 +16,14 @@
   .nf{min-height:70vh;display:flex;flex-direction:column;justify-content:center;}
   .nf .ph-num{font-size:clamp(2rem,7vw,3rem);}
 </style>
+<!-- Google Analytics 4 — G-FHW3F9M24T -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHW3F9M24T"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-FHW3F9M24T');
+</script>
 </head>
 <body>
 
@@ -85,6 +93,10 @@
   document.getElementById('cta-texto').textContent =
     'No aplicativo o Salmo ' + n + ' está inteiro e narrado, sem pressa. São 150 salmos organizados por como você está se sentindo. Funciona sem internet, e não tem anúncio nenhum.';
   document.title = 'Salmo ' + n + ' · O meu Salmo';
+
+  /* Qual salmo a pessoa queria e nao existe. E a lista de espera para decidir
+     quais das 130 paginas que faltam vale publicar primeiro. */
+  if (typeof gtag === 'function') gtag('event', 'salmo_sem_pagina', {psalm_number: n});
 })();
 </script>
 </body>

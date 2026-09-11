@@ -185,6 +185,16 @@ CABECA = """<!DOCTYPE html>
 <script type="application/ld+json">
 {jsonld}
 </script>
+
+<!-- Google Analytics 4 — G-FHW3F9M24T. Mesma propriedade da home: sem isto
+     estas paginas sao invisiveis e a aposta de SEO nao tem como ser medida. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHW3F9M24T"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){{dataLayer.push(arguments);}}
+gtag('js',new Date());
+gtag('config','G-FHW3F9M24T');
+</script>
 </head>
 <body>
 
