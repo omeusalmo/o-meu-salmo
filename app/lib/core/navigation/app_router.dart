@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../analytics/analytics_service.dart';
+
 import '../extensions/build_context_extensions.dart';
 import '../../shared/widgets/error_state_view.dart';
 import '../../features/splash/splash_screen.dart';
@@ -19,6 +21,9 @@ import '../../shared/widgets/main_shell.dart';
 final GoRouter appRouter = GoRouter(
   initialLocation: '/splash',
   debugLogDiagnostics: false,
+  // screen_view automático nas 11 telas. Respeita o opt-out: se a coleta
+  // estiver desligada o SDK descarta o evento, não há gate a fazer aqui.
+  observers: AnalyticsService.instance.observers,
   // Rota desconhecida (ex.: deep link inválido) cai numa tela com saída,
   // nunca na tela de erro crua do go_router.
   errorBuilder: (context, state) => Scaffold(
@@ -36,10 +41,12 @@ final GoRouter appRouter = GoRouter(
   routes: [
     GoRoute(
       path: '/splash',
+      name: 'splash',
       builder: (_, __) => const SplashScreen(),
     ),
     GoRoute(
       path: '/onboarding',
+      name: 'onboarding',
       builder: (_, __) => const OnboardingScreen(),
     ),
     StatefulShellRoute.indexedStack(
@@ -49,16 +56,19 @@ final GoRouter appRouter = GoRouter(
         StatefulShellBranch(routes: [
           GoRoute(
             path: '/home',
+            name: 'home',
             builder: (_, __) => const HomeScreen(),
           ),
         ]),
         StatefulShellBranch(routes: [
           GoRoute(
             path: '/colecoes',
+            name: 'colecoes',
             builder: (_, __) => const ColecoesScreen(),
             routes: [
               GoRoute(
                 path: ':id',
+                name: 'colecao_detalhe',
                 pageBuilder: (_, state) => _fadeSlide(
                   state,
                   DetalheColecaoScreen(
@@ -72,10 +82,12 @@ final GoRouter appRouter = GoRouter(
         StatefulShellBranch(routes: [
           GoRoute(
             path: '/salmos',
+            name: 'salmos',
             builder: (_, __) => const TodosSalmosScreen(),
             routes: [
               GoRoute(
                 path: ':numero',
+                name: 'leitura_salmo',
                 pageBuilder: (_, state) => _fadeSlide(
                   state,
                   LeituraSalmoScreen(
@@ -89,6 +101,7 @@ final GoRouter appRouter = GoRouter(
         StatefulShellBranch(routes: [
           GoRoute(
             path: '/favoritos',
+            name: 'favoritos',
             builder: (_, __) => const FavoritosScreen(),
           ),
         ]),
@@ -98,6 +111,7 @@ final GoRouter appRouter = GoRouter(
     // Rotas modais — deslizam de baixo para cima
     GoRoute(
       path: '/compositor',
+      name: 'compositor',
       pageBuilder: (_, state) {
         final n = int.tryParse(state.uri.queryParameters['numero'] ?? '') ?? 0;
         return _slideUp(state, CompositorScreen(numero: n));
@@ -105,10 +119,12 @@ final GoRouter appRouter = GoRouter(
     ),
     GoRoute(
       path: '/ajustes',
+      name: 'ajustes',
       pageBuilder: (_, state) => _slideUp(state, const AjustesScreen()),
     ),
     GoRoute(
       path: '/respirar',
+      name: 'respirar',
       pageBuilder: (_, state) => _slideUp(state, const RespirarScreen()),
     ),
   ],
@@ -118,6 +134,9 @@ final GoRouter appRouter = GoRouter(
 CustomTransitionPage<void> _fadeSlide(GoRouterState state, Widget child) =>
     CustomTransitionPage<void>(
       key: state.pageKey,
+      // Sem name o FirebaseAnalyticsObserver ignora a tela: era por isso que
+      // leitura de salmo e detalhe de coleção nunca apareciam no screen_view.
+      name: state.name ?? state.path,
       child: child,
       transitionDuration: const Duration(milliseconds: 350),
       reverseTransitionDuration: const Duration(milliseconds: 280),
@@ -139,6 +158,9 @@ CustomTransitionPage<void> _fadeSlide(GoRouterState state, Widget child) =>
 CustomTransitionPage<void> _slideUp(GoRouterState state, Widget child) =>
     CustomTransitionPage<void>(
       key: state.pageKey,
+      // Sem name o FirebaseAnalyticsObserver ignora a tela: era por isso que
+      // leitura de salmo e detalhe de coleção nunca apareciam no screen_view.
+      name: state.name ?? state.path,
       child: child,
       transitionDuration: const Duration(milliseconds: 400),
       reverseTransitionDuration: const Duration(milliseconds: 320),

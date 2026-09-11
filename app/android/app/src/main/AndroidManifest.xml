@@ -21,6 +21,21 @@
         android:label="O meu Salmo"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
+
+        <!-- Coleta nasce desligada. Sem isto o SDK do Firebase registra
+             first_open e session_start no initializeApp, antes do
+             setCollectionEnabled(false) do Dart rodar, e o app coletava dado
+             de quem nunca consentiu (LGPD). Com o flag em false o runtime
+             ainda pode ligar via setAnalyticsCollectionEnabled(true), que é o
+             que main.dart faz quando a preferência está marcada.
+             NÃO usar firebase_analytics_collection_deactivated: esse é
+             permanente e não pode ser revertido em runtime. -->
+        <meta-data
+            android:name="firebase_analytics_collection_enabled"
+            android:value="false" />
+        <meta-data
+            android:name="firebase_crashlytics_collection_enabled"
+            android:value="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

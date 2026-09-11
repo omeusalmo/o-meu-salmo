@@ -30,6 +30,10 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   int _currentPage = 0;
   EmocaoInicial _selectedEmocao = EmocaoInicial.paz;
   bool _querNotificacao = false;
+  // Intenção declarada na nossa tela, antes do diálogo do sistema. Separada de
+  // _querNotificacao (que é o que o Android concedeu) porque recusar aqui é
+  // problema de copy e ter a permissão negada depois é problema de sistema.
+  bool _pediuNotificacao = false;
 
   /// Passos vistos até aqui.
   ///
@@ -80,6 +84,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
       AnalyticsService.instance.logNotifPermission(
         concedida: _querNotificacao,
         origem: 'onboarding',
+        pediu: _pediuNotificacao,
       );
     }
 
@@ -96,6 +101,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
       try {
         final salmos = await ref.read(salmosProvider.future);
         await AgendadorSalmoDiario.reagendar(salmos);
+        AnalyticsService.instance.logNotifScheduled(
+          ref.read(notificationSettingsProvider).hour,
+        );
       } catch (e) {
         debugPrint('[Notif] agendamento no onboarding falhou: $e');
       }
@@ -171,6 +179,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                     // quer. No Android 13+ duas recusas deixam a permissão
                     // negada em definitivo, então perguntar a frio queima a
                     // única chance que o app tem.
+                    _pediuNotificacao = quer;
                     if (quer) {
                       _querNotificacao =
                           await NotificationService.instance.requestPermission();

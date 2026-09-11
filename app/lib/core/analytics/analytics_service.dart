@@ -1,6 +1,6 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 
 /// Singleton que encapsula Firebase Analytics.
 ///
@@ -20,6 +20,16 @@ class AnalyticsService {
       debugPrint('[Analytics] Firebase não disponível: $e');
     }
   }
+
+  /// Observers para o GoRouter, que geram screen_view nas 11 telas.
+  ///
+  /// Passa pelo mesmo guard dos eventos: se o Firebase não subiu, devolve
+  /// lista vazia em vez de estourar. Importa porque `appRouter` é um `final`
+  /// global e tocar em `FirebaseAnalytics.instance` ali derrubaria o app na
+  /// primeira navegação.
+  List<NavigatorObserver> get observers => _analytics == null
+      ? const []
+      : [FirebaseAnalyticsObserver(analytics: _analytics!)];
 
   /// Liga/desliga a coleta de dados de uso (Analytics + Crashlytics).
   /// Respeita a escolha do usuário no opt-out de Ajustes (LGPD).
@@ -67,11 +77,19 @@ class AnalyticsService {
   ///
   /// [origem] separa quem aceitou no onboarding de quem foi ligar depois em
   /// Ajustes: são momentos muito diferentes de intenção.
+  /// [pediu] é a intenção declarada antes do diálogo do sistema. Com os dois
+  /// campos dá para separar "não quis" de "quis e o Android negou": o primeiro
+  /// é problema de copy, o segundo é permissão já queimada por recusa anterior.
   Future<void> logNotifPermission({
     required bool concedida,
     required String origem,
+    bool? pediu,
   }) =>
-      _log('notif_permission', {'granted': concedida, 'source': origem});
+      _log('notif_permission', {
+        'granted': concedida,
+        'source': origem,
+        if (pediu != null) 'asked': pediu,
+      });
 
   /// Notificação agendada, com o horário escolhido. O horário importa: se a
   /// maioria escolher a noite, o conteúdo do aviso deveria mudar de tom.
