@@ -10,7 +10,7 @@
 
 ```
 instagram/
-├── fila-de-postagem/        ★ 21 pastas, 1 por post, na ordem de publicação
+├── fila-de-postagem/        ★ 27 pastas, 1 por post, na ordem de publicação
 │   ├── 00-pin-carrossel-app/       5 slides + legenda.txt   (1º post; FIXAR no perfil)
 │   ├── 01-dom-card-esperanca/      post.png + legenda.txt   (light cobalt)
 │   ├── 02-qua-reel-salmo-23/       fundo.png + audio.mp3 + legenda.txt (montar no CapCut)
@@ -31,10 +31,25 @@ instagram/
 │   ├── 17-dom-card-gratidao/       post.png + legenda.txt   (light âmbar, Salmo 103)
 │   ├── 18-qua-card-sono/           post.png + legenda.txt   (dark verde, Salmo 127)
 │   ├── 19-sex-founder-gratis-sem-anuncio/ post.png + legenda.txt (dark cobalt, quote card)
-│   └── 20-dom-card-esperanca/      post.png + legenda.txt   (light cobalt, Salmo 27)
+│   ├── 20-dom-card-esperanca/      post.png + legenda.txt   (light cobalt, Salmo 27)
+│   ├── 21-fb-e-um-app/            post.png + legenda.txt   (Facebook)
+│   ├── 22-especial-setembro-amarelo/ post-ambar.png OU post-escuro.png + legenda.txt
+│   │                               (especial Setembro Amarelo, Salmo 40.1 + CVV 188;
+│   │                                2 variantes de arte, escolher 1 e apagar a outra;
+│   │                                ⚠️ tema sensível, ler os avisos no topo do legenda.txt;
+│   │                                NÃO impulsionar)
+│   ├── 23-dom-card-confianca/      post.png + legenda.txt   (dark cobalt, Salmo 146.3)
+│   ├── 24-qua-card-justica/        post.png + legenda.txt   (light âmbar, Salmo 82.3)
+│   ├── 25-sex-card-paz/            post.png + legenda.txt   (dark verde, Salmo 37.8)
+│   └── 26-dom-card-esperanca/      post.png + legenda.txt   (light cobalt, Salmo 118.8)
+│                                   ⚠️ posts 23 a 26 são UM BLOCO de tema sensível
+│                                   (leitura político-eleitoral). Publicar na ordem,
+│                                   sem citar nome nenhum, sem impulsionar.
+│                                   Regras completas em
+│                                   23-dom-card-confianca/AVISO-bloco-23-a-26.txt
 └── fontes/                  ← só HTML (nunca PNG aqui)
     ├── gerar-tudo.sh        ★ regenera TODA a fila com 1 comando
-    ├── cards/               (12 cards)
+    ├── cards/               (16 cards)
     ├── carrossel-app/       (5 slides)
     ├── carrossel-ansiedade/ (7 slides)
     ├── carrossel-como-funciona/ (6 slides)
@@ -57,6 +72,9 @@ O post 11 foge do padrão (`NN-especial-tema`, sem dia fixo) porque a data de pu
 | Sono / Proteção | dark verde | `#6A9A62` |
 | Perdão | dark lavanda | `#8480AA` |
 | Luto | dark malva | `#9A6A86` |
+
+Os posts 23 a 26 reusam a paleta existente: Confiança = dark cobalt, Justiça = light âmbar,
+Paz = dark verde, Esperança = light cobalt.
 
 Base sempre DS: Playfair (títulos), Cormorant itálico (versículos), Instrument Sans (labels), gold `#C4A86A`/`#6B4E1C` nas referências.
 

@@ -28,6 +28,12 @@ shot "$DIR/cards/tema-gratidao-salmo-103.html"  "$FILA/17-dom-card-gratidao/post
 shot "$DIR/cards/tema-sono-salmo-127.html"      "$FILA/18-qua-card-sono/post.png"       1080,1350
 shot "$DIR/cards/tema-esperanca-salmo-27.html"  "$FILA/20-dom-card-esperanca/post.png"  1080,1350
 
+# bloco 23-26 — salmos de discernimento (tema sensível, ver AVISO na pasta 23)
+shot "$DIR/cards/tema-confianca-salmo-146.html"  "$FILA/23-dom-card-confianca/post.png"   1080,1350
+shot "$DIR/cards/tema-justica-salmo-82.html"     "$FILA/24-qua-card-justica/post.png"     1080,1350
+shot "$DIR/cards/tema-paz-salmo-37.html"         "$FILA/25-sex-card-paz/post.png"         1080,1350
+shot "$DIR/cards/tema-esperanca-salmo-118.html"  "$FILA/26-dom-card-esperanca/post.png"   1080,1350
+
 # especial (post 11, 4:5)
 # especial (post 11, carrossel 6 slides 4:5, mesmo sistema visual do kit de ads)
 for f in "$DIR"/carrossel-lancamento/*.html; do
@@ -55,6 +61,10 @@ done
 
 # facebook — post "é um aplicativo" (post 21, 4:5)
 shot "$DIR/facebook-app/post-e-um-app.html" "$FILA/21-fb-e-um-app/post.png" 1080,1350
+
+# especial setembro amarelo (post 22, 4:5) — versao ambar escolhida; variante escura
+# fica so como HTML em cards/especial-setembro-amarelo.html, nao vai pra fila
+shot "$DIR/cards/especial-setembro-amarelo-ambar.html" "$FILA/22-especial-setembro-amarelo/post.png" 1080,1350
 
 # reels (9:16)
 shot "$DIR/reels/reel-salmo-23.html"  "$FILA/02-qua-reel-salmo-23/fundo.png"   1080,1920
