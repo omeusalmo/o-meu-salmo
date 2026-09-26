@@ -1,9 +1,19 @@
+import 'package:in_app_purchase/in_app_purchase.dart' show InAppPurchase;
 import 'package:salmos_app/core/apoio/compra_service.dart';
 import 'package:salmos_app/core/apoio/loja_apoio.dart';
 
-/// Loja falsa. O `in_app_purchase` real não sobe sob `flutter test` (sem plugin
-/// nativo), e mesmo com plugin dependeria dos produtos existirem na Play
-/// Console — que é justamente o que ainda não existe.
+/// Loja falsa no nível de [ResultadoCompra], para widget tests.
+///
+/// ⚠️ Substitui ACIMA do protocolo do Play: não emite `PurchaseDetails`, não
+/// passa por `buyConsumable`, `completePurchase` nem pelo mapeamento de status.
+/// Nenhum bug de Billing é pegável daqui — os cinco que o QA achou em 2026-09-26
+/// viviam todos abaixo deste ponto. Para esses, `fake_loja_play.dart` substitui o
+/// [InAppPurchase] inteiro. Este arquivo serve à UI: dá um resultado pronto para
+/// o sheet reagir.
+///
+/// O `in_app_purchase` real não sobe sob `flutter test` (sem plugin nativo), e
+/// mesmo com plugin dependeria dos produtos existirem na Play Console — que é
+/// justamente o que ainda não existe.
 ///
 /// Os preços vêm daqui do mesmo jeito que viriam de
 /// `ProductDetails.formattedPrice`: como texto pronto da loja. Se algum dia

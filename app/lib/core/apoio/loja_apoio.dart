@@ -38,6 +38,11 @@ class LojaApoio {
       // Sem plugin nativo, sem Play Services, sem rede: indisponível.
       return false;
     } finally {
+      // Hoje isto só solta uma compra em curso (que nunca há aqui): a assinatura
+      // do `purchaseStream` mora em `ApoioBilling`, um por processo, e não no
+      // objeto que este método cria e joga fora. Antes não era assim — este
+      // `dispose()` cancelava a assinatura global, e podia derrubar a drenagem
+      // de abertura no meio, junto com qualquer compra que estivesse chegando.
       loja.dispose();
     }
   }

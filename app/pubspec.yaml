@@ -45,10 +45,27 @@ dependencies:
   # Console. Sem eles, queryProductDetails volta vazio e o sheet degrada.
   in_app_purchase: ^3.2.0
 
+  # Direto, e não transitivo, por duas coisas que o pacote-guarda-chuva NÃO
+  # reexporta (in_app_purchase-3.3.1/lib/in_app_purchase.dart:11-19) e das quais
+  # a drenagem de consumível depende:
+  #  · InAppPurchaseAndroidPlatformAddition.consumePurchase
+  #    (in_app_purchase_android_platform_addition.dart:39) — completePurchase no
+  #    Android só faz acknowledge (in_app_purchase_android_platform.dart:191-206)
+  #  · PurchaseWrapper.purchaseState, para distinguir compra real de evento
+  #    sintético quando o plugin sobrescreve o status
+  #    (in_app_purchase_android_platform.dart:288-291)
+  in_app_purchase_android: ^0.5.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+
+  # Só o teste nomeia `InAppPurchasePlatformAddition` — é o bound do parâmetro de
+  # tipo de `InAppPurchase.getPlatformAddition` (in_app_purchase.dart:47-49), e
+  # um override em Dart precisa repetir o bound. O pacote-guarda-chuva não o
+  # reexporta (in_app_purchase.dart:11-19).
+  in_app_purchase_platform_interface: ^1.4.1
 
   # Gerador de splash nativa (Android/iOS) — roda uma vez: dart run flutter_native_splash:create
   flutter_native_splash: ^2.4.1

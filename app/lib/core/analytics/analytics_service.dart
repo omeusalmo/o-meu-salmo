@@ -208,8 +208,15 @@ class AnalyticsService {
   ///
   /// `no` é o "Nem tanto"; `dismiss` é fechar sem responder (arrastar, tocar
   /// fora, botão voltar); `never` é "Não perguntar de novo".
-  Future<void> logSupportPromptAnswer(String answer) =>
-      _log('support_prompt_answer', {'answer': answer});
+  ///
+  /// [surface] é `sheet` ou `card`. Sem ele, os dois `dismiss` caíam no mesmo
+  /// balde e não havia como saber se o X do card e o fechamento do sheet têm
+  /// taxas diferentes — que é a única pergunta que o evento responde.
+  Future<void> logSupportPromptAnswer(
+    String answer, {
+    String surface = 'sheet',
+  }) =>
+      _log('support_prompt_answer', {'answer': answer, 'surface': surface});
 
   /// Valor escolhido na lista. É o id do produto, não o preço: o preço muda de
   /// moeda e de país, o id não.

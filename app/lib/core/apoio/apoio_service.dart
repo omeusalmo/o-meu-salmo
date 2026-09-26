@@ -26,6 +26,7 @@ class ApoioService {
   bool _sensivelNaSessao = false;
   bool _reviewNestaSessao = false;
   bool _apoioNestaSessao = false;
+  bool _cardNestaSessao = false;
 
   /// Leitura concluída esperando a volta à Home. `null` = nada a fazer.
   _EventoLeitura? _pendente;
@@ -145,8 +146,16 @@ class ApoioService {
 
   /// Card exibido — evento de analytics, sem gastar exposição do sheet.
   /// O card não interrompe nada, então não entra no teto de 3 na vida.
-  void registrarCardExibido() => AnalyticsService.instance
-      .logSupportPromptShown(surface: 'card', exposureN: 0);
+  ///
+  /// Uma vez por sessão, não por `initState`. O card monta de novo a cada volta
+  /// à Home, e sem esta trava o `support_prompt_shown` de `card` inflava com
+  /// navegação: a taxa de conversão do card apareceria menor do que é.
+  void registrarCardExibido() {
+    if (_cardNestaSessao) return;
+    _cardNestaSessao = true;
+    AnalyticsService.instance
+        .logSupportPromptShown(surface: 'card', exposureN: 0);
+  }
 
   /// X do card. Soma 90 dias de silêncio.
   ///
@@ -154,14 +163,15 @@ class ApoioService {
   /// produto de 2026-09-26 diz 90 dias. Vale a de produto. Se mudar, é uma linha
   /// aqui e a constante `Elegibilidade.diasDeSilencio`.
   Future<void> dispensarCard() async {
-    AnalyticsService.instance.logSupportPromptAnswer('dismiss');
+    AnalyticsService.instance
+        .logSupportPromptAnswer('dismiss', surface: 'card');
     await ApoioPrefs.marcarCardDispensado();
   }
 
   /// Fechou o sheet sem responder (arrastar, tocar fora, botão voltar, "Agora
   /// não"). Conta como recusa: a trava de 90 dias já foi gravada na exibição.
-  void registrarRecusa() =>
-      AnalyticsService.instance.logSupportPromptAnswer('dismiss');
+  void registrarRecusa() => AnalyticsService.instance
+      .logSupportPromptAnswer('dismiss', surface: 'sheet');
 
   /// Respondeu "Nem tanto": vai para o e-mail e espera 90 dias.
   Future<void> registrarNemTanto() async {

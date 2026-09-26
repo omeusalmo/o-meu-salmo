@@ -147,9 +147,17 @@ class _ApoioSheetState extends State<ApoioSheet> {
       if (lista.isEmpty && _passo == _Passo.valores) {
         _erroNadaCobrado = true;
         _passo = _Passo.erro;
+        _logarSemProdutos();
       }
     });
   }
+
+  /// Catálogo vazio é o estado de erro mais provável da fase 2 (produtos ainda
+  /// não publicados) e era o único que não deixava rastro nenhum: o painel
+  /// aparecia e o funil ficava só com o `support_prompt_shown`, sem nada que
+  /// explicasse a queda.
+  void _logarSemProdutos() =>
+      AnalyticsService.instance.logSupportPurchaseError('sem_produtos');
 
   /// R$ 10 pré-selecionado. Se o id padrão não vier da loja, o do meio da lista.
   static String? _padrao(List<ProdutoApoio> lista) {
@@ -178,6 +186,7 @@ class _ApoioSheetState extends State<ApoioSheet> {
       if (_produtos != null && _produtos!.isEmpty) {
         _erroNadaCobrado = true;
         _passo = _Passo.erro;
+        _logarSemProdutos();
       } else {
         _passo = _Passo.valores;
       }

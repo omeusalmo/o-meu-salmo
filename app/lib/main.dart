@@ -9,6 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'core/analytics/analytics_service.dart';
 import 'core/apoio/apoio_service.dart';
+import 'core/apoio/compra_service.dart';
 import 'core/constants/app_constants.dart';
 import 'core/notifications/notification_service.dart';
 import 'core/firebase_options.dart';
@@ -90,6 +91,23 @@ void main() async {
     registrarAbertura(rota);
     appRouter.go(rota);
   };
+
+  // Ouvinte de compras do processo, antes do runApp.
+  //
+  // O plugin é explícito: "You must subscribe to this stream as soon as your app
+  // launches, preferably before returning your main App Widget in main().
+  // Otherwise you will miss purchase updated made before this stream is
+  // subscribed to" (in_app_purchase-3.3.1/lib/in_app_purchase.dart:64-66).
+  //
+  // Antes, a assinatura vivia dentro do CompraApoioPlay que o sheet criava e
+  // descartava. Compra que o Play confirmasse depois do sheet fechado chegava
+  // sem ninguém ouvindo: sem acknowledge, sem consumo, estorno em três dias.
+  //
+  // `aoApoiarSemSheet` fecha o outro lado: se a compra chegou órfã, ela ainda
+  // tem de contar como apoio, senão quem pagou continua vendo o pedido.
+  ApoioBilling.instance.aoApoiarSemSheet =
+      (produtoId) => ApoioService.instance.registrarApoio(produtoId);
+  ApoioBilling.instance.iniciar();
 
   runApp(const ProviderScope(child: SalmosApp()));
 }
