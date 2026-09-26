@@ -1343,7 +1343,7 @@ tailwind.config = {
         <div><div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ds-accent); margin-bottom:3px;">Descoberta (encorajador)</div><em style="font-family:'Cormorant',serif; font-size:14px;">"Como você está chegando hoje?"</em></div>
         <div><div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ds-accent); margin-bottom:3px;">Erro (honesto, direto)</div><em style="font-family:'Cormorant',serif; font-size:14px;">"Não consegui carregar este Salmo. Tente novamente."</em></div>
         <div><div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ds-accent); margin-bottom:3px;">Estado vazio (orientador)</div><em style="font-family:'Cormorant',serif; font-size:14px;">"Nenhum Salmo guardado ainda. Toque no coração ao ler um Salmo."</em></div>
-        <div><div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ds-accent); margin-bottom:3px;">Apoio (humilde)</div><em style="font-family:'Cormorant',serif; font-size:14px;">"Se ele faz parte do seu dia, considere apoiar com uma contribuição única."</em></div>
+        <div><div style="font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ds-accent); margin-bottom:3px;">Apoio (humilde)</div><em style="font-family:'Cormorant',serif; font-size:14px;">"Se ele faz parte do seu dia, você pode ajudar a mantê-lo assim."</em></div>
       </div>
     </div>
 
@@ -1438,7 +1438,7 @@ tailwind.config = {
           </div>
           <div>
             <div style="font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--ds-accent); margin-bottom:4px;">4. Monetização</div>
-            Ajustes → Apoie o app
+            Ajustes → Apoiar o app
           </div>
         </div>
       </div>
@@ -1473,6 +1473,164 @@ tailwind.config = {
   </div>
 </section>
 
+<!-- ════════════════════════════════════════════════════════════
+     11. APOIO — SHEET & CARD
+════════════════════════════════════════════════════════════ -->
+<section class="ds-section">
+  <div class="ds-section-title" style="color:var(--ds-accent);">11 — Apoio · Sheet & Card</div>
+  <p style="font-size:13px; opacity:.55;">Aprovado em 2026-09-26 (formato híbrido). Mock navegável de todos os estados em <code style="font-size:11px; background:var(--ds-surface); padding:2px 6px; border-radius:4px;">ui_kits/app/modal-apoio.html</code>. Copy final — não há variantes A/B.</p>
+
+  <style>
+    /* ── Apoio (DS section 11) ── */
+    .ap-sheet {
+      background:var(--ds-surface); border:.5px solid var(--ds-line);
+      border-radius:22px 22px 0 0; padding:12px 18px 24px; max-width:340px;
+    }
+    .ap-handle { width:40px; height:4px; border-radius:2px; background:var(--ds-line); margin:0 auto 20px; }
+    .ap-eyebrow { font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:var(--ds-text); margin-bottom:12px; }
+    .ap-title { font-family:'Playfair Display',serif; font-weight:400; font-size:24px; line-height:1.25; letter-spacing:-.01em; color:var(--ds-title); margin-bottom:12px; }
+    .ap-body { font-size:15px; line-height:1.6; color:var(--ds-text); margin-bottom:20px; }
+    .ap-note { font-size:13px; line-height:1.5; color:var(--ds-text); margin:12px 0 16px; }
+    .ap-actions { display:flex; flex-direction:column; gap:8px; }
+    .ap-btn {
+      min-height:48px; padding:12px 24px; border-radius:999px; width:100%;
+      font-family:'Instrument Sans',sans-serif; font-size:15px; font-weight:500;
+      line-height:1.3; text-align:center; cursor:pointer; border:0;
+    }
+    .ap-btn.fill { background:var(--ds-fill); color:#EEF0FC; }
+    .ap-btn.out  { background:transparent; color:var(--ds-accent); border:1px solid var(--ds-accent); }
+    .ap-btn.txt  { background:transparent; color:var(--ds-text); }
+    .ap-choice { border:.5px solid var(--ds-line); border-radius:14px; overflow:hidden; background:var(--ds-bg); }
+    .ap-row { min-height:56px; padding:12px 16px; display:flex; align-items:center; gap:12px; font-size:15px; color:var(--ds-text); }
+    .ap-row + .ap-row { border-top:.5px solid var(--ds-line); }
+    .ap-row .l { flex:1; }
+    .ap-row.sel { font-weight:500; color:var(--ds-accent); }
+    .ap-choice { --ap-muted:#7080C8; }                /* night-muted */
+    html:not(.dark) .ap-choice { --ap-muted:#4E5899; }  /* day-muted */
+    .ap-radio { width:20px; height:20px; border-radius:50%; border:1.5px solid var(--ap-muted); flex-shrink:0; display:grid; place-items:center; }
+    .ap-row.sel .ap-radio { border-color:var(--ds-accent); }
+    .ap-row.sel .ap-radio::after { content:''; width:10px; height:10px; border-radius:50%; background:var(--ds-accent); }
+    .ap-card {
+      position:relative; border-radius:14px; padding:16px 18px;
+      border:.5px solid var(--ds-line); background:transparent; max-width:340px;
+    }
+    .ap-card h4 { font-family:'Playfair Display',serif; font-weight:400; font-size:18px; color:var(--ds-title); margin:0 40px 6px 0; }
+    .ap-card p  { font-size:14px; line-height:1.55; color:var(--ds-text); margin-bottom:14px; }
+    .ap-card .ap-btn { width:auto; display:inline-block; }
+    .ap-x { position:absolute; top:4px; right:4px; width:48px; height:48px; display:grid; place-items:center; background:none; border:0; color:var(--ds-text); cursor:pointer; border-radius:999px; }
+    .ap-snack {
+      background:var(--ds-bg); border:.5px solid var(--ds-line); border-radius:14px;
+      padding:14px 16px; font-size:14px; line-height:1.45; color:var(--ds-title); max-width:340px;
+    }
+    .ap-state { display:grid; grid-template-columns:150px 1fr; gap:10px 16px; font-size:12px; line-height:1.6; }
+    .ap-state dt { color:var(--ds-title); font-weight:500; }
+    .ap-state dd { color:var(--ds-text); margin:0; }
+  </style>
+
+  <div class="grid grid-cols-2 gap-6">
+
+    <!-- Sheet de apoio -->
+    <div class="comp-card" style="background:var(--ds-bg); grid-column: span 1;">
+      <div class="comp-label">Sheet de apoio · passo do valor</div>
+      <div class="ap-sheet">
+        <div class="ap-handle"></div>
+        <div class="ap-eyebrow">Apoio</div>
+        <div class="ap-title">Que bom saber.</div>
+        <p class="ap-body">O app é gratuito, sem anúncios e sem cadastro, e quem faz é uma pessoa só. Se ele ajudou você, um apoio único mantém tudo gratuito para quem chegar aqui numa noite difícil.</p>
+        <div class="ap-choice" role="radiogroup" aria-label="Valor do apoio">
+          <div class="ap-row" role="radio" aria-checked="false"><span class="ap-radio"></span><span class="l">R$ 5</span></div>
+          <div class="ap-row sel" role="radio" aria-checked="true"><span class="ap-radio"></span><span class="l">R$ 10</span></div>
+          <div class="ap-row" role="radio" aria-checked="false"><span class="ap-radio"></span><span class="l">R$ 25</span></div>
+        </div>
+        <p class="ap-note">Pagamento único pelo Google Play. Não libera nada novo no app.</p>
+        <div class="ap-actions">
+          <button class="ap-btn fill">Apoiar com R$ 10</button>
+          <button class="ap-btn out">Enviar o app para alguém</button>
+          <button class="ap-btn txt">Agora não</button>
+        </div>
+      </div>
+      <div style="font-size:11px; opacity:.4; line-height:1.6;">
+        Superfície do sheet · radius lg 22 só no topo · alça 40×4 na cor da borda<br>
+        Título Playfair 24 · corpo Instrument Sans 15/1.6 · nota 13px em night-text/day-text<br>
+        Primário cobalt-500 + creme 6.08:1 · secundário contorno no acento de texto (5.50:1 escuro / 5.56:1 claro)
+      </div>
+    </div>
+
+    <!-- Card de apoio (Home) + snackbar + regras -->
+    <div style="display:flex; flex-direction:column; gap:24px;">
+
+      <div class="comp-card" style="background:var(--ds-bg);">
+        <div class="comp-label">Card de apoio · Home</div>
+        <div class="ap-card">
+          <div class="ap-eyebrow">Apoie o app</div>
+          <h4>O meu Salmo é gratuito</h4>
+          <p>Sem anúncios e sem assinatura. Se ele faz parte do seu dia, você pode ajudar a mantê-lo assim.</p>
+          <button class="ap-btn out">Apoiar o app</button>
+          <button class="ap-x" aria-label="Dispensar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <div style="font-size:11px; opacity:.4; line-height:1.6;">
+          Contorno, sem preenchimento — nunca compete com o Salmo do dia. Sempre <em>abaixo</em> do conteúdo.<br>
+          X: alvo 48dp, ícone 20px outline, Semantics(label:"Dispensar", button:true).<br>
+          Tocar em "Apoiar o app" abre o passo do valor direto, sem a pergunta de sentimento.
+        </div>
+      </div>
+
+      <div class="comp-card" style="background:var(--ds-bg);">
+        <div class="comp-label">Snackbar de cancelamento</div>
+        <div class="ap-snack" role="status">Apoio cancelado. Nada foi cobrado.</div>
+        <div style="font-size:11px; opacity:.4; line-height:1.6;">
+          Cancelar não é erro e não merece uma tela. O sheet do valor permanece aberto atrás.<br>
+          Fundo base sobre a superfície do sheet + borda · radius md 14 · texto 14px em night-cream/day-title.
+        </div>
+      </div>
+
+      <div class="comp-card" style="background:var(--ds-bg);">
+        <div class="comp-label">Estados</div>
+        <dl class="ap-state">
+          <dt>1 · Pergunta</dt><dd>"O meu Salmo tem feito companhia a você?" → [Tem sim] [Nem tanto] / "Agora não". Dispara após leitura concluída.</dd>
+          <dt>2 · Apoio</dt><dd>"Que bom saber." + lista de valores (R$ 10 pré-selecionado) + nota de pagamento.</dd>
+          <dt>2b · Sugestão</dt><dd>Ramo "Nem tanto": "Obrigado pela sinceridade. O que faltou?" / "Sua mensagem vai por e-mail." → [Enviar sugestão].</dd>
+          <dt>3a · Obrigado</dt><dd>"Obrigado." / "Seu apoio mantém o app gratuito para a próxima pessoa." → [Fechar].</dd>
+          <dt>3b · Cancelado</dt><dd>Snackbar. Nenhum painel novo.</dd>
+          <dt>3c · Erro</dt><dd>"Não foi possível concluir." / "Nada foi cobrado. Verifique a conexão e tente de novo." → [Tentar novamente] [Fechar].</dd>
+          <dt>Sem pendente</dt><dd>Boleto não é aceito no Google Play Brasil e Pix confirma em segundos. <code style="font-size:11px;">PENDING</code> do Billing cai no estado de erro.</dd>
+        </dl>
+      </div>
+
+    </div>
+
+    <!-- Regras duras -->
+    <div class="comp-card" style="background:var(--ds-surface); grid-column: span 2;">
+      <div class="comp-label">Regras · não negociáveis</div>
+      <div class="grid grid-cols-2 gap-8" style="font-size:13px; line-height:1.75; color:var(--ds-text);">
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <p><strong style="color:var(--ds-title);">Valor é lista com radio, nunca botões divididos em partes iguais.</strong>
+          Sem <code style="font-size:11px; background:var(--ds-bg); padding:2px 5px; border-radius:4px;">SegmentedButton</code>, sem chips em <code style="font-size:11px; background:var(--ds-bg); padding:2px 5px; border-radius:4px;">Expanded</code> de larguras iguais. Com fonte do sistema em 2.0x, três colunas iguais truncam "R$ 25" ou estouram a linha; a lista só cresce na altura. Linha de 56px, radio 20px, um valor por linha.</p>
+          <p><strong style="color:var(--ds-title);">Alvo de toque 48dp na linha inteira.</strong>
+          Vale para cada valor da lista, para "Agora não", para o X do card e para as linhas de Ajustes — a área toca a largura toda, não só o texto.</p>
+          <p><strong style="color:var(--ds-title);">Botões empilhados.</strong>
+          Largura do container, altura cresce com a fonte. O sheet rola (máx. 92% da altura). Proibido largura fixa.</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <p><strong style="color:var(--ds-title);">Nenhum ramo leva à Play Store.</strong>
+          Nem "Tem sim", nem "Nem tanto", nem o obrigado. O ramo positivo vai para o apoio; o negativo vai para e-mail. Avaliação vive em dois lugares só: a linha "Avaliar na Play Store" em Ajustes e o prompt nativo da In-App Review, que roda em outro momento e sem pergunta antes.</p>
+          <p><strong style="color:var(--ds-title);">Fechar sempre funciona.</strong>
+          Arrastar para baixo, tocar fora e o botão voltar equivalem a "Agora não" e contam como recusa — não reabre por 90 dias. O X do card dispensa de vez.</p>
+          <p><strong style="color:var(--ds-title);">O apoio não compra nada.</strong>
+          Produto consumível do Play Billing, R$ 5 / 10 / 25, nenhuma função liberada. O preço exibido vem sempre de <code style="font-size:11px; background:var(--ds-bg); padding:2px 5px; border-radius:4px;">ProductDetails.formattedPrice</code>, nunca hardcoded. Sem Pix no app.</p>
+        </div>
+      </div>
+      <p style="font-size:11px; opacity:.4; line-height:1.6;">
+        Ajustes: "Avaliar na Play Store" + "Conte o que achou. Isso ajuda outras pessoas a encontrar o app." | "Apoiar o app" + "Valor único, sem assinatura."<br>
+        Animações: entrada do sheet no easing padrão <code style="font-size:11px;">cubic-bezier(.22,.61,.36,1)</code> · respeitar <code style="font-size:11px;">disableAnimations</code> (aparece sem transição).
+      </p>
+    </div>
+
+  </div>
+</section>
+
 <!-- Footer -->
 <footer style="border-top:.5px solid var(--ds-line); padding-top:28px; display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:10px;">
   <div style="display:flex; align-items:baseline; gap:8px;">
@@ -1480,7 +1638,7 @@ tailwind.config = {
     <span style="font-family:'Playfair Display',serif; font-style:italic; font-weight:500; font-size:18px; color:var(--ds-accent);">Salmo</span>
   </div>
   <div style="font-size:9px; letter-spacing:.14em; text-transform:uppercase; opacity:.35;">
-    Design System v1.2 · Acessibilidade WCAG 2.1 AA · Agosto 2026
+    Design System v1.2 · Acessibilidade WCAG 2.1 AA · Agosto 2026 · seção 11 (Apoio) em setembro 2026
   </div>
 </footer>
 
@@ -1531,6 +1689,14 @@ const pairs = [
   {role:'Play: creme sobre cobalto', fg:'#EEF0FC', bg:'#2A47DD', large:true,  note:'triângulo do player'},
   {role:'EyebrowLabel dark (v1.1)',  fg:'#8C97D4', bg:'#080B1C', large:false, note:'antes nightMuted 1.9:1 → corrigido'},
   {role:'EyebrowLabel light (v1.1)', fg:'#2E3A86', bg:'#F5F7FE', large:false, note:'antes dayMuted 2.6:1 → corrigido'},
+  {role:'Sheet de apoio: corpo (noturno)', fg:'#8C97D4', bg:'#151A39', large:false, note:'v11 — corpo 15px e nota 13px sobre a superfície do sheet'},
+  {role:'Sheet de apoio: corpo (diurno)', fg:'#2E3A86', bg:'#E1E6FC', large:false, note:'v11 — corpo 15px e nota 13px sobre a superfície do sheet'},
+  {role:'Sheet: contorno secundário (diurno)', fg:'#2A47DD', bg:'#E1E6FC', large:false, note:'v11 — "Enviar o app para alguém" sobre a superfície'},
+  {role:'Valor selecionado na lista (noturno)', fg:'#7C8BF0', bg:'#080B1C', large:false, note:'v11 — a lista de valores usa o fundo base dentro do sheet'},
+  {role:'Radio não selecionado (noturno)', fg:'#7080C8', bg:'#080B1C', large:true, note:'v11 — componente de UI: mínimo 3:1 (WCAG 1.4.11)'},
+  {role:'Radio não selecionado (diurno)', fg:'#4E5899', bg:'#F5F7FE', large:true, note:'v11 — componente de UI: mínimo 3:1 (WCAG 1.4.11)'},
+  {role:'Muted sobre superfície (limite)', fg:'#7080C8', bg:'#151A39', large:false, note:'v11 — passa raspando; a nota do sheet usa night-text, não muted'},
+  {role:'Snackbar de cancelamento (noturno)', fg:'#EEF0FC', bg:'#080B1C', large:false, note:'v11 — o snackbar usa o fundo base sobre a superfície do sheet'},
 ];
 
 const grid = document.getElementById('contrast-grid');

@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sheet de apoio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Cormorant:ital,wght@1,400&family=Instrument+Sans:wght@400;500&display=swap">
+<style>
+/* Mock estático · DS v1.2 · copy final aprovada (marketing + UX writing, pós no-ai-slop) em 2026-09-26.
+   Fluxo: pergunta -> apoio (Play Billing) -> obrigado | cancelado (snackbar) | erro; ramo "Nem tanto" -> sugestão.
+   Entradas: sheet após leitura concluída + card discreto na Home + linha em Ajustes.
+   Sem estado "pagamento pendente": boleto não é aceito no Google Play Brasil e Pix confirma em segundos.
+   Nenhum ramo do sheet leva à Play Store. Avaliação vive só em Ajustes e no prompt nativo da In-App Review. */
+:root{
+  --page:#0B0E22; --page-text:#8C97D4; --page-title:#EEF0FC; --page-line:#323A77;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){ --page:#F5F7FE; --page-text:#2E3A86; --page-title:#0C1230; --page-line:#A8B6E6; }
+}
+:root[data-theme="light"]{ --page:#F5F7FE; --page-text:#2E3A86; --page-title:#0C1230; --page-line:#A8B6E6; }
+
+/* Tokens do app por modo */
+.night{ --bg:#080B1C; --surface:#151A39; --line:#323A77; --text:#8C97D4; --title:#EEF0FC;
+        --muted:#7080C8; --accent-text:#7C8BF0; --fill:#2A47DD; --on-fill:#EEF0FC; --scrim:rgba(4,6,16,.62); }
+.day  { --bg:#F5F7FE; --surface:#E1E6FC; --line:#A8B6E6; --text:#2E3A86; --title:#0C1230;
+        --muted:#4E5899; --accent-text:#2A47DD; --fill:#2A47DD; --on-fill:#EEF0FC; --scrim:rgba(12,18,48,.38); }
+
+*{box-sizing:border-box;margin:0}
+body{background:var(--page);color:var(--page-text);font-family:'Instrument Sans',system-ui,sans-serif;padding:32px 16px 64px}
+header{max-width:1400px;margin:0 auto 28px}
+h1{font-family:'Playfair Display',serif;font-weight:400;font-size:28px;color:var(--page-title)}
+header p{font-size:14px;line-height:1.6;max-width:72ch;margin-top:6px}
+
+.row-label{max-width:1400px;margin:28px auto 12px;font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--page-title)}
+.row{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+
+.state-cap{font-size:13px;margin-bottom:8px;color:var(--page-text)}
+.state-cap b{color:var(--page-title);font-weight:500}
+
+/* Aparelho */
+.phone{position:relative;height:640px;border-radius:22px;overflow:hidden;background:var(--bg);border:.5px solid var(--line)}
+.phone .ghost{padding:28px 20px;opacity:.5}
+.ghost .g1{height:10px;width:40%;border-radius:999px;background:var(--line);margin-bottom:18px}
+.ghost .g2{height:24px;width:70%;border-radius:8px;background:var(--line);margin-bottom:28px}
+.ghost .g3{font-family:'Cormorant',serif;font-style:italic;font-size:20px;line-height:1.5;color:var(--text)}
+.scrim{position:absolute;inset:0;background:var(--scrim)}
+
+/* Bottom sheet · radius lg 22 só no topo */
+.sheet{position:absolute;left:0;right:0;bottom:0;max-height:92%;overflow:auto;background:var(--surface);
+  border-radius:22px 22px 0 0;border-top:.5px solid var(--line);padding:12px 20px 32px}
+.handle{width:40px;height:4px;border-radius:2px;background:var(--line);margin:0 auto 24px}
+.eyebrow{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--text);margin-bottom:12px}
+.sheet h2{font-family:'Playfair Display',serif;font-weight:400;font-size:24px;line-height:1.25;letter-spacing:-.01em;color:var(--title);margin-bottom:12px}
+.body{font-size:15px;line-height:1.6;color:var(--text);margin-bottom:24px}
+
+/* Botões empilhados, largura do container (nunca lado a lado em partes iguais) */
+.actions{display:flex;flex-direction:column;gap:8px}
+.btn{font:500 15px 'Instrument Sans',sans-serif;min-height:48px;padding:12px 24px;border-radius:999px;width:100%;
+  cursor:pointer;transition:transform .2s var(--ease),opacity .2s var(--ease);text-align:center;line-height:1.3}
+.btn:active{transform:scale(.98)}
+.btn.fill{background:var(--fill);color:var(--on-fill);border:0}
+.btn.out{background:transparent;color:var(--accent-text);border:1px solid var(--accent-text)}
+.btn.txt{background:transparent;color:var(--text);border:0}
+.btn:focus-visible{outline:2px solid var(--accent-text);outline-offset:3px}
+
+/* Lista de valores · uma linha por valor, radio à esquerda */
+.choice-list{border:.5px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:20px;background:var(--bg)}
+.choice-row{min-height:56px;padding:12px 16px;display:flex;align-items:center;gap:12px;font-size:15px;color:var(--text)}
+.choice-row+.choice-row{border-top:.5px solid var(--line)}
+.choice-row .l{flex:1}
+.choice-row.sel{font-weight:500;color:var(--accent-text)}
+.radio{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--muted);flex-shrink:0;display:grid;place-items:center}
+.sel .radio{border-color:var(--accent-text)}.sel .radio::after{content:'';width:10px;height:10px;border-radius:50%;background:var(--accent-text)}
+.inline-note{font-size:13px;line-height:1.5;color:var(--text);margin:-8px 0 16px}
+
+/* Snackbar · cancelamento não abre painel */
+.snack{position:absolute;left:16px;right:16px;bottom:16px;z-index:2;background:var(--bg);border:.5px solid var(--line);
+  border-radius:14px;padding:14px 16px;font-size:14px;line-height:1.45;color:var(--title);
+  box-shadow:0 16px 40px rgba(4,6,16,.45)}
+
+/* UI do Google Play (fora do nosso controle) */
+.play{position:absolute;left:0;right:0;bottom:0;background:#fff;color:#202124;border-radius:16px 16px 0 0;padding:20px;font:14px system-ui,sans-serif;border-top:1px dashed #9aa0a6}
+.play small{display:block;color:#5f6368;margin-top:6px;font-size:13px}
+
+/* Card discreto na Home */
+.home{padding:24px 20px}
+.home .eyebrow{margin-bottom:10px}
+.psalm-card{border-radius:14px;padding:16px 18px;border:.5px solid var(--line);background:var(--surface);margin-bottom:12px}
+.psalm-card .n{font-family:'Playfair Display',serif;font-size:28px;color:var(--accent-text)}
+.psalm-card .t{font-family:'Playfair Display',serif;font-size:18px;color:var(--title)}
+.psalm-card .v{font-family:'Cormorant',serif;font-style:italic;font-size:16px;color:var(--text);margin-top:4px}
+.support-card{position:relative;border-radius:14px;padding:16px 18px;border:.5px solid var(--line);background:transparent;margin-top:20px}
+.support-card h3{font-family:'Playfair Display',serif;font-weight:400;font-size:18px;color:var(--title);margin:0 40px 6px 0}
+.support-card p{font-size:14px;line-height:1.55;color:var(--text);margin-bottom:14px}
+.support-card .btn{width:auto}
+.x{position:absolute;top:4px;right:4px;width:48px;height:48px;display:grid;place-items:center;background:none;border:0;color:var(--text);cursor:pointer;border-radius:999px}
+
+/* Linhas em Ajustes */
+.settings{padding:24px 20px}
+.set-list{border:.5px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface)}
+.set-row{min-height:48px;padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer}
+.set-row+.set-row{border-top:.5px solid var(--line)}
+.set-row .txt2{flex:1}
+.set-row .t{font-size:15px;color:var(--title);line-height:1.35}
+.set-row .d{font-size:13px;color:var(--text);line-height:1.45;margin-top:3px}
+.set-row svg{flex-shrink:0;color:var(--text)}
+
+.notes{max-width:1400px;margin:36px auto 0;border-top:.5px solid var(--page-line);padding-top:20px;font-size:13px;line-height:1.7}
+.notes b{color:var(--page-title);font-weight:500}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Sheet de apoio</h1>
+  <p>Formato híbrido aprovado: card discreto na Home + sheet com pergunta de sentimento após leitura concluída. Apoio via Google Play Billing, produto consumível, R$ 5 / 10 / 25, não libera nada no app. Sem Pix no app. Copy final — sem variantes A/B. Nenhum ramo deste fluxo leva à Play Store; avaliação vive só em Ajustes e no prompt nativo da In-App Review.</p>
+</header>
+
+<div class="row-label">Modo escuro</div>
+<div class="row night" id="night"></div>
+<div class="row-label">Modo claro</div>
+<div class="row day" id="day"></div>
+
+<div class="notes">
+  <b>Tokens.</b> Sheet: superfície, radius lg 22 no topo, alça 40x4 na cor da borda. Título Playfair 24. Corpo Instrument Sans 15/1.6. Primário: preenchimento cobalt-500 #2A47DD com creme (6.08:1). Secundário: contorno no acento de texto (#7C8BF0 escuro 5.50:1, #2A47DD claro 5.56:1). "Agora não": botão de texto na cor de texto, 15px, alvo 48dp na largura toda. Eyebrow 11px / .34em na cor de texto (nunca muted).<br>
+  <b>Fonte 2.0x.</b> Sheet rola (max 92% da altura), botões empilhados e crescem na altura, sem largura fixa e sem divisão em partes iguais.<br>
+  <b>Valores.</b> Lista de escolha do DS (linha 56px, radio 20px na cor muted, 5.22:1 escuro / 6.17:1 claro), nunca SegmentedButton nem chips em partes iguais. R$ 10 pré-selecionado. O texto do botão acompanha o valor escolhido e o preço vem de <code>ProductDetails.formattedPrice</code>.<br>
+  <b>Cancelamento.</b> Snackbar sobre o próprio sheet de valores — não é mais um painel inteiro. Cancelar não é erro e não merece uma tela.<br>
+  <b>Sem estado pendente.</b> Boleto não é aceito no Google Play Brasil e Pix confirma em segundos. Se o Billing devolver <code>PENDING</code>, o app trata como erro comum.<br>
+  <b>Card na Home.</b> Contorno, sem preenchimento, abaixo do conteúdo (nunca acima do Salmo do dia). X com alvo 48dp e rótulo "Dispensar". Tocar em "Apoiar o app" abre o passo 2 direto, sem pergunta.<br>
+  <b>Fechar sempre funciona.</b> Arrastar para baixo, tocar fora e o botão voltar equivalem a "Agora não" e contam como recusa (não reabre por 90 dias).
+</div>
+
+<script>
+const OPTS=[['R$ 5',false],['R$ 10',true],['R$ 25',false]];
+const C={
+  ask:{eyebrow:'Uma pergunta',title:'O meu Salmo tem feito companhia a você?',
+       btns:[['fill','Tem sim'],['out','Nem tanto'],['txt','Agora não']]},
+  give:{eyebrow:'Apoio',title:'Que bom saber.',
+        body:'O app é gratuito, sem anúncios e sem cadastro, e quem faz é uma pessoa só. Se ele ajudou você, um apoio único mantém tudo gratuito para quem chegar aqui numa noite difícil.',
+        note:'Pagamento único pelo Google Play. Não libera nada novo no app.',
+        cta:'Apoiar com R$ 10', share:'Enviar o app para alguém'},
+  ok:{title:'Obrigado.',body:'Seu apoio mantém o app gratuito para a próxima pessoa.',btns:[['fill','Fechar']]},
+  cancel:'Apoio cancelado. Nada foi cobrado.',
+  err:{title:'Não foi possível concluir.',body:'Nada foi cobrado. Verifique a conexão e tente de novo.',
+       btns:[['fill','Tentar novamente'],['txt','Fechar']]},
+  fb:{title:'Obrigado pela sinceridade. O que faltou?',body:'Sua mensagem vai por e-mail.',
+      btns:[['fill','Enviar sugestão'],['txt','Agora não']]},
+  card:{eyebrow:'Apoie o app',title:'O meu Salmo é gratuito',
+        body:'Sem anúncios e sem assinatura. Se ele faz parte do seu dia, você pode ajudar a mantê-lo assim.',
+        btn:'Apoiar o app'},
+  settings:[['Avaliar na Play Store','Conte o que achou. Isso ajuda outras pessoas a encontrar o app.'],
+            ['Apoiar o app','Valor único, sem assinatura.']]
+};
+const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const ghost=`<div class="ghost"><div class="g1"></div><div class="g2"></div><div class="g3">O Senhor é o meu pastor, nada me faltará.</div></div><div class="scrim"></div>`;
+const btns=b=>`<div class="actions">${b.map(([k,t])=>`<button class="btn ${k}">${esc(t)}</button>`).join('')}</div>`;
+const choices=()=>`<div class="choice-list" role="radiogroup" aria-label="Valor do apoio">${OPTS.map(([v,on])=>`<div class="choice-row${on?' sel':''}" role="radio" aria-checked="${on}" tabindex="${on?0:-1}"><span class="radio"></span><span class="l">${v}</span></div>`).join('')}</div>`;
+const chev=`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>`;
+
+function frame(cap,inner){
+  return `<div><div class="state-cap"><b>${esc(cap)}</b></div><div class="phone">${inner}</div></div>`;
+}
+function sheet(cap,s,extra='',snack=''){
+  const inner=`${ghost}${snack?`<div class="snack" role="status">${esc(snack)}</div>`:''}
+  <div class="sheet" role="dialog" aria-modal="true" aria-label="${esc(s.title)}"><div class="handle"></div>
+  ${s.eyebrow?`<div class="eyebrow">${esc(s.eyebrow)}</div>`:''}<h2>${esc(s.title)}</h2>
+  ${s.body?`<p class="body">${esc(s.body)}</p>`:''}${extra}${s.btns?btns(s.btns):''}</div>`;
+  return frame(cap,inner);
+}
+function give(cap,snack){
+  const g=C.give;
+  const extra=choices()+`<p class="inline-note">${esc(g.note)}</p>`
+    +btns([['fill',g.cta],['out',g.share],['txt','Agora não']]);
+  return sheet(cap,g,extra,snack);
+}
+function play(cap){
+  return frame(cap,`${ghost}<div class="play">Cobrança nativa do Google Play<br><b>Apoiar o app · R$ 10,00</b><small>UI do Google, fora do nosso controle. O preço exibido no nosso sheet vem de ProductDetails.formattedPrice.</small></div>`);
+}
+function home(){
+  const c=C.card;
+  const x=`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>`;
+  return frame('Card de apoio · Home, sem modal',`<div class="home">
+  <div class="eyebrow">Salmo do dia</div>
+  <div class="psalm-card"><div class="n">23</div><div class="t">O Senhor é o meu pastor</div><div class="v">Ele me faz repousar em pastos verdejantes.</div></div>
+  <div class="psalm-card"><div class="n">91</div><div class="t">Proteção</div><div class="v">Aquele que habita no abrigo do Altíssimo.</div></div>
+  <section class="support-card" aria-label="${esc(c.eyebrow)}"><div class="eyebrow">${esc(c.eyebrow)}</div>
+  <h3>${esc(c.title)}</h3><p>${esc(c.body)}</p><button class="btn out">${esc(c.btn)}</button>
+  <button class="x" aria-label="Dispensar">${x}</button></section></div>`);
+}
+function settings(){
+  const rows=C.settings.map(([t,d])=>`<div class="set-row" role="button" tabindex="0"><div class="txt2"><div class="t">${esc(t)}</div><div class="d">${esc(d)}</div></div>${chev}</div>`).join('');
+  return frame('Ajustes · duas linhas',`<div class="settings">
+  <div class="eyebrow">Sobre o app</div><div class="set-list">${rows}</div></div>`);
+}
+function build(){
+  return [
+    sheet('1 · Pergunta (após leitura concluída)',C.ask),
+    give('2 · Apoio: escolha do valor'),
+    play('2 → cobrança nativa do Play'),
+    sheet('3a · Obrigado (compra concluída)',C.ok),
+    give('3b · Cancelado: snackbar sobre o sheet',C.cancel),
+    sheet('3c · Erro no pagamento',C.err),
+    sheet('2b · Sugestão (ramo "Nem tanto")',C.fb),
+    home(),
+    settings()
+  ].join('');
+}
+const html=build();
+document.getElementById('night').innerHTML=html;
+document.getElementById('day').innerHTML=html;
+</script>
+</body>
+</html>
