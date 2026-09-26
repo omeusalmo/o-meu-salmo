@@ -62,6 +62,9 @@ header p{font-size:14px;line-height:1.6;max-width:72ch;margin-top:6px}
 .btn.fill{background:var(--fill);color:var(--on-fill);border:0}
 .btn.out{background:transparent;color:var(--accent-text);border:1px solid var(--accent-text)}
 .btn.txt{background:transparent;color:var(--text);border:0}
+.never{font:400 14px 'Instrument Sans',sans-serif;min-height:48px;padding:12px 24px;width:100%;margin-top:12px;
+  background:transparent;border:0;cursor:pointer;color:var(--text);text-decoration:underline;text-underline-offset:3px}
+.never:focus-visible{outline:2px solid var(--accent-text);outline-offset:3px}
 .btn:focus-visible{outline:2px solid var(--accent-text);outline-offset:3px}
 
 /* Lista de valores · uma linha por valor, radio à esquerda */
@@ -128,8 +131,9 @@ header p{font-size:14px;line-height:1.6;max-width:72ch;margin-top:6px}
   <b>Valores.</b> Lista de escolha do DS (linha 56px, radio 20px na cor muted, 5.22:1 escuro / 6.17:1 claro), nunca SegmentedButton nem chips em partes iguais. R$ 10 pré-selecionado. O texto do botão acompanha o valor escolhido e o preço vem de <code>ProductDetails.formattedPrice</code>.<br>
   <b>Cancelamento.</b> Snackbar sobre o próprio sheet de valores — não é mais um painel inteiro. Cancelar não é erro e não merece uma tela.<br>
   <b>Sem estado pendente.</b> Boleto não é aceito no Google Play Brasil e Pix confirma em segundos. Se o Billing devolver <code>PENDING</code>, o app trata como erro comum.<br>
-  <b>Card na Home.</b> Contorno, sem preenchimento, abaixo do conteúdo (nunca acima do Salmo do dia). X com alvo 48dp e rótulo "Dispensar". Tocar em "Apoiar o app" abre o passo 2 direto, sem pergunta.<br>
-  <b>Fechar sempre funciona.</b> Arrastar para baixo, tocar fora e o botão voltar equivalem a "Agora não" e contam como recusa (não reabre por 90 dias).
+  <b>Card na Home.</b> Contorno, sem preenchimento, abaixo do conteúdo (nunca acima do Salmo do dia). X com alvo 48dp e rótulo "Dispensar" — dispensa por 90 dias, não para sempre. Tocar em "Apoiar o app" abre o passo 2 direto, sem pergunta.<br>
+  <b>Fechar sempre funciona.</b> Arrastar para baixo, tocar fora e o botão voltar equivalem a "Agora não" e contam como recusa (não reabre por 90 dias). O único caminho definitivo é "Não perguntar de novo".<br>
+  <b>Não perguntar de novo.</b> O sheet aparece no máximo 3 vezes na vida do app. Só na 3ª e última exibição entra o link "Não perguntar de novo" abaixo de "Agora não" — nas duas primeiras ele não existe. Link de texto subordinado ao "Agora não": sem pill, sem contorno, sem peso de botão. Cor de texto (não muted): 6.05:1 escuro / 8.19:1 claro. Piso de 14px por ser texto de decisão, alvo 48dp na largura toda. Encerra o sheet e o card da Home.
 </div>
 
 <script>
@@ -137,6 +141,10 @@ const OPTS=[['R$ 5',false],['R$ 10',true],['R$ 25',false]];
 const C={
   ask:{eyebrow:'Uma pergunta',title:'O meu Salmo tem feito companhia a você?',
        btns:[['fill','Tem sim'],['out','Nem tanto'],['txt','Agora não']]},
+  // 3ª e última exibição: a saída definitiva entra abaixo de "Agora não".
+  ask3:{eyebrow:'Uma pergunta',title:'O meu Salmo tem feito companhia a você?',
+        btns:[['fill','Tem sim'],['out','Nem tanto'],['txt','Agora não']],
+        after:'<button class="never">Não perguntar de novo</button>'},
   give:{eyebrow:'Apoio',title:'Que bom saber.',
         body:'O app é gratuito, sem anúncios e sem cadastro, e quem faz é uma pessoa só. Se ele ajudou você, um apoio único mantém tudo gratuito para quem chegar aqui numa noite difícil.',
         note:'Pagamento único pelo Google Play. Não libera nada novo no app.',
@@ -166,7 +174,7 @@ function sheet(cap,s,extra='',snack=''){
   const inner=`${ghost}${snack?`<div class="snack" role="status">${esc(snack)}</div>`:''}
   <div class="sheet" role="dialog" aria-modal="true" aria-label="${esc(s.title)}"><div class="handle"></div>
   ${s.eyebrow?`<div class="eyebrow">${esc(s.eyebrow)}</div>`:''}<h2>${esc(s.title)}</h2>
-  ${s.body?`<p class="body">${esc(s.body)}</p>`:''}${extra}${s.btns?btns(s.btns):''}</div>`;
+  ${s.body?`<p class="body">${esc(s.body)}</p>`:''}${extra}${s.btns?btns(s.btns):''}${s.after||''}</div>`;
   return frame(cap,inner);
 }
 function give(cap,snack){
@@ -197,6 +205,7 @@ function settings(){
 function build(){
   return [
     sheet('1 · Pergunta (após leitura concluída)',C.ask),
+    sheet('1c · Pergunta na 3ª e última exibição',C.ask3),
     give('2 · Apoio: escolha do valor'),
     play('2 → cobrança nativa do Play'),
     sheet('3a · Obrigado (compra concluída)',C.ok),

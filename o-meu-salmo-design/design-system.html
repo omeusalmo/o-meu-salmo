@@ -1478,7 +1478,7 @@ tailwind.config = {
 ════════════════════════════════════════════════════════════ -->
 <section class="ds-section">
   <div class="ds-section-title" style="color:var(--ds-accent);">11 — Apoio · Sheet & Card</div>
-  <p style="font-size:13px; opacity:.55;">Aprovado em 2026-09-26 (formato híbrido). Mock navegável de todos os estados em <code style="font-size:11px; background:var(--ds-surface); padding:2px 6px; border-radius:4px;">ui_kits/app/modal-apoio.html</code>. Copy final — não há variantes A/B.</p>
+  <p style="font-size:13px; opacity:.55;">Aprovado em 2026-09-26 (formato híbrido). Mock navegável de todos os estados em <code style="font-size:11px; background:var(--ds-surface); padding:2px 6px; border-radius:4px;">ui_kits/app/modal-apoio.html</code>. Copy final — não há variantes A/B. Corrigido em 2026-09-26: o X do card dispensa por 90 dias (não para sempre) e a 3ª exibição do sheet ganhou "Não perguntar de novo".</p>
 
   <style>
     /* ── Apoio (DS section 11) ── */
@@ -1500,6 +1500,17 @@ tailwind.config = {
     .ap-btn.fill { background:var(--ds-fill); color:#EEF0FC; }
     .ap-btn.out  { background:transparent; color:var(--ds-accent); border:1px solid var(--ds-accent); }
     .ap-btn.txt  { background:transparent; color:var(--ds-text); }
+    /* Link de saída definitiva. Só existe na 3ª (e última) exibição do sheet.
+       Link de texto subordinado ao "Agora não" — nunca pill, nunca contorno,
+       nunca preenchimento. Cor de texto (não muted) e piso de 14px porque é
+       texto de decisão. Alvo de 48dp na largura toda, igual às outras linhas. */
+    .ap-never {
+      min-height:48px; padding:12px 24px; width:100%; margin-top:4px;
+      background:transparent; border:0; cursor:pointer;
+      font-family:'Instrument Sans',sans-serif; font-size:14px; font-weight:400;
+      line-height:1.3; text-align:center; color:var(--ds-text);
+      text-decoration:underline; text-underline-offset:3px;
+    }
     .ap-choice { border:.5px solid var(--ds-line); border-radius:14px; overflow:hidden; background:var(--ds-bg); }
     .ap-row { min-height:56px; padding:12px 16px; display:flex; align-items:center; gap:12px; font-size:15px; color:var(--ds-text); }
     .ap-row + .ap-row { border-top:.5px solid var(--ds-line); }
@@ -1529,8 +1540,11 @@ tailwind.config = {
 
   <div class="grid grid-cols-2 gap-6">
 
+    <!-- Coluna esquerda: sheets -->
+    <div style="display:flex; flex-direction:column; gap:24px;">
+
     <!-- Sheet de apoio -->
-    <div class="comp-card" style="background:var(--ds-bg); grid-column: span 1;">
+    <div class="comp-card" style="background:var(--ds-bg);">
       <div class="comp-label">Sheet de apoio · passo do valor</div>
       <div class="ap-sheet">
         <div class="ap-handle"></div>
@@ -1554,6 +1568,30 @@ tailwind.config = {
         Título Playfair 24 · corpo Instrument Sans 15/1.6 · nota 13px em night-text/day-text<br>
         Primário cobalt-500 + creme 6.08:1 · secundário contorno no acento de texto (5.50:1 escuro / 5.56:1 claro)
       </div>
+    </div>
+
+    <!-- Sheet da pergunta na 3ª (e última) exibição -->
+    <div class="comp-card" style="background:var(--ds-bg);">
+      <div class="comp-label">Sheet da pergunta · 3ª e última exibição</div>
+      <div class="ap-sheet">
+        <div class="ap-handle"></div>
+        <div class="ap-eyebrow">Uma pergunta</div>
+        <div class="ap-title">O meu Salmo tem feito companhia a você?</div>
+        <div class="ap-actions">
+          <button class="ap-btn fill">Tem sim</button>
+          <button class="ap-btn out">Nem tanto</button>
+          <button class="ap-btn txt">Agora não</button>
+          <button class="ap-never">Não perguntar de novo</button>
+        </div>
+      </div>
+      <div style="font-size:11px; opacity:.4; line-height:1.6;">
+        O sheet aparece no máximo 3 vezes na vida do app. <strong>"Não perguntar de novo" só existe na 3ª.</strong> Na 1ª e na 2ª o botão não é renderizado — não é desabilitado, não é escondido: não existe.<br>
+        Hierarquia: link de texto subordinado ao "Agora não". Sem pill, sem contorno, sem preenchimento, sem peso 500 — nunca lê como quarto botão.<br>
+        Cor <code style="font-size:11px;">--ds-text</code> (night-text #8C97D4 / day-text #2E3A86), <em>não</em> muted: 6.05:1 no escuro, 8.19:1 no claro sobre a superfície do sheet. Piso de 14px por ser texto de decisão. Sublinhado com offset 3px para ler como link.<br>
+        Alvo de 48dp na largura toda do sheet · rótulo exato "Não perguntar de novo", sem variação · Semantics(button:true).
+      </div>
+    </div>
+
     </div>
 
     <!-- Card de apoio (Home) + snackbar + regras -->
@@ -1589,7 +1627,8 @@ tailwind.config = {
       <div class="comp-card" style="background:var(--ds-bg);">
         <div class="comp-label">Estados</div>
         <dl class="ap-state">
-          <dt>1 · Pergunta</dt><dd>"O meu Salmo tem feito companhia a você?" → [Tem sim] [Nem tanto] / "Agora não". Dispara após leitura concluída.</dd>
+          <dt>1 · Pergunta</dt><dd>"O meu Salmo tem feito companhia a você?" → [Tem sim] [Nem tanto] / "Agora não". Dispara após leitura concluída. Máximo de 3 exibições na vida do app.</dd>
+          <dt>1c · 3ª exibição</dt><dd>Mesma pergunta + link de texto "Não perguntar de novo" abaixo de "Agora não". Só na 3ª e última; nas duas primeiras o link não existe. Tocá-lo encerra para sempre o sheet <em>e</em> o card da Home.</dd>
           <dt>2 · Apoio</dt><dd>"Que bom saber." + lista de valores (R$ 10 pré-selecionado) + nota de pagamento.</dd>
           <dt>2b · Sugestão</dt><dd>Ramo "Nem tanto": "Obrigado pela sinceridade. O que faltou?" / "Sua mensagem vai por e-mail." → [Enviar sugestão].</dd>
           <dt>3a · Obrigado</dt><dd>"Obrigado." / "Seu apoio mantém o app gratuito para a próxima pessoa." → [Fechar].</dd>
@@ -1617,7 +1656,7 @@ tailwind.config = {
           <p><strong style="color:var(--ds-title);">Nenhum ramo leva à Play Store.</strong>
           Nem "Tem sim", nem "Nem tanto", nem o obrigado. O ramo positivo vai para o apoio; o negativo vai para e-mail. Avaliação vive em dois lugares só: a linha "Avaliar na Play Store" em Ajustes e o prompt nativo da In-App Review, que roda em outro momento e sem pergunta antes.</p>
           <p><strong style="color:var(--ds-title);">Fechar sempre funciona.</strong>
-          Arrastar para baixo, tocar fora e o botão voltar equivalem a "Agora não" e contam como recusa — não reabre por 90 dias. O X do card dispensa de vez.</p>
+          Arrastar para baixo, tocar fora e o botão voltar equivalem a "Agora não" e contam como recusa — não reabre por 90 dias. O X do card também vale 90 dias, não para sempre: o único caminho definitivo é "Não perguntar de novo".</p>
           <p><strong style="color:var(--ds-title);">O apoio não compra nada.</strong>
           Produto consumível do Play Billing, R$ 5 / 10 / 25, nenhuma função liberada. O preço exibido vem sempre de <code style="font-size:11px; background:var(--ds-bg); padding:2px 5px; border-radius:4px;">ProductDetails.formattedPrice</code>, nunca hardcoded. Sem Pix no app.</p>
         </div>
