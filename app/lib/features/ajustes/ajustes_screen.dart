@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../core/apoio/compra_service.dart';
+import '../../core/apoio/loja_apoio.dart';
 import '../../core/constants/app_constants.dart';
 import '../../core/constants/copy_apoio.dart';
 import '../../core/review/review_service.dart';
@@ -630,16 +631,30 @@ class _ApoieSection extends StatelessWidget {
       padding: EdgeInsets.zero,
       child: Column(
         children: [
+          // Sempre visível: avaliar não depende de produto na Play Console.
           _LinhaAcao(
             label: CopyApoio.ajustesAvaliar,
             apoio: CopyApoio.ajustesAvaliarApoio,
             onTap: () => _avaliar(context),
           ),
-          const _DivisorInterno(),
-          _LinhaAcao(
-            label: CopyApoio.ajustesApoiar,
-            apoio: CopyApoio.ajustesApoiarApoio,
-            onTap: () => _apoiar(context),
+          // "Apoiar o app" só existe se a loja tiver produto para vender. O
+          // `?? false` é o que impede a linha de piscar: enquanto a consulta não
+          // volta, o estado é desconhecido e desconhecido é escondido.
+          FutureBuilder<bool>(
+            future: LojaApoio.instance.disponivel(),
+            builder: (context, snap) {
+              if (snap.data != true) return const SizedBox.shrink();
+              return Column(
+                children: [
+                  const _DivisorInterno(),
+                  _LinhaAcao(
+                    label: CopyApoio.ajustesApoiar,
+                    apoio: CopyApoio.ajustesApoiarApoio,
+                    onTap: () => _apoiar(context),
+                  ),
+                ],
+              );
+            },
           ),
         ],
       ),

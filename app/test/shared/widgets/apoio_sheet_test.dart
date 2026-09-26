@@ -63,6 +63,80 @@ void main() {
   });
 
   // ───────────────────────────────────────────────────────────────────────────
+  // 1b · "Não perguntar de novo" — só na terceira e última exibição
+  // ───────────────────────────────────────────────────────────────────────────
+
+  group('"Não perguntar de novo"', () {
+    testWidgets('ausente na primeira e na segunda exibição', (tester) async {
+      await _abrir(tester, comPergunta: true);
+      expect(find.text(CopyApoio.naoPerguntarMais), findsNothing,
+          reason: 'Antes da última vez o "Agora não" já resolve.');
+      expect(find.text(CopyApoio.agoraNao), findsOneWidget);
+    });
+
+    testWidgets('presente na terceira, abaixo de "Agora não"', (tester) async {
+      await _abrir(tester, comPergunta: true, ultimaExibicao: true);
+
+      expect(find.text(CopyApoio.naoPerguntarMais), findsOneWidget);
+
+      // Ordem visual: a saída normal primeiro, a definitiva embaixo.
+      final agoraNao = tester.getCenter(find.text(CopyApoio.agoraNao));
+      final nuncaMais =
+          tester.getCenter(find.text(CopyApoio.naoPerguntarMais));
+      expect(nuncaMais.dy, greaterThan(agoraNao.dy));
+    });
+
+    testWidgets('não aparece no passo do valor', (tester) async {
+      // Card e Ajustes abrem direto no valor: não há pergunta para recusar.
+      await _abrir(tester, comPergunta: false, ultimaExibicao: true);
+      expect(find.text(CopyApoio.naoPerguntarMais), findsNothing);
+    });
+
+    testWidgets('o alvo tem 48dp e o texto 14px na cor de texto',
+        (tester) async {
+      await _abrir(tester, comPergunta: true, ultimaExibicao: true);
+
+      final alvo = find.ancestor(
+        of: find.text(CopyApoio.naoPerguntarMais),
+        matching: find.byType(InkWell),
+      );
+      expect(tester.getSize(alvo.first).height, greaterThanOrEqualTo(48));
+
+      final estilo =
+          tester.widget<Text>(find.text(CopyApoio.naoPerguntarMais)).style!;
+      // Piso de 14px: é texto de decisão, não legenda.
+      expect(estilo.fontSize, greaterThanOrEqualTo(14));
+      // Cor de texto plena, nunca muted e nunca com alfa.
+      expect(estilo.color, AppColors.nightText);
+    });
+
+    testWidgets('tocar grava o never e mata card e sheet para sempre',
+        (tester) async {
+      await _abrir(tester, comPergunta: true, ultimaExibicao: true);
+      await tester.tap(find.text(CopyApoio.naoPerguntarMais));
+      await tester.pumpAndSettle();
+
+      expect(find.byType(ApoioSheet), findsNothing, reason: 'fecha no toque');
+
+      final p = await SharedPreferences.getInstance();
+      expect(p.getBool(AppConstants.prefApoioNaoPerguntar), isTrue);
+
+      // O efeito que importa: nem card nem sheet, mesmo em estado que os
+      // tornaria devidos.
+      ligarLojaFalsa();
+      SharedPreferences.setMockInitialValues({
+        AppConstants.prefApoioNaoPerguntar: true,
+        AppConstants.prefPrimeiraAberturaMs:
+            DateTime.now().subtract(const Duration(days: 30)).millisecondsSinceEpoch,
+        AppConstants.prefLeiturasCompletas: 20,
+        AppConstants.prefReviewSessionCount: 9,
+      });
+      expect(await ApoioService.instance.mostrarCard(), isFalse);
+      desligarLojaFalsa();
+    });
+  });
+
+  // ───────────────────────────────────────────────────────────────────────────
   // 2 · Valores
   // ───────────────────────────────────────────────────────────────────────────
 
@@ -308,6 +382,7 @@ Future<void> _abrir(
   WidgetTester tester, {
   required bool comPergunta,
   CompraApoio? compra,
+  bool ultimaExibicao = false,
 }) async {
   await tester.pumpWidget(MaterialApp(
     theme: AppTheme.lightTheme,
@@ -322,6 +397,7 @@ Future<void> _abrir(
               comPergunta: comPergunta,
               compra: compra ?? FakeCompraApoio(),
               origem: 'teste',
+              ultimaExibicao: ultimaExibicao,
             ),
             child: const Text('abrir'),
           ),

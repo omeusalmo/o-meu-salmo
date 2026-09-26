@@ -30,7 +30,10 @@ void main() {
       AppConstants.prefNotificationMinute: 0,
       AppConstants.prefUsageDataEnabled: true,
     });
+    ligarLojaFalsa();
   });
+
+  tearDown(desligarLojaFalsa);
 
   // ───────────────────────────────────────────────────────────────────────────
   // S1 — o rótulo do seletor de tema

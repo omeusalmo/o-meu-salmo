@@ -55,7 +55,10 @@ void main() {
       AppConstants.prefUserSeed: 20260816,
       AppConstants.prefInstallDay: hoje,
     });
+    ligarLojaFalsa();
   });
+
+  tearDown(desligarLojaFalsa);
 
   test('pré-requisito: as fontes do produto estão carregadas', () {
     // Sem fonte proporcional real o flutter_test usa a fonte sintética, em que

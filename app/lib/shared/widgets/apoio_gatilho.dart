@@ -75,6 +75,8 @@ class _ApoioGatilhoState extends State<ApoioGatilho> {
         comPergunta: true,
         compra: (widget.criarCompra ?? CompraApoioPlay.new)(),
         origem: 'gatilho',
+        // Terceira e última exibição: só aí aparece "Não perguntar de novo".
+        ultimaExibicao: ApoioService.instance.ultimaExibicao,
       );
     });
   }

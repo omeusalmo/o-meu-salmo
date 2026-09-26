@@ -10,6 +10,7 @@ import 'package:salmos_app/core/review/review_service.dart';
 import 'package:salmos_app/features/salmos/leitura_salmo_screen.dart';
 
 import '../../a11y/text_scale_harness.dart';
+import '../../shared/fake_compra.dart';
 
 /// O conserto do gatilho de avaliação.
 ///
@@ -30,9 +31,13 @@ void main() {
     review = _ReviewFalso();
     ReviewService.instance = review;
     ApoioService.instance = ApoioService();
+    ligarLojaFalsa();
   });
 
-  tearDown(() => ReviewService.instance = ReviewService());
+  tearDown(() {
+    ReviewService.instance = ReviewService();
+    desligarLojaFalsa();
+  });
 
   // ───────────────────────────────────────────────────────────────────────────
   // A regressão
@@ -273,6 +278,107 @@ void main() {
     expect(p.getInt(AppConstants.prefApoioMostradoMs), isNotNull);
     expect(review.pedidos, 0,
         reason: 'Avaliação e apoio nunca na mesma volta à Home.');
+  });
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // Loja sem produto: as entradas somem em vez de levar ao erro
+  // ───────────────────────────────────────────────────────────────────────────
+
+  group('loja que não responde', () {
+    /// Estado em que TUDO de apoio é devido. O único motivo para não aparecer é
+    /// a loja.
+    void semearEstadoDeApoio() {
+      SharedPreferences.setMockInitialValues({
+        AppConstants.prefPrimeiraAberturaMs: _diasAtras(30),
+        AppConstants.prefLeiturasCompletas: 20,
+        AppConstants.prefReviewPedidoMs: _diasAtras(20),
+        AppConstants.prefReviewSessionCount: 9,
+      });
+    }
+
+    test('o sheet não dispara, e não gasta uma exposição da vida', () async {
+      ligarLojaVazia();
+      semearEstadoDeApoio();
+      await ApoioService.instance.iniciarSessao();
+      await ApoioService.instance.registrarLeitura(
+        leituraConcluida: true,
+        audioConcluido: false,
+        sensivel: false,
+      );
+
+      expect(await ApoioService.instance.aoVoltarParaHome(), Gatilho.nenhum);
+
+      final p = await SharedPreferences.getInstance();
+      expect(p.getInt(AppConstants.prefApoioExposicoes), isNull,
+          reason: 'Pedido que não apareceu não pode gastar uma das 3 da vida.');
+      expect(p.getInt(AppConstants.prefApoioMostradoMs), isNull,
+          reason: 'Nem a trava de 90 dias.');
+    });
+
+    test('o card da Home não aparece', () async {
+      ligarLojaVazia();
+      semearEstadoDeApoio();
+      expect(await ApoioService.instance.mostrarCard(), isFalse);
+    });
+
+    test('com produto, o card aparece e o sheet dispara', () async {
+      ligarLojaFalsa();
+      semearEstadoDeApoio();
+      expect(await ApoioService.instance.mostrarCard(), isTrue);
+
+      await ApoioService.instance.iniciarSessao();
+      await ApoioService.instance.registrarLeitura(
+        leituraConcluida: true,
+        audioConcluido: false,
+        sensivel: false,
+      );
+      expect(await ApoioService.instance.aoVoltarParaHome(), Gatilho.apoio);
+    });
+  });
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // "Não perguntar de novo" só na terceira exibição
+  // ───────────────────────────────────────────────────────────────────────────
+
+  group('ultimaExibicao', () {
+    Future<Gatilho> voltarParaHome() async {
+      await ApoioService.instance.iniciarSessao();
+      await ApoioService.instance.registrarLeitura(
+        leituraConcluida: true,
+        audioConcluido: false,
+        sensivel: false,
+      );
+      return ApoioService.instance.aoVoltarParaHome();
+    }
+
+    /// [exposicoesAnteriores] quantas o sheet já gastou antes desta.
+    void semear(int exposicoesAnteriores) {
+      SharedPreferences.setMockInitialValues({
+        AppConstants.prefPrimeiraAberturaMs: _diasAtras(400),
+        AppConstants.prefLeiturasCompletas: 20,
+        AppConstants.prefReviewPedidoMs: _diasAtras(20),
+        AppConstants.prefReviewSessionCount: 9,
+        AppConstants.prefApoioExposicoes: exposicoesAnteriores,
+        if (exposicoesAnteriores > 0)
+          AppConstants.prefApoioMostradoMs: _diasAtras(100),
+      });
+    }
+
+    test('falso na primeira e na segunda exibição', () async {
+      for (final anteriores in [0, 1]) {
+        ApoioService.instance = ApoioService();
+        semear(anteriores);
+        expect(await voltarParaHome(), Gatilho.apoio);
+        expect(ApoioService.instance.ultimaExibicao, isFalse,
+            reason: 'Exibição ${anteriores + 1} de 3 não é a última.');
+      }
+    });
+
+    test('verdadeiro na terceira, que é a última pelo teto', () async {
+      semear(2);
+      expect(await voltarParaHome(), Gatilho.apoio);
+      expect(ApoioService.instance.ultimaExibicao, isTrue);
+    });
   });
 }
 

@@ -37,7 +37,10 @@ void main() {
       AppConstants.prefNotificationMinute: 0,
       AppConstants.prefUsageDataEnabled: true,
     });
+    ligarLojaFalsa();
   });
+
+  tearDown(desligarLojaFalsa);
 
   for (final (modo, nomeModo) in [
     (ThemeMode.dark, 'escuro'),

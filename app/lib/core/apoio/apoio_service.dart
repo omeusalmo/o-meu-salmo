@@ -4,6 +4,7 @@ import '../analytics/analytics_service.dart';
 import '../review/review_service.dart';
 import 'apoio_prefs.dart';
 import 'elegibilidade.dart';
+import 'loja_apoio.dart';
 
 /// Orquestra apoio e avaliação: junta o que está em disco ([ApoioPrefs]), o que
 /// vale só nesta sessão e a regra pura ([Elegibilidade]).
@@ -33,7 +34,16 @@ class ApoioService {
   /// tela visível — é o que substitui o timer que rodava dentro do Salmo.
   final ValueNotifier<int> volta = ValueNotifier<int>(0);
 
+  /// Número da exibição do sheet que acabou de ser contada.
+  int _exposicao = 0;
+
   bool get primeiraSessao => _sessao == 1;
+
+  /// A exibição em curso é a última que a pessoa vai ver (teto de 3 na vida).
+  /// É o que autoriza o link "Não perguntar de novo" no sheet: antes da última,
+  /// o "Agora não" já resolve, e oferecer a saída definitiva cedo é insistência
+  /// disfarçada de opção.
+  bool get ultimaExibicao => _exposicao >= Elegibilidade.maxExposicoesApoio;
 
   /// Há uma leitura concluída esperando a volta à Home.
   bool get temPendente => _pendente != null;
@@ -110,10 +120,13 @@ class ApoioService {
         return Gatilho.review;
 
       case Gatilho.apoio:
+        // Loja sem produto: nada de sheet, e sem gastar uma das 3 exposições da
+        // vida num pedido que só levaria ao estado de erro.
+        if (!await LojaApoio.instance.disponivel()) return Gatilho.nenhum;
         _apoioNestaSessao = true;
-        final n = await ApoioPrefs.marcarApoioMostrado();
+        _exposicao = await ApoioPrefs.marcarApoioMostrado();
         AnalyticsService.instance
-            .logSupportPromptShown(surface: 'sheet', exposureN: n);
+            .logSupportPromptShown(surface: 'sheet', exposureN: _exposicao);
         return Gatilho.apoio;
 
       case Gatilho.nenhum:
@@ -122,8 +135,13 @@ class ApoioService {
   }
 
   /// O card discreto da Home deve aparecer?
-  Future<bool> mostrarCard() async =>
-      Elegibilidade.mostrarCard(await ApoioPrefs.ler());
+  ///
+  /// A loja vem primeiro: um card que só leva ao estado de erro é pior que card
+  /// nenhum.
+  Future<bool> mostrarCard() async {
+    if (!await LojaApoio.instance.disponivel()) return false;
+    return Elegibilidade.mostrarCard(await ApoioPrefs.ler());
+  }
 
   /// Card exibido — evento de analytics, sem gastar exposição do sheet.
   /// O card não interrompe nada, então não entra no teto de 3 na vida.
@@ -162,10 +180,8 @@ class ApoioService {
 
   /// "Não perguntar de novo" — nunca mais card nem sheet.
   ///
-  /// ⚠️ A regra existe e está coberta por teste, mas NÃO há superfície na UI:
-  /// a copy aprovada em 2026-09-26 não tem esse botão em nenhum dos estados do
-  /// sheet, e inventar um seria mexer em copy que já passou por marketing, UX
-  /// writing e design. Fica pronto para o dia em que houver decisão.
+  /// Superfície: link discreto abaixo de "Agora não", só na terceira e última
+  /// exibição do sheet (decisão de 2026-09-26). Ver [ultimaExibicao].
   Future<void> registrarNaoPerguntarMais() async {
     AnalyticsService.instance.logSupportPromptAnswer('never');
     await ApoioPrefs.marcarNaoPerguntarMais();

@@ -1,9 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:salmos_app/core/constants/app_constants.dart';
+import 'package:salmos_app/core/apoio/compra_service.dart';
+import 'package:salmos_app/core/apoio/loja_apoio.dart';
 import 'package:salmos_app/core/constants/copy_apoio.dart';
 import 'package:salmos_app/core/notifications/notification_service.dart';
 import 'package:salmos_app/core/services/link_service.dart';
@@ -42,11 +46,13 @@ void main() {
     notificacao = _NotificacaoFalsa();
     LinkService.instance = link;
     NotificationService.instance = notificacao;
+    ligarLojaFalsa();
   });
 
   tearDown(() {
     LinkService.instance = LinkService();
     NotificationService.instance = NotificationService();
+    desligarLojaFalsa();
   });
 
   testWidgets('consentimento LGPD: tocar grava a escolha em disco',
@@ -106,6 +112,56 @@ void main() {
     expect(link.abertas.single.scheme, 'market',
         reason: 'market:// abre o app da Play Store direto; a https é o plano B '
             'de aparelho sem Play Services.');
+  });
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // Loja sem produto: a linha de apoio some, a de avaliar fica
+  //
+  // Por que importa: os produtos apoio_5/10/25 só ficam ativos na Play Console
+  // num momento que não é o do build. Com a linha visível, qualquer atualização
+  // publicada antes disso levaria a pessoa ao estado de erro. Sem a linha, não
+  // há beco nenhum.
+  // ───────────────────────────────────────────────────────────────────────────
+
+  testWidgets('loja sem produto: "Apoiar o app" não aparece', (tester) async {
+    ligarLojaVazia();
+    await renderizar(tester, const AjustesScreen(),
+        nome: 'sem loja', escala: 1.0, tamanho: _telaInteira);
+
+    expect(find.text(CopyApoio.ajustesApoiar), findsNothing);
+    expect(find.text(CopyApoio.ajustesApoiarApoio), findsNothing,
+        reason: 'O texto de apoio da linha some junto com ela.');
+
+    // A outra linha não depende de produto e continua de pé.
+    expect(find.text(CopyApoio.ajustesAvaliar), findsOneWidget);
+  });
+
+  testWidgets('loja com produto: "Apoiar o app" aparece', (tester) async {
+    ligarLojaFalsa();
+    await renderizar(tester, const AjustesScreen(),
+        nome: 'com loja', escala: 1.0, tamanho: _telaInteira);
+
+    expect(find.text(CopyApoio.ajustesApoiar), findsOneWidget);
+    expect(find.text(CopyApoio.ajustesAvaliar), findsOneWidget);
+  });
+
+  testWidgets('a linha não pisca enquanto a loja não responde', (tester) async {
+    // A consulta à loja é assíncrona. Se a linha nascer visível e sair quando a
+    // resposta chegar, o toque cai no lugar errado — pior que nunca ter
+    // aparecido. Esta loja só responde quando o teste manda.
+    final lenta = _LojaLenta();
+    LojaApoio.instance = LojaApoio(criar: () => lenta);
+
+    await renderizar(tester, const AjustesScreen(),
+        nome: 'loja lenta', escala: 1.0, tamanho: _telaInteira);
+
+    expect(find.text(CopyApoio.ajustesApoiar), findsNothing,
+        reason: 'Estado desconhecido é tratado como indisponível.');
+
+    lenta.responder();
+    await tester.pumpAndSettle();
+    expect(find.text(CopyApoio.ajustesApoiar), findsOneWidget,
+        reason: 'E aparece quando a resposta chega.');
   });
 
   testWidgets('Ajustes não oferece mais a chave Pix', (tester) async {
@@ -202,4 +258,24 @@ class _NotificacaoFalsa extends NotificationService {
   Future<void> cancelarJanela() async {
     cancelada = true;
   }
+}
+
+/// Loja que só responde quando o teste manda — para provar que a linha nasce
+/// escondida enquanto a resposta não chega.
+class _LojaLenta implements CompraApoio {
+  final _espera = Completer<List<ProdutoApoio>>();
+
+  void responder() => _espera.complete(const [
+        ProdutoApoio(id: 'apoio_10', precoFormatado: 'R\$ 10,00', precoBruto: 10),
+      ]);
+
+  @override
+  Future<List<ProdutoApoio>> produtos() => _espera.future;
+
+  @override
+  Future<ResultadoCompra> comprar(ProdutoApoio produto) async =>
+      const ResultadoCompra(ResultadoApoio.cancelado);
+
+  @override
+  void dispose() {}
 }

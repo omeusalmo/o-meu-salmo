@@ -26,11 +26,14 @@ import 'eyebrow_label.dart';
 /// exatamente isso.
 ///
 /// Abre no passo do valor quando [comPergunta] é `false`.
+///
+/// [ultimaExibicao] liga o link "Não perguntar de novo" — ver [ApoioSheet].
 Future<void> mostrarApoioSheet(
   BuildContext context, {
   required bool comPergunta,
   required CompraApoio compra,
   required String origem,
+  bool ultimaExibicao = false,
 }) async {
   // Movimento zero quando o sistema pede movimento zero. O sheet aparece, não
   // desliza. Sem isto o `showModalBottomSheet` ignora `disableAnimations`.
@@ -60,6 +63,7 @@ Future<void> mostrarApoioSheet(
         comPergunta: comPergunta,
         compra: compra,
         origem: origem,
+        ultimaExibicao: ultimaExibicao,
       ),
     );
 
@@ -84,11 +88,20 @@ class ApoioSheet extends StatefulWidget {
   /// uma leitura não é a mesma coisa que a de quem procurou o item em Ajustes.
   final String origem;
 
+  /// Esta é a terceira e última exibição do sheet (teto de 3 na vida). Só então
+  /// aparece o link "Não perguntar de novo", abaixo de "Agora não".
+  ///
+  /// Nas duas primeiras o "Agora não" basta: oferecer a saída definitiva antes
+  /// da última vez é insistência disfarçada de escolha. Sempre `false` no card
+  /// e em Ajustes, onde não há pergunta para recusar.
+  final bool ultimaExibicao;
+
   const ApoioSheet({
     super.key,
     required this.comPergunta,
     required this.compra,
     this.origem = 'sheet',
+    this.ultimaExibicao = false,
   });
 
   @override
@@ -249,6 +262,17 @@ class _ApoioSheetState extends State<ApoioSheet> {
 
   void _fechar() => Navigator.of(context).pop(_respondeu);
 
+  /// "Não perguntar de novo". Grava o never e fecha.
+  ///
+  /// `_respondeu = true` antes de fechar: sem isto o fechamento logaria um
+  /// `dismiss` em cima do `never`, e o funil mostraria duas respostas para um
+  /// toque só.
+  Future<void> _nuncaMais() async {
+    _respondeu = true;
+    await ApoioService.instance.registrarNaoPerguntarMais();
+    if (mounted) _fechar();
+  }
+
   // ── Render ───────────────────────────────────────────────────────────────
 
   @override
@@ -307,6 +331,7 @@ class _ApoioSheetState extends State<ApoioSheet> {
                 estilo: EstiloApoio.texto,
                 onTap: _fechar,
               ),
+              if (widget.ultimaExibicao) _LinkNuncaMais(onTap: _nuncaMais),
             ]),
           ],
 
@@ -513,6 +538,65 @@ class _Acoes extends StatelessWidget {
           ],
         ],
       );
+}
+
+/// "Não perguntar de novo" — a saída definitiva, só na última exibição.
+///
+/// Link de texto, e não um quarto [BotaoApoio]: "Agora não" continua sendo a
+/// saída óbvia, e dois botões de texto idênticos empilhados fariam a pessoa
+/// escolher entre duas coisas que parecem a mesma. O sublinhado é o que separa
+/// os dois papéis sem gritar.
+///
+/// Três regras do DS presas aqui: alvo de 48dp na linha inteira (não só no
+/// texto), 14px porque é texto de decisão, e `colorText` — nunca muted, nunca
+/// `withAlpha`.
+///
+/// Semântica: MergeSemantics + Semantics(button:), sem `excludeSemantics`.
+/// Excluir o filho derrubaria a ação de toque junto com o texto, e o TalkBack
+/// anunciaria um botão que não sabe acionar.
+class _LinkNuncaMais extends StatelessWidget {
+  final VoidCallback onTap;
+  const _LinkNuncaMais({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    final cor = context.colorText;
+
+    // 4px além do gap de 8 da pilha: 12 no total, o que o DS pede em `.ap-never`.
+    // Com os 8 puros o link entra no mesmo ritmo dos três botões e é exatamente
+    // aí que ele lê como um quarto botão. Fica FORA do InkWell, senão comeria
+    // parte do alvo de 48dp.
+    return Padding(
+      padding: const EdgeInsets.only(top: AppTheme.sp1),
+      child: MergeSemantics(
+        child: Semantics(
+          button: true,
+          child: InkWell(
+            onTap: onTap,
+            borderRadius: BorderRadius.circular(AppTheme.radiusSm),
+            child: Container(
+              // minHeight, não height: em 2.0x o rótulo vira duas linhas e o
+              // alvo cresce em vez de cortar.
+              constraints: const BoxConstraints(minHeight: 48),
+              alignment: Alignment.center,
+              padding: const EdgeInsets.symmetric(horizontal: AppTheme.sp4),
+              child: Text(
+                CopyApoio.naoPerguntarMais,
+                textAlign: TextAlign.center,
+                style: GoogleFonts.instrumentSans(
+                  fontSize: 14,
+                  height: 1.4,
+                  color: cor,
+                  decoration: TextDecoration.underline,
+                  decorationColor: cor,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 /// Lista de valores com radio — obrigatoriamente lista.

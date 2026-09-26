@@ -1508,7 +1508,7 @@ tailwind.config = {
       min-height:48px; padding:12px 24px; width:100%; margin-top:4px;
       background:transparent; border:0; cursor:pointer;
       font-family:'Instrument Sans',sans-serif; font-size:14px; font-weight:400;
-      line-height:1.3; text-align:center; color:var(--ds-text);
+      line-height:1.4; text-align:center; color:var(--ds-text);
       text-decoration:underline; text-underline-offset:3px;
     }
     .ap-choice { border:.5px solid var(--ds-line); border-radius:14px; overflow:hidden; background:var(--ds-bg); }
@@ -1588,7 +1588,9 @@ tailwind.config = {
         O sheet aparece no máximo 3 vezes na vida do app. <strong>"Não perguntar de novo" só existe na 3ª.</strong> Na 1ª e na 2ª o botão não é renderizado — não é desabilitado, não é escondido: não existe.<br>
         Hierarquia: link de texto subordinado ao "Agora não". Sem pill, sem contorno, sem preenchimento, sem peso 500 — nunca lê como quarto botão.<br>
         Cor <code style="font-size:11px;">--ds-text</code> (night-text #8C97D4 / day-text #2E3A86), <em>não</em> muted: 6.05:1 no escuro, 8.19:1 no claro sobre a superfície do sheet. Piso de 14px por ser texto de decisão. Sublinhado com offset 3px para ler como link.<br>
-        Alvo de 48dp na largura toda do sheet · rótulo exato "Não perguntar de novo", sem variação · Semantics(button:true).
+        Alvo de 48dp na largura toda do sheet · rótulo exato "Não perguntar de novo", sem variação · Semantics(button:true).<br>
+        Respiro de 12px acima (8 do gap da pilha + 4 de <code style="font-size:11px;">margin-top</code>): separa o link do "Agora não" sem abrir um bloco novo.<br>
+        <strong>Flutter:</strong> não existe <code style="font-size:11px;">text-underline-offset</code> em <code style="font-size:11px;">TextStyle</code>. O sublinhado nativo encosta no "g" de "perguntar" e isso é aceito — trocar por borda inferior quebraria o sublinhado quando o rótulo vira duas linhas em 2.0x.
       </div>
     </div>
 
