@@ -9,6 +9,11 @@
     <uses-permission android:name="android.permission.USE_EXACT_ALARM" tools:node="remove"/>
     <!-- DUMP injetada por dep transitiva do Firebase; app normal nunca recebe (signature|system). Remover por higiene. -->
     <uses-permission android:name="android.permission.DUMP" tools:node="remove"/>
+    <!-- Apoio via Google Play Billing (produto consumível).
+         A biblioteca do Billing já injeta esta permissão pelo merge de
+         manifesto; declarada aqui para o requisito ficar visível no arquivo do
+         app e não sumir num upgrade de dependência. -->
+    <uses-permission android:name="com.android.vending.BILLING"/>
     <!-- Áudio em background -->
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>

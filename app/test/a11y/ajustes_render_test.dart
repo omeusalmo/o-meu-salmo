@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:salmos_app/core/constants/app_constants.dart';
 import 'package:salmos_app/features/ajustes/ajustes_screen.dart';
 
+import '../shared/fake_compra.dart';
 import 'text_scale_harness.dart';
 
 /// Renderiza Ajustes nos dois temas e nas escalas 1.0 e 2.0, e COMPARA com os
@@ -66,28 +67,35 @@ void main() {
     }
   }
 
-  testWidgets('Sheet do Pix escuro 1x', (tester) async {
-    await _semRuidoDeFonte(() async {
-      await renderizar(
-        tester,
-        const AjustesScreen(),
-        nome: 'render sheet pix',
-        escala: 1.0,
-        modo: ThemeMode.dark,
-        tamanho: const Size(360, 1500),
-        depoisDeRenderizar: (t) async {
-          await t.tap(find.text('Apoiar o app'));
-          await t.pump();
-          await t.pump(const Duration(milliseconds: 400));
-        },
-      );
+  // Substituiu o golden do sheet do Pix. A loja é falsa, então os preços são
+  // estáveis entre execuções — e continuam vindo de fora do app, que é a regra.
+  for (final (modo, nomeModo) in [
+    (ThemeMode.dark, 'escuro'),
+    (ThemeMode.light, 'claro'),
+  ]) {
+    testWidgets('Sheet de apoio $nomeModo 1x', (tester) async {
+      await _semRuidoDeFonte(() async {
+        await renderizar(
+          tester,
+          const AjustesScreen(criarCompra: FakeCompraApoio.new),
+          nome: 'render sheet apoio $nomeModo',
+          escala: 1.0,
+          modo: modo,
+          tamanho: const Size(360, 1500),
+          depoisDeRenderizar: (t) async {
+            await t.tap(find.text('Apoiar o app'));
+            await t.pump();
+            await t.pump(const Duration(milliseconds: 400));
+          },
+        );
 
-      await expectLater(
-        find.byType(MaterialApp),
-        matchesGoldenFile('goldens/ajustes_sheet_pix_escuro.png'),
-      );
+        await expectLater(
+          find.byType(MaterialApp),
+          matchesGoldenFile('goldens/ajustes_sheet_apoio_$nomeModo.png'),
+        );
+      });
     });
-  });
+  }
 }
 
 /// Silencia UM erro específico do google_fonts durante o render.

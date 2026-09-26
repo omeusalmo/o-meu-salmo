@@ -173,4 +173,67 @@ class AnalyticsService {
   /// Usuário tocou no player de áudio.
   Future<void> logAudioPlayed(int numero) =>
       _log('audio_played', {'psalm_number': numero});
+
+  // ── Apoio e avaliação ────────────────────────────────────────────────────
+  // O funil do apoio é cego sem estes eventos: dá para saber quantos apoiaram,
+  // mas não quantos viram o pedido — e é a razão entre os dois que diz se o
+  // pedido está no momento certo ou se está só incomodando.
+
+  /// Prompt nativo da In-App Review pedido ao sistema.
+  ///
+  /// "Pedido", não "mostrado": o Google decide se exibe, e não devolve essa
+  /// informação. A contagem de sessões e de leituras vai junto para dar para
+  /// checar se a regra de elegibilidade está disparando onde deveria.
+  Future<void> logReviewPromptRequested({
+    required int sessionCount,
+    required int reads,
+  }) =>
+      _log('review_prompt_requested', {
+        'session_count': sessionCount,
+        'reads': reads,
+      });
+
+  /// Pedido de apoio exibido. [surface] é `sheet` ou `card`; [exposureN] é a
+  /// enésima exposição desta instalação (teto de 3 na vida).
+  Future<void> logSupportPromptShown({
+    required String surface,
+    required int exposureN,
+  }) =>
+      _log('support_prompt_shown', {
+        'surface': surface,
+        'exposure_n': exposureN,
+      });
+
+  /// Resposta ao pedido: `yes`, `no`, `dismiss` ou `never`.
+  ///
+  /// `no` é o "Nem tanto"; `dismiss` é fechar sem responder (arrastar, tocar
+  /// fora, botão voltar); `never` é "Não perguntar de novo".
+  Future<void> logSupportPromptAnswer(String answer) =>
+      _log('support_prompt_answer', {'answer': answer});
+
+  /// Valor escolhido na lista. É o id do produto, não o preço: o preço muda de
+  /// moeda e de país, o id não.
+  Future<void> logSupportValueSelected(String value) =>
+      _log('support_value_selected', {'value': value});
+
+  Future<void> logSupportPurchaseCompleted(String value) =>
+      _log('support_purchase_completed', {'value': value});
+
+  Future<void> logSupportPurchaseCanceled() =>
+      _log('support_purchase_canceled');
+
+  Future<void> logSupportPurchaseError(String code) =>
+      _log('support_purchase_error', {'code': code});
+
+  /// Tocou "Enviar o app para alguém" dentro do sheet.
+  Future<void> logSupportShare() => _log('support_share');
+
+  /// Abriu o cliente de e-mail. [source] separa a sugestão de Ajustes do ramo
+  /// "Nem tanto" do sheet: são intenções diferentes e merecem leitura separada.
+  Future<void> logFeedbackEmailOpened(String source) =>
+      _log('feedback_email_opened', {'source': source});
+
+  /// Tocou num link que leva à ficha da Play Store.
+  Future<void> logStoreRatingLinkTapped(String source) =>
+      _log('store_rating_link_tapped', {'source': source});
 }

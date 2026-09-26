@@ -8,6 +8,18 @@ const List<String> kColecaoIds = [
   'esperanca', 'perdao', 'louvor', 'protecao',
 ];
 
+/// Coleções em que o app não pede nada: nem avaliação, nem apoio.
+///
+/// Quem abre "No Luto e na Dor", "Para a Ansiedade" ou "Para Dormir em Paz" está
+/// num momento ruim. Pedir nota na loja ou dinheiro na saída dessas leituras é o
+/// pior uso possível da confiança de quem chegou ali.
+const Set<String> kColecoesSensiveis = {'luto', 'ansiedade', 'sono'};
+
+/// O Salmo [numero] está em alguma coleção sensível?
+bool salmoEmColecaoSensivel(List<Colecao> colecoes, int numero) => colecoes.any(
+      (c) => kColecoesSensiveis.contains(c.id) && c.salmos.contains(numero),
+    );
+
 /// Cor do indicador (dot) de cada coleção nos cards — agrupamento por
 /// proximidade emocional é intencional (design system), não bug.
 /// ⚠️ Coleção nova sem entrada aqui cai no fallback (cor de "esperança") em

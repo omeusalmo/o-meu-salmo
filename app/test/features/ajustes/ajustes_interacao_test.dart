@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:salmos_app/core/constants/app_constants.dart';
+import 'package:salmos_app/core/constants/copy_apoio.dart';
 import 'package:salmos_app/core/notifications/notification_service.dart';
 import 'package:salmos_app/core/services/link_service.dart';
 import 'package:salmos_app/features/ajustes/ajustes_screen.dart';
+import 'package:salmos_app/shared/widgets/apoio_sheet.dart';
 
 import '../../a11y/text_scale_harness.dart';
+import '../../shared/fake_compra.dart';
 
 /// Testes de COMPORTAMENTO da tela de Ajustes.
 ///
@@ -68,42 +70,52 @@ void main() {
     );
   });
 
-  testWidgets('copiar do Pix: tocar põe a chave na área de transferência',
+  testWidgets('apoiar o app: tocar abre o sheet direto no valor',
       (tester) async {
-    String? copiado;
-    tester.binding.defaultBinaryMessenger.setMockMethodCallHandler(
-      SystemChannels.platform,
-      (call) async {
-        if (call.method == 'Clipboard.setData') {
-          copiado = (call.arguments as Map)['text'] as String?;
-        }
-        return null;
-      },
-    );
-    addTearDown(() => tester.binding.defaultBinaryMessenger
-        .setMockMethodCallHandler(SystemChannels.platform, null));
-
+    // Substituiu o teste da chave Pix: o Pix saiu do app no mesmo release em que
+    // o Play Billing entrou. Duas formas de doar, uma por fora da loja, é o que a
+    // política de pagamentos do Google não aceita.
     await renderizar(
       tester,
-      const AjustesScreen(),
-      nome: 'pix',
+      const AjustesScreen(criarCompra: FakeCompraApoio.new),
+      nome: 'apoio',
       escala: 1.0,
       tamanho: _telaInteira,
-      depoisDeRenderizar: (t) async {
-        await t.tap(find.text('Apoiar o app'));
-        await t.pumpAndSettle();
-      },
     );
 
-    await tester.tap(find.text('Copiar'));
-    await tester.pump();
+    await tester.tap(find.text(CopyApoio.ajustesApoiar));
+    await tester.pumpAndSettle();
 
-    expect(copiado, 'omeusalmo@gmail.com',
-        reason: 'O botão Copiar não escreveu na área de transferência.');
+    expect(find.byType(ApoioSheet), findsOneWidget);
+    // Sem a pergunta de sentimento: quem tocou em "Apoiar o app" já respondeu.
+    expect(find.text(CopyApoio.perguntaTitulo), findsNothing);
+    // E o preço vem da loja, nunca de constante no app.
+    expect(find.text('Apoiar com R\$ 10,00'), findsOneWidget);
+  });
 
-    // O botão volta de "Copiado" para "Copiar" depois de 2s; sem drenar esse
-    // timer o teste falha por temporizador pendente.
-    await tester.pump(const Duration(seconds: 3));
+  testWidgets('avaliar na Play Store: tocar abre a ficha da loja',
+      (tester) async {
+    await renderizar(tester, const AjustesScreen(),
+        nome: 'avaliar', escala: 1.0, tamanho: _telaInteira);
+
+    await tester.tap(find.text(CopyApoio.ajustesAvaliar));
+    await tester.pumpAndSettle();
+
+    expect(link.abertas, hasLength(1),
+        reason: 'O único caminho manual até a avaliação não abriu nada.');
+    expect(link.abertas.single.scheme, 'market',
+        reason: 'market:// abre o app da Play Store direto; a https é o plano B '
+            'de aparelho sem Play Services.');
+  });
+
+  testWidgets('Ajustes não oferece mais a chave Pix', (tester) async {
+    await renderizar(tester, const AjustesScreen(),
+        nome: 'sem pix', escala: 1.0, tamanho: _telaInteira);
+
+    expect(find.textContaining('PIX'), findsNothing);
+    expect(find.text('Copiar'), findsNothing);
+    // E o card de convencimento saiu junto: a linha já diz a mesma coisa.
+    expect(find.text('Você usa. Gosta.'), findsNothing);
   });
 
   testWidgets('enviar sugestão: tocar abre o e-mail', (tester) async {

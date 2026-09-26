@@ -40,6 +40,11 @@ dependencies:
   url_launcher: ^6.3.2
   in_app_review: ^2.0.9
 
+  # Apoio via Google Play Billing — produto consumível, nada liberado no app.
+  # Fase 2: só funciona depois de apoio_5/apoio_10/apoio_25 existirem na Play
+  # Console. Sem eles, queryProductDetails volta vazio e o sheet degrada.
+  in_app_purchase: ^3.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

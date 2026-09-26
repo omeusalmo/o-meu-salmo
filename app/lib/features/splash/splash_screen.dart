@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../core/notifications/notification_service.dart';
 import '../../core/notifications/agendador.dart';
 import '../../data/providers/salmos_providers.dart';
-import '../../core/review/review_service.dart';
+import '../../core/apoio/apoio_service.dart';
 import '../../data/providers/onboarding_provider.dart';
 import '../../shared/widgets/bookmark_painter.dart';
 
@@ -42,7 +42,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
 
     // Aquece o provider em T+0 para que _load() complete antes do delay de 3s
     ref.read(onboardingProvider);
-    ReviewService.instance.incrementSession();
+    ApoioService.instance.iniciarSessao();
 
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,

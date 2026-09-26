@@ -294,8 +294,12 @@ Future<Resultado> renderizar(
 }
 
 /// Pumps curtos para os FutureProvider (assets, SharedPreferences) resolverem,
-/// mais um salto longo que descarrega timers agendados pelas telas (a tela de
-/// leitura agenda o pedido de avaliação para 10s depois de abrir).
+/// mais um salto longo que descarrega timers agendados pelas telas.
+///
+/// O salto de 11s existia por causa do `Future.delayed(10s)` que a tela de
+/// leitura usava para pedir avaliação no meio do Salmo. Esse timer não existe
+/// mais (ver core/apoio/apoio_gatilho), mas o salto fica: o gatilho novo tem o
+/// seu próprio respiro de meio segundo na volta à Home.
 /// Não usa `pumpAndSettle`, que travaria em animações contínuas.
 Future<void> _assentar(WidgetTester tester) async {
   for (var i = 0; i < 8; i++) {

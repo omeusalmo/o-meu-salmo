@@ -1,11 +1,13 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../core/apoio/compra_service.dart';
 import '../../core/constants/app_constants.dart';
+import '../../core/constants/copy_apoio.dart';
+import '../../core/review/review_service.dart';
 import '../../core/services/link_service.dart';
 import '../../core/extensions/build_context_extensions.dart';
 import '../../data/models/salmo.dart';
@@ -15,6 +17,7 @@ import '../../core/notifications/notification_service.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/providers/salmos_providers.dart';
 import '../../data/providers/settings_provider.dart';
+import '../../shared/widgets/apoio_sheet.dart';
 import '../../shared/widgets/circle_icon_button.dart';
 
 /// Altura mínima de qualquer coisa tocável nesta tela.
@@ -23,7 +26,10 @@ import '../../shared/widgets/circle_icon_button.dart';
 const double _alvoMinimo = 48;
 
 class AjustesScreen extends StatelessWidget {
-  const AjustesScreen({super.key});
+  /// Injetável em teste. Em produção é sempre o Google Play Billing.
+  final CompraApoio Function()? criarCompra;
+
+  const AjustesScreen({super.key, this.criarCompra});
 
   @override
   Widget build(BuildContext context) {
@@ -70,30 +76,30 @@ class AjustesScreen extends StatelessWidget {
           horizontal: AppTheme.sp5,
           vertical: AppTheme.sp4,
         ),
-        children: const [
-          _SectionHeader('Aparência'),
-          _AparenciaSection(),
-          SizedBox(height: AppTheme.sp5),
+        children: [
+          const _SectionHeader('Aparência'),
+          const _AparenciaSection(),
+          const SizedBox(height: AppTheme.sp5),
 
-          _SectionHeader('Notificações'),
-          _NotificationCard(),
-          SizedBox(height: AppTheme.sp5),
+          const _SectionHeader('Notificações'),
+          const _NotificationCard(),
+          const SizedBox(height: AppTheme.sp5),
 
-          _SectionHeader('Privacidade'),
-          _PrivacidadeSection(),
-          SizedBox(height: AppTheme.sp5),
+          const _SectionHeader('Privacidade'),
+          const _PrivacidadeSection(),
+          const SizedBox(height: AppTheme.sp5),
 
-          _SectionHeader('Sobre'),
-          _SobreSection(),
-          SizedBox(height: AppTheme.sp5),
+          const _SectionHeader('Sobre'),
+          const _SobreSection(),
+          const SizedBox(height: AppTheme.sp5),
 
-          _SectionHeader('Sugestões'),
-          _SugestoesSection(),
-          SizedBox(height: AppTheme.sp5),
+          const _SectionHeader('Sugestões'),
+          const _SugestoesSection(),
+          const SizedBox(height: AppTheme.sp5),
 
-          _SectionHeader('Apoie o app'),
-          _ApoieSection(),
-          SizedBox(height: AppTheme.sp10),
+          const _SectionHeader('Apoie o app'),
+          _ApoieSection(criarCompra: criarCompra),
+          const SizedBox(height: AppTheme.sp10),
         ],
       ),
     );
@@ -588,9 +594,10 @@ class _SugestoesSection extends StatelessWidget {
   }
 
   Future<void> _enviarSugestao() async {
+    AnalyticsService.instance.logFeedbackEmailOpened('ajustes');
     final uri = Uri(
       scheme: 'mailto',
-      path: 'omeusalmo@gmail.com',
+      path: AppConstants.emailContato,
       queryParameters: {
         'subject': 'Sugestão — O meu Salmo',
         'body': 'Olá,\n\nMinha sugestão:\n\n',
@@ -603,233 +610,73 @@ class _SugestoesSection extends StatelessWidget {
 // ─────────────────────────────────────────────────────────────────────────────
 // Apoie o app
 //
-// Último da tela e sem peso visual: sem sombra (era o único elemento com
-// sombra na tela inteira) e com botão de contorno em vez de bloco sólido de
-// largura total. Pedir dinheiro não pode ser o que mais salta aos olhos.
+// Duas linhas fixas, sem card de convencimento. O bloco "Você usa. Gosta." saiu:
+// com uma linha que já diz "Apoiar o app · Valor único, sem assinatura", o
+// parágrafo acima dela era a mesma frase escrita duas vezes.
+//
+// A chave Pix também saiu, no mesmo release em que o Play Billing entrou. Duas
+// formas de doar, uma delas por fora da loja, é justamente o que a política de
+// pagamentos do Google não aceita.
 // ─────────────────────────────────────────────────────────────────────────────
 
 class _ApoieSection extends StatelessWidget {
-  const _ApoieSection();
+  final CompraApoio Function()? criarCompra;
+
+  const _ApoieSection({this.criarCompra});
 
   @override
   Widget build(BuildContext context) {
-    final accentText = context.colorAccentText;
-
     return _Card(
+      padding: EdgeInsets.zero,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(Icons.volunteer_activism_outlined, size: 26, color: accentText),
-          const SizedBox(height: AppTheme.sp2),
-          Text(
-            'Você usa. Gosta.',
-            style: GoogleFonts.playfairDisplay(
-              fontSize: 18,
-              fontWeight: FontWeight.w400,
-              color: context.colorTitle,
-              height: 1.2,
-            ),
+          _LinhaAcao(
+            label: CopyApoio.ajustesAvaliar,
+            apoio: CopyApoio.ajustesAvaliarApoio,
+            onTap: () => _avaliar(context),
           ),
-          const SizedBox(height: AppTheme.sp1 + 2),
-          const _ItemBody('Gratuito e sem anúncios. Se faz parte do seu dia, '
-              'considere apoiar.'),
-          const SizedBox(height: AppTheme.sp4),
-          OutlinedButton(
-            onPressed: () => _showApoieSheet(context),
-            style: OutlinedButton.styleFrom(
-              foregroundColor: accentText,
-              side: BorderSide(color: accentText, width: 1),
-              shape: const StadiumBorder(),
-              minimumSize: const Size(0, _alvoMinimo),
-              padding: const EdgeInsets.symmetric(horizontal: AppTheme.sp6),
-            ),
-            child: Text(
-              'Apoiar o app',
-              style: GoogleFonts.instrumentSans(
-                fontSize: 15,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
+          const _DivisorInterno(),
+          _LinhaAcao(
+            label: CopyApoio.ajustesApoiar,
+            apoio: CopyApoio.ajustesApoiarApoio,
+            onTap: () => _apoiar(context),
           ),
         ],
       ),
     );
   }
 
-  void _showApoieSheet(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      backgroundColor: context.colorSurface,
-      isScrollControlled: true,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(22)),
-      ),
-      builder: (_) => const _ApoieSheet(),
-    );
-  }
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Bottom Sheet do Pix
-// ─────────────────────────────────────────────────────────────────────────────
-
-class _ApoieSheet extends StatelessWidget {
-  const _ApoieSheet();
-
-  static const _chavePix = 'omeusalmo@gmail.com';
-
-  @override
-  Widget build(BuildContext context) {
-    final titleClr = context.colorTitle;
-    final text = context.colorText;
-    final accentText = context.colorAccentText;
-    final border = context.colorBorder;
-
-    // Rola: com fonte em 2.0x o conteúdo passa da altura do sheet.
-    return SafeArea(
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(
-          AppTheme.sp5, AppTheme.sp6, AppTheme.sp5, AppTheme.sp8,
+  /// Único caminho manual até a avaliação. O prompt nativo da In-App Review roda
+  /// noutro momento e sem pergunta antes — a política do Google Play proíbe
+  /// perguntar opinião para filtrar quem vê o prompt.
+  Future<void> _avaliar(BuildContext context) async {
+    AnalyticsService.instance.logStoreRatingLinkTapped('ajustes');
+    final abriu = await ReviewService.instance.abrirFichaDaLoja();
+    if (abriu || !context.mounted) return;
+    // Aparelho sem Play Store: o toque não pode morrer em silêncio.
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          CopyApoio.avaliarFalhou,
+          style: AppTheme.caption14(context.colorTitle),
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: Container(
-                width: 40,
-                height: 4,
-                decoration: BoxDecoration(
-                  color: border,
-                  borderRadius: BorderRadius.circular(2),
-                ),
-              ),
-            ),
-            const SizedBox(height: AppTheme.sp6),
-            Text(
-              'Apoie o app',
-              style: GoogleFonts.playfairDisplay(
-                fontSize: 28,
-                fontWeight: FontWeight.w400,
-                color: titleClr,
-                letterSpacing: -0.42,
-              ),
-            ),
-            const SizedBox(height: AppTheme.sp3),
-            Text(
-              'O meu Salmo é gratuito e sem anúncios. Se ele faz parte do seu '
-              'dia, considere apoiar com uma contribuição única.',
-              style: AppTheme.bodyRelaxed15(text),
-            ),
-            const SizedBox(height: AppTheme.sp6),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(AppTheme.sp4),
-              decoration: BoxDecoration(
-                color: context.colorBg,
-                border: Border.all(color: border, width: 0.5),
-                borderRadius: BorderRadius.circular(AppTheme.radiusMd),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'CHAVE PIX',
-                    style: GoogleFonts.instrumentSans(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w400,
-                      letterSpacing: 13 * 0.18,
-                      color: accentText,
-                    ),
-                  ),
-                  const SizedBox(height: AppTheme.sp2),
-                  // Corpo maior: quem apoia digita esta chave no app do banco,
-                  // olhando para a tela. Era 14px.
-                  SelectableText(
-                    _chavePix,
-                    style: GoogleFonts.instrumentSans(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w500,
-                      color: titleClr,
-                    ),
-                  ),
-                  const SizedBox(height: AppTheme.sp3),
-                  const _CopyPixButton(chave: _chavePix),
-                ],
-              ),
-            ),
-            const SizedBox(height: AppTheme.sp3),
-            const _ItemBody('Abra seu banco, escolha Pix, Pagar, e cole a chave.'),
-          ],
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: context.colorSurface,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppTheme.radiusMd),
         ),
       ),
     );
   }
-}
 
-class _CopyPixButton extends StatefulWidget {
-  final String chave;
-  const _CopyPixButton({required this.chave});
-
-  @override
-  State<_CopyPixButton> createState() => _CopyPixButtonState();
-}
-
-class _CopyPixButtonState extends State<_CopyPixButton> {
-  bool _copied = false;
-
-  Future<void> _copy() async {
-    await Clipboard.setData(ClipboardData(text: widget.chave));
-    if (!mounted) return;
-    setState(() => _copied = true);
-    await Future.delayed(const Duration(seconds: 2));
-    if (mounted) setState(() => _copied = false);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final accentText = context.colorAccentText;
-    const ok = AppColors.emoPazDot;
-
-    return Semantics(
-      label: _copied ? 'Chave Pix copiada' : 'Copiar chave Pix',
-      button: true,
-      excludeSemantics: true,
-      child: Material(
-        color: _copied ? ok.withAlpha(30) : accentText.withAlpha(20),
-        borderRadius: BorderRadius.circular(AppTheme.radiusPill),
-        child: InkWell(
-          onTap: _copied ? null : _copy,
-          borderRadius: BorderRadius.circular(AppTheme.radiusPill),
-          child: Container(
-            constraints: const BoxConstraints(minHeight: _alvoMinimo),
-            padding: const EdgeInsets.symmetric(horizontal: AppTheme.sp5),
-            alignment: Alignment.center,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                // Ícone, e não o glifo "✓" dentro do texto: como glifo ele
-                // entrava na medida da linha e o botão mudava de largura no
-                // meio da animação de confirmação.
-                if (_copied) ...[
-                  const Icon(Icons.check_rounded, size: 18, color: ok),
-                  const SizedBox(width: AppTheme.sp1),
-                ],
-                Text(
-                  _copied ? 'Copiado' : 'Copiar',
-                  style: GoogleFonts.instrumentSans(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                    color: _copied ? ok : accentText,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+  /// Abre o sheet no passo do valor: quem toca em "Apoiar o app" já respondeu à
+  /// pergunta de sentimento com o próprio toque.
+  Future<void> _apoiar(BuildContext context) => mostrarApoioSheet(
+        context,
+        comPergunta: false,
+        compra: (criarCompra ?? CompraApoioPlay.new)(),
+        origem: 'ajustes',
+      );
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

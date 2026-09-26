@@ -12,9 +12,12 @@ import 'package:salmos_app/features/home/home_screen.dart';
 import 'package:salmos_app/features/onboarding/onboarding_screen.dart';
 import 'package:salmos_app/features/salmos/leitura_salmo_screen.dart';
 import 'package:salmos_app/features/salmos/todos_salmos_screen.dart';
+import 'package:salmos_app/shared/widgets/apoio_card.dart';
+import 'package:salmos_app/shared/widgets/apoio_sheet.dart';
 import 'package:salmos_app/shared/widgets/psalm_card.dart';
 import 'package:salmos_app/shared/widgets/verse_line.dart';
 
+import '../shared/fake_compra.dart';
 import 'text_scale_harness.dart';
 
 /// Auditoria de acessibilidade: como cada tela se comporta quando o usuário
@@ -160,6 +163,47 @@ void main() {
     'Ajustes em tela pequena (320dp)',
     (_) => const AjustesScreen(),
     tamanho: const Size(320, 2400),
+    tetoSemOverflow: 2.0,
+  );
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // Apoio — sheet e card
+  //
+  // O pior caso de todos: o sheet tem três botões empilhados, uma lista de três
+  // valores e dois parágrafos, tudo numa superfície limitada a 92% da altura do
+  // aparelho. É exatamente onde a tentação de dividir a largura em partes iguais
+  // apareceria, e é o que a regra do DS proíbe.
+  // ───────────────────────────────────────────────────────────────────────────
+
+  _auditar(
+    'Sheet de apoio — pergunta',
+    (_) => const _HostDoSheet(comPergunta: true),
+    tetoSemOverflow: 2.0,
+  );
+
+  _auditar(
+    'Sheet de apoio — valores',
+    (_) => const _HostDoSheet(comPergunta: false),
+    tetoSemOverflow: 2.0,
+  );
+
+  _auditar(
+    'Sheet de apoio — valores em tela pequena (320dp)',
+    (_) => const _HostDoSheet(comPergunta: false),
+    tamanho: kTelaPequena,
+    tetoSemOverflow: 2.0,
+  );
+
+  _auditar(
+    'Card de apoio da Home',
+    (_) => const _HostDoCard(),
+    tetoSemOverflow: 2.0,
+  );
+
+  _auditar(
+    'Card de apoio da Home em tela pequena (320dp)',
+    (_) => const _HostDoCard(),
+    tamanho: kTelaPequena,
     tetoSemOverflow: 2.0,
   );
 
@@ -423,6 +467,52 @@ void _auditar(
       reason: 'Regressão dentro do teto vigente de ${kTetoAtual}x em "$nome".',
     );
   });
+}
+
+/// Abre o sheet de apoio de verdade, pela rota modal, para o teste medir a
+/// altura limitada a 92% e a rolagem — e não um `ApoioSheet` solto num Scaffold,
+/// que teria toda a tela para crescer e nunca estouraria.
+class _HostDoSheet extends StatefulWidget {
+  final bool comPergunta;
+  const _HostDoSheet({required this.comPergunta});
+
+  @override
+  State<_HostDoSheet> createState() => _HostDoSheetState();
+}
+
+class _HostDoSheetState extends State<_HostDoSheet> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      mostrarApoioSheet(
+        context,
+        comPergunta: widget.comPergunta,
+        compra: FakeCompraApoio(),
+        origem: 'teste',
+      );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) => const Scaffold(body: SizedBox.expand());
+}
+
+/// O card na largura que ele tem na Home (padding de 20dp dos dois lados).
+class _HostDoCard extends StatelessWidget {
+  const _HostDoCard();
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: ApoioCardHome(
+            onDispensar: () {},
+            criarCompra: FakeCompraApoio.new,
+          ),
+        ),
+      );
 }
 
 /// Três cards de Salmo com 1, 2 e 3 dígitos, como aparecem numa lista real.

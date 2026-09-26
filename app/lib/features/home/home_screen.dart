@@ -4,16 +4,26 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../core/apoio/apoio_service.dart';
 import '../../core/extensions/build_context_extensions.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/salmo.dart';
 import '../../data/providers/salmos_providers.dart';
+import '../../shared/widgets/apoio_card.dart';
+import '../../shared/widgets/apoio_gatilho.dart';
 import '../../shared/widgets/eyebrow_label.dart';
 import '../../shared/widgets/staggered_entrance.dart';
 import '../../shared/widgets/starfield_background.dart';
 import '../../shared/widgets/error_state_view.dart';
 import '../../shared/widgets/tema_chip.dart';
 import '../../shared/widgets/word_reveal_text.dart';
+
+/// O card discreto de apoio deve aparecer nesta Home?
+///
+/// Provider, e não estado local, para o X poder invalidar de fora
+/// (`ref.invalidate`) sem a Home precisar conhecer a regra.
+final mostrarCardApoioProvider =
+    FutureProvider<bool>((ref) => ApoioService.instance.mostrarCard());
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -34,33 +44,40 @@ class HomeScreen extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: bg,
-      body: SafeArea(
-        child: AnimatedSwitcher(
-          duration: const Duration(milliseconds: 450),
-          switchInCurve: Curves.easeOut,
-          switchOutCurve: Curves.easeIn,
-          transitionBuilder: (child, animation) => FadeTransition(
-            opacity: CurvedAnimation(parent: animation, curve: Curves.easeOut),
-            child: child,
-          ),
-          child: asyncSalmo.when(
-            loading: () => Center(
-              key: const ValueKey('loading'),
-              child: CircularProgressIndicator(
-                color: context.colorAccent,
-                strokeWidth: 1.5,
+      // O gatilho de avaliação e de apoio mora aqui: fora do AnimatedSwitcher,
+      // para sobreviver à troca entre carregando/erro/conteúdo, e dentro da Home,
+      // que é a única tela onde interromper alguém é aceitável.
+      body: ApoioGatilho(
+        child: SafeArea(
+          child: AnimatedSwitcher(
+            duration: const Duration(milliseconds: 450),
+            switchInCurve: Curves.easeOut,
+            switchOutCurve: Curves.easeIn,
+            transitionBuilder: (child, animation) => FadeTransition(
+              opacity:
+                  CurvedAnimation(parent: animation, curve: Curves.easeOut),
+              child: child,
+            ),
+            child: asyncSalmo.when(
+              loading: () => Center(
+                key: const ValueKey('loading'),
+                child: CircularProgressIndicator(
+                  color: context.colorAccent,
+                  strokeWidth: 1.5,
+                ),
               ),
+              error: (_, __) => _ErrorView(
+                key: const ValueKey('error'),
+                onRetry: () => ref.invalidate(salmoDoDialProvider),
+              ),
+              data: (salmo) => salmo == null
+                  ? _EmptyView(
+                      key: const ValueKey('empty'),
+                      onRetry: () => ref.invalidate(salmoDoDialProvider),
+                    )
+                  : _HomeContent(
+                      key: ValueKey('data-${salmo.numero}'), salmo: salmo),
             ),
-            error: (_, __) => _ErrorView(
-              key: const ValueKey('error'),
-              onRetry: () => ref.invalidate(salmoDoDialProvider),
-            ),
-            data: (salmo) => salmo == null
-                ? _EmptyView(
-                    key: const ValueKey('empty'),
-                    onRetry: () => ref.invalidate(salmoDoDialProvider),
-                  )
-                : _HomeContent(key: ValueKey('data-${salmo.numero}'), salmo: salmo),
           ),
         ),
       ),
@@ -146,6 +163,9 @@ class _HomeContent extends StatelessWidget {
                     child: _CollectionsShortcut(),
                   ),
 
+                  // ── Apoio — sempre o último, nunca acima do Salmo do dia ──
+                  const _ApoioCardSlot(),
+
                   const SizedBox(height: AppTheme.sp10),
                 ]),
               ),
@@ -153,6 +173,32 @@ class _HomeContent extends StatelessWidget {
           ],
         ),
       ],
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Espaço do card de apoio
+//
+// Vazio antes do sétimo dia de uso, e vazio para sempre depois que a pessoa
+// apoia ou dispensa. Enquanto a regra não resolve (leitura de disco) não reserva
+// altura nenhuma: o card aparecer meio segundo depois é melhor que um buraco no
+// fim da Home.
+// ─────────────────────────────────────────────────────────────────────────────
+
+class _ApoioCardSlot extends ConsumerWidget {
+  const _ApoioCardSlot();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final mostrar = ref.watch(mostrarCardApoioProvider).value ?? false;
+    if (!mostrar) return const SizedBox.shrink();
+
+    return Padding(
+      padding: const EdgeInsets.only(top: AppTheme.sp5),
+      child: ApoioCardHome(
+        onDispensar: () => ref.invalidate(mostrarCardApoioProvider),
+      ),
     );
   }
 }

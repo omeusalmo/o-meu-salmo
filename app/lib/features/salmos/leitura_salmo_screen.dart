@@ -5,9 +5,10 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../core/analytics/analytics_service.dart';
+import '../../core/apoio/apoio_service.dart';
 import '../../core/extensions/build_context_extensions.dart';
-import '../../core/review/review_service.dart';
 import '../../core/theme/app_theme.dart';
+import '../../data/models/colecao.dart';
 import '../../data/models/salmo.dart';
 import '../../data/providers/audio_provider.dart';
 import '../../data/providers/favoritos_provider.dart';
@@ -37,16 +38,38 @@ class _LeituraSalmoScreenState extends ConsumerState<LeituraSalmoScreen> {
   /// voltou. O piso evita inflar a métrica de ativação com esses casos.
   static const _segundosMinimos = 15;
 
+  /// A narração chegou ao fim durante esta visita. Vale como leitura concluída
+  /// para o gatilho de avaliação — quem ouviu o Salmo inteiro consumiu o
+  /// conteúdo, mesmo sem tempo de tela.
+  bool _audioConcluido = false;
+
+  /// O Salmo pertence a Luto, Ansiedade ou Sono. Resolvido aqui, e não no
+  /// dispose, porque ler o catálogo é assíncrono e o dispose não espera.
+  bool _colecaoSensivel = false;
+
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       AnalyticsService.instance.logPsalmOpened(widget.numero);
     });
-    Future.delayed(const Duration(seconds: 10), () {
+    // O pedido de avaliação ficava aqui, num Future.delayed de 10 segundos: ele
+    // aparecia no meio da leitura, inclusive na coleção de Luto. Agora nada é
+    // pedido durante o conteúdo — o gatilho vive na volta à Home
+    // (shared/widgets/apoio_gatilho.dart).
+    _resolverColecao();
+  }
+
+  Future<void> _resolverColecao() async {
+    try {
+      final colecoes = await ref.read(colecoesProvider.future);
       if (!mounted) return;
-      ReviewService.instance.maybeRequestReview();
-    });
+      _colecaoSensivel = salmoEmColecaoSensivel(colecoes, widget.numero);
+    } catch (_) {
+      // Catálogo indisponível: assume sensível. Errar para o lado de não pedir
+      // nada é barato; errar para o outro é pedir dinheiro a quem está de luto.
+      _colecaoSensivel = true;
+    }
   }
 
   @override
@@ -54,16 +77,33 @@ class _LeituraSalmoScreenState extends ConsumerState<LeituraSalmoScreen> {
     // psalm_opened mede intenção (dispara no primeiro frame). Este mede
     // leitura, e é o proxy honesto de ativação.
     final segundos = DateTime.now().difference(_abertaEm).inSeconds;
-    if (segundos >= _segundosMinimos) {
+    final concluiu = segundos >= _segundosMinimos;
+    if (concluiu) {
       AnalyticsService.instance
           .logPsalmReadComplete(widget.numero, segundos);
     }
+    // Mesmo critério de psalm_read_complete, de propósito: o contador do apoio e
+    // a métrica de ativação não podem divergir.
+    ApoioService.instance.registrarLeitura(
+      leituraConcluida: concluiu,
+      audioConcluido: _audioConcluido,
+      sensivel: _colecaoSensivel,
+    );
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final asyncSalmo = ref.watch(salmoDetalheProvider(widget.numero));
+
+    // Fim da narração. Margem de dois segundos porque a posição do just_audio
+    // não encosta exatamente na duração.
+    ref.listen<AudioState>(audioPlayerProvider, (_, audio) {
+      if (audio.duration <= Duration.zero) return;
+      if (audio.position >= audio.duration - const Duration(seconds: 2)) {
+        _audioConcluido = true;
+      }
+    });
 
     return asyncSalmo.when(
       loading: () => _LoadingView(numero: widget.numero),

@@ -18,7 +18,23 @@ class AppConstants {
   static const String prefUsageDataEnabled   = 'usage_data_enabled';
   static const String prefFavTimestamps      = 'fav_timestamps';
   static const String prefReviewSessionCount = 'review_session_count';
+
+  /// Legado: o gate antigo do pedido de avaliação, um booleano "já pediu".
+  /// Continua sendo LIDO para migração — quem já viu o prompt entra na trava de
+  /// 120 dias em vez de receber outro pedido no dia da atualização. Não escrever
+  /// mais nele. Ver ApoioPrefs.ler().
   static const String prefReviewRequested    = 'review_requested';
+
+  // Apoio e avaliação (ver core/apoio/elegibilidade.dart)
+  static const String prefPrimeiraAberturaMs    = 'apoio_primeira_abertura_ms';
+  static const String prefLeiturasCompletas     = 'apoio_leituras_completas';
+  static const String prefReviewPedidoMs        = 'apoio_review_pedido_ms';
+  static const String prefApoioExposicoes       = 'apoio_exposicoes';
+  static const String prefApoioMostradoMs       = 'apoio_mostrado_ms';
+  static const String prefApoioCardDispensadoMs = 'apoio_card_dispensado_ms';
+  static const String prefApoioFeedbackMs       = 'apoio_feedback_ms';
+  static const String prefApoiou                = 'apoio_apoiou';
+  static const String prefApoioNaoPerguntar     = 'apoio_nao_perguntar';
 
   /// Versão exibida em Ajustes.
   ///
@@ -34,6 +50,21 @@ class AppConstants {
   static const String siteBaseUrl = 'https://omeusalmo.com.br';
   static String urlDoSalmo(int numero) => '$siteBaseUrl/salmos/$numero';
   static const String urlPrivacidade = '$siteBaseUrl/privacy_policy.html';
+
+  /// applicationId do módulo Android (android/app/build.gradle.kts).
+  /// Travado por teste: test/core/apoio/loja_link_test.dart.
+  static const String androidPackageId = 'com.omeusalmo.salmos';
+
+  /// Ficha da loja. `market://` abre o app da Play Store direto; a `https` é o
+  /// plano B para aparelho sem Play Services (Huawei, ROM alternativa), onde o
+  /// esquema `market` não resolve e o toque morreria em silêncio.
+  static const String uriLojaNativa =
+      'market://details?id=$androidPackageId';
+  static const String urlLojaWeb =
+      'https://play.google.com/store/apps/details?id=$androidPackageId';
+
+  /// E-mail de contato — sugestões e o ramo "Nem tanto" do sheet de apoio.
+  static const String emailContato = 'omeusalmo@gmail.com';
 
   static const int defaultNotifHour   = 8;
   static const int defaultNotifMinute = 0;

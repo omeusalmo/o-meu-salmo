@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../analytics/analytics_service.dart';
+import '../apoio/apoio_service.dart';
 
 import '../extensions/build_context_extensions.dart';
 import '../../shared/widgets/error_state_view.dart';
@@ -125,7 +126,13 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/respirar',
       name: 'respirar',
-      pageBuilder: (_, state) => _slideUp(state, const RespirarScreen()),
+      pageBuilder: (_, state) {
+        // Quem procura um minuto de pausa não recebe pedido de avaliação nem de
+        // apoio na saída. Marcado aqui, e não na tela, para a RespirarScreen
+        // continuar sem estado. Idempotente: reconstruir a página não muda nada.
+        ApoioService.instance.marcarRespirar();
+        return _slideUp(state, const RespirarScreen());
+      },
     ),
   ],
 );

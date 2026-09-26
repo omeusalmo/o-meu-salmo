@@ -8,6 +8,7 @@ import 'package:salmos_app/core/extensions/build_context_extensions.dart';
 import 'package:salmos_app/core/theme/app_theme.dart';
 import 'package:salmos_app/features/ajustes/ajustes_screen.dart';
 
+import '../shared/fake_compra.dart';
 import 'text_scale_harness.dart';
 
 /// Regressões da revisão de Ajustes (S1 a S15).
@@ -133,6 +134,7 @@ void main() {
         'Escuro',
         'Enviar sugestão',
         'Política de privacidade',
+        'Avaliar na Play Store',
         'Apoiar o app',
       ]) {
         final altura = _alturaDoAlvo(tester, rotulo);
@@ -159,11 +161,13 @@ void main() {
       expect(tamanho.width, greaterThanOrEqualTo(44.0));
     });
 
-    testWidgets('botão Copiar do Pix tem 48dp', (tester) async {
+    testWidgets('os botões do sheet de apoio têm 48dp', (tester) async {
+      // Substituiu a medida do botão Copiar do Pix, que saiu do app no mesmo
+      // release em que o Play Billing entrou.
       await renderizar(
         tester,
-        const AjustesScreen(),
-        nome: 'Ajustes Pix',
+        const AjustesScreen(criarCompra: FakeCompraApoio.new),
+        nome: 'Ajustes apoio',
         escala: 1.0,
         tamanho: telaInteira,
         depoisDeRenderizar: (t) async {
@@ -173,8 +177,18 @@ void main() {
         },
       );
 
-      expect(find.text('Copiar'), findsOneWidget);
-      expect(_alturaDoAlvo(tester, 'Copiar'), greaterThanOrEqualTo(48.0));
+      for (final rotulo in [
+        'Apoiar com R\$ 10,00',
+        'Enviar o app para alguém',
+        'Agora não',
+        // Cada valor da lista: o alvo é a linha inteira, não o texto do preço.
+        'R\$ 5,00',
+        'R\$ 10,00',
+        'R\$ 25,00',
+      ]) {
+        expect(_alturaDoAlvo(tester, rotulo), greaterThanOrEqualTo(48.0),
+            reason: '"$rotulo" tem alvo menor que 48dp no sheet de apoio.');
+      }
     });
   });
 
