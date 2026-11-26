@@ -6,6 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../core/notifications/notification_service.dart';
 import '../../core/notifications/agendador.dart';
+import '../../data/models/colecao.dart';
+import '../../data/models/salmo.dart';
 import '../../data/providers/salmos_providers.dart';
 import '../../core/apoio/apoio_service.dart';
 import '../../data/providers/onboarding_provider.dart';
@@ -126,8 +128,14 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
     // Reagenda a janela de notificações a cada abertura. Sem isto ela se
     // esgotaria em duas semanas; e como o agendador lê prefs, quem está com a
     // notificação desligada não paga nada por isso.
-    ref.read(salmosProvider.future).then((salmos) {
-      AgendadorSalmoDiario.reagendar(salmos);
+    Future.wait([
+      ref.read(salmosProvider.future),
+      ref.read(colecoesProvider.future),
+    ]).then((r) {
+      AgendadorSalmoDiario.reagendar(
+        r[0] as List<Salmo>,
+        colecoes: r[1] as List<Colecao>,
+      );
     }).catchError((Object e) {
       debugPrint('[Notif] reagendamento falhou: $e');
     });

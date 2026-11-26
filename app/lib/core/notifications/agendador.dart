@@ -1,7 +1,10 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/models/salmo.dart';
+import '../../data/models/colecao.dart';
+import '../../data/providers/onboarding_provider.dart';
 import '../../data/salmo_do_dia.dart';
+import '../constants/copy_emocao.dart';
 import '../constants/app_constants.dart';
 import 'notification_service.dart';
 
@@ -17,7 +20,10 @@ class AgendadorSalmoDiario {
   ///
   /// Não faz nada se a notificação estiver desligada, e cancela o que houver:
   /// assim desligar nas Configurações do Android não deixa alarme órfão.
-  static Future<void> reagendar(List<Salmo> salmos) async {
+  static Future<void> reagendar(
+    List<Salmo> salmos, {
+    required List<Colecao> colecoes,
+  }) async {
     if (salmos.isEmpty) return;
 
     final prefs = await SharedPreferences.getInstance();
@@ -35,7 +41,11 @@ class AgendadorSalmoDiario {
     await NotificationService.instance.agendarJanela(
       hour: hora,
       minute: minuto,
-      agenda: await montarAgenda(salmos: salmos, prefs: prefs),
+      agenda: await montarAgenda(
+        salmos: salmos,
+        prefs: prefs,
+        colecoes: colecoes,
+      ),
     );
   }
 
@@ -46,24 +56,33 @@ class AgendadorSalmoDiario {
   static Future<List<ItemAgenda>> montarAgenda({
     required List<Salmo> salmos,
     required SharedPreferences prefs,
+    List<Colecao> colecoes = const [],
   }) async {
     // Lê e persiste, igual à Home. Gerar uma semente efêmera aqui fazia a
     // notificação divergir do app até a Home montar pela primeira vez.
     final id = await identidadeDoUsuario(prefs);
     final hoje = diaCivil(DateTime.now());
+    // Mesma emoção e mesmo filtro da Home (salmoDoDialProvider).
+    final emocao = emocaoSalva(prefs);
+    final filtrados = salmosDaColecao(salmos, colecoes, emocao.colecaoId);
+    final frase = CopyEmocao.fraseAviso[emocao];
 
     return List.generate(NotificationService.horizonteDias, (i) {
-      final salmo = salmoDoDia(
-        salmos: salmos,
+      final r = salmoDoDiaComEmocao(
+        todos: salmos,
+        filtrados: filtrados,
         semente: id.semente,
         installDay: id.installDay,
         dia: hoje + i,
       );
+      final salmo = r.salmo;
       return ItemAgenda(
         diaOffset: i,
         numero: salmo.numero,
         titulo: salmo.titulo,
         versiculo: _resumo(salmo.versiculos.first),
+        // Só em dia de coleção; dia geral usa o aviso clássico.
+        frase: r.daColecao ? frase : null,
       );
     });
   }

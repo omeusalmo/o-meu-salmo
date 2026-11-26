@@ -136,6 +136,10 @@ class AnalyticsService {
   Future<void> setEmocaoInicial(String emocaoId) =>
       _setProp('emocao_inicial', emocaoId);
 
+  /// Emoção vigente: onboarding e troca em Ajustes. `emocao_inicial` não muda.
+  Future<void> setEmocaoAtual(String emocaoId) =>
+      _setProp('emocao_atual', emocaoId);
+
 
   /// Usuário abriu a tela de leitura de um Salmo.
   Future<void> logPsalmOpened(int numero) =>

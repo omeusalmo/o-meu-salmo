@@ -99,6 +99,40 @@ void main() {
       });
     });
   }
+
+  // Sheet "Como você está": subtítulo novo, os dois temas e as duas escalas.
+  for (final (modo, nomeModo) in [
+    (ThemeMode.dark, 'escuro'),
+    (ThemeMode.light, 'claro'),
+  ]) {
+    for (final escala in [1.0, 2.0]) {
+      final rotuloEscala = escala == 1.0 ? '1x' : '2x';
+      testWidgets('Sheet de emoção $nomeModo $rotuloEscala', (tester) async {
+        await _semRuidoDeFonte(() async {
+          await renderizar(
+            tester,
+            const AjustesScreen(),
+            nome: 'render sheet emocao $nomeModo $rotuloEscala',
+            escala: escala,
+            modo: modo,
+            tamanho: Size(360, escala == 1.0 ? 1500 : 2600),
+            depoisDeRenderizar: (t) async {
+              await t.tap(find.text('Como você está'));
+              await t.pump();
+              await t.pump(const Duration(milliseconds: 400));
+            },
+          );
+
+          expect(find.textContaining('vão levar em conta'), findsOneWidget);
+          await expectLater(
+            find.byType(MaterialApp),
+            matchesGoldenFile(
+                'goldens/ajustes_sheet_emocao_${nomeModo}_$rotuloEscala.png'),
+          );
+        });
+      });
+    }
+  }
 }
 
 /// Silencia UM erro específico do google_fonts durante o render.

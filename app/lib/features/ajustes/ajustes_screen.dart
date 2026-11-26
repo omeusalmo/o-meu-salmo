@@ -8,14 +8,15 @@ import '../../core/apoio/compra_service.dart';
 import '../../core/apoio/loja_apoio.dart';
 import '../../core/constants/app_constants.dart';
 import '../../core/constants/copy_apoio.dart';
+import '../../core/constants/copy_emocao.dart';
 import '../../core/review/review_service.dart';
 import '../../core/services/link_service.dart';
 import '../../core/extensions/build_context_extensions.dart';
-import '../../data/models/salmo.dart';
 import '../../core/analytics/analytics_service.dart';
 import '../../core/notifications/agendador.dart';
 import '../../core/notifications/notification_service.dart';
 import '../../core/theme/app_theme.dart';
+import '../../data/providers/onboarding_provider.dart';
 import '../../data/providers/salmos_providers.dart';
 import '../../data/providers/settings_provider.dart';
 import '../../shared/widgets/apoio_sheet.dart';
@@ -84,6 +85,8 @@ class AjustesScreen extends StatelessWidget {
 
           const _SectionHeader('Notificações'),
           const _NotificationCard(),
+          const SizedBox(height: AppTheme.sp3),
+          const _EmocaoRow(),
           const SizedBox(height: AppTheme.sp5),
 
           const _SectionHeader('Privacidade'),
@@ -231,6 +234,82 @@ class _TemaRow extends StatelessWidget {
 // dois estados e o card inteiro é o alvo de toque.
 // ─────────────────────────────────────────────────────────────────────────────
 
+/// Reagenda a janela com catálogo e coleções (a emoção o agendador lê das prefs).
+///
+/// Espera o catálogo carregar em vez de desistir com lista vazia: se a pessoa
+/// mexe antes do salmosProvider resolver, agendar vazio deixaria tudo ligado
+/// sem nenhum aviso marcado.
+Future<void> _reagendar(WidgetRef ref) async {
+  try {
+    await AgendadorSalmoDiario.reagendar(
+      await ref.read(salmosProvider.future),
+      colecoes: await ref.read(colecoesProvider.future),
+    );
+  } catch (_) {}
+}
+
+/// "Como você está": troca a emoção que filtra o Salmo do Dia e os avisos.
+class _EmocaoRow extends ConsumerWidget {
+  const _EmocaoRow();
+
+  Future<void> _escolher(BuildContext context, WidgetRef ref) async {
+    final atual = ref.read(emocaoInicialProvider);
+    final nova = await showModalBottomSheet<EmocaoInicial>(
+      context: context,
+      isScrollControlled: true,
+      showDragHandle: true,
+      backgroundColor: context.colorSurface,
+      builder: (ctx) => SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: AppTheme.sp4),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(AppTheme.sp2),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _ItemLabel(CopyEmocao.seletorTitulo),
+                    SizedBox(height: AppTheme.sp1),
+                    _ItemSupport(CopyEmocao.seletorApoio),
+                  ],
+                ),
+              ),
+              for (final e in EmocaoInicial.values)
+                _TemaRow(
+                  label: e.label,
+                  selecionado: e == atual,
+                  onTap: () => Navigator.of(ctx).pop(e),
+                ),
+              const SizedBox(height: AppTheme.sp4),
+            ],
+          ),
+        ),
+      ),
+    );
+    if (nova == null || nova == atual) return;
+    // Grava antes de reagendar: o agendador lê a emoção das prefs.
+    await ref.read(emocaoInicialProvider.notifier).set(nova);
+    AnalyticsService.instance.setEmocaoAtual(nova.name);
+    await _reagendar(ref);
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final atual = ref.watch(emocaoInicialProvider);
+    return _Card(
+      padding: EdgeInsets.zero,
+      child: _LinhaAcao(
+        label: CopyEmocao.ajustesLabel,
+        apoio: atual.label,
+        onTap: () => _escolher(context, ref),
+      ),
+    );
+  }
+}
+
 class _NotificationCard extends ConsumerWidget {
   const _NotificationCard();
 
@@ -321,7 +400,7 @@ class _NotificationCard extends ConsumerWidget {
     // Preferência primeiro: o agendador lê prefs para decidir entre agendar e
     // cancelar, então gravar depois faria ele agir com o valor antigo.
     await ref.read(notificationSettingsProvider.notifier).setEnabled(enable);
-    await AgendadorSalmoDiario.reagendar(await _salmos(ref));
+    await _reagendar(ref);
   }
 
   Future<void> _pickTime(
@@ -340,21 +419,7 @@ class _NotificationCard extends ConsumerWidget {
         .read(notificationSettingsProvider.notifier)
         .setTime(picked.hour, picked.minute);
     AnalyticsService.instance.logNotifScheduled(picked.hour);
-    await AgendadorSalmoDiario.reagendar(await _salmos(ref));
-  }
-
-  /// Espera o catálogo carregar em vez de desistir com lista vazia.
-  ///
-  /// Se a pessoa liga a notificação antes do salmosProvider resolver, agendar
-  /// com lista vazia deixaria o botão ligado sem nenhum aviso marcado, e ela
-  /// só descobriria dias depois. O provider já costuma estar quente aqui;
-  /// quando não está, são milissegundos.
-  Future<List<Salmo>> _salmos(WidgetRef ref) async {
-    try {
-      return await ref.read(salmosProvider.future);
-    } catch (_) {
-      return const [];
-    }
+    await _reagendar(ref);
   }
 
   /// Explica o bloqueio e diz onde resolver.

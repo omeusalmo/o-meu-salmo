@@ -11,6 +11,7 @@ class ItemAgenda {
     required this.numero,
     required this.titulo,
     required this.versiculo,
+    this.frase,
   });
 
   /// 0 = hoje, 1 = amanhã, e assim por diante.
@@ -20,6 +21,10 @@ class ItemAgenda {
 
   /// Primeiro versículo do salmo, o mesmo que a Home mostra em destaque.
   final String versiculo;
+
+  /// Frase por emoção para o título do aviso (nunca nomeia a emoção, aparece
+  /// na tela bloqueada). Null = título clássico 'Salmo N · titulo'.
+  final String? frase;
 }
 
 class NotificationService {
@@ -183,7 +188,7 @@ class NotificationService {
 
       await _plugin.zonedSchedule(
         _idBase + i,
-        'Salmo ${item.numero} · ${item.titulo}',
+        item.frase ?? 'Salmo ${item.numero} · ${item.titulo}',
         item.versiculo,
         quando,
         NotificationDetails(
@@ -202,7 +207,9 @@ class NotificationService {
             groupKey: _channelId,
             styleInformation: BigTextStyleInformation(
               item.versiculo,
-              summaryText: 'Seu Salmo de hoje',
+              summaryText: item.frase != null
+                  ? 'Salmo ${item.numero} · ${item.titulo}'
+                  : 'Seu Salmo de hoje',
             ),
           ),
           iOS: const DarwinNotificationDetails(

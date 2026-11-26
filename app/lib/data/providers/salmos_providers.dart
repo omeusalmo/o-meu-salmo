@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/salmo.dart';
 import '../salmo_do_dia.dart';
 import '../models/colecao.dart';
+import 'onboarding_provider.dart';
 import '../repositories/salmos_repository.dart';
 import '../../core/constants/app_constants.dart';
 
@@ -32,19 +33,29 @@ final colecaoDetalheProvider =
 // Retorna o Salmo do dia único por usuário — sem repetição por ciclo completo.
 // Seed gerado uma vez no primeiro acesso; embaralhamento Fisher-Yates determinístico.
 final salmoDoDialProvider = FutureProvider<Salmo?>((ref) async {
-  final salmos = await ref.read(salmosRepositoryProvider).getSalmos();
-  if (salmos.isEmpty) return null;
+  // Só para recalcular quando a emoção mudar; o valor vem das prefs, porque o
+  // provider começa em paz até o load assíncrono terminar.
+  ref.watch(emocaoInicialProvider);
+  final repo = ref.read(salmosRepositoryProvider);
+  final todos = await repo.getSalmos();
+  if (todos.isEmpty) return null;
 
   final prefs = await SharedPreferences.getInstance();
+  final filtrados = salmosDaColecao(
+    todos,
+    await repo.getColecoes(),
+    emocaoSalva(prefs).colecaoId,
+  );
 
   final id = await identidadeDoUsuario(prefs);
 
-  return salmoDoDia(
-    salmos: salmos,
+  return salmoDoDiaComEmocao(
+    todos: todos,
+    filtrados: filtrados,
     semente: id.semente,
     installDay: id.installDay,
     dia: diaCivil(DateTime.now()),
-  );
+  ).salmo;
 });
 
 // Salmos cujas reflexões foram desbloqueadas (apareceram como Salmo do Dia).

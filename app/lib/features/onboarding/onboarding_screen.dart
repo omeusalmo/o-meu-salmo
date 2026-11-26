@@ -94,13 +94,17 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
       notificacao: _querNotificacao,
     );
     AnalyticsService.instance.setEmocaoInicial(_selectedEmocao.name);
+    AnalyticsService.instance.setEmocaoAtual(_selectedEmocao.name);
     AnalyticsService.instance.setNotifEnabled(_querNotificacao);
 
     if (_querNotificacao) {
       await ref.read(notificationSettingsProvider.notifier).setEnabled(true);
       try {
         final salmos = await ref.read(salmosProvider.future);
-        await AgendadorSalmoDiario.reagendar(salmos);
+        await AgendadorSalmoDiario.reagendar(
+          salmos,
+          colecoes: await ref.read(colecoesProvider.future),
+        );
         AnalyticsService.instance.logNotifScheduled(
           ref.read(notificationSettingsProvider).hour,
         );
@@ -609,6 +613,8 @@ class _Page3 extends StatelessWidget {
                       MediaQuery.textScalerOf(context).scale(1),
               children: EmocaoInicial.values.map((e) {
                 final isSelected = e == selected;
+                final fonteGrande =
+                    MediaQuery.textScalerOf(context).scale(1) > 1.3;
                 return GestureDetector(
                   onTap: () => onSelect(e),
                   child: AnimatedContainer(
@@ -629,12 +635,16 @@ class _Page3 extends StatelessWidget {
                         width: 1.5,
                       ),
                     ),
-                    child: Row(
+                    // Fonte grande: emoji em cima do rótulo. Lado a lado,
+                    // "Esperançoso(a)" cortava já em 1.5x.
+                    child: Flex(
+                      direction: fonteGrande ? Axis.vertical : Axis.horizontal,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(e.emoji,
                             style: const TextStyle(fontSize: 20)),
-                        const SizedBox(width: AppTheme.sp2),
+                        const SizedBox(
+                            width: AppTheme.sp2, height: AppTheme.sp1),
                         Flexible(
                           child: Text(
                             e.label,

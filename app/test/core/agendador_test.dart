@@ -1,8 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:salmos_app/core/constants/copy_emocao.dart';
 import 'package:salmos_app/core/constants/app_constants.dart';
 import 'package:salmos_app/core/notifications/agendador.dart';
 import 'package:salmos_app/core/notifications/notification_service.dart';
+import 'package:salmos_app/data/models/colecao.dart';
 import 'package:salmos_app/data/models/salmo.dart';
+import 'package:salmos_app/data/providers/onboarding_provider.dart';
 import 'package:salmos_app/data/salmo_do_dia.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -139,5 +142,60 @@ void main() {
     );
 
     expect(agenda.first.numero, naHome.numero);
+  });
+
+  group('emoção', () {
+    const colecoes = [
+      Colecao(id: 'luto', titulo: 'L', subtitulo: '', salmos: [3, 7, 9, 11]),
+    ];
+
+    test('com emoção, dias alternam coleção/geral, frase só na coleção e igual à Home',
+        () async {
+      SharedPreferences.setMockInitialValues({
+        AppConstants.prefUserSeed: 4242,
+        AppConstants.prefInstallDay: diaCivil(DateTime.now()) - 6,
+        AppConstants.prefEmocaoInicial: 'luto',
+      });
+      final p = await SharedPreferences.getInstance();
+      final salmos = _catalogo(150);
+      final agenda = await AgendadorSalmoDiario.montarAgenda(
+        salmos: salmos,
+        prefs: p,
+        colecoes: colecoes,
+      );
+      final filtrados = salmosDaColecao(salmos, colecoes, 'luto');
+      final install = p.getInt(AppConstants.prefInstallDay)!;
+      final hoje = diaCivil(DateTime.now());
+
+      for (var i = 0; i < 14; i++) {
+        final naHome = salmoDoDiaComEmocao(
+          todos: salmos,
+          filtrados: filtrados,
+          semente: 4242,
+          installDay: install,
+          dia: hoje + i,
+        );
+        expect(agenda[i].numero, naHome.salmo.numero, reason: 'dia $i');
+        expect(agenda[i].frase,
+            naHome.daColecao ? CopyEmocao.fraseAviso[EmocaoInicial.luto] : isNull,
+            reason: 'frase dia $i');
+        if (naHome.daColecao) {
+          expect([3, 7, 9, 11], contains(agenda[i].numero));
+        }
+      }
+      // hoje = offset 6 (par): coleção; amanhã: geral sem frase.
+      expect(agenda[0].frase, isNotNull);
+      expect(agenda[1].frase, isNull);
+    });
+
+    test('paz (ou sem emoção) não filtra e não tem frase', () async {
+      final agenda = await AgendadorSalmoDiario.montarAgenda(
+        salmos: _catalogo(150),
+        prefs: prefs,
+        colecoes: colecoes,
+      );
+      expect(agenda.first.frase, isNull);
+      expect(agenda.map((i) => i.numero).toSet(), hasLength(agenda.length));
+    });
   });
 }
