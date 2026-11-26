@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="ic_launcher_background">#2A47DD</color>
+    <!-- Widget, DS v1.2 claro. Escuro em values-night. -->
+    <color name="widget_superficie">#E1E6FC</color>
+    <color name="widget_titulo">#0C1230</color>
+    <color name="widget_texto">#2E3A86</color>
+    <color name="widget_versiculo">#6B4E1C</color>
+    <color name="widget_acento">#2A47DD</color>
+    <color name="widget_borda">#A8B6E6</color>
 </resources>

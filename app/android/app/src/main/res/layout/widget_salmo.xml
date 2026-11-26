@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Textos padrão = prévia no seletor (previewLayout, Android 12+). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_raiz"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_fundo"
+    android:clipToOutline="true"
+    android:orientation="vertical"
+    android:contentDescription="@string/widget_abrir"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/widget_numero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:fontFamily="serif"
+        android:maxLines="1"
+        android:text="Salmo 23"
+        android:textColor="@color/widget_titulo"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/widget_titulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="O Senhor é o meu pastor"
+        android:textColor="@color/widget_texto"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/widget_versiculo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:fontFamily="serif"
+        android:maxLines="2"
+        android:text="O Senhor é o meu pastor; nada me faltará."
+        android:textColor="@color/widget_versiculo"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/widget_fallback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="@string/widget_fallback"
+        android:textColor="@color/widget_acento"
+        android:textSize="15sp"
+        android:visibility="gone" />
+</LinearLayout>

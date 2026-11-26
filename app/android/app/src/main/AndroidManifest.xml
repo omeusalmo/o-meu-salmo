@@ -85,6 +85,18 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <!-- Widget de tela inicial: Salmo do dia -->
+        <receiver
+            android:name=".SalmoWidget"
+            android:exported="false"
+            android:label="@string/widget_rotulo">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_salmo_info"/>
+        </receiver>
         <!-- Reagenda notificações após reboot -->
         <receiver
             android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver"

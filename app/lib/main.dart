@@ -15,6 +15,7 @@ import 'core/notifications/notification_service.dart';
 import 'core/firebase_options.dart';
 import 'core/navigation/app_router.dart';
 import 'core/theme/app_theme.dart';
+import 'core/widget/widget_salmo.dart';
 import 'data/providers/settings_provider.dart';
 
 void main() async {
@@ -91,6 +92,8 @@ void main() async {
     registrarAbertura(rota);
     appRouter.go(rota);
   };
+  // Widget com o app vivo. Morto, a splash consome (consumirRotaInicial).
+  WidgetSalmo.ouvir(appRouter.go);
 
   // Ouvinte de compras do processo, antes do runApp.
   //

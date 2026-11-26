@@ -6,6 +6,7 @@ import '../../data/providers/onboarding_provider.dart';
 import '../../data/salmo_do_dia.dart';
 import '../constants/copy_emocao.dart';
 import '../constants/app_constants.dart';
+import '../widget/widget_salmo.dart';
 import 'notification_service.dart';
 
 /// Monta a agenda de notificações a partir da mesma função que a Home usa.
@@ -18,7 +19,8 @@ class AgendadorSalmoDiario {
   /// Reagenda a janela inteira. Chamado a cada abertura do app e sempre que o
   /// usuário liga a notificação ou troca o horário.
   ///
-  /// Não faz nada se a notificação estiver desligada, e cancela o que houver:
+  /// Sempre alimenta o widget. Da notificação, não agenda nada se estiver
+  /// desligada, e cancela o que houver:
   /// assim desligar nas Configurações do Android não deixa alarme órfão.
   static Future<void> reagendar(
     List<Salmo> salmos, {
@@ -27,6 +29,14 @@ class AgendadorSalmoDiario {
     if (salmos.isEmpty) return;
 
     final prefs = await SharedPreferences.getInstance();
+    final agenda = await montarAgenda(
+      salmos: salmos,
+      prefs: prefs,
+      colecoes: colecoes,
+    );
+    // Widget recebe a agenda antes do gate: ele independe da notificação.
+    await WidgetSalmo.publicar(agenda, prefs);
+
     final ligada = prefs.getBool(AppConstants.prefNotificationEnabled) ?? false;
     if (!ligada) {
       await NotificationService.instance.cancelarJanela();
@@ -41,11 +51,7 @@ class AgendadorSalmoDiario {
     await NotificationService.instance.agendarJanela(
       hour: hora,
       minute: minuto,
-      agenda: await montarAgenda(
-        salmos: salmos,
-        prefs: prefs,
-        colecoes: colecoes,
-      ),
+      agenda: agenda,
     );
   }
 

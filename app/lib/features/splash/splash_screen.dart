@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../core/notifications/notification_service.dart';
 import '../../core/notifications/agendador.dart';
+import '../../core/widget/widget_salmo.dart';
 import '../../data/models/colecao.dart';
 import '../../data/models/salmo.dart';
 import '../../data/providers/salmos_providers.dart';
@@ -110,13 +111,15 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
 
     // Navega logo após a animação (1800ms) + respiro curto. Antes: 3000ms cegos.
     // onboardingProvider (prefs, ~ms) já resolveu bem antes disso.
-    Future.delayed(const Duration(milliseconds: 2200), () {
+    Future.delayed(const Duration(milliseconds: 2200), () async {
       if (!mounted) return;
-      final done = ref.read(onboardingProvider);
       // Consome sempre, mesmo indo para o onboarding: guardada, a rota
       // reapareceria na próxima abertura e levaria a um salmo que a pessoa
-      // não pediu.
-      final rota = NotificationService.instance.consumirRotaPendente();
+      // não pediu. Notificação ou widget: o mesmo intent nunca traz os dois.
+      final rota = NotificationService.instance.consumirRotaPendente() ??
+          await WidgetSalmo.consumirRotaInicial();
+      if (!mounted) return;
+      final done = ref.read(onboardingProvider);
       if (!done) {
         context.go('/onboarding');
         return;

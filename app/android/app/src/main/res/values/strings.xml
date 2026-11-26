@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_nome">O meu Salmo</string>
+    <string name="widget_rotulo">Salmo do dia</string>
+    <string name="widget_descricao">O Salmo de hoje na sua tela inicial.</string>
+    <string name="widget_fallback">Abra para ler o Salmo de hoje</string>
+    <string name="widget_abrir">Abrir o Salmo do dia</string>
+</resources>

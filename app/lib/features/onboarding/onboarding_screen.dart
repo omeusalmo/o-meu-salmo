@@ -99,18 +99,21 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
 
     if (_querNotificacao) {
       await ref.read(notificationSettingsProvider.notifier).setEnabled(true);
-      try {
-        final salmos = await ref.read(salmosProvider.future);
-        await AgendadorSalmoDiario.reagendar(
-          salmos,
-          colecoes: await ref.read(colecoesProvider.future),
-        );
+    }
+    // Sempre: mesmo sem notificação, o widget precisa da emoção recém-escolhida.
+    try {
+      final salmos = await ref.read(salmosProvider.future);
+      await AgendadorSalmoDiario.reagendar(
+        salmos,
+        colecoes: await ref.read(colecoesProvider.future),
+      );
+      if (_querNotificacao) {
         AnalyticsService.instance.logNotifScheduled(
           ref.read(notificationSettingsProvider).hour,
         );
-      } catch (e) {
-        debugPrint('[Notif] agendamento no onboarding falhou: $e');
       }
+    } catch (e) {
+      debugPrint('[Notif] agendamento no onboarding falhou: $e');
     }
 
     await ref.read(onboardingProvider.notifier).markDone();

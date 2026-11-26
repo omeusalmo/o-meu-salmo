@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Widget, DS v1.2 escuro. -->
+    <color name="widget_superficie">#151A39</color>
+    <color name="widget_titulo">#EEF0FC</color>
+    <color name="widget_texto">#8C97D4</color>
+    <color name="widget_versiculo">#C4A86A</color>
+    <color name="widget_acento">#7C8BF0</color>
+    <color name="widget_borda">#323A77</color>
+</resources>

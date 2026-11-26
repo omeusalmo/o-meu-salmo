@@ -103,6 +103,11 @@ class AnalyticsService {
   Future<void> logNotifOpened(int numero) =>
       _log('notif_opened', {'psalm_number': numero});
 
+  /// App aberto pelo widget da tela inicial. Sem número = widget no fallback
+  /// (sem agenda para hoje). KPI: sessões via widget.
+  Future<void> logWidgetOpened(int? numero) => _log(
+      'widget_opened', numero == null ? null : {'psalm_number': numero});
+
   /// Leitura de fato, não só abertura de tela.
   ///
   /// psalm_opened dispara no instante em que a tela monta e mede intenção;
