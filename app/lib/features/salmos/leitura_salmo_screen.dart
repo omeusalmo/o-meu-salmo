@@ -12,6 +12,7 @@ import '../../data/models/colecao.dart';
 import '../../data/models/salmo.dart';
 import '../../data/providers/audio_provider.dart';
 import '../../data/providers/favoritos_provider.dart';
+import '../../data/providers/jornada_provider.dart';
 import '../../data/providers/salmos_providers.dart';
 import '../../shared/widgets/audio_player_bar.dart';
 import '../../shared/widgets/circle_icon_button.dart';
@@ -52,6 +53,7 @@ class _LeituraSalmoScreenState extends ConsumerState<LeituraSalmoScreen> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       AnalyticsService.instance.logPsalmOpened(widget.numero);
+      ref.read(jornadaProvider.notifier).registrarLeitura(widget.numero);
     });
     // O pedido de avaliação ficava aqui, num Future.delayed de 10 segundos: ele
     // aparecia no meio da leitura, inclusive na coleção de Luto. Agora nada é

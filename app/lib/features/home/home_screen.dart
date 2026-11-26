@@ -17,6 +17,7 @@ import '../../shared/widgets/starfield_background.dart';
 import '../../shared/widgets/error_state_view.dart';
 import '../../shared/widgets/tema_chip.dart';
 import '../../shared/widgets/word_reveal_text.dart';
+import 'jornada_linha.dart';
 
 /// O card discreto de apoio deve aparecer nesta Home?
 ///
@@ -117,6 +118,7 @@ class _HomeContent extends StatelessWidget {
                     index: 2,
                     child: _PsalmHeroSection(salmo: salmo),
                   ),
+                  const StaggeredEntrance(index: 2, child: JornadaLinha()),
                   const SizedBox(height: AppTheme.sp6),
 
                   // ── Versículo-âncora (em âmbar, palavra a palavra) ────────

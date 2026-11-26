@@ -36,6 +36,10 @@ class AppConstants {
   static const String prefApoiou                = 'apoio_apoiou';
   static const String prefApoioNaoPerguntar     = 'apoio_nao_perguntar';
 
+  // Jornada: dias seguidos lendo o Salmo do dia (ver data/jornada.dart)
+  static const String prefJornadaUltimoDia = 'jornada_ultimo_dia';
+  static const String prefJornadaDias      = 'jornada_dias';
+
   /// Versão exibida em Ajustes.
   ///
   /// Fonte única: tem de bater com `version:` do pubspec.yaml. Não dá para ler

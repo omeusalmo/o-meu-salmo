@@ -145,6 +145,9 @@ class AnalyticsService {
   Future<void> logPsalmOpened(int numero) =>
       _log('psalm_opened', {'psalm_number': numero});
 
+  /// Um dia entrou na Jornada (primeira leitura do Salmo do dia no dia).
+  Future<void> logJornadaDia(int dias) => _log('jornada_dia', {'dias': dias});
+
   /// Usuário favoritou ou desfavoritou um Salmo.
   Future<void> logPsalmFavorited(int numero, {required bool added}) =>
       _log('psalm_favorited', {
