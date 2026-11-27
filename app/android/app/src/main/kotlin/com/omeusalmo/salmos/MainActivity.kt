@@ -1,6 +1,7 @@
 package com.omeusalmo.salmos
 
 import android.content.Intent
+import android.os.Bundle
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
@@ -19,6 +20,14 @@ class MainActivity : FlutterActivity() {
                 }
             }
         }
+    }
+
+    // Recriada depois de o sistema matar o processo: o getIntent() é o do
+    // toque antigo no widget (o removeExtra anterior só limpou uma cópia).
+    // Sem isso, abrir pelo ícone dias depois levaria ao salmo velho.
+    override fun onCreate(savedInstanceState: Bundle?) {
+        if (savedInstanceState != null) intent?.removeExtra(SalmoWidget.EXTRA_ROTA)
+        super.onCreate(savedInstanceState)
     }
 
     // singleTop: toque no widget com o app vivo chega aqui.
