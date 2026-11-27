@@ -32,7 +32,7 @@ Sentir o mundo contra você aperta o peito, mesmo quando a ameaça é mais impre
 
 ---
 
-## Salmo 4 — Oração da Tarde
+## Salmo 4 — Oração da Noite
 *Temas: paz, descanso*
 
 Parar antes de dormir e dar nome ao que pesou no dia muda alguma coisa por dentro. Quando você encara o que sentiu em vez de empurrar pra baixo, a cabeça para de repetir o dia em círculo e o sono chega mais fácil. No silêncio da noite, sem pressa de atravessá-lo, o dia finalmente assenta.
