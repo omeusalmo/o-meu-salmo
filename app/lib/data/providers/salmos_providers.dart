@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart' show AppLifecycleListener;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/salmo.dart';
@@ -30,12 +31,37 @@ final colecaoDetalheProvider =
   return ref.read(salmosRepositoryProvider).getColecaoPorId(id);
 });
 
+/// Dia civil de hoje, como estado. Um FutureProvider que lesse DateTime.now()
+/// guardaria o dia da abertura enquanto o processo vivesse: aberto às 22h e
+/// retomado às 7h, a Home mostraria o salmo de ontem e a Jornada não contaria
+/// a leitura de hoje. Atualiza ao voltar ao primeiro plano e quando alguém
+/// chama [DiaCivilNotifier.sincronizar].
+class DiaCivilNotifier extends Notifier<int> {
+  @override
+  int build() {
+    final ouvinte = AppLifecycleListener(onResume: sincronizar);
+    ref.onDispose(ouvinte.dispose);
+    return diaCivil(DateTime.now());
+  }
+
+  /// Devolve o dia de agora; só notifica se virou.
+  int sincronizar() {
+    final agora = diaCivil(DateTime.now());
+    if (agora != state) state = agora;
+    return agora;
+  }
+}
+
+final diaCivilProvider =
+    NotifierProvider<DiaCivilNotifier, int>(DiaCivilNotifier.new);
+
 // Retorna o Salmo do dia único por usuário — sem repetição por ciclo completo.
 // Seed gerado uma vez no primeiro acesso; embaralhamento Fisher-Yates determinístico.
 final salmoDoDialProvider = FutureProvider<Salmo?>((ref) async {
   // Só para recalcular quando a emoção mudar; o valor vem das prefs, porque o
   // provider começa em paz até o load assíncrono terminar.
   ref.watch(emocaoInicialProvider);
+  final dia = ref.watch(diaCivilProvider);
   final repo = ref.read(salmosRepositoryProvider);
   final todos = await repo.getSalmos();
   if (todos.isEmpty) return null;
@@ -54,7 +80,7 @@ final salmoDoDialProvider = FutureProvider<Salmo?>((ref) async {
     filtrados: filtrados,
     semente: id.semente,
     installDay: id.installDay,
-    dia: diaCivil(DateTime.now()),
+    dia: dia,
   ).salmo;
 });
 

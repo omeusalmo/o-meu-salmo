@@ -4,7 +4,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../core/analytics/analytics_service.dart';
 import '../../core/constants/app_constants.dart';
 import '../jornada.dart';
-import '../salmo_do_dia.dart';
 import 'salmos_providers.dart';
 
 class JornadaNotifier extends AsyncNotifier<Jornada> {
@@ -20,10 +19,13 @@ class JornadaNotifier extends AsyncNotifier<Jornada> {
   /// Chamado pela leitura. Conta só se [numero] é o Salmo do dia de hoje, o
   /// mesmo que a Home e a notificação usam (`salmoDoDialProvider`).
   Future<void> registrarLeitura(int numero) async {
+    // Toque na notificação com o app vivo chega antes do onResume: acerta o
+    // dia antes de comparar, senão compara com o salmo de ontem.
+    final dia = ref.read(diaCivilProvider.notifier).sincronizar();
     final hoje = await ref.read(salmoDoDialProvider.future);
     if (hoje?.numero != numero) return;
     final atual = await future;
-    final novo = registrarDia(atual, diaCivil(DateTime.now()));
+    final novo = registrarDia(atual, dia);
     if (novo == atual) return;
     final prefs = await SharedPreferences.getInstance();
     await prefs.setInt(AppConstants.prefJornadaUltimoDia, novo.ultimoDia!);

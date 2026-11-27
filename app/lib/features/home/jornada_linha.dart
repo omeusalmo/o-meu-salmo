@@ -7,7 +7,7 @@ import '../../core/extensions/build_context_extensions.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/jornada.dart';
 import '../../data/providers/jornada_provider.dart';
-import '../../data/salmo_do_dia.dart';
+import '../../data/providers/salmos_providers.dart';
 
 /// Dias marcados entre os últimos 7 (hoje por último). Sem I/O.
 List<bool> semanaJornada(Jornada j, int hoje) {
@@ -25,7 +25,7 @@ class JornadaLinha extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final j = ref.watch(jornadaProvider).valueOrNull;
-    final hoje = diaCivil(DateTime.now());
+    final hoje = ref.watch(diaCivilProvider);
     if (j == null || !jornadaViva(j, hoje)) return const SizedBox.shrink();
 
     final leuHoje = j.ultimoDia == hoje;
