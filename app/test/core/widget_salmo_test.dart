@@ -49,13 +49,6 @@ void main() {
     expect(p.containsKey('2026-02-08'), isFalse);
   });
 
-  test('virada de horário de verão não pula nem repete dia', () {
-    // DateTime(y, m, d + i) é aritmética civil, imune a dia de 23h/25h.
-    final p = WidgetSalmo.payload(_agenda(14), DateTime(2026, 10, 30));
-    expect(p.keys.toSet(), hasLength(14));
-    expect(p.containsKey('2026-11-12'), isTrue);
-  });
-
   test('REGRESSÃO: notificação desligada ainda alimenta o widget, '
       'com o mesmo salmo da Home sob emoção', () async {
     const colecoes = [

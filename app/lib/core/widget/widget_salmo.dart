@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../analytics/analytics_service.dart';
+import '../apoio/apoio_service.dart';
 import '../notifications/notification_service.dart';
 
 /// Widget de tela inicial (Android): "Salmo do dia".
@@ -74,6 +75,10 @@ class WidgetSalmo {
         abrir(rota);
       });
 
-  static void _registrar(String rota) => AnalyticsService.instance
-      .logWidgetOpened(int.tryParse(rota.split('/').last));
+  // Mesma regra da notificação: quem veio buscar o salmo não recebe pedido de
+  // avaliação nem de apoio nesta sessão (core/apoio/elegibilidade.dart).
+  static void _registrar(String rota) {
+    AnalyticsService.instance.logWidgetOpened(int.tryParse(rota.split('/').last));
+    ApoioService.instance.marcarAberturaPorNotificacao();
+  }
 }
