@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Textos padrão = prévia no seletor (previewLayout, Android 12+). -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Textos padrão = prévia no seletor (previewLayout, Android 12+).
+     Moldura transparente ocupa a célula; o cartão abraça o texto (hug). -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
     android:id="@+id/widget_raiz"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
     android:background="@drawable/widget_fundo"
     android:clipToOutline="true"
     android:orientation="vertical"
@@ -57,3 +63,4 @@
         android:textSize="15sp"
         android:visibility="gone" />
 </LinearLayout>
+</FrameLayout>

@@ -6,6 +6,8 @@ import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
+import android.os.Bundle
 import android.view.View
 import android.widget.RemoteViews
 import org.json.JSONObject
@@ -25,9 +27,22 @@ import java.util.Locale
 class SalmoWidget : AppWidgetProvider() {
 
     override fun onUpdate(ctx: Context, mgr: AppWidgetManager, ids: IntArray) {
-        val views = montar(ctx)
-        ids.forEach { mgr.updateAppWidget(it, views) }
+        ids.forEach { mgr.updateAppWidget(it, montar(ctx, mgr, it)) }
     }
+
+    override fun onReceive(ctx: Context, intent: Intent) {
+        super.onReceive(ctx, intent)
+        when (intent.action) {
+            Intent.ACTION_MY_PACKAGE_REPLACED,
+            Intent.ACTION_TIME_CHANGED,
+            Intent.ACTION_TIMEZONE_CHANGED -> atualizarTodos(ctx)
+        }
+    }
+
+    // Launcher mudou o tamanho da célula (grade, rotação): recalcula o corte.
+    override fun onAppWidgetOptionsChanged(
+        ctx: Context, mgr: AppWidgetManager, id: Int, opcoes: Bundle,
+    ) = mgr.updateAppWidget(id, montar(ctx, mgr, id))
 
     companion object {
         const val EXTRA_ROTA = "omeusalmo.rota"
@@ -35,7 +50,7 @@ class SalmoWidget : AppWidgetProvider() {
         fun atualizarTodos(ctx: Context) {
             val mgr = AppWidgetManager.getInstance(ctx)
             val ids = mgr.getAppWidgetIds(ComponentName(ctx, SalmoWidget::class.java))
-            if (ids.isNotEmpty()) mgr.updateAppWidget(ids, montar(ctx))
+            ids.forEach { mgr.updateAppWidget(it, montar(ctx, mgr, it)) }
         }
 
         private fun hoje(ctx: Context): JSONObject? = try {
@@ -48,7 +63,7 @@ class SalmoWidget : AppWidgetProvider() {
             null
         }
 
-        private fun montar(ctx: Context): RemoteViews {
+        private fun montar(ctx: Context, mgr: AppWidgetManager, id: Int): RemoteViews {
             val v = RemoteViews(ctx.packageName, R.layout.widget_salmo)
             val dia = hoje(ctx)
             val rota: String
@@ -69,10 +84,21 @@ class SalmoWidget : AppWidgetProvider() {
                 v.setViewVisibility(R.id.widget_versiculo, View.GONE)
                 v.setViewVisibility(R.id.widget_fallback, View.VISIBLE)
             }
-            // Fonte do sistema grande: 4x2 tem ~110dp de altura. Sem título e
-            // com 1 linha de versículo, 2.0x ainda cabe (~122dp, no limite).
-            if (ctx.resources.configuration.fontScale >= 1.3f) {
-                v.setViewVisibility(R.id.widget_titulo, View.GONE)
+            // Corta só o que não cabe na altura real da célula. Retrato usa
+            // MAX_HEIGHT, paisagem MIN_HEIGHT (convenção dos launchers).
+            // Alturas em sp (linha ~1.3x do textSize): número 26, título 18,
+            // versículo 20/linha; fixo em dp: padding 24 + margem 8.
+            val retrato = ctx.resources.configuration.orientation ==
+                Configuration.ORIENTATION_PORTRAIT
+            val altura = mgr.getAppWidgetOptions(id).getInt(
+                if (retrato) AppWidgetManager.OPTION_APPWIDGET_MAX_HEIGHT
+                else AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT,
+                110,
+            ).takeIf { it > 0 } ?: 110
+            val fonte = ctx.resources.configuration.fontScale
+            fun cabe(sp: Int) = sp * fonte + 32 <= altura
+            if (!cabe(26 + 18 + 40)) v.setViewVisibility(R.id.widget_titulo, View.GONE)
+            if (!cabe(26 + 40)) {
                 v.setInt(R.id.widget_versiculo, "setMaxLines", 1)
                 v.setInt(R.id.widget_fallback, "setMaxLines", 1)
             }
