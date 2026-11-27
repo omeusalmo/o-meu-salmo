@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:salmos_app/core/constants/copy_jornada.dart';
 import 'package:salmos_app/data/jornada.dart';
+import 'package:salmos_app/features/home/jornada_linha.dart';
 
 void main() {
   const j5 = (ultimoDia: 100, dias: 5);
@@ -26,7 +27,17 @@ void main() {
   });
 
   test('copy singular e plural', () {
-    expect(CopyJornada.diasComSalmos(1), '1 dia com os Salmos');
-    expect(CopyJornada.diasComSalmos(3), '3 dias com os Salmos');
+    expect(CopyJornada.contagem(1), ('1º', ' dia com os Salmos'));
+    expect(CopyJornada.contagem(3), ('3', ' dias seguidos'));
+    expect(CopyJornada.falta(6), ' · o 7º é hoje');
+  });
+
+  test('semana: marca só os dias da corrente dentro dos últimos 7', () {
+    // j5: último dia 100, 5 dias (96..100). Hoje 101: 95..101.
+    expect(semanaJornada(j5, 101),
+        [false, true, true, true, true, true, false]);
+    // Corrente maior que a semana: tudo cheio.
+    expect(semanaJornada((ultimoDia: 100, dias: 30), 100),
+        List.filled(7, true));
   });
 }

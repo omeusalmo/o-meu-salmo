@@ -46,7 +46,10 @@ void main() {
     addTearDown(c.dispose);
     await t.pumpWidget(_app(c, escala: 2.0));
     await t.pumpAndSettle();
-    expect(find.text('3 dias com os Salmos'), findsOneWidget);
+    expect(find.text('3 dias seguidos · o 4º é hoje', findRichText: true),
+        findsOneWidget);
+    expect(find.bySemanticsLabel('3 dias seguidos lendo o Salmo do dia. '
+        'Falta ler o de hoje.'), findsOneWidget);
     expect(t.takeException(), isNull);
   });
 
@@ -59,7 +62,7 @@ void main() {
     addTearDown(c.dispose);
     await t.pumpWidget(_app(c));
     await t.pumpAndSettle();
-    expect(find.byType(Text), findsNothing);
+    expect(find.byType(RichText), findsNothing);
   });
 
   testWidgets('só o Salmo do dia conta; a Home atualiza na hora', (t) async {
@@ -68,14 +71,15 @@ void main() {
     addTearDown(c.dispose);
     await t.pumpWidget(_app(c));
     await t.pumpAndSettle();
-    expect(find.byType(Text), findsNothing);
+    expect(find.byType(RichText), findsNothing);
 
     await c.read(jornadaProvider.notifier).registrarLeitura(8);
     await t.pumpAndSettle();
-    expect(find.byType(Text), findsNothing);
+    expect(find.byType(RichText), findsNothing);
 
     await c.read(jornadaProvider.notifier).registrarLeitura(7);
     await t.pumpAndSettle();
-    expect(find.text('1 dia com os Salmos'), findsOneWidget);
+    expect(find.text('1º dia com os Salmos', findRichText: true),
+        findsOneWidget);
   });
 }

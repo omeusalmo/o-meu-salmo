@@ -118,7 +118,6 @@ class _HomeContent extends StatelessWidget {
                     index: 2,
                     child: _PsalmHeroSection(salmo: salmo),
                   ),
-                  const StaggeredEntrance(index: 2, child: JornadaLinha()),
                   const SizedBox(height: AppTheme.sp6),
 
                   // ── Versículo-âncora (em âmbar, palavra a palavra) ────────
@@ -138,6 +137,7 @@ class _HomeContent extends StatelessWidget {
                       onTap: () => context.push('/salmos/${salmo.numero}'),
                     ),
                   ),
+                  const StaggeredEntrance(index: 4, child: JornadaLinha()),
 
                   if (salmo.reflexao?.isNotEmpty == true) ...[
                     const SizedBox(height: AppTheme.sp3),
