@@ -77,7 +77,7 @@ class JornadaLinha extends ConsumerWidget {
                     style: GoogleFonts.playfairDisplay(
                       fontSize: 20,
                       fontStyle: FontStyle.italic,
-                      color: accent,
+                      color: context.colorAccentText,
                     ),
                   ),
                   TextSpan(text: resto),
